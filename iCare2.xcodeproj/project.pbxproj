@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41BDDD919410F3F0031C7FF /* BPBUpArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */; };
+		F41BDDDC194113B00031C7FF /* BPBDownArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */; };
+		F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43148BD1933B66D00529FC4 /* Storyboard.storyboard */; };
 		F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
 		F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4E192F908E0031470B /* CoreGraphics.framework */; };
 		F4615D51192F908E0031470B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D50192F908E0031470B /* UIKit.framework */; };
@@ -22,6 +25,9 @@
 		F4615D6E192F908E0031470B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D52192F908E0031470B /* CoreData.framework */; };
 		F4615D76192F908E0031470B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4615D74192F908E0031470B /* InfoPlist.strings */; };
 		F4615D78192F908E0031470B /* iCare2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4615D77192F908E0031470B /* iCare2Tests.m */; };
+		F49172FD193F71EC00FB3090 /* sdfgds.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49172FC193F71EC00FB3090 /* sdfgds.xib */; };
+		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
+		F4DEA44D193E570A006B0FFA /* PreOperativeAnesEval.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4DEA44C193E570A006B0FFA /* PreOperativeAnesEval.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F41BDDD719410F3F0031C7FF /* BPBUpArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBUpArrowView.h; sourceTree = "<group>"; };
+		F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBUpArrowView.m; sourceTree = "<group>"; };
+		F41BDDDA194113B00031C7FF /* BPBDownArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBDownArrowView.h; sourceTree = "<group>"; };
+		F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBDownArrowView.m; sourceTree = "<group>"; };
+		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D4C192F908E0031470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4615D4E192F908E0031470B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +64,10 @@
 		F4615D73192F908E0031470B /* iCare2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iCare2Tests-Info.plist"; sourceTree = "<group>"; };
 		F4615D75192F908E0031470B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4615D77192F908E0031470B /* iCare2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCare2Tests.m; sourceTree = "<group>"; };
+		F49172FC193F71EC00FB3090 /* sdfgds.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sdfgds.xib; sourceTree = "<group>"; };
+		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
+		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
+		F4DEA44C193E570A006B0FFA /* PreOperativeAnesEval.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PreOperativeAnesEval.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +96,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F43148BF1933B67500529FC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F43148C01933B67B00529FC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
+				F4DEA44C193E570A006B0FFA /* PreOperativeAnesEval.storyboard */,
+				F49172FC193F71EC00FB3090 /* sdfgds.xib */,
+				F41BDDDA194113B00031C7FF /* BPBDownArrowView.h */,
+				F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */,
+				F41BDDD719410F3F0031C7FF /* BPBUpArrowView.h */,
+				F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F43148C11933B68100529FC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				F43148C11933B68100529FC4 /* Controller */,
+				F43148C01933B67B00529FC4 /* View */,
+				F43148BF1933B67500529FC4 /* Model */,
 				F4615D54192F908E0031470B /* iCare2 */,
 				F4615D71192F908E0031470B /* iCare2Tests */,
 				F4615D4B192F908E0031470B /* Frameworks */,
@@ -115,6 +161,8 @@
 		F4615D54192F908E0031470B /* iCare2 */ = {
 			isa = PBXGroup;
 			children = (
+				F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */,
+				F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */,
 				F4615D5D192F908E0031470B /* BPBAppDelegate.h */,
 				F4615D5E192F908E0031470B /* BPBAppDelegate.m */,
 				F4615D63192F908E0031470B /* Images.xcassets */,
@@ -230,7 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4615D59192F908E0031470B /* InfoPlist.strings in Resources */,
+				F49172FD193F71EC00FB3090 /* sdfgds.xib in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
+				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
+				F4DEA44D193E570A006B0FFA /* PreOperativeAnesEval.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,8 +301,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */,
+				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
+				F41BDDDC194113B00031C7FF /* BPBDownArrowView.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
+				F41BDDD919410F3F0031C7FF /* BPBUpArrowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +504,7 @@
 				F4615D7D192F908E0031470B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4615D7E192F908E0031470B /* Build configuration list for PBXNativeTarget "iCare2Tests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +513,7 @@
 				F4615D80192F908E0031470B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
