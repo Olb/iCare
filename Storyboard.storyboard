@@ -43,6 +43,13 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5G-Ej-kw0">
+                                <rect key="frame" x="381" y="636" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Launch View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -61,7 +68,6 @@
         <!--View Controller - New Patient-->
         <scene sceneID="roC-Wk-GVb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nxY-x5-2hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="New Patient" id="dn9-a9-jDR" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rmb-yD-yVa"/>
@@ -209,7 +215,6 @@
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL2-FT-LF1">
                                 <rect key="frame" x="20" y="144" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="eCl-sB-SMW"/>
                                     <constraint firstAttribute="height" constant="21" id="snj-ST-YST"/>
@@ -219,7 +224,6 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-aW-SLT">
                                 <rect key="frame" x="20" y="182" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Vfv-Vr-z7c"/>
                                     <constraint firstAttribute="width" constant="42" id="vPU-UV-yyD"/>
@@ -289,13 +293,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Patient" id="gRe-iT-pxt"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nxY-x5-2hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1978" y="-732"/>
         </scene>
         <!--View Controller - Patient Forms-->
         <scene sceneID="0CS-k1-Sn3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pqT-bM-GQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Patient Forms" id="Eez-TN-1bS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ypM-d5-yvw"/>
@@ -454,6 +458,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Patient Forms" id="e0o-vl-yBf"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqT-bM-GQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1978" y="617"/>
         </scene>

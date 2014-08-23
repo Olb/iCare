@@ -10,6 +10,10 @@
 		F41BDDD919410F3F0031C7FF /* BPBUpArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */; };
 		F41BDDDC194113B00031C7FF /* BPBDownArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */; };
 		F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43148BD1933B66D00529FC4 /* Storyboard.storyboard */; };
+		F4458C0419A805F20020A90F /* BBPreOpView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4458C0319A805F20020A90F /* BBPreOpView.m */; };
+		F4458C0819A806840020A90F /* BPBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4458C0619A806840020A90F /* BPBViewController.m */; };
+		F4458C0919A806840020A90F /* BPBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4458C0719A806840020A90F /* BPBViewController.xib */; };
+		F4458C0B19A80C040020A90F /* PreOpForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4458C0A19A80C040020A90F /* PreOpForm.xib */; };
 		F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
 		F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4E192F908E0031470B /* CoreGraphics.framework */; };
 		F4615D51192F908E0031470B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D50192F908E0031470B /* UIKit.framework */; };
@@ -46,6 +50,12 @@
 		F41BDDDA194113B00031C7FF /* BPBDownArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBDownArrowView.h; sourceTree = "<group>"; };
 		F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBDownArrowView.m; sourceTree = "<group>"; };
 		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		F4458C0219A805F20020A90F /* BBPreOpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpView.h; sourceTree = "<group>"; };
+		F4458C0319A805F20020A90F /* BBPreOpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpView.m; sourceTree = "<group>"; };
+		F4458C0519A806840020A90F /* BPBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBViewController.h; sourceTree = "<group>"; };
+		F4458C0619A806840020A90F /* BPBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBViewController.m; sourceTree = "<group>"; };
+		F4458C0719A806840020A90F /* BPBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BPBViewController.xib; sourceTree = "<group>"; };
+		F4458C0A19A80C040020A90F /* PreOpForm.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOpForm.xib; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D4C192F908E0031470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4615D4E192F908E0031470B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,7 +117,13 @@
 			isa = PBXGroup;
 			children = (
 				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
+				F4458C0519A806840020A90F /* BPBViewController.h */,
+				F4458C0619A806840020A90F /* BPBViewController.m */,
+				F4458C0719A806840020A90F /* BPBViewController.xib */,
 				F4CFF43819A526F10082CE70 /* View.xib */,
+				F4458C0A19A80C040020A90F /* PreOpForm.xib */,
+				F4458C0219A805F20020A90F /* BBPreOpView.h */,
+				F4458C0319A805F20020A90F /* BBPreOpView.m */,
 				F49172FC193F71EC00FB3090 /* sdfgds.xib */,
 				F41BDDDA194113B00031C7FF /* BPBDownArrowView.h */,
 				F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */,
@@ -278,10 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4615D59192F908E0031470B /* InfoPlist.strings in Resources */,
+				F4458C0919A806840020A90F /* BPBViewController.xib in Resources */,
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				F49172FD193F71EC00FB3090 /* sdfgds.xib in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
+				F4458C0B19A80C040020A90F /* PreOpForm.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +318,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4458C0419A805F20020A90F /* BBPreOpView.m in Sources */,
+				F4458C0819A806840020A90F /* BPBViewController.m in Sources */,
 				F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */,
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
