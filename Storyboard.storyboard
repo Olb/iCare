@@ -320,17 +320,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="732" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ7-ow-TZb">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Bio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ7-ow-TZb">
+                                                    <rect key="frame" x="20" y="11" width="102" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Rl6-mb-Jkg"/>
+                                                        <constraint firstAttribute="width" constant="102" id="jkQ-tO-1TS"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="YZ7-ow-TZb" secondAttribute="trailing" constant="670" id="AjN-dt-dJz"/>
-                                                <constraint firstAttribute="centerY" secondItem="YZ7-ow-TZb" secondAttribute="centerY" id="cCt-jF-1Qs"/>
-                                                <constraint firstItem="YZ7-ow-TZb" firstAttribute="leading" secondItem="iSG-Xy-8o1" secondAttribute="leading" constant="20" symbolic="YES" id="oKz-j9-2oW"/>
+                                                <constraint firstItem="YZ7-ow-TZb" firstAttribute="leading" secondItem="iSG-Xy-8o1" secondAttribute="leading" constant="20" symbolic="YES" id="EUa-ja-wGH"/>
+                                                <constraint firstAttribute="centerY" secondItem="YZ7-ow-TZb" secondAttribute="centerY" id="pWZ-sl-k9l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -363,20 +366,49 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Pre Procedure Eval Review Cell" id="pOb-K6-0aW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PreOp Eval Cell" id="yeI-hz-XkZ">
                                         <rect key="frame" x="0.0" y="174" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pOb-K6-0aW" id="Vfg-jg-02f">
-                                            <rect key="frame" x="0.0" y="0.0" width="765" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yeI-hz-XkZ" id="ZtB-kb-k7G">
+                                            <rect key="frame" x="0.0" y="0.0" width="732" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pre-Operative Eval Review Confirmation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZI-Es-qa6">
-                                                    <rect key="frame" x="20" y="11" width="621" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Plan Discussion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ee-J6-nTL">
+                                                    <rect key="frame" x="20" y="11" width="588" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znc-nI-kfW">
+                                                    <rect key="frame" x="616" y="7" width="96" height="30"/>
+                                                    <state key="normal" title="Not Complete">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="znc-nI-kfW" secondAttribute="centerY" id="LVl-V3-0Pn"/>
+                                                <constraint firstItem="9ee-J6-nTL" firstAttribute="leading" secondItem="ZtB-kb-k7G" secondAttribute="leading" constant="20" symbolic="YES" id="OMS-mv-hBH"/>
+                                                <constraint firstItem="znc-nI-kfW" firstAttribute="leading" secondItem="9ee-J6-nTL" secondAttribute="trailing" constant="8" symbolic="YES" id="OuM-74-XSN"/>
+                                                <constraint firstAttribute="centerY" secondItem="9ee-J6-nTL" secondAttribute="centerY" id="XId-7R-45Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="znc-nI-kfW" secondAttribute="trailing" constant="20" symbolic="YES" id="jhj-zH-h1j"/>
+                                                <constraint firstItem="znc-nI-kfW" firstAttribute="leading" secondItem="9ee-J6-nTL" secondAttribute="trailing" constant="8" symbolic="YES" id="tBF-B1-IzM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Pre Procedure Eval Review Cell" id="pOb-K6-0aW">
+                                        <rect key="frame" x="0.0" y="218" width="765" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pOb-K6-0aW" id="Vfg-jg-02f">
+                                            <rect key="frame" x="0.0" y="0.0" width="732" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pre-Operative Eval Review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZI-Es-qa6">
+                                                    <rect key="frame" x="20" y="11" width="588" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSV-HL-bwu">
-                                                    <rect key="frame" x="649" y="6" width="96" height="30"/>
+                                                    <rect key="frame" x="616" y="6" width="96" height="30"/>
                                                     <state key="normal" title="Not Complete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -392,20 +424,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Intra Op Cell" id="HHF-w9-aI1">
-                                        <rect key="frame" x="0.0" y="218" width="765" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Intra Op Cell" id="HHF-w9-aI1">
+                                        <rect key="frame" x="0.0" y="262" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HHF-w9-aI1" id="dFO-QY-B4u">
-                                            <rect key="frame" x="0.0" y="0.0" width="765" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="732" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Intra-Op" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-wL-rDd">
-                                                    <rect key="frame" x="20" y="11" width="637" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="604" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-MJ-1bT">
-                                                    <rect key="frame" x="665" y="6" width="80" height="30"/>
+                                                    <rect key="frame" x="632" y="6" width="80" height="30"/>
                                                     <state key="normal" title="Not Started">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -421,20 +453,20 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Post Op Cell" id="x1Z-K1-Sp3">
-                                        <rect key="frame" x="0.0" y="262" width="765" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Post Op Cell" id="x1Z-K1-Sp3">
+                                        <rect key="frame" x="0.0" y="306" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x1Z-K1-Sp3" id="zxe-oE-Yic">
-                                            <rect key="frame" x="0.0" y="0.0" width="765" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="732" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Post-Op" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-rk-th6">
-                                                    <rect key="frame" x="20" y="11" width="621" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="588" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXg-Ve-Aac">
-                                                    <rect key="frame" x="649" y="7" width="96" height="30"/>
+                                                    <rect key="frame" x="616" y="7" width="96" height="30"/>
                                                     <state key="normal" title="Not Complete">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
