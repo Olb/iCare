@@ -32,6 +32,20 @@
 		F4615D76192F908E0031470B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4615D74192F908E0031470B /* InfoPlist.strings */; };
 		F4615D78192F908E0031470B /* iCare2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4615D77192F908E0031470B /* iCare2Tests.m */; };
 		F49172FD193F71EC00FB3090 /* sdfgds.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49172FC193F71EC00FB3090 /* sdfgds.xib */; };
+		F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */; };
+		F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */; };
+		F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92819ABADD900CA013B /* checkbox_selected.png */; };
+		F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92919ABADD900CA013B /* checkbox_unselected.png */; };
+		F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */; };
+		F4AFB93019ABAF2000CA013B /* BBCardioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */; };
+		F4AFB93419ABB0B600CA013B /* BBHepatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB93219ABB0B600CA013B /* BBHepatoViewController.m */; };
+		F4AFB93519ABB0B600CA013B /* BBHepatoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB93319ABB0B600CA013B /* BBHepatoViewController.xib */; };
+		F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB93719ABB55E00CA013B /* BBNeuroligcViewController.m */; };
+		F4AFB93A19ABB55E00CA013B /* BBNeuroligcViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB93819ABB55E00CA013B /* BBNeuroligcViewController.xib */; };
+		F4AFB93E19ABB65000CA013B /* BBEndocrineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB93C19ABB65000CA013B /* BBEndocrineViewController.m */; };
+		F4AFB93F19ABB65000CA013B /* BBEndocrineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB93D19ABB65000CA013B /* BBEndocrineViewController.xib */; };
+		F4AFB94319ABB71D00CA013B /* BBRenalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */; };
+		F4AFB94419ABB71D00CA013B /* BBRenalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */; };
 		F4CFF43919A526F10082CE70 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFF43819A526F10082CE70 /* View.xib */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
 /* End PBXBuildFile section */
@@ -79,6 +93,26 @@
 		F4615D75192F908E0031470B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4615D77192F908E0031470B /* iCare2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCare2Tests.m; sourceTree = "<group>"; };
 		F49172FC193F71EC00FB3090 /* sdfgds.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = sdfgds.xib; sourceTree = "<group>"; };
+		F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRespiratoryViewController.h; sourceTree = "<group>"; };
+		F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRespiratoryViewController.m; sourceTree = "<group>"; };
+		F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRespiratoryViewController.xib; sourceTree = "<group>"; };
+		F4AFB92819ABADD900CA013B /* checkbox_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selected.png; sourceTree = "<group>"; };
+		F4AFB92919ABADD900CA013B /* checkbox_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unselected.png; sourceTree = "<group>"; };
+		F4AFB92C19ABAF2000CA013B /* BBCardioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCardioViewController.h; sourceTree = "<group>"; };
+		F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCardioViewController.m; sourceTree = "<group>"; };
+		F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBCardioViewController.xib; sourceTree = "<group>"; };
+		F4AFB93119ABB0B600CA013B /* BBHepatoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHepatoViewController.h; sourceTree = "<group>"; };
+		F4AFB93219ABB0B600CA013B /* BBHepatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHepatoViewController.m; sourceTree = "<group>"; };
+		F4AFB93319ABB0B600CA013B /* BBHepatoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBHepatoViewController.xib; sourceTree = "<group>"; };
+		F4AFB93619ABB55E00CA013B /* BBNeuroligcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNeuroligcViewController.h; sourceTree = "<group>"; };
+		F4AFB93719ABB55E00CA013B /* BBNeuroligcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNeuroligcViewController.m; sourceTree = "<group>"; };
+		F4AFB93819ABB55E00CA013B /* BBNeuroligcViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBNeuroligcViewController.xib; sourceTree = "<group>"; };
+		F4AFB93B19ABB65000CA013B /* BBEndocrineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBEndocrineViewController.h; sourceTree = "<group>"; };
+		F4AFB93C19ABB65000CA013B /* BBEndocrineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBEndocrineViewController.m; sourceTree = "<group>"; };
+		F4AFB93D19ABB65000CA013B /* BBEndocrineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBEndocrineViewController.xib; sourceTree = "<group>"; };
+		F4AFB94019ABB71D00CA013B /* BBRenalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRenalViewController.h; sourceTree = "<group>"; };
+		F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRenalViewController.m; sourceTree = "<group>"; };
+		F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRenalViewController.xib; sourceTree = "<group>"; };
 		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
@@ -121,6 +155,24 @@
 			isa = PBXGroup;
 			children = (
 				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
+				F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */,
+				F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */,
+				F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */,
+				F4AFB92C19ABAF2000CA013B /* BBCardioViewController.h */,
+				F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */,
+				F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */,
+				F4AFB93119ABB0B600CA013B /* BBHepatoViewController.h */,
+				F4AFB93219ABB0B600CA013B /* BBHepatoViewController.m */,
+				F4AFB93319ABB0B600CA013B /* BBHepatoViewController.xib */,
+				F4AFB93619ABB55E00CA013B /* BBNeuroligcViewController.h */,
+				F4AFB93719ABB55E00CA013B /* BBNeuroligcViewController.m */,
+				F4AFB93819ABB55E00CA013B /* BBNeuroligcViewController.xib */,
+				F4AFB93B19ABB65000CA013B /* BBEndocrineViewController.h */,
+				F4AFB93C19ABB65000CA013B /* BBEndocrineViewController.m */,
+				F4AFB93D19ABB65000CA013B /* BBEndocrineViewController.xib */,
+				F4AFB94019ABB71D00CA013B /* BBRenalViewController.h */,
+				F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */,
+				F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */,
 				F43B124B19A97A1E004B7A5F /* PreOpReviewView.xib */,
 				F4458C0519A806840020A90F /* BPBViewController.h */,
 				F4458C0619A806840020A90F /* BPBViewController.m */,
@@ -135,6 +187,8 @@
 				F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */,
 				F41BDDD719410F3F0031C7FF /* BPBUpArrowView.h */,
 				F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */,
+				F4AFB92819ABADD900CA013B /* checkbox_selected.png */,
+				F4AFB92919ABADD900CA013B /* checkbox_unselected.png */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -300,14 +354,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4615D59192F908E0031470B /* InfoPlist.strings in Resources */,
+				F4AFB93A19ABB55E00CA013B /* BBNeuroligcViewController.xib in Resources */,
+				F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */,
 				F43B124A19A97171004B7A5F /* PlanDiscussionView.xib in Resources */,
+				F4AFB94419ABB71D00CA013B /* BBRenalViewController.xib in Resources */,
 				F4458C0919A806840020A90F /* BPBViewController.xib in Resources */,
+				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
+				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
 				F43B124C19A97A1E004B7A5F /* PreOpReviewView.xib in Resources */,
+				F4AFB93F19ABB65000CA013B /* BBEndocrineViewController.xib in Resources */,
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				F49172FD193F71EC00FB3090 /* sdfgds.xib in Resources */,
+				F4AFB93519ABB0B600CA013B /* BBHepatoViewController.xib in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
 				F4458C0B19A80C040020A90F /* PreOpForm.xib in Resources */,
+				F4AFB93019ABAF2000CA013B /* BBCardioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,11 +391,17 @@
 				F4458C0419A805F20020A90F /* BBPreOpView.m in Sources */,
 				F4458C0819A806840020A90F /* BPBViewController.m in Sources */,
 				F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */,
+				F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */,
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
+				F4AFB93419ABB0B600CA013B /* BBHepatoViewController.m in Sources */,
 				F41BDDDC194113B00031C7FF /* BPBDownArrowView.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
+				F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */,
 				F41BDDD919410F3F0031C7FF /* BPBUpArrowView.m in Sources */,
+				F4AFB94319ABB71D00CA013B /* BBRenalViewController.m in Sources */,
+				F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */,
+				F4AFB93E19ABB65000CA013B /* BBEndocrineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
