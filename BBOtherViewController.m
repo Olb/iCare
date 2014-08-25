@@ -1,18 +1,18 @@
 //
-//  BBNeuroligcViewController.m
+//  BBOtherViewController.m
 //  iCare2
 //
 //  Created by billy bray on 8/25/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBNeuroligcViewController.h"
+#import "BBOtherViewController.h"
 
-@interface BBNeuroligcViewController ()
+@interface BBOtherViewController ()
 
 @end
 
-@implementation BBNeuroligcViewController
+@implementation BBOtherViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,10 +33,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

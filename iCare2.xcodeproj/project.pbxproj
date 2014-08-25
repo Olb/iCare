@@ -46,6 +46,18 @@
 		F4AFB93F19ABB65000CA013B /* BBEndocrineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB93D19ABB65000CA013B /* BBEndocrineViewController.xib */; };
 		F4AFB94319ABB71D00CA013B /* BBRenalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */; };
 		F4AFB94419ABB71D00CA013B /* BBRenalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */; };
+		F4AFB94819ABB86100CA013B /* BBHemOncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB94619ABB86100CA013B /* BBHemOncViewController.m */; };
+		F4AFB94919ABB86100CA013B /* BBHemOncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94719ABB86100CA013B /* BBHemOncViewController.xib */; };
+		F4AFB94D19ABB8E300CA013B /* BBImmuneIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB94B19ABB8E300CA013B /* BBImmuneIDViewController.m */; };
+		F4AFB94E19ABB8E300CA013B /* BBImmuneIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94C19ABB8E300CA013B /* BBImmuneIDViewController.xib */; };
+		F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95019ABB96700CA013B /* BBOtherViewController.m */; };
+		F4AFB95319ABB96700CA013B /* BBOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB95119ABB96700CA013B /* BBOtherViewController.xib */; };
+		F4AFB95619ABBDF600CA013B /* BBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95519ABBDF600CA013B /* BBMainViewController.m */; };
+		F4AFB95919ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95819ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m */; };
+		F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */; };
+		F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */; };
+		F4AFB96219ABC59E00CA013B /* BBCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB96119ABC59E00CA013B /* BBCheckBox.m */; };
+		F4AFB96519ABCCA400CA013B /* BBSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB96419ABCCA400CA013B /* BBSystem.m */; };
 		F4CFF43919A526F10082CE70 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFF43819A526F10082CE70 /* View.xib */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
 /* End PBXBuildFile section */
@@ -113,6 +125,27 @@
 		F4AFB94019ABB71D00CA013B /* BBRenalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRenalViewController.h; sourceTree = "<group>"; };
 		F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRenalViewController.m; sourceTree = "<group>"; };
 		F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRenalViewController.xib; sourceTree = "<group>"; };
+		F4AFB94519ABB86100CA013B /* BBHemOncViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHemOncViewController.h; sourceTree = "<group>"; };
+		F4AFB94619ABB86100CA013B /* BBHemOncViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHemOncViewController.m; sourceTree = "<group>"; };
+		F4AFB94719ABB86100CA013B /* BBHemOncViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBHemOncViewController.xib; sourceTree = "<group>"; };
+		F4AFB94A19ABB8E300CA013B /* BBImmuneIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBImmuneIDViewController.h; sourceTree = "<group>"; };
+		F4AFB94B19ABB8E300CA013B /* BBImmuneIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBImmuneIDViewController.m; sourceTree = "<group>"; };
+		F4AFB94C19ABB8E300CA013B /* BBImmuneIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBImmuneIDViewController.xib; sourceTree = "<group>"; };
+		F4AFB94F19ABB96700CA013B /* BBOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOtherViewController.h; sourceTree = "<group>"; };
+		F4AFB95019ABB96700CA013B /* BBOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOtherViewController.m; sourceTree = "<group>"; };
+		F4AFB95119ABB96700CA013B /* BBOtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBOtherViewController.xib; sourceTree = "<group>"; };
+		F4AFB95419ABBDF600CA013B /* BBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMainViewController.h; sourceTree = "<group>"; };
+		F4AFB95519ABBDF600CA013B /* BBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMainViewController.m; sourceTree = "<group>"; };
+		F4AFB95719ABBECC00CA013B /* BBPreOpEvalTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpEvalTableTableViewController.h; sourceTree = "<group>"; };
+		F4AFB95819ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpEvalTableTableViewController.m; sourceTree = "<group>"; };
+		F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPatientFormsViewController.h; sourceTree = "<group>"; };
+		F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPatientFormsViewController.m; sourceTree = "<group>"; };
+		F4AFB95D19ABC11900CA013B /* BBNewPatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNewPatientViewController.h; sourceTree = "<group>"; };
+		F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewPatientViewController.m; sourceTree = "<group>"; };
+		F4AFB96019ABC59E00CA013B /* BBCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCheckBox.h; sourceTree = "<group>"; };
+		F4AFB96119ABC59E00CA013B /* BBCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCheckBox.m; sourceTree = "<group>"; };
+		F4AFB96319ABCCA400CA013B /* BBSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSystem.h; sourceTree = "<group>"; };
+		F4AFB96419ABCCA400CA013B /* BBSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSystem.m; sourceTree = "<group>"; };
 		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
@@ -155,12 +188,22 @@
 			isa = PBXGroup;
 			children = (
 				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
+				F4AFB95D19ABC11900CA013B /* BBNewPatientViewController.h */,
+				F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */,
+				F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */,
+				F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */,
+				F4AFB95419ABBDF600CA013B /* BBMainViewController.h */,
+				F4AFB95519ABBDF600CA013B /* BBMainViewController.m */,
+				F4AFB95719ABBECC00CA013B /* BBPreOpEvalTableTableViewController.h */,
+				F4AFB95819ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m */,
 				F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */,
 				F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */,
 				F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */,
 				F4AFB92C19ABAF2000CA013B /* BBCardioViewController.h */,
 				F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */,
 				F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */,
+				F4AFB96319ABCCA400CA013B /* BBSystem.h */,
+				F4AFB96419ABCCA400CA013B /* BBSystem.m */,
 				F4AFB93119ABB0B600CA013B /* BBHepatoViewController.h */,
 				F4AFB93219ABB0B600CA013B /* BBHepatoViewController.m */,
 				F4AFB93319ABB0B600CA013B /* BBHepatoViewController.xib */,
@@ -173,6 +216,15 @@
 				F4AFB94019ABB71D00CA013B /* BBRenalViewController.h */,
 				F4AFB94119ABB71D00CA013B /* BBRenalViewController.m */,
 				F4AFB94219ABB71D00CA013B /* BBRenalViewController.xib */,
+				F4AFB94519ABB86100CA013B /* BBHemOncViewController.h */,
+				F4AFB94619ABB86100CA013B /* BBHemOncViewController.m */,
+				F4AFB94719ABB86100CA013B /* BBHemOncViewController.xib */,
+				F4AFB94A19ABB8E300CA013B /* BBImmuneIDViewController.h */,
+				F4AFB94B19ABB8E300CA013B /* BBImmuneIDViewController.m */,
+				F4AFB94C19ABB8E300CA013B /* BBImmuneIDViewController.xib */,
+				F4AFB94F19ABB96700CA013B /* BBOtherViewController.h */,
+				F4AFB95019ABB96700CA013B /* BBOtherViewController.m */,
+				F4AFB95119ABB96700CA013B /* BBOtherViewController.xib */,
 				F43B124B19A97A1E004B7A5F /* PreOpReviewView.xib */,
 				F4458C0519A806840020A90F /* BPBViewController.h */,
 				F4458C0619A806840020A90F /* BPBViewController.m */,
@@ -187,6 +239,8 @@
 				F41BDDDB194113B00031C7FF /* BPBDownArrowView.m */,
 				F41BDDD719410F3F0031C7FF /* BPBUpArrowView.h */,
 				F41BDDD819410F3F0031C7FF /* BPBUpArrowView.m */,
+				F4AFB96019ABC59E00CA013B /* BBCheckBox.h */,
+				F4AFB96119ABC59E00CA013B /* BBCheckBox.m */,
 				F4AFB92819ABADD900CA013B /* checkbox_selected.png */,
 				F4AFB92919ABADD900CA013B /* checkbox_unselected.png */,
 			);
@@ -354,11 +408,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4615D59192F908E0031470B /* InfoPlist.strings in Resources */,
+				F4AFB94E19ABB8E300CA013B /* BBImmuneIDViewController.xib in Resources */,
 				F4AFB93A19ABB55E00CA013B /* BBNeuroligcViewController.xib in Resources */,
 				F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */,
 				F43B124A19A97171004B7A5F /* PlanDiscussionView.xib in Resources */,
 				F4AFB94419ABB71D00CA013B /* BBRenalViewController.xib in Resources */,
 				F4458C0919A806840020A90F /* BPBViewController.xib in Resources */,
+				F4AFB94919ABB86100CA013B /* BBHemOncViewController.xib in Resources */,
 				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
 				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
 				F43B124C19A97A1E004B7A5F /* PreOpReviewView.xib in Resources */,
@@ -370,6 +426,7 @@
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
 				F4458C0B19A80C040020A90F /* PreOpForm.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* BBCardioViewController.xib in Resources */,
+				F4AFB95319ABB96700CA013B /* BBOtherViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +445,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
+				F4AFB94D19ABB8E300CA013B /* BBImmuneIDViewController.m in Sources */,
 				F4458C0419A805F20020A90F /* BBPreOpView.m in Sources */,
+				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				F4458C0819A806840020A90F /* BPBViewController.m in Sources */,
 				F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */,
 				F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */,
@@ -396,12 +456,18 @@
 				F4615D5B192F908E0031470B /* main.m in Sources */,
 				F4AFB93419ABB0B600CA013B /* BBHepatoViewController.m in Sources */,
 				F41BDDDC194113B00031C7FF /* BPBDownArrowView.m in Sources */,
+				F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */,
 				F41BDDD919410F3F0031C7FF /* BPBUpArrowView.m in Sources */,
+				F4AFB94819ABB86100CA013B /* BBHemOncViewController.m in Sources */,
+				F4AFB96519ABCCA400CA013B /* BBSystem.m in Sources */,
+				F4AFB96219ABC59E00CA013B /* BBCheckBox.m in Sources */,
 				F4AFB94319ABB71D00CA013B /* BBRenalViewController.m in Sources */,
+				F4AFB95619ABBDF600CA013B /* BBMainViewController.m in Sources */,
 				F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */,
 				F4AFB93E19ABB65000CA013B /* BBEndocrineViewController.m in Sources */,
+				F4AFB95919ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
