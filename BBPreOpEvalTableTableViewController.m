@@ -11,6 +11,15 @@
 #import "BBRespiratoryViewController.h"
 #import "BBRenalViewController.h"
 #import "BBNeuroligcViewController.h"
+#import "OverviewViewController.h"
+#import "BBEndocrineViewController.h"
+#import "BBHepatoViewController.h"
+#import "BBHemOncViewController.h"
+#import "BBImmuneIDViewController.h"
+#import "BBOtherViewController.h"
+#import "BBDaignosticStudiesViewController.h"
+#import "BBPlanDiscussionViewController.h"
+#import "BBPreOpReviewViewController.h"
 @interface BBPreOpEvalTableTableViewController ()
 
 @end
@@ -82,6 +91,9 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIViewController *vc;
     switch (cell.tag) {
+        case 0:
+            vc = [[OverviewViewController alloc] init];
+            break;
         case 1:
             vc = [[BBCardioViewController alloc] init];
             break;
@@ -91,8 +103,33 @@
         case 3:
             vc = [[BBNeuroligcViewController alloc] init];
             break;
-        
-            
+        case 4:
+            vc = [[BBEndocrineViewController alloc] init];
+            break;
+        case 5:
+            vc = [[BBHepatoViewController alloc] init];
+            break;
+        case 6:
+            vc = [[BBRenalViewController alloc] init];
+            break;
+        case 7:
+            vc = [[BBHemOncViewController alloc] init];
+            break;
+        case 8:
+            vc = [[BBImmuneIDViewController alloc] init];
+            break;
+        case 9:
+            vc = [[BBOtherViewController alloc] init];
+            break;
+        case 10:
+            vc = [[BBDaignosticStudiesViewController alloc] init];
+            break;
+        case 11:
+            vc = [[BBPlanDiscussionViewController alloc] init];
+            break;
+        case 12:
+            vc = [[BBPreOpReviewViewController alloc] init];
+            break;
         default:
             break;
     }

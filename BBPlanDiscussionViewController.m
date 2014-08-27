@@ -1,18 +1,18 @@
 //
-//  BBOtherViewController.m
+//  BBPlanDiscussionViewController.m
 //  iCare2
 //
-//  Created by billy bray on 8/25/14.
+//  Created by billy bray on 8/26/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBOtherViewController.h"
+#import "BBPlanDiscussionViewController.h"
 
-@interface BBOtherViewController ()
+@interface BBPlanDiscussionViewController ()
 
 @end
 
-@implementation BBOtherViewController
+@implementation BBPlanDiscussionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
