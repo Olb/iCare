@@ -29,7 +29,6 @@
 		988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D164C19AE63A1009A887A /* MonitorinAndEquipmentViewController.xib */; };
 		988D168719AE63A2009A887A /* PersonelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D164E19AE63A2009A887A /* PersonelViewController.m */; };
 		988D168819AE63A2009A887A /* PersonelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D164F19AE63A2009A887A /* PersonelViewController.xib */; };
-		988D168919AE63A2009A887A /* PlanDiscussionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165019AE63A2009A887A /* PlanDiscussionView.xib */; };
 		988D168A19AE63A2009A887A /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D165219AE63A2009A887A /* PositionViewController.m */; };
 		988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165319AE63A2009A887A /* PositionViewController.xib */; };
 		988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D165519AE63A2009A887A /* PostAnesthesiaEvalViewController.m */; };
@@ -143,7 +142,6 @@
 		988D164D19AE63A2009A887A /* PersonelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonelViewController.h; sourceTree = "<group>"; };
 		988D164E19AE63A2009A887A /* PersonelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonelViewController.m; sourceTree = "<group>"; };
 		988D164F19AE63A2009A887A /* PersonelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonelViewController.xib; sourceTree = "<group>"; };
-		988D165019AE63A2009A887A /* PlanDiscussionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlanDiscussionView.xib; sourceTree = "<group>"; };
 		988D165119AE63A2009A887A /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
 		988D165219AE63A2009A887A /* PositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionViewController.m; sourceTree = "<group>"; };
 		988D165319AE63A2009A887A /* PositionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionViewController.xib; sourceTree = "<group>"; };
@@ -190,8 +188,8 @@
 		F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRespiratoryViewController.h; sourceTree = "<group>"; };
 		F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRespiratoryViewController.m; sourceTree = "<group>"; };
 		F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRespiratoryViewController.xib; sourceTree = "<group>"; };
-		F4AFB92819ABADD900CA013B /* checkbox_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selected.png; sourceTree = "<group>"; };
-		F4AFB92919ABADD900CA013B /* checkbox_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unselected.png; sourceTree = "<group>"; };
+		F4AFB92819ABADD900CA013B /* checkbox_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selected.png; sourceTree = SOURCE_ROOT; };
+		F4AFB92919ABADD900CA013B /* checkbox_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unselected.png; path = /Users/home/Documents/iCare2WithGit/iCare2/checkbox_unselected.png; sourceTree = "<absolute>"; };
 		F4AFB92C19ABAF2000CA013B /* BBCardioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCardioViewController.h; sourceTree = "<group>"; };
 		F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCardioViewController.m; sourceTree = "<group>"; };
 		F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBCardioViewController.xib; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				988D164D19AE63A2009A887A /* PersonelViewController.h */,
 				988D164E19AE63A2009A887A /* PersonelViewController.m */,
 				988D164F19AE63A2009A887A /* PersonelViewController.xib */,
-				988D165019AE63A2009A887A /* PlanDiscussionView.xib */,
 				988D165119AE63A2009A887A /* PositionViewController.h */,
 				988D165219AE63A2009A887A /* PositionViewController.m */,
 				988D165319AE63A2009A887A /* PositionViewController.xib */,
@@ -570,7 +567,6 @@
 				F4AFB94E19ABB8E300CA013B /* BBImmuneIDViewController.xib in Resources */,
 				F4AFB93A19ABB55E00CA013B /* BBNeuroligcViewController.xib in Resources */,
 				F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */,
-				988D168919AE63A2009A887A /* PlanDiscussionView.xib in Resources */,
 				F4B5D56F19ACC3E300174F61 /* OverviewViewController.xib in Resources */,
 				F4AFB94419ABB71D00CA013B /* BBRenalViewController.xib in Resources */,
 				988D167019AE63A2009A887A /* EmergenceViewController.xib in Resources */,
