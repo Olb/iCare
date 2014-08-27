@@ -57,8 +57,6 @@
 		F4615D6C192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
 		F4615D6D192F908E0031470B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D50192F908E0031470B /* UIKit.framework */; };
 		F4615D6E192F908E0031470B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D52192F908E0031470B /* CoreData.framework */; };
-		F4615D76192F908E0031470B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4615D74192F908E0031470B /* InfoPlist.strings */; };
-		F4615D78192F908E0031470B /* iCare2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4615D77192F908E0031470B /* iCare2Tests.m */; };
 		F47FF38B19AE655A00809D30 /* BBAnesthesiaRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47FF38A19AE655A00809D30 /* BBAnesthesiaRecordController.m */; };
 		F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */; };
 		F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */; };
@@ -180,9 +178,6 @@
 		F4615D63192F908E0031470B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4615D69192F908E0031470B /* iCare2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCare2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D6A192F908E0031470B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F4615D73192F908E0031470B /* iCare2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iCare2Tests-Info.plist"; sourceTree = "<group>"; };
-		F4615D75192F908E0031470B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F4615D77192F908E0031470B /* iCare2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCare2Tests.m; sourceTree = "<group>"; };
 		F47FF38919AE655A00809D30 /* BBAnesthesiaRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAnesthesiaRecordController.h; sourceTree = "<group>"; };
 		F47FF38A19AE655A00809D30 /* BBAnesthesiaRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAnesthesiaRecordController.m; sourceTree = "<group>"; };
 		F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRespiratoryViewController.h; sourceTree = "<group>"; };
@@ -417,7 +412,6 @@
 				F43148C01933B67B00529FC4 /* View */,
 				F43148BF1933B67500529FC4 /* Model */,
 				F4615D54192F908E0031470B /* iCare2 */,
-				F4615D71192F908E0031470B /* iCare2Tests */,
 				F4615D4B192F908E0031470B /* Frameworks */,
 				F4615D4A192F908E0031470B /* Products */,
 			);
@@ -465,24 +459,6 @@
 				F4615D57192F908E0031470B /* InfoPlist.strings */,
 				F4615D5A192F908E0031470B /* main.m */,
 				F4615D5C192F908E0031470B /* iCare2-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F4615D71192F908E0031470B /* iCare2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F4615D77192F908E0031470B /* iCare2Tests.m */,
-				F4615D72192F908E0031470B /* Supporting Files */,
-			);
-			path = iCare2Tests;
-			sourceTree = "<group>";
-		};
-		F4615D72192F908E0031470B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F4615D73192F908E0031470B /* iCare2Tests-Info.plist */,
-				F4615D74192F908E0031470B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -606,7 +582,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4615D76192F908E0031470B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +642,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4615D78192F908E0031470B /* iCare2Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,14 +660,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4615D58192F908E0031470B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F4615D74192F908E0031470B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4615D75192F908E0031470B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
