@@ -184,7 +184,7 @@
 		F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRespiratoryViewController.m; sourceTree = "<group>"; };
 		F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRespiratoryViewController.xib; sourceTree = "<group>"; };
 		F4AFB92819ABADD900CA013B /* checkbox_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_selected.png; sourceTree = SOURCE_ROOT; };
-		F4AFB92919ABADD900CA013B /* checkbox_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_unselected.png; path = /Users/home/Documents/iCare2WithGit/iCare2/checkbox_unselected.png; sourceTree = "<absolute>"; };
+		F4AFB92919ABADD900CA013B /* checkbox_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unselected.png; sourceTree = SOURCE_ROOT; };
 		F4AFB92C19ABAF2000CA013B /* BBCardioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCardioViewController.h; sourceTree = "<group>"; };
 		F4AFB92D19ABAF2000CA013B /* BBCardioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCardioViewController.m; sourceTree = "<group>"; };
 		F4AFB92E19ABAF2000CA013B /* BBCardioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBCardioViewController.xib; sourceTree = "<group>"; };
