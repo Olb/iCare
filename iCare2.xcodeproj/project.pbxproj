@@ -41,11 +41,14 @@
 		988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165F19AE63A2009A887A /* PremedsGivenViewController.xib */; };
 		988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */; };
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
-		F417DB5A19AE82B800F13178 /* BBPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB5919AE82B800F13178 /* BBPatient.m */; };
 		F417DB5D19AE851B00F13178 /* BBPreOpEval.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB5C19AE851B00F13178 /* BBPreOpEval.m */; };
 		F417DB6019AE858800F13178 /* BBAnesthesiaRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB5F19AE858800F13178 /* BBAnesthesiaRecord.m */; };
 		F417DB6319AE859C00F13178 /* BBIntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6219AE859C00F13178 /* BBIntraOp.m */; };
 		F417DB6619AE85AB00F13178 /* BBPostOp.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6519AE85AB00F13178 /* BBPostOp.m */; };
+		F417DB6919AE8D7100F13178 /* BBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6819AE8D7100F13178 /* BBOperation.m */; };
+		F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */; };
+		F417DB7819AE981F00F13178 /* Practicioner.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB7719AE981F00F13178 /* Practicioner.m */; };
+		F417DB7B19AE982000F13178 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB7A19AE982000F13178 /* Patient.m */; };
 		F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43148BD1933B66D00529FC4 /* Storyboard.storyboard */; };
 		F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
 		F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4E192F908E0031470B /* CoreGraphics.framework */; };
@@ -54,7 +57,6 @@
 		F4615D59192F908E0031470B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4615D57192F908E0031470B /* InfoPlist.strings */; };
 		F4615D5B192F908E0031470B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4615D5A192F908E0031470B /* main.m */; };
 		F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4615D5E192F908E0031470B /* BPBAppDelegate.m */; };
-		F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4615D60192F908E0031470B /* iCare2.xcdatamodeld */; };
 		F4615D64192F908E0031470B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4615D63192F908E0031470B /* Images.xcassets */; };
 		F4615D6B192F908E0031470B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D6A192F908E0031470B /* XCTest.framework */; };
 		F4615D6C192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
@@ -160,8 +162,6 @@
 		988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinalAnesthesiaViewController.h; sourceTree = "<group>"; };
 		988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinalAnesthesiaViewController.m; sourceTree = "<group>"; };
 		988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinalAnesthesiaViewController.xib; sourceTree = "<group>"; };
-		F417DB5819AE82B800F13178 /* BBPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPatient.h; sourceTree = "<group>"; };
-		F417DB5919AE82B800F13178 /* BBPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPatient.m; sourceTree = "<group>"; };
 		F417DB5B19AE851B00F13178 /* BBPreOpEval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpEval.h; sourceTree = "<group>"; };
 		F417DB5C19AE851B00F13178 /* BBPreOpEval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpEval.m; sourceTree = "<group>"; };
 		F417DB5E19AE858800F13178 /* BBAnesthesiaRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAnesthesiaRecord.h; sourceTree = "<group>"; };
@@ -170,6 +170,13 @@
 		F417DB6219AE859C00F13178 /* BBIntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBIntraOp.m; sourceTree = "<group>"; };
 		F417DB6419AE85AB00F13178 /* BBPostOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPostOp.h; sourceTree = "<group>"; };
 		F417DB6519AE85AB00F13178 /* BBPostOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPostOp.m; sourceTree = "<group>"; };
+		F417DB6719AE8D7100F13178 /* BBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOperation.h; sourceTree = "<group>"; };
+		F417DB6819AE8D7100F13178 /* BBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOperation.m; sourceTree = "<group>"; };
+		F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F417DB7619AE981F00F13178 /* Practicioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practicioner.h; sourceTree = "<group>"; };
+		F417DB7719AE981F00F13178 /* Practicioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practicioner.m; sourceTree = "<group>"; };
+		F417DB7919AE982000F13178 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		F417DB7A19AE982000F13178 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D4C192F908E0031470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,7 +189,6 @@
 		F4615D5C192F908E0031470B /* iCare2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCare2-Prefix.pch"; sourceTree = "<group>"; };
 		F4615D5D192F908E0031470B /* BPBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BPBAppDelegate.h; sourceTree = "<group>"; };
 		F4615D5E192F908E0031470B /* BPBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BPBAppDelegate.m; sourceTree = "<group>"; };
-		F4615D61192F908E0031470B /* iCare2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iCare2.xcdatamodel; sourceTree = "<group>"; };
 		F4615D63192F908E0031470B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4615D69192F908E0031470B /* iCare2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iCare2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D6A192F908E0031470B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -381,8 +387,6 @@
 		F417DB5719AE82A100F13178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F417DB5819AE82B800F13178 /* BBPatient.h */,
-				F417DB5919AE82B800F13178 /* BBPatient.m */,
 				F417DB6419AE85AB00F13178 /* BBPostOp.h */,
 				F417DB6519AE85AB00F13178 /* BBPostOp.m */,
 				F417DB6119AE859C00F13178 /* BBIntraOp.h */,
@@ -391,6 +395,13 @@
 				F417DB5F19AE858800F13178 /* BBAnesthesiaRecord.m */,
 				F417DB5B19AE851B00F13178 /* BBPreOpEval.h */,
 				F417DB5C19AE851B00F13178 /* BBPreOpEval.m */,
+				F417DB6719AE8D7100F13178 /* BBOperation.h */,
+				F417DB6819AE8D7100F13178 /* BBOperation.m */,
+				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
+				F417DB7919AE982000F13178 /* Patient.h */,
+				F417DB7A19AE982000F13178 /* Patient.m */,
+				F417DB7619AE981F00F13178 /* Practicioner.h */,
+				F417DB7719AE981F00F13178 /* Practicioner.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -472,7 +483,6 @@
 				F4615D5D192F908E0031470B /* BPBAppDelegate.h */,
 				F4615D5E192F908E0031470B /* BPBAppDelegate.m */,
 				F4615D63192F908E0031470B /* Images.xcassets */,
-				F4615D60192F908E0031470B /* iCare2.xcdatamodeld */,
 				F4615D55192F908E0031470B /* Supporting Files */,
 			);
 			path = iCare2;
@@ -619,16 +629,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				988D166819AE63A2009A887A /* BBPreopActionsViewController.m in Sources */,
+				F417DB6919AE8D7100F13178 /* BBOperation.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* BBPreOpReviewViewController.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
+				F417DB7819AE981F00F13178 /* Practicioner.m in Sources */,
 				F4B5D56E19ACC3E300174F61 /* OverviewViewController.m in Sources */,
 				F4AFB94D19ABB8E300CA013B /* BBImmuneIDViewController.m in Sources */,
 				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */,
 				988D167F19AE63A2009A887A /* IntubationViewController.m in Sources */,
-				F417DB5A19AE82B800F13178 /* BBPatient.m in Sources */,
+				F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */,
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
-				F4615D62192F908E0031470B /* iCare2.xcdatamodeld in Sources */,
 				F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */,
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
@@ -647,6 +658,7 @@
 				F4B5D57319ACCE1800174F61 /* BBDaignosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
 				F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */,
+				F417DB7B19AE982000F13178 /* Patient.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */,
 				F4AFB94819ABB86100CA013B /* BBHemOncViewController.m in Sources */,
@@ -866,13 +878,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F4615D60192F908E0031470B /* iCare2.xcdatamodeld */ = {
+		F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F4615D61192F908E0031470B /* iCare2.xcdatamodel */,
+				F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = F4615D61192F908E0031470B /* iCare2.xcdatamodel */;
-			path = iCare2.xcdatamodeld;
+			currentVersion = F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
