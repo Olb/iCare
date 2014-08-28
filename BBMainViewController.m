@@ -8,7 +8,8 @@
 
 #import "BBMainViewController.h"
 
-@interface BBMainViewController () 
+@interface BBMainViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) UITableView *patientsTableView;
 
 @end
 
@@ -46,6 +47,18 @@
 }
 */
 
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.practitioner.patients count];
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    
+    
+    return cell;
+}
 
 
 @end

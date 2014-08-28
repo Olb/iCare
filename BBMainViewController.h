@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Practicioner.h"
 
 @interface BBMainViewController : UIViewController
 
+@property (nonatomic, strong) Practicioner *practitioner;
 @end
