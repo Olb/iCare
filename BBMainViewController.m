@@ -10,6 +10,7 @@
 #import "Practitioner.h"
 #import "Patient.h"
 #import "BPBAppDelegate.H"
+#import "LoginViewController.h"
 #import "BBPatientFormsViewController.h"
 
 @interface BBMainViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -28,10 +29,21 @@
     return self;
 }
 
+- (bool)isLoggedIn
+{
+    return false; //TODO: implement
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    if ( ![self isLoggedIn] ) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
+    
+    /*
     BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -86,9 +98,11 @@
             NSLog(@"Save failed");
         }
     }
-    
+    */
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

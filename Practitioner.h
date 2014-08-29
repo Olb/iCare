@@ -2,7 +2,7 @@
 //  Practitioner.h
 //  iCare2
 //
-//  Created by billy bray on 8/28/14.
+//  Created by Bogdan Marinescu on 8/29/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * loginID;
 @property (nonatomic, retain) NSString * password;
 @property (nonatomic, retain) NSString * passwordSalt;
+@property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSSet *patients;
 @end
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AnesthesiaRecord" syncable="YES"/>
     <entity name="IntraOp" syncable="YES"/>
     <entity name="Operation" syncable="YES"/>
@@ -12,6 +12,7 @@
     </entity>
     <entity name="PostOp" syncable="YES"/>
     <entity name="Practitioner" representedClassName="Practitioner" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="loginID" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +27,7 @@
         <element name="Operation" positionX="61" positionY="108" width="128" height="45"/>
         <element name="Patient" positionX="-36" positionY="-99" width="128" height="120"/>
         <element name="PostOp" positionX="97" positionY="387" width="128" height="45"/>
-        <element name="Practitioner" positionX="-270" positionY="42" width="128" height="133"/>
+        <element name="Practitioner" positionX="-270" positionY="42" width="128" height="150"/>
         <element name="PreOpEval" positionX="-270" positionY="297" width="128" height="45"/>
     </elements>
 </model>

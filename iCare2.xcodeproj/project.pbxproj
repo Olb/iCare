@@ -41,6 +41,7 @@
 		988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165F19AE63A2009A887A /* PremedsGivenViewController.xib */; };
 		988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */; };
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
+		98FF05F719B0CAF10003129C /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F619B0CAF10003129C /* Practitioner.m */; };
 		F417DB5D19AE851B00F13178 /* BBPreOpEval.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB5C19AE851B00F13178 /* BBPreOpEval.m */; };
 		F417DB6019AE858800F13178 /* BBAnesthesiaRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB5F19AE858800F13178 /* BBAnesthesiaRecord.m */; };
 		F417DB6319AE859C00F13178 /* BBIntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6219AE859C00F13178 /* BBIntraOp.m */; };
@@ -96,7 +97,6 @@
 		F4B5D57E19ACEC7A00174F61 /* BBPreOpReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B5D57C19ACEC7A00174F61 /* BBPreOpReviewViewController.xib */; };
 		F4CFF43919A526F10082CE70 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFF43819A526F10082CE70 /* View.xib */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
-		F4DF068319AF88AF00DDBE7E /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068219AF88AF00DDBE7E /* Practitioner.m */; };
 		F4DF068619AF88B000DDBE7E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068519AF88B000DDBE7E /* Patient.m */; };
 		F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */; };
 		F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */; };
@@ -166,6 +166,8 @@
 		988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinalAnesthesiaViewController.h; sourceTree = "<group>"; };
 		988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinalAnesthesiaViewController.m; sourceTree = "<group>"; };
 		988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinalAnesthesiaViewController.xib; sourceTree = "<group>"; };
+		98FF05F519B0CAF10003129C /* Practitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practitioner.h; sourceTree = "<group>"; };
+		98FF05F619B0CAF10003129C /* Practitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practitioner.m; sourceTree = "<group>"; };
 		F417DB5B19AE851B00F13178 /* BBPreOpEval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpEval.h; sourceTree = "<group>"; };
 		F417DB5C19AE851B00F13178 /* BBPreOpEval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpEval.m; sourceTree = "<group>"; };
 		F417DB5E19AE858800F13178 /* BBAnesthesiaRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAnesthesiaRecord.h; sourceTree = "<group>"; };
@@ -248,8 +250,6 @@
 		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
-		F4DF068119AF88AF00DDBE7E /* Practitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practitioner.h; sourceTree = "<group>"; };
-		F4DF068219AF88AF00DDBE7E /* Practitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practitioner.m; sourceTree = "<group>"; };
 		F4DF068419AF88B000DDBE7E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		F4DF068519AF88B000DDBE7E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -397,10 +397,10 @@
 		F417DB5719AE82A100F13178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				98FF05F519B0CAF10003129C /* Practitioner.h */,
+				98FF05F619B0CAF10003129C /* Practitioner.m */,
 				F4DF068419AF88B000DDBE7E /* Patient.h */,
 				F4DF068519AF88B000DDBE7E /* Patient.m */,
-				F4DF068119AF88AF00DDBE7E /* Practitioner.h */,
-				F4DF068219AF88AF00DDBE7E /* Practitioner.m */,
 				F417DB6419AE85AB00F13178 /* BBPostOp.h */,
 				F417DB6519AE85AB00F13178 /* BBPostOp.m */,
 				F417DB6119AE859C00F13178 /* BBIntraOp.h */,
@@ -671,8 +671,8 @@
 				F417DB5D19AE851B00F13178 /* BBPreOpEval.m in Sources */,
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
+				98FF05F719B0CAF10003129C /* Practitioner.m in Sources */,
 				F417DB6319AE859C00F13178 /* BBIntraOp.m in Sources */,
-				F4DF068319AF88AF00DDBE7E /* Practitioner.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* BBDaignosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
