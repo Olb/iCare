@@ -47,8 +47,6 @@
 		F417DB6619AE85AB00F13178 /* BBPostOp.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6519AE85AB00F13178 /* BBPostOp.m */; };
 		F417DB6919AE8D7100F13178 /* BBOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6819AE8D7100F13178 /* BBOperation.m */; };
 		F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */; };
-		F417DB7819AE981F00F13178 /* Practicioner.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB7719AE981F00F13178 /* Practicioner.m */; };
-		F417DB7B19AE982000F13178 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F417DB7A19AE982000F13178 /* Patient.m */; };
 		F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43148BD1933B66D00529FC4 /* Storyboard.storyboard */; };
 		F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
 		F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4E192F908E0031470B /* CoreGraphics.framework */; };
@@ -98,6 +96,12 @@
 		F4B5D57E19ACEC7A00174F61 /* BBPreOpReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B5D57C19ACEC7A00174F61 /* BBPreOpReviewViewController.xib */; };
 		F4CFF43919A526F10082CE70 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFF43819A526F10082CE70 /* View.xib */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
+		F4DF068319AF88AF00DDBE7E /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068219AF88AF00DDBE7E /* Practitioner.m */; };
+		F4DF068619AF88B000DDBE7E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068519AF88B000DDBE7E /* Patient.m */; };
+		F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */; };
+		F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */; };
+		F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */; };
+		F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,10 +177,6 @@
 		F417DB6719AE8D7100F13178 /* BBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOperation.h; sourceTree = "<group>"; };
 		F417DB6819AE8D7100F13178 /* BBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOperation.m; sourceTree = "<group>"; };
 		F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		F417DB7619AE981F00F13178 /* Practicioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practicioner.h; sourceTree = "<group>"; };
-		F417DB7719AE981F00F13178 /* Practicioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practicioner.m; sourceTree = "<group>"; };
-		F417DB7919AE982000F13178 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
-		F417DB7A19AE982000F13178 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D4C192F908E0031470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -248,6 +248,16 @@
 		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
+		F4DF068119AF88AF00DDBE7E /* Practitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practitioner.h; sourceTree = "<group>"; };
+		F4DF068219AF88AF00DDBE7E /* Practitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practitioner.m; sourceTree = "<group>"; };
+		F4DF068419AF88B000DDBE7E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		F4DF068519AF88B000DDBE7E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserViewController.h; sourceTree = "<group>"; };
+		F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserViewController.m; sourceTree = "<group>"; };
+		F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateUserViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +397,10 @@
 		F417DB5719AE82A100F13178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4DF068419AF88B000DDBE7E /* Patient.h */,
+				F4DF068519AF88B000DDBE7E /* Patient.m */,
+				F4DF068119AF88AF00DDBE7E /* Practitioner.h */,
+				F4DF068219AF88AF00DDBE7E /* Practitioner.m */,
 				F417DB6419AE85AB00F13178 /* BBPostOp.h */,
 				F417DB6519AE85AB00F13178 /* BBPostOp.m */,
 				F417DB6119AE859C00F13178 /* BBIntraOp.h */,
@@ -398,10 +412,6 @@
 				F417DB6719AE8D7100F13178 /* BBOperation.h */,
 				F417DB6819AE8D7100F13178 /* BBOperation.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
-				F417DB7919AE982000F13178 /* Patient.h */,
-				F417DB7A19AE982000F13178 /* Patient.m */,
-				F417DB7619AE981F00F13178 /* Practicioner.h */,
-				F417DB7719AE981F00F13178 /* Practicioner.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -442,6 +452,12 @@
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */,
+				F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */,
+				F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */,
+				F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */,
+				F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */,
+				F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */,
 				F417DB5719AE82A100F13178 /* Model */,
 				F417DB5619AE81BF00F13178 /* Evaluation */,
 				988D161719AE630B009A887A /* Anesthesia record */,
@@ -586,6 +602,7 @@
 				F4AFB94919ABB86100CA013B /* BBHemOncViewController.xib in Resources */,
 				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
 				988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */,
+				F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */,
 				988D169119AE63A2009A887A /* PostProcedureGeneralViewController.xib in Resources */,
 				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
 				988D167E19AE63A2009A887A /* InductionAndDeviceViewController.xib in Resources */,
@@ -600,6 +617,7 @@
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */,
 				F4AFB93519ABB0B600CA013B /* BBHepatoViewController.xib in Resources */,
+				F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */,
 				F4B5D57919ACD00400174F61 /* BBPlanDiscussionViewController.xib in Resources */,
 				988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */,
 				988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */,
@@ -632,11 +650,11 @@
 				F417DB6919AE8D7100F13178 /* BBOperation.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* BBPreOpReviewViewController.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
-				F417DB7819AE981F00F13178 /* Practicioner.m in Sources */,
 				F4B5D56E19ACC3E300174F61 /* OverviewViewController.m in Sources */,
 				F4AFB94D19ABB8E300CA013B /* BBImmuneIDViewController.m in Sources */,
 				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */,
+				F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */,
 				988D167F19AE63A2009A887A /* IntubationViewController.m in Sources */,
 				F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */,
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
@@ -654,11 +672,13 @@
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
 				F417DB6319AE859C00F13178 /* BBIntraOp.m in Sources */,
+				F4DF068319AF88AF00DDBE7E /* Practitioner.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* BBDaignosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
 				F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */,
-				F417DB7B19AE982000F13178 /* Patient.m in Sources */,
+				F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */,
+				F4DF068619AF88B000DDBE7E /* Patient.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */,
 				F4AFB94819ABB86100CA013B /* BBHemOncViewController.m in Sources */,

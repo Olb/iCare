@@ -7,8 +7,9 @@
 //
 
 #import "BBPatientFormsViewController.h"
-
+#import "Patient.h"
 @interface BBPatientFormsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *patientNameLabel;
 
 @end
 
@@ -26,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.patientNameLabel.text = self.patient.firstName;
 }
 
 - (void)didReceiveMemoryWarning

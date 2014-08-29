@@ -1,21 +1,22 @@
 //
-//  Patient.m
+//  Practitioner.m
 //  iCare2
 //
 //  Created by billy bray on 8/28/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "Patient.h"
 #import "Practitioner.h"
+#import "Patient.h"
 
 
-@implementation Patient
+@implementation Practitioner
 
-@dynamic birthdate;
 @dynamic firstName;
 @dynamic lastName;
-@dynamic medicalRecordNumber;
-@dynamic practitioner;
+@dynamic loginID;
+@dynamic password;
+@dynamic passwordSalt;
+@dynamic patients;
 
 @end

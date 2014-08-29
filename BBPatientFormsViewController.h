@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class Patient;
 @interface BBPatientFormsViewController : UIViewController
-
+@property Patient *patient;
 @end
