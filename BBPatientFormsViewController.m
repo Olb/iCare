@@ -11,17 +11,25 @@
 #import "BBPreOpEvalTableTableViewController.h"
 #import "BBAnesthesiaRecordController.h"
 #import "BBPatientTableAdapter.h"
+#import "BBDatePickerViewController.h"
+#import "Operation.h"
+#import "BBData.h"
+#import "BBProceduresTableViewController.h"
 
-@interface BBPatientFormsViewController () <UITableViewDataSource, UITableViewDelegate> {
-    
+@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate>{
+    BBDatePickerViewController *dateContent;
+    UIPopoverController *datePopover;
+    BBPatientTableAdapter *patientAdapter;
 }
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *plannedProcedureTableView;
+@property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ageLabel;
+@property Operation *operation;
+
 @end
 
 @implementation BBPatientFormsViewController
-
-BBPatientTableAdapter *patientAdapter;
 
 -(void)viewDidLoad
 {
@@ -31,18 +39,32 @@ BBPatientTableAdapter *patientAdapter;
     self.plannedProcedureTableView.dataSource = patientAdapter;
 }
 
--(void)targetMethod:(id)t
-{
-    NSLog(@"Timer fired");
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = [NSString stringWithFormat:@"%@, %@", self.patient.lastName, self.patient.firstName];
 }
 
+#pragma mark - Actions
 
+- (IBAction)addOperation:(id)sender {
+    BBProceduresTableViewController *proceduresViewController = [[BBProceduresTableViewController alloc] initWithNibName:@"PopoverTableView" bundle:nil];
+    proceduresViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    proceduresViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:proceduresViewController animated:YES completion:nil];}
+- (IBAction)preOpDate:(id)sender {
+    
+}
+- (IBAction)preOpTime:(id)sender {
+}
+- (IBAction)height:(id)sender {
+}
+- (IBAction)heightUnit:(id)sender {
+}
+- (IBAction)weight:(id)sender {
+}
+- (IBAction)weightUnit:(id)sender {
+}
 
 
 #pragma mark - Navigation
@@ -63,5 +85,29 @@ BBPatientTableAdapter *patientAdapter;
     }
 }
 
+-(void)didSaveDateValues:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+
+}
+
+-(void)setupDatePopoverRect:(id)sender {
+    CGRect location = CGRectMake(self.view.center.x, ((UITextField *)sender).frame.origin.y, 100, 100);
+    [self setupDatePickerPopover:location];
+}
+
+-(void)setupDatePickerPopover:(CGRect)rect {
+    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
+                                                               bundle:nil];
+    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
+    dateContent.date = [NSDate date];
+    dateContent.datePopoverController = datePopover;
+    dateContent.delegate = self;
+    [datePopover presentPopoverFromRect:rect
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
+}
 
 @end
