@@ -8,6 +8,9 @@
 
 #import "BBPatientFormsViewController.h"
 #import "Patient.h"
+#import "BBPreOpEvalTableTableViewController.h"
+#import "BBAnesthesiaRecordController.h"
+
 @interface BBPatientFormsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 
@@ -15,9 +18,8 @@
 
 @implementation BBPatientFormsViewController
 
-- (void)viewDidLoad
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
     self.navigationItem.title = [NSString stringWithFormat:@"%@, %@", self.patient.lastName, self.patient.firstName];
 }
 
@@ -59,15 +61,24 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.navigationItem.title = [NSString stringWithFormat:@"Forms"];
+
+    if ([[segue identifier] isEqualToString:@"FormsToPreOpEvalSegue"]) {
+        BBPreOpEvalTableTableViewController *vc = [segue destinationViewController];
+        vc.patient = self.patient;
+    }
+    if ([[segue identifier] isEqualToString:@"PatientFormsToAnesthesiaRecordSegue"]) {
+        BBAnesthesiaRecordController *vc = [segue destinationViewController];
+        vc.patient = self.patient;
+
+    }
 }
-*/
+
 
 @end

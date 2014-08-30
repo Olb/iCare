@@ -380,7 +380,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Vft-4k-ZA1" kind="push" id="SwH-Vc-maN"/>
+                                            <segue destination="Vft-4k-ZA1" kind="push" identifier="PatientFormsToAnesthesiaRecordSegue" id="SwH-Vc-maN"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientFormsPostOpCell" id="Bta-Y7-iRs">
@@ -524,26 +524,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYI-Ho-epi">
-                                <rect key="frame" x="283" y="294" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Launch View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="5Rl-Ev-Wyy" kind="push" identifier="Test2" id="ca3-m1-m1y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCb-bK-6EA">
-                                <rect key="frame" x="471" y="289" width="137" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Launch Record View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Vft-4k-ZA1" kind="push" id="FG1-e6-w5X"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1286,7 +1266,9 @@
                             <outlet property="delegate" destination="Vft-4k-ZA1" id="oOW-aM-eha"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qUT-L5-jfd"/>
+                    <navigationItem key="navigationItem" id="qUT-L5-jfd">
+                        <barButtonItem key="backBarButtonItem" title="Forms" id="wde-Kw-7r3"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAg-t9-eEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1300,7 +1282,5 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="I0C-0u-ncY"/>
-        <segue reference="SwH-Vc-maN"/>
-        <segue reference="ca3-m1-m1y"/>
     </inferredMetricsTieBreakers>
 </document>

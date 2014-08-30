@@ -76,8 +76,7 @@
 {
     NSInteger result = 0;
     if (tableView == self.patientsTableView) {
-        NSLog(@"%lu", (unsigned long)[self.practitioner.patients count]);
-        result = [self.practitioner.patients count];
+        result = [self.patientsArray count];
     }
     return result;
 }

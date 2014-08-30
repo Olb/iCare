@@ -20,6 +20,7 @@
 #import "BBDaignosticStudiesViewController.h"
 #import "BBPlanDiscussionViewController.h"
 #import "BBPreOpReviewViewController.h"
+#import "Patient.h"
 @interface BBPreOpEvalTableTableViewController ()
 
 @end
@@ -42,8 +43,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.title = [NSString stringWithFormat:@"PreOperative Evaluation - %@, %@", self.patient.lastName, self.patient.firstName];
+
 }
 
 - (void)didReceiveMemoryWarning

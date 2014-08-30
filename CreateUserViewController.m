@@ -79,7 +79,8 @@
     practitioner.lastName = self.lastNameTextField.text;
     practitioner.loginID = self.usernameTextField.text;
     practitioner.password = self.passwordOneTextField.text;
-    practitioner.passwordSalt = [self randomStringWithLength:24];
+    practitioner.passw
+    ordSalt = [self randomStringWithLength:24];
     practitioner.password = [self sha256:[NSString stringWithFormat:@"%@%@",
                                           practitioner.passwordSalt,
                                           self.passwordOneTextField.text]];

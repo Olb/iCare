@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Patient;
 @interface BBPreOpEvalTableTableViewController : UITableViewController
-
+@property Patient *patient;
 @end

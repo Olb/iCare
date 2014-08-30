@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Patient;
 @interface BBAnesthesiaRecordController : UITableViewController
-
+@property Patient *patient;
 @end

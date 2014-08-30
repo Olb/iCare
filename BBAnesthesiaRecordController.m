@@ -24,6 +24,7 @@
 #import "PostProcedureGeneralViewController.h"
 #import "SpinalAnesthesiaViewController.h"
 #import "IntubationViewController.h"
+#import "Patient.h"
 
 @interface BBAnesthesiaRecordController ()
 
@@ -47,8 +48,9 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.backBarButtonItem.title = @"Forms";
+    self.navigationItem.title = [NSString stringWithFormat:@"Anesthesia Evaluation Record - %@, %@", self.patient.lastName, self.patient.firstName];
+
 }
 
 - (void)didReceiveMemoryWarning
