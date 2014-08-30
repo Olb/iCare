@@ -1,17 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="AnesthesiaRecord" syncable="YES"/>
-    <entity name="IntraOp" syncable="YES"/>
-    <entity name="Operation" syncable="YES"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F37" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AnesthesiaRecord" syncable="YES">
+        <relationship name="anesthesiaType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnesthesiaType" syncable="YES"/>
+        <relationship name="betaBlocker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BetaBlocker" syncable="YES"/>
+        <relationship name="emergence" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Emergence" syncable="YES"/>
+        <relationship name="endotrachealTube" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EdotrachealTube" syncable="YES"/>
+        <relationship name="generalCondition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GeneralCondition" syncable="YES"/>
+        <relationship name="inductionAndDevice" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InductionAndDevice" syncable="YES"/>
+        <relationship name="intubation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Intubation" syncable="YES"/>
+        <relationship name="invasiveLines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InvasiveLines" syncable="YES"/>
+        <relationship name="ivAntibiotics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IVAntibiotics" syncable="YES"/>
+        <relationship name="monitoringAndEquipment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MonitoringAndEquipment" syncable="YES"/>
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="anesthesiaRecord" inverseEntity="Operation" syncable="YES"/>
+        <relationship name="personel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personnel" syncable="YES"/>
+        <relationship name="position" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Position" syncable="YES"/>
+        <relationship name="postAnesthesiaEvaluation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostAnesthesiaEvaluation" syncable="YES"/>
+        <relationship name="postOpDiagnosis" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostOpDiagnosis" syncable="YES"/>
+        <relationship name="premedsHoldingArea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PremedsHoldingArea" syncable="YES"/>
+        <relationship name="preOpActions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PreOpActions" syncable="YES"/>
+        <relationship name="spinalAnesthesia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SpinalAnesthesia" syncable="YES"/>
+    </entity>
+    <entity name="AnesthesiaType" syncable="YES">
+        <attribute name="axillaryBlock" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="epidural" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="general" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasOther" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="interscaleneBlock" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="ivRegional" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="mac" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="nerveBlock" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="other" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spinal" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="BetaBlocker" syncable="YES"/>
+    <entity name="EdotrachealTube" syncable="YES"/>
+    <entity name="Emergence" syncable="YES"/>
+    <entity name="GeneralCondition" syncable="YES"/>
+    <entity name="InductionAndDevice" syncable="YES"/>
+    <entity name="IntraOp" syncable="YES">
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="intraOp" inverseEntity="Operation" syncable="YES"/>
+    </entity>
+    <entity name="Intubation" syncable="YES"/>
+    <entity name="InvasiveLines" syncable="YES"/>
+    <entity name="IVAntibiotics" syncable="YES"/>
+    <entity name="MonitoringAndEquipment" syncable="YES"/>
+    <entity name="Operation" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preOpDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="anesthesiaRecord" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnesthesiaRecord" inverseName="operation" inverseEntity="AnesthesiaRecord" syncable="YES"/>
+        <relationship name="intraOp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="operation" inverseEntity="IntraOp" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="operation" inverseEntity="Patient" syncable="YES"/>
+        <relationship name="postOp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostOp" inverseName="operation" inverseEntity="PostOp" syncable="YES"/>
+        <relationship name="preOp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PreOpEval" inverseName="operation" inverseEntity="PreOpEval" syncable="YES"/>
+    </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="caseCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="medicalRecordNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="operation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Operation" inverseName="patient" inverseEntity="Operation" syncable="YES"/>
         <relationship name="practitioner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Practitioner" inverseName="patients" inverseEntity="Practitioner" syncable="YES"/>
     </entity>
-    <entity name="PostOp" syncable="YES"/>
+    <entity name="Personnel" syncable="YES"/>
+    <entity name="Position" syncable="YES"/>
+    <entity name="PostAnesthesiaEvaluation" syncable="YES"/>
+    <entity name="PostOp" syncable="YES">
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="postOp" inverseEntity="Operation" syncable="YES"/>
+    </entity>
+    <entity name="PostOpDiagnosis" syncable="YES"/>
     <entity name="Practitioner" representedClassName="Practitioner" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,14 +80,38 @@
         <attribute name="passwordSalt" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="practitioner" inverseEntity="Patient" syncable="YES"/>
     </entity>
-    <entity name="PreOpEval" syncable="YES"/>
+    <entity name="PremedsHoldingArea" syncable="YES">
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" syncable="YES"/>
+    </entity>
+    <entity name="PreOpActions" syncable="YES"/>
+    <entity name="PreOpEval" syncable="YES">
+        <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="preOp" inverseEntity="Operation" syncable="YES"/>
+    </entity>
+    <entity name="SpinalAnesthesia" syncable="YES"/>
     <elements>
-        <element name="AnesthesiaRecord" positionX="-74" positionY="99" width="128" height="45"/>
-        <element name="IntraOp" positionX="-72" positionY="207" width="128" height="45"/>
-        <element name="Operation" positionX="61" positionY="108" width="128" height="45"/>
-        <element name="Patient" positionX="-36" positionY="-99" width="128" height="135"/>
-        <element name="PostOp" positionX="97" positionY="387" width="128" height="45"/>
-        <element name="Practitioner" positionX="-270" positionY="42" width="128" height="150"/>
-        <element name="PreOpEval" positionX="-270" positionY="297" width="128" height="45"/>
+        <element name="AnesthesiaRecord" positionX="-801" positionY="-270" width="128" height="313"/>
+        <element name="Patient" positionX="-1260" positionY="-171" width="128" height="148"/>
+        <element name="PostOp" positionX="-801" positionY="72" width="128" height="60"/>
+        <element name="Practitioner" positionX="-1530" positionY="-195" width="128" height="150"/>
+        <element name="PreOpEval" positionX="-803" positionY="171" width="128" height="60"/>
+        <element name="PreOpActions" positionX="-90" positionY="54" width="128" height="45"/>
+        <element name="BetaBlocker" positionX="-81" positionY="63" width="128" height="45"/>
+        <element name="IVAntibiotics" positionX="-72" positionY="72" width="128" height="45"/>
+        <element name="MonitoringAndEquipment" positionX="-63" positionY="81" width="128" height="43"/>
+        <element name="InvasiveLines" positionX="-54" positionY="90" width="128" height="43"/>
+        <element name="AnesthesiaType" positionX="-612" positionY="-252" width="128" height="193"/>
+        <element name="SpinalAnesthesia" positionX="-506" positionY="450" width="128" height="45"/>
+        <element name="Position" positionX="-90" positionY="54" width="128" height="45"/>
+        <element name="Emergence" positionX="-81" positionY="63" width="128" height="45"/>
+        <element name="InductionAndDevice" positionX="-308" positionY="-252" width="128" height="45"/>
+        <element name="Intubation" positionX="-540" positionY="243" width="128" height="45"/>
+        <element name="EdotrachealTube" positionX="-542" positionY="99" width="128" height="45"/>
+        <element name="GeneralCondition" positionX="-459" positionY="-252" width="128" height="45"/>
+        <element name="PostOpDiagnosis" positionX="-216" positionY="-45" width="128" height="45"/>
+        <element name="PostAnesthesiaEvaluation" positionX="180" positionY="-72" width="128" height="45"/>
+        <element name="Personnel" positionX="142" positionY="9" width="128" height="45"/>
+        <element name="PremedsHoldingArea" positionX="-324" positionY="117" width="128" height="60"/>
+        <element name="Operation" positionX="-1053" positionY="-198" width="128" height="178"/>
+        <element name="IntraOp" positionX="-803" positionY="275" width="128" height="58"/>
     </elements>
 </model>

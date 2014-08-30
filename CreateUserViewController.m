@@ -10,7 +10,7 @@
 #import "Practitioner.h"
 #import "Practicioner.h"
 #import "BPBAppDelegate.h"
-#import <CommonCrypto/CommonHMAC.h>
+#import "BBUtil.h"
 
 @interface CreateUserViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -30,22 +30,22 @@
 - (IBAction)create:(id)sender {
     
     if ( [self.firstNameTextField.text length] == 0){
-        [self showAlertWithMessage:@"First name cannot be empty"];
+        [BBUtil showAlertWithMessage:@"First name cannot be empty"];
         return;
     }
     
     if ( [self.lastNameTextField.text length] == 0){
-        [self showAlertWithMessage:@"Last name cannot be empty"];
+        [BBUtil showAlertWithMessage:@"Last name cannot be empty"];
         return;
     }
     
     if ( [self.usernameTextField.text length] == 0){
-        [self showAlertWithMessage:@"Username name cannot be empty"];
+        [BBUtil showAlertWithMessage:@"Username name cannot be empty"];
         return;
     }
     
     if ( [self.passwordOneTextField.text length] < 8){
-        [self showAlertWithMessage:@"Password must be at least 8 characters long"];
+        [BBUtil showAlertWithMessage:@"Password must be at least 8 characters long"];
         return;
     }
     
@@ -59,17 +59,17 @@
     NSUInteger count = [context countForFetchRequest:request error:nil];
     
     if (count == NSNotFound){
-        [self showAlertWithMessage:@"Internal error"];
+        [BBUtil showAlertWithMessage:@"Internal error"];
         return;
     } else if (count != 0){
-        [self showAlertWithMessage:@"Username already exists"];
+        [BBUtil showAlertWithMessage:@"Username already exists"];
         return;
     }
     
     if ( ! [self.passwordOneTextField.text isEqualToString:self.passwordTwoTextField.text] ){
         self.passwordOneTextField.text = @"";
         self.passwordTwoTextField.text = @"";
-        [self showAlertWithMessage:@"Passwords do not match"];
+        [BBUtil showAlertWithMessage:@"Passwords do not match"];
         return;
     }
     
@@ -79,9 +79,8 @@
     practitioner.lastName = self.lastNameTextField.text;
     practitioner.loginID = self.usernameTextField.text;
     practitioner.password = self.passwordOneTextField.text;
-    practitioner.passw
-    ordSalt = [self randomStringWithLength:24];
-    practitioner.password = [self sha256:[NSString stringWithFormat:@"%@%@",
+    practitioner.passwordSalt = [self randomStringWithLength:24];
+    practitioner.password = [BBUtil sha256:[NSString stringWithFormat:@"%@%@",
                                           practitioner.passwordSalt,
                                           self.passwordOneTextField.text]];
     
@@ -92,29 +91,6 @@
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)showAlertWithMessage:(NSString *)message {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iCare"
-                                                    message:message
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
--(NSString*) sha256:(NSString *)clear{
-    const char *s=[clear cStringUsingEncoding:NSASCIIStringEncoding];
-    NSData *keyData=[NSData dataWithBytes:s length:strlen(s)];
-    
-    uint8_t digest[CC_SHA256_DIGEST_LENGTH]={0};
-    CC_SHA256(keyData.bytes, keyData.length, digest);
-    NSData *out=[NSData dataWithBytes:digest length:CC_SHA256_DIGEST_LENGTH];
-    NSString *hash=[out description];
-    hash = [hash stringByReplacingOccurrencesOfString:@" " withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@"<" withString:@""];
-    hash = [hash stringByReplacingOccurrencesOfString:@">" withString:@""];
-    return hash;
 }
 
 NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

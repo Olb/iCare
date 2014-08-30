@@ -10,56 +10,39 @@
 #import "Patient.h"
 #import "BBPreOpEvalTableTableViewController.h"
 #import "BBAnesthesiaRecordController.h"
+#import "BBPatientTableAdapter.h"
 
-@interface BBPatientFormsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface BBPatientFormsViewController () <UITableViewDataSource, UITableViewDelegate> {
+    
+}
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
-
+@property (weak, nonatomic) IBOutlet UITableView *plannedProcedureTableView;
 @end
 
 @implementation BBPatientFormsViewController
 
+BBPatientTableAdapter *patientAdapter;
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    patientAdapter = [[BBPatientTableAdapter alloc] init];
+    self.plannedProcedureTableView.delegate = patientAdapter;
+    self.plannedProcedureTableView.dataSource = patientAdapter;
+}
+
+-(void)targetMethod:(id)t
+{
+    NSLog(@"Timer fired");
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.navigationItem.title = [NSString stringWithFormat:@"%@, %@", self.patient.lastName, self.patient.firstName];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSInteger result = 4;
-    
-    return result;
-}
-
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = nil;
-    
-    if ( tableView == self.formsTableView) {
-        switch (indexPath.row) {
-            case 0:
-                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsEvalCell"];
-                break;
-            case 1:
-                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsIntraOpCell"];
-                break;
-            case 2:
-                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsAnesthesiaRecordCell"];
-                break;
-            case 3:
-                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsPostOpCell"];
-                break;
-            default:
-                break;
-        }
-    }
-    
-    return cell;
-}
 
 
 #pragma mark - Navigation
