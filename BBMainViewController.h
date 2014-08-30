@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class Practitioner;
-
 @interface BBMainViewController : UIViewController
-
-@property (nonatomic, strong) Practitioner *practitioner;
+-(void)refreshData;
 @end

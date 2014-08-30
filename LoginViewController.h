@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@class BBMainViewController;
+@class Practitioner;
 
+@protocol LoginViewControllerDelegate <NSObject>
+-(void)setLoggedIn:(BOOL)loggedIn withPractionerID:(Practitioner*)practitioner;
+@end
+@interface LoginViewController : UIViewController
+@property (nonatomic, weak) id <LoginViewControllerDelegate> delegate;
 @end

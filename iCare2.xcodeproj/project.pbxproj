@@ -97,11 +97,12 @@
 		F4B5D57E19ACEC7A00174F61 /* BBPreOpReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B5D57C19ACEC7A00174F61 /* BBPreOpReviewViewController.xib */; };
 		F4CFF43919A526F10082CE70 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CFF43819A526F10082CE70 /* View.xib */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
-		F4DF068619AF88B000DDBE7E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068519AF88B000DDBE7E /* Patient.m */; };
 		F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */; };
 		F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */; };
 		F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */; };
 		F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */; };
+		F4DF069E19B1493C00DDBE7E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF069D19B1493C00DDBE7E /* Patient.m */; };
+		F4DF06A219B149BE00DDBE7E /* BBDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF06A119B149BE00DDBE7E /* BBDatePickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,14 +251,16 @@
 		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
-		F4DF068419AF88B000DDBE7E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
-		F4DF068519AF88B000DDBE7E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserViewController.h; sourceTree = "<group>"; };
 		F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserViewController.m; sourceTree = "<group>"; };
 		F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateUserViewController.xib; sourceTree = "<group>"; };
+		F4DF069C19B1493C00DDBE7E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
+		F4DF069D19B1493C00DDBE7E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		F4DF06A019B149BE00DDBE7E /* BBDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDatePickerViewController.h; sourceTree = "<group>"; };
+		F4DF06A119B149BE00DDBE7E /* BBDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDatePickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,8 +402,8 @@
 			children = (
 				98FF05F519B0CAF10003129C /* Practitioner.h */,
 				98FF05F619B0CAF10003129C /* Practitioner.m */,
-				F4DF068419AF88B000DDBE7E /* Patient.h */,
-				F4DF068519AF88B000DDBE7E /* Patient.m */,
+				F4DF069C19B1493C00DDBE7E /* Patient.h */,
+				F4DF069D19B1493C00DDBE7E /* Patient.m */,
 				F417DB6419AE85AB00F13178 /* BBPostOp.h */,
 				F417DB6519AE85AB00F13178 /* BBPostOp.m */,
 				F417DB6119AE859C00F13178 /* BBIntraOp.h */,
@@ -412,13 +415,6 @@
 				F417DB6719AE8D7100F13178 /* BBOperation.h */,
 				F417DB6819AE8D7100F13178 /* BBOperation.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		F43148BF1933B67500529FC4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -452,6 +448,7 @@
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				F4DF069F19B149AA00DDBE7E /* Utils */,
 				F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */,
 				F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */,
 				F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */,
@@ -463,7 +460,6 @@
 				988D161719AE630B009A887A /* Anesthesia record */,
 				F43148C11933B68100529FC4 /* Controller */,
 				F43148C01933B67B00529FC4 /* View */,
-				F43148BF1933B67500529FC4 /* Model */,
 				F4615D54192F908E0031470B /* iCare2 */,
 				F4615D4B192F908E0031470B /* Frameworks */,
 				F4615D4A192F908E0031470B /* Products */,
@@ -513,6 +509,15 @@
 				F4615D5C192F908E0031470B /* iCare2-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4DF069F19B149AA00DDBE7E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F4DF06A019B149BE00DDBE7E /* BBDatePickerViewController.h */,
+				F4DF06A119B149BE00DDBE7E /* BBDatePickerViewController.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,6 +667,7 @@
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
 				988D168A19AE63A2009A887A /* PositionViewController.m in Sources */,
+				F4DF069E19B1493C00DDBE7E /* Patient.m in Sources */,
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				F417DB6619AE85AB00F13178 /* BBPostOp.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
@@ -677,8 +683,8 @@
 				F4B5D57319ACCE1800174F61 /* BBDaignosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
 				F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */,
+				F4DF06A219B149BE00DDBE7E /* BBDatePickerViewController.m in Sources */,
 				F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */,
-				F4DF068619AF88B000DDBE7E /* Patient.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				F4AFB93919ABB55E00CA013B /* BBNeuroligcViewController.m in Sources */,
 				F4AFB94819ABB86100CA013B /* BBHemOncViewController.m in Sources */,

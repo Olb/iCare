@@ -12,10 +12,16 @@
 #import "BPBAppDelegate.H"
 #import "LoginViewController.h"
 #import "BBPatientFormsViewController.h"
+#import "BBNewPatientViewController.h"
 
-@interface BBMainViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface BBMainViewController () <UITableViewDataSource, UITableViewDelegate, LoginViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *patientsTableView;
-@property Patient *testPatient;
+@property BOOL isLoggedIn;
+@property NSString *userID;
+@property NSArray *patientsArray;
+@property (nonatomic, strong) Patient *patient;
+@property (nonatomic, strong) Practitioner *practitioner;
+@property NSSet *patientSet;
 @end
 
 @implementation BBMainViewController
@@ -29,80 +35,23 @@
     return self;
 }
 
-- (bool)isLoggedIn
-{
-    return false; //TODO: implement
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if ( ![self isLoggedIn] ) {
-        LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        [self presentViewController:loginViewController animated:YES completion:nil];
-    }
-    
-    /*
-    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Practitioner"
-                                              inManagedObjectContext:context];
-    if (entity == nil) {
-        NSLog(@"Entity is nil");
-        return;
-    }
-    
-    [fetchRequest setEntity:entity];
-    NSError *requestError = nil;
-    NSArray *persons = [context executeFetchRequest:fetchRequest
-                                                                error:&requestError];
-    
-    if ([persons count] == 0) {
-        self.practitioner = [NSEntityDescription insertNewObjectForEntityForName:@"Practitioner"
-                                                          inManagedObjectContext:context];
-        if (self.practitioner != nil) {
-            self.practitioner.firstName = @"Doc";
-            self.practitioner.lastName = @"tor";
-            NSError *savingError = nil;
-            if ([context save:&savingError]) {
-                NSLog(@"Save successful");
-            } else {
-                NSLog(@"Save failed");
-            }
-        } else {
-            NSLog(@"Failed to create new practitioner");
-        }
-    }
-    self.practitioner = [persons firstObject];
-    Patient *p;
-    
-    fetchRequest = [[NSFetchRequest alloc] init];
-    entity = [NSEntityDescription entityForName:@"Patient"
-                         inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-
-    persons = [context executeFetchRequest:fetchRequest
-                                     error:&requestError];
-    if ([persons count] == 0) {
-        p = [NSEntityDescription insertNewObjectForEntityForName:@"Patient"
-                                          inManagedObjectContext:context];
-        p.firstName = @"FirstName";
-        p.lastName = @"LastName";
-        [self.practitioner addPatientsObject:p];
-        NSError *savingError = nil;
-        if ([context save:&savingError]) {
-            NSLog(@"Save successful");
-        } else {
-            NSLog(@"Save failed");
-        }
-    }
-    */
-    
 }
 
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (!self.isLoggedIn) {
+        LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        loginViewController.delegate = self;
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    } else {
+        [self refreshData];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -116,8 +65,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    BBPatientFormsViewController *vc = [segue destinationViewController];
-    vc.patient = self.testPatient;
+    if ([[segue identifier] isEqualToString:@"NewPatientSegue"]) {
+        BBNewPatientViewController *vc = [segue destinationViewController];
+        vc.practitioner = self.practitioner;
+        vc.mainViewController = self;
+    }
 }
 
 
@@ -125,6 +77,7 @@
 {
     NSInteger result = 0;
     if (tableView == self.patientsTableView) {
+        NSLog(@"%lu", (unsigned long)[self.practitioner.patients count]);
         result = [self.practitioner.patients count];
     }
     return result;
@@ -140,13 +93,21 @@
         Patient *p;
         p = [patientArray objectAtIndex:indexPath.row];
         [nameLabel setText:[NSString stringWithFormat:@"%@, %@", p.lastName, p.firstName]];
-        self.testPatient = p;
+        self.patient = p;
     }
     
     return cell;
 }
 
+-(void)setLoggedIn:(BOOL)loggedIn withPractionerID:(Practitioner *)practitioner
+{
+    self.isLoggedIn = loggedIn;
+    self.practitioner = practitioner;
+}
 
-
+-(void)refreshData
+{
+    [self.patientsTableView reloadData];
+}
 
 @end

@@ -12,7 +12,7 @@
 #import "BPBAppDelegate.h"
 #import <CommonCrypto/CommonHMAC.h>
 
-@interface CreateUserViewController ()
+@interface CreateUserViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -143,11 +143,19 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (IBAction)dimiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Practitioner.h"
+#import "BBMainViewController.h"
 @interface BBNewPatientViewController : UIViewController
-
+@property (weak, nonatomic) Practitioner *practitioner;
+@property (weak, nonatomic) BBMainViewController *mainViewController;
 @end

@@ -11,8 +11,9 @@
 #import "BPBAppDelegate.h"
 #import "CreateUserViewController.h"
 #import <CommonCrypto/CommonHMAC.h>
+#import "BBMainViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) Practitioner *practitioner;
@@ -24,7 +25,8 @@
 {
     
     if ( [self isLoginValid]){
-        //pass Practitioner back to main view controller
+        [self.delegate setLoggedIn:YES withPractionerID:self.practitioner];
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self showAlertWithMessage:@"Invalid username and/or password."];
     }
@@ -65,12 +67,12 @@
         return false;
     }
     
-    Practitioner *practitioner = [persons firstObject];
+    self.practitioner = [persons firstObject];
     NSString *password = [self sha256:[NSString stringWithFormat:@"%@%@",
-                               practitioner.passwordSalt,
+                               self.practitioner.passwordSalt,
                                self.passwordTextField.text]];
     
-    if ( ! [password isEqualToString:practitioner.password] ){
+    if ( ! [password isEqualToString:self.practitioner.password] ){
         return false;
     }
 
@@ -95,6 +97,8 @@
 - (IBAction)create:(id)sender
 {
     CreateUserViewController *createUserViewController = [[CreateUserViewController alloc] initWithNibName:@"CreateUserViewController" bundle:nil];
+    createUserViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    createUserViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:createUserViewController animated:YES completion:nil];
 }
 
@@ -126,6 +130,11 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
