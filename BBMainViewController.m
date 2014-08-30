@@ -19,26 +19,10 @@
 @property BOOL isLoggedIn;
 @property NSString *userID;
 @property NSArray *patientsArray;
-@property (nonatomic, strong) Patient *patient;
 @property (nonatomic, strong) Practitioner *practitioner;
-@property NSSet *patientSet;
 @end
 
 @implementation BBMainViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -53,12 +37,17 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
+-(void)setLoggedIn:(BOOL)loggedIn withPractionerID:(Practitioner *)practitioner
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.isLoggedIn = loggedIn;
+    self.practitioner = practitioner;
 }
 
+-(void)refreshData
+{
+    self.patientsArray = [self.practitioner.patients allObjects];
+    [self.patientsTableView reloadData];
+}
 
 #pragma mark - Navigation
 
@@ -70,8 +59,18 @@
         vc.practitioner = self.practitioner;
         vc.mainViewController = self;
     }
+    if ([[segue identifier] isEqualToString:@"PatientFormsSegue"]) {
+        BBPatientFormsViewController *vc = [segue destinationViewController];
+        CGPoint cellPosition = [sender convertPoint:CGPointZero toView:self.patientsTableView];
+        NSIndexPath *indexPath = [self.patientsTableView indexPathForRowAtPoint:cellPosition];
+        NSInteger rowOfTheCell = indexPath.row;
+        Patient *p = [self.patientsArray objectAtIndex:rowOfTheCell];
+        NSLog(@"Patient name:%@", p.firstName);
+        vc.patient = p;
+    }
 }
 
+#pragma mark - TableView
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -86,28 +85,16 @@
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    NSArray *patientArray = [self.practitioner.patients allObjects];
+    
     if ( tableView == self.patientsTableView) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"PatientCell"];
         UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:1];
         Patient *p;
-        p = [patientArray objectAtIndex:indexPath.row];
+        p = [self.patientsArray objectAtIndex:indexPath.row];
         [nameLabel setText:[NSString stringWithFormat:@"%@, %@", p.lastName, p.firstName]];
-        self.patient = p;
     }
     
     return cell;
-}
-
--(void)setLoggedIn:(BOOL)loggedIn withPractionerID:(Practitioner *)practitioner
-{
-    self.isLoggedIn = loggedIn;
-    self.practitioner = practitioner;
-}
-
--(void)refreshData
-{
-    [self.patientsTableView reloadData];
 }
 
 @end

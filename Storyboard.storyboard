@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="1978" y="-732"/>
         </scene>
-        <!--View Controller - Patient Forms-->
+        <!--Patient Forms View Controller - Patient Forms-->
         <scene sceneID="0CS-k1-Sn3">
             <objects>
-                <viewController title="Patient Forms" id="Eez-TN-1bS" sceneMemberID="viewController">
+                <viewController title="Patient Forms" id="Eez-TN-1bS" customClass="BBPatientFormsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ypM-d5-yvw"/>
                         <viewControllerLayoutGuide type="bottom" id="NfN-fG-jwW"/>
@@ -290,7 +290,7 @@
                                 <rect key="frame" x="0.0" y="352" width="765" height="262"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PreOpEvalCell" id="kkb-oY-hE3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientFormsEvalCell" id="kkb-oY-hE3">
                                         <rect key="frame" x="0.0" y="86" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kkb-oY-hE3" id="6P1-y0-bfp">
@@ -322,7 +322,7 @@
                                             <segue destination="5Rl-Ev-Wyy" kind="push" identifier="FormsToPreOpEvalSegue" id="yvT-Ac-eq1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IntraOpCell" id="HHF-w9-aI1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientFormsIntraOpCell" id="HHF-w9-aI1">
                                         <rect key="frame" x="0.0" y="130" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HHF-w9-aI1" id="dFO-QY-B4u">
@@ -351,7 +351,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnesthesiaRecordCell" id="x1Z-K1-Sp3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientFormsAnesthesiaRecordCell" id="x1Z-K1-Sp3">
                                         <rect key="frame" x="0.0" y="174" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x1Z-K1-Sp3" id="zxe-oE-Yic">
@@ -383,7 +383,7 @@
                                             <segue destination="Vft-4k-ZA1" kind="push" id="SwH-Vc-maN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostOpCell" id="Bta-Y7-iRs">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientFormsPostOpCell" id="Bta-Y7-iRs">
                                         <rect key="frame" x="0.0" y="218" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bta-Y7-iRs" id="agG-BS-YPE">
@@ -414,6 +414,10 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Eez-TN-1bS" id="kIv-uq-a67"/>
+                                    <outlet property="delegate" destination="Eez-TN-1bS" id="nPo-9B-VkM"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PreOp Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSg-FK-is5">
                                 <rect key="frame" x="20" y="86" width="99" height="21"/>
@@ -544,6 +548,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Patient Forms" id="e0o-vl-yBf"/>
+                    <connections>
+                        <outlet property="formsTableView" destination="Nbc-WL-nLv" id="pmA-fK-hzS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqT-bM-GQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1292,8 +1299,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jaP-yc-H3N"/>
-        <segue reference="ca3-m1-m1y"/>
+        <segue reference="I0C-0u-ncY"/>
         <segue reference="SwH-Vc-maN"/>
+        <segue reference="ca3-m1-m1y"/>
     </inferredMetricsTieBreakers>
 </document>

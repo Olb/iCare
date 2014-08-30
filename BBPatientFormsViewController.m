@@ -8,32 +8,17 @@
 
 #import "BBPatientFormsViewController.h"
 #import "Patient.h"
-@interface BBPatientFormsViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *patientNameLabel;
+@interface BBPatientFormsViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 
 @end
 
 @implementation BBPatientFormsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.patientNameLabel.text = self.patient.firstName;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.navigationItem.title = [NSString stringWithFormat:@"%@, %@", self.patient.lastName, self.patient.firstName];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -43,9 +28,35 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger result = 3;
+    NSInteger result = 4;
     
     return result;
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    
+    if ( tableView == self.formsTableView) {
+        switch (indexPath.row) {
+            case 0:
+                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsEvalCell"];
+                break;
+            case 1:
+                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsIntraOpCell"];
+                break;
+            case 2:
+                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsAnesthesiaRecordCell"];
+                break;
+            case 3:
+                cell = [tableView dequeueReusableCellWithIdentifier:@"PatientFormsPostOpCell"];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return cell;
 }
 
 /*

@@ -180,7 +180,7 @@
 		F417DB6719AE8D7100F13178 /* BBOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOperation.h; sourceTree = "<group>"; };
 		F417DB6819AE8D7100F13178 /* BBOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOperation.m; sourceTree = "<group>"; };
 		F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4615D4C192F908E0031470B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4615D4E192F908E0031470B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -226,8 +226,8 @@
 		F4AFB94F19ABB96700CA013B /* BBOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOtherViewController.h; sourceTree = "<group>"; };
 		F4AFB95019ABB96700CA013B /* BBOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOtherViewController.m; sourceTree = "<group>"; };
 		F4AFB95119ABB96700CA013B /* BBOtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBOtherViewController.xib; sourceTree = "<group>"; };
-		F4AFB95419ABBDF600CA013B /* BBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMainViewController.h; sourceTree = "<group>"; };
-		F4AFB95519ABBDF600CA013B /* BBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMainViewController.m; sourceTree = "<group>"; };
+		F4AFB95419ABBDF600CA013B /* BBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBMainViewController.h; path = ../BBMainViewController.h; sourceTree = "<group>"; };
+		F4AFB95519ABBDF600CA013B /* BBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBMainViewController.m; path = ../BBMainViewController.m; sourceTree = "<group>"; };
 		F4AFB95719ABBECC00CA013B /* BBPreOpEvalTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpEvalTableTableViewController.h; sourceTree = "<group>"; };
 		F4AFB95819ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpEvalTableTableViewController.m; sourceTree = "<group>"; };
 		F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPatientFormsViewController.h; sourceTree = "<group>"; };
@@ -248,9 +248,9 @@
 		F4B5D57A19ACEC7A00174F61 /* BBPreOpReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPreOpReviewViewController.h; sourceTree = "<group>"; };
 		F4B5D57B19ACEC7A00174F61 /* BBPreOpReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPreOpReviewViewController.m; sourceTree = "<group>"; };
 		F4B5D57C19ACEC7A00174F61 /* BBPreOpReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBPreOpReviewViewController.xib; sourceTree = "<group>"; };
-		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
-		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
-		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
+		F4CFF43819A526F10082CE70 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = View.xib; path = ../View.xib; sourceTree = "<group>"; };
+		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBLinkedStoryBoardSegue.h; path = iCare2/BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
+		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBLinkedStoryBoardSegue.m; path = iCare2/BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
 		F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -419,47 +419,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		F43148C01933B67B00529FC4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
-				F4AFB95D19ABC11900CA013B /* BBNewPatientViewController.h */,
-				F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */,
-				F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */,
-				F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */,
-				F4AFB95419ABBDF600CA013B /* BBMainViewController.h */,
-				F4AFB95519ABBDF600CA013B /* BBMainViewController.m */,
-				F4CFF43819A526F10082CE70 /* View.xib */,
-				F4AFB96019ABC59E00CA013B /* BBCheckBox.h */,
-				F4AFB96119ABC59E00CA013B /* BBCheckBox.m */,
-				F4AFB92819ABADD900CA013B /* checkbox_selected.png */,
-				F4AFB92919ABADD900CA013B /* checkbox_unselected.png */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		F43148C11933B68100529FC4 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				F4DF06A619B1F4F000DDBE7E /* New Patient and Forms selection */,
+				F4DF06A319B1F30300DDBE7E /* Authentication */,
 				F4DF069F19B149AA00DDBE7E /* Utils */,
-				F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */,
-				F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */,
-				F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */,
-				F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */,
-				F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */,
-				F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */,
 				F417DB5719AE82A100F13178 /* Model */,
 				F417DB5619AE81BF00F13178 /* Evaluation */,
 				988D161719AE630B009A887A /* Anesthesia record */,
-				F43148C11933B68100529FC4 /* Controller */,
-				F43148C01933B67B00529FC4 /* View */,
 				F4615D54192F908E0031470B /* iCare2 */,
 				F4615D4B192F908E0031470B /* Frameworks */,
 				F4615D4A192F908E0031470B /* Products */,
@@ -490,8 +458,10 @@
 		F4615D54192F908E0031470B /* iCare2 */ = {
 			isa = PBXGroup;
 			children = (
-				F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */,
-				F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */,
+				F4CFF43819A526F10082CE70 /* View.xib */,
+				F43148BD1933B66D00529FC4 /* Storyboard.storyboard */,
+				F4AFB95419ABBDF600CA013B /* BBMainViewController.h */,
+				F4AFB95519ABBDF600CA013B /* BBMainViewController.m */,
 				F4615D5D192F908E0031470B /* BPBAppDelegate.h */,
 				F4615D5E192F908E0031470B /* BPBAppDelegate.m */,
 				F4615D63192F908E0031470B /* Images.xcassets */,
@@ -503,6 +473,8 @@
 		F4615D55192F908E0031470B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F4AFB92819ABADD900CA013B /* checkbox_selected.png */,
+				F4AFB92919ABADD900CA013B /* checkbox_unselected.png */,
 				F4615D56192F908E0031470B /* iCare2-Info.plist */,
 				F4615D57192F908E0031470B /* InfoPlist.strings */,
 				F4615D5A192F908E0031470B /* main.m */,
@@ -514,10 +486,38 @@
 		F4DF069F19B149AA00DDBE7E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */,
+				F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */,
+				F4AFB96019ABC59E00CA013B /* BBCheckBox.h */,
+				F4AFB96119ABC59E00CA013B /* BBCheckBox.m */,
 				F4DF06A019B149BE00DDBE7E /* BBDatePickerViewController.h */,
 				F4DF06A119B149BE00DDBE7E /* BBDatePickerViewController.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		F4DF06A319B1F30300DDBE7E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F4DF069419B0C35E00DDBE7E /* CreateUserViewController.h */,
+				F4DF069519B0C35E00DDBE7E /* CreateUserViewController.m */,
+				F4DF069619B0C35E00DDBE7E /* CreateUserViewController.xib */,
+				F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */,
+				F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */,
+				F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		F4DF06A619B1F4F000DDBE7E /* New Patient and Forms selection */ = {
+			isa = PBXGroup;
+			children = (
+				F4AFB95D19ABC11900CA013B /* BBNewPatientViewController.h */,
+				F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */,
+				F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */,
+				F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */,
+			);
+			name = "New Patient and Forms selection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
