@@ -14,18 +14,18 @@
 #import "BBDatePickerViewController.h"
 #import "Operation.h"
 #import "BBData.h"
-#import "BBProceduresTableViewController.h"
+#import "BBPFilerableSelectableTableViewController.h"
 
-@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate>{
+@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate, BBSelectedItemsDelegate>{
     BBDatePickerViewController *dateContent;
     UIPopoverController *datePopover;
     BBPatientTableAdapter *patientAdapter;
 }
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
-@property (weak, nonatomic) IBOutlet UITableView *plannedProcedureTableView;
 @property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property Operation *operation;
+@property (weak, nonatomic) IBOutlet UITableView *planedProcedureTableView;
 
 @end
 
@@ -35,8 +35,6 @@
 {
     [super viewDidLoad];
     patientAdapter = [[BBPatientTableAdapter alloc] init];
-    self.plannedProcedureTableView.delegate = patientAdapter;
-    self.plannedProcedureTableView.dataSource = patientAdapter;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -48,9 +46,10 @@
 #pragma mark - Actions
 
 - (IBAction)addOperation:(id)sender {
-    BBProceduresTableViewController *proceduresViewController = [[BBProceduresTableViewController alloc] initWithNibName:@"PopoverTableView" bundle:nil];
+    BBPFilerableSelectableTableViewController *proceduresViewController = [[BBPFilerableSelectableTableViewController alloc] initWithNibName:@"PopoverTableView" bundle:nil];
     proceduresViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     proceduresViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    proceduresViewController.delegate = self;
     [self presentViewController:proceduresViewController animated:YES completion:nil];}
 - (IBAction)preOpDate:(id)sender {
     
@@ -108,6 +107,11 @@
                                  inView:self.view
                permittedArrowDirections:UIPopoverArrowDirectionAny
                                animated:YES];
+}
+
+
+-(void)didSaveValues:(NSArray*)values{
+
 }
 
 @end

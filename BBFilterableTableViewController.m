@@ -1,16 +1,16 @@
 //
-//  BBTableViewPopoverController.m
-//  iCare
+//  BBFilterableTableViewController.m
+//  iCare2
 //
-//  Created by Billy Bray on 2/7/14.
-//  Copyright (c) 2014 Billy Bray. All rights reserved.
+//  Created by Bogdan Marinescu on 9/4/14.
+//  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBProceduresTableViewController.h"
+#import "BBFilterableTableViewController.h"
 #import "BBPopoverCell.h"
 #import "BBData.h"
 
-@interface BBProceduresTableViewController () <UITextFieldDelegate> {
+@interface BBFilterableTableViewController () <UITextFieldDelegate> {
     NSMutableArray *pastProcedures;
 }
 
@@ -28,18 +28,18 @@
 {
     [super viewDidLoad];
     
-    self.proceduresDataSet = [BBData procedures];
+    self.data = [BBData procedures];
     pastProcedures = [NSMutableArray arrayWithArray:self.proceduresDataSet];
     [self.navigationItem setLeftBarButtonItem:self.cancelButton animated:NO];
     [self.navigationItem setRightBarButtonItem:self.saveButton animated:NO];
     
     [self.procedureTableView registerNib:[UINib nibWithNibName:@"PopoverTableCell"
-                                                      bundle:[NSBundle mainBundle]]
-                forCellReuseIdentifier:@"PopupCell"];
-
+                                                        bundle:[NSBundle mainBundle]]
+                  forCellReuseIdentifier:@"PopupCell"];
+    
     [self.procedureTableView setAllowsSelectionDuringEditing:YES];
     [self.procedureTableView setAllowsMultipleSelectionDuringEditing:YES];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -59,8 +59,8 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger result = [pastProcedures count];
-
-    return  result;
+    
+    return  ;
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,9 +76,9 @@
     BBCheckBox *checkBox = (BBCheckBox *)[cell.contentView viewWithTag:2];
     [checkBox addTarget:self action:@selector(checkedBox:) forControlEvents:UIControlEventTouchUpInside];
     if ([pastProcedures containsObject:[pastProcedures objectAtIndex:indexPath.row]]) {
-        ((BBCheckBox *)[cell.contentView viewWithTag:2]).selected = TRUE;
+        checkBox.selected = TRUE;
     } else {
-        ((BBCheckBox *)[cell.contentView viewWithTag:2]).selected = FALSE;
+        checkBox.selected = FALSE;
     }
     
     return cell;
@@ -94,7 +94,7 @@
         return;
     }
     [pastProcedures addObject:[pastProcedures objectAtIndex:indexPath.row]];
-
+    
 }
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -118,8 +118,8 @@
     // The items in this array is what will show up in the table view
     [pastProcedures removeAllObjects];
     for(NSString *curString in self.proceduresDataSet) {
-        NSRange substringRange = [curString rangeOfString:substring];
-        if (substringRange.location == 0) {
+        NSRange substringRange = [curString rangeOfString:substring options:NSCaseInsensitiveSearch];
+        if (substringRange.length > 0) {
             [pastProcedures addObject:curString];
         }
     }
