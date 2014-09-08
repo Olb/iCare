@@ -15,6 +15,7 @@
 #import "Operation.h"
 #import "BBData.h"
 #import "BBPFilerableSelectableTableViewController.h"
+#import "BBAutoCompleteTextField.h"
 
 @interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate, BBSelectedItemsDelegate>{
     BBDatePickerViewController *dateContent;
@@ -25,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property Operation *operation;
-@property (weak, nonatomic) IBOutlet UITableView *planedProcedureTableView;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *operationTextField;
 
 @end
 
@@ -35,6 +36,8 @@
 {
     [super viewDidLoad];
     patientAdapter = [[BBPatientTableAdapter alloc] init];
+    
+    [_operationTextField setAutoCompleteData:[BBData procedures]];
 }
 
 -(void)viewWillAppear:(BOOL)animated

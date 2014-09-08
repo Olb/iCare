@@ -45,6 +45,8 @@
 		98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F919B20D4F0003129C /* BBUtil.m */; };
 		98FF05FE19B226900003129C /* BBPatientTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05FD19B226900003129C /* BBPatientTableAdapter.m */; };
 		98FF060119B245970003129C /* BBPlannedOperationTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* BBPlannedOperationTableAdapter.m */; };
+		98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */; };
+		98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060F19BE01F40003129C /* BBAutoCompleteTextField.m */; };
 		F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */; };
 		F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43148BD1933B66D00529FC4 /* Storyboard.storyboard */; };
 		F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D4C192F908E0031470B /* Foundation.framework */; };
@@ -179,6 +181,10 @@
 		98FF05FD19B226900003129C /* BBPatientTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPatientTableAdapter.m; sourceTree = "<group>"; };
 		98FF05FF19B245970003129C /* BBPlannedOperationTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPlannedOperationTableAdapter.h; sourceTree = "<group>"; };
 		98FF060019B245970003129C /* BBPlannedOperationTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPlannedOperationTableAdapter.m; sourceTree = "<group>"; };
+		98FF060B19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
+		98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAutoCompleteTextFieldDelegate.m; sourceTree = "<group>"; };
+		98FF060E19BE01F40003129C /* BBAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAutoCompleteTextField.h; sourceTree = "<group>"; };
+		98FF060F19BE01F40003129C /* BBAutoCompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAutoCompleteTextField.m; sourceTree = "<group>"; };
 		F417DB6E19AE8F9400F13178 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		F43148BD1933B66D00529FC4 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
 		F4615D49192F908E0031470B /* iCare2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCare2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +522,10 @@
 				F4DF06A119B149BE00DDBE7E /* BBDatePickerViewController.m */,
 				98FF05F819B20D4F0003129C /* BBUtil.h */,
 				98FF05F919B20D4F0003129C /* BBUtil.m */,
+				98FF060B19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.h */,
+				98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */,
+				98FF060E19BE01F40003129C /* BBAutoCompleteTextField.h */,
+				98FF060F19BE01F40003129C /* BBAutoCompleteTextField.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -706,6 +716,7 @@
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
 				98FF05F719B0CAF10003129C /* Practitioner.m in Sources */,
+				98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* BBDaignosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
@@ -728,6 +739,7 @@
 				F4AFB93E19ABB65000CA013B /* BBEndocrineViewController.m in Sources */,
 				F4B5D57819ACD00400174F61 /* BBPlanDiscussionViewController.m in Sources */,
 				F4AFB95919ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m in Sources */,
+				98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */,
 				988D169219AE63A2009A887A /* PremedsGivenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
