@@ -34,4 +34,20 @@
     [alert show];
 }
 
++ (NSString*) formatDate:(NSDate*)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy/MM/dd"];
+    
+    return [format stringFromDate:date];
+}
+
++ (NSString*) formatTime:(NSDate*)date
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"HH:mm"];
+    
+    return [format stringFromDate:date];
+}
+
 @end

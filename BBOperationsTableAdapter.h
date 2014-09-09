@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Patient.h"
+@class Operation;
+
+@protocol BBOperationSelectedDelegate <NSObject>
+-(void) operationSelected:(Operation*)operation fromPatient:(Patient*)patient;
+@end
 
 @interface BBOperationsTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property Patient *patient;
+@property id <BBOperationSelectedDelegate> delegate;
 @end

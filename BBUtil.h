@@ -12,4 +12,6 @@
 
 +(NSString*) sha256:(NSString *)clear;
 +(void)showAlertWithMessage:(NSString *)message;
++ (NSString*) formatTime:(NSDate*)date;
++ (NSString*) formatDate:(NSDate*)date;
 @end

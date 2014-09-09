@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Operation.h"
 
 @interface BBPatientFormTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+
+@property Operation *opration;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

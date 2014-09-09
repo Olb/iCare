@@ -8,33 +8,33 @@
 
 #import "BBOperationsTableAdapter.h"
 #import "Operation.h"
+#import "BBUtil.h"
+
+@interface BBOperationsTableAdapter ()
+@property (strong,nonatomic) NSArray *operationArray;
+@end
 
 @implementation BBOperationsTableAdapter
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+    _operationArray = [self.patient.operation allObjects];
     return [self.patient.operation count];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *operationArray = [self.patient.operation allObjects];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OperationsCell"];
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OperationsCell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OperationsCell"];
     }
-    Operation *o = [operationArray objectAtIndex:indexPath.row];
+    Operation *o = [_operationArray objectAtIndex:indexPath.row];
     
     UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:10];
     [nameLabel setText:o.name];
     
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy/MM/dd"];
-    
-    
     UILabel *dateLabel = (UILabel*)[cell.contentView viewWithTag:11];
-    [dateLabel setText:[NSString stringWithFormat:@"PreOp Date: %@", [format stringFromDate:o.preOpDate]]];
+    [dateLabel setText:[BBUtil formatDate:o.preOpDate]];
     
     return cell;
 }
@@ -66,6 +66,34 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
 
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Operation *op = [_operationArray objectAtIndex:indexPath.row];
+        [_patient removeOperationObject: op];
+        
+        NSManagedObjectContext *context = [_patient managedObjectContext];
+        [context deleteObject:op];
+        
+        NSError *err;
+        if ( ! [context save:&err] ) {
+            [NSException raise:@"DatabaseError" format:@"Context failed to save: %@", [err description]];
+        }
+        
+        [tableView reloadData];
+    }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ( [self.delegate respondsToSelector:@selector(operationSelected:fromPatient:)] ){
+        [self.delegate operationSelected:[_operationArray objectAtIndex:indexPath.row] fromPatient:_patient];
+    }
+}
 
 @end
