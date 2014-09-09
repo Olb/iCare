@@ -491,9 +491,13 @@
                                     <action selector="weight:" destination="Eez-TN-1bS" eventType="touchUpInside" id="wdb-Er-kEt"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Planned Procedure:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNA-PG-6Xf">
-                                <rect key="frame" x="20" y="198" width="160" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planned Procedure:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNA-PG-6Xf">
+                                <rect key="frame" x="20" y="174" width="160" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="XAS-lm-Pwk"/>
+                                    <constraint firstAttribute="height" constant="21" id="Y4b-tJ-mr6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -518,9 +522,13 @@
                                     <action selector="heightUnit:" destination="Eez-TN-1bS" eventType="touchUpInside" id="p67-4Z-SJY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-wm-AQq">
-                                <rect key="frame" x="712" y="197" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vq5-wm-AQq">
+                                <rect key="frame" x="712" y="173" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="03G-Zk-ntf"/>
+                                    <constraint firstAttribute="height" constant="22" id="gi2-VH-EOe"/>
+                                </constraints>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -533,8 +541,43 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OperationsCell" id="Qx1-wp-tqH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OperationHeaderCell" id="5QY-tk-zAn" userLabel="Header">
                                         <rect key="frame" x="0.0" y="22" width="765" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5QY-tk-zAn" id="MAi-gw-eth">
+                                            <rect key="frame" x="0.0" y="0.0" width="765" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebt-gN-CQO">
+                                                    <rect key="frame" x="20" y="12" width="142" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="142" id="xXW-Lo-DGz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4A-eB-P8Z">
+                                                    <rect key="frame" x="541" y="12" width="204" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="204" id="SgY-cd-6BI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="q4A-eB-P8Z" secondAttribute="centerY" id="R1T-mL-pGo"/>
+                                                <constraint firstAttribute="centerY" secondItem="ebt-gN-CQO" secondAttribute="centerY" id="cQR-jC-cTc"/>
+                                                <constraint firstItem="ebt-gN-CQO" firstAttribute="leading" secondItem="MAi-gw-eth" secondAttribute="leading" constant="20" symbolic="YES" id="hnX-qZ-ZZe"/>
+                                                <constraint firstAttribute="trailing" secondItem="q4A-eB-P8Z" secondAttribute="trailing" constant="20" id="z1D-lI-NOz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OperationsCell" id="Qx1-wp-tqH">
+                                        <rect key="frame" x="0.0" y="66" width="765" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qx1-wp-tqH" id="b7W-IP-nmr">
                                             <rect key="frame" x="0.0" y="0.0" width="765" height="43"/>
@@ -590,9 +633,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hiU-Dx-Dzt" customClass="BBAutoCompleteTextField">
-                                <rect key="frame" x="188" y="194" width="516" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hiU-Dx-Dzt" customClass="BBAutoCompleteTextField">
+                                <rect key="frame" x="188" y="170" width="516" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="516" id="Lh5-dy-LvL"/>
+                                    <constraint firstAttribute="height" constant="30" id="V3C-kf-gMX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -601,6 +648,15 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZNA-PG-6Xf" firstAttribute="top" secondItem="ypM-d5-yvw" secondAttribute="bottom" constant="110" id="1kQ-bc-mMy"/>
+                            <constraint firstAttribute="trailing" secondItem="Vq5-wm-AQq" secondAttribute="trailing" constant="34" id="HcH-LJ-WaO"/>
+                            <constraint firstItem="hiU-Dx-Dzt" firstAttribute="leading" secondItem="ZNA-PG-6Xf" secondAttribute="trailing" constant="8" id="OCK-Ff-d6P"/>
+                            <constraint firstItem="hiU-Dx-Dzt" firstAttribute="top" secondItem="ypM-d5-yvw" secondAttribute="bottom" constant="106" id="OkG-Xd-TUk"/>
+                            <constraint firstItem="ZNA-PG-6Xf" firstAttribute="leading" secondItem="YQf-lf-iLe" secondAttribute="leading" constant="20" id="ZDh-pd-OhF"/>
+                            <constraint firstItem="Vq5-wm-AQq" firstAttribute="leading" secondItem="hiU-Dx-Dzt" secondAttribute="trailing" constant="8" id="cgG-Ft-Utd"/>
+                            <constraint firstItem="Vq5-wm-AQq" firstAttribute="top" secondItem="ypM-d5-yvw" secondAttribute="bottom" constant="109" id="quG-d8-tOs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Patient Forms" id="e0o-vl-yBf"/>
                     <connections>

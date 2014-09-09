@@ -44,4 +44,28 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40.0;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // 1. Dequeue the custom header cell
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"OperationHeaderCell"];
+    
+    // 2. Set the various properties
+    UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:12];
+    [nameLabel setText:@"Operation"];
+    
+    UILabel *dateLabel = (UILabel*)[cell.contentView viewWithTag:13];
+    [dateLabel setText:@"PreOp Date"];
+    // 3. And return
+    
+    cell.backgroundColor = [UIColor colorWithRed:52.0/255.0 green:213.0/255.0 blue:186.0/255.0 alpha:255.0/255.0];
+    return cell;
+}
+
+
+
 @end
