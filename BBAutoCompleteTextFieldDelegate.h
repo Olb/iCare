@@ -10,6 +10,8 @@
 
 @interface BBAutoCompleteTextFieldDelegate : NSObject <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
+@property UITextField *autoCompleteTextField;
 - (id)initWithData:(NSArray*)array;
 -(void) setTableViewFrame:(CGRect)rect;
+
 @end

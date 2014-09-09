@@ -14,19 +14,22 @@
 #import "BBDatePickerViewController.h"
 #import "Operation.h"
 #import "BBData.h"
-#import "BBPFilerableSelectableTableViewController.h"
 #import "BBAutoCompleteTextField.h"
+#import "BPBAppDelegate.h"
+#import "BBOperationsTableAdapter.h"
 
-@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate, BBSelectedItemsDelegate>{
+@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate>{
     BBDatePickerViewController *dateContent;
     UIPopoverController *datePopover;
-    BBPatientTableAdapter *patientAdapter;
 }
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 @property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property Operation *operation;
 @property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *operationTextField;
+@property (weak, nonatomic) IBOutlet UITableView *operationTableView;
+@property (strong, nonatomic) BBOperationsTableAdapter *operationTableAdapter;
+@property (strong, nonatomic) BBPatientTableAdapter *patientAdapter;
 
 @end
 
@@ -35,9 +38,14 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    patientAdapter = [[BBPatientTableAdapter alloc] init];
+    _patientAdapter = [[BBPatientTableAdapter alloc] init];
+    _operationTableAdapter = [[BBOperationsTableAdapter alloc] init];
+    _operationTableAdapter.patient = self.patient;
+    _operationTableView.delegate = _operationTableAdapter;
+    _operationTableView.dataSource = _operationTableAdapter;
     
     [_operationTextField setAutoCompleteData:[BBData procedures]];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -49,11 +57,44 @@
 #pragma mark - Actions
 
 - (IBAction)addOperation:(id)sender {
-    BBPFilerableSelectableTableViewController *proceduresViewController = [[BBPFilerableSelectableTableViewController alloc] initWithNibName:@"PopoverTableView" bundle:nil];
-    proceduresViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    proceduresViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    proceduresViewController.delegate = self;
-    [self presentViewController:proceduresViewController animated:YES completion:nil];}
+    
+    NSString *operationNameToSave;
+    for (NSString *s in [BBData procedures]) {
+        if ([self.operationTextField.text caseInsensitiveCompare:s] == NSOrderedSame) {
+            operationNameToSave = s;
+            break;
+        }
+    }
+    if (!operationNameToSave) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Operation"
+                                                            message:@"The operation entered is not a valid operation"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    
+    Operation *operation = [NSEntityDescription insertNewObjectForEntityForName:@"Operation"
+                                                         inManagedObjectContext:context];
+    operation.name = self.operationTextField.text;
+    operation.preOpDate = [NSDate date];
+    
+   
+    
+    [self.patient addOperationObject:operation];
+    
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"ERROR on context save: %@",[error description]);
+        [NSException raise:@"Error on context save" format:@"Message: %@",[error description]];
+    }
+    
+    [self.operationTableView reloadData];
+   
+}
 - (IBAction)preOpDate:(id)sender {
     
 }

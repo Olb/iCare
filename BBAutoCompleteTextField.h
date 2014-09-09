@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BBAutoCompleteTextField : UITextField
-
 -(void) setAutoCompleteData:(NSArray*)data;
 @end

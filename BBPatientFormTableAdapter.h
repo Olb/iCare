@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BBPlannedOperationTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface BBPatientFormTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

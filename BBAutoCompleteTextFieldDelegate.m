@@ -26,6 +26,8 @@
         _autocompleteTableView.delegate = self;
         _autocompleteTableView.dataSource = self;
         _autocompleteTableView.hidden = YES;
+        _autocompleteTableView.layer.borderWidth = 2;
+        _autocompleteTableView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
         _filteredObjects = [[NSMutableArray alloc] initWithArray:_data];
     }
     return self;
@@ -41,9 +43,7 @@
 }
 
 - (void)searchAutocompleteEntriesWithSubstring:(NSString *)substring {
-    
-    // Put anything that starts with this substring into the autocompleteUrls array
-    // The items in this array is what will show up in the table view
+
     [self.filteredObjects removeAllObjects];
     if ( [substring length] == 0 ){
         [self.filteredObjects addObjectsFromArray:_data];
@@ -80,6 +80,11 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40.0f;
+}
+
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.filteredObjects count];
 }
@@ -92,15 +97,26 @@
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AutoCompleteTableViewCell"];
     }
-    
     cell.textLabel.text = [self.filteredObjects objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor blackColor];
+//    
+//    CGFloat labelStartX = cell.contentView.frame
+//    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
     
     return cell;
 }
 
 -(void) setTableViewFrame:(CGRect)rect
 {
+    [[self.autoCompleteTextField superview] addSubview:_autocompleteTableView];
+
     [_autocompleteTableView setFrame:rect];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.autoCompleteTextField.text = [_filteredObjects objectAtIndex:indexPath.row];
+    [self.autoCompleteTextField resignFirstResponder];
 }
 
 @end

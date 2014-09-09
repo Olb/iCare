@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBPlannedOperationTableAdapter.h"
+#import "BBPatientFormTableAdapter.h"
 
-@implementation BBPlannedOperationTableAdapter
+@implementation BBPatientFormTableAdapter
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

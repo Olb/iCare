@@ -44,7 +44,7 @@
 		98FF05F719B0CAF10003129C /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F619B0CAF10003129C /* Practitioner.m */; };
 		98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F919B20D4F0003129C /* BBUtil.m */; };
 		98FF05FE19B226900003129C /* BBPatientTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05FD19B226900003129C /* BBPatientTableAdapter.m */; };
-		98FF060119B245970003129C /* BBPlannedOperationTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* BBPlannedOperationTableAdapter.m */; };
+		98FF060119B245970003129C /* BBPatientFormTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* BBPatientFormTableAdapter.m */; };
 		98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */; };
 		98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060F19BE01F40003129C /* BBAutoCompleteTextField.m */; };
 		F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */; };
@@ -62,6 +62,7 @@
 		F4615D6D192F908E0031470B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D50192F908E0031470B /* UIKit.framework */; };
 		F4615D6E192F908E0031470B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4615D52192F908E0031470B /* CoreData.framework */; };
 		F47FF38B19AE655A00809D30 /* BBAnesthesiaRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47FF38A19AE655A00809D30 /* BBAnesthesiaRecordController.m */; };
+		F48AAEDC19BE1C2D0051A168 /* BBOperationsTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F48AAEDB19BE1C2D0051A168 /* BBOperationsTableAdapter.m */; };
 		F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */; };
 		F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */; };
 		F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB92819ABADD900CA013B /* checkbox_selected.png */; };
@@ -99,10 +100,6 @@
 		F4D901B219B25DEB000E23E4 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D901B119B25DEB000E23E4 /* Operation.m */; };
 		F4D901B519B25DEB000E23E4 /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D901B419B25DEB000E23E4 /* Patient.m */; };
 		F4D901B819B25F94000E23E4 /* BBData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D901B719B25F94000E23E4 /* BBData.m */; };
-		F4D901BD19B26784000E23E4 /* BBPFilerableSelectableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D901BA19B26784000E23E4 /* BBPFilerableSelectableTableViewController.m */; };
-		F4D901BE19B26784000E23E4 /* PopoverTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D901BB19B26784000E23E4 /* PopoverTableView.xib */; };
-		F4D901BF19B26784000E23E4 /* PopoverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D901BC19B26784000E23E4 /* PopoverTableCell.xib */; };
-		F4D901C219B269B4000E23E4 /* BBPopoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D901C119B269B4000E23E4 /* BBPopoverCell.m */; };
 		F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */; };
 		F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF068B19B0BFE300DDBE7E /* LoginViewController.m */; };
 		F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4DF068C19B0BFE300DDBE7E /* LoginViewController.xib */; };
@@ -179,8 +176,8 @@
 		98FF05F919B20D4F0003129C /* BBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUtil.m; sourceTree = "<group>"; };
 		98FF05FC19B226900003129C /* BBPatientTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPatientTableAdapter.h; sourceTree = "<group>"; };
 		98FF05FD19B226900003129C /* BBPatientTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPatientTableAdapter.m; sourceTree = "<group>"; };
-		98FF05FF19B245970003129C /* BBPlannedOperationTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPlannedOperationTableAdapter.h; sourceTree = "<group>"; };
-		98FF060019B245970003129C /* BBPlannedOperationTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPlannedOperationTableAdapter.m; sourceTree = "<group>"; };
+		98FF05FF19B245970003129C /* BBPatientFormTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPatientFormTableAdapter.h; sourceTree = "<group>"; };
+		98FF060019B245970003129C /* BBPatientFormTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPatientFormTableAdapter.m; sourceTree = "<group>"; };
 		98FF060B19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAutoCompleteTextFieldDelegate.h; sourceTree = "<group>"; };
 		98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAutoCompleteTextFieldDelegate.m; sourceTree = "<group>"; };
 		98FF060E19BE01F40003129C /* BBAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAutoCompleteTextField.h; sourceTree = "<group>"; };
@@ -203,6 +200,8 @@
 		F4615D6A192F908E0031470B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F47FF38919AE655A00809D30 /* BBAnesthesiaRecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAnesthesiaRecordController.h; sourceTree = "<group>"; };
 		F47FF38A19AE655A00809D30 /* BBAnesthesiaRecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAnesthesiaRecordController.m; sourceTree = "<group>"; };
+		F48AAEDA19BE1C2D0051A168 /* BBOperationsTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBOperationsTableAdapter.h; sourceTree = "<group>"; };
+		F48AAEDB19BE1C2D0051A168 /* BBOperationsTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBOperationsTableAdapter.m; sourceTree = "<group>"; };
 		F4AFB92319ABABB000CA013B /* BBRespiratoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBRespiratoryViewController.h; sourceTree = "<group>"; };
 		F4AFB92419ABABB000CA013B /* BBRespiratoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBRespiratoryViewController.m; sourceTree = "<group>"; };
 		F4AFB92519ABABB000CA013B /* BBRespiratoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BBRespiratoryViewController.xib; sourceTree = "<group>"; };
@@ -261,12 +260,6 @@
 		F4D901B419B25DEB000E23E4 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		F4D901B619B25F94000E23E4 /* BBData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBData.h; sourceTree = "<group>"; };
 		F4D901B719B25F94000E23E4 /* BBData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBData.m; sourceTree = "<group>"; };
-		F4D901B919B26784000E23E4 /* BBPFilerableSelectableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPFilerableSelectableTableViewController.h; sourceTree = "<group>"; };
-		F4D901BA19B26784000E23E4 /* BBPFilerableSelectableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPFilerableSelectableTableViewController.m; sourceTree = "<group>"; };
-		F4D901BB19B26784000E23E4 /* PopoverTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverTableView.xib; sourceTree = "<group>"; };
-		F4D901BC19B26784000E23E4 /* PopoverTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverTableCell.xib; sourceTree = "<group>"; };
-		F4D901C019B269B4000E23E4 /* BBPopoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPopoverCell.h; sourceTree = "<group>"; };
-		F4D901C119B269B4000E23E4 /* BBPopoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPopoverCell.m; sourceTree = "<group>"; };
 		F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBLinkedStoryBoardSegue.h; path = iCare2/BBLinkedStoryBoardSegue.h; sourceTree = "<group>"; };
 		F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBLinkedStoryBoardSegue.m; path = iCare2/BBLinkedStoryBoardSegue.m; sourceTree = "<group>"; };
 		F4DF068A19B0BFE300DDBE7E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -370,8 +363,10 @@
 			children = (
 				98FF05FC19B226900003129C /* BBPatientTableAdapter.h */,
 				98FF05FD19B226900003129C /* BBPatientTableAdapter.m */,
-				98FF05FF19B245970003129C /* BBPlannedOperationTableAdapter.h */,
-				98FF060019B245970003129C /* BBPlannedOperationTableAdapter.m */,
+				98FF05FF19B245970003129C /* BBPatientFormTableAdapter.h */,
+				98FF060019B245970003129C /* BBPatientFormTableAdapter.m */,
+				F48AAEDA19BE1C2D0051A168 /* BBOperationsTableAdapter.h */,
+				F48AAEDB19BE1C2D0051A168 /* BBOperationsTableAdapter.m */,
 			);
 			name = TableAdapters;
 			sourceTree = "<group>";
@@ -508,12 +503,6 @@
 		F4DF069F19B149AA00DDBE7E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F4D901B919B26784000E23E4 /* BBPFilerableSelectableTableViewController.h */,
-				F4D901BA19B26784000E23E4 /* BBPFilerableSelectableTableViewController.m */,
-				F4D901BB19B26784000E23E4 /* PopoverTableView.xib */,
-				F4D901BC19B26784000E23E4 /* PopoverTableCell.xib */,
-				F4D901C019B269B4000E23E4 /* BBPopoverCell.h */,
-				F4D901C119B269B4000E23E4 /* BBPopoverCell.m */,
 				F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */,
 				F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */,
 				F4AFB96019ABC59E00CA013B /* BBCheckBox.h */,
@@ -656,13 +645,11 @@
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */,
 				F4AFB93519ABB0B600CA013B /* BBHepatoViewController.xib in Resources */,
-				F4D901BE19B26784000E23E4 /* PopoverTableView.xib in Resources */,
 				F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */,
 				F4B5D57919ACD00400174F61 /* BBPlanDiscussionViewController.xib in Resources */,
 				988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */,
 				988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
-				F4D901BF19B26784000E23E4 /* PopoverTableCell.xib in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
 				988D168819AE63A2009A887A /* PersonelViewController.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* BBCardioViewController.xib in Resources */,
@@ -688,7 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				988D166819AE63A2009A887A /* BBPreopActionsViewController.m in Sources */,
-				98FF060119B245970003129C /* BBPlannedOperationTableAdapter.m in Sources */,
+				98FF060119B245970003129C /* BBPatientFormTableAdapter.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* BBPreOpReviewViewController.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
 				F4B5D56E19ACC3E300174F61 /* OverviewViewController.m in Sources */,
@@ -696,10 +683,10 @@
 				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */,
 				F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */,
-				F4D901C219B269B4000E23E4 /* BBPopoverCell.m in Sources */,
 				988D167F19AE63A2009A887A /* IntubationViewController.m in Sources */,
 				F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */,
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
+				F48AAEDC19BE1C2D0051A168 /* BBOperationsTableAdapter.m in Sources */,
 				F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */,
 				F4D901B819B25F94000E23E4 /* BBData.m in Sources */,
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
@@ -709,7 +696,6 @@
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
 				988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */,
-				F4D901BD19B26784000E23E4 /* BBPFilerableSelectableTableViewController.m in Sources */,
 				F47FF38B19AE655A00809D30 /* BBAnesthesiaRecordController.m in Sources */,
 				F4AFB93419ABB0B600CA013B /* BBHepatoViewController.m in Sources */,
 				98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */,

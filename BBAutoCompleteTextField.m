@@ -24,6 +24,8 @@ const int HEIGHT = 200;
     
     CGRect rect = CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height + PADDING, self.frame.size.width, HEIGHT);
     
+    self.autocompleteDelegate.autoCompleteTextField = self;
+
     [self.autocompleteDelegate setTableViewFrame:rect];
     self.delegate = self.autocompleteDelegate;
 }

@@ -73,7 +73,7 @@
     }
     
     
-    Patient *patient =[NSEntityDescription insertNewObjectForEntityForName:@"Patient"
+    Patient *patient = [NSEntityDescription insertNewObjectForEntityForName:@"Patient"
                                                               inManagedObjectContext:context];
     patient.firstName = self.firstNameTextField.text;
     patient.lastName = self.lastNameTextField.text;
