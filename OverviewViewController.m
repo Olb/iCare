@@ -7,8 +7,16 @@
 //
 
 #import "OverviewViewController.h"
+#import "BBCheckBox.h"
 
 @interface OverviewViewController ()
+@property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockerCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *medicalSuplimentsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pastSurgicalProceduresTextField;
+@property (weak, nonatomic) IBOutlet UITextField *alergicReactionsTextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *anesthProblemsNoneCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *anesthProblemsPatientCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *anesthProblemsFamilyCheckBox;
 
 @end
 
@@ -37,5 +45,13 @@
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)addMedicalSupliment:(id)sender {
+}
+- (IBAction)addPastSurgicalProcedure:(id)sender {
+}
+- (IBAction)addAlergicReaction:(id)sender {
+}
 
+- (IBAction)hxAnesthProblems:(id)sender {
+}
 @end

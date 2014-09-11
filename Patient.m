@@ -2,7 +2,7 @@
 //  Patient.m
 //  iCare2
 //
-//  Created by billy bray on 8/30/14.
+//  Created by Bogdan Marinescu on 9/12/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic medicalRecordNumber;
-@dynamic operation;
+@dynamic operations;
 @dynamic practitioner;
 
 @end

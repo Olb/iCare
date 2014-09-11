@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BBPreopActionsViewController">
             <connections>
+                <outlet property="checkConsentsCheckBox" destination="TGm-s9-AMx" id="8qN-lv-zne"/>
+                <outlet property="otherActionsTable" destination="kp5-bd-g2b" id="LiQ-1V-lgi"/>
+                <outlet property="otherTextField" destination="Thh-8v-fdk" id="5KU-Uu-Pti"/>
+                <outlet property="satrtIvCheckBox" destination="1uw-yH-qAf" id="rbp-4C-V6E"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -32,6 +36,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="UHj-7x-zBn"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anesthesia PreOp time used to:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1p-5p-zqF">
                     <rect key="frame" x="20" y="70" width="243" height="21"/>
@@ -53,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Other" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thh-8v-fdk">
-                    <rect key="frame" x="81" y="221" width="396" height="30"/>
+                    <rect key="frame" x="40" y="220" width="428" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -90,22 +97,21 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFw-o8-V3l" customClass="BBCheckBox">
-                    <rect key="frame" x="40" y="220" width="33" height="32"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftQ-9o-uJq">
+                    <rect key="frame" x="476" y="224" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <bool key="isElement" value="NO"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="checkbox_unselected.png">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="checkbox_selected.png"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
-                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addOtherAction:" destination="-1" eventType="touchUpInside" id="iB1-TS-U3U"/>
+                    </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kp5-bd-g2b">
+                    <rect key="frame" x="40" y="270" width="458" height="221"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

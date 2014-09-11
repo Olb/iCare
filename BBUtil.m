@@ -8,6 +8,7 @@
 
 #import "BBUtil.h"
 #import <CommonCrypto/CommonHMAC.h>
+#import "BPBAppDelegate.h"
 
 @implementation BBUtil
 
@@ -48,6 +49,14 @@
     [format setDateFormat:@"HH:mm"];
     
     return [format stringFromDate:date];
+}
+
++(id) newCoreDataObjectForEntityName:(NSString*)name{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    
+    return [NSEntityDescription insertNewObjectForEntityForName:name
+                                         inManagedObjectContext:context];
 }
 
 @end

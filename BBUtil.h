@@ -10,8 +10,9 @@
 
 @interface BBUtil : NSObject
 
-+(NSString*) sha256:(NSString *)clear;
-+(void)showAlertWithMessage:(NSString *)message;
++ (NSString*) sha256:(NSString *)clear;
++ (void)showAlertWithMessage:(NSString *)message;
 + (NSString*) formatTime:(NSDate*)date;
 + (NSString*) formatDate:(NSDate*)date;
++ (id) newCoreDataObjectForEntityName:(NSString*)name;
 @end
