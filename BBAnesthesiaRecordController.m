@@ -25,6 +25,7 @@
 #import "SpinalAnesthesiaViewController.h"
 #import "IntubationViewController.h"
 #import "Patient.h"
+#import "Operation.h"
 
 @interface BBAnesthesiaRecordController ()
 
@@ -49,7 +50,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     //self.navigationItem.backBarButtonItem.title = @"Forms";
-    self.navigationItem.title = [NSString stringWithFormat:@"Anesthesia Evaluation Record - %@, %@", self.patient.lastName, self.patient.firstName];
+    self.navigationItem.title = [NSString stringWithFormat:@"Anesthesia Evaluation Record - %@, %@", self.operation.patient.lastName, self.operation.patient.firstName];
 
 }
 

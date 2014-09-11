@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *operationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *operationTableView;
 @property (weak, nonatomic) IBOutlet UILabel *operationTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *operationBackgroundView;
 
 @property (strong, nonatomic) BBOperationsTableAdapter *operationTableAdapter;
 @property (strong, nonatomic) BBPatientFormTableAdapter *patientAdapter;
@@ -45,7 +46,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _operationBackgroundView.hidden = YES;
     _operationTableAdapter = [[BBOperationsTableAdapter alloc] init];
     _operationTableAdapter.patient = self.patient;
     _operationTableAdapter.delegate = self;
@@ -133,11 +134,11 @@
 
     if ([[segue identifier] isEqualToString:@"FormsToPreOpEvalSegue"]) {
         BBPreOpEvalTableTableViewController *vc = [segue destinationViewController];
-        vc.patient = self.patient;
+        vc.operation = self.selectedOperation;
     }
     if ([[segue identifier] isEqualToString:@"PatientFormsToAnesthesiaRecordSegue"]) {
         BBAnesthesiaRecordController *vc = [segue destinationViewController];
-        vc.patient = self.patient;
+        vc.operation = self.selectedOperation;
 
     }
 }
@@ -172,11 +173,18 @@
 
 }
 
-
+#pragma mark - Delegate methods
 -(void) operationSelected:(Operation*)operation fromPatient:(Patient*)patient
 {
     self.selectedOperation = operation;
     [self updateOperationView];
+}
+
+-(void) operationDeleted:(Operation*)operation
+{
+    if (operation == self.selectedOperation) {
+        self.operationBackgroundView.hidden = YES;
+    }
 }
 
 -(void) updateOperationView
@@ -184,14 +192,27 @@
     [self.preOpDateButton setTitle:[BBUtil formatDate:_selectedOperation.preOpDate] forState:UIControlStateNormal];
     [self.preOpTimeLabel setTitle:[BBUtil formatTime:_selectedOperation.preOpDate] forState:UIControlStateNormal];
     
-    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSDayCalendarUnit
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSYearCalendarUnit
                                                  fromDate: _patient.birthdate toDate: _selectedOperation.preOpDate options: 0];
     NSString *age = [NSString stringWithFormat:@"%d", [components year]];
     
     [self.ageLabel setText:age];
-    [self.weightButton setTitle:_selectedOperation.weight forState:UIControlStateNormal];
-    [self.heightButton setTitle:_selectedOperation.height forState:UIControlStateNormal];
-    
+    NSString *weight;
+    NSString *height;
+    if (!_selectedOperation.weight || [_selectedOperation.weight isEqual:@""]) {
+        weight = @"##";
+    } else {
+        weight = _selectedOperation.weight;
+    }
+    if (!_selectedOperation.height || [_selectedOperation.height isEqual:@""]) {
+        height = @"##";
+    } else {
+        height = _selectedOperation.height;
+    }
+    [self.weightButton setTitle:weight forState:UIControlStateNormal];
+    [self.heightButton setTitle:height forState:UIControlStateNormal];
+    self.operationTitleLabel.text = self.selectedOperation.name;
+    self.operationBackgroundView.hidden = NO;
     
 }
 

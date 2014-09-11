@@ -12,6 +12,7 @@
 
 @protocol BBOperationSelectedDelegate <NSObject>
 -(void) operationSelected:(Operation*)operation fromPatient:(Patient*)patient;
+-(void) operationDeleted:(Operation*)operation;
 @end
 
 @interface BBOperationsTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>

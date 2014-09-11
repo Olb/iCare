@@ -86,6 +86,9 @@
         }
         
         [tableView reloadData];
+        if ([self.delegate respondsToSelector:@selector(operationDeleted:)]) {
+            [self.delegate operationDeleted:op];
+        }
     }
 }
 

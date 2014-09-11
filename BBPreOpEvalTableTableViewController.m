@@ -20,7 +20,9 @@
 #import "BBDaignosticStudiesViewController.h"
 #import "BBPlanDiscussionViewController.h"
 #import "BBPreOpReviewViewController.h"
+#import "Operation.h"
 #import "Patient.h"
+
 @interface BBPreOpEvalTableTableViewController ()
 
 @end
@@ -43,7 +45,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
-    self.navigationItem.title = [NSString stringWithFormat:@"PreOperative Evaluation - %@, %@", self.patient.lastName, self.patient.firstName];
+    self.navigationItem.title = [NSString stringWithFormat:@"PreOperative Evaluation - %@, %@", self.operation.patient.lastName, self.operation.patient.firstName];
 
 }
 
