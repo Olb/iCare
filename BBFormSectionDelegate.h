@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class FormSection;
 @protocol BBFormSectionDelegate <NSObject>
-
+-(void)sectionCreated:(FormSection*)formSection;
 @end

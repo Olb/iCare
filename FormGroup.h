@@ -30,4 +30,5 @@
 - (void)removeElementsObject:(FormElement *)value;
 - (void)addElements:(NSOrderedSet *)values;
 - (void)removeElements:(NSOrderedSet *)values;
+-(FormElement*)getElementForKey:(NSString *)key;
 @end

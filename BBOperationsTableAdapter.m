@@ -18,8 +18,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    _operationArray = [self.patient.operation allObjects];
-    return [self.patient.operation count];
+    _operationArray = [self.patient.operations allObjects];
+    return [self.patient.operations count];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,7 +75,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Operation *op = [_operationArray objectAtIndex:indexPath.row];
-        [_patient removeOperationObject: op];
+        [_patient removeOperationsObject: op];
         
         NSManagedObjectContext *context = [_patient managedObjectContext];
         [context deleteObject:op];

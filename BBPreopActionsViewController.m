@@ -13,8 +13,11 @@
 #import "FormElement.h"
 #import "FormGroup.h"
 #import "BooleanFormElement.h"
-
-const NSString *SECTION_TITLE = @"Anesthesia PreOp time used to";
+#import "StringListElement.h"
+NSString *const SECTION_TITLE = @"Anesthesia PreOp time used to";
+NSString *const CONSENT_KEY = @"Check consents and review chart/plan with Pt";
+NSString *const START_IV_KEY = @"Start IV";
+NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 
 @interface BBPreopActionsViewController ()
 @property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsCheckBox;
@@ -29,9 +32,19 @@ const NSString *SECTION_TITLE = @"Anesthesia PreOp time used to";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (_section){
+    
+    [self validateSection:_section];
+}
+
+-(void)validateSection:(FormSection*)section
+{
+    if (_section) {
         NSAssert([SECTION_TITLE isEqualToString:self.section.title], @"Invalid section title");
-        
+        NSAssert([_section.groups count] == 1, @"Invalid number of groups");
+        FormGroup *group = [_section.groups firstObject];
+        NSAssert([group getElementForKey:CONSENT_KEY]!= nil, @"Consent Element nil");
+        NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"Start IV Element nil");
+        NSAssert([group getElementForKey:OTHER_PREOP_ACTIONS]!= nil, @"Other Actions Element nil");
     }
 }
 
@@ -59,7 +72,34 @@ const NSString *SECTION_TITLE = @"Anesthesia PreOp time used to";
         [self.section addGroupsObject:group];
     }
     
-    BooleanFormElement *checkConsents = [group getElementForKey:@"Check consents and review chart/plan with Pt"];
+    BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CONSENT_KEY];
+    if (!checkConsents) {
+        checkConsents = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+        [group addElementsObject:checkConsents];
+    }
+    checkConsents.value = [NSNumber numberWithBool:self.checkConsentsCheckBox.isSelected];
+    
+    BooleanFormElement *startIV = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
+    if (!startIV) {
+        startIV = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+        [group addElementsObject:startIV];
+    }
+    startIV.value = [NSNumber numberWithBool:self.satrtIvCheckBox.isSelected];
+    
+    StringListElement *stringListElement = (StringListElement*)[group getElementForKey:OTHER_PREOP_ACTIONS];
+    if (!stringListElement) {
+        stringListElement = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
+        [group addElementsObject:stringListElement];
+    }
+    
+    NSMutableArray *stringArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [self.otherActionsTable numberOfRowsInSection:0]; i++) {
+        UITableViewCell *cell = [self.otherActionsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        [stringArray addObject:cell.textLabel.text];
+    }
+    stringListElement.value = stringArray;
+    
+    [self.delegate sectionCreated:self.section];
 }
 
 @end

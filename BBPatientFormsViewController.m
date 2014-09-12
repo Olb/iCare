@@ -98,7 +98,7 @@
     operation.name = self.operationTextField.text;
     operation.preOpDate = [NSDate date];
     
-    [self.patient addOperationObject:operation];
+    [self.patient addOperationsObject:operation];
     
     NSError *error;
     if (![context save:&error]) {

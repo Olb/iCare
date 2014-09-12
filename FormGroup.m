@@ -16,5 +16,14 @@
 @dynamic heading;
 @dynamic section;
 @dynamic elements;
-
+-(FormElement*)getElementForKey:(NSString *)key
+{
+    
+    for (FormElement* e in self.elements) {
+        if ([e.key isEqualToString:key]) {
+            return e;
+        }
+    }
+    return nil;
+}
 @end
