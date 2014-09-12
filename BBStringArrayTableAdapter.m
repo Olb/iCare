@@ -44,8 +44,8 @@
         [self.items removeObjectAtIndex:indexPath.row];
         
         [tableView reloadData];
-        if ([self.delegate respondsToSelector:@selector(itemDeleted:)]) {
-            [self.delegate itemDeleted:deletedString];
+        if ([self.delegate respondsToSelector:@selector(itemDeleted:atIndexPathRow:)]) {
+            [self.delegate itemDeleted:deletedString  atIndexPathRow:indexPath.row];
         }
     }
 }

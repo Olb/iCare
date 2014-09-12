@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Operation;
+@class Form;
 @interface BBAnesthesiaRecordController : UITableViewController
-@property Operation *operation;
+@property Form *form;
 @end

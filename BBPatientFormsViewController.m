@@ -18,6 +18,7 @@
 #import "BPBAppDelegate.h"
 #import "BBOperationsTableAdapter.h"
 #import "BBUtil.h"
+#import "Form.h"
 
 @interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate>{
     BBDatePickerViewController *dateContent;
@@ -138,8 +139,17 @@
     }
     if ([[segue identifier] isEqualToString:@"PatientFormsToAnesthesiaRecordSegue"]) {
         BBAnesthesiaRecordController *vc = [segue destinationViewController];
-        vc.operation = self.selectedOperation;
-
+        for (Form *f in self.selectedOperation.forms) {
+            if ([f.title isEqualToString:@"AnesthesiaRecord"]) {
+                vc.form = f;
+            }
+        }
+        if (!vc.form) {
+            Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
+            f.title = @"AnesthesiaRecord";
+            [self.selectedOperation addFormsObject:f];
+            vc.form = f;
+        }
     }
 }
 

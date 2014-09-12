@@ -17,4 +17,11 @@
 @dynamic groups;
 @dynamic form;
 
+- (void)addGroupsObject:(FormGroup *)value
+{
+    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.groups];
+    [tempSet addObject:value];
+    self.groups = tempSet;
+}
+
 @end

@@ -26,31 +26,23 @@
 #import "IntubationViewController.h"
 #import "Patient.h"
 #import "Operation.h"
+#import "BBFormSectionDelegate.h"
+#import "BPBAppDelegate.h"
+#import "Form.h"
 
-@interface BBAnesthesiaRecordController ()
+NSString *const SECTION_TITLE2 = @"Anesthesia PreOp time used to";
+
+@interface BBAnesthesiaRecordController ()<BBFormSectionDelegate>
 
 @end
 
 @implementation BBAnesthesiaRecordController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    //self.navigationItem.backBarButtonItem.title = @"Forms";
-    self.navigationItem.title = [NSString stringWithFormat:@"Anesthesia Evaluation Record - %@, %@", self.operation.patient.lastName, self.operation.patient.firstName];
+    self.navigationItem.title = [NSString stringWithFormat:@"Anesthesia Evaluation Record - %@, %@", self.form.operation.patient.lastName, self.form.operation.patient.firstName];
 
 }
 
@@ -96,6 +88,12 @@
     switch (cell.tag) {
         case 0:
             vc = [[BBPreopActionsViewController alloc] init];
+            ((BBPreopActionsViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:SECTION_TITLE2]) {
+                    ((BBPreopActionsViewController*)vc).section = s;
+                }
+            }
             break;
         case 1:
             vc = [[PremedsGivenViewController alloc] init];
@@ -151,7 +149,6 @@
     
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
-    // "self" is the parent ViewController
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -214,5 +211,33 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - FormSectionDelegate Methods
+-(void)sectionCreated:(FormSection*)formSection
+{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    
+    if (![self.form.sections containsObject:formSection]) {
+        [self.form addSectionsObject:formSection];
+    } else {
+        [context refreshObject:formSection mergeChanges:YES];
+    }
+    
+    NSError *error = nil;
+    if (![context save:&error]) {
+        [self showAlertWithMessage:@"Error saving form"];
+    }
+    
+}
+
+- (void)showAlertWithMessage:(NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iCare"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 @end

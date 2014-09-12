@@ -9,6 +9,8 @@
 #import "BBUtil.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import "BPBAppDelegate.h"
+#import "Form.h"
+#import "Operation.h"
 
 @implementation BBUtil
 

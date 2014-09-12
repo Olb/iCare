@@ -2,7 +2,7 @@
 //  Form.h
 //  iCare2
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 9/12/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface Form : NSManagedObject
 
-@property (nonatomic, retain) NSOrderedSet *sections;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) Operation *operation;
+@property (nonatomic, retain) NSOrderedSet *sections;
 @end
 
 @interface Form (CoreDataGeneratedAccessors)

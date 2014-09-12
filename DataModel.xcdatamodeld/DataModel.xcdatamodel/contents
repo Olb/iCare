@@ -4,6 +4,7 @@
         <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="Form" representedClassName="Form" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="forms" inverseEntity="Operation" syncable="YES"/>
         <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormSection" inverseName="form" inverseEntity="FormSection" syncable="YES"/>
     </entity>
@@ -55,15 +56,15 @@
         <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BooleanFormElement" positionX="-18" positionY="-45" width="128" height="58"/>
-        <element name="Form" positionX="126" positionY="-18" width="128" height="73"/>
-        <element name="FormElement" positionX="-27" positionY="-54" width="128" height="73"/>
-        <element name="FormGroup" positionX="-36" positionY="-63" width="128" height="88"/>
-        <element name="FormSection" positionX="-45" positionY="-72" width="128" height="88"/>
-        <element name="IntraOp" positionX="-9" positionY="-36" width="128" height="58"/>
-        <element name="Operation" positionX="-54" positionY="-108" width="128" height="148"/>
-        <element name="Patient" positionX="63" positionY="-225" width="128" height="150"/>
-        <element name="Practitioner" positionX="205" positionY="-45" width="128" height="150"/>
-        <element name="StringListElement" positionX="72" positionY="-72" width="128" height="58"/>
+        <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
+        <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
+        <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
+        <element name="FormGroup" positionX="-119" positionY="-304" width="128" height="88"/>
+        <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
+        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="58"/>
+        <element name="Operation" positionX="-281" positionY="-504" width="128" height="148"/>
+        <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
+        <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
+        <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
     </elements>
 </model>

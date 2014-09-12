@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @protocol BBStringArrayTableDelegate <NSObject>
+@optional
 -(void) itemSelected:(NSString*)item;
--(void) itemDeleted:(NSString*)item;
+-(void) itemDeleted:(NSString*)item atIndexPathRow:(NSInteger)row;
 @end
 @interface BBStringArrayTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property NSMutableArray *items;
