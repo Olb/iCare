@@ -239,5 +239,18 @@ NSString *const SECTION_TITLE2 = @"Anesthesia PreOp time used to";
                                           otherButtonTitles:nil];
     [alert show];
 }
+// TODO
+-(void)setTableViewAccessoryForIndexPath:(NSIndexPath*)indexPath to:(BOOL)complete
+{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if(complete)
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+}
 
 @end

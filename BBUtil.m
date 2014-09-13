@@ -61,4 +61,14 @@
                                          inManagedObjectContext:context];
 }
 
++(void)saveContext
+{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSError *error = nil;
+    if (![context save:&error]) {
+        NSAssert(error == nil, @"Could not save context");
+    }
+}
+
 @end

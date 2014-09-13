@@ -138,4 +138,8 @@
     return YES;
 }
 
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
 @end

@@ -11,7 +11,6 @@
 #import "BBPreOpEvalTableTableViewController.h"
 #import "BBAnesthesiaRecordController.h"
 #import "BBPatientFormTableAdapter.h"
-#import "BBDatePickerViewController.h"
 #import "Operation.h"
 #import "BBData.h"
 #import "BBAutoCompleteTextField.h"
@@ -19,11 +18,12 @@
 #import "BBOperationsTableAdapter.h"
 #import "BBUtil.h"
 #import "Form.h"
+#import "BBWeightPickerView.h"
+#import "BBWeightPickerAdapter.h"
 
-@interface BBPatientFormsViewController () <BBDatePickerViewControllerDelegate>{
-    BBDatePickerViewController *dateContent;
-    UIPopoverController *datePopover;
-}
+const float POUND_MULTIPLIER = 2.20462262f;
+
+@interface BBPatientFormsViewController () 
 @property (weak, nonatomic) IBOutlet UIButton *preOpDateButton;
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 @property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
@@ -34,11 +34,15 @@
 @property (weak, nonatomic) IBOutlet UITableView *operationTableView;
 @property (weak, nonatomic) IBOutlet UILabel *operationTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *operationBackgroundView;
-
+@property (weak, nonatomic) IBOutlet UIPickerView *weightPicker;
+@property (strong, nonatomic) IBOutlet UIView *weightPopoverView;
 @property (strong, nonatomic) BBOperationsTableAdapter *operationTableAdapter;
 @property (strong, nonatomic) BBPatientFormTableAdapter *patientAdapter;
-
+@property (nonatomic) BOOL useKG;
 @property Operation *selectedOperation;
+@property (weak, nonatomic) IBOutlet UIButton *weightUnitButton;
+@property (strong, nonatomic) BBWeightPickerAdapter *weightPickerAdapter;
+@property (weak, nonatomic) IBOutlet UIButton *heightUnitButton;
 
 @end
 
@@ -47,6 +51,9 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+     _weightPickerAdapter = [[BBWeightPickerAdapter alloc] init];
+    _useKG = YES;
+    
     _operationBackgroundView.hidden = YES;
     _operationTableAdapter = [[BBOperationsTableAdapter alloc] init];
     _operationTableAdapter.patient = self.patient;
@@ -112,17 +119,49 @@
    
 }
 - (IBAction)preOpDate:(id)sender {
-    
+   
 }
 - (IBAction)preOpTime:(id)sender {
 }
 - (IBAction)height:(id)sender {
 }
 - (IBAction)heightUnit:(id)sender {
+    
 }
 - (IBAction)weight:(id)sender {
+    [[NSBundle mainBundle] loadNibNamed:@"WeightPicker" owner:self options:nil];
+    self.weightPopoverView.center = self.view.center;
+    
+    [self.view addSubview:self.weightPopoverView];
+    _weightPicker.dataSource = _weightPickerAdapter;
+    _weightPicker.delegate = _weightPickerAdapter;
+    if (!self.selectedOperation.weight) {
+        [self.weightPicker selectRow:100 inComponent:1 animated:NO];
+    } else {
+        int div = 100;
+        for (int i = 0; i < 3 ; i++) {
+            [self.weightPicker selectRow:([self.selectedOperation.weight intValue]/div) inComponent:i animated:NO];
+            div = div / 10;
+        }
+        [self.weightPicker selectRow:floor([self.selectedOperation.weight floatValue]) inComponent:4 animated:NO];
+        
+        if (self.useKG) {
+            [self.weightPicker selectRow:0 inComponent:5 animated:NO];
+        } else {
+            [self.weightPicker selectRow:1 inComponent:5 animated:NO];
+        }
+    }
+    
 }
-- (IBAction)weightUnit:(id)sender {
+- (IBAction)weightUnit:(UIButton*)sender {
+    self.useKG = !self.useKG;
+    if (self.useKG) {
+        [sender setTitle:@"kg" forState:UIControlStateNormal];
+    } else {
+        [sender setTitle:@"lb" forState:UIControlStateNormal];
+    }
+    
+    [self updateOperationView];
 }
 
 
@@ -151,36 +190,6 @@
             vc.form = f;
         }
     }
-}
-
--(void)didSaveDateValues:(NSDate *)date {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd/yyyy"];
-    NSString *stringFromDate = [formatter stringFromDate:date];
-
-}
-
--(void)setupDatePopoverRect:(id)sender {
-    CGRect location = CGRectMake(self.view.center.x, ((UITextField *)sender).frame.origin.y, 100, 100);
-    [self setupDatePickerPopover:location];
-}
-
--(void)setupDatePickerPopover:(CGRect)rect {
-    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
-                                                               bundle:nil];
-    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
-    dateContent.date = [NSDate date];
-    dateContent.datePopoverController = datePopover;
-    dateContent.delegate = self;
-    [datePopover presentPopoverFromRect:rect
-                                 inView:self.view
-               permittedArrowDirections:UIPopoverArrowDirectionAny
-                               animated:YES];
-}
-
-
--(void)didSaveValues:(NSArray*)values{
-
 }
 
 #pragma mark - Delegate methods
@@ -212,7 +221,12 @@
     if (!_selectedOperation.weight || [_selectedOperation.weight isEqual:@""]) {
         weight = @"##";
     } else {
-        weight = _selectedOperation.weight;
+        if (self.useKG) {
+            weight = _selectedOperation.weight;
+        } else {
+            weight = [NSString stringWithFormat:@"%.0f",[_selectedOperation.weight intValue]*POUND_MULTIPLIER];
+        }
+        
     }
     if (!_selectedOperation.height || [_selectedOperation.height isEqual:@""]) {
         height = @"##";
@@ -225,5 +239,56 @@
     self.operationBackgroundView.hidden = NO;
     
 }
+
+#pragma mark - Popovers
+- (IBAction)cancelWeight:(id)sender {
+    [self.weightPopoverView removeFromSuperview];
+}
+
+- (IBAction)saveWeight:(id)sender {
+    NSMutableString *weightString = [[NSMutableString alloc] init];
+
+    if ([self.weightPicker selectedRowInComponent:5] == 0) {
+        for (int i = 0; i < 3 ; i++) {
+            [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:i]]];
+        }
+        [weightString appendString:@"."];
+        [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:4]]];
+        self.selectedOperation.weight = [NSString stringWithFormat:@"%.1f", [weightString floatValue]];
+        
+    } else {
+        for (int i = 0; i < 3 ; i++) {
+            [weightString appendString:self.selectedOperation.weight = [NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:i]]];
+        }
+        [weightString appendString:@"."];
+        [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:4]]];
+        
+        float lbValue = [weightString floatValue];
+        self.selectedOperation.weight = [NSString stringWithFormat:@"%.1f", (lbValue / POUND_MULTIPLIER)];
+    }
+    
+    [self updateOperationView];
+    [BBUtil saveContext];
+    [self.weightPopoverView removeFromSuperview];
+}
+
+- (IBAction)kgTogglePopover:(UIButton*)sender {
+    self.useKG = !self.useKG;
+    if (self.useKG) {
+        [sender setTitle:@"kg" forState:UIControlStateNormal];
+        NSInteger lbAmount = [self.weightPicker selectedRowInComponent:0];
+        NSInteger kgAmount = (lbAmount/POUND_MULTIPLIER)+1;
+        [self.weightPicker selectRow:kgAmount inComponent:0 animated:NO];
+    } else {
+        [sender setTitle:@"lb" forState:UIControlStateNormal];
+        NSInteger kgAmount = [self.weightPicker selectedRowInComponent:0];
+        NSInteger lbAmount = (kgAmount*POUND_MULTIPLIER)-1;
+        [self.weightPicker selectRow:lbAmount inComponent:0 animated:NO];
+    }
+    [self.weightPicker reloadAllComponents];
+}
+     
+     
+
 
 @end

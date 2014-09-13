@@ -14,6 +14,18 @@
 		28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2819C35FA100B2A0C6 /* BooleanFormElement.m */; };
 		28CCCB2C19C35FA100B2A0C6 /* FormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2B19C35FA100B2A0C6 /* FormSection.m */; };
 		28CCCB2F19C38BD700B2A0C6 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2E19C38BD700B2A0C6 /* Form.m */; };
+		28CCCB3219C3A00200B2A0C6 /* BPBPatientBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB3119C3A00200B2A0C6 /* BPBPatientBioViewController.m */; };
+		28CCCB3419C3A14700B2A0C6 /* DatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CCCB3319C3A14700B2A0C6 /* DatePicker.xib */; };
+		28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CCCB3519C3A15000B2A0C6 /* TimePicker.xib */; };
+		28CCCB3819C3A15D00B2A0C6 /* Birthdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CCCB3719C3A15D00B2A0C6 /* Birthdate.xib */; };
+		28CCCB3C19C3A2C200B2A0C6 /* HeightPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CCCB3B19C3A2C200B2A0C6 /* HeightPicker.xib */; };
+		28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CCCB3D19C3A2D000B2A0C6 /* WeightPicker.xib */; };
+		28CCCB4119C3A87E00B2A0C6 /* BBDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4019C3A87E00B2A0C6 /* BBDatePickerView.m */; };
+		28CCCB4419C3A88A00B2A0C6 /* BBTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4319C3A88A00B2A0C6 /* BBTimePickerView.m */; };
+		28CCCB4719C3A8A000B2A0C6 /* BBBirthdatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4619C3A8A000B2A0C6 /* BBBirthdatePickerView.m */; };
+		28CCCB4A19C3A8AB00B2A0C6 /* BBHeightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4919C3A8AB00B2A0C6 /* BBHeightPickerView.m */; };
+		28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */; };
+		28CCCB5019C3C55C00B2A0C6 /* BBWeightPickerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */; };
 		985B835B19C1FBA9007DF484 /* BBStringArrayTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B835A19C1FBA9007DF484 /* BBStringArrayTableAdapter.m */; };
 		985B838619C24E1E007DF484 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B838519C24E1E007DF484 /* IntraOp.m */; };
 		985B839219C24E1F007DF484 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B839119C24E1F007DF484 /* Operation.m */; };
@@ -141,6 +153,25 @@
 		28CCCB2B19C35FA100B2A0C6 /* FormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormSection.m; sourceTree = "<group>"; };
 		28CCCB2D19C38BD700B2A0C6 /* Form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Form.h; sourceTree = "<group>"; };
 		28CCCB2E19C38BD700B2A0C6 /* Form.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Form.m; sourceTree = "<group>"; };
+		28CCCB3019C3A00200B2A0C6 /* BPBPatientBioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBPatientBioViewController.h; sourceTree = "<group>"; };
+		28CCCB3119C3A00200B2A0C6 /* BPBPatientBioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPBPatientBioViewController.m; sourceTree = "<group>"; };
+		28CCCB3319C3A14700B2A0C6 /* DatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePicker.xib; sourceTree = "<group>"; };
+		28CCCB3519C3A15000B2A0C6 /* TimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePicker.xib; sourceTree = "<group>"; };
+		28CCCB3719C3A15D00B2A0C6 /* Birthdate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Birthdate.xib; sourceTree = "<group>"; };
+		28CCCB3B19C3A2C200B2A0C6 /* HeightPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightPicker.xib; sourceTree = "<group>"; };
+		28CCCB3D19C3A2D000B2A0C6 /* WeightPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightPicker.xib; sourceTree = "<group>"; };
+		28CCCB3F19C3A87E00B2A0C6 /* BBDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDatePickerView.h; sourceTree = "<group>"; };
+		28CCCB4019C3A87E00B2A0C6 /* BBDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDatePickerView.m; sourceTree = "<group>"; };
+		28CCCB4219C3A88A00B2A0C6 /* BBTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTimePickerView.h; sourceTree = "<group>"; };
+		28CCCB4319C3A88A00B2A0C6 /* BBTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTimePickerView.m; sourceTree = "<group>"; };
+		28CCCB4519C3A8A000B2A0C6 /* BBBirthdatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBirthdatePickerView.h; sourceTree = "<group>"; };
+		28CCCB4619C3A8A000B2A0C6 /* BBBirthdatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBirthdatePickerView.m; sourceTree = "<group>"; };
+		28CCCB4819C3A8AB00B2A0C6 /* BBHeightPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightPickerView.h; sourceTree = "<group>"; };
+		28CCCB4919C3A8AB00B2A0C6 /* BBHeightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightPickerView.m; sourceTree = "<group>"; };
+		28CCCB4B19C3A8B800B2A0C6 /* BBWeightPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWeightPickerView.h; sourceTree = "<group>"; };
+		28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWeightPickerView.m; sourceTree = "<group>"; };
+		28CCCB4E19C3C55C00B2A0C6 /* BBWeightPickerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWeightPickerAdapter.h; sourceTree = "<group>"; };
+		28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWeightPickerAdapter.m; sourceTree = "<group>"; };
 		985B835919C1FBA9007DF484 /* BBStringArrayTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBStringArrayTableAdapter.h; sourceTree = "<group>"; };
 		985B835A19C1FBA9007DF484 /* BBStringArrayTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBStringArrayTableAdapter.m; sourceTree = "<group>"; };
 		985B836519C24236007DF484 /* BBFormSectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBFormSectionDelegate.h; sourceTree = "<group>"; };
@@ -544,6 +575,11 @@
 		F4DF069F19B149AA00DDBE7E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				28CCCB3319C3A14700B2A0C6 /* DatePicker.xib */,
+				28CCCB3519C3A15000B2A0C6 /* TimePicker.xib */,
+				28CCCB3719C3A15D00B2A0C6 /* Birthdate.xib */,
+				28CCCB3B19C3A2C200B2A0C6 /* HeightPicker.xib */,
+				28CCCB3D19C3A2D000B2A0C6 /* WeightPicker.xib */,
 				985B836519C24236007DF484 /* BBFormSectionDelegate.h */,
 				F4DEA449193E565C006B0FFA /* BBLinkedStoryBoardSegue.h */,
 				F4DEA44A193E565C006B0FFA /* BBLinkedStoryBoardSegue.m */,
@@ -557,6 +593,18 @@
 				98FF060C19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m */,
 				98FF060E19BE01F40003129C /* BBAutoCompleteTextField.h */,
 				98FF060F19BE01F40003129C /* BBAutoCompleteTextField.m */,
+				28CCCB3019C3A00200B2A0C6 /* BPBPatientBioViewController.h */,
+				28CCCB3119C3A00200B2A0C6 /* BPBPatientBioViewController.m */,
+				28CCCB3F19C3A87E00B2A0C6 /* BBDatePickerView.h */,
+				28CCCB4019C3A87E00B2A0C6 /* BBDatePickerView.m */,
+				28CCCB4219C3A88A00B2A0C6 /* BBTimePickerView.h */,
+				28CCCB4319C3A88A00B2A0C6 /* BBTimePickerView.m */,
+				28CCCB4519C3A8A000B2A0C6 /* BBBirthdatePickerView.h */,
+				28CCCB4619C3A8A000B2A0C6 /* BBBirthdatePickerView.m */,
+				28CCCB4819C3A8AB00B2A0C6 /* BBHeightPickerView.h */,
+				28CCCB4919C3A8AB00B2A0C6 /* BBHeightPickerView.m */,
+				28CCCB4B19C3A8B800B2A0C6 /* BBWeightPickerView.h */,
+				28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -581,6 +629,8 @@
 				F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */,
 				F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */,
 				F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */,
+				28CCCB4E19C3C55C00B2A0C6 /* BBWeightPickerAdapter.h */,
+				28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */,
 			);
 			name = "New Patient and Forms selection";
 			sourceTree = "<group>";
@@ -661,6 +711,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CCCB3C19C3A2C200B2A0C6 /* HeightPicker.xib in Resources */,
 				F4615D59192F908E0031470B /* InfoPlist.strings in Resources */,
 				F4AFB94E19ABB8E300CA013B /* BBImmuneIDViewController.xib in Resources */,
 				F4AFB93A19ABB55E00CA013B /* BBNeuroligcViewController.xib in Resources */,
@@ -674,6 +725,7 @@
 				988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */,
 				F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */,
 				988D169119AE63A2009A887A /* PostProcedureGeneralViewController.xib in Resources */,
+				28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */,
 				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
 				988D167E19AE63A2009A887A /* InductionAndDeviceViewController.xib in Resources */,
 				988D168D19AE63A2009A887A /* PostAnesthesiaEvalViewController.xib in Resources */,
@@ -681,6 +733,7 @@
 				988D168219AE63A2009A887A /* InvasiveLinesViewController.xib in Resources */,
 				988D168F19AE63A2009A887A /* PostOpDiagnosisViewController.xib in Resources */,
 				F4B5D57E19ACEC7A00174F61 /* BBPreOpReviewViewController.xib in Resources */,
+				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
 				988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */,
 				988D166919AE63A2009A887A /* BBPreopActionsViewController.xib in Resources */,
 				F4AFB93F19ABB65000CA013B /* BBEndocrineViewController.xib in Resources */,
@@ -689,6 +742,7 @@
 				F4AFB93519ABB0B600CA013B /* BBHepatoViewController.xib in Resources */,
 				F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */,
 				F4B5D57919ACD00400174F61 /* BBPlanDiscussionViewController.xib in Resources */,
+				28CCCB3419C3A14700B2A0C6 /* DatePicker.xib in Resources */,
 				988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */,
 				988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
@@ -698,6 +752,7 @@
 				F4AFB95319ABB96700CA013B /* BBOtherViewController.xib in Resources */,
 				F4B5D57419ACCE1800174F61 /* BBDaignosticStudiesViewController.xib in Resources */,
 				988D166C19AE63A2009A887A /* BetaBlockerViewController.xib in Resources */,
+				28CCCB3819C3A15D00B2A0C6 /* Birthdate.xib in Resources */,
 				988D167219AE63A2009A887A /* EndotrachealTubeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +776,7 @@
 				98FF060119B245970003129C /* BBPatientFormTableAdapter.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* BBPreOpReviewViewController.m in Sources */,
 				985B835B19C1FBA9007DF484 /* BBStringArrayTableAdapter.m in Sources */,
+				28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
 				28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */,
 				28CCCB2C19C35FA100B2A0C6 /* FormSection.m in Sources */,
@@ -732,15 +788,19 @@
 				988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */,
 				F4DF068D19B0BFE300DDBE7E /* LoginViewController.m in Sources */,
 				988D167F19AE63A2009A887A /* IntubationViewController.m in Sources */,
+				28CCCB3219C3A00200B2A0C6 /* BPBPatientBioViewController.m in Sources */,
 				F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */,
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
 				F48AAEDC19BE1C2D0051A168 /* BBOperationsTableAdapter.m in Sources */,
 				F4AFB92F19ABAF2000CA013B /* BBCardioViewController.m in Sources */,
+				28CCCB4A19C3A8AB00B2A0C6 /* BBHeightPickerView.m in Sources */,
 				F4D901B819B25F94000E23E4 /* BBData.m in Sources */,
 				28CCCB2019C35FA100B2A0C6 /* FormGroup.m in Sources */,
 				F4DEA44B193E565C006B0FFA /* BBLinkedStoryBoardSegue.m in Sources */,
+				28CCCB4119C3A87E00B2A0C6 /* BBDatePickerView.m in Sources */,
 				F4615D5B192F908E0031470B /* main.m in Sources */,
 				988D168A19AE63A2009A887A /* PositionViewController.m in Sources */,
+				28CCCB5019C3C55C00B2A0C6 /* BBWeightPickerAdapter.m in Sources */,
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
 				988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */,
@@ -757,6 +817,7 @@
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
 				F4AFB95219ABB96700CA013B /* BBOtherViewController.m in Sources */,
 				F4DF06A219B149BE00DDBE7E /* BBDatePickerViewController.m in Sources */,
+				28CCCB4719C3A8A000B2A0C6 /* BBBirthdatePickerView.m in Sources */,
 				F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				98FF05FE19B226900003129C /* BBPatientTableAdapter.m in Sources */,
@@ -771,6 +832,7 @@
 				988D168519AE63A2009A887A /* MonitorinAndEquipmentViewController.m in Sources */,
 				F4AFB92619ABABB000CA013B /* BBRespiratoryViewController.m in Sources */,
 				988D168719AE63A2009A887A /* PersonelViewController.m in Sources */,
+				28CCCB4419C3A88A00B2A0C6 /* BBTimePickerView.m in Sources */,
 				F4AFB93E19ABB65000CA013B /* BBEndocrineViewController.m in Sources */,
 				F4B5D57819ACD00400174F61 /* BBPlanDiscussionViewController.m in Sources */,
 				F4AFB95919ABBECC00CA013B /* BBPreOpEvalTableTableViewController.m in Sources */,

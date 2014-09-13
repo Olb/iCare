@@ -15,4 +15,5 @@
 + (NSString*) formatTime:(NSDate*)date;
 + (NSString*) formatDate:(NSDate*)date;
 + (id) newCoreDataObjectForEntityName:(NSString*)name;
++(void)saveContext;
 @end
