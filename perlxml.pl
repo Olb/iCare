@@ -142,12 +142,12 @@ print "\tfor (FormElement *element in elements) {\n";
 foreach $element (@elements) {
     switch ($element->{type}) {
         case "BooleanFormElement" {
-            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n"
-            print"\t\t\t[self.".getElementName($element)." [((BooleanFormElement*)element).value boolValue]];\n}\n";
+            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
+            print"\t\t\t[self.".getElementName($element)." [((BooleanFormElement*)element).value boolValue]];\n\t\t}\n";
         }
         case "StringListElement" {
-            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n"
-            print "\t\t\tself.".getElementName($element)".items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];\n}\n";
+            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
+            print "\t\t\tself.".getElementName($element).".items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];\n}\n";
         }
     }
 }
