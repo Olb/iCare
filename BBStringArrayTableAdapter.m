@@ -10,6 +10,12 @@
 
 @implementation BBStringArrayTableAdapter
 
+- (id) init {
+    if (self = [super init]){
+        _items = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

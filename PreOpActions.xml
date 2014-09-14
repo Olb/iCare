@@ -1,8 +1,9 @@
 <?xml version='1.0'?>
 <Section name="PreopActions">
 	<Group>
-		<Element type="BooleanFormElement" name="checkConsentsCheckBox"/>
-		<Element type="BooleanFormElement" name="satrtIvCheckBox"/>
-		<Element type="StringListElement" name="otherActionsTable"/>
+		<Element type="BooleanFormElement" name="checkConsents"/>
+		<Element type="BooleanFormElement" name="startIv"/>
+		<Element type="StringListElement" name="otherActions"/>
 	</Group>
+
 </Section>

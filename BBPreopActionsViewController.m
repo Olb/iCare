@@ -23,7 +23,7 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 
 @interface BBPreopActionsViewController () <BBStringArrayTableDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *satrtIvCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *startIvCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *otherTextField;
 @property (weak, nonatomic) IBOutlet UITableView *otherActionsTable;
 @property (strong, nonatomic) BBStringArrayTableAdapter *stringArrayTableAdapter;
@@ -35,7 +35,6 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 {
     [super viewDidLoad];
     self.stringArrayTableAdapter = [[BBStringArrayTableAdapter alloc] init];
-    self.stringArrayTableAdapter.items = [[NSMutableArray alloc] init];
     self.otherActionsTable.dataSource = self.stringArrayTableAdapter;
     self.otherActionsTable.delegate = self.stringArrayTableAdapter;
     
@@ -48,7 +47,7 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
         }
         BooleanFormElement *startIVCheckBox = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
         if (startIVCheckBox) {
-            [self.satrtIvCheckBox setSelected:[startIVCheckBox.value boolValue]];
+            [self.startIvCheckBox setSelected:[startIVCheckBox.value boolValue]];
         }
         StringListElement *otherActionsStringList = (StringListElement*)[group getElementForKey:OTHER_PREOP_ACTIONS];
         if (otherActionsStringList) {
