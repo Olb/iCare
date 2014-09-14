@@ -9,6 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface BBWeightPickerAdapter : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak, nonatomic) UIPickerView *pickerView;
 
 @end

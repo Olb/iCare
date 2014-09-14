@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
+		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
+		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
+		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
 		28CCCB1D19C35FA000B2A0C6 /* FormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB1C19C35FA000B2A0C6 /* FormElement.m */; };
 		28CCCB2019C35FA100B2A0C6 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB1F19C35FA100B2A0C6 /* FormGroup.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
@@ -141,6 +144,10 @@
 /* Begin PBXFileReference section */
 		28034B3719C25B4200DB0A1E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		28AA355119C5D64A001453CE /* BBHeightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightAdapter.h; sourceTree = "<group>"; };
+		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
+		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
+		28AA355819C60539001453CE /* PreOpActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreOpActions.xml; sourceTree = "<group>"; };
 		28CCCB1B19C35FA000B2A0C6 /* FormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormElement.h; sourceTree = "<group>"; };
 		28CCCB1C19C35FA000B2A0C6 /* FormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormElement.m; sourceTree = "<group>"; };
 		28CCCB1E19C35FA100B2A0C6 /* FormGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormGroup.h; sourceTree = "<group>"; };
@@ -354,6 +361,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28AA355019C5D5CB001453CE /* Picker Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				28AA355119C5D64A001453CE /* BBHeightAdapter.h */,
+				28AA355219C5D64A001453CE /* BBHeightAdapter.m */,
+				28CCCB4E19C3C55C00B2A0C6 /* BBWeightPickerAdapter.h */,
+				28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */,
+			);
+			name = "Picker Adapters";
+			sourceTree = "<group>";
+		};
 		988D161719AE630B009A887A /* Anesthesia record */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +498,8 @@
 		F417DB5719AE82A100F13178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28AA355719C60539001453CE /* perlxml.pl */,
+				28AA355819C60539001453CE /* PreOpActions.xml */,
 				F4D901B619B25F94000E23E4 /* BBData.h */,
 				F4D901B719B25F94000E23E4 /* BBData.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
@@ -510,6 +530,7 @@
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				28AA355019C5D5CB001453CE /* Picker Adapters */,
 				98FF05FB19B2262B0003129C /* TableAdapters */,
 				F4DF06A619B1F4F000DDBE7E /* New Patient and Forms selection */,
 				F4DF06A319B1F30300DDBE7E /* Authentication */,
@@ -629,8 +650,6 @@
 				F4AFB95E19ABC11900CA013B /* BBNewPatientViewController.m */,
 				F4AFB95A19ABBF9900CA013B /* BBPatientFormsViewController.h */,
 				F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */,
-				28CCCB4E19C3C55C00B2A0C6 /* BBWeightPickerAdapter.h */,
-				28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */,
 			);
 			name = "New Patient and Forms selection";
 			sourceTree = "<group>";
@@ -724,6 +743,7 @@
 				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
 				988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */,
 				F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */,
+				28AA355A19C60539001453CE /* PreOpActions.xml in Resources */,
 				988D169119AE63A2009A887A /* PostProcedureGeneralViewController.xib in Resources */,
 				28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */,
 				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
@@ -731,6 +751,7 @@
 				988D168D19AE63A2009A887A /* PostAnesthesiaEvalViewController.xib in Resources */,
 				988D168419AE63A2009A887A /* IVAntibioticNameViewController.xib in Resources */,
 				988D168219AE63A2009A887A /* InvasiveLinesViewController.xib in Resources */,
+				28AA355919C60539001453CE /* perlxml.pl in Resources */,
 				988D168F19AE63A2009A887A /* PostOpDiagnosisViewController.xib in Resources */,
 				F4B5D57E19ACEC7A00174F61 /* BBPreOpReviewViewController.xib in Resources */,
 				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
@@ -778,6 +799,7 @@
 				985B835B19C1FBA9007DF484 /* BBStringArrayTableAdapter.m in Sources */,
 				28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
+				28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */,
 				28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */,
 				28CCCB2C19C35FA100B2A0C6 /* FormSection.m in Sources */,
 				28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */,

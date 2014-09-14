@@ -7,15 +7,14 @@
 //
 
 #import "BBPreopActionsViewController.h"
-#import "BBCheckBox.h"
 #import "FormSection.h"
 #import "BBUtil.h"
 #import "FormElement.h"
 #import "FormGroup.h"
+#import "BBCheckBox.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
 #import "BBStringArrayTableAdapter.h"
-#import "BBAnesthesiaRecordController.h"
 
 NSString *const SECTION_TITLE = @"Anesthesia PreOp time used to";
 NSString *const CONSENT_KEY = @"Check consents and review chart/plan with Pt";
@@ -40,8 +39,7 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
     self.otherActionsTable.dataSource = self.stringArrayTableAdapter;
     self.otherActionsTable.delegate = self.stringArrayTableAdapter;
     
-   // [self validateSection:_section];
-    NSLog(@"Number of groups: %ld", (unsigned long)_section.groups.count);
+    [self validateSection:_section];
     if ([_section.groups count] == 1) {
         FormGroup *group = [_section.groups firstObject];
         BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CONSENT_KEY];
@@ -73,20 +71,8 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)addOtherAction:(id)sender {
-    [self.stringArrayTableAdapter.items addObject:self.otherTextField.text];
-    [self.otherActionsTable reloadData];
-    self.otherTextField.text = @"";
-    [self.otherTextField resignFirstResponder];
 }
 
 - (IBAction)accept:(id)sender {
@@ -133,6 +119,13 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
     
     [self.delegate sectionCreated:self.section];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)addOtherAction:(id)sender {
+    [self.stringArrayTableAdapter.items addObject:self.otherTextField.text];
+    [self.otherActionsTable reloadData];
+    self.otherTextField.text = @"";
+    [self.otherTextField resignFirstResponder];
 }
 
 #pragma mark - Tableview delegate methods

@@ -1,18 +1,18 @@
 //
-//  BBWeightPickerAdapter.m
+//  BBHeightAdapter.m
 //  iCare2
 //
-//  Created by Billy Bray on 9/12/14.
+//  Created by Billy Bray on 9/14/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBWeightPickerAdapter.h"
+#import "BBHeightAdapter.h"
 
-@implementation BBWeightPickerAdapter
+@implementation BBHeightAdapter
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 6;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
@@ -40,7 +40,7 @@
     } else {
         result = [NSString stringWithFormat:@"%ld", (long)row];
     }
-   
+    
     return result;
 }
 
@@ -54,4 +54,5 @@
     }
     return result;
 }
+
 @end
