@@ -1,8 +1,54 @@
 #!/usr/bin/perl
 
+
+
 use XML::Simple;
 use Data::Dumper;
 use Switch;
+
+sub getElementName {
+    local $element;
+    $element = $_[0];
+    
+    return $element->{name}.getOutletTypeFor($element->{type});
+}
+sub getKeyConstantForElement{
+    local $element;
+    $element = $_[0];
+    
+    return "\U$element->{name}\E_KEY";
+}
+
+sub getOutletTypeFor{
+    local $type;
+    $type = $_[0];
+    
+    switch ($type){
+        case "BooleanFormElement" { return "BBCheckBox"}
+        case "StringListElement" { return "TableAdapter"}
+        else { die "Unknown type: $type"}
+    }
+    
+}
+
+sub printPropertiesForElement{
+    local $element;
+    $element = $_[0];
+    
+    switch($element->{type}){
+        case "StringListElement" {
+            print "\@property (weak, nonatomic) IBOutlet UITextField *".$element->{name}."TextField;\n";
+            print "\@property (weak, nonatomic) IBOutlet UITableView *".$element->{name}."Table;\n";
+            print "\@property (strong, nonatomic) BBStringArrayTableAdapter *".getElementName($element).";\n";
+        }
+        else {
+            print "\@property (weak, nonatomic) IBOutlet ".getOutletTypeFor($element->{type})." *".$element->{name}.getOutletTypeFor($element->{type}).";\n";
+        }
+    }
+    
+}
+
+
 
 $xml = new XML::Simple (KeyAttr=>[]);
 
@@ -23,6 +69,7 @@ foreach $group (@groups){
         push(@elements, $group->{Element});
     }
 }
+
 # include section
 
 $viewControllerName = "BB".$section->{name}."ViewController";
@@ -41,39 +88,12 @@ print "#import \"BBStringArrayTableAdapter.h\"\n\n";
 print "NSString *const SECTION_TITLE = @\"$section->{name}SectionKey\";\n";
 
 foreach $element (@elements){
-    print "NSString *const \U$element->{name}\E_KEY = @\"$element->{name}Key\";\n";
+    print "NSString *const getKeyConstantForElement($element) = @\"$element->{name}Key\";\n";
 }
 
 print "\n";
 
 # interface section
-
-sub getOutletTypeFor{
-    local $type;
-    $type = $_[0];
-    
-    switch ($type){
-        case "BooleanFormElement" { return "BBCheckBox"}
-        else { die "Unknown type: $type"}
-    }
-}
-
-sub printPropertiesForElement{
-    local $element;
-    $element = $_[0];
-    
-    switch($element->{type}){
-        case "StringListElement" {
-            print "\@property (weak, nonatomic) IBOutlet UITextField *".$element->{name}."TextField;\n";
-            print "\@property (weak, nonatomic) IBOutlet UITableView *".$element->{name}."Table;\n";
-            print "\@property (strong, nonatomic) BBStringArrayTableAdapter *".$element->{name}."TableAdapter;\n";
-        }
-        else {
-            print "\@property (weak, nonatomic) IBOutlet ".getOutletTypeFor($element->{type})." *".$element->{name}.getOutletTypeFor($element->{type}).";\n";
-        }
-    }
-    
-}
 
 print "\@interface ".$viewControllerName." () <BBStringArrayTableDelegate, UITextFieldDelegate>\n";
 
@@ -116,9 +136,21 @@ foreach $element (@elements){
     }
 }
 
-print "[self validateSection:_section];\n";
-print "if ([_section.groups count] == 1) {\n";
-print "\n";
-print "\n";
+print "\t[self validateSection:_section];\n";
+print "\tNSArray *elements = [_section allElements];\n";
+print "\tfor (FormElement *element in elements) {\n";
+foreach $element (@elements) {
+    switch ($element->{type}) {
+        case "BooleanFormElement" {
+            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n"
+            print"\t\t\t[self.".getElementName($element)." [((BooleanFormElement*)element).value boolValue]];\n}\n";
+        }
+        case "StringListElement" {
+            print "\t\tif ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n"
+            print "\t\t\tself.".getElementName($element)".items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];\n}\n";
+        }
+    }
+}
+print "}\n";
 print "\n";
 

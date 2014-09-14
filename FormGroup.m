@@ -27,10 +27,5 @@
     return nil;
 }
 
-- (void)addElementsObject:(FormElement *)value
-{
-    NSMutableOrderedSet* tempSet = [NSMutableOrderedSet orderedSetWithOrderedSet:self.elements];
-    [tempSet addObject:value];
-    self.elements = tempSet;
-}
+
 @end

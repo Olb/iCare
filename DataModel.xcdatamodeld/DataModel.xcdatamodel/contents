@@ -59,7 +59,7 @@
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
-        <element name="FormGroup" positionX="-119" positionY="-304" width="128" height="88"/>
+        <element name="FormGroup" positionX="-119" positionY="-304" width="128" height="90"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
         <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="58"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="148"/>

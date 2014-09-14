@@ -24,4 +24,14 @@
     self.groups = tempSet;
 }
 
+- (NSArray*)allElements
+{
+    NSMutableArray *elements = [[NSMutableArray alloc] init];
+    
+    for (FormGroup *group in self.groups) {
+        [elements addObjectsFromArray:[group.elements array]];
+    }
+    
+    return elements;
+}
 @end

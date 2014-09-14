@@ -30,4 +30,5 @@
 - (void)removeGroupsObject:(FormGroup *)value;
 - (void)addGroups:(NSOrderedSet *)values;
 - (void)removeGroups:(NSOrderedSet *)values;
+- (NSArray*)allElements;
 @end

@@ -39,24 +39,21 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
     self.otherActionsTable.delegate = self.stringArrayTableAdapter;
     
     [self validateSection:_section];
-    if ([_section.groups count] == 1) {
-        FormGroup *group = [_section.groups firstObject];
-        BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CONSENT_KEY];
-        if (checkConsents) {
-            [self.checkConsentsCheckBox setSelected:[checkConsents.value boolValue]];
+    NSArray *elements = [_section allElements];
+    for (FormElement *element in elements) {
+        
+        if ([element.key isEqualToString:CONSENT_KEY]) {
+            [self.checkConsentsCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
         }
-        BooleanFormElement *startIVCheckBox = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
-        if (startIVCheckBox) {
-            [self.startIvCheckBox setSelected:[startIVCheckBox.value boolValue]];
+        if ([element.key isEqualToString:START_IV_KEY]) {
+            [self.checkConsentsCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
         }
-        StringListElement *otherActionsStringList = (StringListElement*)[group getElementForKey:OTHER_PREOP_ACTIONS];
-        if (otherActionsStringList) {
-            self.stringArrayTableAdapter.items = [[NSMutableArray alloc] initWithArray:otherActionsStringList.value];
+        if ([element.key isEqualToString:OTHER_PREOP_ACTIONS]) {
+            self.stringArrayTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
         }
     }
-    
-   
 }
+
 
 -(void)validateSection:(FormSection*)section
 {
