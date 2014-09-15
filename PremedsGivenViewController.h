@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BBFormSectionDelegate.h"
+#import "FormSection.h"
 
 @interface PremedsGivenViewController : UIViewController
+extern NSString *const SECTION_TITLE;
+@property id <BBFormSectionDelegate> delegate;
+@property FormSection * section;
+
++(NSString*) sectionTitle;
 
 @end

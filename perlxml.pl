@@ -12,16 +12,20 @@ sub getOutletNameForElement {
     
     return "\l$element->{name}".getOutletTypeFor($element->{type},$_[1]);
 }
+
+sub camelCaseToUppercase{
+    local $res;
+    $res = $_[0];
+    $res =~ s/((?<=[a-z])[A-Z][a-z]+)/_\U$1/g;
+    $res =~ s/(\b[A-Z][a-z]+)/\U$1/g;
+    return $res;
+}
+
 sub getKeyConstantForElement{
     local $element;
     $element = $_[0];
     
-    local $name;
-    $name = $element->{name};
-    $name =~ s/((?<=[a-z])[A-Z][a-z]+)/_\U$1/g;
-    $name =~ s/(\b[A-Z][a-z]+)/\U$1/g;
-    
-    return $name."_KEY";
+    return camelCaseToUppercase($element->{name})."_KEY";
 }
 
 sub getOutletTypeFor{
@@ -52,7 +56,7 @@ sub printPropertiesForElement{
         case "StringListElement" {
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"TEXT_FIELD").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITableView *".getOutletNameForElement($element,"TABLE").";\n";
-            print "\@property (strong, nonatomic) BBStringArrayTableAdapter *".getOutletNameForElement($element,"ADAPTER").";\n";
+            print "\@property (strong, nonatomic) StringArrayTableAdapter *".getOutletNameForElement($element,"ADAPTER").";\n";
         }
         else {
             print "\@property (weak, nonatomic) IBOutlet ".getOutletTypeFor($element->{type})." *".getOutletNameForElement($element).";\n";
@@ -83,9 +87,11 @@ foreach $group (@groups){
     }
 }
 
+$section_title = camelCaseToUppercase($section->{name})."_SECTION_TITLE";
+
 # include section
 
-$viewControllerName = "BB".$section->{name}."ViewController";
+$viewControllerName = $section->{name}."ViewController";
 print "#import \"".$viewControllerName.".h\"\n";
 print "#import \"BBUtil.h\"\n";
 print "#import \"FormSection.h\"\n";
@@ -94,15 +100,10 @@ print "#import \"FormGroup.h\"\n";
 print "#import \"BBCheckBox.h\"\n";
 print "#import \"BooleanFormElement.h\"\n";
 print "#import \"StringListElement.h\"\n";
-print "#import \"BBStringArrayTableAdapter.h\"\n\n";
+print "#import \"TextElement.h\"\n";
+print "#import \"StringArrayTableAdapter.h\"\n\n";
 
-# const section
 
-print "NSString *const SECTION_TITLE = @\"$section->{name}SectionKey\";\n";
-
-foreach $element (@elements){
-    print "NSString *const ".getKeyConstantForElement($element)." = @\"$element->{name}Key\";\n";
-}
 
 print "\n";
 
@@ -121,22 +122,18 @@ print "\@end\n\n";
 
 # IMPLEMENTATION
 
+print "\@implementation $viewControllerName\n";
+
+# const section
+
+print "NSString *const $section_title = @\"$section->{name}SectionKey\";\n";
+
+foreach $element (@elements){
+    print "NSString *const ".getKeyConstantForElement($element)." = @\"$element->{name}Key\";\n";
+}
+
 # viewDidLoad
 
-sub printTableInitializationForGroup{
-    local $group;
-    local @elements;
-    $group = $_[0];
-    
-    if ( ref $group->{Element} eq 'ARRAY'){
-        @elements = @{$group->{Element}};
-    } else {
-        @elements = ($group->{Element});
-    }
-
-    
-}
-print "\@implementation $viewControllerName\n";
 print "\n";
 print "- (void)viewDidLoad\n";
 print "{\n";
@@ -144,7 +141,7 @@ print "\t [super viewDidLoad];\n";
 
 foreach $element (@elements){
     if ($element->{type} eq "StringListElement"){
-        print "\t self.".getOutletNameForElement($element, "ADAPTER")." = [[BBStringArrayTableAdapter alloc] init];\n";
+        print "\t self.".getOutletNameForElement($element, "ADAPTER")." = [[StringArrayTableAdapter alloc] init];\n";
         print "\t self.".getOutletNameForElement($element, "TABLE").".dataSource = self.".getOutletNameForElement($element, "ADAPTER").";\n";
         print "\t self.".getOutletNameForElement($element, "TABLE").".delegate = self.".getOutletNameForElement($element, "ADAPTER").";\n\n";
     }
@@ -213,7 +210,7 @@ print "\n";
 print "- (IBAction)accept:(id)sender {\n";
 print "\t if ( !self.section ){\n";
 print "\t\t self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:\@\"FormSection\"];\n";
-print "\t\t self.section.title = SECTION_TITLE;\n";
+print "\t\t self.section.title = $section_title;\n";
 print "\t }\n";
 print "\t \n";
 print "\t FormGroup *group;\n";
@@ -289,8 +286,6 @@ foreach $element (@elements){
     }
 }
 
-
-
 print "- (BOOL)disablesAutomaticKeyboardDismissal {\n";
 print "\t return NO;\n";
 print "}\n\n";
@@ -299,6 +294,12 @@ print "}\n\n";
 print "\- (IBAction)dismiss:(id)sender {\n";
 print "\t [self dismissViewControllerAnimated:YES completion:nil];\n";
 print "}\n\n";
+
+print "+(NSString*)sectionTitle\n";
+print "{\n";
+print "\t return $section_title;\n";
+print "}\n";
+
 print "\@end";
 
 

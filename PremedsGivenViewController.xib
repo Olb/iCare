@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PremedsGivenViewController">
             <connections>
+                <outlet property="midazolamBBCheckBox" destination="zzz-ZC-x1U" id="rhD-p8-BDt"/>
+                <outlet property="midazolamDoseUITextField" destination="VrC-0C-ekc" id="dJl-b5-Hfm"/>
+                <outlet property="ondansetronBBCheckBox" destination="dW2-Gr-dek" id="uEs-50-sTu"/>
+                <outlet property="ondansetronDoseUITextField" destination="jXD-NW-cZ2" id="CJs-a2-yqt"/>
+                <outlet property="otherPremedsGivenTable" destination="7Bt-n3-KgI" id="f4E-Mp-UUY"/>
+                <outlet property="otherPremedsGivenTextField" destination="Wob-Zc-RDk" id="hCs-w1-eek"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -32,6 +38,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="KVK-MA-udL"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Premeds given by RN in Holding Area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI8-TF-rKp">
                     <rect key="frame" x="31" y="70" width="289" height="21"/>
@@ -119,6 +128,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="addOtherPremedsGiven:" destination="-1" eventType="touchUpInside" id="yBF-iU-ane"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Bt-n3-KgI">
                     <rect key="frame" x="31" y="260" width="478" height="287"/>

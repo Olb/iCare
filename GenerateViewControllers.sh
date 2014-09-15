@@ -9,5 +9,6 @@
 
 for xmlFile in `ls | grep '.*\.xml'`;
 do
-perl perlxml.pl $xmlFile
+name=${xmlFile%.xml}
+perl perlxml.pl $xmlFile >& $name"ViewController.m";
 done

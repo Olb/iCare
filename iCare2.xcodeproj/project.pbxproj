@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
-		282D5EA119C734160055B32B /* PremedsGivenByRN.xml in Resources */ = {isa = PBXBuildFile; fileRef = 282D5EA019C734160055B32B /* PremedsGivenByRN.xml */; };
+		282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */ = {isa = PBXBuildFile; fileRef = 282D5EA019C734160055B32B /* PremedsGiven.xml */; };
 		282D5EA419C7360C0055B32B /* TextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 282D5EA319C7360C0055B32B /* TextElement.m */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
 		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
-		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
+		28AA355A19C60539001453CE /* PreopActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreopActions.xml */; };
 		28CCCB1D19C35FA000B2A0C6 /* FormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB1C19C35FA000B2A0C6 /* FormElement.m */; };
 		28CCCB2019C35FA100B2A0C6 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB1F19C35FA100B2A0C6 /* FormGroup.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
@@ -146,14 +146,14 @@
 /* Begin PBXFileReference section */
 		28034B3719C25B4200DB0A1E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
-		282D5EA019C734160055B32B /* PremedsGivenByRN.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PremedsGivenByRN.xml; sourceTree = "<group>"; };
+		282D5EA019C734160055B32B /* PremedsGiven.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PremedsGiven.xml; sourceTree = "<group>"; };
 		282D5EA219C7360C0055B32B /* TextElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextElement.h; sourceTree = "<group>"; };
 		282D5EA319C7360C0055B32B /* TextElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextElement.m; sourceTree = "<group>"; };
 		282D5EA519C738040055B32B /* GenerateViewControllers.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = GenerateViewControllers.sh; sourceTree = "<group>"; };
 		28AA355119C5D64A001453CE /* BBHeightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightAdapter.h; sourceTree = "<group>"; };
 		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
 		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
-		28AA355819C60539001453CE /* PreOpActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreOpActions.xml; sourceTree = "<group>"; };
+		28AA355819C60539001453CE /* PreopActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreopActions.xml; sourceTree = "<group>"; };
 		28CCCB1B19C35FA000B2A0C6 /* FormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormElement.h; sourceTree = "<group>"; };
 		28CCCB1C19C35FA000B2A0C6 /* FormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormElement.m; sourceTree = "<group>"; };
 		28CCCB1E19C35FA100B2A0C6 /* FormGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormGroup.h; sourceTree = "<group>"; };
@@ -504,10 +504,10 @@
 		F417DB5719AE82A100F13178 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				282D5EA019C734160055B32B /* PremedsGivenByRN.xml */,
+				282D5EA019C734160055B32B /* PremedsGiven.xml */,
 				28AA355719C60539001453CE /* perlxml.pl */,
 				282D5EA519C738040055B32B /* GenerateViewControllers.sh */,
-				28AA355819C60539001453CE /* PreOpActions.xml */,
+				28AA355819C60539001453CE /* PreopActions.xml */,
 				F4D901B619B25F94000E23E4 /* BBData.h */,
 				F4D901B719B25F94000E23E4 /* BBData.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
@@ -753,9 +753,9 @@
 				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
 				988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */,
 				F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */,
-				28AA355A19C60539001453CE /* PreOpActions.xml in Resources */,
+				28AA355A19C60539001453CE /* PreopActions.xml in Resources */,
 				988D169119AE63A2009A887A /* PostProcedureGeneralViewController.xib in Resources */,
-				282D5EA119C734160055B32B /* PremedsGivenByRN.xml in Resources */,
+				282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */,
 				28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */,
 				F4AFB92719ABABB000CA013B /* BBRespiratoryViewController.xib in Resources */,
 				988D167E19AE63A2009A887A /* InductionAndDeviceViewController.xib in Resources */,

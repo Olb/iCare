@@ -30,8 +30,6 @@
 #import "BPBAppDelegate.h"
 #import "Form.h"
 
-NSString *const SECTION_TITLE2 = @"PreopActionsSectionKey";
-
 @interface AnesthesiaRecordController ()<BBFormSectionDelegate>
 
 @end
@@ -90,13 +88,19 @@ NSString *const SECTION_TITLE2 = @"PreopActionsSectionKey";
             vc = [[PreopActionsViewController alloc] init];
             ((PreopActionsViewController*)vc).delegate = self;
             for (FormSection* s in self.form.sections) {
-                if ([s.title isEqualToString:SECTION_TITLE2]) {
+                if ([s.title isEqualToString:[PreopActionsViewController sectionTitle]]) {
                     ((PreopActionsViewController*)vc).section = s;
                 }
             }
             break;
         case 1:
             vc = [[PremedsGivenViewController alloc] init];
+            ((PremedsGivenViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PremedsGivenViewController sectionTitle]]) {
+                    ((PremedsGivenViewController*)vc).section = s;
+                }
+            }
             break;
         case 2:
             vc = [[BetaBlockerViewController alloc] init];

@@ -13,4 +13,7 @@
 @interface PreopActionsViewController : UIViewController
 @property id <BBFormSectionDelegate> delegate;
 @property FormSection * section;
+
++(NSString*) sectionTitle;
+
 @end
