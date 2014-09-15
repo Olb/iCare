@@ -50,6 +50,7 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
         }
         if ([element.key isEqualToString:OTHER_PREOP_ACTIONS]) {
             self.stringArrayTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
+            [self.otherActionsTable reloadData];
         }
     }
 }
@@ -58,18 +59,24 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 -(void)validateSection:(FormSection*)section
 {
     if (_section) {
+        int count;
+        NSString *errMsg;
+        
         NSAssert([SECTION_TITLE isEqualToString:self.section.title], @"Invalid section title");
-        NSAssert([_section.groups count] == 1, @"Invalid number of groups");
-        FormGroup *group = [_section.groups firstObject];
+        count = [_section.groups count];
+        errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
+        NSAssert(count, errMsg);
+        
+        FormGroup *group;
+        
+        group = [_section.groups objectAtIndex:0];
         NSAssert([group getElementForKey:CONSENT_KEY]!= nil, @"Consent Element nil");
-        NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"Start IV Element nil");
-        NSAssert([group getElementForKey:OTHER_PREOP_ACTIONS]!= nil, @"Other Actions Element nil");
+        NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"Start IV count is nil");
+        NSAssert([group getElementForKey:OTHER_PREOP_ACTIONS]!= nil, @"Other Actions count is nil");
+        
     }
 }
 
-- (IBAction)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (IBAction)accept:(id)sender {
     if ( !self.section ){
@@ -77,7 +84,9 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
         self.section.title = SECTION_TITLE;
     }
     
-    FormGroup *group = [self.section.groups firstObject];
+    FormGroup *group;
+    
+    group = [self.section.groups objectAtIndex:0];
     if ( !group ){
         group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
         [self.section addGroupsObject:group];
@@ -97,7 +106,7 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
         startIV.key = START_IV_KEY;
         [group addElementsObject:startIV];
     }
-    startIV.value = [NSNumber numberWithBool:self.satrtIvCheckBox.isSelected];
+    startIV.value = [NSNumber numberWithBool:self.startIvCheckBox.isSelected];
     
     StringListElement *stringListElement = (StringListElement*)[group getElementForKey:OTHER_PREOP_ACTIONS];
     if (!stringListElement) {
@@ -144,6 +153,10 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 
 - (BOOL)disablesAutomaticKeyboardDismissal {
     return NO;
+}
+
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
