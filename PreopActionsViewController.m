@@ -1,4 +1,4 @@
-#import "BBPreopActionsViewController.h"
+#import "PreopActionsViewController.h"
 #import "BBUtil.h"
 #import "FormSection.h"
 #import "FormElement.h"
@@ -13,7 +13,7 @@ NSString *const CHECK_CONSENTS_KEY = @"CheckConsentsKey";
 NSString *const START_IV_KEY = @"StartIvKey";
 NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 
-@interface BBPreopActionsViewController () <UITextFieldDelegate>
+@interface PreopActionsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *startIvBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *otherActionsTextField;
@@ -21,7 +21,7 @@ NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 @property (strong, nonatomic) StringArrayTableAdapter *otherActionsTableAdapter;
 @end
 
-@implementation BBPreopActionsViewController
+@implementation PreopActionsViewController
 
 - (void)viewDidLoad
 {

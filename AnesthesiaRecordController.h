@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class Form;
-@interface BBAnesthesiaRecordController : UITableViewController
+@interface AnesthesiaRecordController : UITableViewController
 @property Form *form;
 @end

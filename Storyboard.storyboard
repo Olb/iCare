@@ -1098,7 +1098,7 @@
         <!--Anesthesia Record Controller-->
         <scene sceneID="MHx-R8-4Gd">
             <objects>
-                <tableViewController id="Vft-4k-ZA1" customClass="BBAnesthesiaRecordController" sceneMemberID="viewController">
+                <tableViewController id="Vft-4k-ZA1" customClass="AnesthesiaRecordController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="rD8-Ro-0vB">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

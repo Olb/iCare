@@ -9,7 +9,7 @@
 #import "BBPatientFormsViewController.h"
 #import "Patient.h"
 #import "BBPreOpEvalTableTableViewController.h"
-#import "BBAnesthesiaRecordController.h"
+#import "AnesthesiaRecordController.h"
 #import "PatientFormTableAdapter.h"
 #import "Operation.h"
 #import "BBData.h"
@@ -177,7 +177,7 @@ const float POUND_MULTIPLIER = 2.20462262f;
         vc.operation = self.selectedOperation;
     }
     if ([[segue identifier] isEqualToString:@"PatientFormsToAnesthesiaRecordSegue"]) {
-        BBAnesthesiaRecordController *vc = [segue destinationViewController];
+        AnesthesiaRecordController *vc = [segue destinationViewController];
         for (Form *f in self.selectedOperation.forms) {
             if ([f.title isEqualToString:@"AnesthesiaRecord"]) {
                 vc.form = f;

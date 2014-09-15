@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBAnesthesiaRecordController.h"
+#import "AnesthesiaRecordController.h"
 #import "AnesthesiaTypeViewController.h"
 #import "BetaBlockerViewController.h"
 #import "EmergenceViewController.h"
-#import "BBPreopActionsViewController.h"
+#import "PreopActionsViewController.h"
 #import "EndotrachealTubeViewController.h"
 #import "InductionAndDeviceViewController.h"
 #import "InvasiveLinesViewController.h"
@@ -32,11 +32,11 @@
 
 NSString *const SECTION_TITLE2 = @"PreopActionsSectionKey";
 
-@interface BBAnesthesiaRecordController ()<BBFormSectionDelegate>
+@interface AnesthesiaRecordController ()<BBFormSectionDelegate>
 
 @end
 
-@implementation BBAnesthesiaRecordController
+@implementation AnesthesiaRecordController
 
 - (void)viewDidLoad
 {
@@ -87,11 +87,11 @@ NSString *const SECTION_TITLE2 = @"PreopActionsSectionKey";
     UIViewController *vc;
     switch (cell.tag) {
         case 0:
-            vc = [[BBPreopActionsViewController alloc] init];
-            ((BBPreopActionsViewController*)vc).delegate = self;
+            vc = [[PreopActionsViewController alloc] init];
+            ((PreopActionsViewController*)vc).delegate = self;
             for (FormSection* s in self.form.sections) {
                 if ([s.title isEqualToString:SECTION_TITLE2]) {
-                    ((BBPreopActionsViewController*)vc).section = s;
+                    ((PreopActionsViewController*)vc).section = s;
                 }
             }
             break;

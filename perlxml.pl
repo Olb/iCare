@@ -65,7 +65,7 @@ sub printPropertiesForElement{
 
 $xml = new XML::Simple (KeyAttr=>[]);
 
-$section = $xml->XMLin("PreOpActions.xml");
+$section = $xml->XMLin($ARGV[0]);
 
 if ( ref $section->{Group} eq 'ARRAY'){
     @groups = @{$section->{Group}};

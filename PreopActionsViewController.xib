@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BBPreopActionsViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreopActionsViewController">
             <connections>
                 <outlet property="checkConsentsBBCheckBox" destination="TGm-s9-AMx" id="fMw-CF-cyx"/>
                 <outlet property="otherActionsTable" destination="kp5-bd-g2b" id="LiQ-1V-lgi"/>
