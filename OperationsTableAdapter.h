@@ -15,7 +15,7 @@
 -(void) operationDeleted:(Operation*)operation;
 @end
 
-@interface BBOperationsTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface OperationsTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property Patient *patient;
 @property id <BBOperationSelectedDelegate> delegate;
 @end

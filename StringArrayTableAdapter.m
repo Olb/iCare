@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBStringArrayTableAdapter.h"
+#import "StringArrayTableAdapter.h"
 
-@implementation BBStringArrayTableAdapter
+@implementation StringArrayTableAdapter
 
 - (id) init {
     if (self = [super init]){

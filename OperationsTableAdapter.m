@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
-#import "BBOperationsTableAdapter.h"
+#import "OperationsTableAdapter.h"
 #import "Operation.h"
 #import "BBUtil.h"
 
-@interface BBOperationsTableAdapter ()
+@interface OperationsTableAdapter ()
 @property (strong,nonatomic) NSArray *operationArray;
 @end
 
-@implementation BBOperationsTableAdapter
+@implementation OperationsTableAdapter
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

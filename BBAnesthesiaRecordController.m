@@ -30,7 +30,7 @@
 #import "BPBAppDelegate.h"
 #import "Form.h"
 
-NSString *const SECTION_TITLE2 = @"Anesthesia PreOp time used to";
+NSString *const SECTION_TITLE2 = @"PreopActionsSectionKey";
 
 @interface BBAnesthesiaRecordController ()<BBFormSectionDelegate>
 

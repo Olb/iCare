@@ -10,12 +10,12 @@
 #import "Patient.h"
 #import "BBPreOpEvalTableTableViewController.h"
 #import "BBAnesthesiaRecordController.h"
-#import "BBPatientFormTableAdapter.h"
+#import "PatientFormTableAdapter.h"
 #import "Operation.h"
 #import "BBData.h"
 #import "BBAutoCompleteTextField.h"
 #import "BPBAppDelegate.h"
-#import "BBOperationsTableAdapter.h"
+#import "OperationsTableAdapter.h"
 #import "BBUtil.h"
 #import "Form.h"
 #import "BBWeightPickerView.h"
@@ -36,8 +36,8 @@ const float POUND_MULTIPLIER = 2.20462262f;
 @property (weak, nonatomic) IBOutlet UIView *operationBackgroundView;
 @property (weak, nonatomic) IBOutlet UIPickerView *weightPicker;
 @property (strong, nonatomic) IBOutlet UIView *weightPopoverView;
-@property (strong, nonatomic) BBOperationsTableAdapter *operationTableAdapter;
-@property (strong, nonatomic) BBPatientFormTableAdapter *patientAdapter;
+@property (strong, nonatomic) OperationsTableAdapter *operationTableAdapter;
+@property (strong, nonatomic) PatientFormTableAdapter *patientAdapter;
 @property (nonatomic) BOOL useKG;
 @property Operation *selectedOperation;
 @property (weak, nonatomic) IBOutlet UIButton *weightUnitButton;
@@ -55,14 +55,14 @@ const float POUND_MULTIPLIER = 2.20462262f;
     _useKG = YES;
     
     _operationBackgroundView.hidden = YES;
-    _operationTableAdapter = [[BBOperationsTableAdapter alloc] init];
+    _operationTableAdapter = [[OperationsTableAdapter alloc] init];
     _operationTableAdapter.patient = self.patient;
     _operationTableAdapter.delegate = self;
     
     _operationTableView.delegate = _operationTableAdapter;
     _operationTableView.dataSource = _operationTableAdapter;
     
-    _patientAdapter = [[BBPatientFormTableAdapter alloc] init];
+    _patientAdapter = [[PatientFormTableAdapter alloc] init];
     
     _formsTableView.delegate = _patientAdapter;
     _formsTableView.dataSource = _patientAdapter;

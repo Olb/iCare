@@ -38,6 +38,7 @@ sub getOutletTypeFor{
                 else { die "Unknown StringListElement outlet type: '$_[1]'"}
             }
         }
+        case "TextElement" { return "UITextField" }
         else { die "Unknown type: '$type'"}
     }
     
@@ -107,7 +108,7 @@ print "\n";
 
 # interface section
 
-print "\@interface ".$viewControllerName." () <BBStringArrayTableDelegate, UITextFieldDelegate>\n";
+print "\@interface ".$viewControllerName." () <UITextFieldDelegate>\n";
 
 foreach $group (@groups)
 {
@@ -126,7 +127,7 @@ sub printTableInitializationForGroup{
     local $group;
     local @elements;
     $group = $_[0];
-
+    
     if ( ref $group->{Element} eq 'ARRAY'){
         @elements = @{$group->{Element}};
     } else {
@@ -148,25 +149,31 @@ foreach $element (@elements){
         print "\t self.".getOutletNameForElement($element, "TABLE").".delegate = self.".getOutletNameForElement($element, "ADAPTER").";\n\n";
     }
 }
-
-print "\t [self validateSection:_section];\n";
-print "\t NSArray *elements = [_section allElements];\n\n";
-print "\t for (FormElement *element in elements) {\n";
+print "\t if (_section) {\n";
+print "\t\t [self validateSection:_section];\n";
+print "\t\t NSArray *elements = [_section allElements];\n\n";
+print "\t\t for (FormElement *element in elements) {\n";
 foreach $element (@elements) {
     switch ($element->{type}) {
         case "BooleanFormElement" {
-            print "\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
-            print"\t\t\t [self.".getOutletNameForElement($element)." [((BooleanFormElement*)element).value boolValue]];\n";
-            print "\t\t }\n";
+            print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
+            print"\t\t\t\t [self.".getOutletNameForElement($element)." setSelected:[((BooleanFormElement*)element).value boolValue]];\n";
+            print "\t\t\t }\n";
         }
         case "StringListElement" {
-            print "\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
-            print "\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];\n";
-            print "\t\t\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
-            print "\t\t }\n";
+            print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
+            print "\t\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];\n";
+            print "\t\t\t\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
+            print "\t\t\t }\n";
+        }
+        case "TextElement" {
+            print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
+            print "\t\t\t\t [self.".getOutletNameForElement($element)." setText:((TextElement*)element).value];\n";
+            print "\t\t\t }\n";
         }
     }
 }
+print "\t\t }\n";
 print "\t }\n";
 print "}\n";
 print "\n";
@@ -175,18 +182,17 @@ print "\n";
 
 print "-(void)validateSection:(FormSection*)section\n";
 print "{\n";
-print "\t if (_section) {\n";
-print "\t\t int count;\n";
-print "\t\t NSString *errMsg;\n";
-print "\t\t \n";
-print "\t\t count = [_section.groups count]\n";
-print "\t\t errMsg =[NSString stringWithFormat:\@\"Invalid number of groups '%d'. Expected '1'.\", count];\n";
-print "\t\t NSAssert(count, errMsg);\n";
-print "\t\t \n";
-print "\t\t FormGroup *group;\n";
-print "\t\t \n";
+print "\t int count;\n";
+print "\t NSString *errMsg;\n";
+print "\t \n";
+print "\t count = [_section.groups count];\n";
+print "\t errMsg =[NSString stringWithFormat:\@\"Invalid number of groups '%d'. Expected '1'.\", count];\n";
+print "\t NSAssert(count, errMsg);\n";
+print "\t \n";
+print "\t FormGroup *group;\n";
+print "\t \n";
 foreach $group (@groups){
-    print "\t\t group = [_section.groups objectAtIndex:0];\n";
+    print "\t group = [_section.groups objectAtIndex:0];\n";
 
     if ( ref $group->{Element} eq 'ARRAY'){
         @elems = @{$group->{Element}};
@@ -195,11 +201,10 @@ foreach $group (@groups){
     }
     
     foreach $element (@elems){
-        print "\t\t NSAssert([group getElementForKey:".getKeyConstantForElement($element)."]!= nil, \@\"".$element->{name}." is nil\");\n";
+        print "\t NSAssert([group getElementForKey:".getKeyConstantForElement($element)."]!= nil, \@\"".$element->{name}." is nil\");\n";
     }
-    print "\t\t \n";
+    print "\t \n";
 }
-print "\t }\n";
 print "}\n";
 print "\n";
 
@@ -214,7 +219,9 @@ print "\t \n";
 print "\t FormGroup *group;\n";
 print "\t \n";
 foreach my $i (0 .. $#groups){
-    print "\t group = [self.section.groups objectAtIndex:$i];\n";
+    print "\t if ([self.section.groups count] > 0) {\n";
+    print "\t\t group = [self.section.groups objectAtIndex:$i];\n";
+    print "\t }\n";
     print "\t if ( !group ){\n";
     print "\t\t group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:\@\"FormGroup\"];\n";
     print "\t\t [self.section addGroupsObject:group];\n";
@@ -251,7 +258,10 @@ foreach my $i (0 .. $#groups){
                 print "\t\t UITableViewCell *cell = [self.".getOutletNameForElement($element,"TABLE")." cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];\n";
                 print "\t\t [$arrayName addObject:cell.textLabel.text];\n";
                 print "\t }\n";
-                print "\t stringListElement.value = $arrayName;\n";
+                print "\t $name.value = $arrayName;\n";
+            }
+            case "TextElement" {
+                print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";
             }
             else {
                 die "Unhandled element type '".$element->{type}."'";
@@ -286,9 +296,9 @@ print "\t return NO;\n";
 print "}\n\n";
 
 
-print "\- (IBAction)dismiss:(id)sender {n";
+print "\- (IBAction)dismiss:(id)sender {\n";
 print "\t [self dismissViewControllerAnimated:YES completion:nil];\n";
 print "}\n\n";
-
+print "\@end";
 
 

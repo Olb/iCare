@@ -1,32 +1,24 @@
-//
-//  BBPreopActionsViewController.m
-//  iCare
-//
-//  Created by Bogdan Marinescu on 8/26/14.
-//  Copyright (c) 2014 Bogdan Marinescu. All rights reserved.
-//
-
 #import "BBPreopActionsViewController.h"
-#import "FormSection.h"
 #import "BBUtil.h"
+#import "FormSection.h"
 #import "FormElement.h"
 #import "FormGroup.h"
 #import "BBCheckBox.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
-#import "BBStringArrayTableAdapter.h"
+#import "StringArrayTableAdapter.h"
 
-NSString *const SECTION_TITLE = @"Anesthesia PreOp time used to";
-NSString *const CONSENT_KEY = @"Check consents and review chart/plan with Pt";
-NSString *const START_IV_KEY = @"Start IV";
-NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
+NSString *const SECTION_TITLE = @"PreopActionsSectionKey";
+NSString *const CHECK_CONSENTS_KEY = @"CheckConsentsKey";
+NSString *const START_IV_KEY = @"StartIvKey";
+NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 
-@interface BBPreopActionsViewController () <BBStringArrayTableDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *startIvCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *otherTextField;
+@interface BBPreopActionsViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *startIvBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *otherActionsTextField;
 @property (weak, nonatomic) IBOutlet UITableView *otherActionsTable;
-@property (strong, nonatomic) BBStringArrayTableAdapter *stringArrayTableAdapter;
+@property (strong, nonatomic) StringArrayTableAdapter *otherActionsTableAdapter;
 @end
 
 @implementation BBPreopActionsViewController
@@ -34,49 +26,46 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.stringArrayTableAdapter = [[BBStringArrayTableAdapter alloc] init];
-    self.otherActionsTable.dataSource = self.stringArrayTableAdapter;
-    self.otherActionsTable.delegate = self.stringArrayTableAdapter;
+    self.otherActionsTableAdapter = [[StringArrayTableAdapter alloc] init];
+    self.otherActionsTable.dataSource = self.otherActionsTableAdapter;
+    self.otherActionsTable.delegate = self.otherActionsTableAdapter;
     
-    [self validateSection:_section];
-    NSArray *elements = [_section allElements];
-    for (FormElement *element in elements) {
+    if (_section) {
+        [self validateSection:_section];
+        NSArray *elements = [_section allElements];
         
-        if ([element.key isEqualToString:CONSENT_KEY]) {
-            [self.checkConsentsCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
-        }
-        if ([element.key isEqualToString:START_IV_KEY]) {
-            [self.checkConsentsCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
-        }
-        if ([element.key isEqualToString:OTHER_PREOP_ACTIONS]) {
-            self.stringArrayTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
-            [self.otherActionsTable reloadData];
+        for (FormElement *element in elements) {
+            if ([element.key isEqualToString:CHECK_CONSENTS_KEY]){
+                [self.checkConsentsBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+            }
+            if ([element.key isEqualToString:START_IV_KEY]){
+                [self.startIvBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+            }
+            if ([element.key isEqualToString:OTHER_ACTIONS_KEY]){
+                self.otherActionsTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
+                [self.otherActionsTable reloadData];
+            }
         }
     }
 }
-
 
 -(void)validateSection:(FormSection*)section
 {
-    if (_section) {
-        int count;
-        NSString *errMsg;
-        
-        NSAssert([SECTION_TITLE isEqualToString:self.section.title], @"Invalid section title");
-        count = [_section.groups count];
-        errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
-        NSAssert(count, errMsg);
-        
-        FormGroup *group;
-        
-        group = [_section.groups objectAtIndex:0];
-        NSAssert([group getElementForKey:CONSENT_KEY]!= nil, @"Consent Element nil");
-        NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"Start IV count is nil");
-        NSAssert([group getElementForKey:OTHER_PREOP_ACTIONS]!= nil, @"Other Actions count is nil");
-        
-    }
+    int count;
+    NSString *errMsg;
+    
+    count = [_section.groups count];
+    errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
+    NSAssert(count, errMsg);
+    
+    FormGroup *group;
+    
+    group = [_section.groups objectAtIndex:0];
+    NSAssert([group getElementForKey:CHECK_CONSENTS_KEY]!= nil, @"CheckConsents is nil");
+    NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"StartIv is nil");
+    NSAssert([group getElementForKey:OTHER_ACTIONS_KEY]!= nil, @"OtherActions is nil");
+    
 }
-
 
 - (IBAction)accept:(id)sender {
     if ( !self.section ){
@@ -86,69 +75,54 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
     
     FormGroup *group;
     
-    group = [self.section.groups objectAtIndex:0];
+    if ([self.section.groups count] > 0) {
+        group = [self.section.groups objectAtIndex:0];
+    }
     if ( !group ){
         group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
         [self.section addGroupsObject:group];
     }
-    
-    BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CONSENT_KEY];
+    BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CHECK_CONSENTS_KEY];
     if (!checkConsents) {
         checkConsents = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-        checkConsents.key = CONSENT_KEY;
+        checkConsents.key = CHECK_CONSENTS_KEY;
         [group addElementsObject:checkConsents];
     }
-    checkConsents.value = [NSNumber numberWithBool:self.checkConsentsCheckBox.isSelected];
     
-    BooleanFormElement *startIV = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
-    if (!startIV) {
-        startIV = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-        startIV.key = START_IV_KEY;
-        [group addElementsObject:startIV];
-    }
-    startIV.value = [NSNumber numberWithBool:self.startIvCheckBox.isSelected];
+    checkConsents.value = [NSNumber numberWithBool:self.checkConsentsBBCheckBox.isSelected];
     
-    StringListElement *stringListElement = (StringListElement*)[group getElementForKey:OTHER_PREOP_ACTIONS];
-    if (!stringListElement) {
-        stringListElement = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
-        stringListElement.key = OTHER_PREOP_ACTIONS;
-        [group addElementsObject:stringListElement];
+    BooleanFormElement *startIv = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
+    if (!startIv) {
+        startIv = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+        startIv.key = START_IV_KEY;
+        [group addElementsObject:startIv];
     }
     
-    NSMutableArray *stringArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [self.otherActionsTable numberOfRowsInSection:0]; i++) {
+    startIv.value = [NSNumber numberWithBool:self.startIvBBCheckBox.isSelected];
+    
+    StringListElement *otherActions = (StringListElement*)[group getElementForKey:OTHER_ACTIONS_KEY];
+    if (!otherActions) {
+        otherActions = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
+        otherActions.key = OTHER_ACTIONS_KEY;
+        [group addElementsObject:otherActions];
+    }
+    
+    NSMutableArray *otherActionsStringArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [self.otherActionsTable numberOfRowsInSection:0]; i++){
         UITableViewCell *cell = [self.otherActionsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        [stringArray addObject:cell.textLabel.text];
+        [otherActionsStringArray addObject:cell.textLabel.text];
     }
-    stringListElement.value = stringArray;
+    otherActions.value = otherActionsStringArray;
     
     [self.delegate sectionCreated:self.section];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)addOtherAction:(id)sender {
-    [self.stringArrayTableAdapter.items addObject:self.otherTextField.text];
+- (IBAction)addOtherActions:(id)sender {
+    [self.otherActionsTableAdapter.items addObject:self.otherActionsTextField.text];
     [self.otherActionsTable reloadData];
-    self.otherTextField.text = @"";
-    [self.otherTextField resignFirstResponder];
-}
-
-#pragma mark - Tableview delegate methods
-
--(void) itemDeleted:(NSString*)item atIndexPathRow:(NSInteger)row
-{
-    [self.stringArrayTableAdapter.items removeObjectAtIndex:row];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (![textField.text isEqualToString:@""]) {
-        [self.stringArrayTableAdapter.items addObject:textField.text];
-        [self.otherActionsTable reloadData];
-        textField.text = @"";
-    }
-    [textField resignFirstResponder];
-    return YES;
+    self.otherActionsTextField.text = @"";
+    [self.otherActionsTextField resignFirstResponder];
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {
@@ -158,6 +132,5 @@ NSString *const OTHER_PREOP_ACTIONS = @"OtherPreopActions";
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end

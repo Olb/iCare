@@ -1,5 +1,5 @@
 //
-//  BBPatientTableAdapter.h
+//  BBPlannedOperationTableAdapter.h
 //  iCare2
 //
 //  Created by Bogdan Marinescu on 8/30/14.
@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Operation.h"
 
-@interface BBPatientTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface PatientFormTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+
+@property Operation *opration;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

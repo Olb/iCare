@@ -55,6 +55,9 @@
     <entity name="StringListElement" representedClassName="StringListElement" parentEntity="FormElement" syncable="YES">
         <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
+    <entity name="TextElement" representedClassName="TextElement" parentEntity="FormElement" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
@@ -66,5 +69,6 @@
         <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
+        <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
     </elements>
 </model>

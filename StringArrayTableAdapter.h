@@ -12,7 +12,7 @@
 -(void) itemSelected:(NSString*)item;
 -(void) itemDeleted:(NSString*)item atIndexPathRow:(NSInteger)row;
 @end
-@interface BBStringArrayTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface StringArrayTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property NSMutableArray *items;
 @property id <BBStringArrayTableDelegate> delegate;
 @end

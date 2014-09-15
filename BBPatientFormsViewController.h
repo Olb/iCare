@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BBOperationsTableAdapter.h"
+#import "OperationsTableAdapter.h"
 
 @class Patient;
 @interface BBPatientFormsViewController : UIViewController <BBOperationSelectedDelegate>
