@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+<Section name="AllergiesReactions">
+	<Group>
+		<Element type="StringListElement" name="AllergiesReactions"/>
+	</Group>
+</Section>
