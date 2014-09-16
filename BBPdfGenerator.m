@@ -14,6 +14,8 @@
 #import "FormSection.h"
 #import "FormGroup.h"
 #import "FormSection.h"
+#import "BooleanFormElement.h"
+#import "StringListElement.h"
 
 @implementation BBPdfGenerator
 
@@ -46,22 +48,73 @@
     
     
     for ( FormSection* section in form.sections ){
-        for  ( FormGroup* group in section.groups ){
-            [self drawGroup:group];
+        if ([section.title isEqualToString:@"PreOpActionsSectionKey"]) {
+            [BBPdfGenerator drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
         }
     }
     
+    UIGraphicsEndPDFContext();
+    return true;
+}
+
++(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+    CGSize previousElementSize;
+    CGPoint elementOrigin = sectionOrigin;
     
-    // Get the graphics context.
+    previousElementSize = [BBPdfGenerator drawText:@"Anesthesia PreOp time used to" atLocation:elementOrigin];
+    
+    elementOrigin.x = sectionOrigin.x + 10;
+    elementOrigin.y += previousElementSize.height + 20;
+    previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"CheckConsentsKey"]).value boolValue] atLocation:elementOrigin];
+    
+    elementOrigin.x += previousElementSize.width + 10;
+    previousElementSize = [BBPdfGenerator drawText:@"Check consents and review chart/plan with Pt" atLocation:elementOrigin];
+    
+
+    elementOrigin.x = sectionOrigin.x + 10;
+    elementOrigin.y += previousElementSize.height + 20;
+    previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"StartIvKey"]).value boolValue] atLocation:elementOrigin];
+    
+    elementOrigin.x += previousElementSize.width + 10;
+    previousElementSize = [BBPdfGenerator drawText:@"Start IV" atLocation:elementOrigin];
+    
+    elementOrigin.x = sectionOrigin.x + 10;
+    elementOrigin.y += previousElementSize.height + 20;
+    previousElementSize = [BBPdfGenerator drawText:@"Other Actions" atLocation:elementOrigin];
+    
+    for (NSString *text in ((StringListElement*)[section getElementForKey:@"OtherActions"]).value) {
+        elementOrigin.x = sectionOrigin.x + 10;
+        elementOrigin.y += previousElementSize.height + 20;
+        previousElementSize = [BBPdfGenerator drawText:text atLocation:elementOrigin];
+    }
+    
+    
+
+}
+
++(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location
+{
+    UIImage* logo = checked ? [UIImage imageNamed:@"checkbox_selected.png"] : [UIImage imageNamed:@"checkbox_unselected.png"];
+    CGRect frame = CGRectMake(location.x,location.y, 20, 20);
+    [logo drawInRect:frame];
+    return frame.size;
+}
+
++(CGSize)drawText:(id)text atLocation:(CGPoint)location
+{
+    CGSize size = [text sizeWithAttributes:
+                   @{NSFontAttributeName:
+                         [UIFont systemFontOfSize:17.0f]}];
+    
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    
-    
-    NSString *string = @"Some TExt";
-    CFStringRef stringRef = (__bridge CFStringRef)string;
+
+    // Get the graphics context.
+    CFStringRef stringRef = (__bridge CFStringRef)text;
     // Prepare the text using a Core Text Framesetter.
     CFAttributedStringRef currentText = CFAttributedStringCreate(NULL, stringRef, NULL);
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(currentText);
-    CGRect frameRect = CGRectMake(0, 0, 300, 50.0);
+    CGRect frameRect = CGRectMake(location.x, location.y, size.width, size.height);
     CGMutablePathRef framePath = CGPathCreateMutable();
     CGPathAddRect(framePath, NULL, frameRect);
     
@@ -76,25 +129,33 @@
     
     // Core Text draws from the bottom-left corner up, so flip
     // the current transform prior to drawing.
-    CGContextTranslateCTM(currentContext, 0, 100);
+    CGContextTranslateCTM(currentContext, 0, size.height + frameRect.origin.y*2);
     CGContextScaleCTM(currentContext, 1.0, -1.0);
     
     // Draw the frame.
     CTFrameDraw(frameRef, currentContext);
     
+    CGContextScaleCTM(currentContext, 1.0, -1.0);
+    CGContextTranslateCTM(currentContext, 0, (-1)*(size.height + frameRect.origin.y*2));
+
+    
     CFRelease(frameRef);
     CFRelease(stringRef);
     CFRelease(framesetter);
     
-    
-    
-    UIGraphicsEndPDFContext();
-    return true;
+    return size;
 }
 
-+(void) drawGroup:(FormGroup*)group
-{
-    
-}
+/*
+ 
+ <Graphics>
+ <Group label="Anesthesia PreOp time used to:">
+ <Element name="CheckConsents" label="Check consents and review chart/plan with Pt" />
+ <Element name="StartIv" label="Start IV" />
+ <Element name="OtherActions" label="Other Actions" />
+ </Group>
+ </Graphics>
+ 
+ */
 
 @end

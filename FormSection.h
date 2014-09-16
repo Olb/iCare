@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class Form, FormGroup;
-
+@class FormElement;
 @interface FormSection : NSManagedObject
 
 @property (nonatomic, retain) NSString * title;
@@ -31,4 +31,5 @@
 - (void)addGroups:(NSOrderedSet *)values;
 - (void)removeGroups:(NSOrderedSet *)values;
 - (NSArray*)allElements;
+-(FormElement*)getElementForKey:(NSString *)key;
 @end

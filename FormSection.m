@@ -34,4 +34,16 @@
     
     return elements;
 }
+
+-(FormElement*)getElementForKey:(NSString *)key
+{
+    
+    for (FormGroup* g in self.groups) {
+        FormElement *e = [g getElementForKey:key];
+        if (e) {
+            return e;
+        }
+    }
+    return nil;
+}
 @end
