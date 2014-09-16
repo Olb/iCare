@@ -36,6 +36,8 @@
 		281270D519C8808E009A9644 /* PhysicalExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281270D319C8808E009A9644 /* PhysicalExamViewController.m */; };
 		281270D619C8808E009A9644 /* PhysicalExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281270D419C8808E009A9644 /* PhysicalExamViewController.xib */; };
 		281270D919C885C9009A9644 /* perlheader.pl in Resources */ = {isa = PBXBuildFile; fileRef = 281270D819C885C9009A9644 /* perlheader.pl */; };
+		281270DF19C894A8009A9644 /* PreOpActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281270DE19C894A8009A9644 /* PreOpActionsViewController.m */; };
+		281270E119C894C7009A9644 /* PreOpActionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281270E019C894C7009A9644 /* PreOpActionsViewController.xib */; };
 		282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */ = {isa = PBXBuildFile; fileRef = 282D5EA019C734160055B32B /* PremedsGiven.xml */; };
 		282D5EA419C7360C0055B32B /* TextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 282D5EA319C7360C0055B32B /* TextElement.m */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
@@ -203,6 +205,9 @@
 		281270D319C8808E009A9644 /* PhysicalExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicalExamViewController.m; sourceTree = "<group>"; };
 		281270D419C8808E009A9644 /* PhysicalExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhysicalExamViewController.xib; sourceTree = "<group>"; };
 		281270D819C885C9009A9644 /* perlheader.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlheader.pl; sourceTree = "<group>"; };
+		281270DD19C894A8009A9644 /* PreOpActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreOpActionsViewController.h; sourceTree = "<group>"; };
+		281270DE19C894A8009A9644 /* PreOpActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreOpActionsViewController.m; sourceTree = "<group>"; };
+		281270E019C894C7009A9644 /* PreOpActionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreOpActionsViewController.xib; sourceTree = "<group>"; };
 		282D5EA019C734160055B32B /* PremedsGiven.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PremedsGiven.xml; sourceTree = "<group>"; };
 		282D5EA219C7360C0055B32B /* TextElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextElement.h; sourceTree = "<group>"; };
 		282D5EA319C7360C0055B32B /* TextElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextElement.m; sourceTree = "<group>"; };
@@ -515,6 +520,9 @@
 		988D161719AE630B009A887A /* Anesthesia record */ = {
 			isa = PBXGroup;
 			children = (
+				281270E019C894C7009A9644 /* PreOpActionsViewController.xib */,
+				281270DD19C894A8009A9644 /* PreOpActionsViewController.h */,
+				281270DE19C894A8009A9644 /* PreOpActionsViewController.m */,
 				988D161819AE63A1009A887A /* AnesthesiaTypeViewController.h */,
 				988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */,
 				988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */,
@@ -883,6 +891,7 @@
 				988D168D19AE63A2009A887A /* PostAnesthesiaEvalViewController.xib in Resources */,
 				988D168419AE63A2009A887A /* IVAntibioticNameViewController.xib in Resources */,
 				281270AE19C7E0B9009A9644 /* PlanDiscussion.xml in Resources */,
+				281270E119C894C7009A9644 /* PreOpActionsViewController.xib in Resources */,
 				988D168219AE63A2009A887A /* InvasiveLinesViewController.xib in Resources */,
 				28AA355919C60539001453CE /* perlxml.pl in Resources */,
 				988D168F19AE63A2009A887A /* PostOpDiagnosisViewController.xib in Resources */,
@@ -981,6 +990,7 @@
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
 				985B839219C24E1F007DF484 /* Operation.m in Sources */,
+				281270DF19C894A8009A9644 /* PreOpActionsViewController.m in Sources */,
 				98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,
