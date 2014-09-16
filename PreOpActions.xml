@@ -1,5 +1,5 @@
 <?xml version='1.0'?>
-<Section name="PreopActions">
+<Section name="PreOpActions">
 	<Group name="GroupName">
 		<Element type="BooleanFormElement" name="CheckConsents"/>
 		<Element type="BooleanFormElement" name="StartIv"/>

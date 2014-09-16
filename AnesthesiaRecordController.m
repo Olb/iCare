@@ -10,7 +10,7 @@
 #import "AnesthesiaTypeViewController.h"
 #import "BetaBlockerViewController.h"
 #import "EmergenceViewController.h"
-#import "PreopActionsViewController.h"
+#import "PreOpActionsViewController.h"
 #import "EndotrachealTubeViewController.h"
 #import "InductionAndDeviceViewController.h"
 #import "InvasiveLinesViewController.h"
@@ -85,11 +85,11 @@
     UIViewController *vc;
     switch (cell.tag) {
         case 0:
-            vc = [[PreopActionsViewController alloc] init];
-            ((PreopActionsViewController*)vc).delegate = self;
+            vc = [[PreOpActionsViewController alloc] init];
+            ((PreOpActionsViewController*)vc).delegate = self;
             for (FormSection* s in self.form.sections) {
-                if ([s.title isEqualToString:[PreopActionsViewController sectionTitle]]) {
-                    ((PreopActionsViewController*)vc).section = s;
+                if ([s.title isEqualToString:[PreOpActionsViewController sectionTitle]]) {
+                    ((PreOpActionsViewController*)vc).section = s;
                 }
             }
             break;
@@ -103,7 +103,6 @@
             }
             break;
         case 2:
-            vc = [[BetaBlockerViewController alloc] init];
             vc = [[BetaBlockerViewController alloc] init];
             ((BetaBlockerViewController*)vc).delegate = self;
             for (FormSection* s in self.form.sections) {

@@ -40,7 +40,7 @@
 		282D5EA419C7360C0055B32B /* TextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 282D5EA319C7360C0055B32B /* TextElement.m */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
 		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
-		28AA355A19C60539001453CE /* PreopActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreopActions.xml */; };
+		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
 		28CCCB1D19C35FA000B2A0C6 /* FormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB1C19C35FA000B2A0C6 /* FormElement.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
 		28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2819C35FA100B2A0C6 /* BooleanFormElement.m */; };
@@ -64,8 +64,6 @@
 		985B839B19C24E20007DF484 /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B839A19C24E20007DF484 /* Practitioner.m */; };
 		988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */; };
 		988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */; };
-		988D166819AE63A2009A887A /* PreopActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D161C19AE63A1009A887A /* PreopActionsViewController.m */; };
-		988D166919AE63A2009A887A /* PreopActionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D161D19AE63A1009A887A /* PreopActionsViewController.xib */; };
 		988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D162119AE63A1009A887A /* BetaBlockerViewController.m */; };
 		988D166C19AE63A2009A887A /* BetaBlockerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D162219AE63A1009A887A /* BetaBlockerViewController.xib */; };
 		988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D162719AE63A1009A887A /* EmergenceViewController.m */; };
@@ -212,7 +210,7 @@
 		28AA355119C5D64A001453CE /* BBHeightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightAdapter.h; sourceTree = "<group>"; };
 		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
 		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
-		28AA355819C60539001453CE /* PreopActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreopActions.xml; sourceTree = "<group>"; };
+		28AA355819C60539001453CE /* PreOpActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreOpActions.xml; sourceTree = "<group>"; };
 		28CCCB1B19C35FA000B2A0C6 /* FormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormElement.h; sourceTree = "<group>"; };
 		28CCCB1C19C35FA000B2A0C6 /* FormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormElement.m; sourceTree = "<group>"; };
 		28CCCB2119C35FA100B2A0C6 /* StringListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringListElement.h; sourceTree = "<group>"; };
@@ -254,9 +252,6 @@
 		988D161819AE63A1009A887A /* AnesthesiaTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnesthesiaTypeViewController.h; sourceTree = "<group>"; };
 		988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnesthesiaTypeViewController.m; sourceTree = "<group>"; };
 		988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnesthesiaTypeViewController.xib; sourceTree = "<group>"; };
-		988D161B19AE63A1009A887A /* PreopActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreopActionsViewController.h; sourceTree = "<group>"; };
-		988D161C19AE63A1009A887A /* PreopActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreopActionsViewController.m; sourceTree = "<group>"; };
-		988D161D19AE63A1009A887A /* PreopActionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreopActionsViewController.xib; sourceTree = "<group>"; };
 		988D162019AE63A1009A887A /* BetaBlockerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetaBlockerViewController.h; sourceTree = "<group>"; };
 		988D162119AE63A1009A887A /* BetaBlockerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetaBlockerViewController.m; sourceTree = "<group>"; };
 		988D162219AE63A1009A887A /* BetaBlockerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BetaBlockerViewController.xib; sourceTree = "<group>"; };
@@ -458,7 +453,7 @@
 		281270B219C7E437009A9644 /* AnesthesiaRecord */ = {
 			isa = PBXGroup;
 			children = (
-				28AA355819C60539001453CE /* PreopActions.xml */,
+				28AA355819C60539001453CE /* PreOpActions.xml */,
 				2812703E19C75376009A9644 /* BetaBlocker.xml */,
 				282D5EA019C734160055B32B /* PremedsGiven.xml */,
 			);
@@ -525,9 +520,6 @@
 				988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */,
 				F47FF38919AE655A00809D30 /* AnesthesiaRecordController.h */,
 				F47FF38A19AE655A00809D30 /* AnesthesiaRecordController.m */,
-				988D161B19AE63A1009A887A /* PreopActionsViewController.h */,
-				988D161C19AE63A1009A887A /* PreopActionsViewController.m */,
-				988D161D19AE63A1009A887A /* PreopActionsViewController.xib */,
 				988D162019AE63A1009A887A /* BetaBlockerViewController.h */,
 				988D162119AE63A1009A887A /* BetaBlockerViewController.m */,
 				988D162219AE63A1009A887A /* BetaBlockerViewController.xib */,
@@ -882,7 +874,7 @@
 				281270C119C87289009A9644 /* PastSurgicalProceduresViewController.xib in Resources */,
 				988D168619AE63A2009A887A /* MonitorinAndEquipmentViewController.xib in Resources */,
 				F4DF069819B0C35E00DDBE7E /* CreateUserViewController.xib in Resources */,
-				28AA355A19C60539001453CE /* PreopActions.xml in Resources */,
+				28AA355A19C60539001453CE /* PreOpActions.xml in Resources */,
 				988D169119AE63A2009A887A /* PostProcedureGeneralViewController.xib in Resources */,
 				282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */,
 				28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */,
@@ -900,7 +892,6 @@
 				281270D919C885C9009A9644 /* perlheader.pl in Resources */,
 				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
 				988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */,
-				988D166919AE63A2009A887A /* PreopActionsViewController.xib in Resources */,
 				281270A019C7DB1C009A9644 /* Hepato.xml in Resources */,
 				F4AFB93F19ABB65000CA013B /* EndocrineViewController.xib in Resources */,
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
@@ -947,7 +938,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				988D166819AE63A2009A887A /* PreopActionsViewController.m in Sources */,
 				985B839B19C24E20007DF484 /* Practitioner.m in Sources */,
 				98FF060119B245970003129C /* PatientFormTableAdapter.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* PreOpReviewViewController.m in Sources */,
