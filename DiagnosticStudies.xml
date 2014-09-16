@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="DiagnosticStudies">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="LabsNA"/>
  		<Element type="BooleanFormElement" name="MedicalEvalReviewed"/>
         <Element type="TextElement" name="HH"/>
@@ -11,10 +11,45 @@
  		<Element type="BooleanFormElement" name="PregTestPositive"/>
         <Element type="TextElement" name="Glucose"/>
         <Element type="TextElement" name="GlucoseTime"/>
-		<Element type="BooleanFormElement" name="EKG"/>
-        <Element type="TextElement" name="EKGOther"/>
-		<Element type="BooleanFormElement" name="CXR"/>
-        <Element type="TextElement" name="CXROther"/>
+		<Element type="BooleanFormElement" name="EkgNormal"/>
+        <Element type="TextElement" name="EkgOther"/>
+		<Element type="BooleanFormElement" name="CxrNormal"/>
+        <Element type="TextElement" name="CxrOther"/>
         <Element type="StringListElement" name="OtherData"/>
-	</Group>
+	</Data>
+    
+    <Graphics>
+        <Group label="Diagnostic Studies" orientation="vertical">
+            <Group orientation="horizontal">
+                <Element name="LabsNA" label="Labs N/A" />
+                <Element name="MedicalEvalReviewed" label="Medical Eval reviewed" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="HH" label="H/H" />
+                <Element name="PLT" label="PLT" />
+                <Element name="KPotassium" label="K" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="PTINRPTT" label="PT/INR/PTT:" />
+                <Element label="Preg test:" />
+                <Element name="PregTestNegative" label="Neg" />
+                <Element name="PregTestPositive" label="Pos" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Glucose" label="Glucose:" />
+                <Element name="GlucoseTime" label="at" />
+                <Element label="(time)" />
+            </Group>
+            <Group label="EKG:" orientation="horizontal">
+                <Element name="EkgNormal" label="Normal" show="ifNotEmpty"/>
+                <Element name="EkgOther" label="Not normal:" show="ifNotEmpty" />
+            </Group>
+            <Group label="CXR:" orientation="horizontal">
+                <Element name="CxrNormal" label="Normal" show="ifNotEmpty"/>
+                <Element name="CxrOther" label="Not normal:" show="ifNotEmpty" />
+            </Group>
+            <Element name="OtherData" label="Other:" />
+        </Group>
+    </Graphics>
 </Section>
+

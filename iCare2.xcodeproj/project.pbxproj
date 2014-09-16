@@ -98,6 +98,7 @@
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
 		98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485219C897DA00E4727B /* BBPdfGenerator.m */; };
 		98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DA485419C8A0E800E4727B /* CoreText.framework */; };
+		98DA485719C8AC1C00E4727B /* teat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98DA485619C8AC1C00E4727B /* teat.xib */; };
 		98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F919B20D4F0003129C /* BBUtil.m */; };
 		98FF05FE19B226900003129C /* PatientTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05FD19B226900003129C /* PatientTableAdapter.m */; };
 		98FF060119B245970003129C /* PatientFormTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* PatientFormTableAdapter.m */; };
@@ -307,6 +308,7 @@
 		98DA485119C897DA00E4727B /* BBPdfGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfGenerator.h; sourceTree = "<group>"; };
 		98DA485219C897DA00E4727B /* BBPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfGenerator.m; sourceTree = "<group>"; };
 		98DA485419C8A0E800E4727B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		98DA485619C8AC1C00E4727B /* teat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = teat.xib; sourceTree = "<group>"; };
 		98FF05F819B20D4F0003129C /* BBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUtil.h; sourceTree = "<group>"; };
 		98FF05F919B20D4F0003129C /* BBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUtil.m; sourceTree = "<group>"; };
 		98FF05FC19B226900003129C /* PatientTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientTableAdapter.h; sourceTree = "<group>"; };
@@ -768,6 +770,7 @@
 				28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */,
 				98DA485119C897DA00E4727B /* BBPdfGenerator.h */,
 				98DA485219C897DA00E4727B /* BBPdfGenerator.m */,
+				98DA485619C8AC1C00E4727B /* teat.xib */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
 				988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */,
 				281270A019C7DB1C009A9644 /* Hepato.xml in Resources */,
+				98DA485719C8AC1C00E4727B /* teat.xib in Resources */,
 				F4AFB93F19ABB65000CA013B /* EndocrineViewController.xib in Resources */,
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				281270B019C7E371009A9644 /* PreOpReview.xml in Resources */,

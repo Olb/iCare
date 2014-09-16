@@ -1,9 +1,14 @@
 <?xml version='1.0'?>
 <Section name="PreOpActions">
-	<Group name="GroupName">
-		<Element type="BooleanFormElement" name="CheckConsents"/>
-		<Element type="BooleanFormElement" name="StartIv"/>
-		<Element type="StringListElement" name="OtherActions"/>
-	</Group>
-
+    <Element type="BooleanFormElement" name="CheckConsents" label=""/>
+    <Element type="BooleanFormElement" name="StartIv"/>
+    <Element type="StringListElement" name="OtherActions"/>
 </Section>
+
+<Graphics>
+    <Group label="Anesthesia PreOp time used to:">
+        <Element name="CheckConsents" label="Check consents and review chart/plan with Pt" />
+        <Element name="StartIv" label="Start IV" />
+        <Element name="OtherActions" label="Other Actions" />
+    </Group>
+</Graphics>

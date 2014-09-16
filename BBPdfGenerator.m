@@ -40,11 +40,23 @@
 
 + (bool) generatePdfForForm:(Form*)form
 {
-    UIGraphicsBeginPDFContextToFile([self getPDFFileNameForForm:form], CGRectZero, nil);
+    UIGraphicsBeginPDFContextToFile([BBPdfGenerator getPDFFileNameForForm:form], CGRectZero, nil);
     
     UIGraphicsBeginPDFPage();
-    NSString *string = @"Some TExt";
+    
+    
+    for ( FormSection* section in form.sections ){
+        for  ( FormGroup* group in section.groups ){
+            [self drawGroup:group];
+        }
+    }
+    
+    
+    // Get the graphics context.
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    
+    
+    NSString *string = @"Some TExt";
     CFStringRef stringRef = (__bridge CFStringRef)string;
     // Prepare the text using a Core Text Framesetter.
     CFAttributedStringRef currentText = CFAttributedStringCreate(NULL, stringRef, NULL);
@@ -58,25 +70,17 @@
     CTFrameRef frameRef = CTFramesetterCreateFrame(framesetter, currentRange, framePath, NULL);
     CGPathRelease(framePath);
     
-    // Get the graphics context.
-    
     // Put the text matrix into a known state. This ensures
     // that no old scaling factors are left in place.
     CGContextSetTextMatrix(currentContext, CGAffineTransformIdentity);
     
     // Core Text draws from the bottom-left corner up, so flip
     // the current transform prior to drawing.
-    // Modify this to take into consideration the origin.
-    CGContextTranslateCTM(currentContext, 0, frameRect.origin.y*2);
+    CGContextTranslateCTM(currentContext, 0, 100);
     CGContextScaleCTM(currentContext, 1.0, -1.0);
     
     // Draw the frame.
     CTFrameDraw(frameRef, currentContext);
-    
-    
-    // Add these two lines to reverse the earlier transformation.
-    CGContextScaleCTM(currentContext, 1.0, -1.0);
-    CGContextTranslateCTM(currentContext, 0, (-1)*frameRect.origin.y*2);
     
     CFRelease(frameRef);
     CFRelease(stringRef);
@@ -86,6 +90,11 @@
     
     UIGraphicsEndPDFContext();
     return true;
+}
+
++(void) drawGroup:(FormGroup*)group
+{
+    
 }
 
 @end
