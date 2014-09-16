@@ -29,6 +29,7 @@
 #import "BBFormSectionDelegate.h"
 #import "BPBAppDelegate.h"
 #import "Form.h"
+#import "BBPdfGenerator.h"
 
 @interface AnesthesiaRecordController ()<BBFormSectionDelegate>
 
@@ -189,6 +190,11 @@
                                           otherButtonTitles:nil];
     [alert show];
 }
+
+- (IBAction)print:(id)sender {
+    [BBPdfGenerator generatePdfForForm:self.form];
+}
+
 // TODO
 -(void)setTableViewAccessoryForIndexPath:(NSIndexPath*)indexPath to:(BOOL)complete
 {

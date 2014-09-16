@@ -96,6 +96,8 @@
 		988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165F19AE63A2009A887A /* PremedsGivenViewController.xib */; };
 		988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */; };
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
+		98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485219C897DA00E4727B /* BBPdfGenerator.m */; };
+		98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DA485419C8A0E800E4727B /* CoreText.framework */; };
 		98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F919B20D4F0003129C /* BBUtil.m */; };
 		98FF05FE19B226900003129C /* PatientTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05FD19B226900003129C /* PatientTableAdapter.m */; };
 		98FF060119B245970003129C /* PatientFormTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* PatientFormTableAdapter.m */; };
@@ -302,6 +304,9 @@
 		988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinalAnesthesiaViewController.h; sourceTree = "<group>"; };
 		988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinalAnesthesiaViewController.m; sourceTree = "<group>"; };
 		988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinalAnesthesiaViewController.xib; sourceTree = "<group>"; };
+		98DA485119C897DA00E4727B /* BBPdfGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfGenerator.h; sourceTree = "<group>"; };
+		98DA485219C897DA00E4727B /* BBPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfGenerator.m; sourceTree = "<group>"; };
+		98DA485419C8A0E800E4727B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		98FF05F819B20D4F0003129C /* BBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUtil.h; sourceTree = "<group>"; };
 		98FF05F919B20D4F0003129C /* BBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUtil.m; sourceTree = "<group>"; };
 		98FF05FC19B226900003129C /* PatientTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientTableAdapter.h; sourceTree = "<group>"; };
@@ -400,6 +405,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */,
 				F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */,
 				F4615D53192F908E0031470B /* CoreData.framework in Frameworks */,
 				F4615D51192F908E0031470B /* UIKit.framework in Frameworks */,
@@ -520,14 +526,11 @@
 		988D161719AE630B009A887A /* Anesthesia record */ = {
 			isa = PBXGroup;
 			children = (
-				281270DD19C894A8009A9644 /* PreOpActionsViewController.h */,
-				281270DE19C894A8009A9644 /* PreOpActionsViewController.m */,
-				281270E019C894C7009A9644 /* PreOpActionsViewController.xib */,
+				F47FF38919AE655A00809D30 /* AnesthesiaRecordController.h */,
+				F47FF38A19AE655A00809D30 /* AnesthesiaRecordController.m */,
 				988D161819AE63A1009A887A /* AnesthesiaTypeViewController.h */,
 				988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */,
 				988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */,
-				F47FF38919AE655A00809D30 /* AnesthesiaRecordController.h */,
-				F47FF38A19AE655A00809D30 /* AnesthesiaRecordController.m */,
 				988D162019AE63A1009A887A /* BetaBlockerViewController.h */,
 				988D162119AE63A1009A887A /* BetaBlockerViewController.m */,
 				988D162219AE63A1009A887A /* BetaBlockerViewController.xib */,
@@ -570,6 +573,9 @@
 				988D165D19AE63A2009A887A /* PremedsGivenViewController.h */,
 				988D165E19AE63A2009A887A /* PremedsGivenViewController.m */,
 				988D165F19AE63A2009A887A /* PremedsGivenViewController.xib */,
+				281270DD19C894A8009A9644 /* PreOpActionsViewController.h */,
+				281270DE19C894A8009A9644 /* PreOpActionsViewController.m */,
+				281270E019C894C7009A9644 /* PreOpActionsViewController.xib */,
 				988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */,
 				988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */,
 				988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */,
@@ -689,6 +695,7 @@
 		F4615D4B192F908E0031470B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				98DA485419C8A0E800E4727B /* CoreText.framework */,
 				F4615D4C192F908E0031470B /* Foundation.framework */,
 				F4615D4E192F908E0031470B /* CoreGraphics.framework */,
 				F4615D50192F908E0031470B /* UIKit.framework */,
@@ -759,6 +766,8 @@
 				28CCCB4919C3A8AB00B2A0C6 /* BBHeightPickerView.m */,
 				28CCCB4B19C3A8B800B2A0C6 /* BBWeightPickerView.h */,
 				28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */,
+				98DA485119C897DA00E4727B /* BBPdfGenerator.h */,
+				98DA485219C897DA00E4727B /* BBPdfGenerator.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1000,6 +1009,7 @@
 				F4DF06A219B149BE00DDBE7E /* BBDatePickerViewController.m in Sources */,
 				28CCCB4719C3A8A000B2A0C6 /* BBBirthdatePickerView.m in Sources */,
 				F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */,
+				98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */,
 				F4615D5F192F908E0031470B /* BPBAppDelegate.m in Sources */,
 				98FF05FE19B226900003129C /* PatientTableAdapter.m in Sources */,
 				F4AFB93919ABB55E00CA013B /* NeuroligcViewController.m in Sources */,
