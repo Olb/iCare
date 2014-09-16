@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<Section name="Renal">
+	<Group>
+		<Element type="BooleanFormElement" name="Renal"/>
+ 		<Element type="BooleanFormElement" name="RenalNegative"/>
+		<Element type="BooleanFormElement" name="CRI"/>
+		<Element type="BooleanFormElement" name="RenalFailure"/>
+        <Element type="TextElement" name="LastDialysis"/>
+	</Group>
+</Section>

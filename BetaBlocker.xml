@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<Section name="BetaBlocker">
+	<Group>
+		<Element type="BooleanFormElement" name="TakenPastDay"/>
+        <Element type="BooleanFormElement" name="GivenInOR"/>
+	</Group>
+    <Group heading="ContraIndication" optional="true">
+		<Element type="BooleanFormElement" name="HeartRateLessFifty"/>
+        <Element type="BooleanFormElement" name="Hypotension"/>
+	</Group>
+
+    
+</Section>

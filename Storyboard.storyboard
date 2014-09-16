@@ -688,7 +688,7 @@
         <!--Pre Op Eval Table Table View Controller-->
         <scene sceneID="T9h-Jc-HUx">
             <objects>
-                <tableViewController id="5Rl-Ev-Wyy" customClass="BBPreOpEvalTableTableViewController" sceneMemberID="viewController">
+                <tableViewController id="5Rl-Ev-Wyy" customClass="PreOpEvalTableTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YkG-3m-aRW">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1417,6 +1417,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="qUT-L5-jfd">
                         <barButtonItem key="backBarButtonItem" title="Forms" id="wde-Kw-7r3"/>
+                        <barButtonItem key="rightBarButtonItem" title="Print" id="FMU-lw-FCQ"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAg-t9-eEo" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<Section name="Endocrine">
+	<Group>
+		<Element type="BooleanFormElement" name="Endocrine"/>
+ 		<Element type="BooleanFormElement" name="EndocrineNegative"/>
+		<Element type="BooleanFormElement" name="Diabetes"/>
+		<Element type="BooleanFormElement" name="HyperThyroid"/>
+		<Element type="BooleanFormElement" name="HypoThyroid"/>
+	</Group>
+</Section>

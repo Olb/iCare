@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<Section name="PlanDiscussion">
+	<Group>
+		<Element type="BooleanFormElement" name="PatientAccepted"/>
+ 		<Element type="BooleanFormElement" name="ParentAccepted"/>
+        <Element type="BooleanFormElement" name="GuardianAccepted"/>
+ 		<Element type="BooleanFormElement" name="ViaTranslatorAccepted"/>
+        <Element type="BooleanFormElement" name="Epidural"/>
+ 		<Element type="BooleanFormElement" name="General"/>
+        <Element type="BooleanFormElement" name="Spinal"/>
+ 		<Element type="BooleanFormElement" name="NerveBlockIVRegional"/>
+        <Element type="BooleanFormElement" name="ChronicCardioPulmonaryDisease"/>
+        <Element type="BooleanFormElement" name="ImmobilityNeeded"/>
+ 		<Element type="BooleanFormElement" name="StraightLocalNotAdequate"/>
+        <Element type="BooleanFormElement" name="PulmonaryArteryCath"/>
+        <Element type="BooleanFormElement" name="CentralVenousCath"/>
+        <Element type="BooleanFormElement" name="TEE"/>
+ 		<Element type="BooleanFormElement" name="PossiblePostOpVent"/>
+        <Element type="StringListElement" name="Other"/>
+        <Element type="BooleanFormElement" name="PostopPainManagementDiscussed"/>
+        <Element type="BooleanFormElement" name="PCA"/>
+        <Element type="BooleanFormElement" name="TEE"/>
+ 		<Element type="BooleanFormElement" name="PostOpEpidural"/>
+        <Element type="BooleanFormElement" name="SpinalOpiate"/>
+        <Element type="BooleanFormElement" name="NerveBlockContinuous"/>
+        <Element type="BooleanFormElement" name="NerveBlockSingleShot"/>
+        <Element type="BooleanFormElement" name="ASA1"/>
+ 		<Element type="BooleanFormElement" name="ASA2"/>
+ 		<Element type="BooleanFormElement" name="ASA3"/>
+ 		<Element type="BooleanFormElement" name="ASA4"/>
+ 		<Element type="BooleanFormElement" name="ASA5"/>
+ 		<Element type="BooleanFormElement" name="ASA6"/>
+ 		<Element type="BooleanFormElement" name="ASAE"/>
+        <Element type="TextElement" name="PreOpEvaluationBy"/>
+	</Group>
+</Section>

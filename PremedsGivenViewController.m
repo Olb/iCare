@@ -88,11 +88,13 @@ NSString *const OTHER_PREMEDS_GIVEN_KEY = @"OtherPremedsGivenKey";
 	 
 	 FormGroup *group;
 	 
+	 group = nil;
 	 if ([self.section.groups count] > 0) {
 		 group = [self.section.groups objectAtIndex:0];
 	 }
 	 if ( !group ){
 		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
+		 group.optional = [NSNumber numberWithBool:false];
 		 [self.section addGroupsObject:group];
 	 }
 	 BooleanFormElement *midazolam = (BooleanFormElement*)[group getElementForKey:MIDAZOLAM_KEY];

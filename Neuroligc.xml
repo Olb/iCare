@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<Section name="Neuroligc">
+	<Group>
+		<Element type="BooleanFormElement" name="Neurologic"/>
+ 		<Element type="BooleanFormElement" name="NeurologicNegative"/>
+		<Element type="BooleanFormElement" name="Dementia"/>
+		<Element type="BooleanFormElement" name="Neuropathy"/>
+		<Element type="BooleanFormElement" name="BackPain"/>
+		<Element type="BooleanFormElement" name="NeckPain"/>
+		<Element type="BooleanFormElement" name="CVA"/>
+		<Element type="BooleanFormElement" name="TIA"/>
+		<Element type="BooleanFormElement" name="AlteredMentalStatus"/>
+		<Element type="BooleanFormElement" name="Seizures"/>
+	</Group>
+</Section>

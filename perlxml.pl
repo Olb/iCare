@@ -13,6 +13,13 @@ sub getOutletNameForElement {
     return "\l$element->{name}".getOutletTypeFor($element->{type},$_[1]);
 }
 
+sub getOutletNameForGroup {
+    local $group;
+    $group = $_[0];
+    
+    return "\l$group->{heading}BBCheckBox";
+}
+
 sub camelCaseToUppercase{
     local $res;
     $res = $_[0];
@@ -110,12 +117,14 @@ print "\n";
 # interface section
 
 print "\@interface ".$viewControllerName." () <UITextFieldDelegate>\n";
-
-foreach $group (@groups)
-{
-    foreach $element (@elements){
-        printPropertiesForElement($element);
+foreach $group (@groups) {
+    if ($group->{optional} eq "true") {
+        print "\@property (weak, nonatomic) IBOutlet BBCheckBox *".getOutletNameForGroup($group).";\n";
     }
+}
+
+foreach $element (@elements){
+    printPropertiesForElement($element);
 }
 
 print "\@end\n\n";
@@ -170,6 +179,11 @@ foreach $element (@elements) {
         }
     }
 }
+foreach my $i (0 .. $#groups){
+    if (@groups[$i]->{optional} eq "true"){
+        print"\t\t\t\t [self.".getOutletNameForGroup(@groups[$i])." setSelected:[((FormGroup *)[_section.groups objectAtIndex:$i]).selected boolValue]];\n";
+    }
+}
 print "\t\t }\n";
 print "\t }\n";
 print "}\n";
@@ -188,13 +202,15 @@ print "\t NSAssert(count, errMsg);\n";
 print "\t \n";
 print "\t FormGroup *group;\n";
 print "\t \n";
-foreach $group (@groups){
-    print "\t group = [_section.groups objectAtIndex:0];\n";
-
-    if ( ref $group->{Element} eq 'ARRAY'){
-        @elems = @{$group->{Element}};
+foreach my $i (0 .. $#groups){
+    print "\t group = [_section.groups objectAtIndex:$i];\n";
+    if (@groups[$i]->{optional} eq "true") {
+        print "\t NSAssert(group.optional, \@\"Expected group to be optional\");\n";
+    }
+    if ( ref @groups[$i]->{Element} eq 'ARRAY'){
+        @elems = @{@groups[$i]->{Element}};
     } else {
-        @elems = ($group->{Element});
+        @elems = (@groups[$i]->{Element});
     }
     
     foreach $element (@elems){
@@ -216,13 +232,22 @@ print "\t \n";
 print "\t FormGroup *group;\n";
 print "\t \n";
 foreach my $i (0 .. $#groups){
-    print "\t if ([self.section.groups count] > 0) {\n";
+    print "\t group = nil;\n";
+    print "\t if ([self.section.groups count] > $i) {\n";
     print "\t\t group = [self.section.groups objectAtIndex:$i];\n";
     print "\t }\n";
     print "\t if ( !group ){\n";
     print "\t\t group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:\@\"FormGroup\"];\n";
+    if (@groups[$i]->{optional} eq "true") {
+        print "\t\t group.optional = [NSNumber numberWithBool:true];\n";
+    } else {
+        print "\t\t group.optional = [NSNumber numberWithBool:false];\n";
+    }
     print "\t\t [self.section addGroupsObject:group];\n";
     print "\t }\n";
+    if (@groups[$i]->{optional} eq "true") {
+        print "\t group.selected = [NSNumber numberWithBool:self.".getOutletNameForGroup(@groups[$i]).".isSelected];\n";
+    }
     
     if ( ref @groups[$i]->{Element} eq 'ARRAY'){
         @elems = @{@groups[$i]->{Element}};

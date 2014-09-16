@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverviewViewController">
             <connections>
-                <outlet property="alergicReactionsTextField" destination="p4W-zx-V8q" id="Dkl-bJ-tsb"/>
-                <outlet property="anesthProblemsFamilyCheckBox" destination="3D4-Xu-D3Q" id="p78-xm-KRt"/>
-                <outlet property="anesthProblemsNoneCheckBox" destination="IRl-L6-RpW" id="tcU-O9-b6K"/>
-                <outlet property="anesthProblemsPatientCheckBox" destination="CY5-ZW-do6" id="5iA-wo-SZT"/>
-                <outlet property="betaBlockerCheckBox" destination="vuw-PG-PKi" id="zx9-pp-AKW"/>
-                <outlet property="medicalSuplimentsTextField" destination="gDz-Nd-dHE" id="9zb-RX-3kK"/>
-                <outlet property="pastSurgicalProceduresTextField" destination="TdH-BX-fea" id="00j-cP-cmJ"/>
+                <outlet property="allergiesAndReactionsTable" destination="JgA-hx-G93" id="HiO-vB-EJV"/>
+                <outlet property="allergiesAndReactionsTextField" destination="p4W-zx-V8q" id="nUJ-th-Ogg"/>
+                <outlet property="betaBlockerBBCheckBox" destination="vuw-PG-PKi" id="oCv-6i-0rI"/>
+                <outlet property="hxAnesthesiaProblemsBBCheckBox" destination="IRl-L6-RpW" id="iFQ-N6-lg3"/>
+                <outlet property="hxAnesthesiaProblemsYesFamilyBBCheckBox" destination="3D4-Xu-D3Q" id="yAO-BQ-tTB"/>
+                <outlet property="hxAnesthesiaProblemsYesPatientBBCheckBox" destination="CY5-ZW-do6" id="cCC-Fh-Kdb"/>
+                <outlet property="medsSupplementsTable" destination="oSJ-nd-msH" id="cKM-Xw-3eX"/>
+                <outlet property="medsSupplementsTextField" destination="gDz-Nd-dHE" id="hkg-DB-hvj"/>
+                <outlet property="pastSurgicalProceduresTable" destination="mMx-cm-gQ8" id="aaQ-Ja-d11"/>
+                <outlet property="pastSurgicalProceduresTextField" destination="TdH-BX-fea" id="b4p-4d-En0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -147,7 +150,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="43p-fa-EcG"/>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="Ipo-GZ-Kfb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ang-Lu-SNZ">
@@ -156,15 +159,15 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="yR6-s9-kXZ"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDz-Nd-dHE">
                     <rect key="frame" x="20" y="79" width="458" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="kwu-0O-mOD"/>
-                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ll1-1l-xis">
                     <rect key="frame" x="491" y="83" width="22" height="22"/>
@@ -173,7 +176,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="addMedicalSupliment:" destination="-1" eventType="touchUpInside" id="91j-Jf-90w"/>
+                        <action selector="addMedsSupplements:" destination="-1" eventType="touchUpInside" id="w5t-Xm-X6x"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TdH-BX-fea">
@@ -181,9 +184,6 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="X2O-X5-b6K"/>
-                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZf-r7-FgR">
                     <rect key="frame" x="491" y="258" width="22" height="22"/>
@@ -192,7 +192,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="addPastSurgicalProcedure:" destination="-1" eventType="touchUpInside" id="zRJ-fy-GTr"/>
+                        <action selector="addPastSurgicalProcedures:" destination="-1" eventType="touchUpInside" id="2J8-vl-ngc"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p4W-zx-V8q">
@@ -208,7 +208,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="addAlergicReaction:" destination="-1" eventType="touchUpInside" id="9hx-6O-9wO"/>
+                        <action selector="addAllergiesAndReactions:" destination="-1" eventType="touchUpInside" id="9tW-Qh-aom"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuw-PG-PKi" customClass="BBCheckBox">

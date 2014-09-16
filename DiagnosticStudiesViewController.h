@@ -1,5 +1,5 @@
 //
-//  OverviewViewController.h
+//  BBDaignosticStudiesViewController.h
 //  iCare2
 //
 //  Created by billy bray on 8/26/14.
@@ -10,7 +10,7 @@
 #import "BBFormSectionDelegate.h"
 #import "FormSection.h"
 
-@interface OverviewViewController : UIViewController
+@interface DiagnosticStudiesViewController : UIViewController
 @property id <BBFormSectionDelegate> delegate;
 @property FormSection * section;
 

@@ -2,7 +2,7 @@
 //  FormGroup.m
 //  iCare2
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 9/15/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -14,8 +14,11 @@
 @implementation FormGroup
 
 @dynamic heading;
-@dynamic section;
+@dynamic optional;
+@dynamic selected;
 @dynamic elements;
+@dynamic section;
+
 -(FormElement*)getElementForKey:(NSString *)key
 {
     

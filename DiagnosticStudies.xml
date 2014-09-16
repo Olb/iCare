@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<Section name="DiagnosticStudies">
+	<Group>
+		<Element type="BooleanFormElement" name="LabsNA"/>
+ 		<Element type="BooleanFormElement" name="MedicalEvalReviewed"/>
+        <Element type="TextElement" name="HH"/>
+        <Element type="TextElement" name="PLT"/>
+        <Element type="TextElement" name="KPotassium"/>
+        <Element type="TextElement" name="PTINRPTT"/>
+        <Element type="TextElement" name="PregTestNegative"/>
+        <Element type="TextElement" name="PregTestPositive"/>
+        <Element type="TextElement" name="Glucose"/>
+        <Element type="TextElement" name="GlucoseTime"/>
+		<Element type="BooleanFormElement" name="EKG"/>
+        <Element type="TextElement" name="EKGOther"/>
+		<Element type="BooleanFormElement" name="CXR"/>
+        <Element type="TextElement" name="CXROther"/>
+        <Element type="StringListElement" name="OtherData"/>
+	</Group>
+</Section>

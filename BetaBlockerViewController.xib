@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BetaBlockerViewController">
             <connections>
+                <outlet property="contraIndicationBBCheckBox" destination="mrZ-Rg-BEW" id="dX2-I3-cuP"/>
+                <outlet property="givenInORBBCheckBox" destination="6D7-zt-2KM" id="CbR-P8-fU9"/>
+                <outlet property="heartRateLessFiftyBBCheckBox" destination="QQe-PU-p4N" id="qGS-VQ-Odj"/>
+                <outlet property="hypotensionBBCheckBox" destination="LbU-2O-Flf" id="aBD-eY-WW7"/>
+                <outlet property="takenPastDayBBCheckBox" destination="uqN-2l-veX" id="61w-7H-OSF"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -32,6 +37,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="83v-BR-QuP"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If Pt on Beta-Blocker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zn-zd-vgA">
                     <rect key="frame" x="20" y="70" width="161" height="21"/>

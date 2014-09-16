@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<Section name="Respiratory">
+	<Group>
+		<Element type="BooleanFormElement" name="Respiratory"/>
+ 		<Element type="BooleanFormElement" name="RespiratoryNone"/>
+        <Element type="BooleanFormElement" name="HomeO2"/>
+ 		<Element type="BooleanFormElement" name="COPD"/>
+        <Element type="BooleanFormElement" name="CPAP"/>
+ 		<Element type="BooleanFormElement" name="RecentURI"/>
+        <Element type="BooleanFormElement" name="Asthma"/>
+ 		<Element type="BooleanFormElement" name="SleepApnea"/>
+        <Element type="BooleanFormElement" name="Smoking"/>
+        <Element type="TextElement" name="PPD"/>
+        <Element type="TextElement" name="YRS"/>
+        <Element type="TextElement" name="QuitAmountAgo"/>
+	</Group>
+</Section>

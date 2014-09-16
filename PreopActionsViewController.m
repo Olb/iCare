@@ -76,11 +76,13 @@ NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 	 
 	 FormGroup *group;
 	 
+	 group = nil;
 	 if ([self.section.groups count] > 0) {
 		 group = [self.section.groups objectAtIndex:0];
 	 }
 	 if ( !group ){
 		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
+		 group.optional = [NSNumber numberWithBool:false];
 		 [self.section addGroupsObject:group];
 	 }
 	 BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CHECK_CONSENTS_KEY];

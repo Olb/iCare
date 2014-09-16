@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<Section name="Cardio">
+	<Group>
+		<Element type="BooleanFormElement" name="CardioVascular"/>
+ 		<Element type="BooleanFormElement" name="CardioNegative"/>
+		<Element type="BooleanFormElement" name="FunctionalCapacityLessThanFourMets"/>
+		<Element type="BooleanFormElement" name="HTN"/>
+		<Element type="BooleanFormElement" name="Dyslipidemia"/>
+		<Element type="BooleanFormElement" name="CHF"/>
+		<Element type="BooleanFormElement" name="PVD"/>
+		<Element type="BooleanFormElement" name="AICD"/>
+		<Element type="BooleanFormElement" name="CAD"/>
+		<Element type="BooleanFormElement" name="MI"/>
+		<Element type="BooleanFormElement" name="PTCA"/>
+		<Element type="BooleanFormElement" name="CoronaryStents"/>
+		<Element type="BooleanFormElement" name="Dysrhythmia"/>
+	</Group>
+</Section>

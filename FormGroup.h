@@ -2,7 +2,7 @@
 //  FormGroup.h
 //  iCare2
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 9/15/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -14,8 +14,10 @@
 @interface FormGroup : NSManagedObject
 
 @property (nonatomic, retain) NSString * heading;
-@property (nonatomic, retain) FormSection *section;
+@property (nonatomic, retain) NSNumber * optional;
+@property (nonatomic, retain) NSNumber * selected;
 @property (nonatomic, retain) NSOrderedSet *elements;
+@property (nonatomic, retain) FormSection *section;
 @end
 
 @interface FormGroup (CoreDataGeneratedAccessors)
@@ -30,5 +32,5 @@
 - (void)removeElementsObject:(FormElement *)value;
 - (void)addElements:(NSOrderedSet *)values;
 - (void)removeElements:(NSOrderedSet *)values;
--(FormElement*)getElementForKey:(NSString *)key;
+- (FormElement*)getElementForKey:(NSString *)key;
 @end

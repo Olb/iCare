@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<Section name="HemOnc">
+	<Group>
+		<Element type="BooleanFormElement" name="HemOnc"/>
+ 		<Element type="BooleanFormElement" name="HemOncNegative"/>
+		<Element type="BooleanFormElement" name="Anemia"/>
+		<Element type="BooleanFormElement" name="DVT"/>
+		<Element type="BooleanFormElement" name="BloodRefusal"/>
+        <Element type="BooleanFormElement" name="Coagulopathy"/>
+		<Element type="BooleanFormElement" name="Cancer"/>
+		<Element type="BooleanFormElement" name="Chemo"/>
+		<Element type="BooleanFormElement" name="Radiation"/>
+	</Group>
+</Section>
