@@ -6,6 +6,36 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlanDiscussionViewController">
             <connections>
+                <outlet property="aSA1BBCheckBox" destination="3FY-6k-5Mc" id="OxZ-ed-9RY"/>
+                <outlet property="aSA2BBCheckBox" destination="SoZ-os-sCn" id="dY6-3y-KC4"/>
+                <outlet property="aSA3BBCheckBox" destination="E2N-50-TlN" id="dQ4-ck-wrr"/>
+                <outlet property="aSA4BBCheckBox" destination="TYr-xk-mqN" id="AHO-r2-n5Q"/>
+                <outlet property="aSA5BBCheckBox" destination="dcF-cs-hZS" id="exV-6M-L8q"/>
+                <outlet property="aSA6BBCheckBox" destination="Iqc-aF-JgF" id="E3V-JU-hQs"/>
+                <outlet property="aSAEBBCheckBox" destination="gm9-Xr-0jc" id="o04-Cg-SGt"/>
+                <outlet property="centralVenousCathBBCheckBox" destination="Zmw-YW-0N4" id="qcI-L8-0mr"/>
+                <outlet property="chronicCardioPulmonaryDiseaseBBCheckBox" destination="DpJ-KS-08f" id="Erf-wW-P4R"/>
+                <outlet property="epiduralBBCheckBox" destination="cmD-67-p2V" id="qzA-bS-85y"/>
+                <outlet property="generalBBCheckBox" destination="RFJ-KB-QTC" id="ES1-PY-US2"/>
+                <outlet property="guardianAcceptedBBCheckBox" destination="Mm5-RP-R3t" id="TBO-mj-Ulg"/>
+                <outlet property="immobilityNeededBBCheckBox" destination="c1n-UE-rPr" id="Lhh-DO-uQY"/>
+                <outlet property="nerveBlockContinuousBBCheckBox" destination="3Mr-69-GMD" id="DT2-IE-QyS"/>
+                <outlet property="nerveBlockIVRegionalBBCheckBox" destination="gx3-wI-qln" id="EC2-42-Khe"/>
+                <outlet property="nerveBlockSingleShotBBCheckBox" destination="J9n-bf-01y" id="dSP-hy-uDM"/>
+                <outlet property="otherTextField" destination="7Vu-ey-aoQ" id="s0y-zg-dnW"/>
+                <outlet property="pCABBCheckBox" destination="yMW-wC-R1P" id="36e-8e-Zdt"/>
+                <outlet property="parentAcceptedBBCheckBox" destination="w8K-GR-cMK" id="Au7-Xv-XIR"/>
+                <outlet property="patientAcceptedBBCheckBox" destination="Mds-ck-MzQ" id="OBT-Tj-z1n"/>
+                <outlet property="possiblePostOpVentBBCheckBox" destination="0m5-HR-fGh" id="9iq-4U-eJg"/>
+                <outlet property="postOpEpiduralBBCheckBox" destination="DGh-rm-hB7" id="a7O-v9-lzD"/>
+                <outlet property="postopPainManagementDiscussedBBCheckBox" destination="rgL-2N-oad" id="Dfr-qC-mdp"/>
+                <outlet property="preOpEvaluationByUITextField" destination="ajv-JA-ecX" id="kAd-va-3Rb"/>
+                <outlet property="pulmonaryArteryCathBBCheckBox" destination="E4t-mN-KLQ" id="0Xj-Ix-k5n"/>
+                <outlet property="spinalBBCheckBox" destination="swD-ZR-hGo" id="Yet-bt-cO3"/>
+                <outlet property="spinalOpiateBBCheckBox" destination="YaX-gP-UjW" id="tlk-KB-8dC"/>
+                <outlet property="straightLocalNotAdequateBBCheckBox" destination="awB-dw-rDz" id="qXZ-a9-rHo"/>
+                <outlet property="tEEBBCheckBox" destination="JkQ-Ym-PgJ" id="Inn-Rh-Z2a"/>
+                <outlet property="viaTranslatorAcceptedBBCheckBox" destination="Xu1-JA-ogP" id="xem-XF-V3a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,6 +60,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="Lc0-8F-hLX"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The following plan including risks/benefits/alternatives/complications discussed with &amp; accepted by:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="438" translatesAutoresizingMaskIntoConstraints="NO" id="Uw1-Gz-7eA">
                     <rect key="frame" x="19" y="108" width="438" height="46"/>
@@ -158,7 +191,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="other" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Vu-ey-aoQ">
-                    <rect key="frame" x="338" y="381" width="181" height="30"/>
+                    <rect key="frame" x="333" y="381" width="109" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -497,7 +530,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JkQ-Ym-PgJ" customClass="BBCheckBox">
-                    <rect key="frame" x="33" y="381" width="33" height="32"/>
+                    <rect key="frame" x="32" y="381" width="33" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
@@ -796,6 +829,16 @@
                     </subviews>
                     <color key="backgroundColor" red="0.2048848123" green="0.83576418519999995" blue="0.72745573809999997" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziH-KX-QfP">
+                    <rect key="frame" x="450" y="385" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addOther:" destination="-1" eventType="touchUpInside" id="dge-Wb-WHY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

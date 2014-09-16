@@ -19,7 +19,6 @@
         <Element type="StringListElement" name="Other"/>
         <Element type="BooleanFormElement" name="PostopPainManagementDiscussed"/>
         <Element type="BooleanFormElement" name="PCA"/>
-        <Element type="BooleanFormElement" name="TEE"/>
  		<Element type="BooleanFormElement" name="PostOpEpidural"/>
         <Element type="BooleanFormElement" name="SpinalOpiate"/>
         <Element type="BooleanFormElement" name="NerveBlockContinuous"/>

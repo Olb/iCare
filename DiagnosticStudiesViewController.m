@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *pLTUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *kPotassiumUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *pTINRPTTUITextField;
-@property (weak, nonatomic) IBOutlet UITextField *pregTestNegativeUITextField;
-@property (weak, nonatomic) IBOutlet UITextField *pregTestPositiveUITextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *pregTestNegativeBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *pregTestPositiveBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *glucoseUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *glucoseTimeUITextField;
 @property (weak, nonatomic) IBOutlet BBCheckBox *eKGBBCheckBox;
@@ -79,10 +79,10 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 				 [self.pTINRPTTUITextField setText:((TextElement*)element).value];
 			 }
 			 if ([element.key isEqualToString:PREG_TEST_NEGATIVE_KEY]){
-				 [self.pregTestNegativeUITextField setText:((TextElement*)element).value];
+				 [self.pregTestNegativeBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:PREG_TEST_POSITIVE_KEY]){
-				 [self.pregTestPositiveUITextField setText:((TextElement*)element).value];
+				 [self.pregTestPositiveBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:GLUCOSE_KEY]){
 				 [self.glucoseUITextField setText:((TextElement*)element).value];
@@ -211,23 +211,23 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 	 pTINRPTT.value = self.pTINRPTTUITextField.text;
 	 
-	 TextElement *pregTestNegative = (TextElement*)[group getElementForKey:PREG_TEST_NEGATIVE_KEY];
+	 BooleanFormElement *pregTestNegative = (BooleanFormElement*)[group getElementForKey:PREG_TEST_NEGATIVE_KEY];
 	 if (!pregTestNegative) {
-		 pregTestNegative = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 pregTestNegative = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 pregTestNegative.key = PREG_TEST_NEGATIVE_KEY;
 		 [group addElementsObject:pregTestNegative];
 	 }
 
-	 pregTestNegative.value = self.pregTestNegativeUITextField.text;
+	 pregTestNegative.value = [NSNumber numberWithBool:self.pregTestNegativeBBCheckBox.isSelected];
 	 
-	 TextElement *pregTestPositive = (TextElement*)[group getElementForKey:PREG_TEST_POSITIVE_KEY];
+	 BooleanFormElement *pregTestPositive = (BooleanFormElement*)[group getElementForKey:PREG_TEST_POSITIVE_KEY];
 	 if (!pregTestPositive) {
-		 pregTestPositive = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 pregTestPositive = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 pregTestPositive.key = PREG_TEST_POSITIVE_KEY;
 		 [group addElementsObject:pregTestPositive];
 	 }
 
-	 pregTestPositive.value = self.pregTestPositiveUITextField.text;
+	 pregTestPositive.value = [NSNumber numberWithBool:self.pregTestPositiveBBCheckBox.isSelected];
 	 
 	 TextElement *glucose = (TextElement*)[group getElementForKey:GLUCOSE_KEY];
 	 if (!glucose) {

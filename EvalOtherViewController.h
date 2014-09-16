@@ -10,7 +10,7 @@
 #import "BBFormSectionDelegate.h"
 #import "FormSection.h"
 
-@interface OtherViewController : UIViewController
+@interface EvalOtherViewController : UIViewController
 @property id <BBFormSectionDelegate> delegate;
 @property FormSection * section;
 

@@ -31,7 +31,6 @@
 @property (strong, nonatomic) StringArrayTableAdapter *otherTableAdapter;
 @property (weak, nonatomic) IBOutlet BBCheckBox *postopPainManagementDiscussedBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *pCABBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *tEEBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *postOpEpiduralBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *spinalOpiateBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nerveBlockContinuousBBCheckBox;
@@ -66,7 +65,6 @@ NSString *const POSSIBLE_POST_OP_VENT_KEY = @"PossiblePostOpVentKey";
 NSString *const OTHER_KEY = @"OtherKey";
 NSString *const POSTOP_PAIN_MANAGEMENT_DISCUSSED_KEY = @"PostopPainManagementDiscussedKey";
 NSString *const PCA_KEY = @"PCAKey";
-NSString *const TEE_KEY = @"TEEKey";
 NSString *const POST_OP_EPIDURAL_KEY = @"PostOpEpiduralKey";
 NSString *const SPINAL_OPIATE_KEY = @"SpinalOpiateKey";
 NSString *const NERVE_BLOCK_CONTINUOUS_KEY = @"NerveBlockContinuousKey";
@@ -147,9 +145,6 @@ NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 			 if ([element.key isEqualToString:PCA_KEY]){
 				 [self.pCABBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:TEE_KEY]){
-				 [self.tEEBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
-			 }
 			 if ([element.key isEqualToString:POST_OP_EPIDURAL_KEY]){
 				 [self.postOpEpiduralBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
@@ -220,7 +215,6 @@ NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 	 NSAssert([group getElementForKey:OTHER_KEY]!= nil, @"Other is nil");
 	 NSAssert([group getElementForKey:POSTOP_PAIN_MANAGEMENT_DISCUSSED_KEY]!= nil, @"PostopPainManagementDiscussed is nil");
 	 NSAssert([group getElementForKey:PCA_KEY]!= nil, @"PCA is nil");
-	 NSAssert([group getElementForKey:TEE_KEY]!= nil, @"TEE is nil");
 	 NSAssert([group getElementForKey:POST_OP_EPIDURAL_KEY]!= nil, @"PostOpEpidural is nil");
 	 NSAssert([group getElementForKey:SPINAL_OPIATE_KEY]!= nil, @"SpinalOpiate is nil");
 	 NSAssert([group getElementForKey:NERVE_BLOCK_CONTINUOUS_KEY]!= nil, @"NerveBlockContinuous is nil");
@@ -419,15 +413,6 @@ NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 	 }
 
 	 pCA.value = [NSNumber numberWithBool:self.pCABBCheckBox.isSelected];
-	 
-	 BooleanFormElement *tEE = (BooleanFormElement*)[group getElementForKey:TEE_KEY];
-	 if (!tEE) {
-		 tEE = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 tEE.key = TEE_KEY;
-		 [group addElementsObject:tEE];
-	 }
-
-	 tEE.value = [NSNumber numberWithBool:self.tEEBBCheckBox.isSelected];
 	 
 	 BooleanFormElement *postOpEpidural = (BooleanFormElement*)[group getElementForKey:POST_OP_EPIDURAL_KEY];
 	 if (!postOpEpidural) {

@@ -6,6 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NeuroligcViewController">
             <connections>
+                <outlet property="alteredMentalStatusBBCheckBox" destination="HT0-cf-IWd" id="9EZ-oj-feh"/>
+                <outlet property="backPainBBCheckBox" destination="wuK-If-SG8" id="YRo-xE-izV"/>
+                <outlet property="cVABBCheckBox" destination="qBI-me-2eQ" id="NsN-gl-8nU"/>
+                <outlet property="dementiaBBCheckBox" destination="qsm-Ta-izm" id="oRQ-fw-ruF"/>
+                <outlet property="neckPainBBCheckBox" destination="sYK-Xj-Hs5" id="7CH-Km-d4V"/>
+                <outlet property="neurologicBBCheckBox" destination="Zri-gC-zw7" id="HN6-iT-jzq"/>
+                <outlet property="neurologicNegativeBBCheckBox" destination="zNd-JW-NPg" id="YVH-s9-MZe"/>
+                <outlet property="neuropathyBBCheckBox" destination="zIE-8A-IYy" id="8kl-P7-6EV"/>
+                <outlet property="seizuresBBCheckBox" destination="Jkq-sb-gSE" id="qvB-7S-rud"/>
+                <outlet property="tIABBCheckBox" destination="Mob-oZ-fZc" id="L0F-Wg-nj5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +31,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="qbb-m2-TJE"/>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="fN2-hD-q7L"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AD1-wv-GWB">
@@ -30,6 +40,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="xlm-p5-8bi"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsm-Ta-izm" customClass="BBCheckBox">
                     <rect key="frame" x="40" y="116" width="33" height="32"/>

@@ -22,6 +22,7 @@
 		281270AE19C7E0B9009A9644 /* PlanDiscussion.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281270AD19C7E0B9009A9644 /* PlanDiscussion.xml */; };
 		281270B019C7E371009A9644 /* PreOpReview.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281270AF19C7E371009A9644 /* PreOpReview.xml */; };
 		281270B519C7E4C1009A9644 /* Respiratory.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281270B419C7E4C1009A9644 /* Respiratory.xml */; };
+		281270B719C7E9D2009A9644 /* EvalOther.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281270B619C7E9D2009A9644 /* EvalOther.xml */; };
 		282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */ = {isa = PBXBuildFile; fileRef = 282D5EA019C734160055B32B /* PremedsGiven.xml */; };
 		282D5EA419C7360C0055B32B /* TextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 282D5EA319C7360C0055B32B /* TextElement.m */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
@@ -121,8 +122,8 @@
 		F4AFB94919ABB86100CA013B /* HemOncViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94719ABB86100CA013B /* HemOncViewController.xib */; };
 		F4AFB94D19ABB8E300CA013B /* ImmuneIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB94B19ABB8E300CA013B /* ImmuneIDViewController.m */; };
 		F4AFB94E19ABB8E300CA013B /* ImmuneIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB94C19ABB8E300CA013B /* ImmuneIDViewController.xib */; };
-		F4AFB95219ABB96700CA013B /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95019ABB96700CA013B /* OtherViewController.m */; };
-		F4AFB95319ABB96700CA013B /* OtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB95119ABB96700CA013B /* OtherViewController.xib */; };
+		F4AFB95219ABB96700CA013B /* EvalOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95019ABB96700CA013B /* EvalOtherViewController.m */; };
+		F4AFB95319ABB96700CA013B /* EvalOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AFB95119ABB96700CA013B /* EvalOtherViewController.xib */; };
 		F4AFB95619ABBDF600CA013B /* BBMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95519ABBDF600CA013B /* BBMainViewController.m */; };
 		F4AFB95919ABBECC00CA013B /* PreOpEvalTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95819ABBECC00CA013B /* PreOpEvalTableTableViewController.m */; };
 		F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AFB95B19ABBF9900CA013B /* BBPatientFormsViewController.m */; };
@@ -174,6 +175,7 @@
 		281270AD19C7E0B9009A9644 /* PlanDiscussion.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PlanDiscussion.xml; sourceTree = "<group>"; };
 		281270AF19C7E371009A9644 /* PreOpReview.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreOpReview.xml; sourceTree = "<group>"; };
 		281270B419C7E4C1009A9644 /* Respiratory.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Respiratory.xml; sourceTree = "<group>"; };
+		281270B619C7E9D2009A9644 /* EvalOther.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EvalOther.xml; sourceTree = "<group>"; };
 		282D5EA019C734160055B32B /* PremedsGiven.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PremedsGiven.xml; sourceTree = "<group>"; };
 		282D5EA219C7360C0055B32B /* TextElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextElement.h; sourceTree = "<group>"; };
 		282D5EA319C7360C0055B32B /* TextElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextElement.m; sourceTree = "<group>"; };
@@ -327,9 +329,9 @@
 		F4AFB94A19ABB8E300CA013B /* ImmuneIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmuneIDViewController.h; sourceTree = "<group>"; };
 		F4AFB94B19ABB8E300CA013B /* ImmuneIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImmuneIDViewController.m; sourceTree = "<group>"; };
 		F4AFB94C19ABB8E300CA013B /* ImmuneIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImmuneIDViewController.xib; sourceTree = "<group>"; };
-		F4AFB94F19ABB96700CA013B /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
-		F4AFB95019ABB96700CA013B /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
-		F4AFB95119ABB96700CA013B /* OtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherViewController.xib; sourceTree = "<group>"; };
+		F4AFB94F19ABB96700CA013B /* EvalOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvalOtherViewController.h; sourceTree = "<group>"; };
+		F4AFB95019ABB96700CA013B /* EvalOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvalOtherViewController.m; sourceTree = "<group>"; };
+		F4AFB95119ABB96700CA013B /* EvalOtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvalOtherViewController.xib; sourceTree = "<group>"; };
 		F4AFB95419ABBDF600CA013B /* BBMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BBMainViewController.h; path = ../BBMainViewController.h; sourceTree = "<group>"; };
 		F4AFB95519ABBDF600CA013B /* BBMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BBMainViewController.m; path = ../BBMainViewController.m; sourceTree = "<group>"; };
 		F4AFB95719ABBECC00CA013B /* PreOpEvalTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreOpEvalTableTableViewController.h; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 		281270B119C7E41B009A9644 /* Eval */ = {
 			isa = PBXGroup;
 			children = (
+				281270B619C7E9D2009A9644 /* EvalOther.xml */,
 				281270B419C7E4C1009A9644 /* Respiratory.xml */,
 				2812709819C7D37B009A9644 /* Overview.xml */,
 				281270A319C7DC0F009A9644 /* Endocrine.xml */,
@@ -581,9 +584,9 @@
 				F4AFB94A19ABB8E300CA013B /* ImmuneIDViewController.h */,
 				F4AFB94B19ABB8E300CA013B /* ImmuneIDViewController.m */,
 				F4AFB94C19ABB8E300CA013B /* ImmuneIDViewController.xib */,
-				F4AFB94F19ABB96700CA013B /* OtherViewController.h */,
-				F4AFB95019ABB96700CA013B /* OtherViewController.m */,
-				F4AFB95119ABB96700CA013B /* OtherViewController.xib */,
+				F4AFB94F19ABB96700CA013B /* EvalOtherViewController.h */,
+				F4AFB95019ABB96700CA013B /* EvalOtherViewController.m */,
+				F4AFB95119ABB96700CA013B /* EvalOtherViewController.xib */,
 				F4B5D57019ACCE1800174F61 /* DiagnosticStudiesViewController.h */,
 				F4B5D57119ACCE1800174F61 /* DiagnosticStudiesViewController.m */,
 				F4B5D57219ACCE1800174F61 /* DiagnosticStudiesViewController.xib */,
@@ -849,6 +852,7 @@
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				281270B019C7E371009A9644 /* PreOpReview.xml in Resources */,
 				281270B519C7E4C1009A9644 /* Respiratory.xml in Resources */,
+				281270B719C7E9D2009A9644 /* EvalOther.xml in Resources */,
 				988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */,
 				F4AFB93519ABB0B600CA013B /* HepatoViewController.xib in Resources */,
 				F4DF068E19B0BFE300DDBE7E /* LoginViewController.xib in Resources */,
@@ -864,7 +868,7 @@
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
 				988D168819AE63A2009A887A /* PersonelViewController.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* CardioViewController.xib in Resources */,
-				F4AFB95319ABB96700CA013B /* OtherViewController.xib in Resources */,
+				F4AFB95319ABB96700CA013B /* EvalOtherViewController.xib in Resources */,
 				F4B5D57419ACCE1800174F61 /* DiagnosticStudiesViewController.xib in Resources */,
 				988D166C19AE63A2009A887A /* BetaBlockerViewController.xib in Resources */,
 				28CCCB3819C3A15D00B2A0C6 /* Birthdate.xib in Resources */,
@@ -933,7 +937,7 @@
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
-				F4AFB95219ABB96700CA013B /* OtherViewController.m in Sources */,
+				F4AFB95219ABB96700CA013B /* EvalOtherViewController.m in Sources */,
 				F4DF06A219B149BE00DDBE7E /* BBDatePickerViewController.m in Sources */,
 				28CCCB4719C3A8A000B2A0C6 /* BBBirthdatePickerView.m in Sources */,
 				F4DF069719B0C35E00DDBE7E /* CreateUserViewController.m in Sources */,

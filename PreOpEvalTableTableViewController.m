@@ -16,7 +16,7 @@
 #import "HepatoViewController.h"
 #import "HemOncViewController.h"
 #import "ImmuneIDViewController.h"
-#import "OtherViewController.h"
+#import "EvalOtherViewController.h"
 #import "DiagnosticStudiesViewController.h"
 #import "PlanDiscussionViewController.h"
 #import "PreOpReviewViewController.h"
@@ -131,7 +131,7 @@
             vc = [[ImmuneIDViewController alloc] init];
             break;
         case 9:
-            vc = [[OtherViewController alloc] init];
+            vc = [[EvalOtherViewController alloc] init];
             break;
         case 10:
             vc = [[DiagnosticStudiesViewController alloc] init];

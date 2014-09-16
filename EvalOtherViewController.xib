@@ -4,8 +4,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OtherViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EvalOtherViewController">
             <connections>
+                <outlet property="depressionBBCheckBox" destination="oxR-Qo-gbe" id="0gv-0f-ts5"/>
+                <outlet property="difficultIVAccessBBCheckBox" destination="Cog-0R-oQh" id="ejc-Yb-SRO"/>
+                <outlet property="drugAbuseBBCheckBox" destination="PXt-k2-Svc" id="H9S-7q-926"/>
+                <outlet property="eGABBCheckBox" destination="BTq-k7-EHk" id="VDk-3v-JLS"/>
+                <outlet property="eGAWeeksUITextField" destination="Eot-MN-Fug" id="3R6-QP-CUr"/>
+                <outlet property="eTOHAbuseBBCheckBox" destination="BbG-wh-7nc" id="Gbv-Rx-4OW"/>
+                <outlet property="evalOtherBBCheckBox" destination="4wD-9w-adZ" id="kOs-Cs-y4A"/>
+                <outlet property="evalOtherNegativeBBCheckBox" destination="lO0-I0-B67" id="Cur-Dv-cr8"/>
+                <outlet property="glaucomaBBCheckBox" destination="ngV-Wj-68M" id="ZpE-aC-KNj"/>
+                <outlet property="obesityBBCheckBox" destination="tY8-Gc-dAW" id="TFe-Ok-qfi"/>
+                <outlet property="pregnantBBCheckBox" destination="EN3-3j-FHX" id="Ug5-gb-PjX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +32,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="if8-EM-uQ4"/>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="19r-1N-Gjj"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-Qv-oWu">
@@ -30,6 +41,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="SSK-Gx-1nc"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Obesity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kco-M1-HLJ">
                     <rect key="frame" x="81" y="121" width="93" height="21"/>
@@ -208,8 +222,8 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(EGA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-kz-T9h">
-                    <rect key="frame" x="273" y="292" width="47" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="(EGA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-kz-T9h">
+                    <rect key="frame" x="273" y="292" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="oJV-j9-Jtj"/>
@@ -219,19 +233,8 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sP-st-yRp">
-                    <rect key="frame" x="328" y="288" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="30" id="G5F-ia-VXj"/>
-                        <constraint firstAttribute="height" constant="30" id="Z8Y-w6-oa0"/>
-                    </constraints>
-                    <state key="normal" title="#">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="weeks)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-Ek-mna">
-                    <rect key="frame" x="366" y="292" width="70" height="21"/>
+                    <rect key="frame" x="383" y="292" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="WPI-e4-4jj"/>
@@ -304,6 +307,12 @@
                     </subviews>
                     <color key="backgroundColor" red="0.2048848123" green="0.83576418519999995" blue="0.72745573809999997" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="weeks" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eot-MN-Fug">
+                    <rect key="frame" x="320" y="288" width="58" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

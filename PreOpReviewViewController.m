@@ -12,7 +12,7 @@
 
 @interface PreOpReviewViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *noneChangesNotedBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *preOpEvaluationByUITextField;
+@property (weak, nonatomic) IBOutlet UITextField *changesNotedUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *bPUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *hRUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *spO2UITextField;
@@ -27,7 +27,7 @@
 @implementation PreOpReviewViewController
 NSString *const PRE_OP_REVIEW_SECTION_TITLE = @"PreOpReviewSectionKey";
 NSString *const NONE_CHANGES_NOTED_KEY = @"NoneChangesNotedKey";
-NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
+NSString *const CHANGES_NOTED_KEY = @"ChangesNotedKey";
 NSString *const BP_KEY = @"BPKey";
 NSString *const HR_KEY = @"HRKey";
 NSString *const SPO2_KEY = @"SpO2Key";
@@ -49,8 +49,8 @@ NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 			 if ([element.key isEqualToString:NONE_CHANGES_NOTED_KEY]){
 				 [self.noneChangesNotedBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:PRE_OP_EVALUATION_BY_KEY]){
-				 [self.preOpEvaluationByUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:CHANGES_NOTED_KEY]){
+				 [self.changesNotedUITextField setText:((TextElement*)element).value];
 			 }
 			 if ([element.key isEqualToString:BP_KEY]){
 				 [self.bPUITextField setText:((TextElement*)element).value];
@@ -96,7 +96,7 @@ NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 	 
 	 group = [_section.groups objectAtIndex:0];
 	 NSAssert([group getElementForKey:NONE_CHANGES_NOTED_KEY]!= nil, @"NoneChangesNoted is nil");
-	 NSAssert([group getElementForKey:PRE_OP_EVALUATION_BY_KEY]!= nil, @"PreOpEvaluationBy is nil");
+	 NSAssert([group getElementForKey:CHANGES_NOTED_KEY]!= nil, @"ChangesNoted is nil");
 	 NSAssert([group getElementForKey:BP_KEY]!= nil, @"BP is nil");
 	 NSAssert([group getElementForKey:HR_KEY]!= nil, @"HR is nil");
 	 NSAssert([group getElementForKey:SPO2_KEY]!= nil, @"SpO2 is nil");
@@ -135,14 +135,14 @@ NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 
 	 noneChangesNoted.value = [NSNumber numberWithBool:self.noneChangesNotedBBCheckBox.isSelected];
 	 
-	 TextElement *preOpEvaluationBy = (TextElement*)[group getElementForKey:PRE_OP_EVALUATION_BY_KEY];
-	 if (!preOpEvaluationBy) {
-		 preOpEvaluationBy = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 preOpEvaluationBy.key = PRE_OP_EVALUATION_BY_KEY;
-		 [group addElementsObject:preOpEvaluationBy];
+	 TextElement *changesNoted = (TextElement*)[group getElementForKey:CHANGES_NOTED_KEY];
+	 if (!changesNoted) {
+		 changesNoted = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 changesNoted.key = CHANGES_NOTED_KEY;
+		 [group addElementsObject:changesNoted];
 	 }
 
-	 preOpEvaluationBy.value = self.preOpEvaluationByUITextField.text;
+	 changesNoted.value = self.changesNotedUITextField.text;
 	 
 	 TextElement *bP = (TextElement*)[group getElementForKey:BP_KEY];
 	 if (!bP) {

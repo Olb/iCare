@@ -6,6 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImmuneIDViewController">
             <connections>
+                <outlet property="autoImmuneDiseaseBBCheckBox" destination="6Tl-Bd-Ha9" id="UjQ-yu-3X5"/>
+                <outlet property="hIVBBCheckBox" destination="piR-3p-YCA" id="X0A-95-aQh"/>
+                <outlet property="immuneIDBBCheckBox" destination="4Ag-YR-jsx" id="Sh9-uV-WzC"/>
+                <outlet property="immuneIDNegativeBBCheckBox" destination="UpG-u6-Dxk" id="wQZ-qE-a2W"/>
+                <outlet property="ongoingInfectionBBCheckBox" destination="Uv8-oD-19g" id="tjn-BJ-vmM"/>
+                <outlet property="rheumArtBBCheckBox" destination="tmN-VC-sxX" id="r1M-Wd-r0y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +27,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="GmS-gc-Dnx"/>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="90V-h9-oPY"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4e-0A-pf3">
@@ -30,6 +36,9 @@
                     <state key="normal" title="Accept">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="accept:" destination="-1" eventType="touchUpInside" id="GTl-uY-ahS"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rheum Art" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hY6-td-9Pa">
                     <rect key="frame" x="81" y="121" width="93" height="21"/>

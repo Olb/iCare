@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<Section name="EvalOther">
+	<Group>
+		<Element type="BooleanFormElement" name="EvalOther"/>
+ 		<Element type="BooleanFormElement" name="EvalOtherNegative"/>
+        <Element type="BooleanFormElement" name="Obesity"/>
+        <Element type="BooleanFormElement" name="Depression"/>
+ 		<Element type="BooleanFormElement" name="Glaucoma"/>
+        <Element type="BooleanFormElement" name="Pregnant"/>
+        <Element type="BooleanFormElement" name="ETOHAbuse"/>
+ 		<Element type="BooleanFormElement" name="DrugAbuse"/>
+        <Element type="BooleanFormElement" name="DifficultIVAccess"/>
+        <Element type="BooleanFormElement" name="EGA"/>
+        <Element type="TextElement" name="EGAWeeks"/>
+	</Group>
+</Section>

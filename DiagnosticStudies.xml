@@ -7,8 +7,8 @@
         <Element type="TextElement" name="PLT"/>
         <Element type="TextElement" name="KPotassium"/>
         <Element type="TextElement" name="PTINRPTT"/>
-        <Element type="TextElement" name="PregTestNegative"/>
-        <Element type="TextElement" name="PregTestPositive"/>
+        <Element type="BooleanFormElement" name="PregTestNegative"/>
+ 		<Element type="BooleanFormElement" name="PregTestPositive"/>
         <Element type="TextElement" name="Glucose"/>
         <Element type="TextElement" name="GlucoseTime"/>
 		<Element type="BooleanFormElement" name="EKG"/>

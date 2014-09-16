@@ -6,6 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EndocrineViewController">
             <connections>
+                <outlet property="diabetesBBCheckBox" destination="7vW-6Y-l0H" id="7rx-fp-U5n"/>
+                <outlet property="endocrineBBCheckBox" destination="GpM-PO-lmp" id="Vel-iC-gGa"/>
+                <outlet property="endocrineNegativeBBCheckBox" destination="pTS-eS-0Z0" id="DEB-Vl-9WE"/>
+                <outlet property="hyperThyroidBBCheckBox" destination="d5v-AI-DWZ" id="76L-bS-4ks"/>
+                <outlet property="hypoThyroidBBCheckBox" destination="sTs-jR-m82" id="9Qh-Hs-dH9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
