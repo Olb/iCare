@@ -1089,7 +1089,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Plan" id="5Ie-Dl-K7K">
+                            <tableViewSection headerTitle="Plan &amp; Review Confirmation" id="5Ie-Dl-K7K">
                                 <cells>
                                     <tableViewCell tag="11" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="siu-7I-kUm">
                                         <rect key="frame" x="0.0" y="923" width="768" height="44"/>
@@ -1128,12 +1128,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="PreOp Review" id="v0v-pa-PI2">
-                                <cells>
                                     <tableViewCell tag="12" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8S2-sR-aed">
-                                        <rect key="frame" x="0.0" y="1015" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="967" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8S2-sR-aed" id="d9t-v4-dVo">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>

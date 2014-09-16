@@ -11,7 +11,6 @@
 #import "RespiratoryViewController.h"
 #import "RenalViewController.h"
 #import "NeuroligcViewController.h"
-#import "OverviewViewController.h"
 #import "EndocrineViewController.h"
 #import "HepatoViewController.h"
 #import "HemOncViewController.h"
@@ -25,6 +24,11 @@
 #import "BBFormSectionDelegate.h"
 #import "BPBAppDelegate.h"
 #import "Form.h"
+#import "MedicationsSupplementsViewController.h"
+#import "PastSurgicalProceduresViewController.h"
+#import "AllergiesReactionsViewController.h"
+#import "PhysicalExamViewController.h"
+#import "AirwayViewController.h"
 
 @interface PreOpEvalTableTableViewController () <BBFormSectionDelegate>
 
@@ -32,21 +36,9 @@
 
 @implementation PreOpEvalTableTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     self.navigationItem.title = [NSString stringWithFormat:@"PreOperative Evaluation - %@, %@", self.form.operation.patient.lastName, self.form.operation.patient.firstName];
 
@@ -62,16 +54,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger result;
+    NSInteger result = 0;
 
     switch (section) {
         case 0:
-            result = 1;
+            result = 5;
             break;
         case 1:
             result = 9;
@@ -80,66 +72,73 @@
             result = 1;
             break;
         case 3:
-            result = 1;
+            result = 2;
             break;
-        case 4:
-            result = 1;
-            break;
-        default:
-            result = 0;
-            break;
+
     }
     return result;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIViewController *vc;
-    switch (cell.tag) {
+    switch (indexPath.row) {
         case 0:
-            vc = [[OverviewViewController alloc] init];
-            ((OverviewViewController*)vc).delegate = self;
-            for (FormSection* s in self.form.sections) {
-                if ([s.title isEqualToString:[OverviewViewController sectionTitle]]) {
-                    ((OverviewViewController*)vc).section = s;
-                }
-            }
+            vc = [[MedicationsSupplementsViewController alloc] init];
+//            vc = [[OverviewViewController alloc] init];
+//            ((OverviewViewController*)vc).delegate = self;
+//            for (FormSection* s in self.form.sections) {
+//                if ([s.title isEqualToString:[OverviewViewController sectionTitle]]) {
+//                    ((OverviewViewController*)vc).section = s;
+//                }
+//            }
             break;
         case 1:
-            vc = [[CardioViewController alloc] init];
+            vc = [[PastSurgicalProceduresViewController alloc] init];
             break;
         case 2:
-            vc = [[RespiratoryViewController alloc] init];
+            vc = [[AllergiesReactionsViewController alloc] init];
             break;
         case 3:
-            vc = [[NeuroligcViewController alloc] init];
+            vc = [[PhysicalExamViewController alloc] init];
             break;
         case 4:
-            vc = [[EndocrineViewController alloc] init];
+            vc = [[AirwayViewController alloc] init];
             break;
         case 5:
-            vc = [[HepatoViewController alloc] init];
+            vc = [[CardioViewController alloc] init];
             break;
         case 6:
-            vc = [[RenalViewController alloc] init];
+            vc = [[RespiratoryViewController alloc] init];
             break;
         case 7:
-            vc = [[HemOncViewController alloc] init];
+            vc = [[NeuroligcViewController alloc] init];
             break;
         case 8:
-            vc = [[ImmuneIDViewController alloc] init];
+            vc = [[EndocrineViewController alloc] init];
             break;
         case 9:
-            vc = [[EvalOtherViewController alloc] init];
+            vc = [[HepatoViewController alloc] init];
             break;
         case 10:
-            vc = [[DiagnosticStudiesViewController alloc] init];
+            vc = [[RenalViewController alloc] init];
             break;
         case 11:
-            vc = [[PlanDiscussionViewController alloc] init];
+            vc = [[HemOncViewController alloc] init];
             break;
         case 12:
+            vc = [[ImmuneIDViewController alloc] init];
+            break;
+        case 13:
+            vc = [[EvalOtherViewController alloc] init];
+            break;
+        case 14:
+            vc = [[DiagnosticStudiesViewController alloc] init];
+            break;
+        case 15:
+            vc = [[PlanDiscussionViewController alloc] init];
+            break;
+        case 16:
             vc = [[PreOpReviewViewController alloc] init];
             break;
         default:

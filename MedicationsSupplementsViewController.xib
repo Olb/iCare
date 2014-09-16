@@ -66,7 +66,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Cancel" id="voM-0O-1c5"/>
+                        <barButtonItem title="Cancel" id="voM-0O-1c5">
+                            <connections>
+                                <action selector="dismiss:" destination="-1" id="1Xq-7N-5Eg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bIC-Ie-nTS"/>
                         <barButtonItem title="Medications &amp; Supplements" id="8dk-Td-oXh">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
