@@ -13,3 +13,5 @@ name=${xmlFile%.xml}
 perl perlxml.pl $xmlFile >& $name"ViewController.m";
 perl perlheader.pl $name >& $name"ViewController.h";
 done
+
+perl perlpdf.pl `ls | grep '.*\.xml'`

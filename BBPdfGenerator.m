@@ -16,6 +16,7 @@
 #import "FormSection.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
+#import "BBPdfSectionBuilder.h"
 
 @implementation BBPdfGenerator
 
@@ -49,7 +50,7 @@
     
     for ( FormSection* section in form.sections ){
         if ([section.title isEqualToString:@"PreOpActionsSectionKey"]) {
-            [BBPdfGenerator drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
+            [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
         }
     }
     
@@ -57,41 +58,7 @@
     return true;
 }
 
-+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
-{
-    CGSize previousElementSize;
-    CGPoint elementOrigin = sectionOrigin;
-    
-    previousElementSize = [BBPdfGenerator drawText:@"Anesthesia PreOp time used to" atLocation:elementOrigin];
-    
-    elementOrigin.x = sectionOrigin.x + 10;
-    elementOrigin.y += previousElementSize.height + 20;
-    previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"CheckConsentsKey"]).value boolValue] atLocation:elementOrigin];
-    
-    elementOrigin.x += previousElementSize.width + 10;
-    previousElementSize = [BBPdfGenerator drawText:@"Check consents and review chart/plan with Pt" atLocation:elementOrigin];
-    
 
-    elementOrigin.x = sectionOrigin.x + 10;
-    elementOrigin.y += previousElementSize.height + 20;
-    previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"StartIvKey"]).value boolValue] atLocation:elementOrigin];
-    
-    elementOrigin.x += previousElementSize.width + 10;
-    previousElementSize = [BBPdfGenerator drawText:@"Start IV" atLocation:elementOrigin];
-    
-    elementOrigin.x = sectionOrigin.x + 10;
-    elementOrigin.y += previousElementSize.height + 20;
-    previousElementSize = [BBPdfGenerator drawText:@"Other Actions" atLocation:elementOrigin];
-    
-    for (NSString *text in ((StringListElement*)[section getElementForKey:@"OtherActions"]).value) {
-        elementOrigin.x = sectionOrigin.x + 10;
-        elementOrigin.y += previousElementSize.height + 20;
-        previousElementSize = [BBPdfGenerator drawText:text atLocation:elementOrigin];
-    }
-    
-    
-
-}
 
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location
 {

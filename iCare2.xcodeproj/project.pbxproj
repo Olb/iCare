@@ -99,6 +99,8 @@
 		98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485219C897DA00E4727B /* BBPdfGenerator.m */; };
 		98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DA485419C8A0E800E4727B /* CoreText.framework */; };
 		98DA485719C8AC1C00E4727B /* teat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98DA485619C8AC1C00E4727B /* teat.xib */; };
+		98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */; };
+		98DA485C19C9082600E4727B /* perlpdf.pl in Resources */ = {isa = PBXBuildFile; fileRef = 98DA485B19C9082600E4727B /* perlpdf.pl */; };
 		98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05F919B20D4F0003129C /* BBUtil.m */; };
 		98FF05FE19B226900003129C /* PatientTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF05FD19B226900003129C /* PatientTableAdapter.m */; };
 		98FF060119B245970003129C /* PatientFormTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98FF060019B245970003129C /* PatientFormTableAdapter.m */; };
@@ -309,6 +311,9 @@
 		98DA485219C897DA00E4727B /* BBPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfGenerator.m; sourceTree = "<group>"; };
 		98DA485419C8A0E800E4727B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		98DA485619C8AC1C00E4727B /* teat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = teat.xib; sourceTree = "<group>"; };
+		98DA485819C9031200E4727B /* BBPdfSectionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfSectionBuilder.h; sourceTree = "<group>"; };
+		98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfSectionBuilder.m; sourceTree = "<group>"; };
+		98DA485B19C9082600E4727B /* perlpdf.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlpdf.pl; sourceTree = "<group>"; };
 		98FF05F819B20D4F0003129C /* BBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBUtil.h; sourceTree = "<group>"; };
 		98FF05F919B20D4F0003129C /* BBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBUtil.m; sourceTree = "<group>"; };
 		98FF05FC19B226900003129C /* PatientTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientTableAdapter.h; sourceTree = "<group>"; };
@@ -437,6 +442,7 @@
 				28AA355719C60539001453CE /* perlxml.pl */,
 				281270D819C885C9009A9644 /* perlheader.pl */,
 				282D5EA519C738040055B32B /* GenerateViewControllers.sh */,
+				98DA485B19C9082600E4727B /* perlpdf.pl */,
 			);
 			name = "Scripts and XML";
 			sourceTree = "<group>";
@@ -770,6 +776,8 @@
 				28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */,
 				98DA485119C897DA00E4727B /* BBPdfGenerator.h */,
 				98DA485219C897DA00E4727B /* BBPdfGenerator.m */,
+				98DA485819C9031200E4727B /* BBPdfSectionBuilder.h */,
+				98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */,
 				98DA485619C8AC1C00E4727B /* teat.xib */,
 			);
 			name = Utils;
@@ -889,6 +897,7 @@
 				988D167019AE63A2009A887A /* EmergenceViewController.xib in Resources */,
 				988D168019AE63A2009A887A /* IntubationViewController.xib in Resources */,
 				F4AFB94919ABB86100CA013B /* HemOncViewController.xib in Resources */,
+				98DA485C19C9082600E4727B /* perlpdf.pl in Resources */,
 				281270BC19C87200009A9644 /* MedicationsSupplementsViewController.xib in Resources */,
 				F4AFB92B19ABADD900CA013B /* checkbox_unselected.png in Resources */,
 				281270C119C87289009A9644 /* PastSurgicalProceduresViewController.xib in Resources */,
@@ -994,6 +1003,7 @@
 				28CCCB5019C3C55C00B2A0C6 /* BBWeightPickerAdapter.m in Sources */,
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
+				98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */,
 				2812704219C76081009A9644 /* FormGroup.m in Sources */,
 				988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */,
 				F47FF38B19AE655A00809D30 /* AnesthesiaRecordController.m in Sources */,
