@@ -49,9 +49,7 @@
     
     
     for ( FormSection* section in form.sections ){
-        if ([section.title isEqualToString:@"PreOpActionsSectionKey"]) {
-            [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
-        }
+        [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
     }
     
     UIGraphicsEndPDFContext();

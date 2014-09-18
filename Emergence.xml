@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<Section name="Emergence">
+    <Data>
+        <Element type="BooleanFormElement" name="Adequate"/>
+        <Element type="BooleanFormElement" name="Intubated"/>
+        <Element type="BooleanFormElement" name="DirectToIcu"/>
+        <Element type="BooleanFormElement" name="SuctionedExtubated"/>
+        <Element type="BooleanFormElement" name="O2ForTransport"/>
+    </Data>
+    
+    <Graphics>
+        <Group label="Emergence" orientation="vertical">
+            <Element name="Adequate" label="Adequate NIF, TV, SaO2, head lift" />
+            <Element name="Intubated" label="Intubated" />
+            <Element name="DirectToIcu" label="Direct To ICU" />
+            <Element name="SuctionedExtubated" label="Suctioned/Extubated" />
+            <Element name="O2ForTransport" label="O2 for transport" />
+        </Group>
+    </Graphics>
+</Section>

@@ -1,8 +1,8 @@
+
 #import "DiagnosticStudiesViewController.h"
 #import "BBUtil.h"
 #import "FormSection.h"
 #import "FormElement.h"
-#import "FormGroup.h"
 #import "BBCheckBox.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
@@ -21,10 +21,10 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *pregTestPositiveBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *glucoseUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *glucoseTimeUITextField;
-@property (weak, nonatomic) IBOutlet BBCheckBox *eKGBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *eKGOtherUITextField;
-@property (weak, nonatomic) IBOutlet BBCheckBox *cXRBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *cXROtherUITextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *ekgNormalBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *ekgOtherUITextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *cxrNormalBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *cxrOtherUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *otherDataTextField;
 @property (weak, nonatomic) IBOutlet UITableView *otherDataTable;
 @property (strong, nonatomic) StringArrayTableAdapter *otherDataTableAdapter;
@@ -42,10 +42,10 @@ NSString *const PREG_TEST_NEGATIVE_KEY = @"PregTestNegativeKey";
 NSString *const PREG_TEST_POSITIVE_KEY = @"PregTestPositiveKey";
 NSString *const GLUCOSE_KEY = @"GlucoseKey";
 NSString *const GLUCOSE_TIME_KEY = @"GlucoseTimeKey";
-NSString *const EKG_KEY = @"EKGKey";
-NSString *const EKGOther_KEY = @"EKGOtherKey";
-NSString *const CXR_KEY = @"CXRKey";
-NSString *const CXROther_KEY = @"CXROtherKey";
+NSString *const EKG_NORMAL_KEY = @"EkgNormalKey";
+NSString *const EKG_OTHER_KEY = @"EkgOtherKey";
+NSString *const CXR_NORMAL_KEY = @"CxrNormalKey";
+NSString *const CXR_OTHER_KEY = @"CxrOtherKey";
 NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 - (void)viewDidLoad
@@ -57,7 +57,7 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 	 if (_section) {
 		 [self validateSection:_section];
-		 NSArray *elements = [_section allElements];
+		 NSArray *elements = [_section.elements array];
 
 		 for (FormElement *element in elements) {
 			 if ([element.key isEqualToString:LABSNA_KEY]){
@@ -90,17 +90,17 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 			 if ([element.key isEqualToString:GLUCOSE_TIME_KEY]){
 				 [self.glucoseTimeUITextField setText:((TextElement*)element).value];
 			 }
-			 if ([element.key isEqualToString:EKG_KEY]){
-				 [self.eKGBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:EKG_NORMAL_KEY]){
+				 [self.ekgNormalBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:EKGOther_KEY]){
-				 [self.eKGOtherUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:EKG_OTHER_KEY]){
+				 [self.ekgOtherUITextField setText:((TextElement*)element).value];
 			 }
-			 if ([element.key isEqualToString:CXR_KEY]){
-				 [self.cXRBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:CXR_NORMAL_KEY]){
+				 [self.cxrNormalBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:CXROther_KEY]){
-				 [self.cXROtherUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:CXR_OTHER_KEY]){
+				 [self.cxrOtherUITextField setText:((TextElement*)element).value];
 			 }
 			 if ([element.key isEqualToString:OTHER_DATA_KEY]){
 				 self.otherDataTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
@@ -112,31 +112,21 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 -(void)validateSection:(FormSection*)section
 {
-	 int count;
-	 NSString *errMsg;
-	 
-	 count = [_section.groups count];
-	 errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
-	 NSAssert(count, errMsg);
-	 
-	 FormGroup *group;
-	 
-	 group = [_section.groups objectAtIndex:0];
-	 NSAssert([group getElementForKey:LABSNA_KEY]!= nil, @"LabsNA is nil");
-	 NSAssert([group getElementForKey:MEDICAL_EVAL_REVIEWED_KEY]!= nil, @"MedicalEvalReviewed is nil");
-	 NSAssert([group getElementForKey:HH_KEY]!= nil, @"HH is nil");
-	 NSAssert([group getElementForKey:PLT_KEY]!= nil, @"PLT is nil");
-	 NSAssert([group getElementForKey:KPotassium_KEY]!= nil, @"KPotassium is nil");
-	 NSAssert([group getElementForKey:PTINRPTT_KEY]!= nil, @"PTINRPTT is nil");
-	 NSAssert([group getElementForKey:PREG_TEST_NEGATIVE_KEY]!= nil, @"PregTestNegative is nil");
-	 NSAssert([group getElementForKey:PREG_TEST_POSITIVE_KEY]!= nil, @"PregTestPositive is nil");
-	 NSAssert([group getElementForKey:GLUCOSE_KEY]!= nil, @"Glucose is nil");
-	 NSAssert([group getElementForKey:GLUCOSE_TIME_KEY]!= nil, @"GlucoseTime is nil");
-	 NSAssert([group getElementForKey:EKG_KEY]!= nil, @"EKG is nil");
-	 NSAssert([group getElementForKey:EKGOther_KEY]!= nil, @"EKGOther is nil");
-	 NSAssert([group getElementForKey:CXR_KEY]!= nil, @"CXR is nil");
-	 NSAssert([group getElementForKey:CXROther_KEY]!= nil, @"CXROther is nil");
-	 NSAssert([group getElementForKey:OTHER_DATA_KEY]!= nil, @"OtherData is nil");
+	 NSAssert([section getElementForKey:LABSNA_KEY]!= nil, @"LabsNA is nil");
+	 NSAssert([section getElementForKey:MEDICAL_EVAL_REVIEWED_KEY]!= nil, @"MedicalEvalReviewed is nil");
+	 NSAssert([section getElementForKey:HH_KEY]!= nil, @"HH is nil");
+	 NSAssert([section getElementForKey:PLT_KEY]!= nil, @"PLT is nil");
+	 NSAssert([section getElementForKey:KPotassium_KEY]!= nil, @"KPotassium is nil");
+	 NSAssert([section getElementForKey:PTINRPTT_KEY]!= nil, @"PTINRPTT is nil");
+	 NSAssert([section getElementForKey:PREG_TEST_NEGATIVE_KEY]!= nil, @"PregTestNegative is nil");
+	 NSAssert([section getElementForKey:PREG_TEST_POSITIVE_KEY]!= nil, @"PregTestPositive is nil");
+	 NSAssert([section getElementForKey:GLUCOSE_KEY]!= nil, @"Glucose is nil");
+	 NSAssert([section getElementForKey:GLUCOSE_TIME_KEY]!= nil, @"GlucoseTime is nil");
+	 NSAssert([section getElementForKey:EKG_NORMAL_KEY]!= nil, @"EkgNormal is nil");
+	 NSAssert([section getElementForKey:EKG_OTHER_KEY]!= nil, @"EkgOther is nil");
+	 NSAssert([section getElementForKey:CXR_NORMAL_KEY]!= nil, @"CxrNormal is nil");
+	 NSAssert([section getElementForKey:CXR_OTHER_KEY]!= nil, @"CxrOther is nil");
+	 NSAssert([section getElementForKey:OTHER_DATA_KEY]!= nil, @"OtherData is nil");
 	 
 }
 
@@ -146,148 +136,137 @@ NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 		 self.section.title = DIAGNOSTIC_STUDIES_SECTION_TITLE;
 	 }
 	 
-	 FormGroup *group;
-	 
-	 group = nil;
-	 if ([self.section.groups count] > 0) {
-		 group = [self.section.groups objectAtIndex:0];
-	 }
-	 if ( !group ){
-		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
-		 group.optional = [NSNumber numberWithBool:false];
-		 [self.section addGroupsObject:group];
-	 }
-	 BooleanFormElement *labsNA = (BooleanFormElement*)[group getElementForKey:LABSNA_KEY];
+	 BooleanFormElement *labsNA = (BooleanFormElement*)[_section getElementForKey:LABSNA_KEY];
 	 if (!labsNA) {
 		 labsNA = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 labsNA.key = LABSNA_KEY;
-		 [group addElementsObject:labsNA];
+		 [_section addElementsObject:labsNA];
 	 }
 
 	 labsNA.value = [NSNumber numberWithBool:self.labsNABBCheckBox.isSelected];
 	 
-	 BooleanFormElement *medicalEvalReviewed = (BooleanFormElement*)[group getElementForKey:MEDICAL_EVAL_REVIEWED_KEY];
+	 BooleanFormElement *medicalEvalReviewed = (BooleanFormElement*)[_section getElementForKey:MEDICAL_EVAL_REVIEWED_KEY];
 	 if (!medicalEvalReviewed) {
 		 medicalEvalReviewed = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 medicalEvalReviewed.key = MEDICAL_EVAL_REVIEWED_KEY;
-		 [group addElementsObject:medicalEvalReviewed];
+		 [_section addElementsObject:medicalEvalReviewed];
 	 }
 
 	 medicalEvalReviewed.value = [NSNumber numberWithBool:self.medicalEvalReviewedBBCheckBox.isSelected];
 	 
-	 TextElement *hH = (TextElement*)[group getElementForKey:HH_KEY];
+	 TextElement *hH = (TextElement*)[_section getElementForKey:HH_KEY];
 	 if (!hH) {
 		 hH = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 hH.key = HH_KEY;
-		 [group addElementsObject:hH];
+		 [_section addElementsObject:hH];
 	 }
 
 	 hH.value = self.hHUITextField.text;
 	 
-	 TextElement *pLT = (TextElement*)[group getElementForKey:PLT_KEY];
+	 TextElement *pLT = (TextElement*)[_section getElementForKey:PLT_KEY];
 	 if (!pLT) {
 		 pLT = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 pLT.key = PLT_KEY;
-		 [group addElementsObject:pLT];
+		 [_section addElementsObject:pLT];
 	 }
 
 	 pLT.value = self.pLTUITextField.text;
 	 
-	 TextElement *kPotassium = (TextElement*)[group getElementForKey:KPotassium_KEY];
+	 TextElement *kPotassium = (TextElement*)[_section getElementForKey:KPotassium_KEY];
 	 if (!kPotassium) {
 		 kPotassium = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 kPotassium.key = KPotassium_KEY;
-		 [group addElementsObject:kPotassium];
+		 [_section addElementsObject:kPotassium];
 	 }
 
 	 kPotassium.value = self.kPotassiumUITextField.text;
 	 
-	 TextElement *pTINRPTT = (TextElement*)[group getElementForKey:PTINRPTT_KEY];
+	 TextElement *pTINRPTT = (TextElement*)[_section getElementForKey:PTINRPTT_KEY];
 	 if (!pTINRPTT) {
 		 pTINRPTT = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 pTINRPTT.key = PTINRPTT_KEY;
-		 [group addElementsObject:pTINRPTT];
+		 [_section addElementsObject:pTINRPTT];
 	 }
 
 	 pTINRPTT.value = self.pTINRPTTUITextField.text;
 	 
-	 BooleanFormElement *pregTestNegative = (BooleanFormElement*)[group getElementForKey:PREG_TEST_NEGATIVE_KEY];
+	 BooleanFormElement *pregTestNegative = (BooleanFormElement*)[_section getElementForKey:PREG_TEST_NEGATIVE_KEY];
 	 if (!pregTestNegative) {
 		 pregTestNegative = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 pregTestNegative.key = PREG_TEST_NEGATIVE_KEY;
-		 [group addElementsObject:pregTestNegative];
+		 [_section addElementsObject:pregTestNegative];
 	 }
 
 	 pregTestNegative.value = [NSNumber numberWithBool:self.pregTestNegativeBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *pregTestPositive = (BooleanFormElement*)[group getElementForKey:PREG_TEST_POSITIVE_KEY];
+	 BooleanFormElement *pregTestPositive = (BooleanFormElement*)[_section getElementForKey:PREG_TEST_POSITIVE_KEY];
 	 if (!pregTestPositive) {
 		 pregTestPositive = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 pregTestPositive.key = PREG_TEST_POSITIVE_KEY;
-		 [group addElementsObject:pregTestPositive];
+		 [_section addElementsObject:pregTestPositive];
 	 }
 
 	 pregTestPositive.value = [NSNumber numberWithBool:self.pregTestPositiveBBCheckBox.isSelected];
 	 
-	 TextElement *glucose = (TextElement*)[group getElementForKey:GLUCOSE_KEY];
+	 TextElement *glucose = (TextElement*)[_section getElementForKey:GLUCOSE_KEY];
 	 if (!glucose) {
 		 glucose = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 glucose.key = GLUCOSE_KEY;
-		 [group addElementsObject:glucose];
+		 [_section addElementsObject:glucose];
 	 }
 
 	 glucose.value = self.glucoseUITextField.text;
 	 
-	 TextElement *glucoseTime = (TextElement*)[group getElementForKey:GLUCOSE_TIME_KEY];
+	 TextElement *glucoseTime = (TextElement*)[_section getElementForKey:GLUCOSE_TIME_KEY];
 	 if (!glucoseTime) {
 		 glucoseTime = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
 		 glucoseTime.key = GLUCOSE_TIME_KEY;
-		 [group addElementsObject:glucoseTime];
+		 [_section addElementsObject:glucoseTime];
 	 }
 
 	 glucoseTime.value = self.glucoseTimeUITextField.text;
 	 
-	 BooleanFormElement *eKG = (BooleanFormElement*)[group getElementForKey:EKG_KEY];
-	 if (!eKG) {
-		 eKG = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 eKG.key = EKG_KEY;
-		 [group addElementsObject:eKG];
+	 BooleanFormElement *ekgNormal = (BooleanFormElement*)[_section getElementForKey:EKG_NORMAL_KEY];
+	 if (!ekgNormal) {
+		 ekgNormal = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 ekgNormal.key = EKG_NORMAL_KEY;
+		 [_section addElementsObject:ekgNormal];
 	 }
 
-	 eKG.value = [NSNumber numberWithBool:self.eKGBBCheckBox.isSelected];
+	 ekgNormal.value = [NSNumber numberWithBool:self.ekgNormalBBCheckBox.isSelected];
 	 
-	 TextElement *eKGOther = (TextElement*)[group getElementForKey:EKGOther_KEY];
-	 if (!eKGOther) {
-		 eKGOther = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 eKGOther.key = EKGOther_KEY;
-		 [group addElementsObject:eKGOther];
+	 TextElement *ekgOther = (TextElement*)[_section getElementForKey:EKG_OTHER_KEY];
+	 if (!ekgOther) {
+		 ekgOther = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 ekgOther.key = EKG_OTHER_KEY;
+		 [_section addElementsObject:ekgOther];
 	 }
 
-	 eKGOther.value = self.eKGOtherUITextField.text;
+	 ekgOther.value = self.ekgOtherUITextField.text;
 	 
-	 BooleanFormElement *cXR = (BooleanFormElement*)[group getElementForKey:CXR_KEY];
-	 if (!cXR) {
-		 cXR = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 cXR.key = CXR_KEY;
-		 [group addElementsObject:cXR];
+	 BooleanFormElement *cxrNormal = (BooleanFormElement*)[_section getElementForKey:CXR_NORMAL_KEY];
+	 if (!cxrNormal) {
+		 cxrNormal = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 cxrNormal.key = CXR_NORMAL_KEY;
+		 [_section addElementsObject:cxrNormal];
 	 }
 
-	 cXR.value = [NSNumber numberWithBool:self.cXRBBCheckBox.isSelected];
+	 cxrNormal.value = [NSNumber numberWithBool:self.cxrNormalBBCheckBox.isSelected];
 	 
-	 TextElement *cXROther = (TextElement*)[group getElementForKey:CXROther_KEY];
-	 if (!cXROther) {
-		 cXROther = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 cXROther.key = CXROther_KEY;
-		 [group addElementsObject:cXROther];
+	 TextElement *cxrOther = (TextElement*)[_section getElementForKey:CXR_OTHER_KEY];
+	 if (!cxrOther) {
+		 cxrOther = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 cxrOther.key = CXR_OTHER_KEY;
+		 [_section addElementsObject:cxrOther];
 	 }
 
-	 cXROther.value = self.cXROtherUITextField.text;
+	 cxrOther.value = self.cxrOtherUITextField.text;
 	 
-	 StringListElement *otherData = (StringListElement*)[group getElementForKey:OTHER_DATA_KEY];
+	 StringListElement *otherData = (StringListElement*)[_section getElementForKey:OTHER_DATA_KEY];
 	 if (!otherData) {
 		 otherData = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
 		 otherData.key = OTHER_DATA_KEY;
-		 [group addElementsObject:otherData];
+		 [_section addElementsObject:otherData];
 	 }
 
 	 NSMutableArray *otherDataStringArray = [[NSMutableArray alloc] init];

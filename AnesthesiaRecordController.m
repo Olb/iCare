@@ -7,20 +7,20 @@
 //
 
 #import "AnesthesiaRecordController.h"
-#import "AnesthesiaTypeViewController.h"
+//#import "AnesthesiaTypeViewController.h"
 #import "BetaBlockerViewController.h"
 #import "EmergenceViewController.h"
 #import "PreOpActionsViewController.h"
 #import "EndotrachealTubeViewController.h"
 #import "InductionAndDeviceViewController.h"
-#import "InvasiveLinesViewController.h"
+//#import "InvasiveLinesViewController.h"
 #import "IVAntibioticNameViewController.h"
 #import "MonitorinAndEquipmentViewController.h"
 #import "PersonelViewController.h"
 #import "PositionViewController.h"
 #import "PostAnesthesiaEvalViewController.h"
 #import "PostOpDiagnosisViewController.h"
-#import "PremedsGivenViewController.h"
+//#import "PremedsGivenViewController.h"
 #import "PostProcedureGeneralViewController.h"
 #import "SpinalAnesthesiaViewController.h"
 #import "IntubationViewController.h"
@@ -95,13 +95,13 @@
             }
             break;
         case 1:
-            vc = [[PremedsGivenViewController alloc] init];
-            ((PremedsGivenViewController*)vc).delegate = self;
-            for (FormSection* s in self.form.sections) {
-                if ([s.title isEqualToString:[PremedsGivenViewController sectionTitle]]) {
-                    ((PremedsGivenViewController*)vc).section = s;
-                }
-            }
+//            vc = [[PremedsGivenViewController alloc] init];
+//            ((PremedsGivenViewController*)vc).delegate = self;
+//            for (FormSection* s in self.form.sections) {
+//                if ([s.title isEqualToString:[PremedsGivenViewController sectionTitle]]) {
+//                    ((PremedsGivenViewController*)vc).section = s;
+//                }
+//            }
             break;
         case 2:
             vc = [[BetaBlockerViewController alloc] init];
@@ -119,10 +119,10 @@
             vc = [[MonitorinAndEquipmentViewController alloc] init];
             break;
         case 5:
-            vc = [[InvasiveLinesViewController alloc] init];
+            //vc = [[InvasiveLinesViewController alloc] init];
             break;
         case 6:
-            vc = [[AnesthesiaTypeViewController alloc] init];
+            //vc = [[AnesthesiaTypeViewController alloc] init];
             break;
         case 7:
             vc = [[SpinalAnesthesiaViewController alloc] init];

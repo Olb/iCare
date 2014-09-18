@@ -1,0 +1,54 @@
+<?xml version='1.0'?>
+<Section name="EndotrachealTube">
+    <Data>
+        <Element type="TextElement" name="EndoTrachealTubeSize"/>
+        <Element type="BooleanFormElement" name="Oral"/>
+        <Element type="BooleanFormElement" name="CuftUpToSeal"/>
+        <Element type="BooleanFormElement" name="Nasal"/>
+        <Element type="BooleanFormElement" name="Trach"/>
+        <Element type="BooleanFormElement" name="ETCO2Increase"/>
+        <Element type="BooleanFormElement" name="BronchBlocker"/>
+        <Element type="BooleanFormElement" name="Bsbe"/>
+        <Element type="BooleanFormElement" name="IsolationCheck"/>
+        <Element type="BooleanFormElement" name="DoubleLumenEtt"/>
+        <Element type="TextElement" name="SecuredAtCm"/>
+        <Element type="TextElement" name="DoubleLumenSize"/>
+        <Element type="BooleanFormElement" name="DoubleLumenLeft"/>
+        <Element type="BooleanFormElement" name="DoubleLumenRight"/>
+    </Data>
+    
+    <Graphics>
+        <Group label="Emergence" orientation="vertical">
+            <Group orientation="horizontal">
+                <Group orientation="vertical">
+                    <Group orientation="horizontal">
+                        <Element label="Size" />
+                        <Element name="EndoTrachealTubeSize" />
+                        <Element name="Oral" label="Oral" />
+                    </Group>
+                    <Element name="ETCO2Increase" label="ETCO2 Increase" />
+                    <Group orientation="horizontal">
+                        <Element name="SecuredAtCm" label="Secured At" />
+                        <Element label="cm" />
+                    </Group>
+                    <Element name="DoubleLumenEtt" label="Double Lumen ETT" />
+                    <Element name="BronchBlocker" label="Bronch Blocker" />
+                </Group>
+                <Group orientation="vertical">
+                    <Group orientation="horizontal">
+                        <Element name="Nasal" label="Nasal" />
+                        <Element name="Trach" label="Trach" />
+                    </Group>
+                    <Element name="Bsbe" label="BSBE" />
+                    <Element name="CuftUpToSeal" label="Cuff up to seal" />
+                    <Group orientation="horizontal">
+                        <Element name="DoubleLumenSize" label="Size" />
+                        <Element name="DoubleLumenLeft" label="Lt" />
+                        <Element name="DoubleLumenRight" label="Rt" />
+                    </Group>
+                    <Element name="IsolationCheck" label="Isolation Check" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

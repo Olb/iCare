@@ -1,8 +1,8 @@
+
 #import "PreOpActionsViewController.h"
 #import "BBUtil.h"
 #import "FormSection.h"
 #import "FormElement.h"
-#import "FormGroup.h"
 #import "BBCheckBox.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
@@ -33,7 +33,7 @@ NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 
 	 if (_section) {
 		 [self validateSection:_section];
-		 NSArray *elements = [_section allElements];
+		 NSArray *elements = [_section.elements array];
 
 		 for (FormElement *element in elements) {
 			 if ([element.key isEqualToString:CHECK_CONSENTS_KEY]){
@@ -52,19 +52,9 @@ NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 
 -(void)validateSection:(FormSection*)section
 {
-	 int count;
-	 NSString *errMsg;
-	 
-	 count = [_section.groups count];
-	 errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
-	 NSAssert(count, errMsg);
-	 
-	 FormGroup *group;
-	 
-	 group = [_section.groups objectAtIndex:0];
-	 NSAssert([group getElementForKey:CHECK_CONSENTS_KEY]!= nil, @"CheckConsents is nil");
-	 NSAssert([group getElementForKey:START_IV_KEY]!= nil, @"StartIv is nil");
-	 NSAssert([group getElementForKey:OTHER_ACTIONS_KEY]!= nil, @"OtherActions is nil");
+	 NSAssert([section getElementForKey:CHECK_CONSENTS_KEY]!= nil, @"CheckConsents is nil");
+	 NSAssert([section getElementForKey:START_IV_KEY]!= nil, @"StartIv is nil");
+	 NSAssert([section getElementForKey:OTHER_ACTIONS_KEY]!= nil, @"OtherActions is nil");
 	 
 }
 
@@ -74,40 +64,29 @@ NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 		 self.section.title = PRE_OP_ACTIONS_SECTION_TITLE;
 	 }
 	 
-	 FormGroup *group;
-	 
-	 group = nil;
-	 if ([self.section.groups count] > 0) {
-		 group = [self.section.groups objectAtIndex:0];
-	 }
-	 if ( !group ){
-		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
-		 group.optional = [NSNumber numberWithBool:false];
-		 [self.section addGroupsObject:group];
-	 }
-	 BooleanFormElement *checkConsents = (BooleanFormElement*)[group getElementForKey:CHECK_CONSENTS_KEY];
+	 BooleanFormElement *checkConsents = (BooleanFormElement*)[_section getElementForKey:CHECK_CONSENTS_KEY];
 	 if (!checkConsents) {
 		 checkConsents = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 checkConsents.key = CHECK_CONSENTS_KEY;
-		 [group addElementsObject:checkConsents];
+		 [_section addElementsObject:checkConsents];
 	 }
 
 	 checkConsents.value = [NSNumber numberWithBool:self.checkConsentsBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *startIv = (BooleanFormElement*)[group getElementForKey:START_IV_KEY];
+	 BooleanFormElement *startIv = (BooleanFormElement*)[_section getElementForKey:START_IV_KEY];
 	 if (!startIv) {
 		 startIv = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 startIv.key = START_IV_KEY;
-		 [group addElementsObject:startIv];
+		 [_section addElementsObject:startIv];
 	 }
 
 	 startIv.value = [NSNumber numberWithBool:self.startIvBBCheckBox.isSelected];
 	 
-	 StringListElement *otherActions = (StringListElement*)[group getElementForKey:OTHER_ACTIONS_KEY];
+	 StringListElement *otherActions = (StringListElement*)[_section getElementForKey:OTHER_ACTIONS_KEY];
 	 if (!otherActions) {
 		 otherActions = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
 		 otherActions.key = OTHER_ACTIONS_KEY;
-		 [group addElementsObject:otherActions];
+		 [_section addElementsObject:otherActions];
 	 }
 
 	 NSMutableArray *otherActionsStringArray = [[NSMutableArray alloc] init];

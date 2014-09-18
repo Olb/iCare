@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BetaBlockerViewController">
             <connections>
-                <outlet property="contraIndicationBBCheckBox" destination="mrZ-Rg-BEW" id="dX2-I3-cuP"/>
-                <outlet property="givenInORBBCheckBox" destination="6D7-zt-2KM" id="CbR-P8-fU9"/>
-                <outlet property="heartRateLessFiftyBBCheckBox" destination="QQe-PU-p4N" id="qGS-VQ-Odj"/>
-                <outlet property="hypotensionBBCheckBox" destination="LbU-2O-Flf" id="aBD-eY-WW7"/>
-                <outlet property="takenPastDayBBCheckBox" destination="uqN-2l-veX" id="61w-7H-OSF"/>
+                <outlet property="betaBlockTakenPastDayBBCheckBox" destination="uqN-2l-veX" id="vRz-3J-ZIb"/>
+                <outlet property="contraIndicationBBCheckBox" destination="mrZ-Rg-BEW" id="ByI-Mu-tKQ"/>
+                <outlet property="givenInOrBBCheckBox" destination="6D7-zt-2KM" id="Ipe-5l-3dQ"/>
+                <outlet property="heartRateLessThanFiftyBBCheckBox" destination="QQe-PU-p4N" id="nVL-0J-Xu9"/>
+                <outlet property="hypotensionBBCheckBox" destination="LbU-2O-Flf" id="cY5-Gx-s5I"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>

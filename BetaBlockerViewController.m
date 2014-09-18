@@ -1,8 +1,8 @@
+
 #import "BetaBlockerViewController.h"
 #import "BBUtil.h"
 #import "FormSection.h"
 #import "FormElement.h"
-#import "FormGroup.h"
 #import "BBCheckBox.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
@@ -11,18 +11,19 @@
 
 
 @interface BetaBlockerViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockTakenPastDayBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *givenInOrBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *contraIndicationBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *takenPastDayBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *givenInORBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *heartRateLessFiftyBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *heartRateLessThanFiftyBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hypotensionBBCheckBox;
 @end
 
 @implementation BetaBlockerViewController
 NSString *const BETA_BLOCKER_SECTION_TITLE = @"BetaBlockerSectionKey";
-NSString *const TAKEN_PAST_DAY_KEY = @"TakenPastDayKey";
-NSString *const GIVEN_INOR_KEY = @"GivenInORKey";
-NSString *const HEART_RATE_LESS_FIFTY_KEY = @"HeartRateLessFiftyKey";
+NSString *const BETA_BLOCK_TAKEN_PAST_DAY_KEY = @"BetaBlockTakenPastDayKey";
+NSString *const GIVEN_IN_OR_KEY = @"GivenInOrKey";
+NSString *const CONTRA_INDICATION_KEY = @"ContraIndicationKey";
+NSString *const HEART_RATE_LESS_THAN_FIFTY_KEY = @"HeartRateLessThanFiftyKey";
 NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 
 - (void)viewDidLoad
@@ -30,45 +31,35 @@ NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 	 [super viewDidLoad];
 	 if (_section) {
 		 [self validateSection:_section];
-		 NSArray *elements = [_section allElements];
+		 NSArray *elements = [_section.elements array];
 
 		 for (FormElement *element in elements) {
-			 if ([element.key isEqualToString:TAKEN_PAST_DAY_KEY]){
-				 [self.takenPastDayBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:BETA_BLOCK_TAKEN_PAST_DAY_KEY]){
+				 [self.betaBlockTakenPastDayBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:GIVEN_INOR_KEY]){
-				 [self.givenInORBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:GIVEN_IN_OR_KEY]){
+				 [self.givenInOrBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:HEART_RATE_LESS_FIFTY_KEY]){
-				 [self.heartRateLessFiftyBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:CONTRA_INDICATION_KEY]){
+				 [self.contraIndicationBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:HEART_RATE_LESS_THAN_FIFTY_KEY]){
+				 [self.heartRateLessThanFiftyBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:HYPOTENSION_KEY]){
 				 [self.hypotensionBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-				 [self.contraIndicationBBCheckBox setSelected:[((FormGroup *)[_section.groups objectAtIndex:1]).selected boolValue]];
 		 }
 	 }
 }
 
 -(void)validateSection:(FormSection*)section
 {
-	 int count;
-	 NSString *errMsg;
-	 
-	 count = [_section.groups count];
-	 errMsg =[NSString stringWithFormat:@"Invalid number of groups '%d'. Expected '1'.", count];
-	 NSAssert(count, errMsg);
-	 
-	 FormGroup *group;
-	 
-	 group = [_section.groups objectAtIndex:0];
-	 NSAssert([group getElementForKey:TAKEN_PAST_DAY_KEY]!= nil, @"TakenPastDay is nil");
-	 NSAssert([group getElementForKey:GIVEN_INOR_KEY]!= nil, @"GivenInOR is nil");
-	 
-	 group = [_section.groups objectAtIndex:1];
-	 NSAssert(group.optional, @"Expected group to be optional");
-	 NSAssert([group getElementForKey:HEART_RATE_LESS_FIFTY_KEY]!= nil, @"HeartRateLessFifty is nil");
-	 NSAssert([group getElementForKey:HYPOTENSION_KEY]!= nil, @"Hypotension is nil");
+	 NSAssert([section getElementForKey:BETA_BLOCK_TAKEN_PAST_DAY_KEY]!= nil, @"BetaBlockTakenPastDay is nil");
+	 NSAssert([section getElementForKey:GIVEN_IN_OR_KEY]!= nil, @"GivenInOr is nil");
+	 NSAssert([section getElementForKey:CONTRA_INDICATION_KEY]!= nil, @"ContraIndication is nil");
+	 NSAssert([section getElementForKey:HEART_RATE_LESS_THAN_FIFTY_KEY]!= nil, @"HeartRateLessThanFifty is nil");
+	 NSAssert([section getElementForKey:HYPOTENSION_KEY]!= nil, @"Hypotension is nil");
 	 
 }
 
@@ -78,59 +69,47 @@ NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 		 self.section.title = BETA_BLOCKER_SECTION_TITLE;
 	 }
 	 
-	 FormGroup *group;
-	 
-	 group = nil;
-	 if ([self.section.groups count] > 0) {
-		 group = [self.section.groups objectAtIndex:0];
-	 }
-	 if ( !group ){
-		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
-		 group.optional = [NSNumber numberWithBool:false];
-		 [self.section addGroupsObject:group];
-	 }
-	 BooleanFormElement *takenPastDay = (BooleanFormElement*)[group getElementForKey:TAKEN_PAST_DAY_KEY];
-	 if (!takenPastDay) {
-		 takenPastDay = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 takenPastDay.key = TAKEN_PAST_DAY_KEY;
-		 [group addElementsObject:takenPastDay];
+	 BooleanFormElement *betaBlockTakenPastDay = (BooleanFormElement*)[_section getElementForKey:BETA_BLOCK_TAKEN_PAST_DAY_KEY];
+	 if (!betaBlockTakenPastDay) {
+		 betaBlockTakenPastDay = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 betaBlockTakenPastDay.key = BETA_BLOCK_TAKEN_PAST_DAY_KEY;
+		 [_section addElementsObject:betaBlockTakenPastDay];
 	 }
 
-	 takenPastDay.value = [NSNumber numberWithBool:self.takenPastDayBBCheckBox.isSelected];
+	 betaBlockTakenPastDay.value = [NSNumber numberWithBool:self.betaBlockTakenPastDayBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *givenInOR = (BooleanFormElement*)[group getElementForKey:GIVEN_INOR_KEY];
-	 if (!givenInOR) {
-		 givenInOR = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 givenInOR.key = GIVEN_INOR_KEY;
-		 [group addElementsObject:givenInOR];
+	 BooleanFormElement *givenInOr = (BooleanFormElement*)[_section getElementForKey:GIVEN_IN_OR_KEY];
+	 if (!givenInOr) {
+		 givenInOr = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 givenInOr.key = GIVEN_IN_OR_KEY;
+		 [_section addElementsObject:givenInOr];
 	 }
 
-	 givenInOR.value = [NSNumber numberWithBool:self.givenInORBBCheckBox.isSelected];
+	 givenInOr.value = [NSNumber numberWithBool:self.givenInOrBBCheckBox.isSelected];
 	 
-	 group = nil;
-	 if ([self.section.groups count] > 1) {
-		 group = [self.section.groups objectAtIndex:1];
-	 }
-	 if ( !group ){
-		 group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:@"FormGroup"];
-		 group.optional = [NSNumber numberWithBool:true];
-		 [self.section addGroupsObject:group];
-	 }
-	 group.selected = [NSNumber numberWithBool:self.contraIndicationBBCheckBox.isSelected];
-	 BooleanFormElement *heartRateLessFifty = (BooleanFormElement*)[group getElementForKey:HEART_RATE_LESS_FIFTY_KEY];
-	 if (!heartRateLessFifty) {
-		 heartRateLessFifty = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 heartRateLessFifty.key = HEART_RATE_LESS_FIFTY_KEY;
-		 [group addElementsObject:heartRateLessFifty];
+	 BooleanFormElement *contraIndication = (BooleanFormElement*)[_section getElementForKey:CONTRA_INDICATION_KEY];
+	 if (!contraIndication) {
+		 contraIndication = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 contraIndication.key = CONTRA_INDICATION_KEY;
+		 [_section addElementsObject:contraIndication];
 	 }
 
-	 heartRateLessFifty.value = [NSNumber numberWithBool:self.heartRateLessFiftyBBCheckBox.isSelected];
+	 contraIndication.value = [NSNumber numberWithBool:self.contraIndicationBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *hypotension = (BooleanFormElement*)[group getElementForKey:HYPOTENSION_KEY];
+	 BooleanFormElement *heartRateLessThanFifty = (BooleanFormElement*)[_section getElementForKey:HEART_RATE_LESS_THAN_FIFTY_KEY];
+	 if (!heartRateLessThanFifty) {
+		 heartRateLessThanFifty = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 heartRateLessThanFifty.key = HEART_RATE_LESS_THAN_FIFTY_KEY;
+		 [_section addElementsObject:heartRateLessThanFifty];
+	 }
+
+	 heartRateLessThanFifty.value = [NSNumber numberWithBool:self.heartRateLessThanFiftyBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *hypotension = (BooleanFormElement*)[_section getElementForKey:HYPOTENSION_KEY];
 	 if (!hypotension) {
 		 hypotension = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
 		 hypotension.key = HYPOTENSION_KEY;
-		 [group addElementsObject:hypotension];
+		 [_section addElementsObject:hypotension];
 	 }
 
 	 hypotension.value = [NSNumber numberWithBool:self.hypotensionBBCheckBox.isSelected];

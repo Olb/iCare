@@ -2,17 +2,18 @@
 //  FormElement.m
 //  iCare2
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 9/18/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
 #import "FormElement.h"
-#import "FormGroup.h"
+#import "FormSection.h"
 
 
 @implementation FormElement
 
 @dynamic key;
-@dynamic group;
+@dynamic section;
+
 
 @end

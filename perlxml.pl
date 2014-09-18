@@ -1,7 +1,7 @@
-#!/usr/bin/perl
+#!/usr/bin/perl 
 
 
-
+use Cwd qw();
 use XML::Simple;
 use Data::Dumper;
 use Switch;
@@ -11,13 +11,6 @@ sub getOutletNameForElement {
     $element = $_[0];
     
     return "\l$element->{name}".getOutletTypeFor($element->{type},$_[1]);
-}
-
-sub getOutletNameForGroup {
-    local $group;
-    $group = $_[0];
-    
-    return "\l$group->{heading}BBCheckBox";
 }
 
 sub camelCaseToUppercase{
@@ -72,29 +65,20 @@ sub printPropertiesForElement{
     
 }
 
-
+print "\n";
 
 $xml = new XML::Simple (KeyAttr=>[]);
 
 $section = $xml->XMLin($ARGV[0]);
+$section_title = camelCaseToUppercase($section->{name})."_SECTION_TITLE";#BETA_BLOCKER_SECTION_TITLE
+$asd = $section->{name};
 
-if ( ref $section->{Group} eq 'ARRAY'){
-    @groups = @{$section->{Group}};
+if (not (exists $section->{Data})) {
+    die "No data element on section ".$asd."\n";
 } else {
-    @groups = ($section->{Group});
+    print STDERR "Generating code for section '".$asd."'\n";
 }
-
-foreach $group (@groups){
-    if ( ref $group->{Element} eq 'ARRAY'){
-        foreach $element (@{$group->{Element}}){
-            push(@elements, $element);
-        }
-    } else {
-        push(@elements, $group->{Element});
-    }
-}
-
-$section_title = camelCaseToUppercase($section->{name})."_SECTION_TITLE";
+@elements = @{$section->{Data}->{Element}};
 
 # include section
 
@@ -103,7 +87,6 @@ print "#import \"".$viewControllerName.".h\"\n";
 print "#import \"BBUtil.h\"\n";
 print "#import \"FormSection.h\"\n";
 print "#import \"FormElement.h\"\n";
-print "#import \"FormGroup.h\"\n";
 print "#import \"BBCheckBox.h\"\n";
 print "#import \"BooleanFormElement.h\"\n";
 print "#import \"StringListElement.h\"\n";
@@ -117,13 +100,7 @@ print "\n";
 # interface section
 
 print "\@interface ".$viewControllerName." () <UITextFieldDelegate>\n";
-foreach $group (@groups) {
-    if ($group->{optional} eq "true") {
-        print "\@property (weak, nonatomic) IBOutlet BBCheckBox *".getOutletNameForGroup($group).";\n";
-    }
-}
-
-foreach $element (@elements){
+foreach my $element (@elements){
     printPropertiesForElement($element);
 }
 
@@ -157,7 +134,7 @@ foreach $element (@elements){
 }
 print "\t if (_section) {\n";
 print "\t\t [self validateSection:_section];\n";
-print "\t\t NSArray *elements = [_section allElements];\n\n";
+print "\t\t NSArray *elements = [_section.elements array];\n\n";
 print "\t\t for (FormElement *element in elements) {\n";
 foreach $element (@elements) {
     switch ($element->{type}) {
@@ -179,11 +156,7 @@ foreach $element (@elements) {
         }
     }
 }
-foreach my $i (0 .. $#groups){
-    if (@groups[$i]->{optional} eq "true"){
-        print"\t\t\t\t [self.".getOutletNameForGroup(@groups[$i])." setSelected:[((FormGroup *)[_section.groups objectAtIndex:$i]).selected boolValue]];\n";
-    }
-}
+
 print "\t\t }\n";
 print "\t }\n";
 print "}\n";
@@ -193,31 +166,13 @@ print "\n";
 
 print "-(void)validateSection:(FormSection*)section\n";
 print "{\n";
-print "\t int count;\n";
-print "\t NSString *errMsg;\n";
-print "\t \n";
-print "\t count = [_section.groups count];\n";
-print "\t errMsg =[NSString stringWithFormat:\@\"Invalid number of groups '%d'. Expected '1'.\", count];\n";
-print "\t NSAssert(count, errMsg);\n";
-print "\t \n";
-print "\t FormGroup *group;\n";
-print "\t \n";
-foreach my $i (0 .. $#groups){
-    print "\t group = [_section.groups objectAtIndex:$i];\n";
-    if (@groups[$i]->{optional} eq "true") {
-        print "\t NSAssert(group.optional, \@\"Expected group to be optional\");\n";
-    }
-    if ( ref @groups[$i]->{Element} eq 'ARRAY'){
-        @elems = @{@groups[$i]->{Element}};
-    } else {
-        @elems = (@groups[$i]->{Element});
-    }
-    
-    foreach $element (@elems){
-        print "\t NSAssert([group getElementForKey:".getKeyConstantForElement($element)."]!= nil, \@\"".$element->{name}." is nil\");\n";
-    }
-    print "\t \n";
+
+foreach $element (@elements){
+    print "\t NSAssert([section getElementForKey:".getKeyConstantForElement($element)."]!= nil, \@\"".$element->{name}." is nil\");\n";
 }
+print "\t \n";
+
+
 print "}\n";
 print "\n";
 
@@ -229,70 +184,42 @@ print "\t\t self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:
 print "\t\t self.section.title = $section_title;\n";
 print "\t }\n";
 print "\t \n";
-print "\t FormGroup *group;\n";
-print "\t \n";
-foreach my $i (0 .. $#groups){
-    print "\t group = nil;\n";
-    print "\t if ([self.section.groups count] > $i) {\n";
-    print "\t\t group = [self.section.groups objectAtIndex:$i];\n";
-    print "\t }\n";
-    print "\t if ( !group ){\n";
-    print "\t\t group =(FormGroup*)[BBUtil newCoreDataObjectForEntityName:\@\"FormGroup\"];\n";
-    if (@groups[$i]->{optional} eq "true") {
-        print "\t\t group.optional = [NSNumber numberWithBool:true];\n";
-    } else {
-        print "\t\t group.optional = [NSNumber numberWithBool:false];\n";
-    }
-    print "\t\t [self.section addGroupsObject:group];\n";
-    print "\t }\n";
-    if (@groups[$i]->{optional} eq "true") {
-        print "\t group.selected = [NSNumber numberWithBool:self.".getOutletNameForGroup(@groups[$i]).".isSelected];\n";
-    }
-    
-    if ( ref @groups[$i]->{Element} eq 'ARRAY'){
-        @elems = @{@groups[$i]->{Element}};
-    } else {
-        @elems = (@groups[$i]->{Element});
-    }
-    
-    foreach $element (@elems){
-#        print "Group: \n".Dumper($group);
-#        print "Element: \n".Dumper($element);
-#        print "\n\@elems: \n".Dumper(@elems);
-        my $type = $element->{type};
-        my $name = "\l$element->{name}";
-        my $key = getKeyConstantForElement($element);
-        print "\t $type *$name = ($type*)[group getElementForKey:$key];\n";
-        print "\t if (!$name) {\n";
-        print "\t\t $name = ($type*)[BBUtil newCoreDataObjectForEntityName:\@\"$type\"];\n";
-        print "\t\t $name.key = $key;\n";
-        print "\t\t [group addElementsObject:$name];\n";
-        print "\t }\n\n";
-        switch ($element->{type}){
-            
-            case "BooleanFormElement" {
-                print "\t $name.value = [NSNumber numberWithBool:self.".getOutletNameForElement($element).".isSelected];\n";
-            }
-            case "StringListElement" {
-                my $arrayName = $name."StringArray";
-                print "\t NSMutableArray *$arrayName = [[NSMutableArray alloc] init];\n";
-                print "\t for (int i = 0; i < [self.".getOutletNameForElement($element,"TABLE")." numberOfRowsInSection:0]; i++){\n";
-                print "\t\t UITableViewCell *cell = [self.".getOutletNameForElement($element,"TABLE")." cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];\n";
-                print "\t\t [$arrayName addObject:cell.textLabel.text];\n";
-                print "\t }\n";
-                print "\t $name.value = $arrayName;\n";
-            }
-            case "TextElement" {
-                print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";
-            }
-            else {
-                die "Unhandled element type '".$element->{type}."'";
-            }
-        }
-        print "\t \n";
+
+foreach $element (@elements){
+    my $type = $element->{type};
+    my $name = "\l$element->{name}";
+    my $key = getKeyConstantForElement($element);
+    print "\t $type *$name = ($type*)[_section getElementForKey:$key];\n";
+    print "\t if (!$name) {\n";
+    print "\t\t $name = ($type*)[BBUtil newCoreDataObjectForEntityName:\@\"$type\"];\n";
+    print "\t\t $name.key = $key;\n";
+    print "\t\t [_section addElementsObject:$name];\n";
+    print "\t }\n\n";
+    switch ($element->{type}){
         
+        case "BooleanFormElement" {
+            print "\t $name.value = [NSNumber numberWithBool:self.".getOutletNameForElement($element).".isSelected];\n";
+        }
+        case "StringListElement" {
+            my $arrayName = $name."StringArray";
+            print "\t NSMutableArray *$arrayName = [[NSMutableArray alloc] init];\n";
+            print "\t for (int i = 0; i < [self.".getOutletNameForElement($element,"TABLE")." numberOfRowsInSection:0]; i++){\n";
+            print "\t\t UITableViewCell *cell = [self.".getOutletNameForElement($element,"TABLE")." cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];\n";
+            print "\t\t [$arrayName addObject:cell.textLabel.text];\n";
+            print "\t }\n";
+            print "\t $name.value = $arrayName;\n";
+        }
+        case "TextElement" {
+            print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";
+        }
+        else {
+            die "Unhandled element type '".$element->{type}."'";
+        }
     }
+    print "\t \n";
+    
 }
+
 print "\t [self.delegate sectionCreated:self.section];\n";
 print "\t [self dismissViewControllerAnimated:YES completion:nil];\n";
 print "}\n\n";

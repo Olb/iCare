@@ -2,18 +2,18 @@
 //  FormElement.h
 //  iCare2
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 9/18/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class FormGroup;
+@class FormSection;
 
 @interface FormElement : NSManagedObject
 
 @property (nonatomic, retain) NSString * key;
-@property (nonatomic, retain) FormGroup *group;
+@property (nonatomic, retain) FormSection *section;
 
 @end

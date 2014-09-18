@@ -7,28 +7,32 @@
 //
 
 #import "PreOpEvalTableTableViewController.h"
-#import "CardioViewController.h"
-#import "RespiratoryViewController.h"
-#import "RenalViewController.h"
-#import "NeuroligcViewController.h"
-#import "EndocrineViewController.h"
-#import "HepatoViewController.h"
-#import "HemOncViewController.h"
-#import "ImmuneIDViewController.h"
-#import "EvalOtherViewController.h"
-#import "DiagnosticStudiesViewController.h"
-#import "PlanDiscussionViewController.h"
-#import "PreOpReviewViewController.h"
 #import "Operation.h"
 #import "Patient.h"
+#import "Form.h"
 #import "BBFormSectionDelegate.h"
 #import "BPBAppDelegate.h"
-#import "Form.h"
-#import "MedicationsSupplementsViewController.h"
-#import "PastSurgicalProceduresViewController.h"
-#import "AllergiesReactionsViewController.h"
-#import "PhysicalExamViewController.h"
-#import "AirwayViewController.h"
+
+//#import "CardioViewController.h"
+//#import "RespiratoryViewController.h"
+//#import "RenalViewController.h"
+//#import "NeuroligcViewController.h"
+//#import "EndocrineViewController.h"
+//#import "HepatoViewController.h"
+//#import "HemOncViewController.h"
+//#import "ImmuneIDViewController.h"
+//#import "EvalOtherViewController.h"
+//#import "DiagnosticStudiesViewController.h"
+//#import "PlanDiscussionViewController.h"
+//#import "PreOpReviewViewController.h"
+//
+//
+//
+//#import "MedicationsSupplementsViewController.h"
+//#import "PastSurgicalProceduresViewController.h"
+//#import "AllergiesReactionsViewController.h"
+//#import "PhysicalExamViewController.h"
+//#import "AirwayViewController.h"
 
 @interface PreOpEvalTableTableViewController () <BBFormSectionDelegate>
 
@@ -82,68 +86,68 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIViewController *vc;
-    switch (indexPath.row) {
-        case 0:
-            vc = [[MedicationsSupplementsViewController alloc] init];
-//            vc = [[OverviewViewController alloc] init];
-//            ((OverviewViewController*)vc).delegate = self;
-//            for (FormSection* s in self.form.sections) {
-//                if ([s.title isEqualToString:[OverviewViewController sectionTitle]]) {
-//                    ((OverviewViewController*)vc).section = s;
-//                }
-//            }
-            break;
-        case 1:
-            vc = [[PastSurgicalProceduresViewController alloc] init];
-            break;
-        case 2:
-            vc = [[AllergiesReactionsViewController alloc] init];
-            break;
-        case 3:
-            vc = [[PhysicalExamViewController alloc] init];
-            break;
-        case 4:
-            vc = [[AirwayViewController alloc] init];
-            break;
-        case 5:
-            vc = [[CardioViewController alloc] init];
-            break;
-        case 6:
-            vc = [[RespiratoryViewController alloc] init];
-            break;
-        case 7:
-            vc = [[NeuroligcViewController alloc] init];
-            break;
-        case 8:
-            vc = [[EndocrineViewController alloc] init];
-            break;
-        case 9:
-            vc = [[HepatoViewController alloc] init];
-            break;
-        case 10:
-            vc = [[RenalViewController alloc] init];
-            break;
-        case 11:
-            vc = [[HemOncViewController alloc] init];
-            break;
-        case 12:
-            vc = [[ImmuneIDViewController alloc] init];
-            break;
-        case 13:
-            vc = [[EvalOtherViewController alloc] init];
-            break;
-        case 14:
-            vc = [[DiagnosticStudiesViewController alloc] init];
-            break;
-        case 15:
-            vc = [[PlanDiscussionViewController alloc] init];
-            break;
-        case 16:
-            vc = [[PreOpReviewViewController alloc] init];
-            break;
-        default:
-            break;
-    }
+//    switch (indexPath.row) {
+//        case 0:
+//            vc = [[MedicationsSupplementsViewController alloc] init];
+////            vc = [[OverviewViewController alloc] init];
+////            ((OverviewViewController*)vc).delegate = self;
+////            for (FormSection* s in self.form.sections) {
+////                if ([s.title isEqualToString:[OverviewViewController sectionTitle]]) {
+////                    ((OverviewViewController*)vc).section = s;
+////                }
+////            }
+//            break;
+//        case 1:
+//            vc = [[PastSurgicalProceduresViewController alloc] init];
+//            break;
+//        case 2:
+//            vc = [[AllergiesReactionsViewController alloc] init];
+//            break;
+//        case 3:
+//            vc = [[PhysicalExamViewController alloc] init];
+//            break;
+//        case 4:
+//            vc = [[AirwayViewController alloc] init];
+//            break;
+//        case 5:
+//            vc = [[CardioViewController alloc] init];
+//            break;
+//        case 6:
+//            vc = [[RespiratoryViewController alloc] init];
+//            break;
+//        case 7:
+//            vc = [[NeuroligcViewController alloc] init];
+//            break;
+//        case 8:
+//            vc = [[EndocrineViewController alloc] init];
+//            break;
+//        case 9:
+//            vc = [[HepatoViewController alloc] init];
+//            break;
+//        case 10:
+//            vc = [[RenalViewController alloc] init];
+//            break;
+//        case 11:
+//            vc = [[HemOncViewController alloc] init];
+//            break;
+//        case 12:
+//            vc = [[ImmuneIDViewController alloc] init];
+//            break;
+//        case 13:
+//            vc = [[EvalOtherViewController alloc] init];
+//            break;
+//        case 14:
+//            vc = [[DiagnosticStudiesViewController alloc] init];
+//            break;
+//        case 15:
+//            vc = [[PlanDiscussionViewController alloc] init];
+//            break;
+//        case 16:
+//            vc = [[PreOpReviewViewController alloc] init];
+//            break;
+//        default:
+//            break;
+//    }
 
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;

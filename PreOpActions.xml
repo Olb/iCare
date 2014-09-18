@@ -7,7 +7,7 @@
     </Data>
     
     <Graphics>
-        <Group label="Anesthesia PreOp time used to:">
+        <Group label="Anesthesia PreOp time used to:" orientation="vertical">
             <Element name="CheckConsents" label="Check consents and review chart/plan with Pt" />
             <Element name="StartIv" label="Start IV" />
             <Element name="OtherActions" label="Other Actions" />

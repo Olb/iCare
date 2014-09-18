@@ -138,17 +138,8 @@ const float POUND_MULTIPLIER = 2.20462262f;
     if (!self.selectedOperation.weight) {
         [self.weightPicker selectRow:100 inComponent:1 animated:NO];
     } else {
-        int div = 100;
-        for (int i = 0; i < 3 ; i++) {
-            [self.weightPicker selectRow:([self.selectedOperation.weight intValue]/div) inComponent:i animated:NO];
-            div = div / 10;
-        }
-        [self.weightPicker selectRow:floor([self.selectedOperation.weight floatValue]) inComponent:4 animated:NO];
-        
-        if (self.useKG) {
-            [self.weightPicker selectRow:0 inComponent:5 animated:NO];
-        } else {
-            [self.weightPicker selectRow:1 inComponent:5 animated:NO];
+        for (int i = 0; i < 5 ; i++) {
+            [self.weightPicker selectRow:([self.selectedOperation.weight characterAtIndex:i]) inComponent:i animated:NO];
         }
     }
     

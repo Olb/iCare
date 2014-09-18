@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<Section name="AnesthesiaType">
+    <Data>
+        <Element type="BooleanFormElement" name="General"/>
+        <Element type="BooleanFormElement" name="IVRegional"/>
+        <Element type="BooleanFormElement" name="Spinal"/>
+        <Element type="BooleanFormElement" name="Epidural"/>
+        <Element type="BooleanFormElement" name="NerveBlockForPostopPain"/>
+        <Element type="BooleanFormElement" name="MAC"/>
+        <Element type="BooleanFormElement" name="AxillaryBlock"/>
+        <Element type="BooleanFormElement" name="InterscaleneBlock"/>
+        <Element type="StringListElement" name="OtherAnesthesiaType"/>
+    </Data>
+    
+    <Graphics>
+        <Group label="Anesthesia Type" orientation="vertical">
+            <Group orientation="horizontal">
+                <Element name="General" label="General" />
+                <Element name="MAC" label="MAC" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="IVRegional" label="IV Regional" />
+                <Element name="AxillaryBlock" label="Axillary Block" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Spinal" label="Spinal" />
+                <Element name="InterscaleneBlock" label="Interscalene Block" />
+            </Group>
+            <Element name="Epidural" label="Epidural" />
+            <Element name="NerveBlockForPostopPain" label="Nerve block by Anesthesia for postop pain" />
+            <Element name="OtherAnesthesiaType" label="Other Anesthesia Types" />
+        </Group>
+    </Graphics>
+</Section>

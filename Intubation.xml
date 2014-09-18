@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<Section name="Intubation">
+    <Data>
+        <Element type="BooleanFormElement" name="Curved"/>
+        <Element type="TextElement" name="CurvedNumber"/>
+        <Element type="BooleanFormElement" name="Straight"/>
+        <Element type="TextElement" name="StraightNumber"/>
+        <Element type="BooleanFormElement" name="VideoLaryngoscopy"/>
+        <Element type="BooleanFormElement" name="NaEttInPlace"/>
+        <Element type="BooleanFormElement" name="Stylet"/>
+        <Element type="BooleanFormElement" name="Atraumatic"/>
+        <Element type="BooleanFormElement" name="Difficult"/>
+        <Element type="TextElement" name="DifficultReason"/>
+        <Element type="BooleanFormElement" name="Blind"/>
+        <Element type="BooleanFormElement" name="Awake"/>
+        <Element type="BooleanFormElement" name="Fiberoptic"/>
+    </Data>
+    
+    <Graphics>
+        <Group label="Induction" orientation="vertical">
+            <Group orientation="horizontal" label="Blade">
+                <Element name="Curved" label="Curved" />
+                <Element name="CurvedNumber" label="#" />
+                <Element name="Straight" label="Straight" />
+                <Element name="StraightNumber" label="#" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="VideoLaryngoscopy" label="Video Laryngoscopy" />
+                <Element name="NaEttInPlace" label="N/A: ETT in place" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Stylet" label="Stylet" />
+                <Element name="Atraumatic" label="Atraumatic" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Difficult" label="Difficult" />
+                <Element name="DifficultReason" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Blind" label="Blind" />
+                <Element name="Awake" label="Awake" />
+                <Element name="Fiberoptic" label="Fiberoptic" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

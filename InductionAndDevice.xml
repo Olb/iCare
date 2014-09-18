@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<Section name="InductionAndDevice">
+    <Data>
+        <Element type="BooleanFormElement" name="Iv"/>
+        <Element type="BooleanFormElement" name="Im"/>
+        <Element type="BooleanFormElement" name="Inhalation"/>
+        <Element type="BooleanFormElement" name="PreO2"/>
+        <Element type="BooleanFormElement" name="RapidSequence"/>
+    </Data>
+    
+    <Graphics>
+        <Group label="Induction" orientation="vertical">
+            <Element name="Iv" label="IV" />
+            <Element name="Im" label="IM" />
+            <Element name="Inhalation" label="Inhalation" />
+            <Element name="PreO2" label="Pre-O2" />
+            <Element name="RapidSequence" label="Rapid sequence" />
+        </Group>
+    </Graphics>
+</Section>

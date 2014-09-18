@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<Section name="InvasiveLines">
+
+
+    <Graphics>
+        <Group label="Invasive Lines" orientation="vertical">
+            <Group orientation="horizontal">
+                <Element name="HeartRateLessThanFifty" label="Heart rate less than 50" />
+                <Element name="Hypotension" label="Hypotension" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="HeartRateLessThanFifty" label="Heart rate less than 50" />
+                <Element name="Hypotension" label="Hypotension" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

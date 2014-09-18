@@ -69,8 +69,8 @@ sub printDrawSectionCodeForGroup{
         case "vertical" {
             if ( $group->getAttribute("label") ne "" ){
                 $indentation = 15;
-                print "\t int ".$groupName."MaxWidth = 0;\n";
             }
+            print "\t int ".$groupName."MaxWidth = 0;\n";
         }
         case "horizontal"{
             print "\t int ".$groupName."MaxHeight = 0;\n\n";
@@ -96,10 +96,10 @@ sub printDrawSectionCodeForGroup{
                 
                 switch ($nodeData->getAttribute("type")){
                     case "BooleanFormElement" {
-                        print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:elementOrigin];\n";
+                        print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
-                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:elementOrigin];\n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
                         if ( $orientation eq "vertical" ){
                             print "\t cursor.x = ".$groupName."CursorStart.x;\n";
                         }
@@ -110,11 +110,11 @@ sub printDrawSectionCodeForGroup{
                         printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
                     }
                     case "StringListElement" {
-                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:elementOrigin];\n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
                         printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
                         
                         print "\t for (NSString *text in ((StringListElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value) {\n";
-                        print "\t previousElementSize = [BBPdfGenerator drawText:text atLocation:elementOrigin];\n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];\n";
                         printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
                         print "\t }\n\n";
                     }
@@ -122,6 +122,8 @@ sub printDrawSectionCodeForGroup{
                 }
             
             } else {
+                my $marginLR = 10;
+                my $marginTB = 20;
                 print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
                 printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
             }
@@ -143,7 +145,8 @@ sub printDrawSectionCodeForGroup{
     print "\t cursor = group1CursorStart;\n\n";
     
 }
-
+print "\n\n";
+print "#import \"BBPdfSectionBuilder.h\"\n";
 print "#import \"FormSection.h\"\n";
 print "#import \"FormElement.h\"\n";
 print "#import \"FormGroup.h\"\n";
@@ -167,13 +170,19 @@ for my $i (0 .. $#ARGV){
 
 #printElements(@sections[3]);
 
-print "\@implementation BBPdfSectionBuilder\n";
+print "\@implementation BBPdfSectionBuilder : NSObject\n";
 print "\n";
 print "+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
 print "{\n";
 
 $else = "";
 for my $section (@sections){
+    my $data = $section->getChildrenByLocalName("Data")->get_node(0);
+    if (not (defined $data)) {
+        next;
+    }
+    
+        
     print "\t ".$else."if ([section.title isEqualToString:\@\"".$section->getAttribute("name")."SectionKey\"]){\n";
     print "\t\t [BBPdfSectionBuilder draw".$section->getAttribute("name")."Section:section atLocation:sectionOrigin];\n";
     $else = "} else ";
@@ -186,11 +195,15 @@ print "}\n";
 
 
 for my $section (@sections){
+    my $data = $section->getChildrenByLocalName("Data")->get_node(0);
+    if (not (defined $data)) {
+        next;
+    }
     print "\n";
     print "+(void) draw".$section->getAttribute("name")."Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
     print "{\n";
-    print "\t CGSize previousElementSize = CGSizeMake(0, 0);\n";
-    print "\t CGPoint elementOrigin = sectionOrigin;\n";
+    print "\t CGSize previousElementSize;\n";
+    print "\t CGPoint cursor = sectionOrigin;\n";
     
     my $graphics = $section->getChildrenByLocalName("Graphics")->get_node(0);
     
@@ -206,7 +219,7 @@ for my $section (@sections){
     print "\t \n";
     print "}\n";
 }
-
+print "\@end";
 print "\n";
 print "\n";
 print "\n";

@@ -10,19 +10,12 @@
     </entity>
     <entity name="FormElement" representedClassName="FormElement" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FormGroup" inverseName="elements" inverseEntity="FormGroup" syncable="YES"/>
-    </entity>
-    <entity name="FormGroup" representedClassName="FormGroup" syncable="YES">
-        <attribute name="heading" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="optional" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="selected" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="elements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormElement" inverseName="group" inverseEntity="FormElement" syncable="YES"/>
-        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FormSection" inverseName="groups" inverseEntity="FormSection" syncable="YES"/>
+        <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FormSection" inverseName="elements" inverseEntity="FormSection" syncable="YES"/>
     </entity>
     <entity name="FormSection" representedClassName="FormSection" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="elements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormElement" inverseName="section" inverseEntity="FormElement" syncable="YES"/>
         <relationship name="form" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Form" inverseName="sections" inverseEntity="Form" syncable="YES"/>
-        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormGroup" inverseName="section" inverseEntity="FormGroup" syncable="YES"/>
     </entity>
     <entity name="IntraOp" representedClassName="IntraOp" syncable="YES">
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="intraOp" inverseEntity="Operation" syncable="YES"/>
@@ -64,7 +57,6 @@
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
-        <element name="FormGroup" positionX="-119" positionY="-304" width="128" height="120"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
         <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="58"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="148"/>
