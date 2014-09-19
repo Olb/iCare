@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<Section name="PostProcedureGeneral">
+    <Data>
+        <Element type="BooleanFormElement" name="Stable"/>
+        <Element type="BooleanFormElement" name="DentitionIntact"/>
+        <Element type="BooleanFormElement" name="PostProcedureGeneralConditionOther"/>
+        <Element type="TextElement" name="PostProcedureGeneralConditionOtherReason"/>
+        <Element type="TextElement" name="BpSystolic"/>
+        <Element type="TextElement" name="Diastolic"/>
+        <Element type="TextElement" name="Hr"/>
+        <Element type="TextElement" name="Rr"/>
+        <Element type="TextElement" name="Temp"/>
+        <Element type="TextElement" name="SpO2"/>
+    </Data>
+</Section>

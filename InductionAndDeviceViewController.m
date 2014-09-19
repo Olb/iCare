@@ -16,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *inhalationBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *preO2BBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *rapidSequenceBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *oralAirwayBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *lMABBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *nasalAirwayBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *maskBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *sizeUITextField;
 @end
 
 @implementation InductionAndDeviceViewController
@@ -25,6 +30,11 @@ static NSString *const IM_KEY = @"ImKey";
 static NSString *const INHALATION_KEY = @"InhalationKey";
 static NSString *const PREO2_KEY = @"PreO2Key";
 static NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
+static NSString *const ORAL_AIRWAY_KEY = @"OralAirwayKey";
+static NSString *const LMA_KEY = @"LMAKey";
+static NSString *const NASAL_AIRWAY_KEY = @"NasalAirwayKey";
+static NSString *const MASK_KEY = @"MaskKey";
+static NSString *const SIZE_KEY = @"SizeKey";
 
 - (void)viewDidLoad
 {
@@ -49,6 +59,21 @@ static NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
 			 if ([element.key isEqualToString:RAPID_SEQUENCE_KEY]){
 				 [self.rapidSequenceBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:ORAL_AIRWAY_KEY]){
+				 [self.oralAirwayBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:LMA_KEY]){
+				 [self.lMABBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:NASAL_AIRWAY_KEY]){
+				 [self.nasalAirwayBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:MASK_KEY]){
+				 [self.maskBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:SIZE_KEY]){
+				 [self.sizeUITextField setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
 }
@@ -60,6 +85,11 @@ static NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
 	 NSAssert([section getElementForKey:INHALATION_KEY]!= nil, @"Inhalation is nil");
 	 NSAssert([section getElementForKey:PREO2_KEY]!= nil, @"PreO2 is nil");
 	 NSAssert([section getElementForKey:RAPID_SEQUENCE_KEY]!= nil, @"RapidSequence is nil");
+	 NSAssert([section getElementForKey:ORAL_AIRWAY_KEY]!= nil, @"OralAirway is nil");
+	 NSAssert([section getElementForKey:LMA_KEY]!= nil, @"LMA is nil");
+	 NSAssert([section getElementForKey:NASAL_AIRWAY_KEY]!= nil, @"NasalAirway is nil");
+	 NSAssert([section getElementForKey:MASK_KEY]!= nil, @"Mask is nil");
+	 NSAssert([section getElementForKey:SIZE_KEY]!= nil, @"Size is nil");
 	 
 }
 
@@ -113,6 +143,51 @@ static NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
 	 }
 
 	 rapidSequence.value = [NSNumber numberWithBool:self.rapidSequenceBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *oralAirway = (BooleanFormElement*)[_section getElementForKey:ORAL_AIRWAY_KEY];
+	 if (!oralAirway) {
+		 oralAirway = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 oralAirway.key = ORAL_AIRWAY_KEY;
+		 [_section addElementsObject:oralAirway];
+	 }
+
+	 oralAirway.value = [NSNumber numberWithBool:self.oralAirwayBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *lMA = (BooleanFormElement*)[_section getElementForKey:LMA_KEY];
+	 if (!lMA) {
+		 lMA = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 lMA.key = LMA_KEY;
+		 [_section addElementsObject:lMA];
+	 }
+
+	 lMA.value = [NSNumber numberWithBool:self.lMABBCheckBox.isSelected];
+	 
+	 BooleanFormElement *nasalAirway = (BooleanFormElement*)[_section getElementForKey:NASAL_AIRWAY_KEY];
+	 if (!nasalAirway) {
+		 nasalAirway = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 nasalAirway.key = NASAL_AIRWAY_KEY;
+		 [_section addElementsObject:nasalAirway];
+	 }
+
+	 nasalAirway.value = [NSNumber numberWithBool:self.nasalAirwayBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *mask = (BooleanFormElement*)[_section getElementForKey:MASK_KEY];
+	 if (!mask) {
+		 mask = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 mask.key = MASK_KEY;
+		 [_section addElementsObject:mask];
+	 }
+
+	 mask.value = [NSNumber numberWithBool:self.maskBBCheckBox.isSelected];
+	 
+	 TextElement *size = (TextElement*)[_section getElementForKey:SIZE_KEY];
+	 if (!size) {
+		 size = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 size.key = SIZE_KEY;
+		 [_section addElementsObject:size];
+	 }
+
+	 size.value = self.sizeUITextField.text;
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];

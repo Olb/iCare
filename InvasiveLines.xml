@@ -6,7 +6,8 @@
         <Element type="BooleanFormElement" name="PaCatheter"/>
         <Element type="BooleanFormElement" name="NasoGastricTube"/>
         <Element type="BooleanFormElement" name="OroGastricTube"/>
-        <Element type="StringListElement" name="ivs"/>
+        <Element type="BooleanFormElement" name="Ivs"/>
+        <Element type="StringListElement" name="IvsSizeAndSite"/>
     </Data>
     
     <Graphicsaaaaa>

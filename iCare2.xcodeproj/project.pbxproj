@@ -56,6 +56,8 @@
 		289BDC8B19CBBC8100C683E7 /* Position.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8A19CBBC8100C683E7 /* Position.xml */; };
 		289BDC8D19CBBD5D00C683E7 /* PostAnesthesiaEval.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8C19CBBD5D00C683E7 /* PostAnesthesiaEval.xml */; };
 		289BDC8F19CBBEC000C683E7 /* PostOpDiagnosis.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8E19CBBEC000C683E7 /* PostOpDiagnosis.xml */; };
+		289BDC9119CBD96A00C683E7 /* PostProcedureGeneral.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC9019CBD96A00C683E7 /* PostProcedureGeneral.xml */; };
+		289BDC9319CBDAAB00C683E7 /* SpinalAnesthesia.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC9219CBDAAB00C683E7 /* SpinalAnesthesia.xml */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
 		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
 		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
@@ -249,6 +251,8 @@
 		289BDC8A19CBBC8100C683E7 /* Position.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Position.xml; sourceTree = "<group>"; };
 		289BDC8C19CBBD5D00C683E7 /* PostAnesthesiaEval.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PostAnesthesiaEval.xml; sourceTree = "<group>"; };
 		289BDC8E19CBBEC000C683E7 /* PostOpDiagnosis.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PostOpDiagnosis.xml; sourceTree = "<group>"; };
+		289BDC9019CBD96A00C683E7 /* PostProcedureGeneral.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PostProcedureGeneral.xml; sourceTree = "<group>"; };
+		289BDC9219CBDAAB00C683E7 /* SpinalAnesthesia.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpinalAnesthesia.xml; sourceTree = "<group>"; };
 		28AA355119C5D64A001453CE /* BBHeightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightAdapter.h; sourceTree = "<group>"; };
 		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
 		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
@@ -502,6 +506,8 @@
 		281270B219C7E437009A9644 /* AnesthesiaRecord */ = {
 			isa = PBXGroup;
 			children = (
+				289BDC9219CBDAAB00C683E7 /* SpinalAnesthesia.xml */,
+				289BDC9019CBD96A00C683E7 /* PostProcedureGeneral.xml */,
 				289BDC8E19CBBEC000C683E7 /* PostOpDiagnosis.xml */,
 				289BDC8C19CBBD5D00C683E7 /* PostAnesthesiaEval.xml */,
 				289BDC8A19CBBC8100C683E7 /* Position.xml */,
@@ -937,6 +943,7 @@
 				F4AFB94419ABB71D00CA013B /* RenalViewController.xib in Resources */,
 				289BDC8319CBAB3F00C683E7 /* PhysicalExam.xml in Resources */,
 				281270D119C87C5C009A9644 /* AirwayViewController.xib in Resources */,
+				289BDC9319CBDAAB00C683E7 /* SpinalAnesthesia.xml in Resources */,
 				281270CC19C87558009A9644 /* AllergiesReactions.xml in Resources */,
 				281270D619C8808E009A9644 /* PhysicalExamViewController.xib in Resources */,
 				289BDC8719CBB87000C683E7 /* MonitorinAndEquipment.xml in Resources */,
@@ -957,6 +964,7 @@
 				28CCCB3E19C3A2D000B2A0C6 /* WeightPicker.xib in Resources */,
 				F4AFB92719ABABB000CA013B /* RespiratoryViewController.xib in Resources */,
 				289BDC8B19CBBC8100C683E7 /* Position.xml in Resources */,
+				289BDC9119CBD96A00C683E7 /* PostProcedureGeneral.xml in Resources */,
 				988D167E19AE63A2009A887A /* InductionAndDeviceViewController.xib in Resources */,
 				988D168D19AE63A2009A887A /* PostAnesthesiaEvalViewController.xib in Resources */,
 				988D168419AE63A2009A887A /* IVAntibioticNameViewController.xib in Resources */,

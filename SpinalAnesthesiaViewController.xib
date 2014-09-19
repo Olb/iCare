@@ -6,6 +6,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpinalAnesthesiaViewController">
             <connections>
+                <outlet property="asepticAlcoholBBCheckBox" destination="Pg6-qH-xEw" id="WOE-od-CwI"/>
+                <outlet property="asepticBetadineBBCheckBox" destination="jR6-Pr-Izh" id="ask-7D-pN3"/>
+                <outlet property="asepticDuraPrepBBCheckBox" destination="sen-a5-4Vy" id="nYF-bd-gxb"/>
+                <outlet property="bupivacaineBBCheckBox" destination="xX6-ky-6sp" id="LMQ-cZ-fSd"/>
+                <outlet property="bupivacaineMlUITextField" destination="i6w-zr-5si" id="Ce3-w0-SM0"/>
+                <outlet property="csfBloodyBBCheckBox" destination="sqo-uz-5Wv" id="jBr-fg-8xr"/>
+                <outlet property="csfClearBBCheckBox" destination="5iE-o1-gre" id="I6B-yW-YoM"/>
+                <outlet property="csfCloudyBBCheckBox" destination="tHD-yO-Yt2" id="V6L-8F-7jS"/>
+                <outlet property="duramorphUITextField" destination="xB1-AW-5kU" id="wHn-5O-3Wh"/>
+                <outlet property="fentanylUITextField" destination="saQ-of-l7Y" id="aY9-gs-dLF"/>
+                <outlet property="interspaceUITextField" destination="F94-3D-q5P" id="wOh-t0-KbT"/>
+                <outlet property="localInflitrationBBCheckBox" destination="Q4g-sb-dvT" id="BeX-tA-W5L"/>
+                <outlet property="medOtherBBCheckBox" destination="ZyI-7e-YF6" id="hE5-2c-zvY"/>
+                <outlet property="medOtherReasonUITextField" destination="0sN-z0-iGt" id="nNX-mS-ZEN"/>
+                <outlet property="nrAttemptsUITextField" destination="kIC-4t-42A" id="4MN-Mc-iQj"/>
+                <outlet property="paresthesiaNoneBBCheckBox" destination="ajC-zv-F2c" id="cO4-2G-RxX"/>
+                <outlet property="paresthesiaOtherBBCheckBox" destination="HYf-PA-ecA" id="GW5-Qp-qCZ"/>
+                <outlet property="paresthesiaOtherReasonUITextField" destination="bRA-nG-m1f" id="fN1-FX-ftk"/>
+                <outlet property="pencilPointBBCheckBox" destination="kBr-Z9-oJ0" id="rOZ-jE-YSV"/>
+                <outlet property="positionLtLatBBCheckBox" destination="3VO-eR-yrc" id="tgf-h1-l2c"/>
+                <outlet property="positionRtLatBBCheckBox" destination="6Jx-er-whf" id="ntX-EP-vAd"/>
+                <outlet property="positionSitBBCheckBox" destination="uI1-Wd-JUo" id="Gmc-JD-nLF"/>
+                <outlet property="spiNeedleGramsUITextField" destination="a0I-fg-NQc" id="Ife-r6-mgp"/>
+                <outlet property="spiNeedleOtherBBCheckBox" destination="a8X-9o-6f5" id="lyA-fg-tRc"/>
+                <outlet property="spiNeedleOtherReasonUITextField" destination="WfD-cO-Ww0" id="BgA-jf-cGz"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>

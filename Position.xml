@@ -1,21 +1,15 @@
 <?xml version='1.0'?>
 <Section name="Position">
     <Data>
-        <Element type="BooleanFormElement" name="BpSystolic"/>
-        <Element type="BooleanFormElement" name="BpDiastolic"/>
-        <Element type="BooleanFormElement" name="HeartRate"/>
-        <Element type="BooleanFormElement" name="Temperature"/>
-        <Element type="BooleanFormElement" name="SpO2"/>
-        <Element type="BooleanFormElement" name="RespiratoryRate"/>
-        <Element type="BooleanFormElement" name="Arousable"/>
-        <Element type="BooleanFormElement" name="Awake"/>
-        <Element type="BooleanFormElement" name="Stable"/>
-        <Element type="TextElement" name="MentalStatusOther"/>
-        <Element type="BooleanFormElement" name="MentalStatusOtherReason"/>
-        <Element type="BooleanFormElement" name="CardiacRespAirwayStatusOther"/>
-        <Element type="TextElement" name="MentalStatusOtherReason"/>
-        <Element type="BooleanFormElement" name="ComplicationsNone"/>
-        <Element type="BooleanFormElement" name="ComplicationsOther"/>
-        <Element type="TextElement" name="ComplicationsOtherReason"/>
+        <Element type="BooleanFormElement" name="TapedShut"/>
+        <Element type="BooleanFormElement" name="Lubricated"/>
+        <Element type="BooleanFormElement" name="Shield"/>
+        <Element type="BooleanFormElement" name="HeadNeckNeutral"/>
+        <Element type="BooleanFormElement" name="AxillaryRoll"/>
+        <Element type="BooleanFormElement" name="PressurePointsProtected"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoard"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoardUp"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoardDown"/>
+        <Element type="BooleanFormElement" name="ArmsTuckedNeutralPosition"/>
     </Data>
 </Section>

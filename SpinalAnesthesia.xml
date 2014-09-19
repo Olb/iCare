@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<Section name="SpinalAnesthesia">
+    <Data>
+        <Element type="BooleanFormElement" name="CsfClear"/>
+        <Element type="BooleanFormElement" name="CsfCloudy"/>
+        <Element type="BooleanFormElement" name="CsfBloody"/>
+        <Element type="BooleanFormElement" name="PositionSit"/>
+        <Element type="BooleanFormElement" name="PositionRtLat"/>
+        <Element type="BooleanFormElement" name="PositionLtLat"/>
+        <Element type="BooleanFormElement" name="AsepticBetadine"/>
+        <Element type="BooleanFormElement" name="AsepticAlcohol"/>
+        <Element type="BooleanFormElement" name="AsepticDuraPrep"/>
+        <Element type="TextElement" name="Interspace"/>
+        <Element type="BooleanFormElement" name="LocalInflitration"/>
+        <Element type="BooleanFormElement" name="ParesthesiaNone"/>
+        <Element type="BooleanFormElement" name="ParesthesiaOther"/>
+        <Element type="TextElement" name="ParesthesiaOtherReason"/>
+        <Element type="TextElement" name="SpiNeedleGrams"/>
+        <Element type="BooleanFormElement" name="PencilPoint"/>
+        <Element type="BooleanFormElement" name="SpiNeedleOther"/>
+        <Element type="TextElement" name="SpiNeedleOtherReason"/>
+        <Element type="TextElement" name="NrAttempts"/>
+        <Element type="BooleanFormElement" name="Bupivacaine"/>
+        <Element type="TextElement" name="BupivacaineMl"/>
+        <Element type="BooleanFormElement" name="MedOther"/>
+        <Element type="TextElement" name="MedOtherReason"/>
+        <Element type="TextElement" name="Fentanyl"/>
+        <Element type="TextElement" name="Duramorph"/>
+    </Data>
+</Section>

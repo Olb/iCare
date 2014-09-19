@@ -6,6 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InductionAndDeviceViewController">
             <connections>
+                <outlet property="imBBCheckBox" destination="XOL-qL-eYQ" id="Df0-x1-Hch"/>
+                <outlet property="inhalationBBCheckBox" destination="JgT-QM-rRo" id="AlR-Kl-5fq"/>
+                <outlet property="ivBBCheckBox" destination="zGw-UU-mei" id="WQf-Ed-e3L"/>
+                <outlet property="lMABBCheckBox" destination="DRv-eG-ReB" id="DVG-Sd-Ab1"/>
+                <outlet property="maskBBCheckBox" destination="7fU-4e-LPr" id="ASH-jP-wjR"/>
+                <outlet property="nasalAirwayBBCheckBox" destination="qFN-uF-uEk" id="vuI-5Q-iFW"/>
+                <outlet property="oralAirwayBBCheckBox" destination="8Wr-R0-vWD" id="QcT-Mi-pwj"/>
+                <outlet property="preO2BBCheckBox" destination="iT0-Ns-FWY" id="lto-LT-bOj"/>
+                <outlet property="rapidSequenceBBCheckBox" destination="hA4-xT-HsG" id="NJS-Rq-GrJ"/>
+                <outlet property="sizeUITextField" destination="fNI-X0-HeF" id="JeC-O8-bJn"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -191,7 +201,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgT-QM-rRo" customClass="BBCheckBox">
-                    <rect key="frame" x="40" y="239" width="33" height="32"/>
+                    <rect key="frame" x="40" y="239" width="33" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
@@ -242,13 +252,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Cancel" id="rJb-3r-dIx"/>
+                        <barButtonItem title="Cancel" id="rJb-3r-dIx">
+                            <connections>
+                                <action selector="dismiss:" destination="-1" id="ovI-XQ-JhO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XBx-7S-sjB"/>
                         <barButtonItem title="Induction" id="Lsf-Xt-F8M">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="23J-L7-b9B"/>
-                        <barButtonItem title="Save" id="bQm-Gu-JBo"/>
+                        <barButtonItem title="Save" id="bQm-Gu-JBo">
+                            <connections>
+                                <action selector="accept:" destination="-1" id="ilY-Yh-SEp"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>

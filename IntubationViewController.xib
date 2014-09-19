@@ -6,6 +6,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntubationViewController">
             <connections>
+                <outlet property="atraumaticBBCheckBox" destination="0hY-WR-tt6" id="h2R-F3-JfY"/>
+                <outlet property="awakeBBCheckBox" destination="esp-vW-vcO" id="fVw-Wo-cjo"/>
+                <outlet property="blindBBCheckBox" destination="tBU-uT-9l8" id="x5s-1T-pcl"/>
+                <outlet property="curvedNumberUITextField" destination="dN1-ZY-z4E" id="Tgg-Ch-4Ig"/>
+                <outlet property="difficultBBCheckBox" destination="zjI-B2-nJa" id="c90-T6-a42"/>
+                <outlet property="difficultReasonUITextField" destination="AMV-AH-bEq" id="IQf-Ek-HZo"/>
+                <outlet property="fiberopticBBCheckBox" destination="XcR-67-kYA" id="vz9-q3-GQv"/>
+                <outlet property="naEttInPlaceBBCheckBox" destination="vZb-nn-afk" id="jks-zi-H26"/>
+                <outlet property="straightBBCheckBox" destination="yNi-Bg-U4n" id="tyn-3H-Awx"/>
+                <outlet property="straightNumberUITextField" destination="jZQ-5r-TtC" id="1mb-wt-mFm"/>
+                <outlet property="styletBBCheckBox" destination="GBO-8f-1mJ" id="mnU-43-PAw"/>
+                <outlet property="videoLaryngoscopyBBCheckBox" destination="fcv-W6-fff" id="Zkb-3a-gIH"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -252,13 +264,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="Cancel" id="gFy-or-5ti"/>
+                        <barButtonItem title="Cancel" id="gFy-or-5ti">
+                            <connections>
+                                <action selector="dismiss:" destination="-1" id="DIf-aD-K5i"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Wvm-QP-YKC"/>
                         <barButtonItem title="Intubation" id="kSK-Rz-SSM">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d1x-cz-Jcu"/>
-                        <barButtonItem title="Save" id="kC2-2C-z3F"/>
+                        <barButtonItem title="Save" id="kC2-2C-z3F">
+                            <connections>
+                                <action selector="accept:" destination="-1" id="ieE-us-kcR"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>

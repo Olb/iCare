@@ -16,9 +16,10 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *paCatheterBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nasoGastricTubeBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *oroGastricTubeBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *ivsTextField;
-@property (weak, nonatomic) IBOutlet UITableView *ivsTable;
-@property (strong, nonatomic) StringArrayTableAdapter *ivsTableAdapter;
+@property (weak, nonatomic) IBOutlet BBCheckBox *ivsBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *ivsSizeAndSiteTextField;
+@property (weak, nonatomic) IBOutlet UITableView *ivsSizeAndSiteTable;
+@property (strong, nonatomic) StringArrayTableAdapter *ivsSizeAndSiteTableAdapter;
 @end
 
 @implementation InvasiveLinesViewController
@@ -28,14 +29,15 @@ static NSString *const CENTRAL_VENOUS_CATHETER_KEY = @"CentralVenousCatheterKey"
 static NSString *const PA_CATHETER_KEY = @"PaCatheterKey";
 static NSString *const NASO_GASTRIC_TUBE_KEY = @"NasoGastricTubeKey";
 static NSString *const ORO_GASTRIC_TUBE_KEY = @"OroGastricTubeKey";
-static NSString *const ivs_KEY = @"ivsKey";
+static NSString *const IVS_KEY = @"IvsKey";
+static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-	 self.ivsTableAdapter = [[StringArrayTableAdapter alloc] init];
-	 self.ivsTable.dataSource = self.ivsTableAdapter;
-	 self.ivsTable.delegate = self.ivsTableAdapter;
+	 self.ivsSizeAndSiteTableAdapter = [[StringArrayTableAdapter alloc] init];
+	 self.ivsSizeAndSiteTable.dataSource = self.ivsSizeAndSiteTableAdapter;
+	 self.ivsSizeAndSiteTable.delegate = self.ivsSizeAndSiteTableAdapter;
 
 	 if (_section) {
 		 [self validateSection:_section];
@@ -57,9 +59,12 @@ static NSString *const ivs_KEY = @"ivsKey";
 			 if ([element.key isEqualToString:ORO_GASTRIC_TUBE_KEY]){
 				 [self.oroGastricTubeBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:ivs_KEY]){
-				 self.ivsTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
-				 [self.ivsTable reloadData];
+			 if ([element.key isEqualToString:IVS_KEY]){
+				 [self.ivsBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:IVS_SIZE_AND_SITE_KEY]){
+				 self.ivsSizeAndSiteTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
+				 [self.ivsSizeAndSiteTable reloadData];
 			 }
 		 }
 	 }
@@ -72,7 +77,8 @@ static NSString *const ivs_KEY = @"ivsKey";
 	 NSAssert([section getElementForKey:PA_CATHETER_KEY]!= nil, @"PaCatheter is nil");
 	 NSAssert([section getElementForKey:NASO_GASTRIC_TUBE_KEY]!= nil, @"NasoGastricTube is nil");
 	 NSAssert([section getElementForKey:ORO_GASTRIC_TUBE_KEY]!= nil, @"OroGastricTube is nil");
-	 NSAssert([section getElementForKey:ivs_KEY]!= nil, @"ivs is nil");
+	 NSAssert([section getElementForKey:IVS_KEY]!= nil, @"Ivs is nil");
+	 NSAssert([section getElementForKey:IVS_SIZE_AND_SITE_KEY]!= nil, @"IvsSizeAndSite is nil");
 	 
 }
 
@@ -127,29 +133,38 @@ static NSString *const ivs_KEY = @"ivsKey";
 
 	 oroGastricTube.value = [NSNumber numberWithBool:self.oroGastricTubeBBCheckBox.isSelected];
 	 
-	 StringListElement *ivs = (StringListElement*)[_section getElementForKey:ivs_KEY];
+	 BooleanFormElement *ivs = (BooleanFormElement*)[_section getElementForKey:IVS_KEY];
 	 if (!ivs) {
-		 ivs = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
-		 ivs.key = ivs_KEY;
+		 ivs = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 ivs.key = IVS_KEY;
 		 [_section addElementsObject:ivs];
 	 }
 
-	 NSMutableArray *ivsStringArray = [[NSMutableArray alloc] init];
-	 for (int i = 0; i < [self.ivsTable numberOfRowsInSection:0]; i++){
-		 UITableViewCell *cell = [self.ivsTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-		 [ivsStringArray addObject:cell.textLabel.text];
+	 ivs.value = [NSNumber numberWithBool:self.ivsBBCheckBox.isSelected];
+	 
+	 StringListElement *ivsSizeAndSite = (StringListElement*)[_section getElementForKey:IVS_SIZE_AND_SITE_KEY];
+	 if (!ivsSizeAndSite) {
+		 ivsSizeAndSite = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
+		 ivsSizeAndSite.key = IVS_SIZE_AND_SITE_KEY;
+		 [_section addElementsObject:ivsSizeAndSite];
 	 }
-	 ivs.value = ivsStringArray;
+
+	 NSMutableArray *ivsSizeAndSiteStringArray = [[NSMutableArray alloc] init];
+	 for (int i = 0; i < [self.ivsSizeAndSiteTable numberOfRowsInSection:0]; i++){
+		 UITableViewCell *cell = [self.ivsSizeAndSiteTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+		 [ivsSizeAndSiteStringArray addObject:cell.textLabel.text];
+	 }
+	 ivsSizeAndSite.value = ivsSizeAndSiteStringArray;
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)addivs:(id)sender {
-	 [self.ivsTableAdapter.items addObject:self.ivsTextField.text];
-	 [self.ivsTable reloadData];
-	 self.ivsTextField.text = @"";
-	 [self.ivsTextField resignFirstResponder];
+- (IBAction)addIvsSizeAndSite:(id)sender {
+	 [self.ivsSizeAndSiteTableAdapter.items addObject:self.ivsSizeAndSiteTextField.text];
+	 [self.ivsSizeAndSiteTable reloadData];
+	 self.ivsSizeAndSiteTextField.text = @"";
+	 [self.ivsSizeAndSiteTextField resignFirstResponder];
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {
