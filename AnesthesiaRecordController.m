@@ -114,13 +114,7 @@
             break;
         case 3:
             //vc = [[IVAntibioticNameViewController alloc] init];
-            vc = [[BetaBlockerViewController alloc] init];
-            ((BetaBlockerViewController*)vc).delegate = self;
-            for (FormSection* s in self.form.sections) {
-                if ([s.title isEqualToString:[BetaBlockerViewController sectionTitle]]) {
-                    ((BetaBlockerViewController*)vc).section = s;
-                }
-            }
+            return;
             break;
         case 4:
             vc = [[MonitorinAndEquipmentViewController alloc] init];
