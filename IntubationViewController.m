@@ -28,19 +28,19 @@
 
 @implementation IntubationViewController
 NSString *const INTUBATION_SECTION_TITLE = @"IntubationSectionKey";
-NSString *const CURVED_KEY = @"CurvedKey";
-NSString *const CURVED_NUMBER_KEY = @"CurvedNumberKey";
-NSString *const STRAIGHT_KEY = @"StraightKey";
-NSString *const STRAIGHT_NUMBER_KEY = @"StraightNumberKey";
-NSString *const VIDEO_LARYNGOSCOPY_KEY = @"VideoLaryngoscopyKey";
-NSString *const NA_ETT_IN_PLACE_KEY = @"NaEttInPlaceKey";
-NSString *const STYLET_KEY = @"StyletKey";
-NSString *const ATRAUMATIC_KEY = @"AtraumaticKey";
-NSString *const DIFFICULT_KEY = @"DifficultKey";
-NSString *const DIFFICULT_REASON_KEY = @"DifficultReasonKey";
-NSString *const BLIND_KEY = @"BlindKey";
-NSString *const AWAKE_KEY = @"AwakeKey";
-NSString *const FIBEROPTIC_KEY = @"FiberopticKey";
+static NSString *const CURVED_KEY = @"CurvedKey";
+static NSString *const CURVED_NUMBER_KEY = @"CurvedNumberKey";
+static NSString *const STRAIGHT_KEY = @"StraightKey";
+static NSString *const STRAIGHT_NUMBER_KEY = @"StraightNumberKey";
+static NSString *const VIDEO_LARYNGOSCOPY_KEY = @"VideoLaryngoscopyKey";
+static NSString *const NA_ETT_IN_PLACE_KEY = @"NaEttInPlaceKey";
+static NSString *const STYLET_KEY = @"StyletKey";
+static NSString *const ATRAUMATIC_KEY = @"AtraumaticKey";
+static NSString *const DIFFICULT_KEY = @"DifficultKey";
+static NSString *const DIFFICULT_REASON_KEY = @"DifficultReasonKey";
+static NSString *const BLIND_KEY = @"BlindKey";
+static NSString *const AWAKE_KEY = @"AwakeKey";
+static NSString *const FIBEROPTIC_KEY = @"FiberopticKey";
 
 - (void)viewDidLoad
 {

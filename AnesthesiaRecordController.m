@@ -16,7 +16,7 @@
 //#import "InvasiveLinesViewController.h"
 #import "IVAntibioticNameViewController.h"
 #import "MonitorinAndEquipmentViewController.h"
-#import "PersonelViewController.h"
+#import "PersonnelViewController.h"
 #import "PositionViewController.h"
 #import "PostAnesthesiaEvalViewController.h"
 #import "PostOpDiagnosisViewController.h"
@@ -152,7 +152,7 @@
             vc = [[PostAnesthesiaEvalViewController alloc] init];
             break;
         case 16:
-            vc = [[PersonelViewController alloc] init];
+            vc = [[PersonnelViewController alloc] init];
             break;
         default:
             break;

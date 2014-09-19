@@ -20,11 +20,11 @@
 
 @implementation InductionAndDeviceViewController
 NSString *const INDUCTION_AND_DEVICE_SECTION_TITLE = @"InductionAndDeviceSectionKey";
-NSString *const IV_KEY = @"IvKey";
-NSString *const IM_KEY = @"ImKey";
-NSString *const INHALATION_KEY = @"InhalationKey";
-NSString *const PREO2_KEY = @"PreO2Key";
-NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
+static NSString *const IV_KEY = @"IvKey";
+static NSString *const IM_KEY = @"ImKey";
+static NSString *const INHALATION_KEY = @"InhalationKey";
+static NSString *const PREO2_KEY = @"PreO2Key";
+static NSString *const RAPID_SEQUENCE_KEY = @"RapidSequenceKey";
 
 - (void)viewDidLoad
 {

@@ -26,15 +26,15 @@
 
 @implementation AnesthesiaTypeViewController
 NSString *const ANESTHESIA_TYPE_SECTION_TITLE = @"AnesthesiaTypeSectionKey";
-NSString *const GENERAL_KEY = @"GeneralKey";
-NSString *const IVRegional_KEY = @"IVRegionalKey";
-NSString *const SPINAL_KEY = @"SpinalKey";
-NSString *const EPIDURAL_KEY = @"EpiduralKey";
-NSString *const NERVE_BLOCK_FOR_POSTOP_PAIN_KEY = @"NerveBlockForPostopPainKey";
-NSString *const MAC_KEY = @"MACKey";
-NSString *const AXILLARY_BLOCK_KEY = @"AxillaryBlockKey";
-NSString *const INTERSCALENE_BLOCK_KEY = @"InterscaleneBlockKey";
-NSString *const OTHER_ANESTHESIA_TYPE_KEY = @"OtherAnesthesiaTypeKey";
+static NSString *const GENERAL_KEY = @"GeneralKey";
+static NSString *const IVRegional_KEY = @"IVRegionalKey";
+static NSString *const SPINAL_KEY = @"SpinalKey";
+static NSString *const EPIDURAL_KEY = @"EpiduralKey";
+static NSString *const NERVE_BLOCK_FOR_POSTOP_PAIN_KEY = @"NerveBlockForPostopPainKey";
+static NSString *const MAC_KEY = @"MACKey";
+static NSString *const AXILLARY_BLOCK_KEY = @"AxillaryBlockKey";
+static NSString *const INTERSCALENE_BLOCK_KEY = @"InterscaleneBlockKey";
+static NSString *const OTHER_ANESTHESIA_TYPE_KEY = @"OtherAnesthesiaTypeKey";
 
 - (void)viewDidLoad
 {

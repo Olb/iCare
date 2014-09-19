@@ -15,7 +15,6 @@
 
 +(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
-    NSLog(@"Drawing Section: %@", section.title);
 	 if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
 		 [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"BetaBlockerSectionKey"]){

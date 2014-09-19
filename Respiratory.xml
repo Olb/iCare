@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="Respiratory">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="Respiratory"/>
  		<Element type="BooleanFormElement" name="RespiratoryNone"/>
         <Element type="BooleanFormElement" name="HomeO2"/>
@@ -13,5 +13,5 @@
         <Element type="TextElement" name="PPD"/>
         <Element type="TextElement" name="YRS"/>
         <Element type="TextElement" name="QuitAmountAgo"/>
-	</Group>
+	</Data>
 </Section>

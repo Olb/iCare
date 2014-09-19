@@ -177,8 +177,8 @@ print "{\n";
 
 $else = "";
 for my $section (@sections){
-    my $data = $section->getChildrenByLocalName("Data")->get_node(0);
-    if (not (defined $data)) {
+    my $graphics = $section->getChildrenByLocalName("Graphics")->get_node(0);
+    if (not (defined $graphics)) {
         next;
     }
     
@@ -195,8 +195,8 @@ print "}\n";
 
 
 for my $section (@sections){
-    my $data = $section->getChildrenByLocalName("Data")->get_node(0);
-    if (not (defined $data)) {
+    my $graphics = $section->getChildrenByLocalName("Graphics")->get_node(0);
+    if (not (defined $graphics)) {
         next;
     }
     print "\n";

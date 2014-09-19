@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <Section name="MedicationsSupplements">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="BetaBlocker"/>
 		<Element type="StringListElement" name="MedsSupplements"/>
-	</Group>
+	</Data>
 </Section>

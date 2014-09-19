@@ -115,7 +115,7 @@ print "\@implementation $viewControllerName\n";
 print "NSString *const $section_title = @\"$section->{name}SectionKey\";\n";
 
 foreach $element (@elements){
-    print "NSString *const ".getKeyConstantForElement($element)." = @\"$element->{name}Key\";\n";
+    print "static NSString *const ".getKeyConstantForElement($element)." = @\"$element->{name}Key\";\n";
 }
 
 # viewDidLoad

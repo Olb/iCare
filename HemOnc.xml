@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="HemOnc">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="HemOnc"/>
  		<Element type="BooleanFormElement" name="HemOncNegative"/>
 		<Element type="BooleanFormElement" name="Anemia"/>
@@ -10,5 +10,5 @@
 		<Element type="BooleanFormElement" name="Cancer"/>
 		<Element type="BooleanFormElement" name="Chemo"/>
 		<Element type="BooleanFormElement" name="Radiation"/>
-	</Group>
+	</Data>
 </Section>

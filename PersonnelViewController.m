@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Bogdan Marinescu. All rights reserved.
 //
 
-#import "PersonelViewController.h"
+#import "PersonnelViewController.h"
 
-@interface PersonelViewController ()
+@interface PersonnelViewController ()
 
 @end
 
-@implementation PersonelViewController
+@implementation PersonnelViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

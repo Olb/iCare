@@ -20,11 +20,11 @@
 
 @implementation EmergenceViewController
 NSString *const EMERGENCE_SECTION_TITLE = @"EmergenceSectionKey";
-NSString *const ADEQUATE_KEY = @"AdequateKey";
-NSString *const INTUBATED_KEY = @"IntubatedKey";
-NSString *const DIRECT_TO_ICU_KEY = @"DirectToIcuKey";
-NSString *const SUCTIONED_EXTUBATED_KEY = @"SuctionedExtubatedKey";
-NSString *const O2For_TRANSPORT_KEY = @"O2ForTransportKey";
+static NSString *const ADEQUATE_KEY = @"AdequateKey";
+static NSString *const INTUBATED_KEY = @"IntubatedKey";
+static NSString *const DIRECT_TO_ICU_KEY = @"DirectToIcuKey";
+static NSString *const SUCTIONED_EXTUBATED_KEY = @"SuctionedExtubatedKey";
+static NSString *const O2For_TRANSPORT_KEY = @"O2ForTransportKey";
 
 - (void)viewDidLoad
 {

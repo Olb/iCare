@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<Section name="PostOpDiagnosis">
+    <Data>
+        <Element type="BooleanFormElement" name="BpSystolic"/>
+        <Element type="BooleanFormElement" name="BpDiastolic"/>
+        <Element type="BooleanFormElement" name="HeartRate"/>
+        <Element type="BooleanFormElement" name="Temperature"/>
+        <Element type="BooleanFormElement" name="SpO2"/>
+        <Element type="BooleanFormElement" name="RespiratoryRate"/>
+        <Element type="BooleanFormElement" name="Arousable"/>
+        <Element type="BooleanFormElement" name="Awake"/>
+        <Element type="BooleanFormElement" name="Stable"/>
+        <Element type="TextElement" name="MentalStatusOther"/>
+        <Element type="BooleanFormElement" name="MentalStatusOtherReason"/>
+        <Element type="BooleanFormElement" name="CardiacRespAirwayStatusOther"/>
+        <Element type="TextElement" name="MentalStatusOtherReason"/>
+        <Element type="BooleanFormElement" name="ComplicationsNone"/>
+        <Element type="BooleanFormElement" name="ComplicationsOther"/>
+        <Element type="TextElement" name="ComplicationsOtherReason"/>
+    </Data>
+</Section>

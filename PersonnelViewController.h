@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PersonelViewController : UIViewController
+@interface PersonnelViewController : UIViewController
 
 @end

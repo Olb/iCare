@@ -1,11 +1,11 @@
 <?xml version='1.0'?>
 <Section name="Hepato">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="GIHepatic"/>
  		<Element type="BooleanFormElement" name="GIHepaticNegative"/>
 		<Element type="BooleanFormElement" name="GERD"/>
 		<Element type="BooleanFormElement" name="Cirrhosis"/>
 		<Element type="BooleanFormElement" name="Hepatitis"/>
 		<Element type="BooleanFormElement" name="Obstruction"/>
-	</Group>
+	</Data>
 </Section>

@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<Section name="Airway">
+    <Data>
+        <Element type="BooleanFormElement" name="AirwayAdequate"/>
+        <Element type="BooleanFormElement" name="Intubated"/>
+        <Element type="TextElement" name="DifficultReason"/>
+        <Element type="TextElement" name="Mallampati"/>
+        <Element type="BooleanFormElement" name="Difficult"/>
+        <Element type="BooleanFormElement" name="DentitionOk"/>
+        <Element type="BooleanFormElement" name="RiskOfDamagePtAware"/>
+        <Element type="BooleanFormElement" name="CapsCrowns"/>
+        <Element type="BooleanFormElement" name="CapsUpper"/>
+        <Element type="BooleanFormElement" name="CapsLower"/>
+        <Element type="BooleanFormElement" name="Dentures"/>
+        <Element type="BooleanFormElement" name="DenturesFull"/>
+        <Element type="BooleanFormElement" name="DenturesPartial"/>
+        <Element type="BooleanFormElement" name="DenturesFullUpper"/>
+        <Element type="BooleanFormElement" name="DenturesFullLower"/>
+        <Element type="BooleanFormElement" name="DenturesPartialUpper"/>
+        <Element type="BooleanFormElement" name="DenturesPartialLower"/>
+        <Element type="BooleanFormElement" name="Chipped"/>
+        <Element type="TextElement" name="ChippedNumber"/>
+        <Element type="BooleanFormElement" name="ChippedUpper"/>
+        <Element type="BooleanFormElement" name="ChippedLower"/>
+        <Element type="BooleanFormElement" name="Missing"/>
+        <Element type="TextElement" name="MissingNumber"/>
+        <Element type="BooleanFormElement" name="MissingUpper"/>
+        <Element type="BooleanFormElement" name="MissingLower"/>
+        <Element type="BooleanFormElement" name="Loose"/>
+        <Element type="TextElement" name="LooseNumber"/>
+        <Element type="BooleanFormElement" name="LooseUpper"/>
+        <Element type="BooleanFormElement" name="LooseLower"/>
+    </Data>
+</Section>

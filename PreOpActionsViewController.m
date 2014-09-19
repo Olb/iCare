@@ -20,9 +20,9 @@
 
 @implementation PreOpActionsViewController
 NSString *const PRE_OP_ACTIONS_SECTION_TITLE = @"PreOpActionsSectionKey";
-NSString *const CHECK_CONSENTS_KEY = @"CheckConsentsKey";
-NSString *const START_IV_KEY = @"StartIvKey";
-NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
+static NSString *const CHECK_CONSENTS_KEY = @"CheckConsentsKey";
+static NSString *const START_IV_KEY = @"StartIvKey";
+static NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 
 - (void)viewDidLoad
 {

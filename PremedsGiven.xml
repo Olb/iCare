@@ -1,11 +1,10 @@
 <?xml version='1.0'?>
 <Section name="PremedsGiven">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="Midazolam"/>
         <Element type="TextElement" name="MidazolamDose"/>
 		<Element type="BooleanFormElement" name="Ondansetron"/>
         <Element type="TextElement" name="OndansetronDose"/>
 		<Element type="StringListElement" name="OtherPremedsGiven"/>
-	</Group>
-    
+	</Data>
 </Section>

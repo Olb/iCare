@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="Neuroligc">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="Neurologic"/>
  		<Element type="BooleanFormElement" name="NeurologicNegative"/>
 		<Element type="BooleanFormElement" name="Dementia"/>
@@ -11,5 +11,5 @@
 		<Element type="BooleanFormElement" name="TIA"/>
 		<Element type="BooleanFormElement" name="AlteredMentalStatus"/>
 		<Element type="BooleanFormElement" name="Seizures"/>
-	</Group>
+	</Data>
 </Section>

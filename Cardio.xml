@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="Cardio">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="CardioVascular"/>
  		<Element type="BooleanFormElement" name="CardioNegative"/>
 		<Element type="BooleanFormElement" name="FunctionalCapacityLessThanFourMets"/>
@@ -14,5 +14,5 @@
 		<Element type="BooleanFormElement" name="PTCA"/>
 		<Element type="BooleanFormElement" name="CoronaryStents"/>
 		<Element type="BooleanFormElement" name="Dysrhythmia"/>
-	</Group>
+	</Data>
 </Section>

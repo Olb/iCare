@@ -1,8 +1,15 @@
 <?xml version='1.0'?>
 <Section name="InvasiveLines">
-
-
-    <Graphics>
+    <Data>
+        <Element type="BooleanFormElement" name="ALine"/>
+        <Element type="BooleanFormElement" name="CentralVenousCatheter"/>
+        <Element type="BooleanFormElement" name="PaCatheter"/>
+        <Element type="BooleanFormElement" name="NasoGastricTube"/>
+        <Element type="BooleanFormElement" name="OroGastricTube"/>
+        <Element type="StringListElement" name="ivs"/>
+    </Data>
+    
+    <Graphicsaaaaa>
         <Group label="Invasive Lines" orientation="vertical">
             <Group orientation="horizontal">
                 <Element name="HeartRateLessThanFifty" label="Heart rate less than 50" />
@@ -13,5 +20,5 @@
                 <Element name="Hypotension" label="Hypotension" />
             </Group>
         </Group>
-    </Graphics>
+    </Graphicsaaaaa>
 </Section>

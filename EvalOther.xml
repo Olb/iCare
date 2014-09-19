@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="EvalOther">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="EvalOther"/>
  		<Element type="BooleanFormElement" name="EvalOtherNegative"/>
         <Element type="BooleanFormElement" name="Obesity"/>
@@ -12,5 +12,5 @@
         <Element type="BooleanFormElement" name="DifficultIVAccess"/>
         <Element type="BooleanFormElement" name="EGA"/>
         <Element type="TextElement" name="EGAWeeks"/>
-	</Group>
+	</Data>
 </Section>

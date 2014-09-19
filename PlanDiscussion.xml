@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="PlanDiscussion">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="PatientAccepted"/>
  		<Element type="BooleanFormElement" name="ParentAccepted"/>
         <Element type="BooleanFormElement" name="GuardianAccepted"/>
@@ -31,5 +31,5 @@
  		<Element type="BooleanFormElement" name="ASA6"/>
  		<Element type="BooleanFormElement" name="ASAE"/>
         <Element type="TextElement" name="PreOpEvaluationBy"/>
-	</Group>
+	</Data>
 </Section>

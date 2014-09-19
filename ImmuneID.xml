@@ -1,11 +1,11 @@
 <?xml version='1.0'?>
 <Section name="ImmuneID">
-	<Group>
+	<Data>
 		<Element type="BooleanFormElement" name="ImmuneID"/>
  		<Element type="BooleanFormElement" name="ImmuneIDNegative"/>
 		<Element type="BooleanFormElement" name="RheumArt"/>
 		<Element type="BooleanFormElement" name="HIV"/>
 		<Element type="BooleanFormElement" name="AutoImmuneDisease"/>
         <Element type="BooleanFormElement" name="OngoingInfection"/>
-	</Group>
+	</Data>
 </Section>

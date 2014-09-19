@@ -12,27 +12,23 @@
 #import "Form.h"
 #import "BBFormSectionDelegate.h"
 #import "BPBAppDelegate.h"
-
-//#import "CardioViewController.h"
-//#import "RespiratoryViewController.h"
-//#import "RenalViewController.h"
-//#import "NeuroligcViewController.h"
-//#import "EndocrineViewController.h"
-//#import "HepatoViewController.h"
-//#import "HemOncViewController.h"
-//#import "ImmuneIDViewController.h"
-//#import "EvalOtherViewController.h"
-//#import "DiagnosticStudiesViewController.h"
-//#import "PlanDiscussionViewController.h"
-//#import "PreOpReviewViewController.h"
-//
-//
-//
-//#import "MedicationsSupplementsViewController.h"
-//#import "PastSurgicalProceduresViewController.h"
-//#import "AllergiesReactionsViewController.h"
-//#import "PhysicalExamViewController.h"
-//#import "AirwayViewController.h"
+#import "CardioViewController.h"
+#import "RespiratoryViewController.h"
+#import "RenalViewController.h"
+#import "NeuroligcViewController.h"
+#import "EndocrineViewController.h"
+#import "HepatoViewController.h"
+#import "HemOncViewController.h"
+#import "ImmuneIDViewController.h"
+#import "EvalOtherViewController.h"
+#import "DiagnosticStudiesViewController.h"
+#import "PlanDiscussionViewController.h"
+#import "PreOpReviewViewController.h"
+#import "MedicationsSupplementsViewController.h"
+#import "PastSurgicalProceduresViewController.h"
+#import "AllergiesReactionsViewController.h"
+#import "PhysicalExamViewController.h"
+#import "AirwayViewController.h"
 
 @interface PreOpEvalTableTableViewController () <BBFormSectionDelegate>
 
@@ -85,69 +81,165 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIViewController *vc;
-//    switch (indexPath.row) {
-//        case 0:
-//            vc = [[MedicationsSupplementsViewController alloc] init];
-////            vc = [[OverviewViewController alloc] init];
-////            ((OverviewViewController*)vc).delegate = self;
-////            for (FormSection* s in self.form.sections) {
-////                if ([s.title isEqualToString:[OverviewViewController sectionTitle]]) {
-////                    ((OverviewViewController*)vc).section = s;
-////                }
-////            }
-//            break;
-//        case 1:
-//            vc = [[PastSurgicalProceduresViewController alloc] init];
-//            break;
-//        case 2:
-//            vc = [[AllergiesReactionsViewController alloc] init];
-//            break;
-//        case 3:
-//            vc = [[PhysicalExamViewController alloc] init];
-//            break;
-//        case 4:
-//            vc = [[AirwayViewController alloc] init];
-//            break;
-//        case 5:
-//            vc = [[CardioViewController alloc] init];
-//            break;
-//        case 6:
-//            vc = [[RespiratoryViewController alloc] init];
-//            break;
-//        case 7:
-//            vc = [[NeuroligcViewController alloc] init];
-//            break;
-//        case 8:
-//            vc = [[EndocrineViewController alloc] init];
-//            break;
-//        case 9:
-//            vc = [[HepatoViewController alloc] init];
-//            break;
-//        case 10:
-//            vc = [[RenalViewController alloc] init];
-//            break;
-//        case 11:
-//            vc = [[HemOncViewController alloc] init];
-//            break;
-//        case 12:
-//            vc = [[ImmuneIDViewController alloc] init];
-//            break;
-//        case 13:
-//            vc = [[EvalOtherViewController alloc] init];
-//            break;
-//        case 14:
-//            vc = [[DiagnosticStudiesViewController alloc] init];
-//            break;
-//        case 15:
-//            vc = [[PlanDiscussionViewController alloc] init];
-//            break;
-//        case 16:
-//            vc = [[PreOpReviewViewController alloc] init];
-//            break;
-//        default:
-//            break;
-//    }
+    switch (cell.tag) {
+        case 0:
+            vc = [[MedicationsSupplementsViewController alloc] init];
+            ((MedicationsSupplementsViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[MedicationsSupplementsViewController sectionTitle]]) {
+                    ((MedicationsSupplementsViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 1:
+            vc = [[PastSurgicalProceduresViewController alloc] init];
+            ((PastSurgicalProceduresViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PastSurgicalProceduresViewController sectionTitle]]) {
+                    ((PastSurgicalProceduresViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 2:
+            vc = [[AllergiesReactionsViewController alloc] init];
+            ((AllergiesReactionsViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[AllergiesReactionsViewController sectionTitle]]) {
+                    ((AllergiesReactionsViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 3:
+            vc = [[PhysicalExamViewController alloc] init];
+            ((PhysicalExamViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PhysicalExamViewController sectionTitle]]) {
+                    ((PhysicalExamViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 4:
+            vc = [[AirwayViewController alloc] init];
+            ((AirwayViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[AirwayViewController sectionTitle]]) {
+                    ((AirwayViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 5:
+            vc = [[CardioViewController alloc] init];
+            ((CardioViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[CardioViewController sectionTitle]]) {
+                    ((CardioViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 6:
+            vc = [[RespiratoryViewController alloc] init];
+            ((RespiratoryViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[RespiratoryViewController sectionTitle]]) {
+                    ((RespiratoryViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 7:
+            vc = [[NeuroligcViewController alloc] init];
+            ((NeuroligcViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[NeuroligcViewController sectionTitle]]) {
+                    ((NeuroligcViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 8:
+            vc = [[EndocrineViewController alloc] init];
+            ((EndocrineViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[EndocrineViewController sectionTitle]]) {
+                    ((EndocrineViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 9:
+            vc = [[HepatoViewController alloc] init];
+            ((HepatoViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[HepatoViewController sectionTitle]]) {
+                    ((HepatoViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 10:
+            vc = [[RenalViewController alloc] init];
+            ((RenalViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[RenalViewController sectionTitle]]) {
+                    ((RenalViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 11:
+            vc = [[HemOncViewController alloc] init];
+            ((HemOncViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[HemOncViewController sectionTitle]]) {
+                    ((HemOncViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 12:
+            vc = [[ImmuneIDViewController alloc] init];
+            ((ImmuneIDViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[ImmuneIDViewController sectionTitle]]) {
+                    ((ImmuneIDViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 13:
+            vc = [[EvalOtherViewController alloc] init];
+            ((EvalOtherViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[EvalOtherViewController sectionTitle]]) {
+                    ((EvalOtherViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 14:
+            vc = [[DiagnosticStudiesViewController alloc] init];
+            ((DiagnosticStudiesViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[DiagnosticStudiesViewController sectionTitle]]) {
+                    ((DiagnosticStudiesViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 15:
+            vc = [[PlanDiscussionViewController alloc] init];
+            ((PlanDiscussionViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PlanDiscussionViewController sectionTitle]]) {
+                    ((PlanDiscussionViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 16:
+            vc = [[PreOpReviewViewController alloc] init];
+            ((PreOpReviewViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PreOpReviewViewController sectionTitle]]) {
+                    ((PreOpReviewViewController*)vc).section = s;
+                }
+            }
+            break;
+        default:
+            break;
+    }
 
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;

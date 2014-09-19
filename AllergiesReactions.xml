@@ -1,6 +1,7 @@
 <?xml version='1.0'?>
 <Section name="AllergiesReactions">
-	<Group>
+	<Data>
+        <Element type="BooleanFormElement" name="NoKnownAllergies" />
 		<Element type="StringListElement" name="AllergiesReactions"/>
-	</Group>
+	</Data>
 </Section>

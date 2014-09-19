@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+<Section name="Personnel">
+    <Data>
+        <Element type="Element" name="ResponsibleMd"/>
+        <Element type="StringListElement" name="Surgeon"/>
+        <Element type="StringListElement" name="Anesthesiologist"/>
+        <Element type="StringListElement" name="CrnaAaa"/>
+    </Data>
+</Section>

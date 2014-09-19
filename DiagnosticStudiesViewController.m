@@ -32,21 +32,21 @@
 
 @implementation DiagnosticStudiesViewController
 NSString *const DIAGNOSTIC_STUDIES_SECTION_TITLE = @"DiagnosticStudiesSectionKey";
-NSString *const LABSNA_KEY = @"LabsNAKey";
-NSString *const MEDICAL_EVAL_REVIEWED_KEY = @"MedicalEvalReviewedKey";
-NSString *const HH_KEY = @"HHKey";
-NSString *const PLT_KEY = @"PLTKey";
-NSString *const KPotassium_KEY = @"KPotassiumKey";
-NSString *const PTINRPTT_KEY = @"PTINRPTTKey";
-NSString *const PREG_TEST_NEGATIVE_KEY = @"PregTestNegativeKey";
-NSString *const PREG_TEST_POSITIVE_KEY = @"PregTestPositiveKey";
-NSString *const GLUCOSE_KEY = @"GlucoseKey";
-NSString *const GLUCOSE_TIME_KEY = @"GlucoseTimeKey";
-NSString *const EKG_NORMAL_KEY = @"EkgNormalKey";
-NSString *const EKG_OTHER_KEY = @"EkgOtherKey";
-NSString *const CXR_NORMAL_KEY = @"CxrNormalKey";
-NSString *const CXR_OTHER_KEY = @"CxrOtherKey";
-NSString *const OTHER_DATA_KEY = @"OtherDataKey";
+static NSString *const LABSNA_KEY = @"LabsNAKey";
+static NSString *const MEDICAL_EVAL_REVIEWED_KEY = @"MedicalEvalReviewedKey";
+static NSString *const HH_KEY = @"HHKey";
+static NSString *const PLT_KEY = @"PLTKey";
+static NSString *const KPotassium_KEY = @"KPotassiumKey";
+static NSString *const PTINRPTT_KEY = @"PTINRPTTKey";
+static NSString *const PREG_TEST_NEGATIVE_KEY = @"PregTestNegativeKey";
+static NSString *const PREG_TEST_POSITIVE_KEY = @"PregTestPositiveKey";
+static NSString *const GLUCOSE_KEY = @"GlucoseKey";
+static NSString *const GLUCOSE_TIME_KEY = @"GlucoseTimeKey";
+static NSString *const EKG_NORMAL_KEY = @"EkgNormalKey";
+static NSString *const EKG_OTHER_KEY = @"EkgOtherKey";
+static NSString *const CXR_NORMAL_KEY = @"CxrNormalKey";
+static NSString *const CXR_OTHER_KEY = @"CxrOtherKey";
+static NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 - (void)viewDidLoad
 {

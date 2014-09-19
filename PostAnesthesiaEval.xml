@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<Section name="PostAnesthesiaEval">
+    <Data>
+        <Element type="BooleanFormElement" name="TapedShut"/>
+        <Element type="BooleanFormElement" name="Lubricated"/>
+        <Element type="BooleanFormElement" name="Shield"/>
+        <Element type="BooleanFormElement" name="HeadNeckNeutral"/>
+        <Element type="BooleanFormElement" name="AxillaryRoll"/>
+        <Element type="BooleanFormElement" name="PressurePointsProtected"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoard"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoardUp"/>
+        <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoardDown"/>
+        <Element type="BooleanFormElement" name="ArmsTuckedNeutralPosition"/>
+    </Data>
+</Section>

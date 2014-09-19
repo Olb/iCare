@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Section name="PreOpReview">
-	<Group>
+	<Data>
  		<Element type="BooleanFormElement" name="NoneChangesNoted"/>
         <Element type="TextElement" name="ChangesNoted"/>
         <Element type="TextElement" name="BP"/>
@@ -12,5 +12,5 @@
         <Element type="TextElement" name="NameMD"/>
         <Element type="TextElement" name="ReviewDate"/>
         <Element type="TextElement" name="ReviewTime"/>
-	</Group>
+	</Data>
 </Section>

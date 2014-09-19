@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<Section name="PhysicalExam">
+	<Data>
+        <Element type="BooleanFormElement" name="HeartRegular" />
+        <Element type="BooleanFormElement" name="HeartOther" />
+        <Element type="TextElement" name="HeartOtherReason" />
+        <Element type="BooleanFormElement" name="LungsClear" />
+        <Element type="BooleanFormElement" name="LungsOther" />
+        <Element type="TextElement" name="LungsOtherReason" />
+	</Data>
+</Section>

@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<Section name="MonitorinAndEquipment">
+    <Data>
+        <Element type="BooleanFormElement" name="EquipmentChecked"/>
+        <Element type="BooleanFormElement" name="AudibleAlarmsOn"/>
+        <Element type="BooleanFormElement" name="PrecordialSteth"/>
+        <Element type="BooleanFormElement" name="NerveStimulator"/>
+        <Element type="BooleanFormElement" name="EsophagealSteth"/>
+        <Element type="BooleanFormElement" name="CellSaver"/>
+        <Element type="BooleanFormElement" name="TEE"/>
+        <Element type="BooleanFormElement" name="FluidWarmer"/>
+        <Element type="BooleanFormElement" name="IntentionalHypothermia"/>
+        <Element type="BooleanFormElement" name="IntraOpForcedAirUp"/>
+        <Element type="BooleanFormElement" name="IntraOpForcedAirDown"/>
+        <Element type="BooleanFormElement" name="NibpRight"/>
+        <Element type="BooleanFormElement" name="NibpLeft"/>
+        <Element type="BooleanFormElement" name="NibpArm"/>
+        <Element type="BooleanFormElement" name="NibpLeg"/>
+        <Element type="TextElement" name="NibpEveryMin"/>
+        <Element type="BooleanFormElement" name="MonitoringEquipmentOther"/>
+        <Element type="TextElement" name="MonitoringEquipmentOtherReason"/>
+    </Data>
+</Section>

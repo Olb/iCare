@@ -29,20 +29,20 @@
 
 @implementation EndotrachealTubeViewController
 NSString *const ENDOTRACHEAL_TUBE_SECTION_TITLE = @"EndotrachealTubeSectionKey";
-NSString *const ENDO_TRACHEAL_TUBE_SIZE_KEY = @"EndoTrachealTubeSizeKey";
-NSString *const ORAL_KEY = @"OralKey";
-NSString *const CUFT_UP_TO_SEAL_KEY = @"CuftUpToSealKey";
-NSString *const NASAL_KEY = @"NasalKey";
-NSString *const TRACH_KEY = @"TrachKey";
-NSString *const ETCO2Increase_KEY = @"ETCO2IncreaseKey";
-NSString *const BRONCH_BLOCKER_KEY = @"BronchBlockerKey";
-NSString *const BSBE_KEY = @"BsbeKey";
-NSString *const ISOLATION_CHECK_KEY = @"IsolationCheckKey";
-NSString *const DOUBLE_LUMEN_ETT_KEY = @"DoubleLumenEttKey";
-NSString *const SECURED_AT_CM_KEY = @"SecuredAtCmKey";
-NSString *const DOUBLE_LUMEN_SIZE_KEY = @"DoubleLumenSizeKey";
-NSString *const DOUBLE_LUMEN_LEFT_KEY = @"DoubleLumenLeftKey";
-NSString *const DOUBLE_LUMEN_RIGHT_KEY = @"DoubleLumenRightKey";
+static NSString *const ENDO_TRACHEAL_TUBE_SIZE_KEY = @"EndoTrachealTubeSizeKey";
+static NSString *const ORAL_KEY = @"OralKey";
+static NSString *const CUFT_UP_TO_SEAL_KEY = @"CuftUpToSealKey";
+static NSString *const NASAL_KEY = @"NasalKey";
+static NSString *const TRACH_KEY = @"TrachKey";
+static NSString *const ETCO2Increase_KEY = @"ETCO2IncreaseKey";
+static NSString *const BRONCH_BLOCKER_KEY = @"BronchBlockerKey";
+static NSString *const BSBE_KEY = @"BsbeKey";
+static NSString *const ISOLATION_CHECK_KEY = @"IsolationCheckKey";
+static NSString *const DOUBLE_LUMEN_ETT_KEY = @"DoubleLumenEttKey";
+static NSString *const SECURED_AT_CM_KEY = @"SecuredAtCmKey";
+static NSString *const DOUBLE_LUMEN_SIZE_KEY = @"DoubleLumenSizeKey";
+static NSString *const DOUBLE_LUMEN_LEFT_KEY = @"DoubleLumenLeftKey";
+static NSString *const DOUBLE_LUMEN_RIGHT_KEY = @"DoubleLumenRightKey";
 
 - (void)viewDidLoad
 {

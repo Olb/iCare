@@ -20,11 +20,11 @@
 
 @implementation BetaBlockerViewController
 NSString *const BETA_BLOCKER_SECTION_TITLE = @"BetaBlockerSectionKey";
-NSString *const BETA_BLOCK_TAKEN_PAST_DAY_KEY = @"BetaBlockTakenPastDayKey";
-NSString *const GIVEN_IN_OR_KEY = @"GivenInOrKey";
-NSString *const CONTRA_INDICATION_KEY = @"ContraIndicationKey";
-NSString *const HEART_RATE_LESS_THAN_FIFTY_KEY = @"HeartRateLessThanFiftyKey";
-NSString *const HYPOTENSION_KEY = @"HypotensionKey";
+static NSString *const BETA_BLOCK_TAKEN_PAST_DAY_KEY = @"BetaBlockTakenPastDayKey";
+static NSString *const GIVEN_IN_OR_KEY = @"GivenInOrKey";
+static NSString *const CONTRA_INDICATION_KEY = @"ContraIndicationKey";
+static NSString *const HEART_RATE_LESS_THAN_FIFTY_KEY = @"HeartRateLessThanFiftyKey";
+static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 
 - (void)viewDidLoad
 {
