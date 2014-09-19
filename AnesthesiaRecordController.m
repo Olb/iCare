@@ -7,20 +7,20 @@
 //
 
 #import "AnesthesiaRecordController.h"
-//#import "AnesthesiaTypeViewController.h"
+#import "AnesthesiaTypeViewController.h"
 #import "BetaBlockerViewController.h"
 #import "EmergenceViewController.h"
 #import "PreOpActionsViewController.h"
 #import "EndotrachealTubeViewController.h"
 #import "InductionAndDeviceViewController.h"
-//#import "InvasiveLinesViewController.h"
-#import "IVAntibioticNameViewController.h"
+#import "InvasiveLinesViewController.h"
+//#import "IVAntibioticNameViewController.h"
 #import "MonitorinAndEquipmentViewController.h"
 #import "PersonnelViewController.h"
 #import "PositionViewController.h"
 #import "PostAnesthesiaEvalViewController.h"
 #import "PostOpDiagnosisViewController.h"
-//#import "PremedsGivenViewController.h"
+#import "PremedsGivenViewController.h"
 #import "PostProcedureGeneralViewController.h"
 #import "SpinalAnesthesiaViewController.h"
 #import "IntubationViewController.h"
@@ -95,13 +95,13 @@
             }
             break;
         case 1:
-//            vc = [[PremedsGivenViewController alloc] init];
-//            ((PremedsGivenViewController*)vc).delegate = self;
-//            for (FormSection* s in self.form.sections) {
-//                if ([s.title isEqualToString:[PremedsGivenViewController sectionTitle]]) {
-//                    ((PremedsGivenViewController*)vc).section = s;
-//                }
-//            }
+            vc = [[PremedsGivenViewController alloc] init];
+            ((PremedsGivenViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PremedsGivenViewController sectionTitle]]) {
+                    ((PremedsGivenViewController*)vc).section = s;
+                }
+            }
             break;
         case 2:
             vc = [[BetaBlockerViewController alloc] init];
@@ -113,46 +113,131 @@
             }
             break;
         case 3:
-            vc = [[IVAntibioticNameViewController alloc] init];
+            //vc = [[IVAntibioticNameViewController alloc] init];
+            vc = [[BetaBlockerViewController alloc] init];
+            ((BetaBlockerViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[BetaBlockerViewController sectionTitle]]) {
+                    ((BetaBlockerViewController*)vc).section = s;
+                }
+            }
             break;
         case 4:
             vc = [[MonitorinAndEquipmentViewController alloc] init];
+            ((MonitorinAndEquipmentViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[MonitorinAndEquipmentViewController sectionTitle]]) {
+                    ((MonitorinAndEquipmentViewController*)vc).section = s;
+                }
+            }
             break;
         case 5:
-            //vc = [[InvasiveLinesViewController alloc] init];
+            vc = [[InvasiveLinesViewController alloc] init];
+            ((InvasiveLinesViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[InvasiveLinesViewController sectionTitle]]) {
+                    ((InvasiveLinesViewController*)vc).section = s;
+                }
+            }
             break;
         case 6:
-            //vc = [[AnesthesiaTypeViewController alloc] init];
+            vc = [[AnesthesiaTypeViewController alloc] init];
+            ((AnesthesiaTypeViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[AnesthesiaTypeViewController sectionTitle]]) {
+                    ((AnesthesiaTypeViewController*)vc).section = s;
+                }
+            }
             break;
         case 7:
             vc = [[SpinalAnesthesiaViewController alloc] init];
+            ((SpinalAnesthesiaViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[SpinalAnesthesiaViewController sectionTitle]]) {
+                    ((SpinalAnesthesiaViewController*)vc).section = s;
+                }
+            }
             break;
         case 8:
             vc = [[PositionViewController alloc] init];
+            ((PositionViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PositionViewController sectionTitle]]) {
+                    ((PositionViewController*)vc).section = s;
+                }
+            }
             break;
         case 9:
             vc = [[EmergenceViewController alloc] init];
+            ((EmergenceViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[EmergenceViewController sectionTitle]]) {
+                    ((EmergenceViewController*)vc).section = s;
+                }
+            }
             break;
         case 10:
             vc = [[InductionAndDeviceViewController alloc] init];
+            ((InductionAndDeviceViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[InductionAndDeviceViewController sectionTitle]]) {
+                    ((InductionAndDeviceViewController*)vc).section = s;
+                }
+            }
             break;
         case 11:
             vc = [[IntubationViewController alloc] init];
+            ((IntubationViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[IntubationViewController sectionTitle]]) {
+                    ((IntubationViewController*)vc).section = s;
+                }
+            }
             break;
         case 12:
             vc = [[EndotrachealTubeViewController alloc] init];
+            ((EndotrachealTubeViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[EndotrachealTubeViewController sectionTitle]]) {
+                    ((EndotrachealTubeViewController*)vc).section = s;
+                }
+            }
             break;
         case 13:
             vc = [[PostProcedureGeneralViewController alloc] init];
+            ((PostProcedureGeneralViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PostProcedureGeneralViewController sectionTitle]]) {
+                    ((PostProcedureGeneralViewController*)vc).section = s;
+                }
+            }
             break;
         case 14:
             vc = [[PostOpDiagnosisViewController alloc] init];
+            ((PostOpDiagnosisViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PostOpDiagnosisViewController sectionTitle]]) {
+                    ((PostOpDiagnosisViewController*)vc).section = s;
+                }
+            }
             break;
         case 15:
             vc = [[PostAnesthesiaEvalViewController alloc] init];
+            ((PostAnesthesiaEvalViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PostAnesthesiaEvalViewController sectionTitle]]) {
+                    ((PostAnesthesiaEvalViewController*)vc).section = s;
+                }
+            }
             break;
         case 16:
             vc = [[PersonnelViewController alloc] init];
+            ((PersonnelViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PersonnelViewController sectionTitle]]) {
+                    ((PersonnelViewController*)vc).section = s;
+                }
+            }
             break;
         default:
             break;
