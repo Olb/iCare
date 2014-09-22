@@ -20,6 +20,8 @@
 @property NSString *userID;
 @property NSArray *patientsArray;
 @property (nonatomic, strong) Practitioner *practitioner;
+@property (nonatomic, strong) NSMutableArray *headerArray;
+
 @end
 
 @implementation BBMainViewController
@@ -63,8 +65,7 @@
         BBPatientFormsViewController *vc = [segue destinationViewController];
         CGPoint cellPosition = [sender convertPoint:CGPointZero toView:self.patientsTableView];
         NSIndexPath *indexPath = [self.patientsTableView indexPathForRowAtPoint:cellPosition];
-        NSInteger rowOfTheCell = indexPath.row;
-        Patient *p = [self.patientsArray objectAtIndex:rowOfTheCell];
+        Patient *p = [[self.headerArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         NSLog(@"Patient name:%@", p.firstName);
         vc.patient = p;
     }
@@ -72,26 +73,55 @@
 
 #pragma mark - TableView
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if ([self.practitioner.patients count] == 0){
+        return 0;
+    }
+    
+    self.headerArray = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *sortedPatients = [[NSMutableArray alloc] initWithArray:[self.practitioner.patients allObjects]];
+    sortedPatients = (NSMutableArray*)[sortedPatients sortedArrayUsingComparator: ^(Patient *p1, Patient *p2) {
+        return [p1.lastName compare:p2.lastName options:NSCaseInsensitiveSearch];
+    }];
+    
+    int j=0;
+    [self.headerArray addObject:[[NSMutableArray alloc] init]];
+    for (int i = 0; i < [sortedPatients count]; i++) {
+        Patient *currentPatient = [sortedPatients objectAtIndex:i];
+        [[self.headerArray objectAtIndex:j] addObject:currentPatient];
+        if ( i < [sortedPatients count] - 1 ){
+            Patient *nextPatient = [sortedPatients objectAtIndex:i+1];
+            if ([currentPatient.lastName characterAtIndex:0] !=
+                [nextPatient.lastName characterAtIndex:0]){
+                j++;
+                [self.headerArray addObject:[[NSMutableArray alloc] init]];
+            }
+        }
+    }
+    return self.headerArray.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    Patient *p = [[self.headerArray objectAtIndex:section] objectAtIndex:0];
+    return [NSString stringWithFormat:@"%c", [p.lastName characterAtIndex:0]];
+}
+
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger result = 0;
-    if (tableView == self.patientsTableView) {
-        result = [self.patientsArray count];
-    }
-    return result;
+    return [[self.headerArray objectAtIndex:section] count];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
     
-    if ( tableView == self.patientsTableView) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"PatientCell"];
-        UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:1];
-        Patient *p;
-        p = [self.patientsArray objectAtIndex:indexPath.row];
-        [nameLabel setText:[NSString stringWithFormat:@"%@, %@", p.lastName, p.firstName]];
-    }
+    Patient *p = [[self.headerArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PatientCell"];
+    UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:1];
+    [nameLabel setText:[NSString stringWithFormat:@"%@, %@", p.lastName, p.firstName]];
     
     return cell;
 }

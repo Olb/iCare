@@ -243,6 +243,7 @@
 		2838DE2C19CB32F70025F7DE /* InductionAndDevice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InductionAndDevice.xml; sourceTree = "<group>"; };
 		2838DE2E19CB33F30025F7DE /* Intubation.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Intubation.xml; sourceTree = "<group>"; };
 		2838DE3019CB36880025F7DE /* InvasiveLines.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvasiveLines.xml; sourceTree = "<group>"; };
+		285A969419CFAC2F0034B769 /* Icare Screen With Additions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Icare Screen With Additions.pdf"; sourceTree = "<group>"; };
 		289BDC8019CBA9BA00C683E7 /* Airway.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airway.xml; sourceTree = "<group>"; };
 		289BDC8219CBAB3F00C683E7 /* PhysicalExam.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PhysicalExam.xml; sourceTree = "<group>"; };
 		289BDC8419CBB7F200C683E7 /* IVAntibioticName.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IVAntibioticName.xml; sourceTree = "<group>"; };
@@ -779,6 +780,7 @@
 		F4615D55192F908E0031470B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				285A969419CFAC2F0034B769 /* Icare Screen With Additions.pdf */,
 				F4AFB92819ABADD900CA013B /* checkbox_selected.png */,
 				F4AFB92919ABADD900CA013B /* checkbox_unselected.png */,
 				F4615D56192F908E0031470B /* iCare2-Info.plist */,
