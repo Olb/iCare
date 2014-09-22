@@ -10,7 +10,7 @@ sub getOutletNameForElement {
     local $element;
     $element = $_[0];
     
-    return "\l$element->{name}".getOutletTypeFor($element->{type},$_[1]);
+    return "\l$element->{name}".getOutletTypeForElement($element,$_[1]);
 }
 
 sub camelCaseToUppercase{
@@ -28,11 +28,11 @@ sub getKeyConstantForElement{
     return camelCaseToUppercase($element->{name})."_KEY";
 }
 
-sub getOutletTypeFor{
-    local $type;
-    $type = $_[0];
+sub getOutletTypeForElement{
+    local $element;
+    $element = $_[0];
     
-    switch ($type){
+    switch ($element->{type}){
         case "BooleanFormElement" { return "BBCheckBox"}
         case "StringListElement" {
             switch ($_[1]){
@@ -52,6 +52,19 @@ sub getOutletTypeFor{
             }
         }
         case "ElementListFormElement"{
+            switch ($element->{listOf}) {
+                case "AntibioticFormElement" {
+                    switch($_[1]){
+                        case "NAME" { return "NameTextField" }
+                        case "DOSE" { return "DoseTextField" }
+                        case "DOSE_UNIT" { return "DoseUnitButton" }
+                        case "START_TIME" { return "StartTimeTextField" }
+                    }
+                }
+                else {
+                    die "Unhandled ElementListFormElement type'".$element->{listOF}."'";
+                }
+            }
             switch($_[1]){
                 case "TABLE" { return "Table" }
                 case "ADAPTER" { return "TableAdapter" }
@@ -81,7 +94,7 @@ sub printPropertiesForElement{
                 case "AntibioticFormElement" {
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"NAME").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE").";\n";
-                    print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
+                    print "\@property (weak, nonatomic) IBOutlet UIButton *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"START_TIME").";\n";
                 }
             }
@@ -89,11 +102,11 @@ sub printPropertiesForElement{
         case "AntibioticFormElement" {
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"NAME").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE").";\n";
-            print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
+            print "\@property (weak, nonatomic) IBOutlet UIButton *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"START_TIME").";\n";
         }
         else {
-            print "\@property (weak, nonatomic) IBOutlet ".getOutletTypeFor($element->{type})." *".getOutletNameForElement($element).";\n";
+            print "\@property (weak, nonatomic) IBOutlet ".getOutletTypeForElement($element)." *".getOutletNameForElement($element).";\n";
         }
     }
     
@@ -112,7 +125,12 @@ if (not (exists $section->{Data})) {
 } else {
     print STDERR "Generating code for section '".$asd."'\n";
 }
-@elements = @{$section->{Data}->{Element}};
+
+if (ref $section->{Data}->{Element} eq "ARRAY"){
+    @elements = @{$section->{Data}->{Element}};
+} else {
+    @elements = ($section->{Data}->{Element});
+}
 
 # include section
 
@@ -126,8 +144,10 @@ print "#import \"BooleanFormElement.h\"\n";
 print "#import \"StringListElement.h\"\n";
 print "#import \"TextElement.h\"\n";
 print "#import \"StringArrayTableAdapter.h\"\n\n";
-
-
+print "#import \"ElementListFormElement.h\"\n\n";
+print "#import \"FormElementTableAdapter.h\"\n\n";
+print "#import \"FormElementTableCellFactory.h\"\n\n";
+print "#import \"AntibioticFormElement.h\"\n\n";
 
 print "\n";
 
@@ -194,7 +214,7 @@ foreach $element (@elements) {
         }
         case "ElementListFormElement" {
             print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
-            print "\t\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[NSMutableArray alloc] initWithArray:((ElementListElement*)element).value];\n";
+            print "\t\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[NSMutableArray alloc] initWithArray:((ElementListFormElement*)element).value];\n";
             print "\t\t\t\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
             print "\t\t\t }\n";
         }
@@ -253,7 +273,23 @@ foreach $element (@elements){
             print "\t }\n";
             print "\t $name.value = $arrayName;\n";
         }
-        case "AntibioticFormElement"
+        case "ElementListFormElement" {
+            my $arrayName = $name."ElementListArray";
+            print "\t NSMutableArray *$arrayName = [[NSMutableArray alloc] init];\n";
+            print "\t for (int i = 0; i < [self.".getOutletNameForElement($element,"TABLE")." numberOfRowsInSection:0]; i++){\n";
+            print "\t\t UITableViewCell *cell = [self.".getOutletNameForElement($element,"TABLE")." cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];\n";
+            switch ($element->{listOf}){
+                case "AntibioticFormElement" {
+                    print "\t\t AntibioticFormElement *elementListFormElement = [FormElementTableCellFactory getElementForAntibioticCell:cell withElement:nil];";
+                }
+                else {
+                    die "Unhandled ElementListFormElement type'".$element->{listOf}."'";
+                }
+            }
+            print "\t\t [$arrayName addObject:elementListFormElement];\n";
+            print "\t }\n";
+            print "\t $name.value = $arrayName;\n";
+        }
         case "TextElement" {
             print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";
         }
@@ -280,6 +316,30 @@ foreach $element (@elements){
         print "\t self.".getOutletNameForElement($element,"TEXT_FIELD").".text = \@\"\";\n";
         print "\t [self.".getOutletNameForElement($element,"TEXT_FIELD")." resignFirstResponder];\n";
         print "}\n\n";
+    }
+    if ($element->{type} eq "ElementListFormElement"){
+        switch ($element->{listOF}) {
+            case "AntibioticFormElement" {
+                print "- (IBAction)add$element->{name}:(id)sender {\n";
+                print "\t AntibioticFormElement *formElement = [[AntibioticFormElement alloc] init];\n";
+                print "\t formElement.name = self.".getOutletNameForElement($element,"NAME").".text;\n";
+                print "\t formElement.dose = self.".getOutletNameForElement($element,"DOSE").".text;\n";
+                print "\t formElement.doseUnit = self.".getOutletNameForElement($element,"DOSE_UNIT").".titleLabel.text;\n";
+                print "\t NSDateFormatter *formatter = [[NSDateFormatter alloc] init];\n";
+                print "\t [formatter setDateFormat:\@\"HH:mm\"];\n";
+                print "\t NSDate *date = [formatter dateFromString:self.".getOutletNameForElement($element,"START_TIME").".text];\n";
+                print "\t formElement.startTime = date;\n";
+                print "\t [self.".getOutletNameForElement($element,"ADAPTER").".items addObject:formElement];\n";
+                print "\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
+                print "\t self.".getOutletNameForElement($element,"NAME").".text = \@\"\";\n";
+                print "\t self.".getOutletNameForElement($element,"DOSE").".text = \@\"\";\n";
+                print "\t self.".getOutletNameForElement($element,"START_TIME").".text = \@\"\";\n";
+                print "\t [self.".getOutletNameForElement($element,"NAME")." resignFirstResponder];\n";
+                print "\t [self.".getOutletNameForElement($element,"DOSE")." resignFirstResponder];\n";
+                print "\t [self.".getOutletNameForElement($element,"START_TIME")." resignFirstResponder];\n";
+                print "}\n\n";
+            }
+        }
     }
 }
 

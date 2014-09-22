@@ -9,6 +9,14 @@
 #import "TextElement.h"
 #import "StringArrayTableAdapter.h"
 
+#import "ElementListFormElement.h"
+
+#import "FormElementTableAdapter.h"
+
+#import "FormElementTableCellFactory.h"
+
+#import "AntibioticFormElement.h"
+
 
 @interface PreOpActionsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *checkConsentsBBCheckBox;

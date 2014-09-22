@@ -12,7 +12,7 @@
 -(void) itemSelected:(NSString*)item;
 -(void) itemDeleted:(NSString*)item atIndexPathRow:(NSInteger)row;
 @end
-@interface FormElementTableAdapter : UIViewController
+@interface FormElementTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 @property NSMutableArray *items;
 @property id <BBFormElementTableDelegate> delegate;
 @end

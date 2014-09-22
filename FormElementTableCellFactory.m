@@ -40,5 +40,25 @@
     return cell;
 }
 
++(AntibioticFormElement*)getElementForAntibioticCell:(UITableViewCell*)cell withElement:(AntibioticFormElement*)element
+{
+    if (element == nil) {
+        element = [[AntibioticFormElement alloc] init];
+    }
+    UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:1];
+    UILabel *doseLabel = (UILabel*)[cell.contentView viewWithTag:2];
+    UILabel *doseUnitLabel = (UILabel*)[cell.contentView viewWithTag:3];
+    UILabel *startTimeLabel = (UILabel*)[cell.contentView viewWithTag:4];
+    element.name = nameLabel.text;
+    element.dose = doseLabel.text;
+    element.doseUnit = doseUnitLabel.text;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"HH:mm"];
+    NSDate *date = [formatter dateFromString:startTimeLabel.text];
+    element.startTime = date;
+    
+    return element;
+}
+
 
 @end
