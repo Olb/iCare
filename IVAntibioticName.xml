@@ -1,11 +1,6 @@
 <?xml version='1.0'?>
 <Section name="IVAntibioticName">
-    <Databbbb>
-        <Element type="BooleanFormElement" name="ALine"/>
-        <Element type="BooleanFormElement" name="CentralVenousCatheter"/>
-        <Element type="BooleanFormElement" name="PaCatheter"/>
-        <Element type="BooleanFormElement" name="NasoGastricTube"/>
-        <Element type="BooleanFormElement" name="OroGastricTube"/>
-        <Element type="StringListElement" name="ivs"/>
-    </Databbbb>
+    <Data>
+        <Element type="ElementListFormElement" listOf="AntibioticFormElement" name="IvAntibiotic"/>
+    </Data>
 </Section>
