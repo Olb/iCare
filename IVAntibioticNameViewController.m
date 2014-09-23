@@ -81,6 +81,25 @@ static NSString *const IV_ANTIBIOTIC_KEY = @"IvAntibioticKey";
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)addIvAntibiotic:(id)sender {
+	 AntibioticFormElement *formElement = (AntibioticFormElement*)[BBUtil newCoreDataObjectForEntityName:@"AntibioticFormElement"];
+	 formElement.name = self.ivAntibioticNameTextField.text;
+	 formElement.dose = self.ivAntibioticDoseTextField.text;
+	 formElement.doseUnit = self.ivAntibioticDoseUnitButton.titleLabel.text;
+	 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	 [formatter setDateFormat:@"HH:mm"];
+	 NSDate *date = [formatter dateFromString:self.ivAntibioticStartTimeTextField.text];
+	 formElement.startTime = date;
+	 [self.ivAntibioticTableAdapter.items addObject:formElement];
+	 [self.ivAntibioticTable reloadData];
+	 self.ivAntibioticNameTextField.text = @"";
+	 self.ivAntibioticDoseTextField.text = @"";
+	 self.ivAntibioticStartTimeTextField.text = @"";
+	 [self.ivAntibioticNameTextField resignFirstResponder];
+	 [self.ivAntibioticDoseTextField resignFirstResponder];
+	 [self.ivAntibioticStartTimeTextField resignFirstResponder];
+}
+
 - (BOOL)disablesAutomaticKeyboardDismissal {
 	 return NO;
 }

@@ -62,7 +62,7 @@ sub getOutletTypeForElement{
                     }
                 }
                 else {
-                    die "Unhandled ElementListFormElement type'".$element->{listOF}."'";
+                    die "Unhandled ElementListFormElement type'".$element->{listOf}."'";
                 }
             }
             switch($_[1]){
@@ -318,10 +318,10 @@ foreach $element (@elements){
         print "}\n\n";
     }
     if ($element->{type} eq "ElementListFormElement"){
-        switch ($element->{listOF}) {
+        switch ($element->{listOf}) {
             case "AntibioticFormElement" {
                 print "- (IBAction)add$element->{name}:(id)sender {\n";
-                print "\t AntibioticFormElement *formElement = [[AntibioticFormElement alloc] init];\n";
+                print "\t AntibioticFormElement *formElement = (AntibioticFormElement*)[BBUtil newCoreDataObjectForEntityName:\@\"AntibioticFormElement\"];\n";
                 print "\t formElement.name = self.".getOutletNameForElement($element,"NAME").".text;\n";
                 print "\t formElement.dose = self.".getOutletNameForElement($element,"DOSE").".text;\n";
                 print "\t formElement.doseUnit = self.".getOutletNameForElement($element,"DOSE_UNIT").".titleLabel.text;\n";
@@ -338,6 +338,9 @@ foreach $element (@elements){
                 print "\t [self.".getOutletNameForElement($element,"DOSE")." resignFirstResponder];\n";
                 print "\t [self.".getOutletNameForElement($element,"START_TIME")." resignFirstResponder];\n";
                 print "}\n\n";
+            }
+            else {
+                die "Unhandled ElementListFormElement type.'".$element->{listOf}."'";
             }
         }
     }

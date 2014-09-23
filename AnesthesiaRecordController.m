@@ -14,7 +14,7 @@
 #import "EndotrachealTubeViewController.h"
 #import "InductionAndDeviceViewController.h"
 #import "InvasiveLinesViewController.h"
-//#import "IVAntibioticNameViewController.h"
+#import "IVAntibioticNameViewController.h"
 #import "MonitorinAndEquipmentViewController.h"
 #import "PersonnelViewController.h"
 #import "PositionViewController.h"
@@ -113,8 +113,13 @@
             }
             break;
         case 3:
-            //vc = [[IVAntibioticNameViewController alloc] init];
-            return;
+            vc = [[IVAntibioticNameViewController alloc] init];
+            ((IVAntibioticNameViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[IVAntibioticNameViewController sectionTitle]]) {
+                    ((IVAntibioticNameViewController*)vc).section = s;
+                }
+            }
             break;
         case 4:
             vc = [[MonitorinAndEquipmentViewController alloc] init];

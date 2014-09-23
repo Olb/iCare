@@ -8,6 +8,7 @@
 
 #import "FormElementTableCellFactory.h"
 #import "AntibioticFormElement.h"
+#import "BBUtil.h"
 
 @implementation FormElementTableCellFactory
 
@@ -43,7 +44,7 @@
 +(AntibioticFormElement*)getElementForAntibioticCell:(UITableViewCell*)cell withElement:(AntibioticFormElement*)element
 {
     if (element == nil) {
-        element = [[AntibioticFormElement alloc] init];
+        element = (AntibioticFormElement*)[BBUtil newCoreDataObjectForEntityName:@"AntibioticFormElement"];
     }
     UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:1];
     UILabel *doseLabel = (UILabel*)[cell.contentView viewWithTag:2];
