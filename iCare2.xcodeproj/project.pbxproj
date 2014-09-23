@@ -48,6 +48,9 @@
 		2838DE2D19CB32F70025F7DE /* InductionAndDevice.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE2C19CB32F70025F7DE /* InductionAndDevice.xml */; };
 		2838DE2F19CB33F30025F7DE /* Intubation.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE2E19CB33F30025F7DE /* Intubation.xml */; };
 		2838DE3119CB36880025F7DE /* InvasiveLines.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE3019CB36880025F7DE /* InvasiveLines.xml */; };
+		28566D5119D1AF45000124CB /* FirstTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5019D1AF45000124CB /* FirstTest.m */; };
+		28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5619D1D873000124CB /* MedicationFormElement.m */; };
+		28566D5919D1D91D000124CB /* MedicationElementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28566D5819D1D91D000124CB /* MedicationElementCell.xib */; };
 		289BDC8119CBA9BA00C683E7 /* Airway.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8019CBA9BA00C683E7 /* Airway.xml */; };
 		289BDC8319CBAB3F00C683E7 /* PhysicalExam.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8219CBAB3F00C683E7 /* PhysicalExam.xml */; };
 		289BDC8519CBB7F200C683E7 /* IVAntibioticName.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8419CBB7F200C683E7 /* IVAntibioticName.xml */; };
@@ -248,6 +251,10 @@
 		2838DE2C19CB32F70025F7DE /* InductionAndDevice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InductionAndDevice.xml; sourceTree = "<group>"; };
 		2838DE2E19CB33F30025F7DE /* Intubation.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Intubation.xml; sourceTree = "<group>"; };
 		2838DE3019CB36880025F7DE /* InvasiveLines.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvasiveLines.xml; sourceTree = "<group>"; };
+		28566D5019D1AF45000124CB /* FirstTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTest.m; sourceTree = "<group>"; };
+		28566D5519D1D873000124CB /* MedicationFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationFormElement.h; sourceTree = "<group>"; };
+		28566D5619D1D873000124CB /* MedicationFormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationFormElement.m; sourceTree = "<group>"; };
+		28566D5819D1D91D000124CB /* MedicationElementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedicationElementCell.xib; sourceTree = "<group>"; };
 		285A969419CFAC2F0034B769 /* Icare Screen With Additions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Icare Screen With Additions.pdf"; sourceTree = "<group>"; };
 		289BDC8019CBA9BA00C683E7 /* Airway.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Airway.xml; sourceTree = "<group>"; };
 		289BDC8219CBAB3F00C683E7 /* PhysicalExam.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PhysicalExam.xml; sourceTree = "<group>"; };
@@ -548,6 +555,8 @@
 				F4D901B619B25F94000E23E4 /* BBData.h */,
 				F4D901B719B25F94000E23E4 /* BBData.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
+				28566D5519D1D873000124CB /* MedicationFormElement.h */,
+				28566D5619D1D873000124CB /* MedicationFormElement.m */,
 				98DA486819D0A4F900E4727B /* ElementListFormElement.h */,
 				98DA486919D0A4F900E4727B /* ElementListFormElement.m */,
 				98DA486319D08A8600E4727B /* AntibioticFormElement.h */,
@@ -674,6 +683,7 @@
 				98DA486019D0881D00E4727B /* FormElementTableCellFactory.h */,
 				98DA486119D0881D00E4727B /* FormElementTableCellFactory.m */,
 				98DA486619D08B7700E4727B /* AntibioticElementCell.xib */,
+				28566D5819D1D91D000124CB /* MedicationElementCell.xib */,
 			);
 			name = TableAdapters;
 			sourceTree = "<group>";
@@ -749,6 +759,7 @@
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				28566D5019D1AF45000124CB /* FirstTest.m */,
 				28AA355019C5D5CB001453CE /* Picker Adapters */,
 				98FF05FB19B2262B0003129C /* TableAdapters */,
 				F4DF06A619B1F4F000DDBE7E /* New Patient and Forms selection */,
@@ -963,6 +974,7 @@
 				289BDC8F19CBBEC000C683E7 /* PostOpDiagnosis.xml in Resources */,
 				F4AFB94E19ABB8E300CA013B /* ImmuneIDViewController.xib in Resources */,
 				F4AFB93A19ABB55E00CA013B /* NeuroligcViewController.xib in Resources */,
+				28566D5919D1D91D000124CB /* MedicationElementCell.xib in Resources */,
 				F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */,
 				281270CA19C874F2009A9644 /* PastSurgicalProcedures.xml in Resources */,
 				F4AFB94419ABB71D00CA013B /* RenalViewController.xib in Resources */,
@@ -1064,6 +1076,7 @@
 				F4B5D57D19ACEC7A00174F61 /* PreOpReviewViewController.m in Sources */,
 				281270C519C87366009A9644 /* AllergiesReactionsViewController.m in Sources */,
 				985B835B19C1FBA9007DF484 /* StringArrayTableAdapter.m in Sources */,
+				28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */,
 				28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
 				28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */,
@@ -1146,6 +1159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28566D5119D1AF45000124CB /* FirstTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

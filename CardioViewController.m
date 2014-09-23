@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface CardioViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *cardioVascularBBCheckBox;

@@ -1,10 +1,29 @@
 <?xml version='1.0'?>
 <Section name="PremedsGiven">
 	<Data>
-		<Element type="BooleanFormElement" name="Midazolam"/>
-        <Element type="TextElement" name="MidazolamDose"/>
-		<Element type="BooleanFormElement" name="Ondansetron"/>
-        <Element type="TextElement" name="OndansetronDose"/>
-		<Element type="StringListElement" name="OtherPremedsGiven"/>
+        
+		<Element type="MedicationFormElement" name="Midazolam" doseUnit="mg"/>
+        <Element type="MedicationFormElement" name="Ondansetron" doseUnit="mg" />
+        <Element type="ElementListFormElement" listOf="MedicationFormElement" name="PremedsGiven"/>
 	</Data>
+    
+    <Graphics>
+        <Group label="Anesthesia Type" orientation="vertical">
+            <Group orientation="horizontal">
+                <Element name="General" label="General" />
+                <Element name="MAC" label="MAC" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="IVRegional" label="IV Regional" />
+                <Element name="AxillaryBlock" label="Axillary Block" />
+            </Group>
+            <Group orientation="horizontal">
+                <Element name="Spinal" label="Spinal" />
+                <Element name="InterscaleneBlock" label="Interscalene Block" />
+            </Group>
+            <Element name="Epidural" label="Epidural" />
+            <Element name="NerveBlockForPostopPain" label="Nerve block by Anesthesia for postop pain" />
+            <Element name="OtherAnesthesiaType" label="Other Anesthesia Types" />
+        </Group>
+    </Graphics>
 </Section>

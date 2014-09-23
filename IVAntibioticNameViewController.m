@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface IVAntibioticNameViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *ivAntibioticTable;

@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "FormElement.h"
 #import "AntibioticFormElement.h"
+#import "MedicationFormElement.h"
+
 @interface FormElementTableCellFactory : NSObject
 
 +(UITableViewCell*) getCellForElement:(FormElement*)element reuseCell:(UITableViewCell*)cell;
 +(AntibioticFormElement*)getElementForAntibioticCell:(UITableViewCell*)cell withElement:(AntibioticFormElement*)element;
++(MedicationFormElement*)getElementForMedicationCell:(UITableViewCell*)cell withElement:(MedicationFormElement*)element;
 @end

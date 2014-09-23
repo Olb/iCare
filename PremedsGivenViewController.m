@@ -17,31 +17,33 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface PremedsGivenViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *midazolamBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *midazolamDoseUITextField;
+@property (weak, nonatomic) IBOutlet UITextField *midazolamUITextField;
 @property (weak, nonatomic) IBOutlet BBCheckBox *ondansetronBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *ondansetronDoseUITextField;
-@property (weak, nonatomic) IBOutlet UITextField *otherPremedsGivenTextField;
-@property (weak, nonatomic) IBOutlet UITableView *otherPremedsGivenTable;
-@property (strong, nonatomic) StringArrayTableAdapter *otherPremedsGivenTableAdapter;
+@property (weak, nonatomic) IBOutlet UITextField *ondansetronUITextField;
+@property (weak, nonatomic) IBOutlet UITableView *premedsGivenTable;
+@property (strong, nonatomic) FormElementTableAdapter *premedsGivenTableAdapter;
+@property (weak, nonatomic) IBOutlet UITextField *premedsGivenNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *premedsGivenDoseTextField;
+@property (weak, nonatomic) IBOutlet UIButton *premedsGivenDoseUnitButton;
 @end
 
 @implementation PremedsGivenViewController
 NSString *const PREMEDS_GIVEN_SECTION_TITLE = @"PremedsGivenSectionKey";
 static NSString *const MIDAZOLAM_KEY = @"MidazolamKey";
-static NSString *const MIDAZOLAM_DOSE_KEY = @"MidazolamDoseKey";
 static NSString *const ONDANSETRON_KEY = @"OndansetronKey";
-static NSString *const ONDANSETRON_DOSE_KEY = @"OndansetronDoseKey";
-static NSString *const OTHER_PREMEDS_GIVEN_KEY = @"OtherPremedsGivenKey";
+static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-	 self.otherPremedsGivenTableAdapter = [[StringArrayTableAdapter alloc] init];
-	 self.otherPremedsGivenTable.dataSource = self.otherPremedsGivenTableAdapter;
-	 self.otherPremedsGivenTable.delegate = self.otherPremedsGivenTableAdapter;
+	 self.premedsGivenTableAdapter = [[FormElementTableAdapter alloc] init];
+	 self.premedsGivenTable.dataSource = self.premedsGivenTableAdapter;
+	 self.premedsGivenTable.delegate = self.premedsGivenTableAdapter;
 
 	 if (_section) {
 		 [self validateSection:_section];
@@ -49,20 +51,16 @@ static NSString *const OTHER_PREMEDS_GIVEN_KEY = @"OtherPremedsGivenKey";
 
 		 for (FormElement *element in elements) {
 			 if ([element.key isEqualToString:MIDAZOLAM_KEY]){
-				 [self.midazolamBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
-			 }
-			 if ([element.key isEqualToString:MIDAZOLAM_DOSE_KEY]){
-				 [self.midazolamDoseUITextField setText:((TextElement*)element).value];
+				 [self.midazolamBBCheckBox setSelected:[((MedicationFormElement*)element).selected boolValue]];
+				 [self.midazolamUITextField setText:((MedicationFormElement*)element).dose];
 			 }
 			 if ([element.key isEqualToString:ONDANSETRON_KEY]){
-				 [self.ondansetronBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+				 [self.ondansetronBBCheckBox setSelected:[((MedicationFormElement*)element).selected boolValue]];
+				 [self.ondansetronUITextField setText:((MedicationFormElement*)element).dose];
 			 }
-			 if ([element.key isEqualToString:ONDANSETRON_DOSE_KEY]){
-				 [self.ondansetronDoseUITextField setText:((TextElement*)element).value];
-			 }
-			 if ([element.key isEqualToString:OTHER_PREMEDS_GIVEN_KEY]){
-				 self.otherPremedsGivenTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
-				 [self.otherPremedsGivenTable reloadData];
+			 if ([element.key isEqualToString:PREMEDS_GIVEN_KEY]){
+				 self.premedsGivenTableAdapter.items = [[NSMutableArray alloc] initWithArray:((ElementListFormElement*)element).value];
+				 [self.premedsGivenTable reloadData];
 			 }
 		 }
 	 }
@@ -71,10 +69,8 @@ static NSString *const OTHER_PREMEDS_GIVEN_KEY = @"OtherPremedsGivenKey";
 -(void)validateSection:(FormSection*)section
 {
 	 NSAssert([section getElementForKey:MIDAZOLAM_KEY]!= nil, @"Midazolam is nil");
-	 NSAssert([section getElementForKey:MIDAZOLAM_DOSE_KEY]!= nil, @"MidazolamDose is nil");
 	 NSAssert([section getElementForKey:ONDANSETRON_KEY]!= nil, @"Ondansetron is nil");
-	 NSAssert([section getElementForKey:ONDANSETRON_DOSE_KEY]!= nil, @"OndansetronDose is nil");
-	 NSAssert([section getElementForKey:OTHER_PREMEDS_GIVEN_KEY]!= nil, @"OtherPremedsGiven is nil");
+	 NSAssert([section getElementForKey:PREMEDS_GIVEN_KEY]!= nil, @"PremedsGiven is nil");
 	 
 }
 
@@ -84,65 +80,59 @@ static NSString *const OTHER_PREMEDS_GIVEN_KEY = @"OtherPremedsGivenKey";
 		 self.section.title = PREMEDS_GIVEN_SECTION_TITLE;
 	 }
 	 
-	 BooleanFormElement *midazolam = (BooleanFormElement*)[_section getElementForKey:MIDAZOLAM_KEY];
+	 MedicationFormElement *midazolam = (MedicationFormElement*)[_section getElementForKey:MIDAZOLAM_KEY];
 	 if (!midazolam) {
-		 midazolam = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 midazolam = (MedicationFormElement*)[BBUtil newCoreDataObjectForEntityName:@"MedicationFormElement"];
 		 midazolam.key = MIDAZOLAM_KEY;
 		 [_section addElementsObject:midazolam];
 	 }
 
-	 midazolam.value = [NSNumber numberWithBool:self.midazolamBBCheckBox.isSelected];
+	 midazolam.selected = [NSNumber numberWithBool:self.midazolamBBCheckBox.isSelected];
+	 midazolam.dose = self.midazolamUITextField.text;
+	 midazolam.name = @"Midazolam";
+	 midazolam.doseUnit = @"mg";
 	 
-	 TextElement *midazolamDose = (TextElement*)[_section getElementForKey:MIDAZOLAM_DOSE_KEY];
-	 if (!midazolamDose) {
-		 midazolamDose = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 midazolamDose.key = MIDAZOLAM_DOSE_KEY;
-		 [_section addElementsObject:midazolamDose];
-	 }
-
-	 midazolamDose.value = self.midazolamDoseUITextField.text;
-	 
-	 BooleanFormElement *ondansetron = (BooleanFormElement*)[_section getElementForKey:ONDANSETRON_KEY];
+	 MedicationFormElement *ondansetron = (MedicationFormElement*)[_section getElementForKey:ONDANSETRON_KEY];
 	 if (!ondansetron) {
-		 ondansetron = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 ondansetron = (MedicationFormElement*)[BBUtil newCoreDataObjectForEntityName:@"MedicationFormElement"];
 		 ondansetron.key = ONDANSETRON_KEY;
 		 [_section addElementsObject:ondansetron];
 	 }
 
-	 ondansetron.value = [NSNumber numberWithBool:self.ondansetronBBCheckBox.isSelected];
+	 ondansetron.selected = [NSNumber numberWithBool:self.ondansetronBBCheckBox.isSelected];
+	 ondansetron.dose = self.ondansetronUITextField.text;
+	 ondansetron.name = @"Ondansetron";
+	 ondansetron.doseUnit = @"mg";
 	 
-	 TextElement *ondansetronDose = (TextElement*)[_section getElementForKey:ONDANSETRON_DOSE_KEY];
-	 if (!ondansetronDose) {
-		 ondansetronDose = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 ondansetronDose.key = ONDANSETRON_DOSE_KEY;
-		 [_section addElementsObject:ondansetronDose];
+	 ElementListFormElement *premedsGiven = (ElementListFormElement*)[_section getElementForKey:PREMEDS_GIVEN_KEY];
+	 if (!premedsGiven) {
+		 premedsGiven = (ElementListFormElement*)[BBUtil newCoreDataObjectForEntityName:@"ElementListFormElement"];
+		 premedsGiven.key = PREMEDS_GIVEN_KEY;
+		 [_section addElementsObject:premedsGiven];
 	 }
 
-	 ondansetronDose.value = self.ondansetronDoseUITextField.text;
-	 
-	 StringListElement *otherPremedsGiven = (StringListElement*)[_section getElementForKey:OTHER_PREMEDS_GIVEN_KEY];
-	 if (!otherPremedsGiven) {
-		 otherPremedsGiven = (StringListElement*)[BBUtil newCoreDataObjectForEntityName:@"StringListElement"];
-		 otherPremedsGiven.key = OTHER_PREMEDS_GIVEN_KEY;
-		 [_section addElementsObject:otherPremedsGiven];
+	 NSMutableArray *premedsGivenElementListArray = [[NSMutableArray alloc] init];
+	 for (int i = 0; i < [self.premedsGivenTable numberOfRowsInSection:0]; i++){
+		 UITableViewCell *cell = [self.premedsGivenTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+		 MedicationFormElement *elementListFormElement = [FormElementTableCellFactory getElementForMedicationCell:cell withElement:nil];		 [premedsGivenElementListArray addObject:elementListFormElement];
 	 }
-
-	 NSMutableArray *otherPremedsGivenStringArray = [[NSMutableArray alloc] init];
-	 for (int i = 0; i < [self.otherPremedsGivenTable numberOfRowsInSection:0]; i++){
-		 UITableViewCell *cell = [self.otherPremedsGivenTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-		 [otherPremedsGivenStringArray addObject:cell.textLabel.text];
-	 }
-	 otherPremedsGiven.value = otherPremedsGivenStringArray;
+	 premedsGiven.value = premedsGivenElementListArray;
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)addOtherPremedsGiven:(id)sender {
-	 [self.otherPremedsGivenTableAdapter.items addObject:self.otherPremedsGivenTextField.text];
-	 [self.otherPremedsGivenTable reloadData];
-	 self.otherPremedsGivenTextField.text = @"";
-	 [self.otherPremedsGivenTextField resignFirstResponder];
+- (IBAction)addPremedsGiven:(id)sender {
+	 MedicationFormElement *formElement = (MedicationFormElement*)[BBUtil newCoreDataObjectForEntityName:@"MedicationFormElement"];
+	 formElement.name = self.premedsGivenNameTextField.text;
+	 formElement.dose = self.premedsGivenDoseTextField.text;
+	 formElement.doseUnit = self.premedsGivenDoseUnitButton.titleLabel.text;
+	 [self.premedsGivenTableAdapter.items addObject:formElement];
+	 [self.premedsGivenTable reloadData];
+	 self.premedsGivenNameTextField.text = @"";
+	 self.premedsGivenDoseTextField.text = @"";
+	 [self.premedsGivenNameTextField resignFirstResponder];
+	 [self.premedsGivenDoseTextField resignFirstResponder];
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

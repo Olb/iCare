@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface BetaBlockerViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockTakenPastDayBBCheckBox;

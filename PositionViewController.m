@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface PositionViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *tapedShutBBCheckBox;

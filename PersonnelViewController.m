@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface PersonnelViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *responsibleMdUITextField;

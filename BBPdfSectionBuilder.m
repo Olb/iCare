@@ -31,6 +31,8 @@
 		 [BBPdfSectionBuilder drawIntubationSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PreOpActionsSectionKey"]){
 		 [BBPdfSectionBuilder drawPreOpActionsSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"PremedsGivenSectionKey"]){
+		 [BBPdfSectionBuilder drawPremedsGivenSection:section atLocation:sectionOrigin];
 	 } else {
 		 [NSException raise:@"UnhandledSection" format:@"section title = '%@'",section.title];
 	 }
@@ -1106,8 +1108,20 @@
 
 	 
 }
+
++(void) drawPremedsGivenSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 //start of draw group1
+	 CGPoint group1CursorStart = cursor;
+	 int group1MaxWidth = 0;
+	 int group1Indentation = 15;
+	 //start of draw group2
+	 CGPoint group2CursorStart = cursor;
+	 int group2MaxHeight = 0;
+
+	 int group2Indentation = 0;
+}
+
 @end
-
-
-
-

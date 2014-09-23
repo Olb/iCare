@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface EndocrineViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *endocrineBBCheckBox;

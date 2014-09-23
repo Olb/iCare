@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface PastSurgicalProceduresViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *pastSurgicalProceduresTextField;

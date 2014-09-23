@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface RenalViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalBBCheckBox;

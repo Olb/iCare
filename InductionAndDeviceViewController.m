@@ -17,6 +17,8 @@
 
 #import "AntibioticFormElement.h"
 
+#import "MedicationFormElement.h"
+
 
 @interface InductionAndDeviceViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *ivBBCheckBox;
