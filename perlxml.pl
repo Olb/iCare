@@ -237,7 +237,7 @@ foreach $element (@elements) {
         }
         case "ElementListFormElement" {
             print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
-            print "\t\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[NSMutableArray alloc] initWithArray:((ElementListFormElement*)element).value];\n";
+            print "\t\t\t\t self.".getOutletNameForElement($element,"ADAPTER").".items = [[((ElementListFormElement*)element).elements allObjects] mutableCopy];\n";
             print "\t\t\t\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
             print "\t\t\t }\n";
         }
@@ -304,7 +304,7 @@ foreach $element (@elements){
         }
         case "ElementListFormElement" {
             my $arrayName = $name."ElementListArray";
-            print "\t NSMutableArray *$arrayName = [[NSMutableArray alloc] init];\n";
+            print "\t NSMutableSet *$arrayName = [[NSMutableSet alloc] init];\n";
             print "\t for (int i = 0; i < [self.".getOutletNameForElement($element,"TABLE")." numberOfRowsInSection:0]; i++){\n";
             print "\t\t UITableViewCell *cell = [self.".getOutletNameForElement($element,"TABLE")." cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];\n";
             switch ($element->{listOf}){
@@ -320,7 +320,8 @@ foreach $element (@elements){
             }
             print "\t\t [$arrayName addObject:elementListFormElement];\n";
             print "\t }\n";
-            print "\t $name.value = $arrayName;\n";
+            print "\t [[$name mutableSetValueForKey:\@\"elements\"] removeAllObjects];\n";
+            print "\t [$name addElements:$arrayName];\n";
         }
         case "TextElement" {
             print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";

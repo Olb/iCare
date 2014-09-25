@@ -2,5 +2,15 @@
 <Section name="IVAntibioticName">
     <Data>
         <Element type="ElementListFormElement" listOf="AntibioticFormElement" name="IvAntibiotic"/>
+        <Element type="BooleanFormElement" name="IntentionallyGiven" />
+        <Element type="BooleanFormElement" name="NotIndicated" />
     </Data>
+    
+    <Graphics>
+        <Group orientation="vertical">
+            <Element name="NotIndicated" label="Not indicated based on Pt history and/or procedure" />
+            <Element name="IntentionallyGiven" label="Intentionally given after incision" />
+            <Element name="IvAntibiotic" label="IV Antibiotics given:" />
+        </Group>
+    </Graphics>
 </Section>

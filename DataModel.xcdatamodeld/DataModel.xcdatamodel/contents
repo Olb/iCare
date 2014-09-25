@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AntibioticFormElement" representedClassName="AntibioticFormElement" parentEntity="FormElement" syncable="YES">
         <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doseUnit" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,7 +10,7 @@
         <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="ElementListFormElement" representedClassName="ElementListFormElement" parentEntity="FormElement" syncable="YES">
-        <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="elements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FormElement" syncable="YES"/>
     </entity>
     <entity name="Form" representedClassName="Form" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,16 +71,16 @@
     <elements>
         <element name="AntibioticFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
-        <element name="ElementListFormElement" positionX="-378" positionY="-360" width="128" height="58"/>
+        <element name="ElementListFormElement" positionX="-378" positionY="-360" width="128" height="60"/>
         <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
         <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="58"/>
+        <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="148"/>
         <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
-        <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
     </elements>
 </model>

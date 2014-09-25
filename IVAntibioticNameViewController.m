@@ -27,11 +27,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *ivAntibioticDoseUnitButton;
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticStartTimeTextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *intentionallyGivenBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *notIndicatedBBCheckBox;
 @end
 
 @implementation IVAntibioticNameViewController
 NSString *const IVAntibiotic_NAME_SECTION_TITLE = @"IVAntibioticNameSectionKey";
 static NSString *const IV_ANTIBIOTIC_KEY = @"IvAntibioticKey";
+static NSString *const INTENTIONALLY_GIVEN_KEY = @"IntentionallyGivenKey";
+static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 
 - (void)viewDidLoad
 {
@@ -46,8 +50,14 @@ static NSString *const IV_ANTIBIOTIC_KEY = @"IvAntibioticKey";
 
 		 for (FormElement *element in elements) {
 			 if ([element.key isEqualToString:IV_ANTIBIOTIC_KEY]){
-				 self.ivAntibioticTableAdapter.items = [[NSMutableArray alloc] initWithArray:((ElementListFormElement*)element).value];
+				 self.ivAntibioticTableAdapter.items = [[((ElementListFormElement*)element).elements allObjects] mutableCopy];
 				 [self.ivAntibioticTable reloadData];
+			 }
+			 if ([element.key isEqualToString:INTENTIONALLY_GIVEN_KEY]){
+				 [self.intentionallyGivenBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:NOT_INDICATED_KEY]){
+				 [self.notIndicatedBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 		 }
 	 }
@@ -56,6 +66,8 @@ static NSString *const IV_ANTIBIOTIC_KEY = @"IvAntibioticKey";
 -(void)validateSection:(FormSection*)section
 {
 	 NSAssert([section getElementForKey:IV_ANTIBIOTIC_KEY]!= nil, @"IvAntibiotic is nil");
+	 NSAssert([section getElementForKey:INTENTIONALLY_GIVEN_KEY]!= nil, @"IntentionallyGiven is nil");
+	 NSAssert([section getElementForKey:NOT_INDICATED_KEY]!= nil, @"NotIndicated is nil");
 	 
 }
 
@@ -72,12 +84,31 @@ static NSString *const IV_ANTIBIOTIC_KEY = @"IvAntibioticKey";
 		 [_section addElementsObject:ivAntibiotic];
 	 }
 
-	 NSMutableArray *ivAntibioticElementListArray = [[NSMutableArray alloc] init];
+	 NSMutableSet *ivAntibioticElementListArray = [[NSMutableSet alloc] init];
 	 for (int i = 0; i < [self.ivAntibioticTable numberOfRowsInSection:0]; i++){
 		 UITableViewCell *cell = [self.ivAntibioticTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
 		 AntibioticFormElement *elementListFormElement = [FormElementTableCellFactory getElementForAntibioticCell:cell withElement:nil];		 [ivAntibioticElementListArray addObject:elementListFormElement];
 	 }
-	 ivAntibiotic.value = ivAntibioticElementListArray;
+	 [[ivAntibiotic mutableSetValueForKey:@"elements"] removeAllObjects];
+	 [ivAntibiotic addElements:ivAntibioticElementListArray];
+	 
+	 BooleanFormElement *intentionallyGiven = (BooleanFormElement*)[_section getElementForKey:INTENTIONALLY_GIVEN_KEY];
+	 if (!intentionallyGiven) {
+		 intentionallyGiven = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 intentionallyGiven.key = INTENTIONALLY_GIVEN_KEY;
+		 [_section addElementsObject:intentionallyGiven];
+	 }
+
+	 intentionallyGiven.value = [NSNumber numberWithBool:self.intentionallyGivenBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *notIndicated = (BooleanFormElement*)[_section getElementForKey:NOT_INDICATED_KEY];
+	 if (!notIndicated) {
+		 notIndicated = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 notIndicated.key = NOT_INDICATED_KEY;
+		 [_section addElementsObject:notIndicated];
+	 }
+
+	 notIndicated.value = [NSNumber numberWithBool:self.notIndicatedBBCheckBox.isSelected];
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];

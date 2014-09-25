@@ -6,13 +6,16 @@
 #import "FormGroup.h"
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
+#import "AntibioticFormElement.h"
+#import "MedicationFormElement.h"
+#import "ElementListFormElement.h"
 #import "TextElement.h"
 #import "Form.h"
 #import "Operation.h"
 #import "Patient.h"
 #import "BBPdfGenerator.h"
 @implementation BBPdfSectionBuilder : NSObject
-
+NSDateFormatter* dateFormatter;
 +(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
@@ -25,6 +28,8 @@
 		 [BBPdfSectionBuilder drawEmergenceSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"EndotrachealTubeSectionKey"]){
 		 [BBPdfSectionBuilder drawEndotrachealTubeSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"IVAntibioticNameSectionKey"]){
+		 [BBPdfSectionBuilder drawIVAntibioticNameSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"InductionAndDeviceSectionKey"]){
 		 [BBPdfSectionBuilder drawInductionAndDeviceSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"IntubationSectionKey"]){
@@ -177,6 +182,11 @@
 
 	 }
 
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
 	 //end of draw group1
 	 
 	 cursor = group1CursorStart;
@@ -309,17 +319,26 @@
 	 int group3Indentation = 0;
 	 previousElementSize = [BBPdfGenerator drawText:@"H/H" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"HHKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group3Indentation > group3MaxHeight){
 		 group3MaxHeight = previousElementSize.height + group3Indentation;
 	 }
 
 	 previousElementSize = [BBPdfGenerator drawText:@"PLT" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PLTKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group3Indentation > group3MaxHeight){
 		 group3MaxHeight = previousElementSize.height + group3Indentation;
 	 }
 
 	 previousElementSize = [BBPdfGenerator drawText:@"K" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"KPotassiumKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group3Indentation > group3MaxHeight){
 		 group3MaxHeight = previousElementSize.height + group3Indentation;
@@ -340,6 +359,9 @@
 
 	 int group4Indentation = 0;
 	 previousElementSize = [BBPdfGenerator drawText:@"PT/INR/PTT:" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PTINRPTTKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group4Indentation > group4MaxHeight){
 		 group4MaxHeight = previousElementSize.height + group4Indentation;
@@ -385,11 +407,17 @@
 	 int group5Indentation = 0;
 	 previousElementSize = [BBPdfGenerator drawText:@"Glucose:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"GlucoseKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group5Indentation > group5MaxHeight){
 		 group5MaxHeight = previousElementSize.height + group5Indentation;
 	 }
 
 	 previousElementSize = [BBPdfGenerator drawText:@"at" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"GlucoseTimeKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group5Indentation > group5MaxHeight){
 		 group5MaxHeight = previousElementSize.height + group5Indentation;
@@ -426,6 +454,9 @@
 
 	 previousElementSize = [BBPdfGenerator drawText:@"Not normal:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"EkgOtherKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group6Indentation > group6MaxHeight){
 		 group6MaxHeight = previousElementSize.height + group6Indentation;
 	 }
@@ -455,6 +486,9 @@
 
 	 previousElementSize = [BBPdfGenerator drawText:@"Not normal:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CxrOtherKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group7Indentation > group7MaxHeight){
 		 group7MaxHeight = previousElementSize.height + group7Indentation;
 	 }
@@ -481,6 +515,11 @@
 		 group1MaxWidth = previousElementSize.width + group1Indentation;
 	 }
 
+	 }
+
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
 	 }
 
 	 //end of draw group1
@@ -585,6 +624,9 @@
 
 	 previousElementSize = [BBPdfGenerator drawText:@"" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"EndoTrachealTubeSizeKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group4Indentation > group4MaxHeight){
 		 group4MaxHeight = previousElementSize.height + group4Indentation;
 	 }
@@ -623,6 +665,9 @@
 
 	 int group5Indentation = 0;
 	 previousElementSize = [BBPdfGenerator drawText:@"Secured At" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SecuredAtCmKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group5Indentation > group5MaxHeight){
 		 group5MaxHeight = previousElementSize.height + group5Indentation;
@@ -735,6 +780,9 @@
 	 int group8Indentation = 0;
 	 previousElementSize = [BBPdfGenerator drawText:@"Size" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"DoubleLumenSizeKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group8Indentation > group8MaxHeight){
 		 group8MaxHeight = previousElementSize.height + group8Indentation;
 	 }
@@ -788,6 +836,72 @@
 	 //end of draw group2
 	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
 	 cursor = group1CursorStart;
+
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 //end of draw group1
+	 
+	 cursor = group1CursorStart;
+
+	 
+}
+
++(void) drawIVAntibioticNameSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 //start of draw group1
+	 CGPoint group1CursorStart = cursor;
+	 int group1MaxWidth = 0;
+	 int group1Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NotIndicatedKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Not indicated based on Pt history and/or procedure" atLocation:cursor];
+	 cursor.x = group1CursorStart.x;
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"IntentionallyGivenKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Intentionally given after incision" atLocation:cursor];
+	 cursor.x = group1CursorStart.x;
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 previousElementSize = [BBPdfGenerator drawText:@"IV Antibiotics given:" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 for (AntibioticFormElement *e in [section getElementForKey:@"IvAntibioticKey"]) {
+		 previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];
+		 cursor.x += previousElementSize.width + 10;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];
+		 cursor.x += previousElementSize.width + 10;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];
+		 cursor.x += previousElementSize.width + 10;
+		 
+	 [dateFormatter setDateFormat:@"HH:mm"];
+	 previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];
+		 cursor.x = group1CursorStart.x;
+	 }
+
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -890,6 +1004,9 @@
 
 	 previousElementSize = [BBPdfGenerator drawText:@"#" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CurvedNumberKey"]).value atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group2Indentation > group2MaxHeight){
 		 group2MaxHeight = previousElementSize.height + group2Indentation;
 	 }
@@ -904,6 +1021,9 @@
 	 }
 
 	 previousElementSize = [BBPdfGenerator drawText:@"#" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"StraightNumberKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group2Indentation > group2MaxHeight){
 		 group2MaxHeight = previousElementSize.height + group2Indentation;
@@ -997,6 +1117,9 @@
 	 }
 
 	 previousElementSize = [BBPdfGenerator drawText:@"" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"DifficultReasonKey"]).value atLocation:cursor];
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group5Indentation > group5MaxHeight){
 		 group5MaxHeight = previousElementSize.height + group5Indentation;
@@ -1102,6 +1225,11 @@
 
 	 }
 
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
 	 //end of draw group1
 	 
 	 cursor = group1CursorStart;
@@ -1117,11 +1245,73 @@
 	 CGPoint group1CursorStart = cursor;
 	 int group1MaxWidth = 0;
 	 int group1Indentation = 15;
-	 //start of draw group2
-	 CGPoint group2CursorStart = cursor;
-	 int group2MaxHeight = 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((MedicationFormElement*)[section getElementForKey:@"MidazolamKey"]).selected boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Midazolam" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:@"MidazolamKey"]).dose atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:@"MidazolamKey"]).doseUnit atLocation:cursor];
+	 cursor.x = group1CursorStart.x;
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
 
-	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((MedicationFormElement*)[section getElementForKey:@"OndansetronKey"]).selected boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Ondansetron" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:@"OndansetronKey"]).dose atLocation:cursor];
+	 cursor.x += previousElementSize.width + 10;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:@"OndansetronKey"]).doseUnit atLocation:cursor];
+	 cursor.x = group1CursorStart.x;
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 previousElementSize = [BBPdfGenerator drawText:@"Other premeds given:" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 for (MedicationFormElement *e in [section getElementForKey:@"PremedsGivenKey"]) {
+		 previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];
+		 cursor.x += previousElementSize.width + 10;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];
+		 cursor.x += previousElementSize.width + 10;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];
+		 cursor.x = group1CursorStart.x;
+	 }
+
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 cursor.y += previousElementSize.height + 20;
+	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
+	 //end of draw group1
+	 
+	 cursor = group1CursorStart;
+
+	 
 }
-
 @end
+
+
+
+

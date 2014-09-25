@@ -59,7 +59,7 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 				 [self.ondansetronUITextField setText:((MedicationFormElement*)element).dose];
 			 }
 			 if ([element.key isEqualToString:PREMEDS_GIVEN_KEY]){
-				 self.premedsGivenTableAdapter.items = [[NSMutableArray alloc] initWithArray:((ElementListFormElement*)element).value];
+				 self.premedsGivenTableAdapter.items = [[((ElementListFormElement*)element).elements allObjects] mutableCopy];
 				 [self.premedsGivenTable reloadData];
 			 }
 		 }
@@ -111,12 +111,13 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 		 [_section addElementsObject:premedsGiven];
 	 }
 
-	 NSMutableArray *premedsGivenElementListArray = [[NSMutableArray alloc] init];
+	 NSMutableSet *premedsGivenElementListArray = [[NSMutableSet alloc] init];
 	 for (int i = 0; i < [self.premedsGivenTable numberOfRowsInSection:0]; i++){
 		 UITableViewCell *cell = [self.premedsGivenTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
 		 MedicationFormElement *elementListFormElement = [FormElementTableCellFactory getElementForMedicationCell:cell withElement:nil];		 [premedsGivenElementListArray addObject:elementListFormElement];
 	 }
-	 premedsGiven.value = premedsGivenElementListArray;
+	 [[premedsGiven mutableSetValueForKey:@"elements"] removeAllObjects];
+	 [premedsGiven addElements:premedsGivenElementListArray];
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];

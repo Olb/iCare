@@ -93,7 +93,9 @@ sub printDrawSectionCodeForGroup{
                 my $nodeData = $child->find($xPath)->get_node(0);
                 my $marginLR = 10;
                 my $marginTB = 20;
-                
+                if (!(defined $nodeData)){
+                    die "Can'f find data element for '".$child->getAttribute("name")."' in section ".$section->getAttribute("name");
+                }
                 switch ($nodeData->getAttribute("type")){
                     case "BooleanFormElement" {
                         print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
@@ -103,11 +105,15 @@ sub printDrawSectionCodeForGroup{
                         if ( $orientation eq "vertical" ){
                             print "\t cursor.x = ".$groupName."CursorStart.x;\n";
                         }
-                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
                     }
                     case "TextElement" {
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value atLocation:cursor];\n";
+                        if ( $orientation eq "vertical" ){
+                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
+                        }
                     }
                     case "StringListElement" {
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
@@ -115,11 +121,91 @@ sub printDrawSectionCodeForGroup{
                         
                         print "\t for (NSString *text in ((StringListElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value) {\n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];\n";
-                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                        printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
                         print "\t }\n\n";
+                    }
+                    case "ElementListFormElement" {
+                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                        
+                        switch ($nodeData->getAttribute("listOf")){
+                            case "MedicationFormElement"{
+                                print "\t for (MedicationFormElement *e in [section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]) {\n";
+                               print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t \n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t \n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];\n";
+                                if ( "vertical" eq "vertical" ){
+                                    print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
+                                }
+                                print "\t }\n\n";
+                                printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                            }
+                            case "AntibioticFormElement"{
+                                print "\t for (AntibioticFormElement *e in [section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]) {\n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t \n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t \n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t \n";
+                                print "\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
+                                print "\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];\n";
+                                if ( "vertical" eq "vertical" ){
+                                    print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
+                                }
+                                print "\t }\n\n";
+                                printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                            }
+                            else { die "Unknown listOf type: ".$nodeData->getAttribute("listOf"); }
+                        }
+                    }
+                    case "MedicationFormElement" {
+                        print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((MedicationFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).selected boolValue] atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).dose atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).doseUnit atLocation:cursor];\n";
+                        if ( $orientation eq "vertical" ){
+                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
+                        }
+                        
+                    }
+                    case "AntibioticFormElement" {
+                        print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).selected boolValue] atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).dose atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).doseUnit atLocation:cursor];\n";
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t \n";
+                        print "\t NSDate *startTime = ((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).startTime;\n";
+                        print "\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
+                        print "\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:startTime] atLocation:cursor];\n";
+                        if ( $orientation eq "vertical" ){
+                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
+                        }
+                        
                     }
                     else { die "Unknown type: ".$nodeData->getAttribute("type"); }
                 }
+                printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
             
             } else {
                 my $marginLR = 10;
@@ -152,6 +238,9 @@ print "#import \"FormElement.h\"\n";
 print "#import \"FormGroup.h\"\n";
 print "#import \"BooleanFormElement.h\"\n";
 print "#import \"StringListElement.h\"\n";
+print "#import \"AntibioticFormElement.h\"\n";
+print "#import \"MedicationFormElement.h\"\n";
+print "#import \"ElementListFormElement.h\"\n";
 print "#import \"TextElement.h\"\n";
 print "#import \"Form.h\"\n";
 print "#import \"Operation.h\"\n";
