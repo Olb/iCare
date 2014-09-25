@@ -16,8 +16,12 @@
 #import "BBPdfGenerator.h"
 @implementation BBPdfSectionBuilder : NSObject
 NSDateFormatter* dateFormatter;
+
 +(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
-{
+{ 
+	 if (!dateFormatter) {
+		  dateFormatter = [[NSDateFormatter alloc] init];
+	 }
 	 if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
 		 [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"BetaBlockerSectionKey"]){
@@ -883,7 +887,7 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation;
 	 }
 
-	 for (AntibioticFormElement *e in [section getElementForKey:@"IvAntibioticKey"]) {
+	 for (AntibioticFormElement *e in ((ElementListFormElement*)[section getElementForKey:@"IvAntibioticKey"]).elements) {
 		 previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];
 		 cursor.x += previousElementSize.width + 10;
 		 
@@ -1283,7 +1287,7 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation;
 	 }
 
-	 for (MedicationFormElement *e in [section getElementForKey:@"PremedsGivenKey"]) {
+	 for (MedicationFormElement *e in ((ElementListFormElement*)[section getElementForKey:@"PremedsGivenKey"]).elements) {
 		 previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];
 		 cursor.x += previousElementSize.width + 10;
 		 

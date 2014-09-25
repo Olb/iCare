@@ -130,7 +130,7 @@ sub printDrawSectionCodeForGroup{
                         
                         switch ($nodeData->getAttribute("listOf")){
                             case "MedicationFormElement"{
-                                print "\t for (MedicationFormElement *e in [section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]) {\n";
+                                print "\t for (MedicationFormElement *e in ((ElementListFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).elements) {\n";
                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
@@ -145,7 +145,7 @@ sub printDrawSectionCodeForGroup{
                                 printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
                             }
                             case "AntibioticFormElement"{
-                                print "\t for (AntibioticFormElement *e in [section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]) {\n";
+                                print "\t for (AntibioticFormElement *e in ((ElementListFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).elements) {\n";
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
@@ -260,9 +260,13 @@ for my $i (0 .. $#ARGV){
 #printElements(@sections[3]);
 
 print "\@implementation BBPdfSectionBuilder : NSObject\n";
+print "NSDateFormatter* dateFormatter;\n";
 print "\n";
 print "+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
-print "{\n";
+print "{ \n";
+print "\t if (!dateFormatter) {\n";
+print "\t\t  dateFormatter = [[NSDateFormatter alloc] init];\n";
+print "\t }\n";
 
 $else = "";
 for my $section (@sections){
