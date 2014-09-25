@@ -148,6 +148,7 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

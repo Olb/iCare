@@ -133,6 +133,7 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

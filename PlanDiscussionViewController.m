@@ -527,6 +527,7 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

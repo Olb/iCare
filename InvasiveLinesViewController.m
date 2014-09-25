@@ -182,6 +182,7 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

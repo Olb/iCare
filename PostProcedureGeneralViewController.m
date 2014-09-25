@@ -208,6 +208,7 @@ static NSString *const SPO2_KEY = @"SpO2Key";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

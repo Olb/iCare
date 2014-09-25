@@ -298,6 +298,7 @@ static NSString *const COMPLICATIONS_OTHER_REASON_KEY = @"ComplicationsOtherReas
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

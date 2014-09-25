@@ -148,6 +148,7 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -175,6 +175,7 @@ static NSString *const CRNA_AAA_KEY = @"CrnaAaaKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

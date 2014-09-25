@@ -66,52 +66,23 @@
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location
 {
     UIImage* logo = checked ? [UIImage imageNamed:@"checkbox_selected.png"] : [UIImage imageNamed:@"checkbox_unselected.png"];
-    CGRect frame = CGRectMake(location.x,location.y, 20, 20);
+    CGRect frame = CGRectMake(location.x,location.y, 14, 14);
     [logo drawInRect:frame];
     return frame.size;
 }
 
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location
 {
+    UIFont *font = [UIFont systemFontOfSize:12.0f];
     CGSize size = [text sizeWithAttributes:
                    @{NSFontAttributeName:
-                         [UIFont systemFontOfSize:17.0f]}];
+                         font}];
     
-    CGContextRef currentContext = UIGraphicsGetCurrentContext();
-
-    // Get the graphics context.
-    CFStringRef stringRef = (__bridge CFStringRef)text;
-    // Prepare the text using a Core Text Framesetter.
-    CFAttributedStringRef currentText = CFAttributedStringCreate(NULL, stringRef, NULL);
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(currentText);
     CGRect frameRect = CGRectMake(location.x, location.y, size.width, size.height);
-    CGMutablePathRef framePath = CGPathCreateMutable();
-    CGPathAddRect(framePath, NULL, frameRect);
-    
-    // Get the frame that will do the rendering.
-    CFRange currentRange = CFRangeMake(0, 0);
-    CTFrameRef frameRef = CTFramesetterCreateFrame(framesetter, currentRange, framePath, NULL);
-    CGPathRelease(framePath);
-    
-    // Put the text matrix into a known state. This ensures
-    // that no old scaling factors are left in place.
-    CGContextSetTextMatrix(currentContext, CGAffineTransformIdentity);
-    
-    // Core Text draws from the bottom-left corner up, so flip
-    // the current transform prior to drawing.
-    CGContextTranslateCTM(currentContext, 0, size.height + frameRect.origin.y*2);
-    CGContextScaleCTM(currentContext, 1.0, -1.0);
-    
-    // Draw the frame.
-    CTFrameDraw(frameRef, currentContext);
-    
-    CGContextScaleCTM(currentContext, 1.0, -1.0);
-    CGContextTranslateCTM(currentContext, 0, (-1)*(size.height + frameRect.origin.y*2));
 
-    
-    CFRelease(frameRef);
-    CFRelease(stringRef);
-    CFRelease(framesetter);
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
+                                nil];
+    [text drawInRect:frameRect withAttributes:attr];
     
     return size;
 }

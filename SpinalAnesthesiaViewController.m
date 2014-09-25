@@ -433,6 +433,7 @@ static NSString *const DURAMORPH_KEY = @"DuramorphKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

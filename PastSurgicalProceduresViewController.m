@@ -122,6 +122,7 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaPro
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

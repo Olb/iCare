@@ -268,6 +268,7 @@ static NSString *const DOUBLE_LUMEN_RIGHT_KEY = @"DoubleLumenRightKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -212,6 +212,7 @@ static NSString *const OTHER_ANESTHESIA_TYPE_KEY = @"OtherAnesthesiaTypeKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

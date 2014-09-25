@@ -238,6 +238,7 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

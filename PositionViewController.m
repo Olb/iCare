@@ -208,6 +208,7 @@ static NSString *const ARMS_TUCKED_NEUTRAL_POSITION_KEY = @"ArmsTuckedNeutralPos
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

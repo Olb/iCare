@@ -133,6 +133,7 @@ static NSString *const O2For_TRANSPORT_KEY = @"O2ForTransportKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

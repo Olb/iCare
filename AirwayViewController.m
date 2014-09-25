@@ -493,6 +493,7 @@ static NSString *const LOOSE_LOWER_KEY = @"LooseLowerKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

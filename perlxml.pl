@@ -1,6 +1,4 @@
 #!/usr/bin/perl 
-
-
 use Cwd qw();
 use XML::Simple;
 use Data::Dumper;
@@ -320,6 +318,9 @@ foreach $element (@elements){
             }
             print "\t\t [$arrayName addObject:elementListFormElement];\n";
             print "\t }\n";
+            print "\t for (FormElement *element in $name.elements) {\n";
+            print "\t\t [BBUtil deleteManagedObject:element];\n";
+            print "\t }\n";
             print "\t [[$name mutableSetValueForKey:\@\"elements\"] removeAllObjects];\n";
             print "\t [$name addElements:$arrayName];\n";
         }
@@ -405,6 +406,7 @@ print "}\n\n";
 
 
 print "\- (IBAction)dismiss:(id)sender {\n";
+print "\t [BBUtil refreshManagedObject:_section];\n";
 print "\t [self dismissViewControllerAnimated:YES completion:nil];\n";
 print "}\n\n";
 

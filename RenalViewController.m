@@ -133,6 +133,7 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

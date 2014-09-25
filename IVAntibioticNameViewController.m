@@ -8,10 +8,15 @@
 #import "StringListElement.h"
 #import "TextElement.h"
 #import "StringArrayTableAdapter.h"
+
 #import "ElementListFormElement.h"
+
 #import "FormElementTableAdapter.h"
+
 #import "FormElementTableCellFactory.h"
+
 #import "AntibioticFormElement.h"
+
 #import "MedicationFormElement.h"
 
 
@@ -82,13 +87,12 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 	 NSMutableSet *ivAntibioticElementListArray = [[NSMutableSet alloc] init];
 	 for (int i = 0; i < [self.ivAntibioticTable numberOfRowsInSection:0]; i++){
 		 UITableViewCell *cell = [self.ivAntibioticTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-		 AntibioticFormElement *elementListFormElement = [FormElementTableCellFactory getElementForAntibioticCell:cell withElement:nil];
-         [ivAntibioticElementListArray addObject:elementListFormElement];
+		 AntibioticFormElement *elementListFormElement = [FormElementTableCellFactory getElementForAntibioticCell:cell withElement:nil];		 [ivAntibioticElementListArray addObject:elementListFormElement];
 	 }
-    for (AntibioticFormElement *element in ivAntibiotic.elements) {
-        [BBUtil deleteManagedObject:element];
-    }
-    
+	 for (FormElement *element in ivAntibiotic.elements) {
+		 [BBUtil deleteManagedObject:element];
+	 }
+	 [[ivAntibiotic mutableSetValueForKey:@"elements"] removeAllObjects];
 	 [ivAntibiotic addElements:ivAntibioticElementListArray];
 	 
 	 BooleanFormElement *intentionallyGiven = (BooleanFormElement*)[_section getElementForKey:INTENTIONALLY_GIVEN_KEY];
@@ -137,7 +141,7 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 }
 
 - (IBAction)dismiss:(id)sender {
-    [BBUtil refreshManagedObject:_section];
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -107,6 +107,7 @@ static NSString *const ALLERGIES_REACTIONS_KEY = @"AllergiesReactionsKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

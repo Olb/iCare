@@ -133,6 +133,7 @@ static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

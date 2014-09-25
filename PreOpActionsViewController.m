@@ -122,6 +122,7 @@ static NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

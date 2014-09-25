@@ -3,6 +3,8 @@ use Data::Dumper;
 use Switch;
 use XML::LibXML;
 
+$DEF_MARGIN = 8;
+
 $i = 0;
 sub printElements{
     $i = $i + 1;
@@ -26,13 +28,12 @@ sub printElements{
     $i = $i - 1;
 }
 
-sub printMaxSizeCheck{
+sub checkSizeAndMoveCursor{
     my $orientation = $_[0];
     my $groupName = $_[1];
     my $marginTB = $_[2];
     my $marginLR = $_[3];
     
-    print STDERR "\n Group ".$groupName."\n";
     switch ($orientation){
         case "vertical" {
             print "\t cursor.y += previousElementSize.height + ".$marginTB.";\n";
@@ -61,7 +62,6 @@ sub printDrawSectionCodeForGroup{
     $groupNr++;
     
     print "\t //start of draw ".$groupName."\n";
-    print "\t CGPoint ".$groupName."CursorStart = cursor;\n";
     my $indentation = 0;
     if ( ( $orientation eq "vertical" ) && ($group->getAttribute("label") ne "") ){
         $indentation = 15;
@@ -79,74 +79,98 @@ sub printDrawSectionCodeForGroup{
         else { print "\n Error: Unknown orientation: $orientation\n"; }
     }
     
-    print "\t int ".$groupName."Indentation = ".$indentation.";\n";
+    my $marginLR = 10;
+    if ( $group->getAttribute("marginLR") ne "" ){
+        $marginLR = $group->getAttribute("marginLR");
+    }
+    my $marginTB = 10;
+    if ( $group->getAttribute("marginTB") ne "" ){
+        $marginTB = $group->getAttribute("marginTB");
+    }
+    
+    print "\t CGPoint ".$groupName."CursorStart = cursor;\n\n";
+    print "\t int ".$groupName."Indentation = 0;\n";
+    if ($group->getAttribute("label") ne ""){
+        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$group->getAttribute("label")."\" atLocation:cursor];\n";
+        checkSizeAndMoveCursor($orientation,$groupName,$marginLR,$marginTB);
+    }
+    print "\t ".$groupName."Indentation = ".$indentation.";\n";
+    print "\t cursor.x += ".$groupName."Indentation;\n";
+    print "\t cursor.x += ".$marginLR.";\n\n";
+    print "\t ".$groupName."CursorStart.x += ".$groupName."Indentation;\n";
+    print "\t ".$groupName."CursorStart.x += ".$marginLR.";\n";
     
     
     foreach my $child ($group->getChildrenByLocalName("*")){
         if ( $child->nodeName eq "Group" ){
             printDrawSectionCodeForGroup($child, $section);
-            my $marginLR = 10;
-            my $marginTB = 20;
-            printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+            
+            checkSizeAndMoveCursor($orientation,$groupName,$DEF_MARGIN,$DEF_MARGIN);
         } elsif ( $child->nodeName eq "Element" ) {
             if ( $child->getAttribute("name") ne ""){
                 my $xPath = '//Data/Element[@name="'.$child->getAttribute("name").'"]';
                 my $nodeData = $child->find($xPath)->get_node(0);
-                my $marginLR = 10;
-                my $marginTB = 20;
+                my $marginLR = $DEF_MARGIN;
+                my $marginTB = $DEF_MARGIN;
                 if (!(defined $nodeData)){
                     die "Can'f find data element for '".$child->getAttribute("name")."' in section ".$section->getAttribute("name");
                 }
                 switch ($nodeData->getAttribute("type")){
                     case "BooleanFormElement" {
+                        print "\t cursorStartX = cursor.x;\n";
                         print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                        if ( $orientation eq "vertical" ){
-                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
-                        }
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t previousElementSize.width = cursor.x - cursorStartX;\n";
+                       
                     }
                     case "TextElement" {
+                        print "\t cursorStartX = cursor.x;\n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value atLocation:cursor];\n";
-                        if ( $orientation eq "vertical" ){
-                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
-                        }
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t previousElementSize.width = cursor.x - cursorStartX;\n";
+                        
                     }
                     case "StringListElement" {
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                        checkSizeAndMoveCursor($orientation,$groupName,$marginTB,$marginLR);
                         
                         print "\t for (NSString *text in ((StringListElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value) {\n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];\n";
-                        printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                        checkSizeAndMoveCursor("vertical",$groupName,$marginTB,$marginLR);
                         print "\t }\n\n";
                     }
                     case "ElementListFormElement" {
                         print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                        printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                        checkSizeAndMoveCursor($orientation,$groupName,$marginTB,$marginLR);
                         
                         switch ($nodeData->getAttribute("listOf")){
                             case "MedicationFormElement"{
                                 print "\t for (MedicationFormElement *e in ((ElementListFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).elements) {\n";
-                               print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
+                                print "\t\t cursorStartX = cursor.x;\n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t previousElementSize.width = cursor.x - cursorStartX;\n";
                                 if ( "vertical" eq "vertical" ){
                                     print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
                                 }
-                                printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                                checkSizeAndMoveCursor("vertical",$groupName,$marginTB,$marginLR);
                                 print "\t }\n\n";
                             }
                             case "AntibioticFormElement"{
                                 print "\t for (AntibioticFormElement *e in ((ElementListFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).elements) {\n";
+                                print "\t\t cursorStartX = cursor.x;\n";
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
@@ -158,16 +182,19 @@ sub printDrawSectionCodeForGroup{
                                 print "\t\t \n";
                                 print "\t\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];\n";
+                                print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                                print "\t\t previousElementSize.width = cursor.x - cursorStartX;\n";
                                 if ( "vertical" eq "vertical" ){
                                     print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
                                 }
-                                printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                                checkSizeAndMoveCursor("vertical",$groupName,$marginTB,$marginLR);
                                 print "\t }\n\n";
                             }
                             else { die "Unknown listOf type: ".$nodeData->getAttribute("listOf"); }
                         }
                     }
                     case "MedicationFormElement" {
+                        print "\t cursorStartX = cursor.x;\n";
                         print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((MedicationFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).selected boolValue] atLocation:cursor];\n";
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
@@ -178,12 +205,12 @@ sub printDrawSectionCodeForGroup{
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:((MedicationFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).doseUnit atLocation:cursor];\n";
-                        if ( $orientation eq "vertical" ){
-                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
-                        }
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t previousElementSize.width = cursor.x - cursorStartX;\n";
                         
                     }
                     case "AntibioticFormElement" {
+                        print "\t cursorStartX = cursor.x;\n";
                         print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).selected boolValue] atLocation:cursor];\n";
                         print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                         print "\t \n";
@@ -198,21 +225,24 @@ sub printDrawSectionCodeForGroup{
                         print "\t \n";
                         print "\t NSDate *startTime = ((AntibioticFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).startTime;\n";
                         print "\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
+                        print "\t \n";
                         print "\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:startTime] atLocation:cursor];\n";
-                        if ( $orientation eq "vertical" ){
-                            print "\t cursor.x = ".$groupName."CursorStart.x;\n";
-                        }
+                        print "\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
+                        print "\t previousElementSize.width = cursor.x - cursorStartX;\n";
                         
                     }
                     else { die "Unknown type: ".$nodeData->getAttribute("type"); }
                 }
-                printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                if ( $orientation eq "vertical" ){
+                    print "\t cursor.x = ".$groupName."CursorStart.x;\n";
+                }
+                checkSizeAndMoveCursor($orientation,$groupName,$marginTB,$marginLR);
             
-            } else {
-                my $marginLR = 10;
-                my $marginTB = 20;
+            } else { #element is just a label
+                my $marginLR = $DEF_MARGIN;
+                my $marginTB = $DEF_MARGIN;
                 print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                printMaxSizeCheck($orientation,$groupName,$marginTB,$marginLR);
+                checkSizeAndMoveCursor($orientation,$groupName,$marginTB,$marginLR);
             }
         } else {
             die "unknown node type: ".$child->nodeName;
@@ -220,9 +250,11 @@ sub printDrawSectionCodeForGroup{
     }
     
     print "\t //end of draw ".$groupName."\n";
+    print "\t ".$groupName."CursorStart.x -= ".$groupName."Indentation;\n";
+    print "\t ".$groupName."CursorStart.x -= ".$marginLR.";\n";
     switch ($orientation){
         case "vertical" {
-            print "\t previousElementSize = CGSizeMake(".$groupName."MaxWidth, cursor.y -".$groupName."CursorStart.y);\n";
+            print "\t previousElementSize = CGSizeMake(".$groupName."MaxWidth + ".$indentation.", cursor.y -".$groupName."CursorStart.y + $marginTB);\n";
         }
         case "horizontal"{
             print "\t previousElementSize = CGSizeMake(cursor.x - ".$groupName."CursorStart.x, ".$groupName."MaxHeight);\n";
@@ -230,6 +262,7 @@ sub printDrawSectionCodeForGroup{
         else { print "\n Error: Unknown orientation: $orientation\n"; }
     }
     print "\t cursor = ".$groupName."CursorStart;\n\n";
+    print "\t [BBUtil drawRect:CGRectMake(cursor.x,cursor.y,previousElementSize.width,previousElementSize.height) withRed:1.0 green:0.0 blue:0.0];\n"
     
 }
 print "\n\n";
@@ -247,6 +280,7 @@ print "#import \"Form.h\"\n";
 print "#import \"Operation.h\"\n";
 print "#import \"Patient.h\"\n";
 print "#import \"BBPdfGenerator.h\"\n";
+print "#import \"BBUtil.h\"\n";
 
 
 my $parser = XML::LibXML->new();
@@ -299,6 +333,7 @@ for my $section (@sections){
     print "{\n";
     print "\t CGSize previousElementSize;\n";
     print "\t CGPoint cursor = sectionOrigin;\n";
+    print "\t int cursorStartX;\n";
     
     my $graphics = $section->getChildrenByLocalName("Graphics")->get_node(0);
     

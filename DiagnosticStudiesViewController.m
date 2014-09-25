@@ -302,6 +302,7 @@ static NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

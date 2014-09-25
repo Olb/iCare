@@ -223,6 +223,7 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

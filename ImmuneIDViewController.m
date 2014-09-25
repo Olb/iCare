@@ -148,6 +148,7 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

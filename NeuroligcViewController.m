@@ -208,6 +208,7 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

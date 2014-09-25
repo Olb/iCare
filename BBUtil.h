@@ -17,6 +17,7 @@
 + (id) newCoreDataObjectForEntityName:(NSString*)name;
 +(void)saveContext;
 +(void)drawRect:(CGRect)rectangle;
++(void)drawRect:(CGRect)rectangle withRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 +(void)deleteManagedObject:(NSManagedObject*)object;
 +(void)refreshManagedObject:(NSManagedObject*)object;
 @end

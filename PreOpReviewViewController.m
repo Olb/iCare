@@ -223,6 +223,7 @@ static NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

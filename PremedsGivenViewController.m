@@ -116,6 +116,9 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 		 UITableViewCell *cell = [self.premedsGivenTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
 		 MedicationFormElement *elementListFormElement = [FormElementTableCellFactory getElementForMedicationCell:cell withElement:nil];		 [premedsGivenElementListArray addObject:elementListFormElement];
 	 }
+	 for (FormElement *element in premedsGiven.elements) {
+		 [BBUtil deleteManagedObject:element];
+	 }
 	 [[premedsGiven mutableSetValueForKey:@"elements"] removeAllObjects];
 	 [premedsGiven addElements:premedsGivenElementListArray];
 	 
@@ -141,6 +144,7 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

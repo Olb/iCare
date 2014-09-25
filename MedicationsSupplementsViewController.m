@@ -107,6 +107,7 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 

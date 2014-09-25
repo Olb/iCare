@@ -208,6 +208,7 @@ static NSString *const URINE_KEY = @"UrineKey";
 }
 
 - (IBAction)dismiss:(id)sender {
+	 [BBUtil refreshManagedObject:_section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
