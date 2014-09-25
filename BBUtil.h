@@ -16,4 +16,7 @@
 + (NSString*) formatDate:(NSDate*)date;
 + (id) newCoreDataObjectForEntityName:(NSString*)name;
 +(void)saveContext;
++(void)drawRect:(CGRect)rectangle;
++(void)deleteManagedObject:(NSManagedObject*)object;
++(void)refreshManagedObject:(NSManagedObject*)object;
 @end

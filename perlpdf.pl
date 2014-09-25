@@ -32,6 +32,7 @@ sub printMaxSizeCheck{
     my $marginTB = $_[2];
     my $marginLR = $_[3];
     
+    print STDERR "\n Group ".$groupName."\n";
     switch ($orientation){
         case "vertical" {
             print "\t cursor.y += previousElementSize.height + ".$marginTB.";\n";
@@ -141,8 +142,8 @@ sub printDrawSectionCodeForGroup{
                                 if ( "vertical" eq "vertical" ){
                                     print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
                                 }
-                                print "\t }\n\n";
                                 printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                                print "\t }\n\n";
                             }
                             case "AntibioticFormElement"{
                                 print "\t for (AntibioticFormElement *e in ((ElementListFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).elements) {\n";
@@ -155,13 +156,13 @@ sub printDrawSectionCodeForGroup{
                                 print "\t\t previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];\n";
                                 print "\t\t cursor.x += previousElementSize.width + ".$marginLR.";\n";
                                 print "\t\t \n";
-                                print "\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
-                                print "\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];\n";
+                                print "\t\t [dateFormatter setDateFormat:\@\"HH:mm\"];\n";
+                                print "\t\t previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];\n";
                                 if ( "vertical" eq "vertical" ){
                                     print "\t\t cursor.x = ".$groupName."CursorStart.x;\n";
                                 }
-                                print "\t }\n\n";
                                 printMaxSizeCheck("vertical",$groupName,$marginTB,$marginLR);
+                                print "\t }\n\n";
                             }
                             else { die "Unknown listOf type: ".$nodeData->getAttribute("listOf"); }
                         }
@@ -221,14 +222,14 @@ sub printDrawSectionCodeForGroup{
     print "\t //end of draw ".$groupName."\n";
     switch ($orientation){
         case "vertical" {
-            print "\t \n";
+            print "\t previousElementSize = CGSizeMake(".$groupName."MaxWidth, cursor.y -".$groupName."CursorStart.y);\n";
         }
         case "horizontal"{
             print "\t previousElementSize = CGSizeMake(cursor.x - ".$groupName."CursorStart.x, ".$groupName."MaxHeight);\n";
         }
         else { print "\n Error: Unknown orientation: $orientation\n"; }
     }
-    print "\t cursor = group1CursorStart;\n\n";
+    print "\t cursor = ".$groupName."CursorStart;\n\n";
     
 }
 print "\n\n";
@@ -262,7 +263,7 @@ for my $i (0 .. $#ARGV){
 print "\@implementation BBPdfSectionBuilder : NSObject\n";
 print "NSDateFormatter* dateFormatter;\n";
 print "\n";
-print "+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
+print "+(CGSize) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
 print "{ \n";
 print "\t if (!dateFormatter) {\n";
 print "\t\t  dateFormatter = [[NSDateFormatter alloc] init];\n";
@@ -277,12 +278,13 @@ for my $section (@sections){
     
         
     print "\t ".$else."if ([section.title isEqualToString:\@\"".$section->getAttribute("name")."SectionKey\"]){\n";
-    print "\t\t [BBPdfSectionBuilder draw".$section->getAttribute("name")."Section:section atLocation:sectionOrigin];\n";
+    print "\t\t return [BBPdfSectionBuilder draw".$section->getAttribute("name")."Section:section atLocation:sectionOrigin];\n";
     $else = "} else ";
 }
 print "\t } else {\n";
 print "\t\t [NSException raise:\@\"UnhandledSection\" format:\@\"section title = '%\@'\",section.title];\n";
 print "\t }\n";
+print "\t return CGSizeZero;\n";
 print "}\n";
 
 
@@ -293,7 +295,7 @@ for my $section (@sections){
         next;
     }
     print "\n";
-    print "+(void) draw".$section->getAttribute("name")."Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
+    print "+(CGSize) draw".$section->getAttribute("name")."Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin\n";
     print "{\n";
     print "\t CGSize previousElementSize;\n";
     print "\t CGPoint cursor = sectionOrigin;\n";
@@ -309,7 +311,7 @@ for my $section (@sections){
         print  "\n\t Error: can't find Graphics object in section ".$section->getAttribute("name");
     }
     
-    print "\t \n";
+    print "\t return previousElementSize;\n";
     print "}\n";
 }
 print "\@end";

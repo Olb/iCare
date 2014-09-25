@@ -256,7 +256,6 @@
     if (![self.form.sections containsObject:formSection]) {
         [self.form addSectionsObject:formSection];
     } else {
-        [context refreshObject:formSection mergeChanges:YES];
     }
     
     NSError *error = nil;

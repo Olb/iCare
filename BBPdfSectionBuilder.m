@@ -17,37 +17,38 @@
 @implementation BBPdfSectionBuilder : NSObject
 NSDateFormatter* dateFormatter;
 
-+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 { 
 	 if (!dateFormatter) {
 		  dateFormatter = [[NSDateFormatter alloc] init];
 	 }
 	 if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
-		 [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"BetaBlockerSectionKey"]){
-		 [BBPdfSectionBuilder drawBetaBlockerSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawBetaBlockerSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"DiagnosticStudiesSectionKey"]){
-		 [BBPdfSectionBuilder drawDiagnosticStudiesSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawDiagnosticStudiesSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"EmergenceSectionKey"]){
-		 [BBPdfSectionBuilder drawEmergenceSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawEmergenceSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"EndotrachealTubeSectionKey"]){
-		 [BBPdfSectionBuilder drawEndotrachealTubeSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawEndotrachealTubeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"IVAntibioticNameSectionKey"]){
-		 [BBPdfSectionBuilder drawIVAntibioticNameSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawIVAntibioticNameSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"InductionAndDeviceSectionKey"]){
-		 [BBPdfSectionBuilder drawInductionAndDeviceSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawInductionAndDeviceSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"IntubationSectionKey"]){
-		 [BBPdfSectionBuilder drawIntubationSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawIntubationSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PreOpActionsSectionKey"]){
-		 [BBPdfSectionBuilder drawPreOpActionsSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawPreOpActionsSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PremedsGivenSectionKey"]){
-		 [BBPdfSectionBuilder drawPremedsGivenSection:section atLocation:sectionOrigin];
+		 return [BBPdfSectionBuilder drawPremedsGivenSection:section atLocation:sectionOrigin];
 	 } else {
 		 [NSException raise:@"UnhandledSection" format:@"section title = '%@'",section.title];
 	 }
+	 return CGSizeZero;
 }
 
-+(void) drawAnesthesiaTypeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawAnesthesiaTypeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -80,7 +81,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group2
 	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group2CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -112,7 +113,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group3
 	 previousElementSize = CGSizeMake(cursor.x - group3CursorStart.x, group3MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group3CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -144,7 +145,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group4
 	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group4CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -192,13 +193,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawBetaBlockerSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawBetaBlockerSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -261,8 +262,8 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group2
-	 
-	 cursor = group1CursorStart;
+	 previousElementSize = CGSizeMake(group2MaxWidth, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -270,13 +271,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawDiagnosticStudiesSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawDiagnosticStudiesSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -309,7 +310,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group2
 	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group2CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -350,7 +351,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group3
 	 previousElementSize = CGSizeMake(cursor.x - group3CursorStart.x, group3MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group3CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -397,7 +398,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group4
 	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group4CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -435,7 +436,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group5
 	 previousElementSize = CGSizeMake(cursor.x - group5CursorStart.x, group5MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group5CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -467,7 +468,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group6
 	 previousElementSize = CGSizeMake(cursor.x - group6CursorStart.x, group6MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group6CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -499,7 +500,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group7
 	 previousElementSize = CGSizeMake(cursor.x - group7CursorStart.x, group7MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group7CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -527,13 +528,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawEmergenceSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawEmergenceSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -592,13 +593,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawEndotrachealTubeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawEndotrachealTubeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -646,7 +647,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group4
 	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group4CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group3Indentation > group3MaxWidth){
@@ -685,7 +686,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group5
 	 previousElementSize = CGSizeMake(cursor.x - group5CursorStart.x, group5MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group5CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group3Indentation > group3MaxWidth){
@@ -713,8 +714,8 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group3
-	 
-	 cursor = group1CursorStart;
+	 previousElementSize = CGSizeMake(group3MaxWidth, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
 
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group2Indentation > group2MaxHeight){
@@ -750,7 +751,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group7
 	 previousElementSize = CGSizeMake(cursor.x - group7CursorStart.x, group7MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group7CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group6Indentation > group6MaxWidth){
@@ -811,7 +812,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group8
 	 previousElementSize = CGSizeMake(cursor.x - group8CursorStart.x, group8MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group8CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group6Indentation > group6MaxWidth){
@@ -829,8 +830,8 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group6
-	 
-	 cursor = group1CursorStart;
+	 previousElementSize = CGSizeMake(group6MaxWidth, cursor.y -group6CursorStart.y);
+	 cursor = group6CursorStart;
 
 	 cursor.x += previousElementSize.width + 10;
 	 if ( previousElementSize.height + group2Indentation > group2MaxHeight){
@@ -839,7 +840,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group2
 	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group2CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -847,13 +848,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawIVAntibioticNameSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawIVAntibioticNameSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -897,14 +898,14 @@ NSDateFormatter* dateFormatter;
 		 previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];
 		 cursor.x += previousElementSize.width + 10;
 		 
-	 [dateFormatter setDateFormat:@"HH:mm"];
-	 previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];
+		 [dateFormatter setDateFormat:@"HH:mm"];
+		 previousElementSize = [BBPdfGenerator drawText:[dateFormatter stringFromDate:e.startTime] atLocation:cursor];
 		 cursor.x = group1CursorStart.x;
-	 }
-
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
 	 }
 
 	 cursor.y += previousElementSize.height + 20;
@@ -913,13 +914,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawInductionAndDeviceSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawInductionAndDeviceSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -978,13 +979,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawIntubationSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawIntubationSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -1035,7 +1036,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group2
 	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group2CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -1067,7 +1068,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group3
 	 previousElementSize = CGSizeMake(cursor.x - group3CursorStart.x, group3MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group3CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -1099,7 +1100,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group4
 	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group4CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -1131,7 +1132,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group5
 	 previousElementSize = CGSizeMake(cursor.x - group5CursorStart.x, group5MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group5CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -1172,7 +1173,7 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group6
 	 previousElementSize = CGSizeMake(cursor.x - group6CursorStart.x, group6MaxHeight);
-	 cursor = group1CursorStart;
+	 cursor = group6CursorStart;
 
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
@@ -1180,13 +1181,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawPreOpActionsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawPreOpActionsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -1235,13 +1236,13 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 
-+(void) drawPremedsGivenSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
++(CGSize) drawPremedsGivenSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
@@ -1296,11 +1297,11 @@ NSDateFormatter* dateFormatter;
 		 
 		 previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];
 		 cursor.x = group1CursorStart.x;
-	 }
-
 	 cursor.y += previousElementSize.height + 20;
 	 if ( previousElementSize.width + group1Indentation > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation;
+	 }
+
 	 }
 
 	 cursor.y += previousElementSize.height + 20;
@@ -1309,10 +1310,10 @@ NSDateFormatter* dateFormatter;
 	 }
 
 	 //end of draw group1
-	 
+	 previousElementSize = CGSizeMake(group1MaxWidth, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
-	 
+	 return previousElementSize;
 }
 @end
 

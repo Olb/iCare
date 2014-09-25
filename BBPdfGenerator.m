@@ -17,6 +17,7 @@
 #import "BooleanFormElement.h"
 #import "StringListElement.h"
 #import "BBPdfSectionBuilder.h"
+#import "BBUtil.h"
 
 @implementation BBPdfGenerator
 
@@ -47,9 +48,13 @@
     
     UIGraphicsBeginPDFPage();
     
-    
+    CGPoint location = CGPointMake(20, 20);
     for ( FormSection* section in form.sections ){
-        [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:CGPointMake(20, 100)];
+
+        CGSize size = [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:location];
+        [BBUtil drawRect:CGRectMake(location.x, location.y, size.width, size.height)];
+        
+        location.y += size.height;
     }
     
     UIGraphicsEndPDFContext();

@@ -71,4 +71,26 @@
     }
 }
 
++(void)deleteManagedObject:(NSManagedObject*)object
+{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    [context deleteObject:object];
+}
+
++(void)refreshManagedObject:(NSManagedObject*)object
+{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    [context refreshObject:object mergeChanges:YES];
+}
+
++(void)drawRect:(CGRect)rectangle
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 2.0);
+    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
+    CGContextStrokeRect(context, rectangle);
+}
+
 @end

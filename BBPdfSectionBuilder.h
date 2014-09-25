@@ -11,5 +11,5 @@
 
 @interface BBPdfSectionBuilder : NSObject
 
-+(void) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin;
++(CGSize) drawSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin;
 @end
