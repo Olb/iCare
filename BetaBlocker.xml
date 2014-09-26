@@ -9,13 +9,13 @@
     </Data>
     
     <Graphics>
-        <Group label="If Pt on Beta-Blocker" orientation="vertical">
+        <Group label="If Pt on Beta-Blocker" orientation="vertical" marginL="24">
             <Element name="BetaBlockTakenPastDay" label="Taken in past 24 hrs" />
             <Element name="GivenInOr" label="Given in O.R." />
             <Element name="ContraIndication" label="ContraIndication:" />
-            <Group orientation="vertical" marginLR="10" marginTB="0">
-                <Element name="HeartRateLessThanFifty" label="Heart rate less than 50" />
+            <Group orientation="vertical" marginL="10" marginT="0" marginB="0">
                 <Element name="Hypotension" label="Hypotension" />
+                <Element name="HeartRateLessThanFifty" label="Heart rate less than 50" />
             </Group>
         </Group>
     </Graphics>
