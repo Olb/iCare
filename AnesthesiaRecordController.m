@@ -30,6 +30,7 @@
 #import "BPBAppDelegate.h"
 #import "Form.h"
 #import "BBPdfGenerator.h"
+#import "PDFTestViewController.h"
 
 @interface AnesthesiaRecordController ()<BBFormSectionDelegate>
 
@@ -276,6 +277,16 @@
 
 - (IBAction)print:(id)sender {
     [BBPdfGenerator generatePdfForForm:self.form];
+    [self showPDF:self.form];
+}
+
+-(void)showPDF:(Form *)form
+{
+    PDFTestViewController *vc = [[PDFTestViewController alloc] init];
+    vc.form = form;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 // TODO

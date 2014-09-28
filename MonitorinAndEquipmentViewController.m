@@ -30,8 +30,8 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *tEEBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *fluidWarmerBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *intentionalHypothermiaBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *intraOpForcedAirUpBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *intraOpForcedAirDownBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *intraOpForcedAirUpperBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *intraOpForcedAirLowerBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nibpRightBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nibpLeftBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nibpArmBBCheckBox;
@@ -52,8 +52,8 @@ static NSString *const CELL_SAVER_KEY = @"CellSaverKey";
 static NSString *const TEE_KEY = @"TEEKey";
 static NSString *const FLUID_WARMER_KEY = @"FluidWarmerKey";
 static NSString *const INTENTIONAL_HYPOTHERMIA_KEY = @"IntentionalHypothermiaKey";
-static NSString *const INTRA_OP_FORCED_AIR_UP_KEY = @"IntraOpForcedAirUpKey";
-static NSString *const INTRA_OP_FORCED_AIR_DOWN_KEY = @"IntraOpForcedAirDownKey";
+static NSString *const INTRA_OP_FORCED_AIR_UPPER_KEY = @"IntraOpForcedAirUpperKey";
+static NSString *const INTRA_OP_FORCED_AIR_LOWER_KEY = @"IntraOpForcedAirLowerKey";
 static NSString *const NIBP_RIGHT_KEY = @"NibpRightKey";
 static NSString *const NIBP_LEFT_KEY = @"NibpLeftKey";
 static NSString *const NIBP_ARM_KEY = @"NibpArmKey";
@@ -97,11 +97,11 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 			 if ([element.key isEqualToString:INTENTIONAL_HYPOTHERMIA_KEY]){
 				 [self.intentionalHypothermiaBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:INTRA_OP_FORCED_AIR_UP_KEY]){
-				 [self.intraOpForcedAirUpBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:INTRA_OP_FORCED_AIR_UPPER_KEY]){
+				 [self.intraOpForcedAirUpperBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:INTRA_OP_FORCED_AIR_DOWN_KEY]){
-				 [self.intraOpForcedAirDownBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:INTRA_OP_FORCED_AIR_LOWER_KEY]){
+				 [self.intraOpForcedAirLowerBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:NIBP_RIGHT_KEY]){
 				 [self.nibpRightBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
@@ -139,8 +139,8 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 	 NSAssert([section getElementForKey:TEE_KEY]!= nil, @"TEE is nil");
 	 NSAssert([section getElementForKey:FLUID_WARMER_KEY]!= nil, @"FluidWarmer is nil");
 	 NSAssert([section getElementForKey:INTENTIONAL_HYPOTHERMIA_KEY]!= nil, @"IntentionalHypothermia is nil");
-	 NSAssert([section getElementForKey:INTRA_OP_FORCED_AIR_UP_KEY]!= nil, @"IntraOpForcedAirUp is nil");
-	 NSAssert([section getElementForKey:INTRA_OP_FORCED_AIR_DOWN_KEY]!= nil, @"IntraOpForcedAirDown is nil");
+	 NSAssert([section getElementForKey:INTRA_OP_FORCED_AIR_UPPER_KEY]!= nil, @"IntraOpForcedAirUpper is nil");
+	 NSAssert([section getElementForKey:INTRA_OP_FORCED_AIR_LOWER_KEY]!= nil, @"IntraOpForcedAirLower is nil");
 	 NSAssert([section getElementForKey:NIBP_RIGHT_KEY]!= nil, @"NibpRight is nil");
 	 NSAssert([section getElementForKey:NIBP_LEFT_KEY]!= nil, @"NibpLeft is nil");
 	 NSAssert([section getElementForKey:NIBP_ARM_KEY]!= nil, @"NibpArm is nil");
@@ -238,23 +238,23 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 
 	 intentionalHypothermia.value = [NSNumber numberWithBool:self.intentionalHypothermiaBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *intraOpForcedAirUp = (BooleanFormElement*)[_section getElementForKey:INTRA_OP_FORCED_AIR_UP_KEY];
-	 if (!intraOpForcedAirUp) {
-		 intraOpForcedAirUp = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 intraOpForcedAirUp.key = INTRA_OP_FORCED_AIR_UP_KEY;
-		 [_section addElementsObject:intraOpForcedAirUp];
+	 BooleanFormElement *intraOpForcedAirUpper = (BooleanFormElement*)[_section getElementForKey:INTRA_OP_FORCED_AIR_UPPER_KEY];
+	 if (!intraOpForcedAirUpper) {
+		 intraOpForcedAirUpper = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 intraOpForcedAirUpper.key = INTRA_OP_FORCED_AIR_UPPER_KEY;
+		 [_section addElementsObject:intraOpForcedAirUpper];
 	 }
 
-	 intraOpForcedAirUp.value = [NSNumber numberWithBool:self.intraOpForcedAirUpBBCheckBox.isSelected];
+	 intraOpForcedAirUpper.value = [NSNumber numberWithBool:self.intraOpForcedAirUpperBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *intraOpForcedAirDown = (BooleanFormElement*)[_section getElementForKey:INTRA_OP_FORCED_AIR_DOWN_KEY];
-	 if (!intraOpForcedAirDown) {
-		 intraOpForcedAirDown = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 intraOpForcedAirDown.key = INTRA_OP_FORCED_AIR_DOWN_KEY;
-		 [_section addElementsObject:intraOpForcedAirDown];
+	 BooleanFormElement *intraOpForcedAirLower = (BooleanFormElement*)[_section getElementForKey:INTRA_OP_FORCED_AIR_LOWER_KEY];
+	 if (!intraOpForcedAirLower) {
+		 intraOpForcedAirLower = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 intraOpForcedAirLower.key = INTRA_OP_FORCED_AIR_LOWER_KEY;
+		 [_section addElementsObject:intraOpForcedAirLower];
 	 }
 
-	 intraOpForcedAirDown.value = [NSNumber numberWithBool:self.intraOpForcedAirDownBBCheckBox.isSelected];
+	 intraOpForcedAirLower.value = [NSNumber numberWithBool:self.intraOpForcedAirLowerBBCheckBox.isSelected];
 	 
 	 BooleanFormElement *nibpRight = (BooleanFormElement*)[_section getElementForKey:NIBP_RIGHT_KEY];
 	 if (!nibpRight) {

@@ -10,8 +10,8 @@
         <Element type="BooleanFormElement" name="TEE"/>
         <Element type="BooleanFormElement" name="FluidWarmer"/>
         <Element type="BooleanFormElement" name="IntentionalHypothermia"/>
-        <Element type="BooleanFormElement" name="IntraOpForcedAirUp"/>
-        <Element type="BooleanFormElement" name="IntraOpForcedAirDown"/>
+        <Element type="BooleanFormElement" name="IntraOpForcedAirUpper"/>
+        <Element type="BooleanFormElement" name="IntraOpForcedAirLower"/>
         <Element type="BooleanFormElement" name="NibpRight"/>
         <Element type="BooleanFormElement" name="NibpLeft"/>
         <Element type="BooleanFormElement" name="NibpArm"/>
@@ -20,4 +20,52 @@
         <Element type="BooleanFormElement" name="MonitoringEquipmentOther"/>
         <Element type="TextElement" name="MonitoringEquipmentOtherReason"/>
     </Data>
+    
+    <Graphics>
+        <Group label="" orientation="vertical">
+            <Element name="" label="Patient Safety:" marginB="0"/>
+            <Group orientation="horizontal" marginT="0" marginB="0">
+                <Group orientation="vertical" marginT="0" marginB="0">
+                    <Element name="EquipmentChecked" label="Equipment Checked"/>
+                </Group>
+                <Group orientation="vertical" marginT="0" marginB="0">
+                    <Element name="AudibleAlarmsOn" label="Audible alarms on" />
+                </Group>
+            </Group>
+            <Element name="" label="Monitoring And Equipment" marginT="0" marginB="0"/>
+
+            <Group orientation="horizontal" marginT="0" marginB="0">
+                <Group orientation="vertical" marginT="0" marginB="0">
+                    <Element name="PrecordialSteth" label="Precordial Steth Checked"/>
+                    <Element name="EsophagealSteth" label="Esophageal Steth"/>
+                    <Element name="TEE" label="TEE"/>
+                    <Element name="IntentionalHypothermia" label="Intentional Hypothermia" />
+                </Group>
+                <Group orientation="vertical" marginT="0" marginB="0">
+                    <Element name="NerveStimulator" label="Nerve Stimulator" />
+                    <Element name="CellSaver" label="Cell Saver" />
+                    <Element name="FluidWarmer" label="Fluid Warmer" />
+                </Group>
+            </Group>
+            
+            <Group orientation="horizontal" marginT="0" marginB="0">
+                <Element name="" label="IntraOp Forced Air Warming Device:" marginT="0" marginB="0"/>
+                <Element name="IntraOpForcedAirUpper" label="Upper" />
+                <Element name="IntraOpForcedAirLower" label="Lower" />
+            </Group>
+            <Group orientation="horizontal" marginT="0" marginB="0">
+                <Element name="" label="NIBP:" marginT="0" marginB="0"/>
+                    <Group orientation="vertical" marginB="0" marginT="0">
+                        <Element name="NibpRight" label="Right" />
+                        <Element name="NibpLeft" label="Left" />
+                    <Group/>
+                    <Group orientation="vertical" marginB="0" marginT="0">
+                        <Element name="NibpArm" label="Arm" />
+                        <Element name="NibpLeg" label="Leg" />
+                    <Group/>
+                <Element name="NibpEveryMin" label="min" />
+            </Group>
+            <Element name="MonitoringEquipmentOtherReason" label="other" />
+        </Group>
+    </Graphics>
 </Section>

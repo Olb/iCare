@@ -10,7 +10,7 @@
 @class Form;
 
 @interface BBPdfGenerator : NSObject
-
++(NSString*)getPDFFileNameForForm:(Form*)form;
 + (bool) generatePdfForForm:(Form*)form;
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location;
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location;

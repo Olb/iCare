@@ -24,7 +24,7 @@
 +(NSString*)getPDFFileNameForForm:(Form*)form
 {
     
-    NSString* fileNameToPassToPDFRenderer = [NSString stringWithFormat:@"%@_%@_%@_%@.pdf",
+    NSString* fileNameToPassToPDFRenderer = [NSString stringWithFormat:@"%@%@%@%@.pdf",
                                                     form.title,
                                                     form.operation.patient.lastName,
                                                     form.operation.name,
@@ -38,6 +38,7 @@
     NSString *path = [arrayPaths objectAtIndex:0];
     NSString* pdfFileName = [path stringByAppendingPathComponent:fileNameToPassToPDFRenderer];
     
+    NSLog(@"NAME:%@", pdfFileName);
     return pdfFileName;
     
 }
@@ -58,6 +59,7 @@
     }
     
     UIGraphicsEndPDFContext();
+    
     return true;
 }
 

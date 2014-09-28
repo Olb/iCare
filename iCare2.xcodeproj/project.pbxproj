@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
+		280ECCAD19D611B3005FE3AF /* PDFTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */; };
+		280ECCAE19D611B3005FE3AF /* PDFTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280ECCAC19D611B3005FE3AF /* PDFTestViewController.xib */; };
+		280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */; };
 		2812704219C76081009A9644 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812704119C76081009A9644 /* FormGroup.m */; };
 		2812709E19C7D985009A9644 /* Cardio.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2812709D19C7D985009A9644 /* Cardio.xml */; };
 		281270A019C7DB1C009A9644 /* Hepato.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2812709F19C7DB1C009A9644 /* Hepato.xml */; };
@@ -116,7 +119,6 @@
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
 		98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485219C897DA00E4727B /* BBPdfGenerator.m */; };
 		98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DA485419C8A0E800E4727B /* CoreText.framework */; };
-		98DA485719C8AC1C00E4727B /* teat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98DA485619C8AC1C00E4727B /* teat.xib */; };
 		98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */; };
 		98DA485C19C9082600E4727B /* perlpdf.pl in Resources */ = {isa = PBXBuildFile; fileRef = 98DA485B19C9082600E4727B /* perlpdf.pl */; };
 		98DA485F19D0868000E4727B /* FormElementTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485E19D0868000E4727B /* FormElementTableAdapter.m */; };
@@ -200,6 +202,10 @@
 /* Begin PBXFileReference section */
 		28034B3719C25B4200DB0A1E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		280ECCAA19D611B3005FE3AF /* PDFTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFTestViewController.h; sourceTree = "<group>"; };
+		280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFTestViewController.m; sourceTree = "<group>"; };
+		280ECCAC19D611B3005FE3AF /* PDFTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFTestViewController.xib; sourceTree = "<group>"; };
+		280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AnesthesiaRecord.pdf; sourceTree = "<group>"; };
 		2812704019C76081009A9644 /* FormGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormGroup.h; sourceTree = "<group>"; };
 		2812704119C76081009A9644 /* FormGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormGroup.m; sourceTree = "<group>"; };
 		2812709D19C7D985009A9644 /* Cardio.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Cardio.xml; sourceTree = "<group>"; };
@@ -354,7 +360,6 @@
 		98DA485119C897DA00E4727B /* BBPdfGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfGenerator.h; sourceTree = "<group>"; };
 		98DA485219C897DA00E4727B /* BBPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfGenerator.m; sourceTree = "<group>"; };
 		98DA485419C8A0E800E4727B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		98DA485619C8AC1C00E4727B /* teat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = teat.xib; sourceTree = "<group>"; };
 		98DA485819C9031200E4727B /* BBPdfSectionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfSectionBuilder.h; sourceTree = "<group>"; };
 		98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfSectionBuilder.m; sourceTree = "<group>"; };
 		98DA485B19C9082600E4727B /* perlpdf.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlpdf.pl; sourceTree = "<group>"; };
@@ -610,6 +615,7 @@
 		988D161719AE630B009A887A /* Anesthesia record */ = {
 			isa = PBXGroup;
 			children = (
+				280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */,
 				F47FF38919AE655A00809D30 /* AnesthesiaRecordController.h */,
 				F47FF38A19AE655A00809D30 /* AnesthesiaRecordController.m */,
 				988D161819AE63A1009A887A /* AnesthesiaTypeViewController.h */,
@@ -663,6 +669,9 @@
 				988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */,
 				988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */,
 				988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */,
+				280ECCAA19D611B3005FE3AF /* PDFTestViewController.h */,
+				280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */,
+				280ECCAC19D611B3005FE3AF /* PDFTestViewController.xib */,
 			);
 			name = "Anesthesia record";
 			sourceTree = "<group>";
@@ -862,7 +871,6 @@
 				98DA485219C897DA00E4727B /* BBPdfGenerator.m */,
 				98DA485819C9031200E4727B /* BBPdfSectionBuilder.h */,
 				98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */,
-				98DA485619C8AC1C00E4727B /* teat.xib */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1007,6 +1015,7 @@
 				988D168419AE63A2009A887A /* IVAntibioticNameViewController.xib in Resources */,
 				2838DE2B19CB2D090025F7DE /* EndotrachealTube.xml in Resources */,
 				281270AE19C7E0B9009A9644 /* PlanDiscussion.xml in Resources */,
+				280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */,
 				281270E119C894C7009A9644 /* PreOpActionsViewController.xib in Resources */,
 				988D168219AE63A2009A887A /* InvasiveLinesViewController.xib in Resources */,
 				28AA355919C60539001453CE /* perlxml.pl in Resources */,
@@ -1021,7 +1030,6 @@
 				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
 				988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */,
 				281270A019C7DB1C009A9644 /* Hepato.xml in Resources */,
-				98DA485719C8AC1C00E4727B /* teat.xib in Resources */,
 				F4AFB93F19ABB65000CA013B /* EndocrineViewController.xib in Resources */,
 				F4CFF43919A526F10082CE70 /* View.xib in Resources */,
 				281270B019C7E371009A9644 /* PreOpReview.xml in Resources */,
@@ -1042,6 +1050,7 @@
 				281270AA19C7DDC9009A9644 /* ImmuneID.xml in Resources */,
 				281270A419C7DC0F009A9644 /* Endocrine.xml in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
+				280ECCAE19D611B3005FE3AF /* PDFTestViewController.xib in Resources */,
 				988D168819AE63A2009A887A /* PersonnelViewController.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* CardioViewController.xib in Resources */,
 				98DA486719D08B7700E4727B /* AntibioticElementCell.xib in Resources */,
@@ -1106,6 +1115,7 @@
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
 				98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */,
+				280ECCAD19D611B3005FE3AF /* PDFTestViewController.m in Sources */,
 				2812704219C76081009A9644 /* FormGroup.m in Sources */,
 				988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */,
 				F47FF38B19AE655A00809D30 /* AnesthesiaRecordController.m in Sources */,
