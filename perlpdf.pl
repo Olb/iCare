@@ -40,14 +40,14 @@ sub checkSizeAndMoveCursor{
     switch ($orientation){
         case "vertical" {
             print "\t cursor.y += previousElementSize.height + ".$marginB.";\n";
-            print "\t if ( previousElementSize.width + ".$groupName."Indentation + ".($marginB + $marginT)." > ".$groupName."MaxWidth){\n";
-            print "\t\t ".$groupName."MaxWidth = previousElementSize.width + ".$groupName."Indentation + ".($marginB + $marginT).";\n";
+            print "\t if ( previousElementSize.width + ".$groupName."Indentation + ".($marginR)." > ".$groupName."MaxWidth){\n";
+            print "\t\t ".$groupName."MaxWidth = previousElementSize.width + ".$groupName."Indentation + ".($marginR).";\n";
             print "\t }\n\n";
         }
         case "horizontal"{
             print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
-            print "\t if ( previousElementSize.height + ".($marginL + $marginR)." > ".$groupName."MaxHeight){\n";
-            print "\t\t ".$groupName."MaxHeight = previousElementSize.height + ".($marginL + $marginR).";\n";
+            print "\t if ( previousElementSize.height + ".($marginT)." > ".$groupName."MaxHeight){\n";
+            print "\t\t ".$groupName."MaxHeight = previousElementSize.height + ".($marginT).";\n";
             print "\t }\n\n";
         }
         else { print "\n Error: Unknown orientation: $orientation\n"; }
@@ -79,27 +79,27 @@ sub printDrawSectionCodeForGroup{
         else { print "\n Error: Unknown orientation: $orientation\n"; }
     }
     
-    my $marginL = $DEF_MARGIN;
+    my $marginL = 0;
     if ( $group->getAttribute("marginL") ne "" ){
         $marginL = $group->getAttribute("marginL");
     }
-    my $marginR = $DEF_MARGIN;
+    my $marginR = 0;
     if ( $group->getAttribute("marginR") ne "" ){
         $marginR = $group->getAttribute("marginR");
     }
-    my $marginT = $DEF_MARGIN;
+    my $marginT = 0;
     if ( $group->getAttribute("marginT") ne "" ){
         $marginT = $group->getAttribute("marginT");
     }
-    my $marginB = $DEF_MARGIN;
+    my $marginB = 0;
     if ( $group->getAttribute("marginB") ne "" ){
         $marginB = $group->getAttribute("marginB");
     }
     
+    print "\t CGPoint ".$groupName."CursorStart = cursor;\n\n";
     print "\t cursor.x += ".$marginL.";//margin left\n";
     print "\t cursor.y += ".$marginT.";//margin top\n";
     
-    print "\t CGPoint ".$groupName."CursorStart = cursor;\n\n";
     print "\t int ".$groupName."Indentation = 0;\n";
     
     if ($group->getAttribute("label") ne ""){
@@ -288,11 +288,11 @@ sub printDrawSectionCodeForGroup{
         else { print "\n Error: Unknown orientation: $orientation\n"; }
     }
     print "\t cursor = ".$groupName."CursorStart;\n\n";
+    print "\t previousElementSize.width += ".$marginR.";\n";
+    print "\t previousElementSize.height += ".$marginB.";\n";
     if ($DEBUG eq "true"){
         print "\t [BBUtil drawRect:CGRectMake(cursor.x,cursor.y,previousElementSize.width,previousElementSize.height) withRed:1.0 green:0.0 blue:0.0];\n";
     }
-    print "\t previousElementSize.width += ".$marginR." + ".$marginL.";\n";
-    print "\t previousElementSize.height += ".$marginB." + ".$marginT.";\n";
     
 }
 print "\n\n";

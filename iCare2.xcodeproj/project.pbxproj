@@ -906,6 +906,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4615D7B192F908E0031470B /* Build configuration list for PBXNativeTarget "iCare2" */;
 			buildPhases = (
+				98A568FA19D8A2BC00F31635 /* ShellScript */,
 				F4615D45192F908E0031470B /* Sources */,
 				F4615D46192F908E0031470B /* Frameworks */,
 				F4615D47192F908E0031470B /* Resources */,
@@ -1074,6 +1075,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		98A568FA19D8A2BC00F31635 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./GenerateViewControllers.sh -p";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4615D45192F908E0031470B /* Sources */ = {
