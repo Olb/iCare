@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -9,6 +9,7 @@
                 <outlet property="atraumaticBBCheckBox" destination="0hY-WR-tt6" id="h2R-F3-JfY"/>
                 <outlet property="awakeBBCheckBox" destination="esp-vW-vcO" id="fVw-Wo-cjo"/>
                 <outlet property="blindBBCheckBox" destination="tBU-uT-9l8" id="x5s-1T-pcl"/>
+                <outlet property="curvedBBCheckBox" destination="Wi3-ti-YRW" id="NcI-4b-yqL"/>
                 <outlet property="curvedNumberUITextField" destination="dN1-ZY-z4E" id="Tgg-Ch-4Ig"/>
                 <outlet property="difficultBBCheckBox" destination="zjI-B2-nJa" id="c90-T6-a42"/>
                 <outlet property="difficultReasonUITextField" destination="AMV-AH-bEq" id="IQf-Ek-HZo"/>
@@ -246,6 +247,22 @@
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNi-Bg-U4n" customClass="BBCheckBox">
                     <rect key="frame" x="93" y="175" width="33" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" image="checkbox_unselected.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="checkbox_selected.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi3-ti-YRW" customClass="BBCheckBox">
+                    <rect key="frame" x="93" y="142" width="33" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>

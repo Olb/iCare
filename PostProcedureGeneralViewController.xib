@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostProcedureGeneralViewController">
             <connections>
-                <outlet property="bpSystolicUITextField" destination="sbP-d2-WKb" id="z8z-8t-qs4"/>
+                <outlet property="bp2UITextField" destination="C3F-Db-FZ5" id="lF3-7S-79j"/>
+                <outlet property="bpUITextField" destination="sbP-d2-WKb" id="jdV-oe-CoD"/>
                 <outlet property="dentitionIntactBBCheckBox" destination="z66-hM-aSb" id="moP-tV-7Ql"/>
-                <outlet property="diastolicUITextField" destination="C3F-Db-FZ5" id="UNz-15-O09"/>
                 <outlet property="hrUITextField" destination="CDu-zB-LNd" id="6M4-ww-rkA"/>
-                <outlet property="postProcedureGeneralConditionOtherBBCheckBox" destination="NHu-6Q-xy3" id="oyY-69-Upe"/>
-                <outlet property="postProcedureGeneralConditionOtherReasonUITextField" destination="VcD-Bh-mek" id="kVv-v9-buB"/>
+                <outlet property="otherBoolBBCheckBox" destination="NHu-6Q-xy3" id="o2l-h3-qoU"/>
+                <outlet property="otherTextUITextField" destination="VcD-Bh-mek" id="A1e-Qg-7hU"/>
                 <outlet property="rrUITextField" destination="oWu-Qz-Gp8" id="hWC-yn-pEd"/>
                 <outlet property="spO2UITextField" destination="Mdb-Dv-jEN" id="C3x-16-wGR"/>
                 <outlet property="stableBBCheckBox" destination="Cu8-H7-CoY" id="5R8-jn-PV7"/>

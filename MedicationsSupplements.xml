@@ -2,6 +2,12 @@
 <Section name="MedicationsSupplements">
 	<Data>
 		<Element type="BooleanFormElement" name="BetaBlocker"/>
-		<Element type="StringListElement" name="MedsSupplements"/>
+		<Element type="ElementListFormElement" name="MedsSupplements"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical">
+            
+        </Group>
+    </Graphics>
 </Section>

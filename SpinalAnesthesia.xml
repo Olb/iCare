@@ -30,7 +30,7 @@
     
     <Graphics>
         <Group label="Spinal Anesthesia:" orientation="vertical">
-            <Group orientation="horizontal">
+            <Group orientation="horizontal" marginB="8">
                 <Group orientation="vertical" label="CSF:">
                     <Element name="CsfClear" label="Clear"/>
                     <Element name="CsfCloudy" label="Cloudy"/>
@@ -48,7 +48,7 @@
                 </Group>
             </Group>
             <Group orientation="horizontal">
-                <Element type="TextElement" name="Interspace" label="Interspace:"/>
+                <Element type="TextElement" name="Interspace" label="Interspace:" marginB="8"/>
                 <Element name="LocalInflitration" label="Local Inflitration"/>
             </Group>
             <Group orientation="horizontal">
@@ -68,24 +68,24 @@
                     </Group>
                     <Element name="NrAttempts"  label="Nr. of attempts"/>
                 </Group>
-            </Group>
-            <Group orientation="vertical" label="Med:" >
-                <Group orientation="horizontal" >
-                    <Element name="Bupivacaine"  label="Bupivacaine 0.75%"/>
-                    <Element name="BupivacaineMl"/>
-                    <Element name="" label="mL"/>
-                </Group>
-                <Group orientation="horizontal" >
-                    <Element name="MedOther" />
-                    <Element name="MedOtherReason"/>
-                </Group>
-                <Group orientation="horizontal" >
-                    <Element name="Fentanyl"  label="Fentanyl"/>
-                    <Element label="mcg"/>
-                </Group>
-                <Group orientation="horizontal" >
-                    <Element name="Duramorph"  label="Duramorph"/>
-                    <Element label="mcg"/>
+                <Group orientation="vertical" label="Med:" >
+                    <Group orientation="horizontal" >
+                        <Element name="Bupivacaine"  label="Bupivacaine 0.75%"/>
+                        <Element name="BupivacaineMl"/>
+                        <Element name="" label="mL"/>
+                    </Group>
+                    <Group orientation="horizontal" >
+                        <Element name="MedOther" />
+                        <Element name="MedOtherReason"/>
+                    </Group>
+                    <Group orientation="horizontal" >
+                        <Element name="Fentanyl"  label="Fentanyl"/>
+                        <Element label="mcg"/>
+                    </Group>
+                    <Group orientation="horizontal" >
+                        <Element name="Duramorph"  label="Duramorph"/>
+                        <Element label="mcg"/>
+                    </Group>
                 </Group>
             </Group>
         </Group>

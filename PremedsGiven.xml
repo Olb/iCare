@@ -1,7 +1,6 @@
 <?xml version='1.0'?>
 <Section name="PremedsGiven">
 	<Data>
-        
 		<Element type="MedicationFormElement" name="Midazolam" doseUnit="mg"/>
         <Element type="MedicationFormElement" name="Ondansetron" doseUnit="mg" />
         <Element type="ElementListFormElement" listOf="MedicationFormElement" name="PremedsGiven"/>

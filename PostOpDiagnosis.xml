@@ -12,4 +12,54 @@
         <Element type="TextElement" name="Ebl"/>
         <Element type="TextElement" name="Urine"/>
     </Data>
+    <Graphics>
+        <Group orientation="vertical" label="Post-Op Diagnosis">
+            <Group orientation="horizontal">
+                <Group orientation="vertical" label="IN (mL)">
+                    <Group orientation="horizontal">
+                        <Group orientation="vertical">
+                            <Element label="Crystalloid:" />
+                            <Element label="Albumin:" />
+                            <Element label="Hetastarch:" />
+                        </Group>
+                        <Group orientation="vertical">
+                            <Element name="Crystalloid" />
+                            <Element name="Albumin" />
+                            <Element name="Hetastarch" />
+                        </Group>
+                        <Group orientation="vertical" marginT="14">
+                            <Element label="PRBCs:" />
+                            <Element label="Cell Saver:" />
+                        </Group>
+                        <Group orientation="vertical" marginT="14">
+                            <Element name="Prbcs" />
+                            <Element name="CellSaver" />
+                        </Group>
+                        <Group orientation="vertical">
+                            <Element label="FFP: " />
+                            <Element label="PLTs:" />
+                            <Element label="Cryo" />
+                        </Group>
+                        <Group orientation="vertical">
+                            <Element name="Ffp" />
+                            <Element name="Plts" />
+                            <Element name="Cryo" />
+                        </Group>
+                    </Group>
+                </Group>
+                <Group orientation="vertical" label="OUT (mL)">
+                    <Group orientation="horizontal">
+                        <Group orientation="vertical">
+                            <Element label="EBL: " />
+                            <Element label="Urine: " />
+                        </Group>
+                        <Group orientation="vertical">
+                            <Element name="Ebl" />
+                            <Element name="Urine" />
+                        </Group>
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

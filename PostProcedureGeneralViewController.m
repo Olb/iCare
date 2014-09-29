@@ -23,10 +23,10 @@
 @interface PostProcedureGeneralViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *stableBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *dentitionIntactBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *postProcedureGeneralConditionOtherBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *postProcedureGeneralConditionOtherReasonUITextField;
-@property (weak, nonatomic) IBOutlet UITextField *bpSystolicUITextField;
-@property (weak, nonatomic) IBOutlet UITextField *diastolicUITextField;
+@property (weak, nonatomic) IBOutlet BBCheckBox *otherBoolBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextField *otherTextUITextField;
+@property (weak, nonatomic) IBOutlet UITextField *bpUITextField;
+@property (weak, nonatomic) IBOutlet UITextField *bp2UITextField;
 @property (weak, nonatomic) IBOutlet UITextField *hrUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *rrUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *tempUITextField;
@@ -37,10 +37,10 @@
 NSString *const POST_PROCEDURE_GENERAL_SECTION_TITLE = @"PostProcedureGeneralSectionKey";
 static NSString *const STABLE_KEY = @"StableKey";
 static NSString *const DENTITION_INTACT_KEY = @"DentitionIntactKey";
-static NSString *const POST_PROCEDURE_GENERAL_CONDITION_OTHER_KEY = @"PostProcedureGeneralConditionOtherKey";
-static NSString *const POST_PROCEDURE_GENERAL_CONDITION_OTHER_REASON_KEY = @"PostProcedureGeneralConditionOtherReasonKey";
-static NSString *const BP_SYSTOLIC_KEY = @"BpSystolicKey";
-static NSString *const DIASTOLIC_KEY = @"DiastolicKey";
+static NSString *const OTHER_BOOL_KEY = @"OtherBoolKey";
+static NSString *const OTHER_TEXT_KEY = @"OtherTextKey";
+static NSString *const BP_KEY = @"BpKey";
+static NSString *const BP2_KEY = @"Bp2Key";
 static NSString *const HR_KEY = @"HrKey";
 static NSString *const RR_KEY = @"RrKey";
 static NSString *const TEMP_KEY = @"TempKey";
@@ -60,17 +60,17 @@ static NSString *const SPO2_KEY = @"SpO2Key";
 			 if ([element.key isEqualToString:DENTITION_INTACT_KEY]){
 				 [self.dentitionIntactBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:POST_PROCEDURE_GENERAL_CONDITION_OTHER_KEY]){
-				 [self.postProcedureGeneralConditionOtherBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 if ([element.key isEqualToString:OTHER_BOOL_KEY]){
+				 [self.otherBoolBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:POST_PROCEDURE_GENERAL_CONDITION_OTHER_REASON_KEY]){
-				 [self.postProcedureGeneralConditionOtherReasonUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:OTHER_TEXT_KEY]){
+				 [self.otherTextUITextField setText:((TextElement*)element).value];
 			 }
-			 if ([element.key isEqualToString:BP_SYSTOLIC_KEY]){
-				 [self.bpSystolicUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:BP_KEY]){
+				 [self.bpUITextField setText:((TextElement*)element).value];
 			 }
-			 if ([element.key isEqualToString:DIASTOLIC_KEY]){
-				 [self.diastolicUITextField setText:((TextElement*)element).value];
+			 if ([element.key isEqualToString:BP2_KEY]){
+				 [self.bp2UITextField setText:((TextElement*)element).value];
 			 }
 			 if ([element.key isEqualToString:HR_KEY]){
 				 [self.hrUITextField setText:((TextElement*)element).value];
@@ -92,10 +92,10 @@ static NSString *const SPO2_KEY = @"SpO2Key";
 {
 	 NSAssert([section getElementForKey:STABLE_KEY]!= nil, @"Stable is nil");
 	 NSAssert([section getElementForKey:DENTITION_INTACT_KEY]!= nil, @"DentitionIntact is nil");
-	 NSAssert([section getElementForKey:POST_PROCEDURE_GENERAL_CONDITION_OTHER_KEY]!= nil, @"PostProcedureGeneralConditionOther is nil");
-	 NSAssert([section getElementForKey:POST_PROCEDURE_GENERAL_CONDITION_OTHER_REASON_KEY]!= nil, @"PostProcedureGeneralConditionOtherReason is nil");
-	 NSAssert([section getElementForKey:BP_SYSTOLIC_KEY]!= nil, @"BpSystolic is nil");
-	 NSAssert([section getElementForKey:DIASTOLIC_KEY]!= nil, @"Diastolic is nil");
+	 NSAssert([section getElementForKey:OTHER_BOOL_KEY]!= nil, @"OtherBool is nil");
+	 NSAssert([section getElementForKey:OTHER_TEXT_KEY]!= nil, @"OtherText is nil");
+	 NSAssert([section getElementForKey:BP_KEY]!= nil, @"Bp is nil");
+	 NSAssert([section getElementForKey:BP2_KEY]!= nil, @"Bp2 is nil");
 	 NSAssert([section getElementForKey:HR_KEY]!= nil, @"Hr is nil");
 	 NSAssert([section getElementForKey:RR_KEY]!= nil, @"Rr is nil");
 	 NSAssert([section getElementForKey:TEMP_KEY]!= nil, @"Temp is nil");
@@ -127,41 +127,41 @@ static NSString *const SPO2_KEY = @"SpO2Key";
 
 	 dentitionIntact.value = [NSNumber numberWithBool:self.dentitionIntactBBCheckBox.isSelected];
 	 
-	 BooleanFormElement *postProcedureGeneralConditionOther = (BooleanFormElement*)[_section getElementForKey:POST_PROCEDURE_GENERAL_CONDITION_OTHER_KEY];
-	 if (!postProcedureGeneralConditionOther) {
-		 postProcedureGeneralConditionOther = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 postProcedureGeneralConditionOther.key = POST_PROCEDURE_GENERAL_CONDITION_OTHER_KEY;
-		 [_section addElementsObject:postProcedureGeneralConditionOther];
+	 BooleanFormElement *otherBool = (BooleanFormElement*)[_section getElementForKey:OTHER_BOOL_KEY];
+	 if (!otherBool) {
+		 otherBool = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 otherBool.key = OTHER_BOOL_KEY;
+		 [_section addElementsObject:otherBool];
 	 }
 
-	 postProcedureGeneralConditionOther.value = [NSNumber numberWithBool:self.postProcedureGeneralConditionOtherBBCheckBox.isSelected];
+	 otherBool.value = [NSNumber numberWithBool:self.otherBoolBBCheckBox.isSelected];
 	 
-	 TextElement *postProcedureGeneralConditionOtherReason = (TextElement*)[_section getElementForKey:POST_PROCEDURE_GENERAL_CONDITION_OTHER_REASON_KEY];
-	 if (!postProcedureGeneralConditionOtherReason) {
-		 postProcedureGeneralConditionOtherReason = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 postProcedureGeneralConditionOtherReason.key = POST_PROCEDURE_GENERAL_CONDITION_OTHER_REASON_KEY;
-		 [_section addElementsObject:postProcedureGeneralConditionOtherReason];
+	 TextElement *otherText = (TextElement*)[_section getElementForKey:OTHER_TEXT_KEY];
+	 if (!otherText) {
+		 otherText = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 otherText.key = OTHER_TEXT_KEY;
+		 [_section addElementsObject:otherText];
 	 }
 
-	 postProcedureGeneralConditionOtherReason.value = self.postProcedureGeneralConditionOtherReasonUITextField.text;
+	 otherText.value = self.otherTextUITextField.text;
 	 
-	 TextElement *bpSystolic = (TextElement*)[_section getElementForKey:BP_SYSTOLIC_KEY];
-	 if (!bpSystolic) {
-		 bpSystolic = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 bpSystolic.key = BP_SYSTOLIC_KEY;
-		 [_section addElementsObject:bpSystolic];
+	 TextElement *bp = (TextElement*)[_section getElementForKey:BP_KEY];
+	 if (!bp) {
+		 bp = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 bp.key = BP_KEY;
+		 [_section addElementsObject:bp];
 	 }
 
-	 bpSystolic.value = self.bpSystolicUITextField.text;
+	 bp.value = self.bpUITextField.text;
 	 
-	 TextElement *diastolic = (TextElement*)[_section getElementForKey:DIASTOLIC_KEY];
-	 if (!diastolic) {
-		 diastolic = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
-		 diastolic.key = DIASTOLIC_KEY;
-		 [_section addElementsObject:diastolic];
+	 TextElement *bp2 = (TextElement*)[_section getElementForKey:BP2_KEY];
+	 if (!bp2) {
+		 bp2 = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 bp2.key = BP2_KEY;
+		 [_section addElementsObject:bp2];
 	 }
 
-	 diastolic.value = self.diastolicUITextField.text;
+	 bp2.value = self.bp2UITextField.text;
 	 
 	 TextElement *hr = (TextElement*)[_section getElementForKey:HR_KEY];
 	 if (!hr) {

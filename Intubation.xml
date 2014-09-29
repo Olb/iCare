@@ -17,29 +17,36 @@
     </Data>
     
     <Graphics>
-        <Group label="Induction" orientation="vertical">
-            <Group orientation="horizontal" label="Blade">
-                <Element name="Curved" label="Curved" />
-                <Element name="CurvedNumber" label="#" />
-                <Element name="Straight" label="Straight" />
-                <Element name="StraightNumber" label="#" />
+        <Group label="Intubation" orientation="vertical">
+            <Group orientation="horizontal" marginB="8">
+                <Group orientation="vertical" >
+                    <Element label="Blade" />
+                    <Group orientation="horizontal">
+                        <Element name="Curved" label="Curved" />
+                        <Element name="CurvedNumber" label="#" />
+                    </Group>
+                    <Group orientation="horizontal">
+                        <Element name="Straight" label="Straight" />
+                        <Element name="StraightNumber" label="#" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="VideoLaryngoscopy" label="Video Laryngoscopy" />
+                    <Element name="NaEttInPlace" label="N/A: ETT in place" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="Stylet" label="Stylet" />
+                    <Element name="Atraumatic" label="Atraumatic" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="Blind" label="Blind" />
+                    <Element name="Awake" label="Awake" />
+                    <Element name="Fiberoptic" label="Fiberoptic" />
+                </Group>
             </Group>
-            <Group orientation="horizontal">
-                <Element name="VideoLaryngoscopy" label="Video Laryngoscopy" />
-                <Element name="NaEttInPlace" label="N/A: ETT in place" />
-            </Group>
-            <Group orientation="horizontal">
-                <Element name="Stylet" label="Stylet" />
-                <Element name="Atraumatic" label="Atraumatic" />
-            </Group>
-            <Group orientation="horizontal">
+            <Group orientation="horizontal" >
                 <Element name="Difficult" label="Difficult" />
                 <Element name="DifficultReason" />
-            </Group>
-            <Group orientation="horizontal">
-                <Element name="Blind" label="Blind" />
-                <Element name="Awake" label="Awake" />
-                <Element name="Fiberoptic" label="Fiberoptic" />
             </Group>
         </Group>
     </Graphics>

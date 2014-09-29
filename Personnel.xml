@@ -6,4 +6,20 @@
         <Element type="StringListElement" name="Anesthesiologist"/>
         <Element type="StringListElement" name="CrnaAaa"/>
     </Data>
+    <Graphics>
+        <Group label="Personnel" orientation="vertical">
+            <Element name="ResponsibleMd" label="Responsible MD/DO at Emergence: " marginB="8"/>
+            <Group orientation="horizontal">
+                <Group orientation="vertical">
+                    <Element name="Surgeon" label="Surgeon" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="Anesthesiologist" label="Anesthesiologist" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="CrnaAaa" label="CRNA/AA" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

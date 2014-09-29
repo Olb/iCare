@@ -14,12 +14,21 @@
     </Data>
     
     <Graphics>
-        <Group label="Induction" orientation="vertical">
-            <Element name="Iv" label="IV" />
-            <Element name="Im" label="IM" />
-            <Element name="Inhalation" label="Inhalation" />
-            <Element name="PreO2" label="Pre-O2" />
-            <Element name="RapidSequence" label="Rapid sequence" />
+        <Group orientation="horizontal">
+            <Group label="Induction" orientation="vertical">
+                <Element name="Iv" label="IV" />
+                <Element name="Im" label="IM" />
+                <Element name="Inhalation" label="Inhalation" />
+                <Element name="PreO2" label="Pre-O2" />
+                <Element name="RapidSequence" label="Rapid sequence" />
+            </Group>
+            <Group label="Device" orientation="vertical">
+                <Element name="OralAirway" label="Oral Airway" />
+                <Element name="NasalAirway" label="Nasal Airway" />
+                <Element name="Mask" label="Mask" />
+                <Element name="LMA" label="LMA" />
+                <Element name="Size" label="Size:" />
+            </Group>
         </Group>
     </Graphics>
 </Section>

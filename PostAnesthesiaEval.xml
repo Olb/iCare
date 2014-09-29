@@ -18,4 +18,48 @@
         <Element type="BooleanFormElement" name="ComplicationsOther"/>
         <Element type="TextElement" name="ComplicationsOtherReason"/>
     </Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Post Anesthesia Eval">
+            <Group orientation="horizontal">
+                <Group orientation="vertical" label="Mental Status" >
+                    <Element name="Arousable" label="Arousable" />
+                    <Element name="Awake" label="Awake" />
+                    <Group orientation="horizontal">
+                        <Element name="MentalStatusOther" label="" />
+                        <Element name="MentalStatusOtherReason" label="" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical" label="Cardiac/Resp/Airway Status:" >
+                    <Element name="Stable" label="Stable" />
+                    <Group orientation="horizontal">
+                        <Element name="CardiacRespAirwayStatusOther" label="" />
+                        <Element name="CardiacRespAirwayStatusOtherReason" label="" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical" label="Complications" >
+                    <Element name="ComplicationsNone" label="None" />
+                    <Group orientation="horizontal">
+                        <Element name="ComplicationsOther" label="" />
+                        <Element name="ComplicationsOtherReason" label="" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="RespiratoryRate" label="RR:"/>
+                    <Element name="HeartRate" label="HR:"/>
+                    <Group orientation="horizontal">
+                        <Element name="BpSystolic" label="BP:"/>
+                        <Element name="BpDiastolic" label="/"/>
+                    </Group>
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="Temperature" label="Temp:"/>
+                    <Group orientation="horizontal">
+                        <Element name="SpO2" label="SpO2:"/>
+                        <Element label="%"/>
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>
