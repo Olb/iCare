@@ -7,7 +7,7 @@
     </Data>
     
     <Graphics>
-        <Group orientation="vertical">
+        <Group orientation="vertical" label="IV Antibiotics">
             <Element name="NotIndicated" label="Not indicated based on Pt history and/or procedure" />
             <Element name="IntentionallyGiven" label="Intentionally given after incision" />
             <Element name="IvAntibiotic" label="IV Antibiotics given:" />

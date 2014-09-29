@@ -4,7 +4,7 @@ use Switch;
 use XML::LibXML;
 
 $DEF_MARGIN = 8;
-$DEBUG = "true";
+$DEBUG = "false";
 
 $i = 0;
 sub printElements{
@@ -103,7 +103,7 @@ sub printDrawSectionCodeForGroup{
     print "\t int ".$groupName."Indentation = 0;\n";
     
     if ($group->getAttribute("label") ne ""){
-        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$group->getAttribute("label")."\" atLocation:cursor];\n";
+        print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$group->getAttribute("label")."\" atLocation:cursor isBold:YES];\n";
         checkSizeAndMoveCursor($orientation, $groupName, $marginL, $marginR, $marginT, $marginB);
     }
     print "\t ".$groupName."Indentation = ".$indentation.";\n";
@@ -146,16 +146,20 @@ sub printDrawSectionCodeForGroup{
                             print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
                             print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
                             print "\t \n";
-                            print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                            print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
+                            if ($child->getAttribute("label") ne "") {
+                                print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                                print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
+                            }
                             print "\t previousElementSize.width = cursor.x - elemCursorStart.x;\n";
                             print "\t previousElementSize.height += ".$marginT." + ".$marginB.";\n";
                             
                         }
                         case "TextElement" {
-                            print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
-                            print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
-                            print "\t \n";
+                            if ($child->getAttribute("label") ne "") {
+                                print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                                print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
+                                print "\t \n";
+                            }
                             print "\t previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value atLocation:cursor];\n";
                             print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
                             print "\t previousElementSize.width = cursor.x - elemCursorStart.x;\n";

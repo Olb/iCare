@@ -27,27 +27,26 @@
                 <Element name="EquipmentChecked" label="Equipment Checked"/>
                 <Element name="AudibleAlarmsOn" label="Audible alarms on" />
             </Group>
-            <Element label="Monitoring And Equipment" marginT="8"/>
-
-            <Group orientation="horizontal" marginL="8" >
-                <Group orientation="vertical" marginT="0" marginB="0">
-                    <Element name="PrecordialSteth" label="Precordial Steth Checked"/>
-                    <Element name="EsophagealSteth" label="Esophageal Steth"/>
-                    <Element name="TEE" label="TEE"/>
-                    <Element name="IntentionalHypothermia" label="Intentional Hypothermia" />
-                </Group>
-                <Group orientation="vertical">
-                    <Element name="NerveStimulator" label="Nerve Stimulator" />
-                    <Element name="CellSaver" label="Cell Saver" />
-                    <Element name="FluidWarmer" label="Fluid Warmer" />
+            <Group orientation="vertical" label="Monitoring And Equipment" marginT="8">
+                <Group orientation="horizontal" marginL="8" >
+                    <Group orientation="vertical" marginT="0" marginB="0">
+                        <Element name="PrecordialSteth" label="Precordial Steth Checked"/>
+                        <Element name="EsophagealSteth" label="Esophageal Steth"/>
+                        <Element name="TEE" label="TEE"/>
+                        <Element name="IntentionalHypothermia" label="Intentional Hypothermia" />
+                    </Group>
+                    <Group orientation="vertical">
+                        <Element name="NerveStimulator" label="Nerve Stimulator" />
+                        <Element name="CellSaver" label="Cell Saver" />
+                        <Element name="FluidWarmer" label="Fluid Warmer" />
+                    </Group>
                 </Group>
             </Group>
-            
             <Group label="IntraOp Forced Air Warming Device:" orientation="horizontal" marginT="8">
                 <Element name="IntraOpForcedAirUpper" label="Upper" />
                 <Element name="IntraOpForcedAirLower" label="Lower" />
             </Group>
-            <Group label="NIBP:" orientation="horizontal" >
+            <Group label="NIBP:" orientation="horizontal" marginT="8" >
                 <Element name="NibpEveryMin" label="every" />
                 <Element label="min" />
             </Group>

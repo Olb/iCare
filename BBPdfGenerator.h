@@ -13,6 +13,7 @@
 +(NSString*)getPDFFileNameForForm:(Form*)form;
 + (bool) generatePdfForForm:(Form*)form;
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location;
++(CGSize)drawText:(id)text atLocation:(CGPoint)location isBold:(BOOL)bold;
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location;
 
 @end

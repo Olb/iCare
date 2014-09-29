@@ -20,4 +20,5 @@
 +(void)drawRect:(CGRect)rectangle withRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
 +(void)deleteManagedObject:(NSManagedObject*)object;
 +(void)refreshManagedObject:(NSManagedObject*)object;
++(void)drawLineFromPoint:(CGPoint)startPoint toPoint:(CGPoint)endPoint;
 @end

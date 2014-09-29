@@ -9,7 +9,7 @@
     </Data>
     
     <Graphics>
-        <Group label="If Pt on Beta-Blocker" orientation="vertical" marginL="24">
+        <Group label="If Pt on Beta-Blocker" orientation="vertical" >
             <Element name="BetaBlockTakenPastDay" label="Taken in past 24 hrs" />
             <Element name="GivenInOr" label="Given in O.R." />
             <Element name="ContraIndication" label="ContraIndication:" />

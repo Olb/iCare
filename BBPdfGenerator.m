@@ -19,6 +19,9 @@
 #import "BBPdfSectionBuilder.h"
 #import "BBUtil.h"
 
+#define PAGE_WIDTH 612
+#define PAGE_HEIGHT 792
+
 @implementation BBPdfGenerator
 
 +(NSString*)getPDFFileNameForForm:(Form*)form
@@ -48,14 +51,29 @@
     UIGraphicsBeginPDFContextToFile([BBPdfGenerator getPDFFileNameForForm:form], CGRectZero, nil);
     
     UIGraphicsBeginPDFPage();
+    NSString *formTitle = @"Anesthesia Record";
+    NSString *patientName = [NSString stringWithFormat:@"%@, %@", form.operation.patient.lastName, form.operation.patient.firstName];
+    NSString *operation = form.operation.name;
+    NSString *operationDate = [BBUtil formatDate:form.operation.preOpDate];
+    CGPoint recordLabelPoint = CGPointMake((PAGE_WIDTH - [BBPdfGenerator getStringSize:formTitle withFont:[UIFont boldSystemFontOfSize:16.0f]].width)/2.0, 20.0f);
+    [BBPdfGenerator drawText:formTitle atLocation:recordLabelPoint withFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [BBPdfGenerator drawText:patientName atLocation:CGPointMake(20.0, 15*3) isBold:YES];
+    [BBPdfGenerator drawText:operation atLocation:CGPointMake(20.0, 15*4) isBold:YES];
+    [BBPdfGenerator drawText:operationDate atLocation:CGPointMake(20.0, 15*5) isBold:YES];
     
-    CGPoint location = CGPointMake(20, 20);
+    CGPoint location = CGPointMake(20, 15*7.0);
+    float sectionPadding = 8.0f;
     for ( FormSection* section in form.sections ){
-
+        int sizeLeftInPage = PAGE_HEIGHT - location.y;
+        if (sizeLeftInPage < [BBPdfGenerator measureSection:section].height) {
+            UIGraphicsBeginPDFPage();
+            location.y = 20.0;
+        }
         CGSize size = [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:location];
-        [BBUtil drawRect:CGRectMake(location.x, location.y, size.width, size.height)];
+        [BBUtil drawLineFromPoint:CGPointMake(20.0, location.y + size.height + sectionPadding) toPoint:CGPointMake(592.0, location.y + size.height + sectionPadding)];
+        //[BBUtil drawRect:CGRectMake(location.x, location.y, size.width, size.height)];
         
-        location.y += size.height;
+        location.y += size.height + sectionPadding*2;
     }
     
     UIGraphicsEndPDFContext();
@@ -63,7 +81,19 @@
     return true;
 }
 
++(CGSize)measureSection:(FormSection*)section
+{
+    return [BBPdfSectionBuilder drawSection:(FormSection*)section atLocation:CGPointMake(2000, 2000)];
+}
 
++(CGSize)getStringSize:(NSString*)text withFont:(UIFont*)font
+{
+    CGSize size = [text sizeWithAttributes:
+                   @{NSFontAttributeName:
+                         font}];
+    
+    return size;
+}
 
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location
 {
@@ -75,30 +105,34 @@
 
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location
 {
-    UIFont *font = [UIFont systemFontOfSize:12.0f];
+    return [BBPdfGenerator drawText:text atLocation:location isBold:NO];
+}
+
++(CGSize)drawText:(NSString*)text atLocation:(CGPoint)location withFont:(UIFont*)font
+{
+   
     CGSize size = [text sizeWithAttributes:
                    @{NSFontAttributeName:
                          font}];
     
     CGRect frameRect = CGRectMake(location.x, location.y, size.width, size.height);
-
-    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
-                                nil];
-    [text drawInRect:frameRect withAttributes:attr];
     
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
+                          nil];
+    [text drawInRect:frameRect withAttributes:attr];
     return size;
 }
 
-/*
- 
- <Graphics>
- <Group label="Anesthesia PreOp time used to:">
- <Element name="CheckConsents" label="Check consents and review chart/plan with Pt" />
- <Element name="StartIv" label="Start IV" />
- <Element name="OtherActions" label="Other Actions" />
- </Group>
- </Graphics>
- 
- */
++(CGSize)drawText:(id)text atLocation:(CGPoint)location isBold:(BOOL)bold
+{
+    UIFont *font;
+    if (!bold) {
+        font = [UIFont systemFontOfSize:12.0f];
+    } else {
+        font = [UIFont boldSystemFontOfSize:12.0f];
+    }
+    
+    return [BBPdfGenerator drawText:text atLocation:location withFont:font];
+}
 
 @end

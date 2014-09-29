@@ -8,7 +8,7 @@
 	</Data>
     
     <Graphics>
-        <Group label="Anesthesia Type" orientation="vertical">
+        <Group label="Premeds given by RN in holding area:" orientation="vertical">
             <Element name="Midazolam" label="Midazolam"/>
             <Element name="Ondansetron" label="Ondansetron" />
             <Element name="PremedsGiven" label="Other premeds given:" />

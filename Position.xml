@@ -12,4 +12,28 @@
         <Element type="BooleanFormElement" name="ArmsElbowsOnPaddedArmBoardDown"/>
         <Element type="BooleanFormElement" name="ArmsTuckedNeutralPosition"/>
     </Data>
+    <Graphics>
+        <Group label="Position" orientation="vertical" >
+            <Element label="Eyes:" marginB="4"/>
+            <Group orientation="horizontal" marginL="8">
+                <Group orientation="vertical" >
+                    <Element name="TapedShut" label="Taped shut" />
+                    <Element name="Shield" label="Shield" />
+                    <Element name="AxillaryRoll" label="Axillary roll" />
+                </Group>
+                <Group orientation="vertical" >
+                    <Element name="Lubricated" label="Lubricated" />
+                    <Element name="HeadNeckNeutral" label="Head / Neck neutral" />
+                    <Element name="PressurePointsProtected" label="Pressure points protected" />
+                </Group>
+            </Group>
+            <Element label="Extremities:" marginB="4" marginT="8"/>
+            <Group orientation="vertical" marginL="8">
+                <Element name="ArmsElbowsOnPaddedArmBoard" label="Arm(s) &amp; elbow(s) on padded armboard\n at less than 90 deg. with palm:" />
+                <Element name="ArmsElbowsOnPaddedArmBoardUp" label="Up" marginL="20"/>
+                <Element name="ArmsElbowsOnPaddedArmBoardDown" label="Down" marginL="20"/>
+            </Group>
+            <Element name="ArmsTuckedNeutralPosition" label="Arm(s) tucked neutral position" />
+        </Group>
+    </Graphics>
 </Section>

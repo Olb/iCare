@@ -99,4 +99,16 @@
     [BBUtil drawRect:rectangle withRed:0.0 green:0.0 blue:0.0];
 }
 
++(void)drawLineFromPoint:(CGPoint)startPoint toPoint:(CGPoint)endPoint
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetLineWidth(context, 1.0);
+    CGColorRef colorRef = [[UIColor colorWithRed:155.0/255.0 green:126.0/255.0 blue:21.0/255.0 alpha:1.0] CGColor];
+    CGContextSetStrokeColorWithColor(context, colorRef);
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+    CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+    CGContextStrokePath(context);
+}
+
 @end

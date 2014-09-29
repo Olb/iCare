@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *paCatheterBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *nasoGastricTubeBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *oroGastricTubeBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBCheckBox *ivsBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *ivsSizeAndSiteTextField;
 @property (weak, nonatomic) IBOutlet UITableView *ivsSizeAndSiteTable;
 @property (strong, nonatomic) StringArrayTableAdapter *ivsSizeAndSiteTableAdapter;
@@ -39,7 +38,6 @@ static NSString *const CENTRAL_VENOUS_CATHETER_KEY = @"CentralVenousCatheterKey"
 static NSString *const PA_CATHETER_KEY = @"PaCatheterKey";
 static NSString *const NASO_GASTRIC_TUBE_KEY = @"NasoGastricTubeKey";
 static NSString *const ORO_GASTRIC_TUBE_KEY = @"OroGastricTubeKey";
-static NSString *const IVS_KEY = @"IvsKey";
 static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 
 - (void)viewDidLoad
@@ -69,9 +67,6 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 			 if ([element.key isEqualToString:ORO_GASTRIC_TUBE_KEY]){
 				 [self.oroGastricTubeBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
-			 if ([element.key isEqualToString:IVS_KEY]){
-				 [self.ivsBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
-			 }
 			 if ([element.key isEqualToString:IVS_SIZE_AND_SITE_KEY]){
 				 self.ivsSizeAndSiteTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
 				 [self.ivsSizeAndSiteTable reloadData];
@@ -87,7 +82,6 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 	 NSAssert([section getElementForKey:PA_CATHETER_KEY]!= nil, @"PaCatheter is nil");
 	 NSAssert([section getElementForKey:NASO_GASTRIC_TUBE_KEY]!= nil, @"NasoGastricTube is nil");
 	 NSAssert([section getElementForKey:ORO_GASTRIC_TUBE_KEY]!= nil, @"OroGastricTube is nil");
-	 NSAssert([section getElementForKey:IVS_KEY]!= nil, @"Ivs is nil");
 	 NSAssert([section getElementForKey:IVS_SIZE_AND_SITE_KEY]!= nil, @"IvsSizeAndSite is nil");
 	 
 }
@@ -142,15 +136,6 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 	 }
 
 	 oroGastricTube.value = [NSNumber numberWithBool:self.oroGastricTubeBBCheckBox.isSelected];
-	 
-	 BooleanFormElement *ivs = (BooleanFormElement*)[_section getElementForKey:IVS_KEY];
-	 if (!ivs) {
-		 ivs = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
-		 ivs.key = IVS_KEY;
-		 [_section addElementsObject:ivs];
-	 }
-
-	 ivs.value = [NSNumber numberWithBool:self.ivsBBCheckBox.isSelected];
 	 
 	 StringListElement *ivsSizeAndSite = (StringListElement*)[_section getElementForKey:IVS_SIZE_AND_SITE_KEY];
 	 if (!ivsSizeAndSite) {
