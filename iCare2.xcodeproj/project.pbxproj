@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
-		280ECCAD19D611B3005FE3AF /* PDFTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */; };
+		280ECCAD19D611B3005FE3AF /* PDFDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */; };
 		280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */; };
 		2812704219C76081009A9644 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812704119C76081009A9644 /* FormGroup.m */; };
 		2812709E19C7D985009A9644 /* Cardio.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2812709D19C7D985009A9644 /* Cardio.xml */; };
@@ -50,6 +50,8 @@
 		2838DE2D19CB32F70025F7DE /* InductionAndDevice.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE2C19CB32F70025F7DE /* InductionAndDevice.xml */; };
 		2838DE2F19CB33F30025F7DE /* Intubation.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE2E19CB33F30025F7DE /* Intubation.xml */; };
 		2838DE3119CB36880025F7DE /* InvasiveLines.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE3019CB36880025F7DE /* InvasiveLines.xml */; };
+		284819E619D9AF2A00E0ED21 /* PDFDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */; };
+		284819E819D9B9CF00E0ED21 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284819E719D9B9CF00E0ED21 /* MessageUI.framework */; };
 		28566D5119D1AF45000124CB /* FirstTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5019D1AF45000124CB /* FirstTest.m */; };
 		28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5619D1D873000124CB /* MedicationFormElement.m */; };
 		289BDC8119CBA9BA00C683E7 /* Airway.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8019CBA9BA00C683E7 /* Airway.xml */; };
@@ -201,8 +203,8 @@
 /* Begin PBXFileReference section */
 		28034B3719C25B4200DB0A1E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
-		280ECCAA19D611B3005FE3AF /* PDFTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFTestViewController.h; sourceTree = "<group>"; };
-		280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFTestViewController.m; sourceTree = "<group>"; };
+		280ECCAA19D611B3005FE3AF /* PDFDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDisplayViewController.h; sourceTree = "<group>"; };
+		280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDisplayViewController.m; sourceTree = "<group>"; };
 		280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AnesthesiaRecord.pdf; sourceTree = "<group>"; };
 		2812704019C76081009A9644 /* FormGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormGroup.h; sourceTree = "<group>"; };
 		2812704119C76081009A9644 /* FormGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormGroup.m; sourceTree = "<group>"; };
@@ -255,6 +257,8 @@
 		2838DE2C19CB32F70025F7DE /* InductionAndDevice.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InductionAndDevice.xml; sourceTree = "<group>"; };
 		2838DE2E19CB33F30025F7DE /* Intubation.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Intubation.xml; sourceTree = "<group>"; };
 		2838DE3019CB36880025F7DE /* InvasiveLines.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvasiveLines.xml; sourceTree = "<group>"; };
+		284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFDisplayViewController.xib; sourceTree = "<group>"; };
+		284819E719D9B9CF00E0ED21 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		28566D5019D1AF45000124CB /* FirstTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTest.m; sourceTree = "<group>"; };
 		28566D5519D1D873000124CB /* MedicationFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationFormElement.h; sourceTree = "<group>"; };
 		28566D5619D1D873000124CB /* MedicationFormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationFormElement.m; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284819E819D9B9CF00E0ED21 /* MessageUI.framework in Frameworks */,
 				98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */,
 				F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */,
 				F4615D53192F908E0031470B /* CoreData.framework in Frameworks */,
@@ -623,7 +628,7 @@
 				988D164419AE63A1009A887A /* InvasiveLinesViewController.h */,
 				988D164719AE63A1009A887A /* IVAntibioticNameViewController.h */,
 				988D164A19AE63A1009A887A /* MonitorinAndEquipmentViewController.h */,
-				280ECCAA19D611B3005FE3AF /* PDFTestViewController.h */,
+				280ECCAA19D611B3005FE3AF /* PDFDisplayViewController.h */,
 				988D164D19AE63A2009A887A /* PersonnelViewController.h */,
 				988D165119AE63A2009A887A /* PositionViewController.h */,
 				988D165419AE63A2009A887A /* PostAnesthesiaEvalViewController.h */,
@@ -642,7 +647,8 @@
 				988D164519AE63A1009A887A /* InvasiveLinesViewController.m */,
 				988D164819AE63A1009A887A /* IVAntibioticNameViewController.m */,
 				988D164B19AE63A1009A887A /* MonitorinAndEquipmentViewController.m */,
-				280ECCAB19D611B3005FE3AF /* PDFTestViewController.m */,
+				280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */,
+				284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */,
 				988D164E19AE63A2009A887A /* PersonnelViewController.m */,
 				988D165219AE63A2009A887A /* PositionViewController.m */,
 				988D165519AE63A2009A887A /* PostAnesthesiaEvalViewController.m */,
@@ -792,6 +798,7 @@
 		F4615D4B192F908E0031470B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				284819E719D9B9CF00E0ED21 /* MessageUI.framework */,
 				98DA485419C8A0E800E4727B /* CoreText.framework */,
 				F4615D4C192F908E0031470B /* Foundation.framework */,
 				F4615D4E192F908E0031470B /* CoreGraphics.framework */,
@@ -945,6 +952,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Spartan Systems Inc.";
 				TargetAttributes = {
+					F4615D48192F908E0031470B = {
+						DevelopmentTeam = R6F6755DS5;
+					};
 					F4615D68192F908E0031470B = {
 						TestTargetID = F4615D48192F908E0031470B;
 					};
@@ -1025,6 +1035,7 @@
 				2812709E19C7D985009A9644 /* Cardio.xml in Resources */,
 				2838DE3119CB36880025F7DE /* InvasiveLines.xml in Resources */,
 				281270D919C885C9009A9644 /* perlheader.pl in Resources */,
+				284819E619D9AF2A00E0ED21 /* PDFDisplayViewController.xib in Resources */,
 				28CCCB3619C3A15000B2A0C6 /* TimePicker.xib in Resources */,
 				988D168B19AE63A2009A887A /* PositionViewController.xib in Resources */,
 				281270A019C7DB1C009A9644 /* Hepato.xml in Resources */,
@@ -1128,7 +1139,7 @@
 				988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */,
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
 				98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */,
-				280ECCAD19D611B3005FE3AF /* PDFTestViewController.m in Sources */,
+				280ECCAD19D611B3005FE3AF /* PDFDisplayViewController.m in Sources */,
 				2812704219C76081009A9644 /* FormGroup.m in Sources */,
 				988D168C19AE63A2009A887A /* PostAnesthesiaEvalViewController.m in Sources */,
 				F47FF38B19AE655A00809D30 /* AnesthesiaRecordController.m in Sources */,
@@ -1285,10 +1296,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCare2/iCare2-Prefix.pch";
 				INFOPLIST_FILE = "iCare2/iCare2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1298,10 +1312,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCare2/iCare2-Prefix.pch";
 				INFOPLIST_FILE = "iCare2/iCare2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

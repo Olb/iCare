@@ -26,6 +26,7 @@
 @property (strong, nonatomic) StringArrayTableAdapter *pastSurgicalProceduresTableAdapter;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsYesPatientBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsYesFamilyBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsNoBBCheckBox;
 @end
 
 @implementation PastSurgicalProceduresViewController
@@ -33,6 +34,7 @@ NSString *const PAST_SURGICAL_PROCEDURES_SECTION_TITLE = @"PastSurgicalProcedure
 static NSString *const PAST_SURGICAL_PROCEDURES_KEY = @"PastSurgicalProceduresKey";
 static NSString *const HX_ANESTHESIA_PROBLEMS_YES_PATIENT_KEY = @"HxAnesthesiaProblemsYesPatientKey";
 static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaProblemsYesFamilyKey";
+static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoKey";
 
 - (void)viewDidLoad
 {
@@ -56,6 +58,9 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaPro
 			 if ([element.key isEqualToString:HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY]){
 				 [self.hxAnesthesiaProblemsYesFamilyBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:HX_ANESTHESIA_PROBLEMS_NO_KEY]){
+				 [self.hxAnesthesiaProblemsNoBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
 		 }
 	 }
 }
@@ -65,6 +70,7 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaPro
 	 NSAssert([section getElementForKey:PAST_SURGICAL_PROCEDURES_KEY]!= nil, @"PastSurgicalProcedures is nil");
 	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_YES_PATIENT_KEY]!= nil, @"HxAnesthesiaProblemsYesPatient is nil");
 	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY]!= nil, @"HxAnesthesiaProblemsYesFamily is nil");
+	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_NO_KEY]!= nil, @"HxAnesthesiaProblemsNo is nil");
 	 
 }
 
@@ -105,6 +111,15 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaPro
 	 }
 
 	 hxAnesthesiaProblemsYesFamily.value = [NSNumber numberWithBool:self.hxAnesthesiaProblemsYesFamilyBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *hxAnesthesiaProblemsNo = (BooleanFormElement*)[_section getElementForKey:HX_ANESTHESIA_PROBLEMS_NO_KEY];
+	 if (!hxAnesthesiaProblemsNo) {
+		 hxAnesthesiaProblemsNo = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 hxAnesthesiaProblemsNo.key = HX_ANESTHESIA_PROBLEMS_NO_KEY;
+		 [_section addElementsObject:hxAnesthesiaProblemsNo];
+	 }
+
+	 hxAnesthesiaProblemsNo.value = [NSNumber numberWithBool:self.hxAnesthesiaProblemsNoBBCheckBox.isSelected];
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];

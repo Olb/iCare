@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Form.h"
-@interface PDFTestViewController : UIViewController
+@interface PDFDisplayViewController : UIViewController
 @property (strong, nonatomic) Form *form;
 @end

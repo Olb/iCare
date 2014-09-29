@@ -79,6 +79,7 @@
     practitioner.firstName = self.firstNameTextField.text;
     practitioner.lastName = self.lastNameTextField.text;
     practitioner.loginID = self.usernameTextField.text;
+    practitioner.email = self.emailTextField.text;
     practitioner.password = self.passwordOneTextField.text;
     practitioner.passwordSalt = [self randomStringWithLength:24];
     practitioner.password = [BBUtil sha256:[NSString stringWithFormat:@"%@%@",

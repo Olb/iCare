@@ -4,4 +4,11 @@
         <Element type="BooleanFormElement" name="NoKnownAllergies" />
 		<Element type="StringListElement" name="AllergiesReactions"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Allergies &amp; Reactions" >
+            <Element name="NoKnownAllergies" label="No Known Allergies" />
+            <Element name="AllergiesReactions" label="Allergies" />
+        </Group>
+    </Graphics>
 </Section>

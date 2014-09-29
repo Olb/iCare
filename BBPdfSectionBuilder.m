@@ -23,7 +23,9 @@ NSDateFormatter* dateFormatter;
 	 if (!dateFormatter) {
 		  dateFormatter = [[NSDateFormatter alloc] init];
 	 }
-	 if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
+	 if ([section.title isEqualToString:@"AllergiesReactionsSectionKey"]){
+		 return [BBPdfSectionBuilder drawAllergiesReactionsSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
 		 return [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"BetaBlockerSectionKey"]){
 		 return [BBPdfSectionBuilder drawBetaBlockerSection:section atLocation:sectionOrigin];
@@ -41,10 +43,16 @@ NSDateFormatter* dateFormatter;
 		 return [BBPdfSectionBuilder drawIntubationSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"InvasiveLinesSectionKey"]){
 		 return [BBPdfSectionBuilder drawInvasiveLinesSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"MedicationsSupplementsSectionKey"]){
+		 return [BBPdfSectionBuilder drawMedicationsSupplementsSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"MonitorinAndEquipmentSectionKey"]){
 		 return [BBPdfSectionBuilder drawMonitorinAndEquipmentSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"PastSurgicalProceduresSectionKey"]){
+		 return [BBPdfSectionBuilder drawPastSurgicalProceduresSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PersonnelSectionKey"]){
 		 return [BBPdfSectionBuilder drawPersonnelSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"PhysicalExamSectionKey"]){
+		 return [BBPdfSectionBuilder drawPhysicalExamSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PositionSectionKey"]){
 		 return [BBPdfSectionBuilder drawPositionSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PostAnesthesiaEvalSectionKey"]){
@@ -65,11 +73,85 @@ NSDateFormatter* dateFormatter;
 	 return CGSizeZero;
 }
 
++(CGSize) drawAllergiesReactionsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Allergies & Reactions" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 group1Indentation = 15;
+	 cursor.x += group1Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NoKnownAllergiesKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"No Known Allergies" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Allergies" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 cursor.x += 10;
+	 for (NSString *text in ((StringListElement*)[section getElementForKey:@"AllergiesReactionsKey"]).value) {
+		 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 }
+
+	 previousElementSize.width = group1MaxWidth;
+	 previousElementSize.height = cursor.y - elemCursorStart.y;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
 +(CGSize) drawAnesthesiaTypeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -315,6 +397,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -444,6 +527,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -528,7 +612,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"H/H" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"HHKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"HHKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -544,7 +634,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"PLT" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PLTKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"PLTKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -560,7 +656,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"K" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"KPotassiumKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"KPotassiumKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -597,7 +699,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"PT/INR/PTT:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PTINRPTTKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"PTINRPTTKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -678,7 +786,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Glucose:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"GlucoseKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"GlucoseKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -694,7 +808,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"at" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"GlucoseTimeKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"GlucoseTimeKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -765,7 +885,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Not normal:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"EkgOtherKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"EkgOtherKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -824,7 +950,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Not normal:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CxrOtherKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CxrOtherKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -886,6 +1018,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -995,6 +1128,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -1054,7 +1188,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"EndoTrachealTubeSizeKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"EndoTrachealTubeSizeKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -1123,7 +1263,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Secured At" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SecuredAtCmKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SecuredAtCmKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -1309,7 +1455,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Size" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"DoubleLumenSizeKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"DoubleLumenSizeKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -1414,6 +1566,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -1515,6 +1668,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxHeight = 0;
 
@@ -1716,7 +1870,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Size:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SizeKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SizeKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -1751,6 +1911,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -1829,7 +1990,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"#" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CurvedNumberKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CurvedNumberKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -1882,7 +2049,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"#" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"StraightNumberKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"StraightNumberKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -2126,7 +2299,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"DifficultReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"DifficultReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -2161,6 +2340,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -2353,11 +2533,94 @@ NSDateFormatter* dateFormatter;
 	 return previousElementSize;
 }
 
++(CGSize) drawMedicationsSupplementsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Meds/Supplements(*If taken the day of proc.)" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 group1Indentation = 15;
+	 cursor.x += group1Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"BetaBlockerKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Beta-Blocker" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Medications" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 cursor.x += 10;
+	 for (MedicationFormElement *e in ((ElementListFormElement*)[section getElementForKey:@"MedsSupplementsKey"]).elements) {
+		 previousElementSize = [BBPdfGenerator drawText:e.name atLocation:cursor];
+		 cursor.x += previousElementSize.width + 8;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.dose atLocation:cursor];
+		 cursor.x += previousElementSize.width + 8;
+		 
+		 previousElementSize = [BBPdfGenerator drawText:e.doseUnit atLocation:cursor];
+		 cursor.x += previousElementSize.width + 8;
+		 previousElementSize.width = cursor.x - elemCursorStart.x;
+		 cursor.x = elemCursorStart.x + 0 + 10;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 }
+
+	 previousElementSize.width = group1MaxWidth;
+	 previousElementSize.height = cursor.y - elemCursorStart.y;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
 +(CGSize) drawMonitorinAndEquipmentSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -2706,7 +2969,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"every" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"NibpEveryMinKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"NibpEveryMinKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -2870,7 +3139,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"other" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"MonitoringEquipmentOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"MonitoringEquipmentOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -2889,11 +3164,164 @@ NSDateFormatter* dateFormatter;
 	 return previousElementSize;
 }
 
++(CGSize) drawPastSurgicalProceduresSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxHeight = 0;
+
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Past Surgical Procedures" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 cursor.x += 10;
+	 for (NSString *text in ((StringListElement*)[section getElementForKey:@"PastSurgicalProceduresKey"]).value) {
+		 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 }
+
+	 previousElementSize.width = group2MaxWidth;
+	 previousElementSize.height = cursor.y - elemCursorStart.y;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group1MaxHeight){
+		 group1MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Hx Anesthesia Problems:" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HxAnesthesiaProblemsNoKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"None" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HxAnesthesiaProblemsYesPatientKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Yes-Patient" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HxAnesthesiaProblemsYesFamilyKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Yes-Family" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group1MaxHeight){
+		 group1MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(cursor.x - group1CursorStart.x, group1MaxHeight);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
 +(CGSize) drawPersonnelSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -2915,7 +3343,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Responsible MD/DO at Emergence: " atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"ResponsibleMdKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"ResponsibleMdKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 8;
@@ -3096,11 +3530,259 @@ NSDateFormatter* dateFormatter;
 	 return previousElementSize;
 }
 
++(CGSize) drawPhysicalExamSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Physical Examination" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 group1Indentation = 15;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxHeight = 0;
+
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 group2Indentation = 0;
+	 cursor.x += group2Indentation;
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Heart" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HeartRegularKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Heart Regular" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //start of draw group4
+	 int group4MaxHeight = 0;
+
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 group4Indentation = 0;
+	 cursor.x += group4Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HeartOtherKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Other" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group4MaxHeight){
+		 group4MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 text = ((TextElement*)[section getElementForKey:@"HeartOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group4MaxHeight){
+		 group4MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
+	 cursor = group4CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //start of draw group5
+	 int group5MaxWidth = 0;
+	 CGPoint group5CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group5Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Lungs" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 0 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 0;
+	 }
+
+	 group5Indentation = 15;
+	 cursor.x += group5Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"LungsClearKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Lungs Clear" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 //start of draw group6
+	 int group6MaxHeight = 0;
+
+	 CGPoint group6CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group6Indentation = 0;
+	 group6Indentation = 0;
+	 cursor.x += group6Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"LungsOtherKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Other" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group6MaxHeight){
+		 group6MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 text = ((TextElement*)[section getElementForKey:@"LungsOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group6MaxHeight){
+		 group6MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group6
+	 previousElementSize = CGSizeMake(cursor.x - group6CursorStart.x, group6MaxHeight);
+	 cursor = group6CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 0 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 0;
+	 }
+
+	 //end of draw group5
+	 previousElementSize = CGSizeMake(group5MaxWidth + 15, cursor.y -group5CursorStart.y);
+	 cursor = group5CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
 +(CGSize) drawPositionSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
 {
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -3395,6 +4077,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -3494,7 +4177,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"MentalStatusOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"MentalStatusOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3584,7 +4273,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CardiacRespAirwayStatusOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CardiacRespAirwayStatusOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3674,7 +4369,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"ComplicationsOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"ComplicationsOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3721,7 +4422,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"RR:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"RespiratoryRateKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"RespiratoryRateKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3737,7 +4444,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"HR:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"HeartRateKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"HeartRateKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3763,7 +4476,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"BP:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"BpSystolicKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"BpSystolicKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3779,7 +4498,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"/" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"BpDiastolicKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"BpDiastolicKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3826,7 +4551,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Temp:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"TemperatureKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"TemperatureKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3852,7 +4583,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"SpO2:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SpO2Key"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SpO2Key"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -3921,6 +4658,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -4039,7 +4777,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CrystalloidKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CrystalloidKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4052,7 +4796,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"AlbuminKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"AlbuminKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4065,7 +4815,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"HetastarchKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"HetastarchKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4142,7 +4898,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PrbcsKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"PrbcsKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4155,7 +4917,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CellSaverKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CellSaverKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4244,7 +5012,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"FfpKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"FfpKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4257,7 +5031,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"PltsKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"PltsKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4270,7 +5050,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"CryoKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"CryoKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4394,7 +5180,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"EblKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"EblKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4407,7 +5199,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"UrineKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"UrineKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4475,6 +5273,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -4568,7 +5367,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 8;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"OtherTextKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"OtherTextKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4615,7 +5420,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"RR:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"RrKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"RrKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4631,7 +5442,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"HR:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"HrKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"HrKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4657,7 +5474,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"BP:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"BpKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"BpKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4673,7 +5496,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"/" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"Bp2Key"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"Bp2Key"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4720,7 +5549,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Temp:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"TempKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"TempKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4746,7 +5581,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"SpO2:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SpO2Key"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SpO2Key"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -4815,6 +5656,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -4903,6 +5745,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -5012,6 +5855,7 @@ NSDateFormatter* dateFormatter;
 	 CGSize previousElementSize;
 	 CGPoint cursor = sectionOrigin;
 	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
 	 //start of draw group1
 	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
@@ -5286,7 +6130,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Interspace:" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"InterspaceKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"InterspaceKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 8;
@@ -5391,7 +6241,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 8;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"ParesthesiaOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"ParesthesiaOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5444,7 +6300,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"grams" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SpiNeedleGramsKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SpiNeedleGramsKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5497,7 +6359,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 8;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"SpiNeedleOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"SpiNeedleOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5524,7 +6392,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Nr. of attempts" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"NrAttemptsKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"NrAttemptsKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5589,7 +6463,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"BupivacaineMlKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"BupivacaineMlKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5649,7 +6529,13 @@ NSDateFormatter* dateFormatter;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"MedOtherReasonKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"MedOtherReasonKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5686,7 +6572,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Fentanyl" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"FentanylKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"FentanylKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -5735,7 +6627,13 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawText:@"Duramorph" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:@"DuramorphKey"]).value atLocation:cursor];
+	 text = ((TextElement*)[section getElementForKey:@"DuramorphKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;

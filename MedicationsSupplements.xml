@@ -2,12 +2,13 @@
 <Section name="MedicationsSupplements">
 	<Data>
 		<Element type="BooleanFormElement" name="BetaBlocker"/>
-		<Element type="ElementListFormElement" name="MedsSupplements"/>
+		<Element type="ElementListFormElement" name="MedsSupplements" listOf="MedicationFormElement"/>
 	</Data>
     
     <Graphics>
-        <Group orientation="vertical">
-            
+        <Group orientation="vertical" label="Meds/Supplements(*If taken the day of proc.)" >
+            <Element name="BetaBlocker" label="Beta-Blocker" />
+            <Element name="MedsSupplements" label="Medications" />
         </Group>
     </Graphics>
 </Section>

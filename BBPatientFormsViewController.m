@@ -166,13 +166,13 @@ const float POUND_MULTIPLIER = 2.20462262f;
     if ([[segue identifier] isEqualToString:@"FormsToPreOpEvalSegue"]) {
         PreOpEvalTableTableViewController *vc = [segue destinationViewController];
         for (Form *f in self.selectedOperation.forms) {
-            if ([f.title isEqualToString:@"AnesthesiaRecord"]) {
+            if ([f.title isEqualToString:@"Pre-Operative Anesthesia Evaluation"]) {
                 vc.form = f;
             }
         }
         if (!vc.form) {
             Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
-            f.title = @"AnesthesiaRecord";
+            f.title = @"Pre-Operative Anesthesia Evaluation";
             [self.selectedOperation addFormsObject:f];
             vc.form = f;
         }
@@ -180,13 +180,13 @@ const float POUND_MULTIPLIER = 2.20462262f;
     if ([[segue identifier] isEqualToString:@"PatientFormsToAnesthesiaRecordSegue"]) {
         AnesthesiaRecordController *vc = [segue destinationViewController];
         for (Form *f in self.selectedOperation.forms) {
-            if ([f.title isEqualToString:@"AnesthesiaRecord"]) {
+            if ([f.title isEqualToString:@"Anesthesia Record"]) {
                 vc.form = f;
             }
         }
         if (!vc.form) {
             Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
-            f.title = @"AnesthesiaRecord";
+            f.title = @"Anesthesia Record";
             [self.selectedOperation addFormsObject:f];
             vc.form = f;
         }

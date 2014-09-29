@@ -51,7 +51,7 @@
     UIGraphicsBeginPDFContextToFile([BBPdfGenerator getPDFFileNameForForm:form], CGRectZero, nil);
     
     UIGraphicsBeginPDFPage();
-    NSString *formTitle = @"Anesthesia Record";
+    NSString *formTitle = form.title;
     NSString *patientName = [NSString stringWithFormat:@"%@, %@", form.operation.patient.lastName, form.operation.patient.firstName];
     NSString *operation = form.operation.name;
     NSString *operationDate = [BBUtil formatDate:form.operation.preOpDate];
@@ -108,19 +108,25 @@
     return [BBPdfGenerator drawText:text atLocation:location isBold:NO];
 }
 
-+(CGSize)drawText:(NSString*)text atLocation:(CGPoint)location withFont:(UIFont*)font
++(CGSize)drawText:(NSString*)text atLocation:(CGPoint)location withFont:(UIFont*)font withAttribs:(NSDictionary*)attr
 {
-   
+
     CGSize size = [text sizeWithAttributes:
                    @{NSFontAttributeName:
                          font}];
     
     CGRect frameRect = CGRectMake(location.x, location.y, size.width, size.height);
     
-    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
-                          nil];
     [text drawInRect:frameRect withAttributes:attr];
     return size;
+}
+
++(CGSize)drawText:(NSString*)text atLocation:(CGPoint)location withFont:(UIFont*)font
+{
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
+                          nil];
+    
+    return [self drawText:text atLocation:location withFont:font withAttribs:attr];
 }
 
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location isBold:(BOOL)bold
@@ -131,8 +137,22 @@
     } else {
         font = [UIFont boldSystemFontOfSize:12.0f];
     }
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
+                          nil];
+    return [BBPdfGenerator drawText:text atLocation:location withFont:font withAttribs:attr];
+}
+
++(CGSize)drawText:(id)text atLocation:(CGPoint)location isUnderlined:(BOOL)underline
+{
+    UIFont *font = [UIFont systemFontOfSize:12.0f];;
+    NSDictionary *attr;
+    if (underline) {
+       attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,@(NSUnderlineStyleSingle),NSUnderlineStyleAttributeName, nil];
+    } else {
+        attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName, nil];
+    }
     
-    return [BBPdfGenerator drawText:text atLocation:location withFont:font];
+    return [BBPdfGenerator drawText:text atLocation:location withFont:font withAttribs:attr];
 }
 
 @end

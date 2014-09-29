@@ -30,7 +30,7 @@
 #import "BPBAppDelegate.h"
 #import "Form.h"
 #import "BBPdfGenerator.h"
-#import "PDFTestViewController.h"
+#import "PDFDisplayViewController.h"
 
 @interface AnesthesiaRecordController ()<BBFormSectionDelegate>
 
@@ -282,7 +282,7 @@
 
 -(void)showPDF:(Form *)form
 {
-    PDFTestViewController *vc = [[PDFTestViewController alloc] init];
+    PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
     vc.form = form;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     //vc.modalPresentationStyle = UIModalPresentationFormSheet;

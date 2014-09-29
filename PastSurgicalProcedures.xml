@@ -4,5 +4,19 @@
 		<Element type="StringListElement" name="PastSurgicalProcedures"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesPatient"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesFamily"/>
+        <Element type="BooleanFormElement" name="HxAnesthesiaProblemsNo" />
 	</Data>
+    
+    <Graphics>
+        <Group orientation="horizontal" >
+            <Group orientation="vertical" label="Past Surgical Procedures">
+                <Element name="PastSurgicalProcedures"  />
+            </Group>
+            <Group orientation="vertical" label="Hx Anesthesia Problems:">
+                <Element name="HxAnesthesiaProblemsNo" label="None" />
+                <Element name="HxAnesthesiaProblemsYesPatient" label="Yes-Patient" />
+                <Element name="HxAnesthesiaProblemsYesFamily" label="Yes-Family" />
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

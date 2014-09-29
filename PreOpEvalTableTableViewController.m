@@ -29,6 +29,9 @@
 #import "AllergiesReactionsViewController.h"
 #import "PhysicalExamViewController.h"
 #import "AirwayViewController.h"
+#import "BBPdfGenerator.h"
+#import "PDFDisplayViewController.h"
+#import "Form.h"
 
 @interface PreOpEvalTableTableViewController () <BBFormSectionDelegate>
 
@@ -287,6 +290,14 @@
     }
 }
 
+- (IBAction)showPDF:(id)sender {
+    [BBPdfGenerator generatePdfForForm:self.form];
+    PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
+    vc.form = self.form;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
 
 @end

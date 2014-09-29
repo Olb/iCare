@@ -8,4 +8,24 @@
         <Element type="BooleanFormElement" name="LungsOther" />
         <Element type="TextElement" name="LungsOtherReason" />
 	</Data>
+    <Graphics>
+        <Group orientation="vertical" label="Physical Examination" >
+            <Group orientation="horizontal">
+                <Group orientation="vertical" label="Heart" >
+                    <Element name="HeartRegular" label="Heart Regular" />
+                    <Group orientation="horizontal" >
+                        <Element name="HeartOther" label="Other" />
+                        <Element name="HeartOtherReason" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical" label="Lungs" >
+                    <Element name="LungsClear" label="Lungs Clear" />
+                    <Group orientation="horizontal" >
+                        <Element name="LungsOther" label="Other" />
+                        <Element name="LungsOtherReason" />
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

@@ -1093,7 +1093,13 @@
                             <outlet property="delegate" destination="5Rl-Ev-Wyy" id="Ci1-05-RPC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="WGr-Rp-hmS"/>
+                    <navigationItem key="navigationItem" id="WGr-Rp-hmS">
+                        <barButtonItem key="rightBarButtonItem" title="Show PDF" id="PlI-jk-gvl">
+                            <connections>
+                                <action selector="showPDF:" destination="5Rl-Ev-Wyy" id="FlG-LN-STH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSB-HU-hy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

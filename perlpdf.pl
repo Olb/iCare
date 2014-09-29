@@ -160,7 +160,13 @@ sub printDrawSectionCodeForGroup{
                                 print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
                                 print "\t \n";
                             }
-                            print "\t previousElementSize = [BBPdfGenerator drawText:((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value atLocation:cursor];\n";
+                            print "\t text = ((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value; \n";
+                            print "\t if (text == nil || [text isEqualToString:\@\"\"]) {\n";
+                            print "\t\t text = \@\"\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\\u00a0\";\n";
+                            print "\t } else {\n";
+                            print "\t\t text = [NSString stringWithFormat:\@\"\\u00a0\\u00a0\\u00a0%\@\\u00a0\\u00a0\\u00a0\", text];\n";
+                            print "\t } \n";
+                            print "\t previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];\n";
                             print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
                             print "\t previousElementSize.width = cursor.x - elemCursorStart.x;\n";
                             print "\t previousElementSize.height += ".$marginT." + ".$marginB.";\n";
@@ -368,6 +374,7 @@ for my $section (@sections){
     print "\t CGSize previousElementSize;\n";
     print "\t CGPoint cursor = sectionOrigin;\n";
     print "\t CGPoint elemCursorStart = sectionOrigin;\n";
+    print "\t NSString *text;\n";
     
     my $graphics = $section->getChildrenByLocalName("Graphics")->get_node(0);
     
