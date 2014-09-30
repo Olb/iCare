@@ -13,4 +13,55 @@
         <Element type="TextElement" name="ReviewDate"/>
         <Element type="TextElement" name="ReviewTime"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Pre-Operative Review" >
+           
+           <Group orientation="vertical" marginB="8">
+                <Element label="Pre-Procedure Evaluation:" marginB="8"/>
+                <Element label="Pt re-evaluated and following changes noted:" marginL="8"/>
+                <Group orientation="vertical" marginL="28">
+                    <Element name="NoneChangesNoted" label="None" />
+                    <Element name="ChangesNoted"/>
+                </Group>
+            </Group>
+            
+            <Group orientation="horizontal" marginB="16">
+                <Group orientation="vertical">
+                    <Element label="BP:" />
+                    <Element label="RR:" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="BP" />
+                    <Element name="RR" />
+                </Group>
+                <Group orientation="vertical" >
+                    <Element label="HR:" />
+                    <Element label="Temp:" />
+                </Group>
+                <Group orientation="vertical" >
+                    <Element name="HR" />
+                    <Element name="Temp" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element label="SpO2:" />
+                    <Element label="NPO time:" />
+                </Group>
+                <Group orientation="vertical">
+                    <Group orientation="horizontal">
+                        <Element name="SpO2" />
+                        <Element label="%" />
+                    </Group>
+                    <Element name="NPOTime" />
+                </Group>
+            </Group>
+            
+            <Element name="NameMD" label="Name MD/DO" marginB="8"/>
+            
+            <Group orientation="horizontal" >
+                <Element name="ReviewDate" label="Date:" />
+                <Element name="ReviewTime" label="Time:" />
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

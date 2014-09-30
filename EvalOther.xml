@@ -13,4 +13,32 @@
         <Element type="BooleanFormElement" name="EGA"/>
         <Element type="TextElement" name="EGAWeeks"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Evaluation Other" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="EvalOther" label="Positive" />
+                <Element name="EvalOtherNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="Obesity" label="Obesity" />
+                    <Element name="Depression" label="Depression" />
+                    <Element name="Glaucoma" label="Glaucoma" />
+                    <Element name="Pregnant" label="Pregnant" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="ETOHAbuse" label="ETOH Abuse" />
+                    <Element name="DrugAbuse" label="Drug Abuse" />
+                    <Element name="DifficultIVAccess" label="Difficult IV Access" />
+                    <Group orientation="horizontal" >
+                        <Element name="EGA" label="EGA" marginR="3"/>
+                        <Element name="EGAWeeks" marginR="3"/>
+                        <Element label="weeks" />
+                    </Group>
+                </Group>
+            </Group>
+            
+        </Group>
+    </Graphics>
 </Section>

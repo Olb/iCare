@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -13,6 +13,7 @@
                 <outlet property="aSA5BBCheckBox" destination="dcF-cs-hZS" id="exV-6M-L8q"/>
                 <outlet property="aSA6BBCheckBox" destination="Iqc-aF-JgF" id="E3V-JU-hQs"/>
                 <outlet property="aSAEBBCheckBox" destination="gm9-Xr-0jc" id="o04-Cg-SGt"/>
+                <outlet property="arterialLineBBCheckBox" destination="E4t-mN-KLQ" id="pKC-kt-ERm"/>
                 <outlet property="centralVenousCathBBCheckBox" destination="Zmw-YW-0N4" id="qcI-L8-0mr"/>
                 <outlet property="chronicCardioPulmonaryDiseaseBBCheckBox" destination="DpJ-KS-08f" id="Erf-wW-P4R"/>
                 <outlet property="epiduralBBCheckBox" destination="cmD-67-p2V" id="qzA-bS-85y"/>

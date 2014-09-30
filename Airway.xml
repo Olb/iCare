@@ -31,4 +31,35 @@
         <Element type="BooleanFormElement" name="LooseUpper"/>
         <Element type="BooleanFormElement" name="LooseLower"/>
     </Data>
+    
+    <Graphics>
+        <Group orientation="horizontal" >
+            <Group orientation="vertical" label="Airway" >
+                <Element name="AirwayAdequate" label="Adequate" />
+                <Element name="Intubated" label="Intubated" />
+                <Group orientation="horizontal" >
+                    <Element name="Difficult" label="Difficult" />
+                    <Element name="DifficultReason" />
+                </Group>
+                <Element name="Mallampati" label="Mallampati" marginT="8"/>
+            </Group>
+            <Group orientation="vertical" label="Dentition">
+                <Element name="DentitionOk" label="OK" />
+                <Element name="RiskOfDamagePtAware" label="Risk of damage - Pt aware" />
+                
+                <Element name="CapsCrowns" label="Caps/Crowns" marginT="8"/>
+                <Element name="CapsUpper" label="Upper" marginL="8" />
+                <Element name="CapsLower" label="Lower" marginL="8"/>
+            </Group>
+            <Group orientation="vertical" >
+                <Element name="Dentures" label="Dentures" />
+                <Element name="DenturesFull" label="Full" marginL="20"/>
+                <Element name="DenturesFullUpper" label="Upper" marginL="40"/>
+                <Element name="DenturesFullLower" label="Lower" marginL="40"/>
+                <Element name="DenturesPartial" label="Partial" marginL="20"/>
+                <Element name="DenturesPartialUpper" label="Upper" marginL="40"/>
+                <Element name="DenturesPartialLower" label="Lower" marginL="40"/>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

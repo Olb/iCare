@@ -12,4 +12,27 @@
 		<Element type="BooleanFormElement" name="AlteredMentalStatus"/>
 		<Element type="BooleanFormElement" name="Seizures"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Neurologic" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="Neurologic" label="Positive" />
+                <Element name="NeurologicNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="Dementia" label="Dementia" />
+                    <Element name="Neuropathy" label="Neuropathy" />
+                    <Element name="BackPain" label="BackPain" />
+                    <Element name="NeckPain" label="NeckPain" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="CVA" label="CVA" />
+                    <Element name="TIA" label="TIA" />
+                    <Element name="AlteredMentalStatus" label="Altered Mental Status" />
+                    <Element name="Seizures" label="Seizures" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

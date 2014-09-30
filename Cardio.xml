@@ -15,4 +15,30 @@
 		<Element type="BooleanFormElement" name="CoronaryStents"/>
 		<Element type="BooleanFormElement" name="Dysrhythmia"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Cardiovascular" >
+            <Group orientation="horizontal" >
+                <Element name="CardioVascular" label="Positive" />
+                <Element name="CardioNegative" label="Negative" />
+            </Group>
+            <Element name="FunctionalCapacityLessThanFourMets" label="Functional capacity less than 4 mets" marginT="8"/>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="HTN" label="HTN" />
+                    <Element name="Dyslipidemia" label="Dyslipidemia" />
+                    <Element name="CHF" label="CHF" />
+                    <Element name="PVD" label="PVD" />
+                    <Element name="AICD" label="AICD" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="CAD" label="CAD" />
+                    <Element name="MI" label="MI" />
+                    <Element name="PTCA" label="PTCA" />
+                    <Element name="CoronaryStents" label="Coronary Stents" />
+                    <Element name="Dysrhythmia" label="Dysrhythmia" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

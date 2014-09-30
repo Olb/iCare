@@ -7,4 +7,26 @@
 		<Element type="BooleanFormElement" name="HyperThyroid"/>
 		<Element type="BooleanFormElement" name="HypoThyroid"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Endocrine" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="Endocrine" label="Positive" />
+                <Element name="EndocrineNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="horizontal" >
+                    <Element label="Thyroid:" />
+                    <Group orientation="vertical" >
+                        <Element name="HyperThyroid" label="Hyper" />
+                        <Element name="HypoThyroid" label="Hypo" />
+                    </Group>
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="Diabetes" label="Diabetes" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
+
 </Section>
