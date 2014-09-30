@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonitorinAndEquipmentViewController">
@@ -12,8 +13,8 @@
                 <outlet property="esophagealStethBBCheckBox" destination="YbE-iv-kyK" id="jUF-BC-pFL"/>
                 <outlet property="fluidWarmerBBCheckBox" destination="GO7-ib-zsa" id="fQY-gA-rXn"/>
                 <outlet property="intentionalHypothermiaBBCheckBox" destination="Itq-ye-y6a" id="wlW-I1-Jte"/>
-                <outlet property="intraOpForcedAirLowerBBCheckBox" destination="H54-Gd-DsM" id="kVu-hD-BMq"/>
-                <outlet property="intraOpForcedAirUpperBBCheckBox" destination="iig-8y-r8m" id="qeR-dO-H8Q"/>
+                <outlet property="intraOpForcedAirLowerBBCheckBox" destination="fQX-X0-4B9" id="rO5-Qb-sDQ"/>
+                <outlet property="intraOpForcedAirUpperBBCheckBox" destination="OyF-AK-bCa" id="vQN-SS-YeJ"/>
                 <outlet property="monitoringEquipmentOtherBBCheckBox" destination="BGF-bn-zQh" id="Hjx-Ub-j2D"/>
                 <outlet property="monitoringEquipmentOtherReasonUITextField" destination="6wB-VD-hIh" id="tb8-vz-BC7"/>
                 <outlet property="nerveStimulatorBBCheckBox" destination="Yhd-ZD-ici" id="BFl-36-pFr"/>
@@ -372,44 +373,25 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iig-8y-r8m" customClass="BBCheckBox">
-                    <rect key="frame" x="373" y="407" width="33" height="32"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <bool key="isElement" value="NO"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="checkbox_unselected.png">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyF-AK-bCa" customClass="BBCheckBox">
+                    <rect key="frame" x="328" y="408" width="30" height="30"/>
+                    <state key="normal" image="up_arrow_unselected_blue.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="checkbox_selected.png"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="up_arrow_selected_blue.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="up_arrow_unselected_blue.png"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIX-Fg-ej3">
-                    <rect key="frame" x="318" y="412" width="50" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lower" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-et-9AF">
-                    <rect key="frame" x="426" y="412" width="50" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H54-Gd-DsM" customClass="BBCheckBox">
-                    <rect key="frame" x="481" y="407" width="33" height="32"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <bool key="isElement" value="NO"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="checkbox_unselected.png">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQX-X0-4B9" customClass="BBCheckBox">
+                    <rect key="frame" x="366" y="408" width="30" height="30"/>
+                    <state key="normal" image="down_arrow_unselected_blue.png">
+                        <color key="titleColor" red="0.48235297199999999" green="0.71764707569999997" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="checkbox_selected.png"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="down_arrow_selected_blue.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="down_arrow_unselected_blue.png"/>
                     </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
@@ -421,5 +403,12 @@
     <resources>
         <image name="checkbox_selected.png" width="32" height="32"/>
         <image name="checkbox_unselected.png" width="32" height="32"/>
+        <image name="down_arrow_unselected_blue.png" width="80" height="81"/>
+        <image name="up_arrow_unselected_blue.png" width="80" height="81"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>

@@ -10,8 +10,8 @@
         <Element type="BooleanFormElement" name="TEE"/>
         <Element type="BooleanFormElement" name="FluidWarmer"/>
         <Element type="BooleanFormElement" name="IntentionalHypothermia"/>
-        <Element type="BooleanFormElement" name="IntraOpForcedAirUpper"/>
-        <Element type="BooleanFormElement" name="IntraOpForcedAirLower"/>
+        <Element type="BooleanFormElement" name="IntraOpForcedAirUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="IntraOpForcedAirLower" style="DownArrow" />
         <Element type="BooleanFormElement" name="NibpRight"/>
         <Element type="BooleanFormElement" name="NibpLeft"/>
         <Element type="BooleanFormElement" name="NibpArm"/>
@@ -42,9 +42,9 @@
                     </Group>
                 </Group>
             </Group>
-            <Group label="IntraOp Forced Air Warming Device:" orientation="horizontal" marginT="8">
-                <Element name="IntraOpForcedAirUpper" label="Upper" />
-                <Element name="IntraOpForcedAirLower" label="Lower" />
+            <Group label="IntraOp Forced Air Warming Device:" orientation="horizontal" marginT="8" >
+                <Element name="IntraOpForcedAirUpper" marginL="8" />
+                <Element name="IntraOpForcedAirLower" />
             </Group>
             <Group label="NIBP:" orientation="horizontal" marginT="8" >
                 <Element name="NibpEveryMin" label="every" />

@@ -143,7 +143,18 @@ sub printDrawSectionCodeForGroup{
                     }
                     switch ($nodeData->getAttribute("type")){
                         case "BooleanFormElement" {
-                            print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
+                            switch ($nodeData->getAttribute("style")) {
+                                case "UpArrow" {
+                                    print "\t previousElementSize = [BBPdfGenerator drawUpArrow:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
+                                }
+                                case "DownArrow" {
+                                    print "\t previousElementSize = [BBPdfGenerator drawDownArrow:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
+                                }
+                                else {
+                                    print "\t previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value boolValue] atLocation:cursor];\n";
+                                }
+                            }
+                            
                             print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
                             print "\t \n";
                             if ($child->getAttribute("label") ne "") {

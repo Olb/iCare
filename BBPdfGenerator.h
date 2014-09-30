@@ -16,4 +16,6 @@
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location isBold:(BOOL)bold;
 +(CGSize)drawCheckBoxChecked:(BOOL)checked atLocation:(CGPoint)location;
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location isUnderlined:(BOOL)underline;
++(CGSize)drawUpArrow:(BOOL)checked atLocation:(CGPoint)location;
++(CGSize)drawDownArrow:(BOOL)checked atLocation:(CGPoint)location;
 @end

@@ -9,56 +9,86 @@
         <Element type="BooleanFormElement" name="DentitionOk"/>
         <Element type="BooleanFormElement" name="RiskOfDamagePtAware"/>
         <Element type="BooleanFormElement" name="CapsCrowns"/>
-        <Element type="BooleanFormElement" name="CapsUpper"/>
-        <Element type="BooleanFormElement" name="CapsLower"/>
+        <Element type="BooleanFormElement" name="CapsUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="CapsLower" style="DownArrow" />
         <Element type="BooleanFormElement" name="Dentures"/>
         <Element type="BooleanFormElement" name="DenturesFull"/>
         <Element type="BooleanFormElement" name="DenturesPartial"/>
-        <Element type="BooleanFormElement" name="DenturesFullUpper"/>
-        <Element type="BooleanFormElement" name="DenturesFullLower"/>
-        <Element type="BooleanFormElement" name="DenturesPartialUpper"/>
-        <Element type="BooleanFormElement" name="DenturesPartialLower"/>
+        <Element type="BooleanFormElement" name="DenturesFullUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="DenturesFullLower" style="DownArrow" />
+        <Element type="BooleanFormElement" name="DenturesPartialUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="DenturesPartialLower" style="DownArrow" />
         <Element type="BooleanFormElement" name="Chipped"/>
         <Element type="TextElement" name="ChippedNumber"/>
-        <Element type="BooleanFormElement" name="ChippedUpper"/>
-        <Element type="BooleanFormElement" name="ChippedLower"/>
+        <Element type="BooleanFormElement" name="ChippedUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="ChippedLower" style="DownArrow" />
         <Element type="BooleanFormElement" name="Missing"/>
         <Element type="TextElement" name="MissingNumber"/>
-        <Element type="BooleanFormElement" name="MissingUpper"/>
-        <Element type="BooleanFormElement" name="MissingLower"/>
+        <Element type="BooleanFormElement" name="MissingUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="MissingLower" style="DownArrow" />
         <Element type="BooleanFormElement" name="Loose"/>
         <Element type="TextElement" name="LooseNumber"/>
-        <Element type="BooleanFormElement" name="LooseUpper"/>
-        <Element type="BooleanFormElement" name="LooseLower"/>
+        <Element type="BooleanFormElement" name="LooseUpper" style="UpArrow" />
+        <Element type="BooleanFormElement" name="LooseLower" style="DownArrow" />
     </Data>
     
     <Graphics>
-        <Group orientation="horizontal" >
-            <Group orientation="vertical" label="Airway" >
+        <Group orientation="vertical" label="Airway" >
+            <Group orientation="horizontal" marginB="8">
                 <Element name="AirwayAdequate" label="Adequate" />
                 <Element name="Intubated" label="Intubated" />
                 <Group orientation="horizontal" >
                     <Element name="Difficult" label="Difficult" />
                     <Element name="DifficultReason" />
                 </Group>
-                <Element name="Mallampati" label="Mallampati" marginT="8"/>
             </Group>
-            <Group orientation="vertical" label="Dentition">
+            <Element name="Mallampati" label="Mallampati" marginB="4"/>
+            <Group orientation="horizontal" marginB="8">
+                <Element label="Dentition:" />
                 <Element name="DentitionOk" label="OK" />
                 <Element name="RiskOfDamagePtAware" label="Risk of damage - Pt aware" />
-                
-                <Element name="CapsCrowns" label="Caps/Crowns" marginT="8"/>
-                <Element name="CapsUpper" label="Upper" marginL="8" />
-                <Element name="CapsLower" label="Lower" marginL="8"/>
             </Group>
-            <Group orientation="vertical" >
+            <Group orientation="horizontal" >
+                <Element name="CapsCrowns" label="Caps/Crowns" />
+                <Element name="CapsUpper"  />
+                <Element name="CapsLower" />
+            </Group>
+            <Group orientation="horizontal" >
                 <Element name="Dentures" label="Dentures" />
-                <Element name="DenturesFull" label="Full" marginL="20"/>
-                <Element name="DenturesFullUpper" label="Upper" marginL="40"/>
-                <Element name="DenturesFullLower" label="Lower" marginL="40"/>
-                <Element name="DenturesPartial" label="Partial" marginL="20"/>
-                <Element name="DenturesPartialUpper" label="Upper" marginL="40"/>
-                <Element name="DenturesPartialLower" label="Lower" marginL="40"/>
+                <Group orientation="vertical" >
+                    <Element name="DenturesFull" label="Full" />
+                    <Element name="DenturesPartial" label="Partial" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="DenturesFullUpper" />
+                    <Element name="DenturesPartialUpper" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="DenturesFullLower" />
+                    <Element name="DenturesPartialLower" />
+                </Group>
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical">
+                    <Element name="Chipped" label="Chipped" />
+                    <Element name="Missing" label="Missing" />
+                    <Element name="Loose" label="Loose" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="ChippedNumber" />
+                    <Element name="MissingNumber" />
+                    <Element name="LooseNumber" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="ChippedUpper" />
+                    <Element name="MissingUpper" />
+                    <Element name="LooseUpper" />
+                </Group>
+                <Group orientation="vertical">
+                    <Element name="ChippedLower" />
+                    <Element name="MissingLower" />
+                    <Element name="LooseLower" />
+                </Group>
             </Group>
         </Group>
     </Graphics>

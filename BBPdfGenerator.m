@@ -103,6 +103,22 @@
     return frame.size;
 }
 
++(CGSize)drawUpArrow:(BOOL)checked atLocation:(CGPoint)location
+{
+    UIImage* logo = checked ? [UIImage imageNamed:@"up_arrow_selected.png"] : [UIImage imageNamed:@"up_arrow_unselected.png"];
+    CGRect frame = CGRectMake(location.x,location.y, 14, 14);
+    [logo drawInRect:frame];
+    return frame.size;
+}
+
++(CGSize)drawDownArrow:(BOOL)checked atLocation:(CGPoint)location
+{
+    UIImage* logo = checked ? [UIImage imageNamed:@"down_arrow_selected.png"] : [UIImage imageNamed:@"down_arrow_unselected.png"];
+    CGRect frame = CGRectMake(location.x,location.y, 14, 14);
+    [logo drawInRect:frame];
+    return frame.size;
+}
+
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location
 {
     return [BBPdfGenerator drawText:text atLocation:location isBold:NO];
