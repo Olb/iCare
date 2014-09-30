@@ -988,7 +988,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F4615D44192F908E0031470B /* Build configuration list for PBXProject "iCare2" */;
+			buildConfigurationList = F4615D44192F908E0031470B /* Build configuration list for PBXProject "iCare" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1409,7 +1409,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F4615D44192F908E0031470B /* Build configuration list for PBXProject "iCare2" */ = {
+		F4615D44192F908E0031470B /* Build configuration list for PBXProject "iCare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4615D79192F908E0031470B /* Debug */,
