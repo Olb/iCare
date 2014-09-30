@@ -28,6 +28,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     self.navigationItem.title = self.form.title;
     NSURL *url = [NSURL fileURLWithPath:[BBPdfGenerator getPDFFileNameForForm:self.form] isDirectory:NO];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

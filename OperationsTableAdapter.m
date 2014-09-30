@@ -54,15 +54,11 @@
     // 1. Dequeue the custom header cell
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"OperationHeaderCell"];
     
-    // 2. Set the various properties
     UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:12];
+    nameLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:26.0];
     [nameLabel setText:@"Operation"];
     
-    UILabel *dateLabel = (UILabel*)[cell.contentView viewWithTag:13];
-    [dateLabel setText:@"PreOp Date"];
-    // 3. And return
-    
-    cell.backgroundColor = [UIColor colorWithRed:52.0/255.0 green:213.0/255.0 blue:186.0/255.0 alpha:255.0/255.0];
+    cell.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:233.0/255.0 blue:199.0/255.0 alpha:1.0];
     return cell;
 }
 

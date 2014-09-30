@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "BBPatientFormsViewController.h"
 #import "BBNewPatientViewController.h"
+#import "EditUserViewController.h"
 
 @interface BBMainViewController () <UITableViewDataSource, UITableViewDelegate, LoginViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *patientsTableView;
@@ -25,6 +26,14 @@
 @end
 
 @implementation BBMainViewController
+
+-(void)viewDidLoad
+{
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor colorWithRed:91.0/255.0 green:196.0/255.0 blue:105.0/255.0 alpha:1.0] CGColor], nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -68,6 +77,12 @@
         Patient *p = [[self.headerArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         NSLog(@"Patient name:%@", p.firstName);
         vc.patient = p;
+    }
+    if ([[segue identifier] isEqualToString:@"Edit User Segue"]) {
+        EditUserViewController *vc = [segue destinationViewController];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
+        vc.practitioner = self.practitioner;
     }
 }
 
@@ -125,5 +140,6 @@
     
     return cell;
 }
+
 
 @end

@@ -285,7 +285,6 @@
     PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
     vc.form = form;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:nil];
 }
 

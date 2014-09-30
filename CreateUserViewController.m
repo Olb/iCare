@@ -12,7 +12,9 @@
 #import "BPBAppDelegate.h"
 #import "BBUtil.h"
 
-@interface CreateUserViewController () <UITextFieldDelegate>
+@interface CreateUserViewController () <UITextFieldDelegate> {
+    NSString *letters;
+}
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -23,6 +25,16 @@
 @end
 
 @implementation CreateUserViewController
+
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor colorWithRed:91.0/255.0 green:196.0/255.0 blue:105.0/255.0 alpha:1.0] CGColor], nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+}
+
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -94,8 +106,6 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 -(NSString *) randomStringWithLength: (int) len {
     

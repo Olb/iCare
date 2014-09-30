@@ -43,6 +43,7 @@ const float POUND_MULTIPLIER = 2.20462262f;
 @property (weak, nonatomic) IBOutlet UIButton *weightUnitButton;
 @property (strong, nonatomic) BBWeightPickerAdapter *weightPickerAdapter;
 @property (weak, nonatomic) IBOutlet UIButton *heightUnitButton;
+@property (weak, nonatomic) IBOutlet UIView *selectedOperationBackgroundView;
 
 @end
 
@@ -51,6 +52,15 @@ const float POUND_MULTIPLIER = 2.20462262f;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor colorWithRed:91.0/255.0 green:196.0/255.0 blue:105.0/255.0 alpha:1.0] CGColor], nil];
+    
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    
+    self.selectedOperationBackgroundView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:233.0/255.0 blue:199.0/255.0 alpha:1.0];
+
      _weightPickerAdapter = [[BBWeightPickerAdapter alloc] init];
     _useKG = YES;
     

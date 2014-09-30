@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
@@ -16,48 +16,125 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAy-HO-0aS">
-                    <rect key="frame" x="193" y="391" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Login">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="uPH-dd-X7n"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wh-t2-Eq7">
-                    <rect key="frame" x="529" y="391" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Create">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="create:" destination="-1" eventType="touchUpInside" id="htm-kA-ONG"/>
-                    </connections>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="billy" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSs-tx-ran">
-                    <rect key="frame" x="193" y="283" width="382" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="59C-hB-bOd"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-9J-QMB">
-                    <rect key="frame" x="193" y="333" width="382" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="w7t-bt-6Ce"/>
-                    </connections>
-                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45i-Wd-Znc">
+                    <rect key="frame" x="172" y="309.5" width="423" height="405"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iCare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR4-IU-jJ3">
+                            <rect key="frame" x="49" y="20" width="326" height="138"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="326" id="Bcq-7R-n96"/>
+                                <constraint firstAttribute="height" constant="138" id="fgT-nU-3yg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="100"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAy-HO-0aS">
+                            <rect key="frame" x="21" y="351" width="82" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="82" id="5mr-jg-zOj"/>
+                                <constraint firstAttribute="height" constant="33" id="ade-nz-N6G"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                            <state key="normal" title="Login">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="login:" destination="-1" eventType="touchUpInside" id="uPH-dd-X7n"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wh-t2-Eq7">
+                            <rect key="frame" x="307" y="351" width="96" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="3hc-6k-T1g"/>
+                                <constraint firstAttribute="width" constant="96" id="jOX-UK-aHp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                            <state key="normal" title="Create">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="create:" destination="-1" eventType="touchUpInside" id="htm-kA-ONG"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="billy" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSs-tx-ran">
+                            <rect key="frame" x="21" y="218" width="382" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="382" id="Td8-ic-KaT"/>
+                                <constraint firstAttribute="height" constant="30" id="ifh-7r-Dyf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="59C-hB-bOd"/>
+                            </connections>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-9J-QMB">
+                            <rect key="frame" x="21" y="304" width="382" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="382" id="GuM-66-ej1"/>
+                                <constraint firstAttribute="height" constant="30" id="o3p-t5-ITe"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="w7t-bt-6Ce"/>
+                            </connections>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uev-RO-yua">
+                            <rect key="frame" x="21" y="183" width="143" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="3jZ-Ii-68L"/>
+                                <constraint firstAttribute="width" constant="143" id="N0M-OE-wTd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEh-lY-bYM">
+                            <rect key="frame" x="21" y="264" width="143" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="GP0-1b-Z64"/>
+                                <constraint firstAttribute="width" constant="143" id="kmb-0x-lSt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="405" id="2Hi-Tn-wLh"/>
+                        <constraint firstItem="4Wh-t2-Eq7" firstAttribute="top" secondItem="e8T-9J-QMB" secondAttribute="bottom" constant="17" id="3wd-7v-UMG"/>
+                        <constraint firstItem="CSs-tx-ran" firstAttribute="top" secondItem="Uev-RO-yua" secondAttribute="bottom" constant="2" id="AK7-xI-FK6"/>
+                        <constraint firstItem="bAy-HO-0aS" firstAttribute="top" secondItem="e8T-9J-QMB" secondAttribute="bottom" constant="17" id="CTW-AW-b4r"/>
+                        <constraint firstItem="bAy-HO-0aS" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="21" id="DNs-am-nJ3"/>
+                        <constraint firstItem="CSs-tx-ran" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="21" id="P2T-Aw-8zv"/>
+                        <constraint firstItem="aEh-lY-bYM" firstAttribute="top" secondItem="CSs-tx-ran" secondAttribute="bottom" constant="16" id="PIA-ku-f66"/>
+                        <constraint firstItem="aEh-lY-bYM" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="21" id="WlB-yh-zcu"/>
+                        <constraint firstItem="Uev-RO-yua" firstAttribute="top" secondItem="nR4-IU-jJ3" secondAttribute="bottom" constant="25" id="eXL-Ma-BY4"/>
+                        <constraint firstItem="e8T-9J-QMB" firstAttribute="top" secondItem="aEh-lY-bYM" secondAttribute="bottom" constant="8" id="i0H-md-L4E"/>
+                        <constraint firstItem="4Wh-t2-Eq7" firstAttribute="leading" secondItem="bAy-HO-0aS" secondAttribute="trailing" constant="204" id="l9J-ww-LUA"/>
+                        <constraint firstItem="nR4-IU-jJ3" firstAttribute="top" secondItem="45i-Wd-Znc" secondAttribute="top" constant="20" id="mqX-wl-rt9"/>
+                        <constraint firstItem="e8T-9J-QMB" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="21" id="o5V-VH-8tQ"/>
+                        <constraint firstItem="Uev-RO-yua" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="21" id="rSg-ox-mf1"/>
+                        <constraint firstItem="nR4-IU-jJ3" firstAttribute="leading" secondItem="45i-Wd-Znc" secondAttribute="leading" constant="49" id="yIS-kh-9JK"/>
+                        <constraint firstAttribute="width" constant="423" id="zw2-a2-qJw"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="45i-Wd-Znc" secondAttribute="centerX" id="MML-IL-iM8"/>
+                <constraint firstAttribute="centerY" secondItem="45i-Wd-Znc" secondAttribute="centerY" id="oZb-CA-h4J"/>
+            </constraints>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>
