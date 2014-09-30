@@ -11,4 +11,26 @@
 		<Element type="BooleanFormElement" name="Chemo"/>
 		<Element type="BooleanFormElement" name="Radiation"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Hem/Onc" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="HemOnc" label="Positive" />
+                <Element name="HemOncNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="Anemia" label="Anemia" />
+                    <Element name="DVT" label="DVT" />
+                    <Element name="BloodRefusal" label="Blood Refusal" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="Coagulopathy" label="Coagulopathy" />
+                    <Element name="Cancer" label="Cancer" />
+                    <Element name="Chemo" label="Chemo" />
+                    <Element name="Radiation" label="Radiation" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

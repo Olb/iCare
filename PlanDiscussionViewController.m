@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *chronicCardioPulmonaryDiseaseBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *immobilityNeededBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *straightLocalNotAdequateBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *arterialLineBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *pulmonaryArteryCathBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *centralVenousCathBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *tEEBBCheckBox;
@@ -68,6 +69,7 @@ static NSString *const NERVE_BLOCKIVRegional_KEY = @"NerveBlockIVRegionalKey";
 static NSString *const CHRONIC_CARDIO_PULMONARY_DISEASE_KEY = @"ChronicCardioPulmonaryDiseaseKey";
 static NSString *const IMMOBILITY_NEEDED_KEY = @"ImmobilityNeededKey";
 static NSString *const STRAIGHT_LOCAL_NOT_ADEQUATE_KEY = @"StraightLocalNotAdequateKey";
+static NSString *const ARTERIAL_LINE_KEY = @"ArterialLineKey";
 static NSString *const PULMONARY_ARTERY_CATH_KEY = @"PulmonaryArteryCathKey";
 static NSString *const CENTRAL_VENOUS_CATH_KEY = @"CentralVenousCathKey";
 static NSString *const TEE_KEY = @"TEEKey";
@@ -132,6 +134,9 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 			 }
 			 if ([element.key isEqualToString:STRAIGHT_LOCAL_NOT_ADEQUATE_KEY]){
 				 [self.straightLocalNotAdequateBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
+			 if ([element.key isEqualToString:ARTERIAL_LINE_KEY]){
+				 [self.arterialLineBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:PULMONARY_ARTERY_CATH_KEY]){
 				 [self.pulmonaryArteryCathBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
@@ -208,6 +213,7 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 	 NSAssert([section getElementForKey:CHRONIC_CARDIO_PULMONARY_DISEASE_KEY]!= nil, @"ChronicCardioPulmonaryDisease is nil");
 	 NSAssert([section getElementForKey:IMMOBILITY_NEEDED_KEY]!= nil, @"ImmobilityNeeded is nil");
 	 NSAssert([section getElementForKey:STRAIGHT_LOCAL_NOT_ADEQUATE_KEY]!= nil, @"StraightLocalNotAdequate is nil");
+	 NSAssert([section getElementForKey:ARTERIAL_LINE_KEY]!= nil, @"ArterialLine is nil");
 	 NSAssert([section getElementForKey:PULMONARY_ARTERY_CATH_KEY]!= nil, @"PulmonaryArteryCath is nil");
 	 NSAssert([section getElementForKey:CENTRAL_VENOUS_CATH_KEY]!= nil, @"CentralVenousCath is nil");
 	 NSAssert([section getElementForKey:TEE_KEY]!= nil, @"TEE is nil");
@@ -334,6 +340,15 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 	 }
 
 	 straightLocalNotAdequate.value = [NSNumber numberWithBool:self.straightLocalNotAdequateBBCheckBox.isSelected];
+	 
+	 BooleanFormElement *arterialLine = (BooleanFormElement*)[_section getElementForKey:ARTERIAL_LINE_KEY];
+	 if (!arterialLine) {
+		 arterialLine = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 arterialLine.key = ARTERIAL_LINE_KEY;
+		 [_section addElementsObject:arterialLine];
+	 }
+
+	 arterialLine.value = [NSNumber numberWithBool:self.arterialLineBBCheckBox.isSelected];
 	 
 	 BooleanFormElement *pulmonaryArteryCath = (BooleanFormElement*)[_section getElementForKey:PULMONARY_ARTERY_CATH_KEY];
 	 if (!pulmonaryArteryCath) {

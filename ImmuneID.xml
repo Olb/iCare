@@ -8,4 +8,24 @@
 		<Element type="BooleanFormElement" name="AutoImmuneDisease"/>
         <Element type="BooleanFormElement" name="OngoingInfection"/>
 	</Data>
+    
+    
+    <Graphics>
+        <Group orientation="vertical" label="Immune/ID" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="ImmuneID" label="Positive" />
+                <Element name="ImmuneIDNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="RheumArt" label="Rheum Art" />
+                    <Element name="HIV" label="HIV" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="AutoImmuneDisease" label="AutoImmune Disease" />
+                    <Element name="OngoingInfection" label="Ongoing Infection" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

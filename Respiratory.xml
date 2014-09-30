@@ -14,4 +14,34 @@
         <Element type="TextElement" name="YRS"/>
         <Element type="TextElement" name="QuitAmountAgo"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Respiratory" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="Respiratory" label="Positive" />
+                <Element name="RespiratoryNone" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="HomeO2" label="Home O2" />
+                    <Element name="COPD" label="COPD" />
+                    <Element name="CPAP" label="CPAP" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="RecentURI" label="Recent URI" />
+                    <Element name="Asthma" label="Asthma" />
+                    <Element name="SleepApnea" label="SleepApnea" />
+                </Group>
+            </Group>
+            <Group orientation="horizontal" >
+                <Element name="Smoking" label="Smoking: " />
+                <Element name="PPD" />
+                <Element label="ppd x" />
+                <Element name="YRS" />
+                <Element label="years" />
+                <Element name="QuitAmountAgo" label="Quit" />
+                <Element label="years ago" />
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

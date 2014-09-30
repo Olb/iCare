@@ -12,6 +12,7 @@
         <Element type="BooleanFormElement" name="ChronicCardioPulmonaryDisease"/>
         <Element type="BooleanFormElement" name="ImmobilityNeeded"/>
  		<Element type="BooleanFormElement" name="StraightLocalNotAdequate"/>
+        <Element type="BooleanFormElement" name="ArterialLine"/>
         <Element type="BooleanFormElement" name="PulmonaryArteryCath"/>
         <Element type="BooleanFormElement" name="CentralVenousCath"/>
         <Element type="BooleanFormElement" name="TEE"/>
@@ -32,4 +33,76 @@
  		<Element type="BooleanFormElement" name="ASAE"/>
         <Element type="TextElement" name="PreOpEvaluationBy"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Plan Discussion" >
+            <Group orientation="vertical" marginB="8">
+                <Element label="The following plan including risks/benefits/alternatives/complications discussed with &amp; accepted by:" />
+                <Group orientation="horizontal" >
+                    <Group orientation="vertical" marginB="8">
+                        <Element name="ParentAccepted" label="Parent" />
+                        <Element name="GuardianAccepted" label="Guardian" />
+                        <Element name="ParentAccepted" label="Parent" />
+                        <Element name="ViaTranslatorAccepted" label="Via Translator" />
+                    </Group>
+                    <Group orientation="vertical" marginB="8">
+                        <Element name="NerveBlockIVRegional" label="Nerve Block/IV Regional" />
+                        <Element name="General" label="General" />
+                        <Element name="Epidural" label="Epidural" />
+                        <Element name="Spinal" label="Spinal" />
+                    </Group>
+                </Group>
+            </Group>
+            <Group orientation="vertical" label="MAC - Medical Necessity:" marginB="8" >
+                <Element name="ChronicCardioPulmonaryDisease" label="Chronic cardiopulmonary disease" />
+                <Element name="ImmobilityNeeded" label="Immobility needed" />
+                <Element name="StraightLocalNotAdequate" label="Straight local not clinically adequate" />
+            </Group>
+            
+            <Group orientation="vertical" marginB="8" >
+                <Group orientation="horizontal" >
+                    <Element name="ArterialLine" label="Arterial line" />
+                    <Element name="CentralVenousCath" label="Central venous cath" />
+                </Group>
+                <Group orientation="horizontal" >
+                    <Group orientation="vertical" >
+                        <Element name="PossiblePostOpVent" label="Possible postop vent" />
+                        <Element name="PulmonaryArteryCath" label="Pulmonary artery cath" />
+                        <Element name="TEE" label="TEE" />
+                    </Group>
+                    <Group orientation="vertical" >
+                        <Element name="Other" label="Other" />
+                    </Group>
+                </Group>
+            </Group>
+            <Group orientation="vertical" marginB="8" >
+                <Group orientation="horizontal" marginB="8">
+                    <Element name="PostopPainManagementDiscussed" label="Postop pain management discussed:" />
+                    <Group orientation="vertical" >
+                        <Element name="PCA" label="PCA" />
+                        <Element name="PostOpEpidural" label="Post-Op Epidural" />
+                        <Element name="SpinalOpiate" label="Spinal Opiate" />
+                    </Group>
+                </Group>
+                <Group orientation="horizontal" >
+                    <Element label="Nerve Block: " />
+                    <Element name="NerveBlockContinuous" label="Continuous" />
+                    <Element name="NerveBlockSingleShot" label="Single Shot" />
+                </Group>
+            </Group>
+            <Group orientation="vertical" marginB="8" >
+                <Group orientation="horizontal" marginB="8">
+                    <Element label="ASA: " />
+                    <Element name="ASA1" label="1" />
+                    <Element name="ASA2" label="2" />
+                    <Element name="ASA3" label="3" />
+                    <Element name="ASA4" label="4" />
+                    <Element name="ASA5" label="5" />
+                    <Element name="ASA6" label="6" />
+                    <Element name="ASAE" label="E" />
+                </Group>
+                <Element name="PreOpEvaluationBy" label="Preop Evaluation by:" />
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

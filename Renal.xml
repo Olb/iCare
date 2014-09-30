@@ -7,4 +7,22 @@
 		<Element type="BooleanFormElement" name="RenalFailure"/>
         <Element type="TextElement" name="LastDialysis"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="Renal" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="Renal" label="Positive" />
+                <Element name="RenalNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="RenalFailure" label="Renal Failure" />
+                    <Element name="LastDialysis" label="Last Dialysis" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="CRI" label="CRI" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>

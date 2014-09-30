@@ -8,4 +8,23 @@
 		<Element type="BooleanFormElement" name="Hepatitis"/>
 		<Element type="BooleanFormElement" name="Obstruction"/>
 	</Data>
+    
+    <Graphics>
+        <Group orientation="vertical" label="GI/Hepatic" >
+            <Group orientation="horizontal" marginB="8">
+                <Element name="GIHepatic" label="Positive" />
+                <Element name="GIHepaticNegative" label="Negative" />
+            </Group>
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" >
+                    <Element name="GERD" label="GERD" />
+                    <Element name="Cirrhosis" label="Cirrhosis" />
+                </Group>
+                <Group orientation="vertical"  >
+                    <Element name="Hepatitis" label="Hepatitis" />
+                    <Element name="Obstruction" label="Obstruction" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
 </Section>
