@@ -73,7 +73,17 @@ static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = BETA_BLOCKER_SECTION_TITLE;

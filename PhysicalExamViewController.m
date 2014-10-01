@@ -79,7 +79,17 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = PHYSICAL_EXAM_SECTION_TITLE;

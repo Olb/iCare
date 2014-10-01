@@ -74,7 +74,17 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = PREMEDS_GIVEN_SECTION_TITLE;

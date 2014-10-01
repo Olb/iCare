@@ -74,7 +74,17 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = PAST_SURGICAL_PROCEDURES_SECTION_TITLE;

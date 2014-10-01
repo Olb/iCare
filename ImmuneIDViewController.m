@@ -79,7 +79,17 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = IMMUNEID_SECTION_TITLE;

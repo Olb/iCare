@@ -45,7 +45,7 @@
             BlueprintIdentifier = "F4615D48192F908E0031470B"
             BuildableName = "iCare2.app"
             BlueprintName = "iCare2"
-            ReferencedContainer = "container:iCare2.xcodeproj">
+            ReferencedContainer = "container:iCare.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "F4615D48192F908E0031470B"
             BuildableName = "iCare2.app"
             BlueprintName = "iCare2"
-            ReferencedContainer = "container:iCare2.xcodeproj">
+            ReferencedContainer = "container:iCare.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

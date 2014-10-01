@@ -21,11 +21,26 @@
         <Element type="TextElement" name="MonitoringEquipmentOtherReason"/>
     </Data>
     <Validation>
-        <Rule if="MonitoringEquipmentOther isChecked" then="MonitoringEquipmentOtherReason mustNotEmpty"/>
-        <Rule if="NibpRight isChecked" then="NibpLeft mustBeUnchecked" />
-        <Rule if="NibpLeft isChecked" then="NibpRight mustBeUnchecked" />
-        <Rule if="NibpRight isChecked or NibpLeft isChecked" then="NibpArm mustChecked or NibpLeg mustChecked"/>
-        <Rule if="NibpRight isChecked or NibpLeft isChecked" then="NibpEveryMin mustNotEmpty"/>
+        <RadioButtons>
+            <Element name="NibpRight"/>
+            <Element name="NibpLeft"/>
+        </RadioButtons>
+        
+        <RadioButtons>
+            <Element name="NibpArm"/>
+            <Element name="NibpLeg"/>
+        </RadioButtons>
+        
+        <Rule>
+            <Condition operator="or">
+                <Element name="NibpRight" value="true" />
+                <Element name="NibpLeft" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="NibpArm" value="true" />
+                <Element name="NibpLeg" value="true" />
+            </Action>
+        </Rule>
     </Validation>
     
     <Graphics>

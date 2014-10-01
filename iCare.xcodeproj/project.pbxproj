@@ -666,7 +666,6 @@
 				988D164819AE63A1009A887A /* IVAntibioticNameViewController.m */,
 				988D164B19AE63A1009A887A /* MonitorinAndEquipmentViewController.m */,
 				280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */,
-				284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */,
 				988D164E19AE63A2009A887A /* PersonnelViewController.m */,
 				988D165219AE63A2009A887A /* PositionViewController.m */,
 				988D165519AE63A2009A887A /* PostAnesthesiaEvalViewController.m */,
@@ -685,6 +684,7 @@
 				988D164619AE63A1009A887A /* InvasiveLinesViewController.xib */,
 				988D164919AE63A1009A887A /* IVAntibioticNameViewController.xib */,
 				988D164C19AE63A1009A887A /* MonitorinAndEquipmentViewController.xib */,
+				284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */,
 				988D164F19AE63A2009A887A /* PersonnelViewController.xib */,
 				988D165319AE63A2009A887A /* PositionViewController.xib */,
 				988D165619AE63A2009A887A /* PostAnesthesiaEvalViewController.xib */,
@@ -1343,6 +1343,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iCare2/iCare2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1362,6 +1363,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iCare2/iCare2-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

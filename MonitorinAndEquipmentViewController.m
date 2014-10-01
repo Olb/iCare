@@ -65,7 +65,6 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -152,7 +151,23 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 	 
 }
 
+-(BOOL)validateData:(NSString**)errMsg
+{
+	 if( self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected ){ 
+		 if( !self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected ){ 
+			 *errMsg = @"NibpArm must be selected or NibpLeg must be selected when NibpRight is selected or NibpLeft is selected"; 
+			 return false; 
+		 }
+	 }
+	 return true; 
+}
+
 - (IBAction)accept:(id)sender {
+	 NSString* errMsg;
+	 if ( ! [self validateData: &errMsg] ){
+		 [BBUtil showAlertWithMessage:errMsg];
+		 return;
+	 }
 	 if ( !self.section ){
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = MONITORIN_AND_EQUIPMENT_SECTION_TITLE;

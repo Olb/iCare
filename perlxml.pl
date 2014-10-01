@@ -133,6 +133,7 @@ sub printPropertiesForElement{
     
 }
 
+
 print "\n";
 
 $xml = new XML::Simple (KeyAttr=>[]);
@@ -157,6 +158,24 @@ if (ref $section->{Validation}->{Rule} eq "ARRAY"){
     @rules = @{$section->{Validation}->{Rule}};
 } else {
     @rules = ($section->{Validation}->{Rule});
+}
+
+if (ref $section->{Validation}->{RadioButtons} eq "ARRAY"){
+    @radioButtons = @{$section->{Validation}->{RadioButtons}};
+} else {
+    @radioButtons = ($section->{Validation}->{RadioButtons});
+}
+
+sub getDataElementForName{
+    my $name = $_[0];
+    
+    foreach my $elem (@elements){
+        if ( $name eq $elem->{name}){
+            return $elem;
+        }
+    }
+    
+    die "Can't find element with name: '".$name."'";
 }
 
 # include section
@@ -259,11 +278,65 @@ print "\t }\n";
 print "}\n";
 print "\n";
 
-# validateSection
-
-foreach $rule (@rules) {
+sub getCodeForCondition {
+    my $elem = $_[0];
+    if ( ! defined $elem ){
+        die "elem is undefined";
+    }
+    my $elemData = getDataElementForName($elem->{name});
     
+    switch ($elemData->{type}){
+        case "BooleanFormElement" {
+            switch ($elem->{value}){
+                case "true"{
+                    return "self.".getOutletNameForElement($elemData).".selected";
+                }
+                case "false"{
+                    return "(!self.".getOutletNameForElement($elemData).".selected)";
+                }
+                else {
+                    die "Invalid value: '".$elem->{value}."'";
+                }
+            }
+        }
+        else {
+            die "Element type '".$elemData->{type}."' is not handled";
+        }
+    }
 }
+
+sub getTextForCondition {
+    my $elem = $_[0];
+    my $verb = $_[1];
+    
+    if ( ! defined $elem ){
+        die "elem is undefined";
+    }
+    my $elemData = getDataElementForName($elem->{name});
+    
+    switch ($elemData->{type}){
+        case "BooleanFormElement" {
+            switch ($elem->{value}){
+                case "true"{
+                    return $elem->{name}." ".$verb." selected";
+                }
+                case "false"{
+                    return $elem->{name}." ".$verb." unselected";
+                }
+                else {
+                    die "Invalid value: '".$elem->{value}."'";
+                }
+            }
+        }
+        else {
+            die "Element type '".$elemData->{type}."' is not handled";
+        }
+    }
+}
+
+
+
+# validateSection
 
 print "-(void)validateSection:(FormSection*)section\n";
 print "{\n";
@@ -271,15 +344,109 @@ print "{\n";
 foreach $element (@elements){
     print "\t NSAssert([section getElementForKey:".getKeyConstantForElement($element)."]!= nil, \@\"".$element->{name}." is nil\");\n";
 }
+
 print "\t \n";
+print "}\n";
+print "\n";
 
+print "-(BOOL)validateData:(NSString**)errMsg\n";
+print "{\n";
 
+foreach $rule (@rules) {
+    if ( $section->{name} ne "MonitorinAndEquipment" ) {
+        print STDERR "Warning: Skipping validation for section ".$section->{name}."\n";
+        
+        last;
+    }
+    my $condition = $rule->{Condition};
+    my $operatorText = $condition->{operator};
+    my $operator;
+    switch ($operatorText){
+        case "or"  { $operator = "||"; }
+        case "and" { $operator = "&&"; }
+        else       { die "Unknown operator."; }
+    }
+    my @elems;
+    
+    if (ref $condition->{Element} eq "ARRAY"){
+        @elems = @{$condition->{Element}};
+    } else {
+        @elems = ($condition->{Element});
+    }
+    
+    if ( $#elems == 0 ){
+        print STDERR Dumper($rule);
+        die "Condition must have at least one element";
+    }
+    
+    my $conditionsCode = getCodeForCondition( @elems[0] );
+    my $conditionsText = getTextForCondition( @elems[0], "is");
+    
+    if ( @elems > 1 ){
+        print STDERR "More than one element";
+        foreach my $i (1 .. $#elems){
+            $conditionsCode .= " ".$operator." ".getCodeForCondition( @elems[$i] );
+            $conditionsText .= " ".$operatorText." ".getTextForCondition( @elems[$i], "is");
+        }
+    }
+    
+    if (ref $rule->{Action}->{Element} eq "ARRAY"){
+        @elems = @{$rule->{Action}->{Element}};
+    } else {
+        @elems = ($rule->{Action}->{Element});
+    }
+    
+    if ( $#elems == 0 ){
+        die "Action must have at least one element";
+    }
+    
+    print "\t if( ".$conditionsCode." ){ \n";
+    switch ($rule->{Action}->{type}){
+        case "check"{
+            my $operatorText = $rule->{Action}->{operator};
+            my $operator;
+            switch ($operatorText){
+                case "or"  { $operator = "||"; }
+                case "and" { $operator = "&&"; }
+                else       { die "Unknown operator."; }
+            }
+            my $checkCode = getCodeForCondition( @elems[0] );
+            my $checkText = getTextForCondition( @elems[0], "must be" );
+            
+            if ( @elems > 1 ){
+                foreach my $i (1 .. $#elems){
+                    $checkCode .= " ".$operator." ".getCodeForCondition( @elems[$i] );
+                    $checkText .= " ".$operatorText." ".getTextForCondition( @elems[$i], "must be");
+                }
+            }
+            
+            $checkText .= " when ".$conditionsText;
+            
+            print "\t\t if( !".$checkCode." ){ \n";
+            print "\t\t\t *errMsg = \@\"".$checkText."\"; \n";
+            print "\t\t\t return false; \n";
+            print "\t\t }\n";
+        }
+        else {
+            die "Unknown action type '".$rule->{Action}->{type}."'";
+        }
+    }
+    print "\t }\n";
+}
+
+print "\t return true; \n";
 print "}\n";
 print "\n";
 
 # form accept function
 
 print "- (IBAction)accept:(id)sender {\n";
+print "\t NSString* errMsg;\n";
+print "\t if ( ! [self validateData: &errMsg] ){\n";
+print "\t\t [BBUtil showAlertWithMessage:errMsg];\n";
+print "\t\t return;\n";
+print "\t }\n";
+
 print "\t if ( !self.section ){\n";
 print "\t\t self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:\@\"FormSection\"];\n";
 print "\t\t self.section.title = $section_title;\n";
