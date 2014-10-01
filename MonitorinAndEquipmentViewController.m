@@ -65,6 +65,7 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];

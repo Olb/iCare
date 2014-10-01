@@ -153,6 +153,12 @@ if (ref $section->{Data}->{Element} eq "ARRAY"){
     @elements = ($section->{Data}->{Element});
 }
 
+if (ref $section->{Validation}->{Rule} eq "ARRAY"){
+    @rules = @{$section->{Validation}->{Rule}};
+} else {
+    @rules = ($section->{Validation}->{Rule});
+}
+
 # include section
 
 $viewControllerName = $section->{name}."ViewController";
@@ -254,6 +260,10 @@ print "}\n";
 print "\n";
 
 # validateSection
+
+foreach $rule (@rules) {
+    
+}
 
 print "-(void)validateSection:(FormSection*)section\n";
 print "{\n";

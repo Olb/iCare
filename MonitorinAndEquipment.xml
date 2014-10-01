@@ -20,6 +20,13 @@
         <Element type="BooleanFormElement" name="MonitoringEquipmentOther"/>
         <Element type="TextElement" name="MonitoringEquipmentOtherReason"/>
     </Data>
+    <Validation>
+        <Rule if="MonitoringEquipmentOther isChecked" then="MonitoringEquipmentOtherReason mustNotEmpty"/>
+        <Rule if="NibpRight isChecked" then="NibpLeft mustBeUnchecked" />
+        <Rule if="NibpLeft isChecked" then="NibpRight mustBeUnchecked" />
+        <Rule if="NibpRight isChecked or NibpLeft isChecked" then="NibpArm mustChecked or NibpLeg mustChecked"/>
+        <Rule if="NibpRight isChecked or NibpLeft isChecked" then="NibpEveryMin mustNotEmpty"/>
+    </Validation>
     
     <Graphics>
         <Group label="Patient Safety:" orientation="vertical">
