@@ -151,4 +151,8 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 {
 	 return RENAL_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

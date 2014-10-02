@@ -226,4 +226,8 @@ static NSString *const URINE_KEY = @"UrineKey";
 {
 	 return POST_OP_DIAGNOSIS_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

@@ -27,7 +27,48 @@
         <Element type="TextElement" name="Fentanyl"/>
         <Element type="TextElement" name="Duramorph"/>
     </Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="CsfClear"/>
+            <Element name="CsfCloudy"/>
+            <Element name="CsfBloody"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="PositionSit"/>
+            <Element name="PositionRtLat"/>
+            <Element name="PositionLtLat"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="AsepticBetadine"/>
+            <Element name="AsepticAlcohol"/>
+            <Element name="AsepticDuraPrep"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="ParesthesiaNone"/>
+            <Element name="ParesthesiaOther"/>
+        </RadioButtons>
+        ##
+        <Rule>
+            <Condition operator="or">
+                <Element name="NibpRight" value="true" />
+                <Element name="NibpLeft" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="NibpArm" value="true" />
+                <Element name="NibpLeg" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition operator="or">
+                <Element name="NibpArm" value="true" />
+                <Element name="NibpLeg" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="NibpRight" value="true" />
+                <Element name="NibpLeft" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group label="Spinal Anesthesia:" orientation="vertical">
             <Group orientation="horizontal" marginB="8">

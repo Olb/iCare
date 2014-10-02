@@ -225,6 +225,27 @@ print "- (void)viewDidLoad\n";
 print "{\n";
 print "\t [super viewDidLoad];\n";
 
+$radioGroup = 0;
+foreach $button (@radioButtons) {
+    my @elems;
+    $radioGroup++;
+    if (ref $button->{Element} eq "ARRAY"){
+        @elems = @{$button->{Element}};
+    } else {
+        @elems = ($button->{Element});
+    }
+    
+    foreach $elem (@elems) {
+        if ( ! defined $elem ){
+            print STDERR "Undefind element in radiogroup\n";
+            next;
+        }
+        print STDERR Dumper($elem);
+        my $dataElement = getDataElementForName($elem->{name});
+        print "\t [self.".getOutletNameForElement($dataElement)." addTarget:self action:\@selector(radioGroup".$radioGroup.":) forControlEvents:UIControlEventTouchUpInside];\n";
+    }
+}
+
 foreach $element (@elements){
     if ($element->{type} eq "StringListElement"){
         print "\t self.".getOutletNameForElement($element, "ADAPTER")." = [[StringArrayTableAdapter alloc] init];\n";
@@ -299,6 +320,16 @@ sub getCodeForCondition {
                 }
             }
         }
+        case "TextElement" {
+            switch ($elem->{value}){
+                case "NotEmpty"{
+                    return "![self.".getOutletNameForElement($elemData).".text isEqualToString:\@\"\"]";
+                }
+                else {
+                    die "Invalid value: '".$elem->{value}."'";
+                }
+            }
+        }
         else {
             die "Element type '".$elemData->{type}."' is not handled";
         }
@@ -322,6 +353,16 @@ sub getTextForCondition {
                 }
                 case "false"{
                     return $elem->{name}." ".$verb." unselected";
+                }
+                else {
+                    die "Invalid value: '".$elem->{value}."'";
+                }
+            }
+        }
+        case "TextElement" {
+            switch ($elem->{value}){
+                case "NotEmpty"{
+                    return $elem->{name}." ".$verb." not empty";
                 }
                 else {
                     die "Invalid value: '".$elem->{value}."'";
@@ -352,11 +393,21 @@ print "\n";
 print "-(BOOL)validateData:(NSString**)errMsg\n";
 print "{\n";
 
+foreach $elem (@elements) {
+   
+    switch ($elem->{type}) {
+        case "MedicationFormElement" {
+            print "\t if (self.".getOutletNameForElement($elem, "CHECKBOX").".selected && [self.".getOutletNameForElement($elem, "DOSE").".text isEqualToString:\@\"\"]) {\n";
+            print "\t\t *errMsg = \@\"".$elem->{name}." must have a dose value\";\n";
+            print "\t\t return false;\n";
+            print "\t }\n";
+        }
+    }
+}
 foreach $rule (@rules) {
-    if ( $section->{name} ne "MonitorinAndEquipment" ) {
+    if ( ! defined $rule ){
         print STDERR "Warning: Skipping validation for section ".$section->{name}."\n";
-        
-        last;
+        next;
     }
     my $condition = $rule->{Condition};
     my $operatorText = $condition->{operator};
@@ -364,7 +415,10 @@ foreach $rule (@rules) {
     switch ($operatorText){
         case "or"  { $operator = "||"; }
         case "and" { $operator = "&&"; }
-        else       { die "Unknown operator."; }
+        else       {
+            $operator = "&&";
+            $operatorText = "and";
+        }
     }
     my @elems;
     
@@ -374,7 +428,7 @@ foreach $rule (@rules) {
         @elems = ($condition->{Element});
     }
     
-    if ( $#elems == 0 ){
+    if ( scalar @elems == 0 ){
         print STDERR Dumper($rule);
         die "Condition must have at least one element";
     }
@@ -383,54 +437,64 @@ foreach $rule (@rules) {
     my $conditionsText = getTextForCondition( @elems[0], "is");
     
     if ( @elems > 1 ){
-        print STDERR "More than one element";
         foreach my $i (1 .. $#elems){
             $conditionsCode .= " ".$operator." ".getCodeForCondition( @elems[$i] );
             $conditionsText .= " ".$operatorText." ".getTextForCondition( @elems[$i], "is");
         }
     }
     
-    if (ref $rule->{Action}->{Element} eq "ARRAY"){
-        @elems = @{$rule->{Action}->{Element}};
+    if (ref $rule->{Action} eq "ARRAY"){
+        @actions = @{$rule->{Action}};
     } else {
-        @elems = ($rule->{Action}->{Element});
+        @actions = ($rule->{Action});
     }
     
-    if ( $#elems == 0 ){
+    if ( scalar @elems == 0 ){
         die "Action must have at least one element";
     }
     
     print "\t if( ".$conditionsCode." ){ \n";
-    switch ($rule->{Action}->{type}){
-        case "check"{
-            my $operatorText = $rule->{Action}->{operator};
-            my $operator;
-            switch ($operatorText){
-                case "or"  { $operator = "||"; }
-                case "and" { $operator = "&&"; }
-                else       { die "Unknown operator."; }
-            }
-            my $checkCode = getCodeForCondition( @elems[0] );
-            my $checkText = getTextForCondition( @elems[0], "must be" );
-            
-            if ( @elems > 1 ){
-                foreach my $i (1 .. $#elems){
-                    $checkCode .= " ".$operator." ".getCodeForCondition( @elems[$i] );
-                    $checkText .= " ".$operatorText." ".getTextForCondition( @elems[$i], "must be");
-                }
-            }
-            
-            $checkText .= " when ".$conditionsText;
-            
-            print "\t\t if( !".$checkCode." ){ \n";
-            print "\t\t\t *errMsg = \@\"".$checkText."\"; \n";
-            print "\t\t\t return false; \n";
-            print "\t\t }\n";
+    foreach $action (@actions) {
+        if (ref $action->{Element} eq "ARRAY"){
+            @elems = @{$action->{Element}};
+        } else {
+            @elems = ($action->{Element});
         }
-        else {
-            die "Unknown action type '".$rule->{Action}->{type}."'";
+        switch ($action->{type}){
+            case "check"{
+                my $operatorText = $action->{operator};
+                my $operator;
+                switch ($operatorText){
+                    case "or"  { $operator = "||"; }
+                    case "and" { $operator = "&&"; }
+                    else       {
+                        $operator = "&&";
+                        $operatorText = "and";
+                    }
+                }
+                my $checkCode = getCodeForCondition( @elems[0] );
+                my $checkText = getTextForCondition( @elems[0], "must be" );
+                
+                if ( @elems > 1 ){
+                    foreach my $i (1 .. $#elems){
+                        $checkCode .= " ".$operator." ".getCodeForCondition( @elems[$i] );
+                        $checkText .= " ".$operatorText." ".getTextForCondition( @elems[$i], "must be");
+                    }
+                }
+                
+                $checkText .= " when ".$conditionsText;
+                
+                print "\t\t if( !(".$checkCode.") ){ \n";
+                print "\t\t\t *errMsg = \@\"".$checkText."\"; \n";
+                print "\t\t\t return false; \n";
+                print "\t\t }\n";
+            }
+            else {
+                die "Unknown action type '".$rule->{Action}->{type}."'";
+            }
         }
     }
+    
     print "\t }\n";
 }
 
@@ -591,6 +655,30 @@ print "+(NSString*)sectionTitle\n";
 print "{\n";
 print "\t return $section_title;\n";
 print "}\n";
+$radioGroup = 0;
+foreach $button (@radioButtons) {
+    my @elems;
+    $radioGroup++;
+    if (ref $button->{Element} eq "ARRAY"){
+        @elems = @{$button->{Element}};
+    } else {
+        @elems = ($button->{Element});
+    }
+    print "-(void)radioGroup".$radioGroup.":(BBCheckBox*)sender {\n";
+    print "\t BOOL selected = sender.selected;\n";
+    foreach $elem (@elems) {
+        if ( ! defined $elem ){
+            print STDERR "Undefind element in radiogroup\n";
+            next;
+        }
+        my $dataElement = getDataElementForName($elem->{name});
+        print "\t self.".getOutletNameForElement($dataElement).".selected = NO;\n";
+        
+    }
+    print "\t sender.selected = selected;\n";
+
+    print "}\n";
+}
 
 print "\@end";
 

@@ -271,4 +271,8 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 {
 	 return CARDIO_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

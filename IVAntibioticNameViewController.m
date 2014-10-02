@@ -159,4 +159,8 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 {
 	 return IVAntibiotic_NAME_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

@@ -140,4 +140,8 @@ static NSString *const OTHER_ACTIONS_KEY = @"OtherActionsKey";
 {
 	 return PRE_OP_ACTIONS_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

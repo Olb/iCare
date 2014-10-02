@@ -241,4 +241,8 @@ static NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 {
 	 return PRE_OP_REVIEW_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

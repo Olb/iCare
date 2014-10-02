@@ -451,4 +451,8 @@ static NSString *const DURAMORPH_KEY = @"DuramorphKey";
 {
 	 return SPINAL_ANESTHESIA_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

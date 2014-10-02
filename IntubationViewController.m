@@ -271,4 +271,8 @@ static NSString *const FIBEROPTIC_KEY = @"FiberopticKey";
 {
 	 return INTUBATION_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

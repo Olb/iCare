@@ -185,4 +185,8 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 {
 	 return INVASIVE_LINES_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

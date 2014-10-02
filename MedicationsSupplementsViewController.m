@@ -137,4 +137,8 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 {
 	 return MEDICATIONS_SUPPLEMENTS_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

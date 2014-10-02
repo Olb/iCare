@@ -76,6 +76,14 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if (self.midazolamBBCheckBox.selected && [self.midazolamUITextField.text isEqualToString:@""]) {
+		 *errMsg = @"Midazolam must have a dose value";
+		 return false;
+	 }
+	 if (self.ondansetronBBCheckBox.selected && [self.ondansetronUITextField.text isEqualToString:@""]) {
+		 *errMsg = @"Ondansetron must have a dose value";
+		 return false;
+	 }
 	 return true; 
 }
 
@@ -161,5 +169,9 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 +(NSString*)sectionTitle
 {
 	 return PREMEDS_GIVEN_SECTION_TITLE;
+}
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
 }
 @end

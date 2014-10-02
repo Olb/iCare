@@ -65,6 +65,10 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.nibpRightBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.nibpLeftBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.nibpArmBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.nibpLegBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -154,8 +158,20 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 -(BOOL)validateData:(NSString**)errMsg
 {
 	 if( self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected ){ 
-		 if( !self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected ){ 
+		 if( !(self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected) ){ 
 			 *errMsg = @"NibpArm must be selected or NibpLeg must be selected when NibpRight is selected or NibpLeft is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected ){ 
+		 if( !(self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected) ){ 
+			 *errMsg = @"NibpRight must be selected or NibpLeft must be selected when NibpArm is selected or NibpLeg is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected || self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected ){ 
+		 if( !(![self.nibpEveryMinUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"NibpEveryMin must be not empty when NibpArm is selected or NibpLeg is selected or NibpRight is selected or NibpLeft is selected"; 
 			 return false; 
 		 }
 	 }
@@ -351,5 +367,17 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 +(NSString*)sectionTitle
 {
 	 return MONITORIN_AND_EQUIPMENT_SECTION_TITLE;
+}
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 self.nibpRightBBCheckBox.selected = NO;
+	 self.nibpLeftBBCheckBox.selected = NO;
+	 sender.selected = selected;
+}
+-(void)radioGroup2:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 self.nibpArmBBCheckBox.selected = NO;
+	 self.nibpLegBBCheckBox.selected = NO;
+	 sender.selected = selected;
 }
 @end

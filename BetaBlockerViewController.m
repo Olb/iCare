@@ -75,6 +75,12 @@ static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.contraIndicationBBCheckBox.selected ){ 
+		 if( !(self.heartRateLessThanFiftyBBCheckBox.selected || self.hypotensionBBCheckBox.selected) ){ 
+			 *errMsg = @"HeartRateLessThanFifty must be selected or Hypotension must be selected when ContraIndication is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -150,5 +156,9 @@ static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 +(NSString*)sectionTitle
 {
 	 return BETA_BLOCKER_SECTION_TITLE;
+}
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
 }
 @end

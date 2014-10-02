@@ -166,4 +166,8 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 {
 	 return IMMUNEID_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

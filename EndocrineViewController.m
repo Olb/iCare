@@ -151,4 +151,8 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 {
 	 return ENDOCRINE_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

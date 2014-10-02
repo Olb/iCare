@@ -25,12 +25,10 @@
             <Element name="NibpRight"/>
             <Element name="NibpLeft"/>
         </RadioButtons>
-        
         <RadioButtons>
             <Element name="NibpArm"/>
             <Element name="NibpLeg"/>
         </RadioButtons>
-        
         <Rule>
             <Condition operator="or">
                 <Element name="NibpRight" value="true" />
@@ -39,6 +37,27 @@
             <Action type="check" operator="or">
                 <Element name="NibpArm" value="true" />
                 <Element name="NibpLeg" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition operator="or">
+                <Element name="NibpArm" value="true" />
+                <Element name="NibpLeg" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="NibpRight" value="true" />
+                <Element name="NibpLeft" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition operator="or">
+                <Element name="NibpArm" value="true" />
+                <Element name="NibpLeg" value="true" />
+                <Element name="NibpRight" value="true" />
+                <Element name="NibpLeft" value="true" />
+            </Condition>
+            <Action type="check" operator="and" >
+                <Element name="NibpEveryMin" value="NotEmpty" />
             </Action>
         </Rule>
     </Validation>

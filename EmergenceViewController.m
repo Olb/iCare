@@ -151,4 +151,8 @@ static NSString *const O2For_TRANSPORT_KEY = @"O2ForTransportKey";
 {
 	 return EMERGENCE_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

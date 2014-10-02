@@ -286,4 +286,8 @@ static NSString *const DOUBLE_LUMEN_RIGHT_KEY = @"DoubleLumenRightKey";
 {
 	 return ENDOTRACHEAL_TUBE_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

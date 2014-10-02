@@ -60,7 +60,7 @@
                                 <action selector="create:" destination="-1" eventType="touchUpInside" id="htm-kA-ONG"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSs-tx-ran">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="billy" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSs-tx-ran">
                             <rect key="frame" x="21" y="218" width="382" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="382" id="Td8-ic-KaT"/>
@@ -72,7 +72,7 @@
                                 <outlet property="delegate" destination="-1" id="59C-hB-bOd"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-9J-QMB">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-9J-QMB">
                             <rect key="frame" x="21" y="304" width="382" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="382" id="GuM-66-ej1"/>

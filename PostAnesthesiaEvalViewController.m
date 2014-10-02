@@ -316,4 +316,8 @@ static NSString *const COMPLICATIONS_OTHER_REASON_KEY = @"ComplicationsOtherReas
 {
 	 return POST_ANESTHESIA_EVAL_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

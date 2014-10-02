@@ -7,7 +7,17 @@
         <Element type="BooleanFormElement" name="HeartRateLessThanFifty"/>
         <Element type="BooleanFormElement" name="Hypotension"/>
     </Data>
-    
+    <Validation>
+        <Rule>
+            <Condition>
+                <Element name="ContraIndication" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="HeartRateLessThanFifty" value="true" />
+                <Element name="Hypotension" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group label="If Pt on Beta-Blocker" orientation="vertical" >
             <Element name="BetaBlockTakenPastDay" label="Taken in past 24 hrs" />

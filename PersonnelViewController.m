@@ -193,4 +193,8 @@ static NSString *const CRNA_AAA_KEY = @"CrnaAaaKey";
 {
 	 return PERSONNEL_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

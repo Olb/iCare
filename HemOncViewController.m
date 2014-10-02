@@ -211,4 +211,8 @@ static NSString *const RADIATION_KEY = @"RadiationKey";
 {
 	 return HEM_ONC_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

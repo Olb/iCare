@@ -155,4 +155,8 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 {
 	 return PAST_SURGICAL_PROCEDURES_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end

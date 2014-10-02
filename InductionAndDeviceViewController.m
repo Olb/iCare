@@ -226,4 +226,8 @@ static NSString *const SIZE_KEY = @"SizeKey";
 {
 	 return INDUCTION_AND_DEVICE_SECTION_TITLE;
 }
+-(void)radioGroup1:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 sender.selected = selected;
+}
 @end
