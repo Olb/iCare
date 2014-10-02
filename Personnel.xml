@@ -6,6 +6,14 @@
         <Element type="StringListElement" name="Anesthesiologist"/>
         <Element type="StringListElement" name="CrnaAaa"/>
     </Data>
+    <Validation>
+        <Rule>
+            <Action type="check">
+                <Element name="ResponsibleMd" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group label="Personnel" orientation="vertical">
             <Element name="ResponsibleMd" label="Responsible MD/DO at Emergence: " marginB="8"/>

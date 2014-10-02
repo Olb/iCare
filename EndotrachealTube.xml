@@ -16,7 +16,29 @@
         <Element type="BooleanFormElement" name="DoubleLumenLeft"/>
         <Element type="BooleanFormElement" name="DoubleLumenRight"/>
     </Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="Oral"/>
+            <Element name="Nasal"/>
+            <Element name="Trach"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="DoubleLumenLeft"/>
+            <Element name="DoubleLumenRight"/>
+        </RadioButtons>
+        <Rule>
+            <Condition>
+                <Element name="DoubleLumenEtt" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="DoubleLumenSize" value="NotEmpty" />
+            </Action>
+            <Action type="check" operator="or">
+                <Element name="DoubleLumenLeft" value="true" />
+                <Element name="DoubleLumenRight" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group label="Emergence" orientation="vertical">
             <Group orientation="horizontal">

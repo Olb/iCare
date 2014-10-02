@@ -12,7 +12,19 @@
         <Element type="BooleanFormElement" name="Mask"/>
         <Element type="TextElement" name="Size"/>
     </Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="Iv"/>
+            <Element name="Im"/>
+            <Element name="Inhalation"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="OralAirway"/>
+            <Element name="NasalAirway"/>
+            <Element name="Mask"/>
+        </RadioButtons>
+    </Validation>
+
     <Graphics>
         <Group orientation="horizontal">
             <Group label="Induction" orientation="vertical">

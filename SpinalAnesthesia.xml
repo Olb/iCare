@@ -47,27 +47,7 @@
             <Element name="ParesthesiaNone"/>
             <Element name="ParesthesiaOther"/>
         </RadioButtons>
-        ##
-        <Rule>
-            <Condition operator="or">
-                <Element name="NibpRight" value="true" />
-                <Element name="NibpLeft" value="true" />
-            </Condition>
-            <Action type="check" operator="or">
-                <Element name="NibpArm" value="true" />
-                <Element name="NibpLeg" value="true" />
-            </Action>
-        </Rule>
-        <Rule>
-            <Condition operator="or">
-                <Element name="NibpArm" value="true" />
-                <Element name="NibpLeg" value="true" />
-            </Condition>
-            <Action type="check" operator="or">
-                <Element name="NibpRight" value="true" />
-                <Element name="NibpLeft" value="true" />
-            </Action>
-        </Rule>
+        
     </Validation>
     <Graphics>
         <Group label="Spinal Anesthesia:" orientation="vertical">
