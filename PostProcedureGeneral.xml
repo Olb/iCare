@@ -5,14 +5,39 @@
         <Element type="BooleanFormElement" name="DentitionIntact" />
         <Element type="BooleanFormElement" name="OtherBool" />
         <Element type="TextElement" name="OtherText" />
-        <Element type="TextElement" name="Bp" />
-        <Element type="TextElement" name="Bp2" />
-        <Element type="TextElement" name="Hr" />
-        <Element type="TextElement" name="Rr" />
-        <Element type="TextElement" name="Temp" />
+        <Element type="TextElement" name="BpSystolic" />
+        <Element type="TextElement" name="BpDiastolic" />
+        <Element type="TextElement" name="HeartRate" />
+        <Element type="TextElement" name="RespiratoryRate" />
+        <Element type="TextElement" name="Temperature" />
         <Element type="TextElement" name="SpO2" />
 	</Data>
-    
+    <Validation>
+        <Rule>
+            <Condition>
+                <Element name="BpSystolic" value="NotEmpty" />
+            </Condition>
+            <Action type="check">
+                <Element name="BpDiastolic" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition>
+                <Element name="BpDiastolic" value="NotEmpty" />
+            </Condition>
+            <Action type="check">
+                <Element name="BpSystolic" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition>
+                <Element name="OtherBool" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="OtherText" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group label="Post-Procedure General Condition" orientation="vertical">
             <Group orientation="horizontal">
@@ -25,15 +50,15 @@
                     </Group>
                 </Group>
                 <Group orientation="vertical">
-                    <Element name="Rr" label="RR:"/>
-                    <Element name="Hr" label="HR:"/>
+                    <Element name="RespiratoryRate" label="RR:"/>
+                    <Element name="HeartRate" label="HR:"/>
                     <Group orientation="horizontal">
-                        <Element name="Bp" label="BP:"/>
-                        <Element name="Bp2" label="/"/>
+                        <Element name="BpSystolic" label="BP:"/>
+                        <Element name="BpDiastolic" label="/"/>
                     </Group>
                 </Group>
                 <Group orientation="vertical">
-                    <Element name="Temp" label="Temp:"/>
+                    <Element name="Temperature" label="Temp:"/>
                     <Group orientation="horizontal">
                         <Element name="SpO2" label="SpO2:"/>
                         <Element label="%"/>

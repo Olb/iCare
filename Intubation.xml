@@ -15,7 +15,37 @@
         <Element type="BooleanFormElement" name="Awake"/>
         <Element type="BooleanFormElement" name="Fiberoptic"/>
     </Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="Curved"/>
+            <Element name="Straight"/>
+        </RadioButtons>
+        <Rule>
+            <Condition>
+                <Element name="Curved" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="CurvedNumber" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition>
+                <Element name="Straight" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="StraightNumber" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition>
+                <Element name="Difficult" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="DifficultReason" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+
     <Graphics>
         <Group label="Intubation" orientation="vertical">
             <Group orientation="horizontal" marginB="8">

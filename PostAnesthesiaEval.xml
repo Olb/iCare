@@ -11,14 +11,53 @@
         <Element type="BooleanFormElement" name="Awake"/>
         <Element type="BooleanFormElement" name="Stable"/>
         <Element type="BooleanFormElement" name="MentalStatusOther"/>
-        <Element type="TextElement" name="MentalStatusOtherReason"/>
+        <Element type="TextElement" name="MentalStatusOtherStatus"/>
         <Element type="BooleanFormElement" name="CardiacRespAirwayStatusOther"/>
-        <Element type="TextElement" name="CardiacRespAirwayStatusOtherReason"/>
+        <Element type="TextElement" name="CardiacRespAirwayStatusOtherStatus"/>
         <Element type="BooleanFormElement" name="ComplicationsNone"/>
         <Element type="BooleanFormElement" name="ComplicationsOther"/>
         <Element type="TextElement" name="ComplicationsOtherReason"/>
     </Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="Arousable"/>
+            <Element name="Awake"/>
+            <Element name="MentalStatusOther"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="Stable"/>
+            <Element name="CardiacRespAirwayStatusOther"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="ComplicationsNone"/>
+            <Element name="ComplicationsOther"/>
+        </RadioButtons>
+        <Rule>
+            <Condition>
+                <Element name="MentalStatusOther" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="MentalStatusOtherStatus" value="NotEmpty" />
+            </Action>
+        </Rule>
+        
+        <Rule>
+            <Condition>
+                <Element name="CardiacRespAirwayStatusOther" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="CardiacRespAirwayStatusOtherStatus" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition>
+                <Element name="ComplicationsOther" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="ComplicationsOtherReason" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group orientation="vertical" label="Post Anesthesia Eval">
             <Group orientation="horizontal">
@@ -27,14 +66,14 @@
                     <Element name="Awake" label="Awake" />
                     <Group orientation="horizontal">
                         <Element name="MentalStatusOther" label="" />
-                        <Element name="MentalStatusOtherReason" label="" />
+                        <Element name="MentalStatusOtherStatus" label="" />
                     </Group>
                 </Group>
                 <Group orientation="vertical" label="Cardiac/Resp/Airway Status:" >
                     <Element name="Stable" label="Stable" />
                     <Group orientation="horizontal">
                         <Element name="CardiacRespAirwayStatusOther" label="" />
-                        <Element name="CardiacRespAirwayStatusOtherReason" label="" />
+                        <Element name="CardiacRespAirwayStatusOtherStatus" label="" />
                     </Group>
                 </Group>
                 <Group orientation="vertical" label="Complications" >

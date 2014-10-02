@@ -1130,7 +1130,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./GenerateViewControllers.sh -p";
+			shellScript = ./GenerateViewControllers.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 

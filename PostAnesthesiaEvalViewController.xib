@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -10,14 +11,14 @@
                 <outlet property="awakeBBCheckBox" destination="7gG-Cc-WMS" id="hKd-eb-wzr"/>
                 <outlet property="bpDiastolicUITextField" destination="zkc-5A-q2B" id="fgi-Hq-Zox"/>
                 <outlet property="bpSystolicUITextField" destination="6ex-C6-KCt" id="p7e-E2-3ZB"/>
-                <outlet property="cardiacRespAirwayStatusOtherBBCheckBox" destination="bDq-2Y-RYt" id="rde-uC-Ux8"/>
-                <outlet property="cardiacRespAirwayStatusOtherReasonUITextField" destination="vxL-3v-L20" id="0yx-HR-g9J"/>
+                <outlet property="cardiacRespAirwayStatusOtherBBCheckBox" destination="bDq-2Y-RYt" id="y6Z-hJ-Yn3"/>
+                <outlet property="cardiacRespAirwayStatusOtherStatusUITextField" destination="vxL-3v-L20" id="CdT-bg-a1Y"/>
                 <outlet property="complicationsNoneBBCheckBox" destination="ovS-kV-NJr" id="TYC-nq-GTY"/>
                 <outlet property="complicationsOtherBBCheckBox" destination="T3e-At-qFV" id="qE7-rU-DHU"/>
                 <outlet property="complicationsOtherReasonUITextField" destination="vwx-Wi-lld" id="tPY-2K-STk"/>
                 <outlet property="heartRateUITextField" destination="0mv-zU-QIa" id="0Lh-WD-xBF"/>
-                <outlet property="mentalStatusOtherBBCheckBox" destination="4hh-Og-fvQ" id="BUc-sh-nmB"/>
-                <outlet property="mentalStatusOtherReasonUITextField" destination="wrC-nw-yJG" id="sAv-S9-ekG"/>
+                <outlet property="mentalStatusOtherBBCheckBox" destination="4hh-Og-fvQ" id="XKV-8A-vjN"/>
+                <outlet property="mentalStatusOtherStatusUITextField" destination="wrC-nw-yJG" id="XUd-7f-E63"/>
                 <outlet property="respiratoryRateUITextField" destination="FEV-Vc-SDn" id="JDb-4B-Lgo"/>
                 <outlet property="spO2UITextField" destination="ACs-A9-CAV" id="osi-EV-3QD"/>
                 <outlet property="stableBBCheckBox" destination="Lxq-8B-iTZ" id="Xja-V5-ynj"/>
@@ -255,7 +256,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SOo-Ut-c6G">
-                    <rect key="frame" x="0.0" y="0.0" width="540" height="44.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="540" height="45"/>
                     <items>
                         <barButtonItem title="Cancel" id="7IJ-v8-fUH">
                             <connections>
