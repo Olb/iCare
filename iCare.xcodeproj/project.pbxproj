@@ -54,6 +54,7 @@
 		284819E819D9B9CF00E0ED21 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284819E719D9B9CF00E0ED21 /* MessageUI.framework */; };
 		28566D5119D1AF45000124CB /* FirstTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5019D1AF45000124CB /* FirstTest.m */; };
 		28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5619D1D873000124CB /* MedicationFormElement.m */; };
+		288D1E2019DDCD55008EF1B7 /* IntraOpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */; };
 		289A97BE19DA27AF00300091 /* EditUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289A97BD19DA27AF00300091 /* EditUserViewController.m */; };
 		289A97C919DB061600300091 /* down_arrow_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A97C519DB061600300091 /* down_arrow_selected.png */; };
 		289A97CA19DB061600300091 /* up_arrow_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 289A97C619DB061600300091 /* up_arrow_selected.png */; };
@@ -271,6 +272,8 @@
 		28566D5519D1D873000124CB /* MedicationFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationFormElement.h; sourceTree = "<group>"; };
 		28566D5619D1D873000124CB /* MedicationFormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationFormElement.m; sourceTree = "<group>"; };
 		285A969419CFAC2F0034B769 /* Icare Screen With Additions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Icare Screen With Additions.pdf"; sourceTree = "<group>"; };
+		288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpViewController.h; sourceTree = "<group>"; };
+		288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOpViewController.m; sourceTree = "<group>"; };
 		289A97B919DA251000300091 /* iCare2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCare2-Bridging-Header.h"; sourceTree = "<group>"; };
 		289A97BC19DA27AF00300091 /* EditUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditUserViewController.h; path = ../EditUserViewController.h; sourceTree = "<group>"; };
 		289A97BD19DA27AF00300091 /* EditUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditUserViewController.m; path = ../EditUserViewController.m; sourceTree = "<group>"; };
@@ -622,6 +625,15 @@
 			name = "Eval Main TableView";
 			sourceTree = "<group>";
 		};
+		288D1E1D19DDCCEA008EF1B7 /* IntraOp */ = {
+			isa = PBXGroup;
+			children = (
+				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
+				288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */,
+			);
+			name = IntraOp;
+			sourceTree = "<group>";
+		};
 		28AA355019C5D5CB001453CE /* Picker Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +801,7 @@
 		F4615D40192F908E0031470B = {
 			isa = PBXGroup;
 			children = (
+				288D1E1D19DDCCEA008EF1B7 /* IntraOp */,
 				28566D5019D1AF45000124CB /* FirstTest.m */,
 				28AA355019C5D5CB001453CE /* Picker Adapters */,
 				98FF05FB19B2262B0003129C /* TableAdapters */,
@@ -1193,6 +1206,7 @@
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,
 				98DA486D19D1F05300E4727B /* ElementListFormElement.m in Sources */,
 				281270C019C87289009A9644 /* PastSurgicalProceduresViewController.m in Sources */,
+				288D1E2019DDCD55008EF1B7 /* IntraOpViewController.m in Sources */,
 				988D166F19AE63A2009A887A /* EmergenceViewController.m in Sources */,
 				F4AFB95219ABB96700CA013B /* EvalOtherViewController.m in Sources */,
 				2838DE2319CB259C0025F7DE /* FormSection.m in Sources */,
