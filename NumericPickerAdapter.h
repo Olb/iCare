@@ -10,4 +10,8 @@
 
 @interface NumericPickerAdapter : NSObject <UIPickerViewDelegate, UIPickerViewDataSource>
 
+-(instancetype)initWithPickerView:(UIPickerView*)pickerView format:(NSString*)format, ...;
+-(NSString*) getValue;
+-(NSString*) getUnit;
+
 @end

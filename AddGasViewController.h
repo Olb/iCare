@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddGasViewController : UIViewController
+@interface AddGasViewController : UIViewController 
 
 @end

@@ -11,23 +11,31 @@
 @interface NumericPickerAdapter ()
 @property NSString *format;
 @property NSMutableArray *units;
+@property UIPickerView *pickerView;
 @end
 
 @implementation NumericPickerAdapter
 
 
--(instancetype)initWithFormat:(NSString*)format, ... {
+-(instancetype)initWithPickerView:(UIPickerView*)pickerView format:(NSString*)format, ... {
     if (self = [super init]) {
         va_list args;
         va_start(args, format);
+        
         _format = format;
         _units = [[NSMutableArray alloc] init];
+
         for (NSArray *arg = va_arg(args, NSArray*); arg != nil; arg = va_arg(args, NSArray*))
         {
             [_units addObject:arg];
         }
         va_end(args);
+        
+        pickerView.delegate = self;
+        pickerView.dataSource = self;
+        _pickerView = pickerView;
     }
+    NSLog(@"Created numeric picker view with %ld units.",_units.count);
     return self;
 }
 
@@ -36,9 +44,6 @@
     NSInteger result = 0;
 
     switch ([self.format characterAtIndex:component]) {
-        case '.':
-            result = 1;
-            break;
         case 'd':
             result = 10;
             break;
@@ -55,6 +60,7 @@
             break;
         }
         default:
+            result = 1;
             break;
     }
     
@@ -69,11 +75,8 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *result = 0;
-    
-    switch ([self.format characterAtIndex:component]) {
-        case '.':
-            result = @".";
-            break;
+    char c = [self.format characterAtIndex:component];
+    switch (c) {
         case 'd':
             result = [NSString stringWithFormat:@"%ld", row];
             break;
@@ -90,7 +93,7 @@
             break;
         }
         default:
-            NSAssert(false, @"Format string unknown character");
+            result = [NSString stringWithFormat:@"%c", c];
             break;
     }
     return result;
@@ -99,22 +102,55 @@
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     CGFloat result = 0.0;
     switch ([self.format characterAtIndex:component]) {
-        case '.':
-            result = 20.0;
-            break;
         case 'd':
             result = 30.0;
             break;
         case 'u':{
-            result = 40.0;
+            result = 60.0;
             break;
         }
         default:
-            NSAssert(false, @"Format string unknown character");
+            result = 15.0;
             break;
     }
    
     return result;
+}
+
+-(NSString*) getValue{
+    NSMutableString *value = [[NSMutableString alloc] init];
+    
+    for (int i = 0; i < self.format.length; i++) {
+        if ([self.format characterAtIndex:i] == 'd' ||
+            [self.format characterAtIndex:i] == '.' ) {
+            [value appendString:[self pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:i] forComponent:i]];
+        } else {
+            break;
+        }
+    }
+    
+    return value;
+}
+
+
+-(NSString*) getUnit{
+    NSMutableString *value = [[NSMutableString alloc] init];
+    BOOL firstUnit = true;
+    for (int i = 0; i < self.format.length; i++) {
+        if ([self.format characterAtIndex:i] == 'u') {
+            NSString *unit = [self pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:i] forComponent:i];
+            if (unit.length == 0){
+                continue;
+            }
+            if (!firstUnit){
+                [value appendString:@"/"];
+            }
+            [value appendString:unit];
+            firstUnit = false;
+        }
+    }
+    
+    return value;
 }
 
 @end

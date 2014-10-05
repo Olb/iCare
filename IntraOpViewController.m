@@ -7,6 +7,7 @@
 //
 
 #import "IntraOpViewController.h"
+#import "AddGasViewController.h"
 
 @interface IntraOpViewController ()
 
@@ -25,6 +26,9 @@
 }
 
 - (IBAction)addGass:(id)sender {
+    AddGasViewController* vc = [[AddGasViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 

@@ -9,7 +9,6 @@
                 <outlet property="dosePickerView" destination="fcx-oj-O89" id="L5n-ZZ-ZBu"/>
                 <outlet property="gasPickerView" destination="qo2-Vn-A0D" id="LPO-4o-EdG"/>
                 <outlet property="isContinuous" destination="f5z-aU-YOV" id="aAN-it-25j"/>
-                <outlet property="otherTextField" destination="Mcb-qX-v9M" id="J3Y-vA-ZLG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,55 +17,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
-                    <rect key="frame" x="10" y="116" width="200" height="216"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="oZb-8g-USd"/>
-                        <outlet property="delegate" destination="-1" id="eSM-bx-Hlq"/>
-                    </connections>
-                </pickerView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-ic-WsZ">
-                    <rect key="frame" x="387" y="91" width="114" height="37"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-3I-TSN">
-                    <rect key="frame" x="10" y="375" width="170" height="37"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcx-oj-O89">
-                    <rect key="frame" x="344" y="121" width="200" height="216"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="Wuq-WR-arg"/>
-                        <outlet property="delegate" destination="-1" id="2cq-v7-2JZ"/>
-                    </connections>
-                </pickerView>
-                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please Specify" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mcb-qX-v9M">
-                    <rect key="frame" x="8" y="342" width="200" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="mIA-lH-LUC"/>
-                    </connections>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5z-aU-YOV" customClass="BBCheckBox">
-                    <rect key="frame" x="188" y="378" width="34" height="32"/>
-                    <state key="normal" image="checkbox_unselected.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="continuous:" destination="-1" eventType="touchUpInside" id="CRF-fw-4sG"/>
-                    </connections>
-                </button>
-                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Y-Pr-g8v">
-                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Y-Pr-g8v">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="9Mt-YT-aYD"/>
+                    </constraints>
                     <items>
                         <navigationItem title="Add Gas" id="n5G-zp-8Hm">
                             <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bG4-KH-mhc">
@@ -82,14 +37,48 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxT-pg-xfu">
-                    <rect key="frame" x="77" y="90" width="63" height="37"/>
+                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
+                    <rect key="frame" x="41" y="61" width="200" height="216"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="C8k-KT-Xoy"/>
+                        <outlet property="delegate" destination="-1" id="72d-gx-L2G"/>
+                    </connections>
+                </pickerView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-ic-WsZ">
+                    <rect key="frame" x="209" y="298" width="114" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-3I-TSN">
+                    <rect key="frame" x="280" y="152" width="170" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcx-oj-O89">
+                    <rect key="frame" x="81" y="322" width="370" height="216"/>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5z-aU-YOV" customClass="BBCheckBox">
+                    <rect key="frame" x="458" y="155" width="34" height="32"/>
+                    <state key="normal" image="checkbox_unselected.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="continuous:" destination="-1" eventType="touchUpInside" id="CRF-fw-4sG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Z1Y-Pr-g8v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3yT-Z6-Etg"/>
+                <constraint firstAttribute="trailing" secondItem="Z1Y-Pr-g8v" secondAttribute="trailing" id="Hsg-sV-byo"/>
+                <constraint firstItem="Z1Y-Pr-g8v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sI1-R3-cXf"/>
+            </constraints>
             <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
