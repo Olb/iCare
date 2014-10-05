@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Agent" representedClassName="Agent" syncable="YES">
+        <attribute name="continuous" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="dose" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="intraop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="agent" inverseEntity="IntraOp" syncable="YES"/>
+    </entity>
     <entity name="AntibioticFormElement" representedClassName="AntibioticFormElement" parentEntity="FormElement" syncable="YES">
         <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doseUnit" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +25,7 @@
     <entity name="Form" representedClassName="Form" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="forms" inverseEntity="Operation" syncable="YES"/>
-        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormSection" inverseName="form" inverseEntity="FormSection" syncable="YES"/>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="FormSection" inverseName="form" inverseEntity="FormSection" syncable="YES"/>
     </entity>
     <entity name="FormElement" representedClassName="FormElement" isAbstract="YES" syncable="YES">
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,6 +37,7 @@
         <relationship name="form" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Form" inverseName="sections" inverseEntity="Form" syncable="YES"/>
     </entity>
     <entity name="IntraOp" representedClassName="IntraOp" syncable="YES">
+        <relationship name="agent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Agent" inverseName="intraop" inverseEntity="Agent" syncable="YES"/>
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="intraOp" inverseEntity="Operation" syncable="YES"/>
     </entity>
     <entity name="MedicationFormElement" representedClassName="MedicationFormElement" parentEntity="FormElement" syncable="YES">
@@ -40,8 +51,8 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="preOpDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="forms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Form" inverseName="operation" inverseEntity="Form" syncable="YES"/>
-        <relationship name="intraOp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="operation" inverseEntity="IntraOp" syncable="YES"/>
+        <relationship name="forms" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Form" inverseName="operation" inverseEntity="Form" syncable="YES"/>
+        <relationship name="intraOp" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IntraOp" inverseName="operation" inverseEntity="IntraOp" syncable="YES"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="operations" inverseEntity="Patient" syncable="YES"/>
     </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
@@ -50,7 +61,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="medicalRecordNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="operations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Operation" inverseName="patient" inverseEntity="Operation" syncable="YES"/>
+        <relationship name="operations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Operation" inverseName="patient" inverseEntity="Operation" syncable="YES"/>
         <relationship name="practitioner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Practitioner" inverseName="patients" inverseEntity="Practitioner" syncable="YES"/>
     </entity>
     <entity name="Practitioner" representedClassName="Practitioner" syncable="YES">
@@ -72,15 +83,16 @@
         <element name="AntibioticFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="ElementListFormElement" positionX="-378" positionY="-360" width="128" height="60"/>
-        <element name="Form" positionX="-432" positionY="-306" width="128" height="88"/>
+        <element name="Form" positionX="-432" positionY="-306" width="128" height="90"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
-        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="58"/>
+        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="73"/>
         <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
-        <element name="Operation" positionX="-281" positionY="-504" width="128" height="148"/>
+        <element name="Operation" positionX="-281" positionY="-504" width="128" height="150"/>
         <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
+        <element name="Agent" positionX="-387" positionY="-369" width="128" height="163"/>
     </elements>
 </model>

@@ -21,6 +21,7 @@
 #import "BBWeightPickerView.h"
 #import "BBWeightPickerAdapter.h"
 #import "IntraOpViewController.h"
+#import "IntraOp.h"
 
 const float POUND_MULTIPLIER = 2.20462262f;
 
@@ -204,17 +205,12 @@ const float POUND_MULTIPLIER = 2.20462262f;
     }
     if ([[segue identifier] isEqualToString:@"IntraOp Segue"]) {
         IntraOpViewController *vc = [segue destinationViewController];
-        for (Form *f in self.selectedOperation.forms) {
-            if ([f.title isEqualToString:@"Anesthesia Record"]) {
-                vc.form = f;
-            }
+        if (!self.selectedOperation.intraOp) {
+            IntraOp *intraOp = (IntraOp*)[BBUtil newCoreDataObjectForEntityName:@"IntraOp"];
+            self.selectedOperation.intraOp = intraOp;
+            
         }
-        if (!vc.form) {
-            Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
-            f.title = @"IntraOp";
-            [self.selectedOperation addFormsObject:f];
-            vc.form = f;
-        }
+        vc.intraOp = self.selectedOperation.intraOp;
     }
 }
 

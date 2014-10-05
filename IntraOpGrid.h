@@ -1,5 +1,5 @@
 //
-//  IntraOpViewController.h
+//  IntraOpGrid.h
 //  iCare
 //
 //  Created by Billy Bray on 10/2/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IntraOp.h"
 
-@interface IntraOpViewController : UIViewController
-@property (nonatomic) IntraOp *intraOp;
+@interface IntraOpGrid : UIView
+
 @end
