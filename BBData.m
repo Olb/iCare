@@ -8,10 +8,10 @@
 
 #import "BBData.h"
 
-
 static NSArray *procedureArray;
 static NSArray *medicationArray;
 static NSArray *allergyArray;
+static NSArray *gasArray;
 @implementation BBData
 
 +(NSArray*)procedures
@@ -894,6 +894,16 @@ static NSArray *allergyArray;
     }
     
     return allergyArray;
+}
+
++(NSArray*)gases
+{
+    if (!gasArray) {
+        gasArray = [[NSArray alloc] initWithObjects:
+                        @"Oxygen", @"Desflurane", @"N20", @"Sevoflurane", @"Isoflurane", @"Air", nil];
+    }
+    
+    return gasArray;
 }
 
 @end

@@ -12,4 +12,5 @@
 +(NSArray*)procedures;
 +(NSArray*)allergies;
 +(NSArray*)medications;
++(NSArray*)gases;
 @end

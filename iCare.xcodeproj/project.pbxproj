@@ -79,6 +79,9 @@
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
 		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
 		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
+		28C0E93A19E1AF8F00F89AB3 /* AddGasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */; };
+		28C0E93B19E1AF8F00F89AB3 /* AddGasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */; };
+		28C0E93E19E1B5CB00F89AB3 /* NumericPickerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
 		28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2819C35FA100B2A0C6 /* BooleanFormElement.m */; };
 		28CCCB2F19C38BD700B2A0C6 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2E19C38BD700B2A0C6 /* Form.m */; };
@@ -305,6 +308,11 @@
 		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
 		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
 		28AA355819C60539001453CE /* PreOpActions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PreOpActions.xml; sourceTree = "<group>"; };
+		28C0E93719E1AF8F00F89AB3 /* AddGasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGasViewController.h; sourceTree = "<group>"; };
+		28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGasViewController.m; sourceTree = "<group>"; };
+		28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGasViewController.xib; sourceTree = "<group>"; };
+		28C0E93C19E1B5CB00F89AB3 /* NumericPickerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumericPickerAdapter.h; sourceTree = "<group>"; };
+		28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumericPickerAdapter.m; sourceTree = "<group>"; };
 		28CCCB2119C35FA100B2A0C6 /* StringListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringListElement.h; sourceTree = "<group>"; };
 		28CCCB2219C35FA100B2A0C6 /* StringListElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringListElement.m; sourceTree = "<group>"; };
 		28CCCB2719C35FA100B2A0C6 /* BooleanFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanFormElement.h; sourceTree = "<group>"; };
@@ -636,6 +644,9 @@
 		288D1E1D19DDCCEA008EF1B7 /* IntraOp */ = {
 			isa = PBXGroup;
 			children = (
+				28C0E93719E1AF8F00F89AB3 /* AddGasViewController.h */,
+				28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */,
+				28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */,
 				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
 				288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */,
 				288D1E5919DDF73E008EF1B7 /* IntraOpGrid.h */,
@@ -892,6 +903,8 @@
 		F4DF069F19B149AA00DDBE7E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				28C0E93C19E1B5CB00F89AB3 /* NumericPickerAdapter.h */,
+				28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */,
 				28CCCB3319C3A14700B2A0C6 /* DatePicker.xib */,
 				28CCCB3519C3A15000B2A0C6 /* TimePicker.xib */,
 				28CCCB3719C3A15D00B2A0C6 /* Birthdate.xib */,
@@ -1110,6 +1123,7 @@
 				289A97C919DB061600300091 /* down_arrow_selected.png in Resources */,
 				988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */,
 				988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */,
+				28C0E93B19E1AF8F00F89AB3 /* AddGasViewController.xib in Resources */,
 				2838DE2F19CB33F30025F7DE /* Intubation.xml in Resources */,
 				F4615D64192F908E0031470B /* Images.xcassets in Resources */,
 				289BDC8119CBA9BA00C683E7 /* Airway.xml in Resources */,
@@ -1165,6 +1179,7 @@
 				985B839B19C24E20007DF484 /* Practitioner.m in Sources */,
 				98FF060119B245970003129C /* PatientFormTableAdapter.m in Sources */,
 				F4B5D57D19ACEC7A00174F61 /* PreOpReviewViewController.m in Sources */,
+				28C0E93E19E1B5CB00F89AB3 /* NumericPickerAdapter.m in Sources */,
 				281270C519C87366009A9644 /* AllergiesReactionsViewController.m in Sources */,
 				985B835B19C1FBA9007DF484 /* StringArrayTableAdapter.m in Sources */,
 				28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */,
@@ -1185,6 +1200,7 @@
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
 				F48AAEDC19BE1C2D0051A168 /* OperationsTableAdapter.m in Sources */,
 				F4AFB92F19ABAF2000CA013B /* CardioViewController.m in Sources */,
+				28C0E93A19E1AF8F00F89AB3 /* AddGasViewController.m in Sources */,
 				28CCCB4A19C3A8AB00B2A0C6 /* BBHeightPickerView.m in Sources */,
 				F4D901B819B25F94000E23E4 /* BBData.m in Sources */,
 				98DA485F19D0868000E4727B /* FormElementTableAdapter.m in Sources */,
