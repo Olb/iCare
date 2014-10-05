@@ -2,7 +2,7 @@
 //  Agent.m
 //  iCare
 //
-//  Created by Billy Bray on 10/2/14.
+//  Created by Billy Bray on 10/5/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -12,13 +12,13 @@
 
 @implementation Agent
 
-@dynamic name;
-@dynamic dose;
-@dynamic startTime;
-@dynamic unit;
-@dynamic type;
-@dynamic endTime;
 @dynamic continuous;
+@dynamic dose;
+@dynamic endTime;
+@dynamic name;
+@dynamic startTime;
+@dynamic type;
+@dynamic unit;
 @dynamic intraop;
 
 @end

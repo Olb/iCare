@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IntraOp.h"
 
 @interface AddGasViewController : UIViewController 
-
+@property IntraOp *intraOp;
 @end

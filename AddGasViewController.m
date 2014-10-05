@@ -10,6 +10,8 @@
 #import "BBData.h"
 #import "BBCheckBox.h"
 #import "NumericPickerAdapter.h"
+#import "Agent.h"
+#import "BBUtil.h"
 
 @interface AddGasViewController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *gasPickerView;
@@ -17,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *otherTextField;
 @property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
 
-@property NumericPickerAdapter* gasPickerAdapter;
+@property NumericPickerAdapter* dosePickerAdapter;
 
 @end
 
@@ -25,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.gasPickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
+    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
 }
 
 - (IBAction)continuous:(id)sender {
@@ -40,11 +42,18 @@
 }
 
 - (IBAction)save:(id)sender {
-    NSString *value = [self.gasPickerAdapter getValue];
-    NSString *unit = [self.gasPickerAdapter getUnit];
-    NSLog(@"Value: '%@' Unit:'%@'", value, unit);
-    NSNumberFormatter *doubleValF = [[NSNumberFormatter alloc] init];
-    doubleValF.usesSignificantDigits = YES;
+    NSString *value = [self.dosePickerAdapter getValue];
+    NSString *unit = [self.dosePickerAdapter getUnit];
+    NSString *gas = [self pickerView:self.gasPickerView titleForRow:[self.gasPickerView selectedRowInComponent:0] forComponent:0];
+    
+    Agent *agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
+    agent.name = gas;
+    agent.dose = value;
+    agent.unit = unit;
+    agent.type = @"Gas";
+    [self.intraOp addAgentObject:agent];
+    [BBUtil saveContext];
+   
 }
 
 
