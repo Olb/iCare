@@ -10,4 +10,11 @@
 
 @interface IntraOpGrid : UIView
 
+@property UITableView *tableOne;
+@property UITableView *tableTwo;
+@property UITableView *tableThree;
+@property UITableView *tableFour;
+@property UITableView *tableFive;
+@property UITableView *tableSix;
+
 @end

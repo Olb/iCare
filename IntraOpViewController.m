@@ -9,9 +9,16 @@
 #import "IntraOpViewController.h"
 #import "AddGasViewController.h"
 #import "IntraOpGrid.h"
+#import "GridConstants.h"
+
 @interface IntraOpViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
+@property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
 @property (weak, nonatomic) IBOutlet IntraOpGrid *gridView;
+@property (weak, nonatomic) IBOutlet UITableView *medicationTableView;
+@property (weak, nonatomic) IBOutlet UITableView *fluidTableView;
+@property (weak, nonatomic) IBOutlet UITableView *ventsTableView;
+@property (weak, nonatomic) IBOutlet UITableView *eblTableView;
 
 
 @end
@@ -28,8 +35,16 @@
 {
     [super viewDidLayoutSubviews];
     self.gridView.backgroundColor = [UIColor clearColor];
-    self.gridView.frame = CGRectMake(self.gasTableView.frame.origin.x, 110, self.gasTableView.frame.size.width, 810);
-    [self.view setNeedsLayout];
+    self.gridView.frame = CGRectMake(self.gasTableView.frame.origin.x, self.gasTableView.frame.origin.y - INTRA_OP_GRID_VERTICAL_LINE_TOP, self.gasTableView.frame.size.width, (self.vitalsTableView.frame.origin.y + self.vitalsTableView.frame.size.height) - self.gasTableView.frame.origin.y + INTRA_OP_GRID_VERTICAL_LINE_TOP*2);
+    self.gridView.tableOne = self.gasTableView;
+    self.gridView.tableTwo = self.medicationTableView;
+    self.gridView.tableThree = self.fluidTableView;
+    self.gridView.tableFour = self.ventsTableView;
+    self.gridView.tableFive = self.eblTableView;
+    self.gridView.tableSix = self.vitalsTableView;
+    
+    
+    [self.gridView setNeedsLayout];
     
 }
 
@@ -60,7 +75,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
     }
     if (tableView == self.gasTableView) {
-        <#statements#>
+        ;
     }
     return cell;
 }
