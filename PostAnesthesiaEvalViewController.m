@@ -151,19 +151,19 @@ static NSString *const COMPLICATIONS_OTHER_REASON_KEY = @"ComplicationsOtherReas
 {
 	 if( self.mentalStatusOtherBBCheckBox.selected ){ 
 		 if( !(![self.mentalStatusOtherStatusUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"MentalStatusOtherStatus must be not empty when "; 
+			 *errMsg = @"MentalStatusOtherStatus must be not empty when MentalStatusOther is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.cardiacRespAirwayStatusOtherBBCheckBox.selected ){ 
 		 if( !(![self.cardiacRespAirwayStatusOtherStatusUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"CardiacRespAirwayStatusOtherStatus must be not empty when "; 
+			 *errMsg = @"CardiacRespAirwayStatusOtherStatus must be not empty when CardiacRespAirwayStatusOther is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.complicationsOtherBBCheckBox.selected ){ 
 		 if( !(![self.complicationsOtherReasonUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"ComplicationsOtherReason must be not empty when "; 
+			 *errMsg = @"ComplicationsOtherReason must be not empty when ComplicationsOther is selected"; 
 			 return false; 
 		 }
 	 }

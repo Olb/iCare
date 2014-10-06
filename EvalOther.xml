@@ -14,6 +14,51 @@
         <Element type="TextElement" name="EGAWeeks"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="EvalOther"/>
+            <Element name="EvalOtherNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="EvalOtherNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="Obesity" value="false" />
+                <Element name="Depression" value="false" />
+                <Element name="Glaucoma" value="false" />
+                <Element name="Pregnant" value="false" />
+                <Element name="ETOHAbuse" value="false" />
+                <Element name="DrugAbuse" value="false" />
+                <Element name="DifficultIVAccess" value="false" />
+                <Element name="EGA" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="EvalOther" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="Obesity" value="true" />
+                <Element name="Depression" value="true" />
+                <Element name="Glaucoma" value="true" />
+                <Element name="Pregnant" value="true" />
+                <Element name="ETOHAbuse" value="true" />
+                <Element name="DrugAbuse" value="true" />
+                <Element name="DifficultIVAccess" value="true" />
+                <Element name="EGA" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="EGA" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="EGAWeeks" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Evaluation Other" >
             <Group orientation="horizontal" marginB="8">

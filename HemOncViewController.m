@@ -48,6 +48,8 @@ static NSString *const RADIATION_KEY = @"RadiationKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.hemOncBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.hemOncNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -100,6 +102,18 @@ static NSString *const RADIATION_KEY = @"RadiationKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.hemOncNegativeBBCheckBox.selected ){ 
+		 if( !((!self.anemiaBBCheckBox.selected) && (!self.dVTBBCheckBox.selected) && (!self.bloodRefusalBBCheckBox.selected) && (!self.coagulopathyBBCheckBox.selected) && (!self.cancerBBCheckBox.selected) && (!self.chemoBBCheckBox.selected) && (!self.radiationBBCheckBox.selected)) ){ 
+			 *errMsg = @"Anemia must be unselected and DVT must be unselected and BloodRefusal must be unselected and Coagulopathy must be unselected and Cancer must be unselected and Chemo must be unselected and Radiation must be unselected when HemOncNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.hemOncBBCheckBox.selected ){ 
+		 if( !(self.anemiaBBCheckBox.selected || self.dVTBBCheckBox.selected || self.bloodRefusalBBCheckBox.selected || self.coagulopathyBBCheckBox.selected || self.cancerBBCheckBox.selected || self.chemoBBCheckBox.selected || self.radiationBBCheckBox.selected) ){ 
+			 *errMsg = @"Anemia must be selected or DVT must be selected or BloodRefusal must be selected or Coagulopathy must be selected or Cancer must be selected or Chemo must be selected or Radiation must be selected when HemOnc is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -214,6 +228,8 @@ static NSString *const RADIATION_KEY = @"RadiationKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.hemOncBBCheckBox.selected = NO;
+	 self.hemOncNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

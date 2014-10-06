@@ -327,6 +327,9 @@ sub getCodeForCondition {
                 case "NotEmpty"{
                     return "![self.".getOutletNameForElement($elemData).".text isEqualToString:\@\"\"]";
                 }
+                case "Empty"{
+                    return "[self.".getOutletNameForElement($elemData).".text isEqualToString:\@\"\"]";
+                }
                 else {
                     die "Invalid value: '".$elem->{value}."'";
                 }
@@ -365,6 +368,9 @@ sub getTextForCondition {
             switch ($elem->{value}){
                 case "NotEmpty"{
                     return $elem->{name}." ".$verb." not empty";
+                }
+                case "Empty"{
+                    return $elem->{name}." ".$verb." empty";
                 }
                 else {
                     die "Invalid value: '".$elem->{value}."'";
@@ -415,6 +421,8 @@ foreach $rule (@rules) {
     my $condition = $rule->{Condition};
     my $operatorText;
     my $operator;
+    my $conditionsText;
+    my $conditionsCode;
     
     if (defined $condition){
         $operatorText = $condition->{operator};
@@ -437,8 +445,8 @@ foreach $rule (@rules) {
             die "Condition must have at least one element";
         }
         
-        my $conditionsCode = getCodeForCondition( @elems[0] );
-        my $conditionsText = getTextForCondition( @elems[0], "is");
+        $conditionsCode = getCodeForCondition( @elems[0] );
+        $conditionsText = getTextForCondition( @elems[0], "is");
         
         if ( @elems > 1 ){
             foreach my $i (1 .. $#elems){

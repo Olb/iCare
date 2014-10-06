@@ -59,9 +59,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
     }
-    if (tableView == self.gasTableView) {
-        <#statements#>
-    }
+//    if (tableView == self.gasTableView) {
+//        <#statements#>
+//    }
     return cell;
 }
 

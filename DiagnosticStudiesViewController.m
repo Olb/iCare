@@ -62,6 +62,8 @@ static NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.pregTestNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.pregTestPositiveBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 self.otherDataTableAdapter = [[StringArrayTableAdapter alloc] init];
 	 self.otherDataTable.dataSource = self.otherDataTableAdapter;
 	 self.otherDataTable.delegate = self.otherDataTableAdapter;
@@ -143,6 +145,30 @@ static NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.ekgNormalBBCheckBox.selected ){ 
+		 if( !([self.ekgOtherUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"EkgOther must be empty when EkgNormal is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( (!self.ekgNormalBBCheckBox.selected) ){ 
+		 if( !(![self.ekgOtherUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"EkgOther must be not empty when EkgNormal is unselected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.cxrNormalBBCheckBox.selected ){ 
+		 if( !([self.cxrOtherUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"CxrOther must be empty when CxrNormal is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( (!self.cxrNormalBBCheckBox.selected) ){ 
+		 if( !(![self.cxrOtherUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"CxrOther must be not empty when CxrNormal is unselected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -323,6 +349,8 @@ static NSString *const OTHER_DATA_KEY = @"OtherDataKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.pregTestNegativeBBCheckBox.selected = NO;
+	 self.pregTestPositiveBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

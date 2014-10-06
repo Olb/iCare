@@ -160,19 +160,19 @@ static NSString *const MONITORING_EQUIPMENT_OTHER_REASON_KEY = @"MonitoringEquip
 {
 	 if( self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected ){ 
 		 if( !(self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected) ){ 
-			 *errMsg = @"NibpArm must be selected or NibpLeg must be selected when "; 
+			 *errMsg = @"NibpArm must be selected or NibpLeg must be selected when NibpRight is selected or NibpLeft is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected ){ 
 		 if( !(self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected) ){ 
-			 *errMsg = @"NibpRight must be selected or NibpLeft must be selected when "; 
+			 *errMsg = @"NibpRight must be selected or NibpLeft must be selected when NibpArm is selected or NibpLeg is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.nibpArmBBCheckBox.selected || self.nibpLegBBCheckBox.selected || self.nibpRightBBCheckBox.selected || self.nibpLeftBBCheckBox.selected ){ 
 		 if( !(![self.nibpEveryMinUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"NibpEveryMin must be not empty when "; 
+			 *errMsg = @"NibpEveryMin must be not empty when NibpArm is selected or NibpLeg is selected or NibpRight is selected or NibpLeft is selected"; 
 			 return false; 
 		 }
 	 }

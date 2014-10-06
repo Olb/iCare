@@ -54,6 +54,8 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.respiratoryBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.respiratoryNoneBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -118,6 +120,32 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.respiratoryNoneBBCheckBox.selected ){ 
+		 if( !((!self.homeO2BBCheckBox.selected) && (!self.cOPDBBCheckBox.selected) && (!self.cPAPBBCheckBox.selected) && (!self.recentURIBBCheckBox.selected) && (!self.asthmaBBCheckBox.selected) && (!self.sleepApneaBBCheckBox.selected) && (!self.smokingBBCheckBox.selected)) ){ 
+			 *errMsg = @"HomeO2 must be unselected and COPD must be unselected and CPAP must be unselected and RecentURI must be unselected and Asthma must be unselected and SleepApnea must be unselected and Smoking must be unselected when RespiratoryNone is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.respiratoryBBCheckBox.selected ){ 
+		 if( !(self.homeO2BBCheckBox.selected || self.cOPDBBCheckBox.selected || self.cPAPBBCheckBox.selected || self.recentURIBBCheckBox.selected || self.asthmaBBCheckBox.selected || self.sleepApneaBBCheckBox.selected || self.smokingBBCheckBox.selected) ){ 
+			 *errMsg = @"HomeO2 must be selected or COPD must be selected or CPAP must be selected or RecentURI must be selected or Asthma must be selected or SleepApnea must be selected or Smoking must be selected when Respiratory is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.smokingBBCheckBox.selected ){ 
+		 if( !(![self.quitAmountAgoUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"QuitAmountAgo must be not empty when Smoking is selected"; 
+			 return false; 
+		 }
+		 if( !(![self.pPDUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"PPD must be not empty when Smoking is selected"; 
+			 return false; 
+		 }
+		 if( !(![self.yRSUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"YRS must be not empty when Smoking is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -259,6 +287,8 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.respiratoryBBCheckBox.selected = NO;
+	 self.respiratoryNoneBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

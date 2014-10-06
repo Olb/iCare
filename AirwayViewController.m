@@ -88,6 +88,11 @@ static NSString *const LOOSE_LOWER_KEY = @"LooseLowerKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.airwayAdequateBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.intubatedBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.difficultBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.dentitionOkBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.riskOfDamagePtAwareBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -220,6 +225,36 @@ static NSString *const LOOSE_LOWER_KEY = @"LooseLowerKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.difficultBBCheckBox.selected ){ 
+		 if( !(![self.difficultReasonUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"DifficultReason must be not empty when Difficult is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.missingBBCheckBox.selected ){ 
+		 if( !(![self.missingNumberUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"MissingNumber must be not empty when Missing is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.chippedBBCheckBox.selected ){ 
+		 if( !(![self.chippedNumberUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"ChippedNumber must be not empty when Chipped is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.looseBBCheckBox.selected ){ 
+		 if( !(![self.looseNumberUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"LooseNumber must be not empty when Loose is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.denturesBBCheckBox.selected ){ 
+		 if( !(self.denturesFullBBCheckBox.selected && self.denturesPartialBBCheckBox.selected) ){ 
+			 *errMsg = @"DenturesFull must be selected and DenturesPartial must be selected when Dentures is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -514,6 +549,15 @@ static NSString *const LOOSE_LOWER_KEY = @"LooseLowerKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.airwayAdequateBBCheckBox.selected = NO;
+	 self.intubatedBBCheckBox.selected = NO;
+	 self.difficultBBCheckBox.selected = NO;
+	 sender.selected = selected;
+}
+-(void)radioGroup2:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 self.dentitionOkBBCheckBox.selected = NO;
+	 self.riskOfDamagePtAwareBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

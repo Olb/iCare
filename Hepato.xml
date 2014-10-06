@@ -9,6 +9,35 @@
 		<Element type="BooleanFormElement" name="Obstruction"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="GIHepatic"/>
+            <Element name="GIHepaticNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="GIHepaticNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="GERD" value="false" />
+                <Element name="Cirrhosis" value="false" />
+                <Element name="Hepatitis" value="false" />
+                <Element name="Obstruction" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="GIHepatic" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="GERD" value="true" />
+                <Element name="Cirrhosis" value="true" />
+                <Element name="Hepatitis" value="true" />
+                <Element name="Obstruction" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="GI/Hepatic" >
             <Group orientation="horizontal" marginB="8">

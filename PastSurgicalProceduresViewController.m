@@ -40,6 +40,9 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.hxAnesthesiaProblemsYesPatientBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.hxAnesthesiaProblemsYesFamilyBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.hxAnesthesiaProblemsNoBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 self.pastSurgicalProceduresTableAdapter = [[StringArrayTableAdapter alloc] init];
 	 self.pastSurgicalProceduresTable.dataSource = self.pastSurgicalProceduresTableAdapter;
 	 self.pastSurgicalProceduresTable.delegate = self.pastSurgicalProceduresTableAdapter;
@@ -158,6 +161,9 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.hxAnesthesiaProblemsYesPatientBBCheckBox.selected = NO;
+	 self.hxAnesthesiaProblemsYesFamilyBBCheckBox.selected = NO;
+	 self.hxAnesthesiaProblemsNoBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

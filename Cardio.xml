@@ -16,6 +16,49 @@
 		<Element type="BooleanFormElement" name="Dysrhythmia"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="CardioVascular"/>
+            <Element name="CardioNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="CardioNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="FunctionalCapacityLessThanFourMets" value="false" />
+                <Element name="HTN" value="false" />
+                <Element name="Dyslipidemia" value="false" />
+                <Element name="CHF" value="false" />
+                <Element name="PVD" value="false" />
+                <Element name="AICD" value="false" />
+                <Element name="CAD" value="false" />
+                <Element name="MI" value="false" />
+                <Element name="PTCA" value="false" />
+                <Element name="CoronaryStents" value="false" />
+                <Element name="Dysrhythmia" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="CardioVascular" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="FunctionalCapacityLessThanFourMets" value="true" />
+                <Element name="HTN" value="true" />
+                <Element name="Dyslipidemia" value="true" />
+                <Element name="CHF" value="true" />
+                <Element name="PVD" value="true" />
+                <Element name="AICD" value="true" />
+                <Element name="CAD" value="true" />
+                <Element name="MI" value="true" />
+                <Element name="PTCA" value="true" />
+                <Element name="CoronaryStents" value="true" />
+                <Element name="Dysrhythmia" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Cardiovascular" >
             <Group orientation="horizontal" >

@@ -18,6 +18,47 @@
         <Element type="StringListElement" name="OtherData"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="PregTestNegative"/>
+            <Element name="PregTestPositive"/>
+        </RadioButtons>
+
+        <Rule>
+            <Condition >
+                <Element name="EkgNormal" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="EkgOther" value="Empty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="EkgNormal" value="false" />
+            </Condition>
+            <Action type="check" >
+                <Element name="EkgOther" value="NotEmpty" />
+            </Action>
+        </Rule>
+
+        <Rule>
+            <Condition >
+                <Element name="CxrNormal" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="CxrOther" value="Empty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="CxrNormal" value="false" />
+            </Condition>
+            <Action type="check" >
+                <Element name="CxrOther" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group label="Diagnostic Studies" orientation="vertical">
             <Group orientation="horizontal">

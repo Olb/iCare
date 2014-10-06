@@ -8,6 +8,39 @@
         <Element type="TextElement" name="LastDialysis"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="Renal"/>
+            <Element name="RenalNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="RenalNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="CRI" value="false" />
+                <Element name="RenalFailure" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Renal" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="CRI" value="true" />
+                <Element name="RenalFailure" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="RenalFailure" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="LastDialysis" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Renal" >
             <Group orientation="horizontal" marginB="8">

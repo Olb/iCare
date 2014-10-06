@@ -108,19 +108,19 @@ static NSString *const SPO2_KEY = @"SpO2Key";
 {
 	 if( ![self.bpSystolicUITextField.text isEqualToString:@""] ){ 
 		 if( !(![self.bpDiastolicUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"BpDiastolic must be not empty when "; 
+			 *errMsg = @"BpDiastolic must be not empty when BpSystolic is not empty"; 
 			 return false; 
 		 }
 	 }
 	 if( ![self.bpDiastolicUITextField.text isEqualToString:@""] ){ 
 		 if( !(![self.bpSystolicUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"BpSystolic must be not empty when "; 
+			 *errMsg = @"BpSystolic must be not empty when BpDiastolic is not empty"; 
 			 return false; 
 		 }
 	 }
 	 if( self.otherBoolBBCheckBox.selected ){ 
 		 if( !(![self.otherTextUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"OtherText must be not empty when "; 
+			 *errMsg = @"OtherText must be not empty when OtherBool is selected"; 
 			 return false; 
 		 }
 	 }
