@@ -50,6 +50,7 @@
     agent.name = gas;
     agent.dose = value;
     agent.unit = unit;
+    agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
     agent.type = @"Gas";
     [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];

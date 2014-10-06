@@ -83,7 +83,7 @@
 		28C0E93E19E1B5CB00F89AB3 /* NumericPickerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */; };
 		28C0E94419E1E95D00F89AB3 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94319E1E95D00F89AB3 /* IntraOp.m */; };
 		28C0E94719E1EA1500F89AB3 /* Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94619E1EA1500F89AB3 /* Agent.m */; };
-		28C0E94A19E1EAF800F89AB3 /* SubstanceTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94919E1EAF800F89AB3 /* SubstanceTableAdapter.m */; };
+		28C0E94A19E1EAF800F89AB3 /* AgentTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94919E1EAF800F89AB3 /* AgentTableAdapter.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
 		28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2819C35FA100B2A0C6 /* BooleanFormElement.m */; };
 		28CCCB2F19C38BD700B2A0C6 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2E19C38BD700B2A0C6 /* Form.m */; };
@@ -99,6 +99,9 @@
 		28CCCB4A19C3A8AB00B2A0C6 /* BBHeightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4919C3A8AB00B2A0C6 /* BBHeightPickerView.m */; };
 		28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */; };
 		28CCCB5019C3C55C00B2A0C6 /* BBWeightPickerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */; };
+		28E57B1619E31980009DF942 /* DoseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E57B1519E31980009DF942 /* DoseView.xib */; };
+		28E57B1919E31B12009DF942 /* DoseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E57B1819E31B12009DF942 /* DoseView.m */; };
+		28E57B1C19E31FB6009DF942 /* TimeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E57B1B19E31FB6009DF942 /* TimeScrollView.m */; };
 		28F6DF5B19E2E2FD000BA316 /* BloodPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F6DF5919E2E2FD000BA316 /* BloodPressureViewController.m */; };
 		28F6DF5C19E2E2FD000BA316 /* BloodPressureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F6DF5A19E2E2FD000BA316 /* BloodPressureViewController.xib */; };
 		985B835B19C1FBA9007DF484 /* StringArrayTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B835A19C1FBA9007DF484 /* StringArrayTableAdapter.m */; };
@@ -318,8 +321,8 @@
 		28C0E94319E1E95D00F89AB3 /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
 		28C0E94519E1EA1500F89AB3 /* Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
 		28C0E94619E1EA1500F89AB3 /* Agent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Agent.m; sourceTree = "<group>"; };
-		28C0E94819E1EAF800F89AB3 /* SubstanceTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubstanceTableAdapter.h; sourceTree = "<group>"; };
-		28C0E94919E1EAF800F89AB3 /* SubstanceTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubstanceTableAdapter.m; sourceTree = "<group>"; };
+		28C0E94819E1EAF800F89AB3 /* AgentTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentTableAdapter.h; sourceTree = "<group>"; };
+		28C0E94919E1EAF800F89AB3 /* AgentTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentTableAdapter.m; sourceTree = "<group>"; };
 		28CCCB2119C35FA100B2A0C6 /* StringListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringListElement.h; sourceTree = "<group>"; };
 		28CCCB2219C35FA100B2A0C6 /* StringListElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringListElement.m; sourceTree = "<group>"; };
 		28CCCB2719C35FA100B2A0C6 /* BooleanFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanFormElement.h; sourceTree = "<group>"; };
@@ -345,6 +348,11 @@
 		28CCCB4C19C3A8B800B2A0C6 /* BBWeightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWeightPickerView.m; sourceTree = "<group>"; };
 		28CCCB4E19C3C55C00B2A0C6 /* BBWeightPickerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWeightPickerAdapter.h; sourceTree = "<group>"; };
 		28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWeightPickerAdapter.m; sourceTree = "<group>"; };
+		28E57B1519E31980009DF942 /* DoseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoseView.xib; sourceTree = "<group>"; };
+		28E57B1719E31B12009DF942 /* DoseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoseView.h; sourceTree = "<group>"; };
+		28E57B1819E31B12009DF942 /* DoseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoseView.m; sourceTree = "<group>"; };
+		28E57B1A19E31FB6009DF942 /* TimeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScrollView.h; sourceTree = "<group>"; };
+		28E57B1B19E31FB6009DF942 /* TimeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeScrollView.m; sourceTree = "<group>"; };
 		28F6DF5719E2D6F6000BA316 /* GridConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridConstants.h; sourceTree = "<group>"; };
 		28F6DF5819E2E2FD000BA316 /* BloodPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodPressureViewController.h; sourceTree = "<group>"; };
 		28F6DF5919E2E2FD000BA316 /* BloodPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodPressureViewController.m; sourceTree = "<group>"; };
@@ -653,19 +661,18 @@
 		288D1E1D19DDCCEA008EF1B7 /* IntraOp */ = {
 			isa = PBXGroup;
 			children = (
+				28E57B1D19E31FBD009DF942 /* View */,
 				28F6DF5819E2E2FD000BA316 /* BloodPressureViewController.h */,
 				28F6DF5919E2E2FD000BA316 /* BloodPressureViewController.m */,
 				28F6DF5A19E2E2FD000BA316 /* BloodPressureViewController.xib */,
-				28C0E94819E1EAF800F89AB3 /* SubstanceTableAdapter.h */,
-				28C0E94919E1EAF800F89AB3 /* SubstanceTableAdapter.m */,
+				28C0E94819E1EAF800F89AB3 /* AgentTableAdapter.h */,
+				28C0E94919E1EAF800F89AB3 /* AgentTableAdapter.m */,
 				28C0E93719E1AF8F00F89AB3 /* AddGasViewController.h */,
 				28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */,
 				28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */,
 				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
 				288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */,
 				28F6DF5719E2D6F6000BA316 /* GridConstants.h */,
-				288D1E5919DDF73E008EF1B7 /* IntraOpGrid.h */,
-				288D1E5A19DDF73E008EF1B7 /* IntraOpGrid.m */,
 			);
 			name = IntraOp;
 			sourceTree = "<group>";
@@ -679,6 +686,20 @@
 				28CCCB4F19C3C55C00B2A0C6 /* BBWeightPickerAdapter.m */,
 			);
 			name = "Picker Adapters";
+			sourceTree = "<group>";
+		};
+		28E57B1D19E31FBD009DF942 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28E57B1519E31980009DF942 /* DoseView.xib */,
+				28E57B1719E31B12009DF942 /* DoseView.h */,
+				28E57B1819E31B12009DF942 /* DoseView.m */,
+				28E57B1A19E31FB6009DF942 /* TimeScrollView.h */,
+				28E57B1B19E31FB6009DF942 /* TimeScrollView.m */,
+				288D1E5919DDF73E008EF1B7 /* IntraOpGrid.h */,
+				288D1E5A19DDF73E008EF1B7 /* IntraOpGrid.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		988D161719AE630B009A887A /* Anesthesia record */ = {
@@ -1071,6 +1092,7 @@
 				F4AFB93A19ABB55E00CA013B /* NeuroligcViewController.xib in Resources */,
 				98DA486F19D1F82B00E4727B /* MedicationElementCell.xib in Resources */,
 				F4AFB92A19ABADD900CA013B /* checkbox_selected.png in Resources */,
+				28E57B1619E31980009DF942 /* DoseView.xib in Resources */,
 				281270CA19C874F2009A9644 /* PastSurgicalProcedures.xml in Resources */,
 				F4AFB94419ABB71D00CA013B /* RenalViewController.xib in Resources */,
 				289BDC8319CBAB3F00C683E7 /* PhysicalExam.xml in Resources */,
@@ -1239,7 +1261,7 @@
 				28CCCB2F19C38BD700B2A0C6 /* Form.m in Sources */,
 				98DA486519D08A8600E4727B /* AntibioticFormElement.m in Sources */,
 				98FF05FA19B20D4F0003129C /* BBUtil.m in Sources */,
-				28C0E94A19E1EAF800F89AB3 /* SubstanceTableAdapter.m in Sources */,
+				28C0E94A19E1EAF800F89AB3 /* AgentTableAdapter.m in Sources */,
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
 				98DA486219D0881D00E4727B /* FormElementTableCellFactory.m in Sources */,
@@ -1280,6 +1302,8 @@
 				F4AFB95919ABBECC00CA013B /* PreOpEvalTableTableViewController.m in Sources */,
 				98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */,
 				28034B3919C25B4200DB0A1E /* Patient.m in Sources */,
+				28E57B1C19E31FB6009DF942 /* TimeScrollView.m in Sources */,
+				28E57B1919E31B12009DF942 /* DoseView.m in Sources */,
 				2838DE2019CB259B0025F7DE /* FormElement.m in Sources */,
 				988D169219AE63A2009A887A /* PremedsGivenViewController.m in Sources */,
 			);

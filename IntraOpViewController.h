@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IntraOp.h"
-
+@class Agent;
+@class DoseView;
 @interface IntraOpViewController : UIViewController
 @property (nonatomic) IntraOp *intraOp;
+
+-(DoseView*)doseViewForAgent:(Agent*)agent;
 @end

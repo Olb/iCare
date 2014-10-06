@@ -10,8 +10,9 @@
 #import "AddGasViewController.h"
 #import "IntraOpGrid.h"
 #import "GridConstants.h"
+#import "DoseView.h"
 
-@interface IntraOpViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface IntraOpViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
 @property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
 @property (weak, nonatomic) IBOutlet IntraOpGrid *gridView;
@@ -58,28 +59,15 @@
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(DoseView*)doseViewForAgent:(Agent*)agent
 {
-    NSInteger result = 0;
-    if (tableView == self.gasTableView) {
-        ;
-    }
-    return result;
+    DoseView *doseView = [[DoseView alloc ]init];
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGRect)frameRectForStartTime:(NSDate*)startTime withEndTime:(NSDate*)endTime
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Agent Cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
-    }
-    if (tableView == self.gasTableView) {
-        ;
-    }
-    return cell;
+    
 }
-
 
 
 @end
