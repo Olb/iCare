@@ -6,7 +6,13 @@
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesFamily"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsNo" />
 	</Data>
-    
+    <Validation>
+        <RadioButtons>
+            <Element name="HxAnesthesiaProblemsYesPatient"/>
+            <Element name="HxAnesthesiaProblemsYesFamily"/>
+            <Element name="HxAnesthesiaProblemsNo"/>
+        </RadioButtons>
+    </Validation>
     <Graphics>
         <Group orientation="horizontal" >
             <Group orientation="vertical" label="Past Surgical Procedures">

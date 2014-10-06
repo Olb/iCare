@@ -128,19 +128,19 @@ static NSString *const FIBEROPTIC_KEY = @"FiberopticKey";
 {
 	 if( self.curvedBBCheckBox.selected ){ 
 		 if( !(![self.curvedNumberUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"CurvedNumber must be not empty when "; 
+			 *errMsg = @"CurvedNumber must be not empty when Curved is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.straightBBCheckBox.selected ){ 
 		 if( !(![self.straightNumberUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"StraightNumber must be not empty when "; 
+			 *errMsg = @"StraightNumber must be not empty when Straight is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.difficultBBCheckBox.selected ){ 
 		 if( !(![self.difficultReasonUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"DifficultReason must be not empty when "; 
+			 *errMsg = @"DifficultReason must be not empty when Difficult is selected"; 
 			 return false; 
 		 }
 	 }

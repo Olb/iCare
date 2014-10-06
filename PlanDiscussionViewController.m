@@ -94,6 +94,15 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.nerveBlockContinuousBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.nerveBlockSingleShotBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA1BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA2BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA3BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA4BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA5BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSA6BBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.aSAEBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
 	 self.otherTableAdapter = [[StringArrayTableAdapter alloc] init];
 	 self.otherTable.dataSource = self.otherTableAdapter;
 	 self.otherTable.delegate = self.otherTableAdapter;
@@ -239,6 +248,10 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+		 if( !(![self.preOpEvaluationByUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"PreOpEvaluationBy must be not empty"; 
+			 return false; 
+		 }
 	 return true; 
 }
 
@@ -563,6 +576,19 @@ static NSString *const PRE_OP_EVALUATION_BY_KEY = @"PreOpEvaluationByKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.nerveBlockContinuousBBCheckBox.selected = NO;
+	 self.nerveBlockSingleShotBBCheckBox.selected = NO;
+	 sender.selected = selected;
+}
+-(void)radioGroup2:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 self.aSA1BBCheckBox.selected = NO;
+	 self.aSA2BBCheckBox.selected = NO;
+	 self.aSA3BBCheckBox.selected = NO;
+	 self.aSA4BBCheckBox.selected = NO;
+	 self.aSA5BBCheckBox.selected = NO;
+	 self.aSA6BBCheckBox.selected = NO;
+	 self.aSAEBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

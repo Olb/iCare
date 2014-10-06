@@ -52,6 +52,8 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.evalOtherBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.evalOtherNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -112,6 +114,24 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.evalOtherNegativeBBCheckBox.selected ){ 
+		 if( !((!self.obesityBBCheckBox.selected) && (!self.depressionBBCheckBox.selected) && (!self.glaucomaBBCheckBox.selected) && (!self.pregnantBBCheckBox.selected) && (!self.eTOHAbuseBBCheckBox.selected) && (!self.drugAbuseBBCheckBox.selected) && (!self.difficultIVAccessBBCheckBox.selected) && (!self.eGABBCheckBox.selected)) ){ 
+			 *errMsg = @"Obesity must be unselected and Depression must be unselected and Glaucoma must be unselected and Pregnant must be unselected and ETOHAbuse must be unselected and DrugAbuse must be unselected and DifficultIVAccess must be unselected and EGA must be unselected when EvalOtherNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.evalOtherBBCheckBox.selected ){ 
+		 if( !(self.obesityBBCheckBox.selected || self.depressionBBCheckBox.selected || self.glaucomaBBCheckBox.selected || self.pregnantBBCheckBox.selected || self.eTOHAbuseBBCheckBox.selected || self.drugAbuseBBCheckBox.selected || self.difficultIVAccessBBCheckBox.selected || self.eGABBCheckBox.selected) ){ 
+			 *errMsg = @"Obesity must be selected or Depression must be selected or Glaucoma must be selected or Pregnant must be selected or ETOHAbuse must be selected or DrugAbuse must be selected or DifficultIVAccess must be selected or EGA must be selected when EvalOther is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.eGABBCheckBox.selected ){ 
+		 if( !(![self.eGAWeeksUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"EGAWeeks must be not empty when EGA is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -244,6 +264,8 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.evalOtherBBCheckBox.selected = NO;
+	 self.evalOtherNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

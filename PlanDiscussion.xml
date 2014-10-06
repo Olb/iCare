@@ -34,6 +34,28 @@
         <Element type="TextElement" name="PreOpEvaluationBy"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="NerveBlockContinuous"/>
+            <Element name="NerveBlockSingleShot"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="ASA1"/>
+            <Element name="ASA2"/>
+            <Element name="ASA3"/>
+            <Element name="ASA4"/>
+            <Element name="ASA5"/>
+            <Element name="ASA6"/>
+            <Element name="ASAE"/>
+        </RadioButtons>
+        
+        <Rule>
+            <Action type="check" >
+                <Element name="PreOpEvaluationBy" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Plan Discussion" >
             <Group orientation="vertical" marginB="8">

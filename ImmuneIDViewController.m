@@ -42,6 +42,8 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.immuneIDBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.immuneIDNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -82,6 +84,18 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.immuneIDNegativeBBCheckBox.selected ){ 
+		 if( !((!self.rheumArtBBCheckBox.selected) && (!self.hIVBBCheckBox.selected) && (!self.autoImmuneDiseaseBBCheckBox.selected) && (!self.ongoingInfectionBBCheckBox.selected)) ){ 
+			 *errMsg = @"RheumArt must be unselected and HIV must be unselected and AutoImmuneDisease must be unselected and OngoingInfection must be unselected when ImmuneIDNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.immuneIDBBCheckBox.selected ){ 
+		 if( !(self.rheumArtBBCheckBox.selected || self.hIVBBCheckBox.selected || self.autoImmuneDiseaseBBCheckBox.selected || self.ongoingInfectionBBCheckBox.selected) ){ 
+			 *errMsg = @"RheumArt must be selected or HIV must be selected or AutoImmuneDisease must be selected or OngoingInfection must be selected when ImmuneID is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -169,6 +183,8 @@ static NSString *const ONGOING_INFECTION_KEY = @"OngoingInfectionKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.immuneIDBBCheckBox.selected = NO;
+	 self.immuneIDNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

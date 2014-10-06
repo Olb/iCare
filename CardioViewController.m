@@ -56,6 +56,8 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.cardioVascularBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.cardioNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -124,6 +126,18 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.cardioNegativeBBCheckBox.selected ){ 
+		 if( !((!self.functionalCapacityLessThanFourMetsBBCheckBox.selected) && (!self.hTNBBCheckBox.selected) && (!self.dyslipidemiaBBCheckBox.selected) && (!self.cHFBBCheckBox.selected) && (!self.pVDBBCheckBox.selected) && (!self.aICDBBCheckBox.selected) && (!self.cADBBCheckBox.selected) && (!self.mIBBCheckBox.selected) && (!self.pTCABBCheckBox.selected) && (!self.coronaryStentsBBCheckBox.selected) && (!self.dysrhythmiaBBCheckBox.selected)) ){ 
+			 *errMsg = @"FunctionalCapacityLessThanFourMets must be unselected and HTN must be unselected and Dyslipidemia must be unselected and CHF must be unselected and PVD must be unselected and AICD must be unselected and CAD must be unselected and MI must be unselected and PTCA must be unselected and CoronaryStents must be unselected and Dysrhythmia must be unselected when CardioNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.cardioVascularBBCheckBox.selected ){ 
+		 if( !(self.functionalCapacityLessThanFourMetsBBCheckBox.selected || self.hTNBBCheckBox.selected || self.dyslipidemiaBBCheckBox.selected || self.cHFBBCheckBox.selected || self.pVDBBCheckBox.selected || self.aICDBBCheckBox.selected || self.cADBBCheckBox.selected || self.mIBBCheckBox.selected || self.pTCABBCheckBox.selected || self.coronaryStentsBBCheckBox.selected || self.dysrhythmiaBBCheckBox.selected) ){ 
+			 *errMsg = @"FunctionalCapacityLessThanFourMets must be selected or HTN must be selected or Dyslipidemia must be selected or CHF must be selected or PVD must be selected or AICD must be selected or CAD must be selected or MI must be selected or PTCA must be selected or CoronaryStents must be selected or Dysrhythmia must be selected when CardioVascular is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -274,6 +288,8 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.cardioVascularBBCheckBox.selected = NO;
+	 self.cardioNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

@@ -40,6 +40,8 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.renalBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.renalNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -76,6 +78,24 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.renalNegativeBBCheckBox.selected ){ 
+		 if( !((!self.cRIBBCheckBox.selected) && (!self.renalFailureBBCheckBox.selected)) ){ 
+			 *errMsg = @"CRI must be unselected and RenalFailure must be unselected when RenalNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.renalBBCheckBox.selected ){ 
+		 if( !(self.cRIBBCheckBox.selected || self.renalFailureBBCheckBox.selected) ){ 
+			 *errMsg = @"CRI must be selected or RenalFailure must be selected when Renal is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.renalFailureBBCheckBox.selected ){ 
+		 if( !(![self.lastDialysisUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"LastDialysis must be not empty when RenalFailure is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -154,6 +174,8 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.renalBBCheckBox.selected = NO;
+	 self.renalNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

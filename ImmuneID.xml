@@ -9,6 +9,34 @@
         <Element type="BooleanFormElement" name="OngoingInfection"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="ImmuneID"/>
+            <Element name="ImmuneIDNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="ImmuneIDNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="RheumArt" value="false" />
+                <Element name="HIV" value="false" />
+                <Element name="AutoImmuneDisease" value="false" />
+                <Element name="OngoingInfection" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="ImmuneID" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="RheumArt" value="true" />
+                <Element name="HIV" value="true" />
+                <Element name="AutoImmuneDisease" value="true" />
+                <Element name="OngoingInfection" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
     
     <Graphics>
         <Group orientation="vertical" label="Immune/ID" >

@@ -40,6 +40,8 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.endocrineBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.endocrineNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -76,6 +78,18 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.endocrineNegativeBBCheckBox.selected ){ 
+		 if( !((!self.diabetesBBCheckBox.selected) && (!self.hyperThyroidBBCheckBox.selected) && (!self.hypoThyroidBBCheckBox.selected)) ){ 
+			 *errMsg = @"Diabetes must be unselected and HyperThyroid must be unselected and HypoThyroid must be unselected when EndocrineNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.endocrineBBCheckBox.selected ){ 
+		 if( !(self.diabetesBBCheckBox.selected || self.hyperThyroidBBCheckBox.selected || self.hypoThyroidBBCheckBox.selected) ){ 
+			 *errMsg = @"Diabetes must be selected or HyperThyroid must be selected or HypoThyroid must be selected when Endocrine is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -154,6 +168,8 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.endocrineBBCheckBox.selected = NO;
+	 self.endocrineNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

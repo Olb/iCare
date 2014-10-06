@@ -8,6 +8,34 @@
 		<Element type="BooleanFormElement" name="HypoThyroid"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="Endocrine"/>
+            <Element name="EndocrineNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="EndocrineNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="Diabetes" value="false" />
+                <Element name="HyperThyroid" value="false" />
+                <Element name="HypoThyroid" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Endocrine" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="Diabetes" value="true" />
+                <Element name="HyperThyroid" value="true" />
+                <Element name="HypoThyroid" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
+    
     <Graphics>
         <Group orientation="vertical" label="Endocrine" >
             <Group orientation="horizontal" marginB="8">

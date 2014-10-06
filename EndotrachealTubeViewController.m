@@ -137,11 +137,11 @@ static NSString *const DOUBLE_LUMEN_RIGHT_KEY = @"DoubleLumenRightKey";
 {
 	 if( self.doubleLumenEttBBCheckBox.selected ){ 
 		 if( !(![self.doubleLumenSizeUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"DoubleLumenSize must be not empty when "; 
+			 *errMsg = @"DoubleLumenSize must be not empty when DoubleLumenEtt is selected"; 
 			 return false; 
 		 }
 		 if( !(self.doubleLumenLeftBBCheckBox.selected || self.doubleLumenRightBBCheckBox.selected) ){ 
-			 *errMsg = @"DoubleLumenLeft must be selected or DoubleLumenRight must be selected when "; 
+			 *errMsg = @"DoubleLumenLeft must be selected or DoubleLumenRight must be selected when DoubleLumenEtt is selected"; 
 			 return false; 
 		 }
 	 }

@@ -42,6 +42,8 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.gIHepaticBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.gIHepaticNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -82,6 +84,18 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.gIHepaticNegativeBBCheckBox.selected ){ 
+		 if( !((!self.gERDBBCheckBox.selected) && (!self.cirrhosisBBCheckBox.selected) && (!self.hepatitisBBCheckBox.selected) && (!self.obstructionBBCheckBox.selected)) ){ 
+			 *errMsg = @"GERD must be unselected and Cirrhosis must be unselected and Hepatitis must be unselected and Obstruction must be unselected when GIHepaticNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.gIHepaticBBCheckBox.selected ){ 
+		 if( !(self.gERDBBCheckBox.selected || self.cirrhosisBBCheckBox.selected || self.hepatitisBBCheckBox.selected || self.obstructionBBCheckBox.selected) ){ 
+			 *errMsg = @"GERD must be selected or Cirrhosis must be selected or Hepatitis must be selected or Obstruction must be selected when GIHepatic is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -169,6 +183,8 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.gIHepaticBBCheckBox.selected = NO;
+	 self.gIHepaticNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

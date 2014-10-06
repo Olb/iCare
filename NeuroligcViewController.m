@@ -50,6 +50,8 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.neurologicBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.neurologicNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -106,6 +108,18 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.neurologicNegativeBBCheckBox.selected ){ 
+		 if( !((!self.dementiaBBCheckBox.selected) && (!self.neuropathyBBCheckBox.selected) && (!self.backPainBBCheckBox.selected) && (!self.neckPainBBCheckBox.selected) && (!self.cVABBCheckBox.selected) && (!self.tIABBCheckBox.selected) && (!self.alteredMentalStatusBBCheckBox.selected) && (!self.seizuresBBCheckBox.selected)) ){ 
+			 *errMsg = @"Dementia must be unselected and Neuropathy must be unselected and BackPain must be unselected and NeckPain must be unselected and CVA must be unselected and TIA must be unselected and AlteredMentalStatus must be unselected and Seizures must be unselected when NeurologicNegative is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.neurologicBBCheckBox.selected ){ 
+		 if( !(self.dementiaBBCheckBox.selected || self.neuropathyBBCheckBox.selected || self.backPainBBCheckBox.selected || self.neckPainBBCheckBox.selected || self.cVABBCheckBox.selected || self.tIABBCheckBox.selected || self.alteredMentalStatusBBCheckBox.selected || self.seizuresBBCheckBox.selected) ){ 
+			 *errMsg = @"Dementia must be selected or Neuropathy must be selected or BackPain must be selected or NeckPain must be selected or CVA must be selected or TIA must be selected or AlteredMentalStatus must be selected or Seizures must be selected when Neurologic is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -229,6 +243,8 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.neurologicBBCheckBox.selected = NO;
+	 self.neurologicNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

@@ -32,6 +32,59 @@
         <Element type="BooleanFormElement" name="LooseLower" style="DownArrow" />
     </Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="AirwayAdequate"/>
+            <Element name="Intubated"/>
+            <Element name="Difficult"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="DentitionOk"/>
+            <Element name="RiskOfDamagePtAware"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="Difficult" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="DifficultReason" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Missing" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="MissingNumber" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Chipped" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="ChippedNumber" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Loose" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="LooseNumber" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Dentures" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="DenturesFull" value="true" />
+                <Element name="DenturesPartial" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Airway" >
             <Group orientation="horizontal" marginB="8">

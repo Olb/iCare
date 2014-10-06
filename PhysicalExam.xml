@@ -7,7 +7,35 @@
         <Element type="BooleanFormElement" name="LungsClear" />
         <Element type="BooleanFormElement" name="LungsOther" />
         <Element type="TextElement" name="LungsOtherReason" />
-	</Data>
+    </Data>
+    
+    <Validation>
+        <RadioButtons>
+            <Element name="HeartRegular"/>
+            <Element name="HeartOther"/>
+        </RadioButtons>
+        <RadioButtons>
+            <Element name="LungsClear"/>
+            <Element name="LungsOther"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="HeartOther" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="HeartOtherReason" value="NotEmpty" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="LungsOther" value="true" />
+            </Condition>
+            <Action type="check" >
+                <Element name="LungsOtherReason" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Physical Examination" >
             <Group orientation="horizontal">

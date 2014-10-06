@@ -78,7 +78,7 @@ static NSString *const HYPOTENSION_KEY = @"HypotensionKey";
 {
 	 if( self.contraIndicationBBCheckBox.selected ){ 
 		 if( !(self.heartRateLessThanFiftyBBCheckBox.selected || self.hypotensionBBCheckBox.selected) ){ 
-			 *errMsg = @"HeartRateLessThanFifty must be selected or Hypotension must be selected when "; 
+			 *errMsg = @"HeartRateLessThanFifty must be selected or Hypotension must be selected when ContraIndication is selected"; 
 			 return false; 
 		 }
 	 }

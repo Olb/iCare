@@ -12,6 +12,41 @@
 		<Element type="BooleanFormElement" name="Radiation"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="HemOnc"/>
+            <Element name="HemOncNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="HemOncNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="Anemia" value="false" />
+                <Element name="DVT" value="false" />
+                <Element name="BloodRefusal" value="false" />
+                <Element name="Coagulopathy" value="false" />
+                <Element name="Cancer" value="false" />
+                <Element name="Chemo" value="false" />
+                <Element name="Radiation" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="HemOnc" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="Anemia" value="true" />
+                <Element name="DVT" value="true" />
+                <Element name="BloodRefusal" value="true" />
+                <Element name="Coagulopathy" value="true" />
+                <Element name="Cancer" value="true" />
+                <Element name="Chemo" value="true" />
+                <Element name="Radiation" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Hem/Onc" >
             <Group orientation="horizontal" marginB="8">

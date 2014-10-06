@@ -13,6 +13,43 @@
 		<Element type="BooleanFormElement" name="Seizures"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="Neurologic"/>
+            <Element name="NeurologicNegative"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="NeurologicNegative" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="Dementia" value="false" />
+                <Element name="Neuropathy" value="false" />
+                <Element name="BackPain" value="false" />
+                <Element name="NeckPain" value="false" />
+                <Element name="CVA" value="false" />
+                <Element name="TIA" value="false" />
+                <Element name="AlteredMentalStatus" value="false" />
+                <Element name="Seizures" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Neurologic" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="Dementia" value="true" />
+                <Element name="Neuropathy" value="true" />
+                <Element name="BackPain" value="true" />
+                <Element name="NeckPain" value="true" />
+                <Element name="CVA" value="true" />
+                <Element name="TIA" value="true" />
+                <Element name="AlteredMentalStatus" value="true" />
+                <Element name="Seizures" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Neurologic" >
             <Group orientation="horizontal" marginB="8">

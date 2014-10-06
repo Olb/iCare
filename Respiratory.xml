@@ -15,6 +15,55 @@
         <Element type="TextElement" name="QuitAmountAgo"/>
 	</Data>
     
+    <Validation>
+        <RadioButtons>
+            <Element name="Respiratory"/>
+            <Element name="RespiratoryNone"/>
+        </RadioButtons>
+        <Rule>
+            <Condition >
+                <Element name="RespiratoryNone" value="true" />
+            </Condition>
+            <Action type="check" operator="and">
+                <Element name="HomeO2" value="false" />
+                <Element name="COPD" value="false" />
+                <Element name="CPAP" value="false" />
+                <Element name="RecentURI" value="false" />
+                <Element name="Asthma" value="false" />
+                <Element name="SleepApnea" value="false" />
+                <Element name="Smoking" value="false" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Respiratory" value="true" />
+            </Condition>
+            <Action type="check" operator="or">
+                <Element name="HomeO2" value="true" />
+                <Element name="COPD" value="true" />
+                <Element name="CPAP" value="true" />
+                <Element name="RecentURI" value="true" />
+                <Element name="Asthma" value="true" />
+                <Element name="SleepApnea" value="true" />
+                <Element name="Smoking" value="true" />
+            </Action>
+        </Rule>
+        <Rule>
+            <Condition >
+                <Element name="Smoking" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="QuitAmountAgo" value="NotEmpty" />
+            </Action>
+            <Action type="check">
+                <Element name="PPD" value="NotEmpty" />
+            </Action>
+            <Action type="check">
+                <Element name="YRS" value="NotEmpty" />
+            </Action>
+        </Rule>
+    </Validation>
+    
     <Graphics>
         <Group orientation="vertical" label="Respiratory" >
             <Group orientation="horizontal" marginB="8">

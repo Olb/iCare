@@ -42,6 +42,10 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.heartRegularBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.heartOtherBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.lungsClearBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.lungsOtherBBCheckBox addTarget:self action:@selector(radioGroup2:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -82,6 +86,18 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.heartOtherBBCheckBox.selected ){ 
+		 if( !(![self.heartOtherReasonUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"HeartOtherReason must be not empty when HeartOther is selected"; 
+			 return false; 
+		 }
+	 }
+	 if( self.lungsOtherBBCheckBox.selected ){ 
+		 if( !(![self.lungsOtherReasonUITextField.text isEqualToString:@""]) ){ 
+			 *errMsg = @"LungsOtherReason must be not empty when LungsOther is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -169,6 +185,14 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.heartRegularBBCheckBox.selected = NO;
+	 self.heartOtherBBCheckBox.selected = NO;
+	 sender.selected = selected;
+}
+-(void)radioGroup2:(BBCheckBox*)sender {
+	 BOOL selected = sender.selected;
+	 self.lungsClearBBCheckBox.selected = NO;
+	 self.lungsOtherBBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end
