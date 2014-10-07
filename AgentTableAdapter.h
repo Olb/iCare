@@ -13,8 +13,6 @@
 
 @interface AgentTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@property NSString *agentType;
-
 @property (weak, nonatomic) IntraOp *intraOp;
 @property (weak, nonatomic) IntraOpViewController *controller;
 

@@ -54,7 +54,7 @@
     agent.type = @"Gas";
     [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];
-   
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

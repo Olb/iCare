@@ -15,7 +15,7 @@
 #import "Agent.h"
 #import "AgentTableAdapter.h"
 
-@interface IntraOpViewController ()
+@interface IntraOpViewController () 
 
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
 @property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *ventsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *eblTableView;
 @property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
+@property AgentTableAdapter *gasAdapter;
 
 
 @end
@@ -36,12 +37,13 @@
     
     [self.timeScrollView setStartTime:[NSDate date]];
     
-//    AgentTableAdapter *gasAdapter = [[AgentTableAdapter alloc] initWithType:@"Gas"];
-    AgentTableAdapter *gasAdapter = [[AgentTableAdapter alloc] init];
-    gasAdapter.agentType = @"Gas";
-    NSLog(@"%@", gasAdapter);
-    self.gasTableView.dataSource = gasAdapter;
-    self.gasTableView.delegate = gasAdapter;
+    self.gasAdapter = [[AgentTableAdapter alloc] initWithType:@"Gas"];
+    self.gasAdapter.controller = self;
+    self.gasAdapter.intraOp = self.intraOp;
+    
+    self.gasTableView.dataSource = self.gasAdapter;
+    self.gasTableView.delegate = self.gasAdapter;
+
 }
 
 
@@ -101,6 +103,7 @@
 {
     return CGRectZero;
 }
+
 
 
 @end

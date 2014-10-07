@@ -14,6 +14,7 @@
 @interface AgentTableAdapter ()
 
 @property NSMutableArray *agentsArray;
+@property NSString *agentType;
 
 @end
 
@@ -72,6 +73,11 @@
     }
     
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 @end
