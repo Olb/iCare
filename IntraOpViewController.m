@@ -11,6 +11,7 @@
 #import "IntraOpGrid.h"
 #import "GridConstants.h"
 #import "DoseView.h"
+#import "TimeScrollView.h"
 
 @interface IntraOpViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *fluidTableView;
 @property (weak, nonatomic) IBOutlet UITableView *ventsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *eblTableView;
+@property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
 
 
 @end
@@ -28,7 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 
@@ -45,6 +46,7 @@
     self.gridView.tableSix = self.vitalsTableView;
     
     
+    self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
     [self.gridView setNeedsLayout];
     
 }
@@ -62,11 +64,12 @@
 -(DoseView*)doseViewForAgent:(Agent*)agent
 {
     DoseView *doseView = [[DoseView alloc ]init];
+    return nil;
 }
 
 -(CGRect)frameRectForStartTime:(NSDate*)startTime withEndTime:(NSDate*)endTime
 {
-    
+    return CGRectZero;
 }
 
 

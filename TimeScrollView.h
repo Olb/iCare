@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface TimeScrollView : UIScrollView
+@property double pxPerMinute;
+
+-(void)setStartTime:(NSDate*)date;
+
+-(int)xCoordToMinutes:(int)x;
+-(int)minutesToXCoord:(int) minutes;
 
 @end
