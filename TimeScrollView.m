@@ -91,7 +91,10 @@
 }
 -(void)setStartTime:(NSDate*)date
 {
-    [self setContentOffset:CGPointMake([self minutesToXCoord:[self getMinutesFromDate:date]], self.contentOffset.y)];
+    int minutes = [self getMinutesFromDate:date];
+    minutes -= minutes % 15;
+    [self setContentOffset:CGPointMake(minutes*_pxPerMinute, self.contentOffset.y)];
+    [self setNeedsDisplay];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -102,6 +105,11 @@
         [self setContentOffset:CGPointMake(self.contentOffset.x-maxX, self.contentOffset.y)];
     }
     [self setNeedsDisplay];
+    if (self.onScroll){
+        self.onScroll();
+    }
 }
+
+
 
 @end

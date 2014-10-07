@@ -208,7 +208,7 @@ const float POUND_MULTIPLIER = 2.20462262f;
         if (!self.selectedOperation.intraOp) {
             IntraOp *intraOp = (IntraOp*)[BBUtil newCoreDataObjectForEntityName:@"IntraOp"];
             self.selectedOperation.intraOp = intraOp;
-            
+            [BBUtil saveContext];
         }
         vc.intraOp = self.selectedOperation.intraOp;
     }

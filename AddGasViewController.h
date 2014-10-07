@@ -11,4 +11,6 @@
 
 @interface AddGasViewController : UIViewController 
 @property IntraOp *intraOp;
+
+- (instancetype)initWithIntraOp:(IntraOp*)intrraOp completion:(void (^)(void))completionBlock;
 @end

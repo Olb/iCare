@@ -10,6 +10,7 @@
 
 @interface TimeScrollView : UIScrollView
 @property double pxPerMinute;
+@property (copy)void (^onScroll)(void);
 
 -(void)setStartTime:(NSDate*)date;
 

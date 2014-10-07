@@ -20,10 +20,20 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
 
 @property NumericPickerAdapter* dosePickerAdapter;
-
+@property (copy)void (^completionBlock)(void);
 @end
 
 @implementation AddGasViewController
+
+- (instancetype)initWithIntraOp:(IntraOp*)intrraOp completion:(void (^)(void))completionBlock
+{
+    self = [super init];
+    if (self) {
+        self.intraOp = intrraOp;
+        self.completionBlock = completionBlock;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,11 +60,13 @@
     agent.name = gas;
     agent.dose = value;
     agent.unit = unit;
+    agent.startTime = [NSDate date];
     agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
     agent.type = @"Gas";
     [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.completionBlock();
 }
 
 

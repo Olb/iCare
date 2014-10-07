@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAd-am-ZWW">
-                    <rect key="frame" x="91" y="82" width="427" height="2"/>
+                    <rect key="frame" x="57" y="82" width="461" height="2"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="eP1-y0-kPd"/>
@@ -32,7 +32,7 @@
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="gUt-2D-Ufe" secondAttribute="centerY" id="JZY-Ip-BDw"/>
                 <constraint firstAttribute="trailing" secondItem="cAd-am-ZWW" secondAttribute="trailing" id="MHh-Qi-jDV"/>
-                <constraint firstItem="cAd-am-ZWW" firstAttribute="leading" secondItem="gUt-2D-Ufe" secondAttribute="trailing" constant="39" id="Z3d-PV-b9P"/>
+                <constraint firstItem="cAd-am-ZWW" firstAttribute="leading" secondItem="gUt-2D-Ufe" secondAttribute="trailing" constant="5" id="Z3d-PV-b9P"/>
                 <constraint firstItem="gUt-2D-Ufe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="oNU-4F-0p9"/>
                 <constraint firstAttribute="centerY" secondItem="cAd-am-ZWW" secondAttribute="centerY" id="vgv-of-GwF"/>
             </constraints>

@@ -35,7 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
     [self.timeScrollView setStartTime:[NSDate date]];
+    self.timeScrollView.onScroll = ^{
+        [self reloadTables];
+    };
     
     self.gasAdapter = [[AgentTableAdapter alloc] initWithType:@"Gas"];
     self.gasAdapter.controller = self;
@@ -61,7 +65,6 @@
     [self.gridView setNeedsLayout];
 
     
-    self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
     
 }
 
@@ -70,15 +73,24 @@
 }
 
 - (IBAction)addGass:(id)sender {
-    AddGasViewController* vc = [[AddGasViewController alloc] init];
+    AddGasViewController* vc = [[AddGasViewController alloc] initWithIntraOp:self.intraOp completion:^{
+        [self reloadTables];
+    }];
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 -(DoseView*)doseViewForAgent:(Agent*)agent
 {
-    DoseView *doseView = [[DoseView alloc ]init];
+    DoseView *doseView = [[[NSBundle mainBundle] loadNibNamed:@"DoseView" owner:self options:nil] objectAtIndex:0];
     doseView.dose.text = agent.dose;
+    int doseTextWidth = ((CGSize)[agent.dose sizeWithAttributes:
+                                    @{NSFontAttributeName:
+                                          doseView.dose.font}]).width;
+    CGRect frame = doseView.dose.frame;
+    frame.size.width = doseTextWidth;
+    doseView.dose.frame = frame;
+    
     NSDate *endTime;
     if (!agent.endTime) {
         endTime = [NSDate date];
@@ -86,12 +98,11 @@
         endTime = agent.endTime;
     }
     int width;
-    if (agent.continuous) {
+    if ([agent.continuous boolValue]) {
         width = [self.timeScrollView dateToXCoord:endTime]-[self.timeScrollView dateToXCoord:agent.startTime];
+        width = MAX(width, doseTextWidth);
     } else {
-        width = ((CGSize)[agent.dose sizeWithAttributes:
-                          @{NSFontAttributeName:
-                                doseView.dose.font}]).width + 5;
+        width = doseTextWidth + 5;
         
     }
 
@@ -104,6 +115,8 @@
     return CGRectZero;
 }
 
-
+-(void) reloadTables{
+    [self.gasTableView reloadData];
+}
 
 @end

@@ -10,6 +10,7 @@
 #import "IntraOp.h"
 #import "Agent.h"
 #import "DoseView.h"
+#import "GridConstants.h"
 
 @interface AgentTableAdapter ()
 
@@ -68,9 +69,16 @@
     }
     
     cell.textLabel.text = ((Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject]).name;
+    [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+
     for (Agent *agent in [self.agentsArray objectAtIndex:indexPath.row]) {
         [cell.contentView addSubview:[self.controller doseViewForAgent:agent]];
     }
+    
+    UIView* bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, FIRST_COLUMN_X_COORD, cell.frame.size.height)];
+    bg.backgroundColor = [UIColor whiteColor];
+    [cell.contentView addSubview:bg];
+    
     
     return cell;
 }
