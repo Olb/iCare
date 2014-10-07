@@ -12,8 +12,11 @@
 #import "GridConstants.h"
 #import "DoseView.h"
 #import "TimeScrollView.h"
+#import "Agent.h"
+#import "AgentTableAdapter.h"
 
-@interface IntraOpViewController () 
+@interface IntraOpViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
 @property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
 @property (weak, nonatomic) IBOutlet IntraOpGrid *gridView;
@@ -30,6 +33,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.timeScrollView setStartTime:[NSDate date]];
+    
+//    AgentTableAdapter *gasAdapter = [[AgentTableAdapter alloc] initWithType:@"Gas"];
+    AgentTableAdapter *gasAdapter = [[AgentTableAdapter alloc] init];
+    gasAdapter.agentType = @"Gas";
+    NSLog(@"%@", gasAdapter);
+    self.gasTableView.dataSource = gasAdapter;
+    self.gasTableView.delegate = gasAdapter;
 }
 
 
@@ -44,10 +56,10 @@
     self.gridView.tableFour = self.ventsTableView;
     self.gridView.tableFive = self.eblTableView;
     self.gridView.tableSix = self.vitalsTableView;
-    
+    [self.gridView setNeedsLayout];
+
     
     self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
-    [self.gridView setNeedsLayout];
     
 }
 
@@ -64,7 +76,25 @@
 -(DoseView*)doseViewForAgent:(Agent*)agent
 {
     DoseView *doseView = [[DoseView alloc ]init];
-    return nil;
+    doseView.dose.text = agent.dose;
+    NSDate *endTime;
+    if (!agent.endTime) {
+        endTime = [NSDate date];
+    } else {
+        endTime = agent.endTime;
+    }
+    int width;
+    if (agent.continuous) {
+        width = [self.timeScrollView dateToXCoord:endTime]-[self.timeScrollView dateToXCoord:agent.startTime];
+    } else {
+        width = ((CGSize)[agent.dose sizeWithAttributes:
+                          @{NSFontAttributeName:
+                                doseView.dose.font}]).width + 5;
+        
+    }
+
+    doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, 0, width, 26.0 );
+    return doseView;
 }
 
 -(CGRect)frameRectForStartTime:(NSDate*)startTime withEndTime:(NSDate*)endTime

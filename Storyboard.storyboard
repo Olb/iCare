@@ -44,6 +44,9 @@
                                         <rect key="frame" x="143" y="223" width="381" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="lPV-jz-E2G" id="S4f-Tx-7Uc"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MRN" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a3R-37-qI1">
                                         <rect key="frame" x="143" y="283" width="381" height="30"/>
@@ -1182,7 +1185,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC5-DE-5df" customClass="BBCheckBox">
                                         <rect key="frame" x="108" y="492" width="33" height="32"/>
-                                        <state key="normal" image="5E2EBF27-6713-4947-920E-FC791F960703">
+                                        <state key="normal" image="49EF89F2-2FBC-49E8-81ED-26E65411C6F9">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1197,7 +1200,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAH-63-9gU" customClass="BBCheckBox">
                                         <rect key="frame" x="108" y="534" width="33" height="32"/>
-                                        <state key="normal" image="5E2EBF27-6713-4947-920E-FC791F960703">
+                                        <state key="normal" image="49EF89F2-2FBC-49E8-81ED-26E65411C6F9">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -2091,7 +2094,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5E2EBF27-6713-4947-920E-FC791F960703" width="32" height="32">
+        <image name="49EF89F2-2FBC-49E8-81ED-26E65411C6F9" width="32" height="32">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

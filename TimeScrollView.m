@@ -75,16 +75,23 @@
     return (int)( (x + self.contentOffset.x) / _pxPerMinute );
 }
 
+-(int)dateToXCoord:(NSDate*)date
+{
+    return [self minutesToXCoord:[self getMinutesFromDate:date]];
+}
 
--(void)setStartTime:(NSDate*)date{
+-(int)getMinutesFromDate:(NSDate*)date
+{
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
     NSInteger hour = [components hour];
     NSInteger minute = [components minute];
     
-    NSInteger totalMinutes = hour*60 + minute;
-    
-    [self setContentOffset:CGPointMake([self minutesToXCoord:(int)totalMinutes], self.contentOffset.y)];
+    return  (int)(hour*60 + minute);
+}
+-(void)setStartTime:(NSDate*)date
+{
+    [self setContentOffset:CGPointMake([self minutesToXCoord:[self getMinutesFromDate:date]], self.contentOffset.y)];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

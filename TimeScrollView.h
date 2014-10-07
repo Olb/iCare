@@ -15,5 +15,6 @@
 
 -(int)xCoordToMinutes:(int)x;
 -(int)minutesToXCoord:(int) minutes;
+-(int)dateToXCoord:(NSDate*)date;
 
 @end

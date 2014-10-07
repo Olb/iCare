@@ -16,7 +16,7 @@
     UIBezierPath *aPath = [UIBezierPath bezierPath];
     
     int numVerticalLines = 0;
-    int currentColumnX = START_X;
+    int currentColumnX = FIRST_COLUMN_X_COORD;
     
     // Vertical/Column lines
     while ( numVerticalLines < INTRA_OP_COLUMN_LINE_NUMBER_MAX ) {
@@ -65,7 +65,7 @@
     UIBezierPath *aPath = [UIBezierPath bezierPath];
     float lineSeperation = ( self.tableFour.frame.origin.y - ( self.tableThree.frame.origin.y + self.tableThree.bounds.size.height) ) / 21; // 21 lines
     int numLinesDrawn = 0;
-    float xCoord = ((CGPoint)[self.tableThree convertPoint:self.tableThree.bounds.origin toView:self]).x + START_X;
+    float xCoord = ((CGPoint)[self.tableThree convertPoint:self.tableThree.bounds.origin toView:self]).x + FIRST_COLUMN_X_COORD;
     float yCoord = ((CGPoint)[self.tableThree convertPoint:self.tableThree.bounds.origin toView:self]).y + self.tableThree.bounds.size.height + lineSeperation;
     while ( numLinesDrawn < 21 ) {
         [aPath moveToPoint:CGPointMake(xCoord , yCoord )];

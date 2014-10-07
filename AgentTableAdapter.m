@@ -12,13 +12,14 @@
 #import "DoseView.h"
 
 @interface AgentTableAdapter ()
+
 @property NSMutableArray *agentsArray;
-@property NSString *agentType;
+
 @end
 
 @implementation AgentTableAdapter
 
--(instancetype)initWithType:(NSString*)agentType
+-(id)initWithType:(NSString*)agentType
 {
     if (self = [super init]) {
         _agentsArray = [[NSMutableArray alloc] init];

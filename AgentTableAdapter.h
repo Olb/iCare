@@ -10,7 +10,15 @@
 #import "IntraOpViewController.h"
 
 @class IntraOp;
+
 @interface AgentTableAdapter : NSObject <UITableViewDataSource, UITableViewDelegate>
+
+@property NSString *agentType;
+
 @property (weak, nonatomic) IntraOp *intraOp;
 @property (weak, nonatomic) IntraOpViewController *controller;
+
+-(id)initWithType:(NSString*)agentType;
+
+
 @end

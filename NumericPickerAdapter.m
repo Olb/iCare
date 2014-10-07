@@ -129,7 +129,10 @@
         }
     }
     
-    return value;
+    double d = [value doubleValue];
+    NSNumberFormatter *doubleValF = [[NSNumberFormatter alloc] init];
+    doubleValF.usesSignificantDigits = YES;
+    return [doubleValF stringFromNumber:[NSNumber numberWithDouble:d]];
 }
 
 

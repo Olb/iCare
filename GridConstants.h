@@ -10,7 +10,7 @@
 #define iCare_GridConstants_h
 
 #define INTRA_OP_GRID_VERTICAL_LINE_TOP 10
-#define START_X 155
+#define FIRST_COLUMN_X_COORD 155
 #define COLUMN_INTERVAL_WIDTH 110
 #define INTRA_OP_COLUMN_LINE_NUMBER_MAX 6
 

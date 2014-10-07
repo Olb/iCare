@@ -142,6 +142,12 @@
                                animated:YES];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self setBirthdateFromTextField:textField];
+    return YES;
+}
+
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
     [textField resignFirstResponder];
     return YES;
