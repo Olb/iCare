@@ -25,12 +25,24 @@
 
 const float POUND_MULTIPLIER = 2.20462262f;
 
-@interface BBPatientFormsViewController () 
+typedef enum : NSUInteger {
+    kg,
+    lb,
+} WeightUnit;
+
+typedef enum : NSUInteger {
+    cm,
+    ft,
+} HeightUnit;
+
+@interface BBPatientFormsViewController () <UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *preOpDateButton;
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
 @property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *heightButton;
-@property (weak, nonatomic) IBOutlet UIButton *weightButton;
+@property (weak, nonatomic) IBOutlet UITextField *weightTextField;
+@property (weak, nonatomic) IBOutlet UITextField *heightTextField;
+
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *operationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *operationTableView;
@@ -41,6 +53,7 @@ const float POUND_MULTIPLIER = 2.20462262f;
 @property (strong, nonatomic) OperationsTableAdapter *operationTableAdapter;
 @property (strong, nonatomic) PatientFormTableAdapter *patientAdapter;
 @property (nonatomic) BOOL useKG;
+@property (nonatomic) BOOL useCM;
 @property Operation *selectedOperation;
 @property (weak, nonatomic) IBOutlet UIButton *weightUnitButton;
 @property (strong, nonatomic) BBWeightPickerAdapter *weightPickerAdapter;
@@ -54,12 +67,6 @@ const float POUND_MULTIPLIER = 2.20462262f;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = self.view.bounds;
-//    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor colorWithRed:91.0/255.0 green:196.0/255.0 blue:105.0/255.0 alpha:1.0] CGColor], nil];
-//    
-//    [self.view.layer insertSublayer:gradient atIndex:0];
     
     self.selectedOperationBackgroundView.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:233.0/255.0 blue:199.0/255.0 alpha:1.0];
 
@@ -135,33 +142,19 @@ const float POUND_MULTIPLIER = 2.20462262f;
 }
 - (IBAction)preOpTime:(id)sender {
 }
-- (IBAction)height:(id)sender {
-}
+
 - (IBAction)heightUnit:(id)sender {
-    
+    // TODO - see weightUnit
 }
-- (IBAction)weight:(id)sender {
-    [[NSBundle mainBundle] loadNibNamed:@"WeightPicker" owner:self options:nil];
-    self.weightPopoverView.center = self.view.center;
-    
-    [self.view addSubview:self.weightPopoverView];
-    _weightPicker.dataSource = _weightPickerAdapter;
-    _weightPicker.delegate = _weightPickerAdapter;
-    if (!self.selectedOperation.weight) {
-        [self.weightPicker selectRow:100 inComponent:1 animated:NO];
-    } else {
-        for (int i = 0; i < 5 ; i++) {
-            [self.weightPicker selectRow:([self.selectedOperation.weight characterAtIndex:i]) inComponent:i animated:NO];
-        }
-    }
-    
-}
+
 - (IBAction)weightUnit:(UIButton*)sender {
     self.useKG = !self.useKG;
     if (self.useKG) {
         [sender setTitle:@"kg" forState:UIControlStateNormal];
+        self.weightTextField.text = [self getWeight];
     } else {
         [sender setTitle:@"lb" forState:UIControlStateNormal];
+        self.heightTextField.text = [self getHeight];
     }
     
     [self updateOperationView];
@@ -235,82 +228,90 @@ const float POUND_MULTIPLIER = 2.20462262f;
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSYearCalendarUnit
                                                  fromDate: _patient.birthdate toDate: _selectedOperation.preOpDate options: 0];
-    NSString *age = [NSString stringWithFormat:@"%d", [components year]];
+    NSString *age = [NSString stringWithFormat:@"%d", (int)[components year]];
     
     [self.ageLabel setText:age];
-    NSString *weight;
-    NSString *height;
-    if (!_selectedOperation.weight || [_selectedOperation.weight isEqual:@""]) {
-        weight = @"##";
-    } else {
-        if (self.useKG) {
-            weight = _selectedOperation.weight;
-        } else {
-            weight = [NSString stringWithFormat:@"%.0f",[_selectedOperation.weight intValue]*POUND_MULTIPLIER];
-        }
-        
-    }
-    if (!_selectedOperation.height || [_selectedOperation.height isEqual:@""]) {
-        height = @"##";
-    } else {
-        height = _selectedOperation.height;
-    }
-    [self.weightButton setTitle:weight forState:UIControlStateNormal];
-    [self.heightButton setTitle:height forState:UIControlStateNormal];
+    
+    self.weightTextField.text = [self getWeight];
+    self.heightTextField.text = [self getHeight];
+
     self.operationTitleLabel.text = self.selectedOperation.name;
     self.operationBackgroundView.hidden = NO;
-    
 }
 
-#pragma mark - Popovers
-- (IBAction)cancelWeight:(id)sender {
-    [self.weightPopoverView removeFromSuperview];
-}
-
-- (IBAction)saveWeight:(id)sender {
-    NSMutableString *weightString = [[NSMutableString alloc] init];
-
-    if ([self.weightPicker selectedRowInComponent:5] == 0) {
-        for (int i = 0; i < 3 ; i++) {
-            [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:i]]];
-        }
-        [weightString appendString:@"."];
-        [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:4]]];
-        self.selectedOperation.weight = [NSString stringWithFormat:@"%.1f", [weightString floatValue]];
-        
-    } else {
-        for (int i = 0; i < 3 ; i++) {
-            [weightString appendString:self.selectedOperation.weight = [NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:i]]];
-        }
-        [weightString appendString:@"."];
-        [weightString appendString:[NSString stringWithFormat:@"%ld", (long)[self.weightPicker selectedRowInComponent:4]]];
-        
-        float lbValue = [weightString floatValue];
-        self.selectedOperation.weight = [NSString stringWithFormat:@"%.1f", (lbValue / POUND_MULTIPLIER)];
-    }
-    
+-(void)saveWeight
+{
+    [self setWeight:self.weightTextField.text];
     [self updateOperationView];
     [BBUtil saveContext];
-    [self.weightPopoverView removeFromSuperview];
 }
 
-- (IBAction)kgTogglePopover:(UIButton*)sender {
-    self.useKG = !self.useKG;
-    if (self.useKG) {
-        [sender setTitle:@"kg" forState:UIControlStateNormal];
-        NSInteger lbAmount = [self.weightPicker selectedRowInComponent:0];
-        NSInteger kgAmount = (lbAmount/POUND_MULTIPLIER)+1;
-        [self.weightPicker selectRow:kgAmount inComponent:0 animated:NO];
-    } else {
-        [sender setTitle:@"lb" forState:UIControlStateNormal];
-        NSInteger kgAmount = [self.weightPicker selectedRowInComponent:0];
-        NSInteger lbAmount = (kgAmount*POUND_MULTIPLIER)-1;
-        [self.weightPicker selectRow:lbAmount inComponent:0 animated:NO];
-    }
-    [self.weightPicker reloadAllComponents];
+-(void)saveHeight
+{
+    [self setHeight:self.heightTextField.text];
+    [self updateOperationView];
+    [BBUtil saveContext];
 }
-     
-     
+
+-(NSString*)getWeight
+{
+    NSString *weight;
+    if (self.useKG) {
+        weight = _selectedOperation.weight;
+    } else {
+        weight = [NSString stringWithFormat:@"%f",[_selectedOperation.weight floatValue] * POUND_MULTIPLIER];
+    }
+    
+    return [NSString stringWithFormat:@"%.1f", [weight floatValue]];
+}
+
+-(NSString*)getHeight
+{
+    NSString *height;
+    if (self.useCM) {
+        height = _selectedOperation.height;
+    } else {
+        // convert to ft and inches
+        height = _selectedOperation.height;
+    }
+    return [NSString stringWithFormat:@"%.1f", [height floatValue]];
+}
+
+-(void)setWeight:(NSString*)weight
+{
+    if (self.useKG) {
+        _selectedOperation.weight = self.weightTextField.text;
+    } else {
+        _selectedOperation.weight = [NSString stringWithFormat:@"%f", [self.weightTextField.text floatValue] / POUND_MULTIPLIER];
+    }
+    [self updateOperationView];
+}
+
+-(void)setHeight:(NSString*)height
+{
+    if (self.useCM) {
+        _selectedOperation.height = self.heightTextField.text;
+    } else {
+        _selectedOperation.height = self.heightTextField.text;
+        //int cm = feet * 30.48 + inches * 2.54;
+    }
+    [self updateOperationView];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.weightTextField) {
+        [self saveWeight];
+    }
+    if (textField == self.heightTextField) {
+        [self saveHeight];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 
 @end
