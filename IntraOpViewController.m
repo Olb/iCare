@@ -15,7 +15,9 @@
 #import "Agent.h"
 #import "AgentTableAdapter.h"
 #import "AddMedicationViewController.h"
+#import "AddMeasurementsViewController.h"
 #import "AddFluidViewController.h"
+#import "MeasurementTableAdapter.h"
 
 @interface IntraOpViewController () 
 
@@ -30,6 +32,9 @@
 @property AgentTableAdapter *gasAdapter;
 @property AgentTableAdapter *medicationAdapter;
 @property AgentTableAdapter *fluidAdapter;
+@property MeasurementTableAdapter *ventsAdapter;
+@property MeasurementTableAdapter *vitalsAdapter;
+@property MeasurementTableAdapter *eblAdapter;
 
 
 @end
@@ -62,7 +67,24 @@
     self.fluidAdapter.intraOp = self.intraOp;
     self.fluidTableView.dataSource = self.fluidAdapter;
     self.fluidTableView.delegate = self.fluidAdapter;
-
+    
+    self.ventsAdapter = [[MeasurementTableAdapter alloc] initWithType:@"Vent"];
+    self.ventsAdapter.controller = self;
+    self.ventsAdapter.intraOp = self.intraOp;
+    self.ventsTableView.dataSource = self.ventsAdapter;
+    self.ventsTableView.delegate = self.ventsAdapter;
+    
+    self.vitalsAdapter = [[MeasurementTableAdapter alloc] initWithType:@"Vital"];
+    self.vitalsAdapter.controller = self;
+    self.vitalsAdapter.intraOp = self.intraOp;
+    self.vitalsTableView.dataSource = self.vitalsAdapter;
+    self.vitalsTableView.delegate = self.vitalsAdapter;
+    
+    self.eblAdapter = [[MeasurementTableAdapter alloc] initWithType:@"Ebl"];
+    self.eblAdapter.controller = self;
+    self.eblAdapter.intraOp = self.intraOp;
+    self.eblTableView.dataSource = self.eblAdapter;
+    self.eblTableView.delegate = self.eblAdapter;
 
 }
 
@@ -101,6 +123,14 @@
 
 - (IBAction)addMedication:(id)sender {
     AddMedicationViewController* vc = [[AddMedicationViewController alloc] initWithIntraOp:self.intraOp completion:^{
+        [self reloadTables];
+    }];
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)updateMonitors:(id)sender {
+    AddMeasurementsViewController* vc = [[AddMeasurementsViewController alloc] initWithIntraOp:self.intraOp completion:^{
         [self reloadTables];
     }];
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -154,6 +184,16 @@
     return doseView;
 }
 
+
+-(UILabel*)viewForMeasurement:(Measurement*)measurement forCell:(UITableViewCell*)cell{
+    UILabel *label = [[UILabel alloc] init];
+    label.text = measurement.value;
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    label.frame = CGRectMake( [self.timeScrollView dateToXCoord:measurement.time] + FIRST_COLUMN_X_COORD, cell.bounds.origin.y, COLUMN_INTERVAL_WIDTH, cell.bounds.size.height );
+    return label;
+}
+
 -(CGRect)frameRectForStartTime:(NSDate*)startTime withEndTime:(NSDate*)endTime
 {
     return CGRectZero;
@@ -163,6 +203,9 @@
     [self.gasTableView reloadData];
     [self.medicationTableView reloadData];
     [self.fluidTableView reloadData];
+    [self.vitalsTableView reloadData];
+    [self.ventsTableView reloadData];
+    [self.eblTableView reloadData];
 }
 
 @end
