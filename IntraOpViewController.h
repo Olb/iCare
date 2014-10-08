@@ -13,5 +13,6 @@
 @interface IntraOpViewController : UIViewController
 @property (nonatomic) IntraOp *intraOp;
 
--(DoseView*)doseViewForAgent:(Agent*)agent;
+-(DoseView*)doseViewForAgent:(Agent*)agent forCell:(UITableViewCell*)cell;
+
 @end

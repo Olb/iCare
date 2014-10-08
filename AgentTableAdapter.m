@@ -38,7 +38,7 @@
             BOOL alreadyAdded = false;
             for (NSMutableSet *set in _agentsArray) {
                 for (Agent *a in set) {
-                    if ([agent.name isEqualToString:a.name]) {
+                    if ([agent.name isEqualToString:a.name] && [agent.unit isEqualToString:a.unit]) {
                         [set addObject:agent];
                         alreadyAdded = true;
                     }
@@ -67,18 +67,18 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
     }
-    
-    cell.textLabel.text = ((Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject]).name;
+    Agent *agent = (Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", agent.name, agent.unit];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
 
     for (Agent *agent in [self.agentsArray objectAtIndex:indexPath.row]) {
-        [cell.contentView addSubview:[self.controller doseViewForAgent:agent]];
+        [cell.contentView addSubview:[self.controller doseViewForAgent:agent forCell:cell]];
     }
-    
     UIView* bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, FIRST_COLUMN_X_COORD, cell.frame.size.height)];
     bg.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:bg];
-    
     
     return cell;
 }

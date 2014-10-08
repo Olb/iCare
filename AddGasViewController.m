@@ -63,6 +63,11 @@
     agent.startTime = [NSDate date];
     agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
     agent.type = @"Gas";
+    for (Agent *a in self.intraOp.agent) {
+        if ([a.name isEqualToString:agent.name] && [a.unit isEqualToString:agent.unit] && !a.endTime && [a.continuous boolValue]) {
+            a.endTime = [NSDate date];
+        }
+    }
     [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];
     [self dismissViewControllerAnimated:YES completion:nil];

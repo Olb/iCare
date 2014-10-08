@@ -50,6 +50,11 @@
 
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self reloadTables];
+}
 
 -(void)viewDidLayoutSubviews
 {
@@ -64,8 +69,6 @@
     self.gridView.tableSix = self.vitalsTableView;
     [self.gridView setNeedsLayout];
 
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,16 +83,23 @@
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
--(DoseView*)doseViewForAgent:(Agent*)agent
+-(DoseView*)doseViewForAgent:(Agent*)agent forCell:(UITableViewCell*)cell
 {
     DoseView *doseView = [[[NSBundle mainBundle] loadNibNamed:@"DoseView" owner:self options:nil] objectAtIndex:0];
     doseView.dose.text = agent.dose;
+    doseView.dose.font = [UIFont systemFontOfSize:14.0f];
     int doseTextWidth = ((CGSize)[agent.dose sizeWithAttributes:
                                     @{NSFontAttributeName:
                                           doseView.dose.font}]).width;
-    CGRect frame = doseView.dose.frame;
-    frame.size.width = doseTextWidth;
-    doseView.dose.frame = frame;
+    doseTextWidth += 3;
+    [doseView.dose addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:doseView.dose
+                                  attribute:NSLayoutAttributeWidth
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem: nil
+                                  attribute:NSLayoutAttributeNotAnAttribute
+                                  multiplier:1.0f
+                                  constant:doseTextWidth]];
     
     NSDate *endTime;
     if (!agent.endTime) {
@@ -100,13 +110,15 @@
     int width;
     if ([agent.continuous boolValue]) {
         width = [self.timeScrollView dateToXCoord:endTime]-[self.timeScrollView dateToXCoord:agent.startTime];
-        width = MAX(width, doseTextWidth);
+        width = MAX(width, doseTextWidth + 10);
     } else {
-        width = doseTextWidth + 5;
+        width = doseTextWidth + 10;
         
     }
 
-    doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, 0, width, 26.0 );
+    doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, cell.bounds.origin.y, width, cell.bounds.size.height );
+    [doseView setNeedsUpdateConstraints];
+
     return doseView;
 }
 
