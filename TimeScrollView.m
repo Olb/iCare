@@ -110,6 +110,18 @@
     }
 }
 
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    int extraIntervals = (int)(ABS(velocity.x) * 3);
+    NSLog(@"velocity: %f", velocity.x);
+    if (velocity.x < 0){
+        targetContentOffset->x = self.contentOffset.x - ((int)self.contentOffset.x) % (int)(15*_pxPerMinute) - 15*_pxPerMinute*extraIntervals;
+    } else {
+        targetContentOffset->x = self.contentOffset.x - ((int)self.contentOffset.x) % (int)(15*_pxPerMinute) + 15*_pxPerMinute + 15*_pxPerMinute*extraIntervals;
+        
+    }
+}
+
 
 
 @end

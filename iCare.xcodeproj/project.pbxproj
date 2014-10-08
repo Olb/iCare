@@ -83,7 +83,6 @@
 		28C0E93B19E1AF8F00F89AB3 /* AddGasViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */; };
 		28C0E93E19E1B5CB00F89AB3 /* NumericPickerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */; };
 		28C0E94419E1E95D00F89AB3 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94319E1E95D00F89AB3 /* IntraOp.m */; };
-		28C0E94719E1EA1500F89AB3 /* Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C0E94619E1EA1500F89AB3 /* Agent.m */; };
 		28CCCB2319C35FA100B2A0C6 /* StringListElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2219C35FA100B2A0C6 /* StringListElement.m */; };
 		28CCCB2919C35FA100B2A0C6 /* BooleanFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2819C35FA100B2A0C6 /* BooleanFormElement.m */; };
 		28CCCB2F19C38BD700B2A0C6 /* Form.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CCCB2E19C38BD700B2A0C6 /* Form.m */; };
@@ -107,6 +106,8 @@
 		985B835B19C1FBA9007DF484 /* StringArrayTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B835A19C1FBA9007DF484 /* StringArrayTableAdapter.m */; };
 		985B839219C24E1F007DF484 /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B839119C24E1F007DF484 /* Operation.m */; };
 		985B839B19C24E20007DF484 /* Practitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 985B839A19C24E20007DF484 /* Practitioner.m */; };
+		98734D5B19E4C1C7002675E0 /* AddMedicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98734D5919E4C1C7002675E0 /* AddMedicationViewController.m */; };
+		98734D5C19E4C1C7002675E0 /* AddMedicationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98734D5A19E4C1C7002675E0 /* AddMedicationViewController.xib */; };
 		988D166619AE63A2009A887A /* AnesthesiaTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */; };
 		988D166719AE63A2009A887A /* AnesthesiaTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */; };
 		988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D162119AE63A1009A887A /* BetaBlockerViewController.m */; };
@@ -139,6 +140,9 @@
 		988D169319AE63A2009A887A /* PremedsGivenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D165F19AE63A2009A887A /* PremedsGivenViewController.xib */; };
 		988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */; };
 		988D169819AE63A2009A887A /* SpinalAnesthesiaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */; };
+		98AD9D6119E4CC93000A75F3 /* Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6019E4CC93000A75F3 /* Agent.m */; };
+		98AD9D6519E4CCB6000A75F3 /* AddFluidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6319E4CCB6000A75F3 /* AddFluidViewController.m */; };
+		98AD9D6619E4CCB6000A75F3 /* AddFluidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98AD9D6419E4CCB6000A75F3 /* AddFluidViewController.xib */; };
 		98DA485319C897DA00E4727B /* BBPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485219C897DA00E4727B /* BBPdfGenerator.m */; };
 		98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98DA485419C8A0E800E4727B /* CoreText.framework */; };
 		98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */; };
@@ -321,8 +325,6 @@
 		28C0E93D19E1B5CB00F89AB3 /* NumericPickerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumericPickerAdapter.m; sourceTree = "<group>"; };
 		28C0E94219E1E95D00F89AB3 /* IntraOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOp.h; sourceTree = "<group>"; };
 		28C0E94319E1E95D00F89AB3 /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
-		28C0E94519E1EA1500F89AB3 /* Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
-		28C0E94619E1EA1500F89AB3 /* Agent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Agent.m; sourceTree = "<group>"; };
 		28CCCB2119C35FA100B2A0C6 /* StringListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringListElement.h; sourceTree = "<group>"; };
 		28CCCB2219C35FA100B2A0C6 /* StringListElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringListElement.m; sourceTree = "<group>"; };
 		28CCCB2719C35FA100B2A0C6 /* BooleanFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanFormElement.h; sourceTree = "<group>"; };
@@ -364,6 +366,9 @@
 		985B839119C24E1F007DF484 /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		985B839919C24E20007DF484 /* Practitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Practitioner.h; sourceTree = "<group>"; };
 		985B839A19C24E20007DF484 /* Practitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Practitioner.m; sourceTree = "<group>"; };
+		98734D5819E4C1C7002675E0 /* AddMedicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMedicationViewController.h; sourceTree = "<group>"; };
+		98734D5919E4C1C7002675E0 /* AddMedicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMedicationViewController.m; sourceTree = "<group>"; };
+		98734D5A19E4C1C7002675E0 /* AddMedicationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMedicationViewController.xib; sourceTree = "<group>"; };
 		988D161819AE63A1009A887A /* AnesthesiaTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnesthesiaTypeViewController.h; sourceTree = "<group>"; };
 		988D161919AE63A1009A887A /* AnesthesiaTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnesthesiaTypeViewController.m; sourceTree = "<group>"; };
 		988D161A19AE63A1009A887A /* AnesthesiaTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnesthesiaTypeViewController.xib; sourceTree = "<group>"; };
@@ -412,6 +417,11 @@
 		988D166319AE63A2009A887A /* SpinalAnesthesiaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinalAnesthesiaViewController.h; sourceTree = "<group>"; };
 		988D166419AE63A2009A887A /* SpinalAnesthesiaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinalAnesthesiaViewController.m; sourceTree = "<group>"; };
 		988D166519AE63A2009A887A /* SpinalAnesthesiaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinalAnesthesiaViewController.xib; sourceTree = "<group>"; };
+		98AD9D5F19E4CC93000A75F3 /* Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
+		98AD9D6019E4CC93000A75F3 /* Agent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Agent.m; sourceTree = "<group>"; };
+		98AD9D6219E4CCB6000A75F3 /* AddFluidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFluidViewController.h; sourceTree = "<group>"; };
+		98AD9D6319E4CCB6000A75F3 /* AddFluidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFluidViewController.m; sourceTree = "<group>"; };
+		98AD9D6419E4CCB6000A75F3 /* AddFluidViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFluidViewController.xib; sourceTree = "<group>"; };
 		98DA485119C897DA00E4727B /* BBPdfGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPdfGenerator.h; sourceTree = "<group>"; };
 		98DA485219C897DA00E4727B /* BBPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPdfGenerator.m; sourceTree = "<group>"; };
 		98DA485419C8A0E800E4727B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -612,11 +622,11 @@
 		281270B319C7E496009A9644 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				28C0E94519E1EA1500F89AB3 /* Agent.h */,
-				28C0E94619E1EA1500F89AB3 /* Agent.m */,
 				F4D901B619B25F94000E23E4 /* BBData.h */,
 				F4D901B719B25F94000E23E4 /* BBData.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
+				98AD9D5F19E4CC93000A75F3 /* Agent.h */,
+				98AD9D6019E4CC93000A75F3 /* Agent.m */,
 				28C0E94219E1E95D00F89AB3 /* IntraOp.h */,
 				28C0E94319E1E95D00F89AB3 /* IntraOp.m */,
 				98DA486B19D1F05300E4727B /* ElementListFormElement.h */,
@@ -668,6 +678,12 @@
 				28C0E93719E1AF8F00F89AB3 /* AddGasViewController.h */,
 				28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */,
 				28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */,
+				98734D5819E4C1C7002675E0 /* AddMedicationViewController.h */,
+				98734D5919E4C1C7002675E0 /* AddMedicationViewController.m */,
+				98734D5A19E4C1C7002675E0 /* AddMedicationViewController.xib */,
+				98AD9D6219E4CCB6000A75F3 /* AddFluidViewController.h */,
+				98AD9D6319E4CCB6000A75F3 /* AddFluidViewController.m */,
+				98AD9D6419E4CCB6000A75F3 /* AddFluidViewController.xib */,
 				2893CCAD19E47DF500167D0B /* AgentTableAdapter.h */,
 				2893CCAE19E47DF500167D0B /* AgentTableAdapter.m */,
 				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
@@ -1122,6 +1138,7 @@
 				988D167E19AE63A2009A887A /* InductionAndDeviceViewController.xib in Resources */,
 				988D168D19AE63A2009A887A /* PostAnesthesiaEvalViewController.xib in Resources */,
 				988D168419AE63A2009A887A /* IVAntibioticNameViewController.xib in Resources */,
+				98AD9D6619E4CCB6000A75F3 /* AddFluidViewController.xib in Resources */,
 				2838DE2B19CB2D090025F7DE /* EndotrachealTube.xml in Resources */,
 				281270AE19C7E0B9009A9644 /* PlanDiscussion.xml in Resources */,
 				280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */,
@@ -1168,6 +1185,7 @@
 				281270C619C87366009A9644 /* AllergiesReactionsViewController.xib in Resources */,
 				281270AA19C7DDC9009A9644 /* ImmuneID.xml in Resources */,
 				281270A419C7DC0F009A9644 /* Endocrine.xml in Resources */,
+				98734D5C19E4C1C7002675E0 /* AddMedicationViewController.xib in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
 				988D168819AE63A2009A887A /* PersonnelViewController.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* CardioViewController.xib in Resources */,
@@ -1265,10 +1283,10 @@
 				988D167D19AE63A2009A887A /* InductionAndDeviceViewController.m in Sources */,
 				988D169719AE63A2009A887A /* SpinalAnesthesiaViewController.m in Sources */,
 				98DA486219D0881D00E4727B /* FormElementTableCellFactory.m in Sources */,
-				28C0E94719E1EA1500F89AB3 /* Agent.m in Sources */,
 				985B839219C24E1F007DF484 /* Operation.m in Sources */,
 				281270DF19C894A8009A9644 /* PreOpActionsViewController.m in Sources */,
 				98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */,
+				98AD9D6119E4CC93000A75F3 /* Agent.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,
 				98DA486D19D1F05300E4727B /* ElementListFormElement.m in Sources */,
@@ -1295,6 +1313,7 @@
 				F4AFB92619ABABB000CA013B /* RespiratoryViewController.m in Sources */,
 				988D168719AE63A2009A887A /* PersonnelViewController.m in Sources */,
 				288D1E5B19DDF73E008EF1B7 /* IntraOpGrid.m in Sources */,
+				98AD9D6519E4CCB6000A75F3 /* AddFluidViewController.m in Sources */,
 				28CCCB4419C3A88A00B2A0C6 /* BBTimePickerView.m in Sources */,
 				F4AFB93E19ABB65000CA013B /* EndocrineViewController.m in Sources */,
 				28C0E94419E1E95D00F89AB3 /* IntraOp.m in Sources */,
@@ -1303,6 +1322,7 @@
 				98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */,
 				28034B3919C25B4200DB0A1E /* Patient.m in Sources */,
 				28E57B1C19E31FB6009DF942 /* TimeScrollView.m in Sources */,
+				98734D5B19E4C1C7002675E0 /* AddMedicationViewController.m in Sources */,
 				28E57B1919E31B12009DF942 /* DoseView.m in Sources */,
 				2838DE2019CB259B0025F7DE /* FormElement.m in Sources */,
 				988D169219AE63A2009A887A /* PremedsGivenViewController.m in Sources */,

@@ -2,7 +2,7 @@
 //  Agent.h
 //  iCare
 //
-//  Created by Billy Bray on 10/5/14.
+//  Created by Bogdan Marinescu on 10/8/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * unit;
+@property (nonatomic, retain) NSString * interval;
 @property (nonatomic, retain) IntraOp *intraop;
 
 @end

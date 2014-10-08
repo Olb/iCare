@@ -4,6 +4,7 @@
         <attribute name="continuous" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="interval" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,7 +81,7 @@
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Agent" positionX="-387" positionY="-369" width="128" height="165"/>
+        <element name="Agent" positionX="-387" positionY="-369" width="128" height="180"/>
         <element name="AntibioticFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="ElementListFormElement" positionX="-378" positionY="-360" width="128" height="60"/>

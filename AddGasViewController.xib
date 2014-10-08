@@ -37,13 +37,6 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
-                    <rect key="frame" x="41" y="61" width="200" height="216"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="C8k-KT-Xoy"/>
-                        <outlet property="delegate" destination="-1" id="72d-gx-L2G"/>
-                    </connections>
-                </pickerView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-ic-WsZ">
                     <rect key="frame" x="209" y="298" width="114" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -55,6 +48,9 @@
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="160" y="546" width="170" height="37"/>
+                    </variation>
                 </label>
                 <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcx-oj-O89">
                     <rect key="frame" x="81" y="322" width="370" height="216"/>
@@ -68,10 +64,20 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="continuous:" destination="-1" eventType="touchUpInside" id="CRF-fw-4sG"/>
-                    </connections>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="338" y="549" width="34" height="32"/>
+                    </variation>
                 </button>
+                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
+                    <rect key="frame" x="41" y="61" width="200" height="216"/>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="81" y="61" width="370" height="216"/>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="C8k-KT-Xoy"/>
+                        <outlet property="delegate" destination="-1" id="72d-gx-L2G"/>
+                    </connections>
+                </pickerView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

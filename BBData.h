@@ -13,4 +13,6 @@
 +(NSArray*)allergies;
 +(NSArray*)medications;
 +(NSArray*)gases;
++(NSArray*)intraOpMedications;
++(NSArray*)fluids;
 @end

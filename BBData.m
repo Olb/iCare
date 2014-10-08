@@ -12,6 +12,8 @@ static NSArray *procedureArray;
 static NSArray *medicationArray;
 static NSArray *allergyArray;
 static NSArray *gasArray;
+static NSArray *intraOpMedications;
+static NSArray *fluidArray;
 @implementation BBData
 
 +(NSArray*)procedures
@@ -650,6 +652,26 @@ static NSArray *gasArray;
     }
     
     return procedureArray;
+}
+
+
+
+
++(NSArray*)intraOpMedications
+{
+    if (!intraOpMedications){
+        intraOpMedications = [NSArray arrayWithObjects:@"Fentanyl", @"Sufentanil", @"Alfentanil", @"Remifentanil", @"Morphine", @"Meperidine", @"Dilaudid", @"Midazolam", @"Rocuronium", @"Cis-Atricurium", @"Vecuronium", @"Pancurionium", @"Atracurium", @"Propofol", @"Succinylcholine", @"Etomidate", @"Ketamine", @"Acetaminophen", @"Xylocaine", @"Odansetron", @"Robinul", @"Atropine", @"Esmolol", @"Labetalol", @"Hydralazine", @"Dexmedatomindine", @"Other", nil];
+    }
+    return intraOpMedications;
+}
+
+
++(NSArray*)fluids
+{
+    if (!fluidArray){
+        fluidArray = [NSArray arrayWithObjects:@".9% NaCl", @".45% NaCl", @"Plasmalyte", @"Ringer's Lactate", @"Hetastarch", @"Albumin 5%", @"Other", nil];
+    }
+    return fluidArray;
 }
 
 +(NSArray*)medications

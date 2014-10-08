@@ -14,6 +14,8 @@
 #import "TimeScrollView.h"
 #import "Agent.h"
 #import "AgentTableAdapter.h"
+#import "AddMedicationViewController.h"
+#import "AddFluidViewController.h"
 
 @interface IntraOpViewController () 
 
@@ -26,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *eblTableView;
 @property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
 @property AgentTableAdapter *gasAdapter;
+@property AgentTableAdapter *medicationAdapter;
+@property AgentTableAdapter *fluidAdapter;
 
 
 @end
@@ -44,9 +48,21 @@
     self.gasAdapter = [[AgentTableAdapter alloc] initWithType:@"Gas"];
     self.gasAdapter.controller = self;
     self.gasAdapter.intraOp = self.intraOp;
-    
     self.gasTableView.dataSource = self.gasAdapter;
     self.gasTableView.delegate = self.gasAdapter;
+    
+    self.medicationAdapter = [[AgentTableAdapter alloc] initWithType:@"Medication"];
+    self.medicationAdapter.controller = self;
+    self.medicationAdapter.intraOp = self.intraOp;
+    self.medicationTableView.dataSource = self.medicationAdapter;
+    self.medicationTableView.delegate = self.medicationAdapter;
+    
+    self.fluidAdapter = [[AgentTableAdapter alloc] initWithType:@"Fluid"];
+    self.fluidAdapter.controller = self;
+    self.fluidAdapter.intraOp = self.intraOp;
+    self.fluidTableView.dataSource = self.fluidAdapter;
+    self.fluidTableView.delegate = self.fluidAdapter;
+
 
 }
 
@@ -77,6 +93,22 @@
 
 - (IBAction)addGass:(id)sender {
     AddGasViewController* vc = [[AddGasViewController alloc] initWithIntraOp:self.intraOp completion:^{
+        [self reloadTables];
+    }];
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)addMedication:(id)sender {
+    AddMedicationViewController* vc = [[AddMedicationViewController alloc] initWithIntraOp:self.intraOp completion:^{
+        [self reloadTables];
+    }];
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)addFluid:(id)sender {
+    AddFluidViewController* vc = [[AddFluidViewController alloc] initWithIntraOp:self.intraOp completion:^{
         [self reloadTables];
     }];
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -129,6 +161,8 @@
 
 -(void) reloadTables{
     [self.gasTableView reloadData];
+    [self.medicationTableView reloadData];
+    [self.fluidTableView reloadData];
 }
 
 @end
