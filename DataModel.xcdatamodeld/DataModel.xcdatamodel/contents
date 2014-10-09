@@ -17,6 +17,14 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="BloodPressure" representedClassName="BloodPressure" syncable="YES">
+        <attribute name="diastolic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="origin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systolic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="intraOp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="bloodPressures" inverseEntity="IntraOp" syncable="YES"/>
+    </entity>
     <entity name="BooleanFormElement" representedClassName="BooleanFormElement" parentEntity="FormElement" syncable="YES">
         <attribute name="value" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
@@ -39,6 +47,7 @@
     </entity>
     <entity name="IntraOp" representedClassName="IntraOp" syncable="YES">
         <relationship name="agent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Agent" inverseName="intraop" inverseEntity="Agent" syncable="YES"/>
+        <relationship name="bloodPressures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BloodPressure" inverseName="intraOp" inverseEntity="BloodPressure" syncable="YES"/>
         <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Measurement" inverseName="intraOp" inverseEntity="Measurement" syncable="YES"/>
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="intraOp" inverseEntity="Operation" syncable="YES"/>
     </entity>
@@ -97,13 +106,14 @@
         <element name="Form" positionX="-432" positionY="-306" width="128" height="90"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
-        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="88"/>
+        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="103"/>
+        <element name="Measurement" positionX="-387" positionY="-360" width="128" height="133"/>
         <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="150"/>
         <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
-        <element name="Measurement" positionX="-387" positionY="-360" width="128" height="133"/>
+        <element name="BloodPressure" positionX="-378" positionY="-351" width="128" height="133"/>
     </elements>
 </model>

@@ -58,6 +58,10 @@
 		281DF32E19E6070D00E3B4E8 /* FollowUpResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281DF32C19E6070D00E3B4E8 /* FollowUpResultsViewController.xib */; };
 		281DF33219E607F900E3B4E8 /* PostOpReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281DF33019E607F900E3B4E8 /* PostOpReviewViewController.m */; };
 		281DF33319E607F900E3B4E8 /* PostOpReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281DF33119E607F900E3B4E8 /* PostOpReviewViewController.xib */; };
+		281DF33B19E6450700E3B4E8 /* IntraOpBPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281DF33A19E6450700E3B4E8 /* IntraOpBPView.m */; };
+		281DF33D19E6521600E3B4E8 /* IntraOpBPView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 281DF33C19E6521600E3B4E8 /* IntraOpBPView.xib */; };
+		281DF34019E65C7B00E3B4E8 /* BloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 281DF33F19E65C7B00E3B4E8 /* BloodPressure.m */; };
+		281DF34319E65C7C00E3B4E8 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 281DF34219E65C7C00E3B4E8 /* IntraOp.m */; };
 		282D5EA119C734160055B32B /* PremedsGiven.xml in Resources */ = {isa = PBXBuildFile; fileRef = 282D5EA019C734160055B32B /* PremedsGiven.xml */; };
 		282D5EA419C7360C0055B32B /* TextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 282D5EA319C7360C0055B32B /* TextElement.m */; };
 		2838DE2019CB259B0025F7DE /* FormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2838DE1F19CB259B0025F7DE /* FormElement.m */; };
@@ -161,7 +165,6 @@
 		98AD9D6119E4CC93000A75F3 /* Agent.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6019E4CC93000A75F3 /* Agent.m */; };
 		98AD9D6519E4CCB6000A75F3 /* AddFluidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6319E4CCB6000A75F3 /* AddFluidViewController.m */; };
 		98AD9D6619E4CCB6000A75F3 /* AddFluidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98AD9D6419E4CCB6000A75F3 /* AddFluidViewController.xib */; };
-		98AD9D6C19E5BFB0000A75F3 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6B19E5BFB0000A75F3 /* IntraOp.m */; };
 		98AD9D6F19E5C011000A75F3 /* MeasurementTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D6E19E5C011000A75F3 /* MeasurementTableAdapter.m */; };
 		98AD9D7219E5C25F000A75F3 /* Measurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D7119E5C25F000A75F3 /* Measurement.m */; };
 		98AD9D7619E5C6B6000A75F3 /* AddMeasurementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AD9D7419E5C6B6000A75F3 /* AddMeasurementsViewController.m */; };
@@ -326,6 +329,13 @@
 		281DF32F19E607F900E3B4E8 /* PostOpReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostOpReviewViewController.h; sourceTree = "<group>"; };
 		281DF33019E607F900E3B4E8 /* PostOpReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostOpReviewViewController.m; sourceTree = "<group>"; };
 		281DF33119E607F900E3B4E8 /* PostOpReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostOpReviewViewController.xib; sourceTree = "<group>"; };
+		281DF33919E6450700E3B4E8 /* IntraOpBPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpBPView.h; sourceTree = "<group>"; };
+		281DF33A19E6450700E3B4E8 /* IntraOpBPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOpBPView.m; sourceTree = "<group>"; };
+		281DF33C19E6521600E3B4E8 /* IntraOpBPView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntraOpBPView.xib; sourceTree = "<group>"; };
+		281DF33E19E65C7B00E3B4E8 /* BloodPressure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodPressure.h; sourceTree = "<group>"; };
+		281DF33F19E65C7B00E3B4E8 /* BloodPressure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodPressure.m; sourceTree = "<group>"; };
+		281DF34119E65C7C00E3B4E8 /* IntraOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOp.h; sourceTree = "<group>"; };
+		281DF34219E65C7C00E3B4E8 /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
 		282D5EA019C734160055B32B /* PremedsGiven.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PremedsGiven.xml; sourceTree = "<group>"; };
 		282D5EA219C7360C0055B32B /* TextElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextElement.h; sourceTree = "<group>"; };
 		282D5EA319C7360C0055B32B /* TextElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextElement.m; sourceTree = "<group>"; };
@@ -480,8 +490,6 @@
 		98AD9D6219E4CCB6000A75F3 /* AddFluidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFluidViewController.h; sourceTree = "<group>"; };
 		98AD9D6319E4CCB6000A75F3 /* AddFluidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFluidViewController.m; sourceTree = "<group>"; };
 		98AD9D6419E4CCB6000A75F3 /* AddFluidViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFluidViewController.xib; sourceTree = "<group>"; };
-		98AD9D6A19E5BFB0000A75F3 /* IntraOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOp.h; sourceTree = "<group>"; };
-		98AD9D6B19E5BFB0000A75F3 /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
 		98AD9D6D19E5C011000A75F3 /* MeasurementTableAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementTableAdapter.h; sourceTree = "<group>"; };
 		98AD9D6E19E5C011000A75F3 /* MeasurementTableAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementTableAdapter.m; sourceTree = "<group>"; };
 		98AD9D7019E5C25F000A75F3 /* Measurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Measurement.h; sourceTree = "<group>"; };
@@ -698,13 +706,15 @@
 		281270B319C7E496009A9644 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				281DF34119E65C7C00E3B4E8 /* IntraOp.h */,
+				281DF34219E65C7C00E3B4E8 /* IntraOp.m */,
+				281DF33E19E65C7B00E3B4E8 /* BloodPressure.h */,
+				281DF33F19E65C7B00E3B4E8 /* BloodPressure.m */,
 				F4D901B619B25F94000E23E4 /* BBData.h */,
 				F4D901B719B25F94000E23E4 /* BBData.m */,
 				F417DB6D19AE8F9400F13178 /* DataModel.xcdatamodeld */,
 				98AD9D7019E5C25F000A75F3 /* Measurement.h */,
 				98AD9D7119E5C25F000A75F3 /* Measurement.m */,
-				98AD9D6A19E5BFB0000A75F3 /* IntraOp.h */,
-				98AD9D6B19E5BFB0000A75F3 /* IntraOp.m */,
 				98AD9D5F19E4CC93000A75F3 /* Agent.h */,
 				98AD9D6019E4CC93000A75F3 /* Agent.m */,
 				98DA486B19D1F05300E4727B /* ElementListFormElement.h */,
@@ -785,6 +795,9 @@
 		288D1E1D19DDCCEA008EF1B7 /* IntraOp */ = {
 			isa = PBXGroup;
 			children = (
+				281DF33C19E6521600E3B4E8 /* IntraOpBPView.xib */,
+				281DF33919E6450700E3B4E8 /* IntraOpBPView.h */,
+				281DF33A19E6450700E3B4E8 /* IntraOpBPView.m */,
 				28E57B1D19E31FBD009DF942 /* View */,
 				28F6DF5819E2E2FD000BA316 /* BloodPressureViewController.h */,
 				28F6DF5919E2E2FD000BA316 /* BloodPressureViewController.m */,
@@ -1339,6 +1352,7 @@
 				281270A419C7DC0F009A9644 /* Endocrine.xml in Resources */,
 				98734D5C19E4C1C7002675E0 /* AddMedicationViewController.xib in Resources */,
 				F43148BE1933B66D00529FC4 /* Storyboard.storyboard in Resources */,
+				281DF33D19E6521600E3B4E8 /* IntraOpBPView.xib in Resources */,
 				988D168819AE63A2009A887A /* PersonnelViewController.xib in Resources */,
 				F4AFB93019ABAF2000CA013B /* CardioViewController.xib in Resources */,
 				98DA486719D08B7700E4727B /* AntibioticElementCell.xib in Resources */,
@@ -1431,7 +1445,6 @@
 				988D169019AE63A2009A887A /* PostProcedureGeneralViewController.m in Sources */,
 				98DA485A19C9031200E4727B /* BBPdfSectionBuilder.m in Sources */,
 				280ECCAD19D611B3005FE3AF /* PDFDisplayViewController.m in Sources */,
-				98AD9D6C19E5BFB0000A75F3 /* IntraOp.m in Sources */,
 				28F6DF5B19E2E2FD000BA316 /* BloodPressureViewController.m in Sources */,
 				289A97BE19DA27AF00300091 /* EditUserViewController.m in Sources */,
 				2812704219C76081009A9644 /* FormGroup.m in Sources */,
@@ -1451,6 +1464,7 @@
 				281DF32819E6057100E3B4E8 /* OccurrenceDetailsViewController.m in Sources */,
 				281270DF19C894A8009A9644 /* PreOpActionsViewController.m in Sources */,
 				98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */,
+				281DF34319E65C7C00E3B4E8 /* IntraOp.m in Sources */,
 				98AD9D6119E4CC93000A75F3 /* Agent.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,
@@ -1485,7 +1499,9 @@
 				F4B5D57819ACD00400174F61 /* PlanDiscussionViewController.m in Sources */,
 				F4AFB95919ABBECC00CA013B /* PreOpEvalTableTableViewController.m in Sources */,
 				98FF060D19BDF7530003129C /* BBAutoCompleteTextFieldDelegate.m in Sources */,
+				281DF34019E65C7B00E3B4E8 /* BloodPressure.m in Sources */,
 				28034B3919C25B4200DB0A1E /* Patient.m in Sources */,
+				281DF33B19E6450700E3B4E8 /* IntraOpBPView.m in Sources */,
 				281DF31E19E601B800E3B4E8 /* Group5ViewController.m in Sources */,
 				28E57B1C19E31FB6009DF942 /* TimeScrollView.m in Sources */,
 				98734D5B19E4C1C7002675E0 /* AddMedicationViewController.m in Sources */,

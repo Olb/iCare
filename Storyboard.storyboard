@@ -1170,7 +1170,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC5-DE-5df" customClass="BBCheckBox">
                                         <rect key="frame" x="108" y="492" width="33" height="32"/>
-                                        <state key="normal" image="C545673A-854C-4AB9-8C0A-68DD161E4C73">
+                                        <state key="normal" image="23A86464-1B9E-4141-8D7F-9AB8CA8E59F4">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1185,7 +1185,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAH-63-9gU" customClass="BBCheckBox">
                                         <rect key="frame" x="108" y="534" width="33" height="32"/>
-                                        <state key="normal" image="C545673A-854C-4AB9-8C0A-68DD161E4C73">
+                                        <state key="normal" image="23A86464-1B9E-4141-8D7F-9AB8CA8E59F4">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1263,6 +1263,11 @@
                                         <rect key="frame" x="0.0" y="24" width="24" height="13"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAC-uI-Rxd">
+                                        <rect key="frame" x="22" y="53" width="24" height="10"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.95172787410000004" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1271,6 +1276,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="35f-L4-wCg"/>
                     <connections>
+                        <outlet property="bloodPressureDrawingView" destination="VAC-uI-Rxd" id="vwF-Qa-luW"/>
                         <outlet property="eblTableView" destination="5Sa-BK-lpk" id="HMn-Hn-L4X"/>
                         <outlet property="fluidTableView" destination="B5m-i5-orG" id="CAL-eA-9eJ"/>
                         <outlet property="gasTableView" destination="Nzu-Wo-ibv" id="e6a-h0-W7o"/>
@@ -2299,7 +2305,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C545673A-854C-4AB9-8C0A-68DD161E4C73" width="32" height="32">
+        <image name="23A86464-1B9E-4141-8D7F-9AB8CA8E59F4" width="32" height="32">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
