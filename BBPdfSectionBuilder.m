@@ -4701,7 +4701,7 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HemotomaKey"]).value boolValue] atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:@"Hemotoma" atLocation:cursor];
+	 previousElementSize = [BBPdfGenerator drawText:@"Hematoma" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;

@@ -6,6 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Group4ViewController">
             <connections>
+                <outlet property="acuteOnsetRenalFailiureBBCheckBox" destination="hRu-GZ-mIh" id="92p-ul-rWH"/>
+                <outlet property="drugReactionBBCheckBox" destination="cUN-1m-79i" id="OS3-Ar-O6S"/>
+                <outlet property="incorectDoseBBCheckBox" destination="kLY-cE-7ba" id="csc-5j-dLz"/>
+                <outlet property="incorrectMedicationBBCheckBox" destination="Rek-cU-1IL" id="hUf-eP-UBN"/>
+                <outlet property="localAnestheticToxicityBBCheckBox" destination="SJJ-qp-4gz" id="1YX-S9-haf"/>
+                <outlet property="malignantHyperthermiaBBCheckBox" destination="TEb-Zg-vQD" id="APa-Fh-Xz9"/>
+                <outlet property="medicationErrorBBCheckBox" destination="en9-6i-mqz" id="lUS-Sd-C1G"/>
+                <outlet property="thermalBurnBBCheckBox" destination="D15-it-faO" id="DBl-bF-kSq"/>
+                <outlet property="transfusionReactionBBCheckBox" destination="KTc-Sd-o8e" id="NdS-DI-1sC"/>
+                <outlet property="vascularAccessComplicationBBCheckBox" destination="abv-XG-eHJ" id="Wkq-BY-at1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,15 +24,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-fl-LSO">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-fl-LSO">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="kbQ-Jl-Moj"/>
+                        <constraint firstAttribute="height" constant="44.5" id="EBb-1S-Gcs"/>
                     </constraints>
                     <items>
                         <navigationItem title="Groups 7 - 8" id="dVo-IK-tjW">
-                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lww-9B-89b"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="0sz-kj-45h"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lww-9B-89b">
+                                <connections>
+                                    <action selector="dismiss:" destination="-1" id="2Lv-Oo-LUW"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="0sz-kj-45h">
+                                <connections>
+                                    <action selector="accept:" destination="-1" id="WhJ-L2-tLi"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -208,6 +226,11 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="H8j-fl-LSO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wbx-rg-sgJ"/>
+                <constraint firstAttribute="trailing" secondItem="H8j-fl-LSO" secondAttribute="trailing" id="gjL-Dc-frZ"/>
+                <constraint firstItem="H8j-fl-LSO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kVS-G0-U8p"/>
+            </constraints>
         </view>
     </objects>
     <resources>

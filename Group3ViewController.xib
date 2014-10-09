@@ -6,6 +6,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Group3ViewController">
             <connections>
+                <outlet property="complicationRegionalAnesthesiaBBCheckBox" destination="5Du-hZ-uow" id="KPc-Ff-Wif"/>
+                <outlet property="failedRegionalAnesthesiaBBCheckBox" destination="IuG-qn-ky3" id="HvG-1m-wrs"/>
+                <outlet property="hemotomaBBCheckBox" destination="eSH-T2-4Ti" id="Spe-Xc-BSY"/>
+                <outlet property="highSpinalBBCheckBox" destination="MJf-iz-YMY" id="Pim-bo-S1V"/>
+                <outlet property="infectionBBCheckBox" destination="fZX-cB-sUh" id="U5V-qg-hOZ"/>
+                <outlet property="nonObBBCheckBox" destination="hwV-hG-r11" id="esy-bN-5NY"/>
+                <outlet property="obBBCheckBox" destination="WUL-vZ-Wmi" id="9TL-ew-um3"/>
+                <outlet property="unintendedDuralPunctureBBCheckBox" destination="WfS-oZ-fxm" id="vEv-TJ-kty"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,15 +22,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-Z2-lQp">
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCb-Z2-lQp">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="l6V-Mc-kTx"/>
+                        <constraint firstAttribute="height" constant="44" id="Ta0-ad-kVo"/>
                     </constraints>
                     <items>
                         <navigationItem title="Group 6" id="2JG-d5-obW">
-                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dBE-VD-bgk"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="DCv-mf-70w"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dBE-VD-bgk">
+                                <connections>
+                                    <action selector="dismiss:" destination="-1" id="Vjv-Jb-ism"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="DCv-mf-70w">
+                                <connections>
+                                    <action selector="accept:" destination="-1" id="vgL-n4-97y"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -80,7 +96,7 @@
                     <color key="textColor" white="0.37913435220000002" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hemotoma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oij-zr-0ah">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hematoma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oij-zr-0ah">
                     <rect key="frame" x="82" y="229" width="241" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" white="0.37913435220000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,6 +188,11 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="GCb-Z2-lQp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Cw0-PM-Pyo"/>
+                <constraint firstItem="GCb-Z2-lQp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hiu-U1-PVw"/>
+                <constraint firstAttribute="trailing" secondItem="GCb-Z2-lQp" secondAttribute="trailing" id="jy9-eP-zK8"/>
+            </constraints>
         </view>
     </objects>
     <resources>

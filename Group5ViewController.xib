@@ -6,6 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Group5ViewController">
             <connections>
+                <outlet property="awarenessBBCheckBox" destination="Gxs-4O-HHD" id="0Mi-MU-jgW"/>
+                <outlet property="obInfantDeathBBCheckBox" destination="MyD-hJ-LcL" id="waH-WN-IAK"/>
+                <outlet property="obLowApgarBBCheckBox" destination="mqW-5X-IZI" id="lV7-ba-Zqi"/>
+                <outlet property="patientComplaintBBCheckBox" destination="jLj-Pq-e7q" id="YCa-4B-iVp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,15 +18,23 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZb-TJ-xJl">
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZb-TJ-xJl">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="rw6-eL-KjG"/>
+                        <constraint firstAttribute="height" constant="44" id="9td-2F-3Wf"/>
                     </constraints>
                     <items>
                         <navigationItem title="Groups 9 -11" id="QnS-Yv-zKE">
-                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Ss-zl-7gA"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="fG5-5t-qdV"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0Ss-zl-7gA">
+                                <connections>
+                                    <action selector="dismiss:" destination="-1" id="DtA-Xa-w7n"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="fG5-5t-qdV">
+                                <connections>
+                                    <action selector="accept:" destination="-1" id="Rzd-dv-STg"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -112,6 +124,11 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nZb-TJ-xJl" secondAttribute="trailing" id="65A-9G-fTH"/>
+                <constraint firstItem="nZb-TJ-xJl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rx5-Gn-ln2"/>
+                <constraint firstItem="nZb-TJ-xJl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rwm-Oq-vUm"/>
+            </constraints>
         </view>
     </objects>
     <resources>

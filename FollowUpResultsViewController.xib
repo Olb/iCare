@@ -6,6 +6,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowUpResultsViewController">
             <connections>
+                <outlet property="additionalPtCareBBCheckBox" destination="Iwh-sO-88l" id="ZRO-ks-bRd"/>
+                <outlet property="deathBBCheckBox" destination="0qS-9i-BIk" id="U8V-po-dnC"/>
+                <outlet property="injuryBBCheckBox" destination="awr-ay-5QC" id="EEh-BZ-xS4"/>
+                <outlet property="noChangeBBCheckBox" destination="g0m-Mn-Xkl" id="ppL-Xu-8I8"/>
+                <outlet property="noInjuryBBCheckBox" destination="JXF-LC-gQV" id="BVj-Wl-mo8"/>
+                <outlet property="notApplicableBBCheckBox" destination="EvM-6G-lxM" id="DZU-ho-b8f"/>
+                <outlet property="orBBCheckBox" destination="La7-Rd-S9o" id="UW8-nK-JzU"/>
+                <outlet property="pacuBBCheckBox" destination="i8s-ga-66q" id="LIu-VQ-ahc"/>
+                <outlet property="postOp24to48BBCheckBox" destination="VnN-Q7-mzy" id="OVn-Hb-1U7"/>
+                <outlet property="postOpGreater48BBCheckBox" destination="C5Q-hf-qhs" id="9OQ-D5-rVC"/>
+                <outlet property="postOpLess24BBCheckBox" destination="H8U-1S-sY3" id="cUk-SA-wu2"/>
+                <outlet property="preOpBBCheckBox" destination="WFD-8Y-v9g" id="arH-K2-QYn"/>
+                <outlet property="unresolvedBBCheckBox" destination="CqT-SL-KcW" id="3aq-Tn-9gY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -122,15 +135,23 @@
                     <color key="textColor" white="0.37913435220000002" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rWV-uM-jJV">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWV-uM-jJV">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ka0-W7-1OP"/>
+                        <constraint firstAttribute="height" constant="44.5" id="zIw-aD-SAU"/>
                     </constraints>
                     <items>
                         <navigationItem title="Follow Up Results" id="Ic5-z2-Um5">
-                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qDU-un-oet"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="gJd-Q1-LSB"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qDU-un-oet">
+                                <connections>
+                                    <action selector="dismiss:" destination="-1" id="t9t-9z-0NE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="gJd-Q1-LSB">
+                                <connections>
+                                    <action selector="accept:" destination="-1" id="PIu-F1-bSD"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -280,6 +301,11 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rWV-uM-jJV" secondAttribute="trailing" id="2iZ-XW-vF9"/>
+                <constraint firstItem="rWV-uM-jJV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Tj7-Ay-N36"/>
+                <constraint firstItem="rWV-uM-jJV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="szP-Bc-oyZ"/>
+            </constraints>
         </view>
     </objects>
     <resources>

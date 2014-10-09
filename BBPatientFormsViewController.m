@@ -21,6 +21,7 @@
 #import "BBWeightPickerView.h"
 #import "BBWeightPickerAdapter.h"
 #import "IntraOpViewController.h"
+#import "PostOpTableViewController.h"
 #import "IntraOp.h"
 
 const float POUND_MULTIPLIER = 2.20462262f;
@@ -204,6 +205,20 @@ typedef enum : NSUInteger {
             [BBUtil saveContext];
         }
         vc.intraOp = self.selectedOperation.intraOp;
+    }
+    if ([[segue identifier] isEqualToString:@"Post Op Segue"]) {
+        PostOpTableViewController *vc = [segue destinationViewController];
+        for (Form *f in self.selectedOperation.forms) {
+            if ([f.title isEqualToString:@"PostOp"]) {
+                vc.form = f;
+            }
+        }
+        if (!vc.form) {
+            Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
+            f.title = @"PostOp";
+            [self.selectedOperation addFormsObject:f];
+            vc.form = f;
+        }
     }
 }
 

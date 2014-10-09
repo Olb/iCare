@@ -20,13 +20,14 @@
 #import "Patient.h"
 #import "BBFormSectionDelegate.h"
 #import "BPBAppDelegate.h"
+#import "BBPdfGenerator.h"
+#import "PDFDisplayViewController.h"
 
 @interface PostOpTableViewController () <BBFormSectionDelegate>
 
 @end
 
 @implementation PostOpTableViewController
-
 
 - (void)viewDidLoad
 {
@@ -58,7 +59,7 @@
             result = 5;
             break;
         case 1:
-            result = 4;
+            result = 3;
             break;
     }
     return result;
@@ -124,6 +125,7 @@
             }
             break;
         case 6:
+            return;
 //            vc = [[OccurrenceDetailsViewController alloc] init];
 //            ((OccurrenceDetailsViewController*)vc).delegate = self;
 //            for (FormSection* s in self.form.sections) {

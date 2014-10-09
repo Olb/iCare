@@ -20,7 +20,7 @@
                 <Element name="ComplicationRegionalAnesthesia" label="Complication of regional anesthesia" />
                 <Element name="UnintendedDuralPuncture" label="Unintended dural puncture" />
                 <Element name="Ob" label="OB" />
-                <Element name="Hemotoma" label="Hemotoma" />
+                <Element name="Hemotoma" label="Hematoma" />
                 <Element name="Infection" label="Infection" />
                 <Element name="HighSpinal" label="High spinal" />
                 <Element name="NonOb" label="Non-OB" />

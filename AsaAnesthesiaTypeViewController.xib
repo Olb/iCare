@@ -6,6 +6,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AsaAnesthesiaTypeViewController">
             <connections>
+                <outlet property="asa1BBCheckBox" destination="nWM-Xn-6nP" id="c6r-fY-EeC"/>
+                <outlet property="asa2BBCheckBox" destination="G8L-bI-SSe" id="hlp-CR-Yz9"/>
+                <outlet property="asa3BBCheckBox" destination="jT2-ML-Wqo" id="Kgp-kP-IGs"/>
+                <outlet property="asa4BBCheckBox" destination="iqH-lr-7Jy" id="UBu-bM-lTB"/>
+                <outlet property="asa5BBCheckBox" destination="CMh-Fz-nC4" id="SfG-dD-hhs"/>
+                <outlet property="asaEBBCheckBox" destination="eLi-iY-Glf" id="6Lk-fh-9tp"/>
+                <outlet property="epiduralBBCheckBox" destination="YcQ-l2-zI0" id="MDv-GB-rXw"/>
+                <outlet property="generalGetaBBCheckBox" destination="LFM-3w-0Dl" id="S3n-3S-Jw9"/>
+                <outlet property="generalLmaBBCheckBox" destination="Bi4-sj-5PC" id="csF-Lu-LJg"/>
+                <outlet property="generalMaskBBCheckBox" destination="ac6-Ql-0K0" id="dtm-3L-PIO"/>
+                <outlet property="macMedNecessityBBCheckBox" destination="jjr-BF-Jio" id="5Gb-hh-tH5"/>
+                <outlet property="nerveBlockBBCheckBox" destination="8Or-Bo-elh" id="mkY-5G-hkd"/>
+                <outlet property="preopEvalByUITextField" destination="YKt-0d-OfK" id="CxD-m8-ePK"/>
+                <outlet property="spinalBBCheckBox" destination="hwl-O1-IC9" id="q3j-ca-MJ6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -138,16 +152,27 @@
                     <rect key="frame" x="291" y="166" width="220" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="XX8-Ev-QUN"/>
+                    </connections>
                 </textField>
-                <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t1T-bM-HzA">
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t1T-bM-HzA">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="KZ2-iR-7os"/>
+                        <constraint firstAttribute="height" constant="44" id="8Xr-Iu-IZg"/>
                     </constraints>
                     <items>
                         <navigationItem title="ASA &amp; Anesthesia Type" id="sXP-Cb-cYW">
-                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="28h-qp-i9V"/>
-                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="vxC-GB-pEA"/>
+                            <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="28h-qp-i9V">
+                                <connections>
+                                    <action selector="dismiss:" destination="-1" id="Vu6-pC-6iI"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="save" id="vxC-GB-pEA">
+                                <connections>
+                                    <action selector="accept:" destination="-1" id="75m-Ia-9T0"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -285,6 +310,11 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="t1T-bM-HzA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Npg-ba-0Jg"/>
+                <constraint firstItem="t1T-bM-HzA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lge-cn-I91"/>
+                <constraint firstAttribute="trailing" secondItem="t1T-bM-HzA" secondAttribute="trailing" id="teS-Pg-LSo"/>
+            </constraints>
         </view>
     </objects>
     <resources>
