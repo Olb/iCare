@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<Section name="Group4">
+    <Data>
+        <Element type="BooleanFormElement" name="DrugReaction"/>
+        <Element type="BooleanFormElement" name="TransfusionReaction"/>
+        <Element type="BooleanFormElement" name="LocalAnestheticToxicity"/>
+        <Element type="BooleanFormElement" name="MedicationError"/>
+        <Element type="BooleanFormElement" name="IncorrectMedication"/>
+        <Element type="BooleanFormElement" name="IncorectDose"/>
+        <Element type="BooleanFormElement" name="VascularAccessComplication"/>
+        <Element type="BooleanFormElement" name="AcuteOnsetRenalFailiure"/>
+        <Element type="BooleanFormElement" name="MalignantHyperthermia"/>
+        <Element type="BooleanFormElement" name="ThermalBurn"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Group 7" orientation="vertical">
+                <Element name="DrugReaction" label="Adverse drug reaction(including anaphylaxis)" />
+                <Element name="TransfusionReaction" label="Transfusion reaction/error" />
+                <Element name="LocalAnestheticToxicity" label="Local anesthetic toxicity" />
+                <Element name="MedicationError" label="Medication error" />
+                <Element name="IncorrectMedication" label="Incorrect medication" />
+                <Element name="IncorectDose" label="Incorrect dose" />
+            </Group>
+            <Group label="Group 8" orientation="vertical">
+                <Element name="VascularAccessComplication" label="Vascular access complication" />
+                <Element name="AcuteOnsetRenalFailiure" label="Acute onset renal failure" />
+                <Element name="MalignantHyperthermia" label="Malignant Hyperthermia" />
+                <Element name="ThermalBurn" label="Thermal burn" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

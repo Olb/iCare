@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<Section name="Group5">
+    <Data>
+        <Element type="BooleanFormElement" name="ObLowApgar"/>
+        <Element type="BooleanFormElement" name="ObInfantDeath"/>
+        <Element type="BooleanFormElement" name="Awareness"/>
+        <Element type="BooleanFormElement" name="PatientComplaint"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Group 9" orientation="vertical">
+                <Element name="ObLowApgar" label="OB: Low Apgar(1 min or 5 min &lt; 5)" />
+                <Element name="ObInfantDeath" label="OB: Infant death" />
+            </Group>
+            <Group label="Group 10" orientation="vertical">
+                <Element name="Awareness" label="Awareness/Recall" />
+                <Element name="PatientComplaint" label="Patient/Family Complaint" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

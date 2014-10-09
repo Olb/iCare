@@ -1,0 +1,54 @@
+<?xml version='1.0'?>
+<Section name="FollowUpResults">
+    <Data>
+        <Element type="BooleanFormElement" name="PreOp"/>
+        <Element type="BooleanFormElement" name="Or"/>
+        <Element type="BooleanFormElement" name="Pacu"/>
+        <Element type="BooleanFormElement" name="PostOpLess24"/>
+        <Element type="BooleanFormElement" name="PostOp24to48"/>
+        <Element type="BooleanFormElement" name="PostOpGreater48"/>
+        <Element type="BooleanFormElement" name="NoChange"/>
+        <Element type="BooleanFormElement" name="AdditionalPtCare"/>
+        <Element type="BooleanFormElement" name="NotApplicable"/>
+        <Element type="BooleanFormElement" name="NoInjury"/>
+        <Element type="BooleanFormElement" name="Injury"/>
+        <Element type="BooleanFormElement" name="Death"/>
+        <Element type="BooleanFormElement" name="Unresolved"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Time Elapsed from DOS to Occurrence" orientation="vertical">
+                <Group orientation="horizontal">
+                    <Group orientation="vertical">
+                        <Element name="PreOp" label="PreOp" />
+                        <Element name="Or" label="OR" />
+                        <Element name="Pacu" label="PACU" />
+                    </Group>
+                    <Group orientation="vertical">
+                        <Element name="PostOpLess24" label="&lt;=24hr PostOp" />
+                        <Element name="PostOp24to48" label="24-48hr PostOp" />
+                        <Element name="PostOpGreater48" label="&gt;48hr PostOp" />
+                    </Group>
+                </Group>
+            </Group>
+            <Group label="Impact on Care" orientation="vertical">
+                <Element name="NoChange" label="No change in course of pt care" />
+                <Element name="AdditionalPtCare" label="Additional unexpected pt care" />
+                <Element name="NotApplicable" label="Not applicable (N/A)" />
+            </Group>
+            <Group label="Outcome" orientation="vertical">
+                <Group orientation="horizontal">
+                    <Group orientation="vertical">
+                        <Element name="NoInjury" label="No injury" />
+                        <Element name="Injury" label="Injury" />
+                        <Element name="Death" label="Death" />
+                    </Group>
+                    <Element name="Unresolved" label="Unresolved" />
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

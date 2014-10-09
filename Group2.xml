@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<Section name="Group2">
+    <Data>
+        <Element type="BooleanFormElement" name="UnrecognizedBpChange"/>
+        <Element type="BooleanFormElement" name="Laryngospasm"/>
+        <Element type="BooleanFormElement" name="ReIntubation"/>
+        <Element type="BooleanFormElement" name="DentalTrauma"/>
+        <Element type="BooleanFormElement" name="RespiratoryArrest"/>
+        <Element type="BooleanFormElement" name="PulmonaryEdema"/>
+        <Element type="BooleanFormElement" name="AspirationPneumonills"/>
+        <Element type="BooleanFormElement" name="Pneumothorax"/>
+        <Element type="BooleanFormElement" name="Stroke"/>
+        <Element type="BooleanFormElement" name="PeripheralNsInjury"/>
+        <Element type="BooleanFormElement" name="VisualLoss"/>
+        <Element type="BooleanFormElement" name="OcularInjury"/>
+        
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Group 3" orientation="vertical">
+                <Element name="UnrecognizedBpChange" label="Unrecognized difficult blood pressure change" />
+                <Element name="Laryngospasm" label="Laryngospasm requiring intervention" />
+                <Element name="ReIntubation" label="Re-intubation in OR/PACU" />
+                <Element name="DentalTrauma" label="Dental trauma" />
+            </Group>
+            <Group label="Group 4" orientation="vertical">
+                <Element name="RespiratoryArrest" label="Respiratory arrest/failure" />
+                <Element name="PulmonaryEdema" label="Pulmonary edema" />
+                <Element name="AspirationPneumonills" label="Aspiration Pneumonilis" />
+                <Element name="Pneumothorax" label="Pneumothorax" />
+            </Group>
+            <Group label="Group 5" orientation="vertical">
+                <Element name="Stroke" label="Stroke" />
+                <Element name="PeripheralNsInjury" label="Peripheral nervous system injury" />
+                <Element name="VisualLoss" label="Visual Loss" />
+                <Element name="OcularInjury" label="Ocular injury" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

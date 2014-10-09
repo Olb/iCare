@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Form.h"
 
 @interface PostOpTableViewController : UITableViewController
-
+@property Form *form;
 @end

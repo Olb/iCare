@@ -30,6 +30,8 @@ NSDateFormatter* dateFormatter;
 		 return [BBPdfSectionBuilder drawAllergiesReactionsSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"AnesthesiaTypeSectionKey"]){
 		 return [BBPdfSectionBuilder drawAnesthesiaTypeSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"AsaAnesthesiaTypeSectionKey"]){
+		 return [BBPdfSectionBuilder drawAsaAnesthesiaTypeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"BetaBlockerSectionKey"]){
 		 return [BBPdfSectionBuilder drawBetaBlockerSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"CardioSectionKey"]){
@@ -44,6 +46,18 @@ NSDateFormatter* dateFormatter;
 		 return [BBPdfSectionBuilder drawEndotrachealTubeSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"EvalOtherSectionKey"]){
 		 return [BBPdfSectionBuilder drawEvalOtherSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"FollowUpResultsSectionKey"]){
+		 return [BBPdfSectionBuilder drawFollowUpResultsSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"Group1SectionKey"]){
+		 return [BBPdfSectionBuilder drawGroup1Section:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"Group2SectionKey"]){
+		 return [BBPdfSectionBuilder drawGroup2Section:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"Group3SectionKey"]){
+		 return [BBPdfSectionBuilder drawGroup3Section:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"Group4SectionKey"]){
+		 return [BBPdfSectionBuilder drawGroup4Section:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"Group5SectionKey"]){
+		 return [BBPdfSectionBuilder drawGroup5Section:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"HemOncSectionKey"]){
 		 return [BBPdfSectionBuilder drawHemOncSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"HepatoSectionKey"]){
@@ -78,6 +92,8 @@ NSDateFormatter* dateFormatter;
 		 return [BBPdfSectionBuilder drawPostAnesthesiaEvalSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PostOpDiagnosisSectionKey"]){
 		 return [BBPdfSectionBuilder drawPostOpDiagnosisSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"PostOpReviewSectionKey"]){
+		 return [BBPdfSectionBuilder drawPostOpReviewSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PostProcedureGeneralSectionKey"]){
 		 return [BBPdfSectionBuilder drawPostProcedureGeneralSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PreOpActionsSectionKey"]){
@@ -1172,6 +1188,380 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawAsaAnesthesiaTypeSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@" " atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 group1Indentation = 15;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxHeight = 0;
+
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"ASA: " atLocation:cursor isBold:YES];
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 group2Indentation = 0;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"Asa1Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"1" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"Asa2Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"2" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"Asa3Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"3" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"Asa4Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"4" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"Asa5Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"5" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AsaEKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"E" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Preoperative Evaluation by:" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"PreopEvalByKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 8;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 8;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Anesthesia Type" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 //start of draw group4
+	 int group4MaxHeight = 0;
+
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 group4Indentation = 0;
+	 cursor.x += group4Indentation;
+	 //start of draw group5
+	 int group5MaxWidth = 0;
+	 CGPoint group5CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group5Indentation = 0;
+	 group5Indentation = 0;
+	 cursor.x += group5Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"GeneralGetaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"General-GETA" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"MacMedNecessityKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"MAC - Medical Necessity" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"SpinalKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Spinal" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"GeneralLmaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"General-LMA" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 //end of draw group5
+	 previousElementSize = CGSizeMake(group5MaxWidth + 0, cursor.y -group5CursorStart.y);
+	 cursor = group5CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group4MaxHeight){
+		 group4MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //start of draw group6
+	 int group6MaxWidth = 0;
+	 CGPoint group6CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group6Indentation = 0;
+	 group6Indentation = 0;
+	 cursor.x += group6Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NerveBlockKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Nerve Block" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"GeneralMaskKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"General-Mask" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"EpiduralKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Epidural" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 //end of draw group6
+	 previousElementSize = CGSizeMake(group6MaxWidth + 0, cursor.y -group6CursorStart.y);
+	 cursor = group6CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group4MaxHeight){
+		 group4MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(cursor.x - group4CursorStart.x, group4MaxHeight);
+	 cursor = group4CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
 	 //end of draw group1
@@ -3214,6 +3604,1550 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawFollowUpResultsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Time Elapsed from DOS to Occurrence" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 //start of draw group3
+	 int group3MaxHeight = 0;
+
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 group3Indentation = 0;
+	 cursor.x += group3Indentation;
+	 //start of draw group4
+	 int group4MaxWidth = 0;
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 group4Indentation = 0;
+	 cursor.x += group4Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PreOpKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"PreOp" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"OrKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"OR" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PacuKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"PACU" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(group4MaxWidth + 0, cursor.y -group4CursorStart.y);
+	 cursor = group4CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group3MaxHeight){
+		 group3MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //start of draw group5
+	 int group5MaxWidth = 0;
+	 CGPoint group5CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group5Indentation = 0;
+	 group5Indentation = 0;
+	 cursor.x += group5Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PostOpLess24Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"<=24hr PostOp" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PostOp24to48Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"24-48hr PostOp" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PostOpGreater48Key"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@">48hr PostOp" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group5Indentation + 8 > group5MaxWidth){
+		 group5MaxWidth = previousElementSize.width + group5Indentation + 8;
+	 }
+
+	 //end of draw group5
+	 previousElementSize = CGSizeMake(group5MaxWidth + 0, cursor.y -group5CursorStart.y);
+	 cursor = group5CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group3MaxHeight){
+		 group3MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(cursor.x - group3CursorStart.x, group3MaxHeight);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group6
+	 int group6MaxWidth = 0;
+	 CGPoint group6CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group6Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Impact on Care" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 0 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 0;
+	 }
+
+	 group6Indentation = 15;
+	 cursor.x += group6Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NoChangeKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"No change in course of pt care" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AdditionalPtCareKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Additional unexpected pt care" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NotApplicableKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Not applicable (N/A)" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 //end of draw group6
+	 previousElementSize = CGSizeMake(group6MaxWidth + 15, cursor.y -group6CursorStart.y);
+	 cursor = group6CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group7
+	 int group7MaxWidth = 0;
+	 CGPoint group7CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group7Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Outcome" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group7Indentation + 0 > group7MaxWidth){
+		 group7MaxWidth = previousElementSize.width + group7Indentation + 0;
+	 }
+
+	 group7Indentation = 15;
+	 cursor.x += group7Indentation;
+	 //start of draw group8
+	 int group8MaxHeight = 0;
+
+	 CGPoint group8CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group8Indentation = 0;
+	 group8Indentation = 0;
+	 cursor.x += group8Indentation;
+	 //start of draw group9
+	 int group9MaxWidth = 0;
+	 CGPoint group9CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group9Indentation = 0;
+	 group9Indentation = 0;
+	 cursor.x += group9Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NoInjuryKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"No injury" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group9Indentation + 8 > group9MaxWidth){
+		 group9MaxWidth = previousElementSize.width + group9Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"InjuryKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Injury" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group9Indentation + 8 > group9MaxWidth){
+		 group9MaxWidth = previousElementSize.width + group9Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DeathKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Death" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group9Indentation + 8 > group9MaxWidth){
+		 group9MaxWidth = previousElementSize.width + group9Indentation + 8;
+	 }
+
+	 //end of draw group9
+	 previousElementSize = CGSizeMake(group9MaxWidth + 0, cursor.y -group9CursorStart.y);
+	 cursor = group9CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group8MaxHeight){
+		 group8MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"UnresolvedKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Unresolved" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group8MaxHeight){
+		 group8MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group8
+	 previousElementSize = CGSizeMake(cursor.x - group8CursorStart.x, group8MaxHeight);
+	 cursor = group8CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group7Indentation + 0 > group7MaxWidth){
+		 group7MaxWidth = previousElementSize.width + group7Indentation + 0;
+	 }
+
+	 //end of draw group7
+	 previousElementSize = CGSizeMake(group7MaxWidth + 15, cursor.y -group7CursorStart.y);
+	 cursor = group7CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawGroup1Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 1" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AnesthesiaStartDelayKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Anesthesia 1st case start delay" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"CaseCanceledKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Case cancelled" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"UnplannedAdmissionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Unplanned admission to higher level of care" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PreInductionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Pre-Induction" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PostInductionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Post-Induction" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"WrongSiteKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Wrong site" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 2" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"MortalityKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Mortality" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"MyocardialInfarctionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Myocardial Infarction (MI)" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"SignificantBPChangeKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Clinically significant blood pressure change" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DysrhythmiaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Dysrhythmia" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"CardiacArrestKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Cardiac Arrest" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HypertensionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Hypertension" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HypotensionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Hypotension" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawGroup2Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 3" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"UnrecognizedBpChangeKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Unrecognized difficult blood pressure change" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"LaryngospasmKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Laryngospasm requiring intervention" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ReIntubationKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Re-intubation in OR/PACU" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DentalTraumaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Dental trauma" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 4" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"RespiratoryArrestKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Respiratory arrest/failure" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PulmonaryEdemaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Pulmonary edema" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AspirationPneumonillsKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Aspiration Pneumonilis" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PneumothoraxKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Pneumothorax" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group4
+	 int group4MaxWidth = 0;
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 5" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 0 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 0;
+	 }
+
+	 group4Indentation = 15;
+	 cursor.x += group4Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"StrokeKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Stroke" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PeripheralNsInjuryKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Peripheral nervous system injury" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"VisualLossKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Visual Loss" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"OcularInjuryKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Ocular injury" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
+	 }
+
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(group4MaxWidth + 15, cursor.y -group4CursorStart.y);
+	 cursor = group4CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawGroup3Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 6" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"FailedRegionalAnesthesiaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Failed regional anesthesia" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ComplicationRegionalAnesthesiaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Complication of regional anesthesia" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"UnintendedDuralPunctureKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Unintended dural puncture" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ObKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"OB" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HemotomaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Hemotoma" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"InfectionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Infection" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"HighSpinalKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"High spinal" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"NonObKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Non-OB" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawGroup4Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 7" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DrugReactionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Adverse drug reaction(including anaphylaxis)" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"TransfusionReactionKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Transfusion reaction/error" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"LocalAnestheticToxicityKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Local anesthetic toxicity" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"MedicationErrorKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Medication error" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"IncorrectMedicationKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Incorrect medication" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"IncorectDoseKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Incorrect dose" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 8" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"VascularAccessComplicationKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Vascular access complication" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AcuteOnsetRenalFailiureKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Acute onset renal failure" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"MalignantHyperthermiaKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Malignant Hyperthermia" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ThermalBurnKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Thermal burn" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawGroup5Section:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 9" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ObLowApgarKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"OB: Low Apgar(1 min or 5 min < 5)" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"ObInfantDeathKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"OB: Infant death" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group3
+	 int group3MaxWidth = 0;
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Group 10" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
+	 }
+
+	 group3Indentation = 15;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"AwarenessKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Awareness/Recall" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"PatientComplaintKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Patient/Family Complaint" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
 	 previousElementSize.width += 0;
@@ -8772,6 +10706,206 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawPostOpReviewSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxWidth = 0;
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Submitted By (MD/DO/CRNA/AA)" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 group2Indentation = 15;
+	 cursor.x += group2Indentation;
+	 //start of draw group3
+	 int group3MaxHeight = 0;
+
+	 CGPoint group3CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group3Indentation = 0;
+	 group3Indentation = 0;
+	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 text = ((TextElement*)[section getElementForKey:@"SubmittedByKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group3MaxHeight){
+		 group3MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Date:" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"SubmittedByDateKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group3MaxHeight){
+		 group3MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(cursor.x - group3CursorStart.x, group3MaxHeight);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
+		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //start of draw group4
+	 int group4MaxWidth = 0;
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Reviewed By (MD/DO/CRNA/AA)" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 0 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 0;
+	 }
+
+	 group4Indentation = 15;
+	 cursor.x += group4Indentation;
+	 //start of draw group5
+	 int group5MaxHeight = 0;
+
+	 CGPoint group5CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group5Indentation = 0;
+	 group5Indentation = 0;
+	 cursor.x += group5Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 text = ((TextElement*)[section getElementForKey:@"ReviewedByKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group5MaxHeight){
+		 group5MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Date:" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"ReviewedByDateKey"]).value; 
+	 if (text == nil || [text isEqualToString:@""]) {
+		 text = @"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0";
+	 } else {
+		 text = [NSString stringWithFormat:@"\u00a0\u00a0\u00a0%@\u00a0\u00a0\u00a0", text];
+	 } 
+	 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor isUnderlined:YES];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group5MaxHeight){
+		 group5MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group5
+	 previousElementSize = CGSizeMake(cursor.x - group5CursorStart.x, group5MaxHeight);
+	 cursor = group5CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 0 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 0;
+	 }
+
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(group4MaxWidth + 15, cursor.y -group4CursorStart.y);
+	 cursor = group4CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
 	 previousElementSize.width += 0;

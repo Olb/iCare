@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<Section name="Group3">
+    <Data>
+        <Element type="BooleanFormElement" name="FailedRegionalAnesthesia"/>
+        <Element type="BooleanFormElement" name="ComplicationRegionalAnesthesia"/>
+        <Element type="BooleanFormElement" name="UnintendedDuralPuncture"/>
+        <Element type="BooleanFormElement" name="Ob"/>
+        <Element type="BooleanFormElement" name="Hemotoma"/>
+        <Element type="BooleanFormElement" name="Infection"/>
+        <Element type="BooleanFormElement" name="HighSpinal"/>
+        <Element type="BooleanFormElement" name="NonOb"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Group 6" orientation="vertical">
+                <Element name="FailedRegionalAnesthesia" label="Failed regional anesthesia" />
+                <Element name="ComplicationRegionalAnesthesia" label="Complication of regional anesthesia" />
+                <Element name="UnintendedDuralPuncture" label="Unintended dural puncture" />
+                <Element name="Ob" label="OB" />
+                <Element name="Hemotoma" label="Hemotoma" />
+                <Element name="Infection" label="Infection" />
+                <Element name="HighSpinal" label="High spinal" />
+                <Element name="NonOb" label="Non-OB" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

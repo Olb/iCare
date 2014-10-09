@@ -7,94 +7,207 @@
 //
 
 #import "PostOpTableViewController.h"
+#import "Group1ViewController.h"
+#import "Group2ViewController.h"
+#import "Group3ViewController.h"
+#import "Group4ViewController.h"
+#import "Group5ViewController.h"
+#import "AsaAnesthesiaTypeViewController.h"
+#import "OccurrenceDetailsViewController.h"
+#import "FollowUpResultsViewController.h"
+#import "PostOpReviewViewController.h"
+#import "Operation.h"
+#import "Patient.h"
+#import "BBFormSectionDelegate.h"
+#import "BPBAppDelegate.h"
 
-@interface PostOpTableViewController ()
+@interface PostOpTableViewController () <BBFormSectionDelegate>
 
 @end
 
 @implementation PostOpTableViewController
 
-- (void)viewDidLoad {
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.title = [NSString stringWithFormat:@"PostOp - %@, %@", self.form.operation.patient.lastName, self.form.operation.patient.firstName];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger result = 0;
     
-    // Configure the cell...
+    switch (section) {
+        case 0:
+            result = 5;
+            break;
+        case 1:
+            result = 4;
+            break;
+    }
+    return result;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIViewController *vc;
+    switch (cell.tag) {
+        case 0:
+            vc = [[Group1ViewController alloc] init];
+            ((Group1ViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[Group1ViewController sectionTitle]]) {
+                    ((Group1ViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 1:
+            vc = [[Group2ViewController alloc] init];
+            ((Group2ViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[Group2ViewController sectionTitle]]) {
+                    ((Group2ViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 2:
+            vc = [[Group3ViewController alloc] init];
+            ((Group3ViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[Group3ViewController sectionTitle]]) {
+                    ((Group3ViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 3:
+            vc = [[Group4ViewController alloc] init];
+            ((Group4ViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[Group4ViewController sectionTitle]]) {
+                    ((Group4ViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 4:
+            vc = [[Group5ViewController alloc] init];
+            ((Group5ViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[Group5ViewController sectionTitle]]) {
+                    ((Group5ViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 5:
+            vc = [[AsaAnesthesiaTypeViewController alloc] init];
+            ((AsaAnesthesiaTypeViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[AsaAnesthesiaTypeViewController sectionTitle]]) {
+                    ((AsaAnesthesiaTypeViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 6:
+//            vc = [[OccurrenceDetailsViewController alloc] init];
+//            ((OccurrenceDetailsViewController*)vc).delegate = self;
+//            for (FormSection* s in self.form.sections) {
+//                if ([s.title isEqualToString:[OccurrenceDetailsViewController sectionTitle]]) {
+//                    ((OccurrenceDetailsViewController*)vc).section = s;
+//                }
+//            }
+            break;
+        case 7:
+            vc = [[FollowUpResultsViewController alloc] init];
+            ((FollowUpResultsViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[FollowUpResultsViewController sectionTitle]]) {
+                    ((FollowUpResultsViewController*)vc).section = s;
+                }
+            }
+            break;
+        case 8:
+            vc = [[PostOpReviewViewController alloc] init];
+            ((PostOpReviewViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[PostOpReviewViewController sectionTitle]]) {
+                    ((PostOpReviewViewController*)vc).section = s;
+                }
+            }
+            break;
+         default:
+            break;
+    }
     
-    return cell;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:vc animated:YES completion:nil];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - FormSectionDelegate Methods
+-(void)sectionCreated:(FormSection*)formSection
+{
+    BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    
+    if (![self.form.sections containsObject:formSection]) {
+        [self.form addSectionsObject:formSection];
+    } else {
+        [context refreshObject:formSection mergeChanges:YES];
+    }
+    
+    NSError *error = nil;
+    if (![context save:&error]) {
+        [self showAlertWithMessage:@"Error saving form"];
+    }
+    
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)showAlertWithMessage:(NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"iCare"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+// TODO
+-(void)setTableViewAccessoryForIndexPath:(NSIndexPath*)indexPath to:(BOOL)complete
+{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if(complete)
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (IBAction)showPDF:(id)sender {
+    [BBPdfGenerator generatePdfForForm:self.form];
+    PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
+    vc.form = self.form;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:vc animated:YES completion:nil];
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -1,13 +1,12 @@
-//
-//  Group1ViewController.h
-//  iCare
-//
-//  Created by Billy Bray on 10/8/14.
-//  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
+#import "BBFormSectionDelegate.h"
+#import "FormSection.h"
 
 @interface Group1ViewController : UIViewController
+@property id <BBFormSectionDelegate> delegate;
+@property FormSection * section;
 
++(NSString*) sectionTitle;
 @end

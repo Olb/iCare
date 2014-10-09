@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<Section name="PostOpReview">
+    <Data>
+        <Element type="TextElement" name="SubmittedBy"/>
+        <Element type="TextElement" name="SubmittedByDate"/>
+        <Element type="TextElement" name="ReviewedBy"/>
+        <Element type="TextElement" name="ReviewedByDate"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical" >
+            <Group label="Submitted By (MD/DO/CRNA/AA)" orientation="vertical" >
+                <Group  orientation="horizontal">
+                    <Element name="SubmittedBy" />
+                    <Element name="SubmittedByDate" label="Date:"/>
+                </Group>
+            </Group>
+            <Group label="Reviewed By (MD/DO/CRNA/AA)" orientation="vertical" >
+                <Group  orientation="horizontal">
+                    <Element name="ReviewedBy" />
+                    <Element name="ReviewedByDate" label="Date:"/>
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

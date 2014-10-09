@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<Section name="Group1">
+    <Data>
+        <Element type="BooleanFormElement" name="AnesthesiaStartDelay"/>
+        <Element type="BooleanFormElement" name="CaseCanceled"/>
+        <Element type="BooleanFormElement" name="UnplannedAdmission"/>
+        <Element type="BooleanFormElement" name="PreInduction"/>
+        <Element type="BooleanFormElement" name="PostInduction"/>
+        <Element type="BooleanFormElement" name="WrongSite"/>
+        <Element type="BooleanFormElement" name="Mortality"/>
+        <Element type="BooleanFormElement" name="MyocardialInfarction"/>
+        <Element type="BooleanFormElement" name="SignificantBPChange"/>
+        <Element type="BooleanFormElement" name="Dysrhythmia"/>
+        <Element type="BooleanFormElement" name="CardiacArrest"/>
+        <Element type="BooleanFormElement" name="Hypertension"/>
+        <Element type="BooleanFormElement" name="Hypotension"/>
+
+    </Data>
+    <Validation>
+
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical">
+            <Group label="Group 1" orientation="vertical">
+                <Element name="AnesthesiaStartDelay" label="Anesthesia 1st case start delay" />
+                <Element name="CaseCanceled" label="Case cancelled" />
+                <Element name="UnplannedAdmission" label="Unplanned admission to higher level of care" />
+                <Element name="PreInduction" label="Pre-Induction" />
+                <Element name="PostInduction" label="Post-Induction" />
+                <Element name="WrongSite" label="Wrong site" />
+            </Group>
+            <Group label="Group 2" orientation="vertical">
+                <Element name="Mortality" label="Mortality" />
+                <Element name="MyocardialInfarction" label="Myocardial Infarction (MI)" />
+                <Element name="SignificantBPChange" label="Clinically significant blood pressure change" />
+                <Element name="Dysrhythmia" label="Dysrhythmia" />
+                <Element name="CardiacArrest" label="Cardiac Arrest" />
+                <Element name="Hypertension" label="Hypertension" />
+                <Element name="Hypotension" label="Hypotension" />
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

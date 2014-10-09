@@ -1,0 +1,51 @@
+<?xml version='1.0'?>
+<Section name="AsaAnesthesiaType">
+    <Data>
+        <Element type="BooleanFormElement" name="Asa1"/>
+        <Element type="BooleanFormElement" name="Asa2"/>
+        <Element type="BooleanFormElement" name="Asa3"/>
+        <Element type="BooleanFormElement" name="Asa4"/>
+        <Element type="BooleanFormElement" name="Asa5"/>
+        <Element type="BooleanFormElement" name="AsaE"/>
+        <Element type="TextElement" name="PreopEvalBy"/>
+        <Element type="BooleanFormElement" name="GeneralGeta"/>
+        <Element type="BooleanFormElement" name="MacMedNecessity"/>
+        <Element type="BooleanFormElement" name="Spinal"/>
+        <Element type="BooleanFormElement" name="GeneralLma"/>
+        <Element type="BooleanFormElement" name="NerveBlock"/>
+        <Element type="BooleanFormElement" name="GeneralMask"/>
+        <Element type="BooleanFormElement" name="Epidural"/>
+    </Data>
+    <Validation>
+        
+    </Validation>
+    <Graphics>
+        <Group orientation="vertical" label=" ">
+            <Group label="ASA: " orientation="horizontal">
+                <Element name="Asa1" label="1" />
+                <Element name="Asa2" label="2" />
+                <Element name="Asa3" label="3" />
+                <Element name="Asa4" label="4" />
+                <Element name="Asa5" label="5" />
+                <Element name="AsaE" label="E" />
+            </Group>
+            <Element name="PreopEvalBy" label="Preoperative Evaluation by:" marginB="8"/>
+            
+            <Group label="Anesthesia Type" orientation="vertical">
+                <Group orientation="horizontal">
+                    <Group orientation="vertical">
+                        <Element name="GeneralGeta" label="General-GETA" />
+                        <Element name="MacMedNecessity" label="MAC - Medical Necessity" />
+                        <Element name="Spinal" label="Spinal" />
+                        <Element name="GeneralLma" label="General-LMA" />
+                    </Group>
+                    <Group orientation="vertical">
+                        <Element name="NerveBlock" label="Nerve Block" />
+                        <Element name="GeneralMask" label="General-Mask" />
+                        <Element name="Epidural" label="Epidural" />
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+    </Graphics>
+</Section>

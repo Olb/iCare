@@ -174,7 +174,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XaE-ni-OF3">
-                    <rect key="frame" x="0.0" y="0.0" width="540" height="44.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="540" height="45"/>
                     <items>
                         <barButtonItem title="Cancel" id="7mz-6N-EJX">
                             <connections>
