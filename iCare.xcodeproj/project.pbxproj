@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
+		28058DF219E6E4440086DC06 /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28058DF119E6E4440086DC06 /* CustomLayer.m */; };
 		280ECCAD19D611B3005FE3AF /* PDFDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */; };
 		280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */; };
 		2812704219C76081009A9644 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812704119C76081009A9644 /* FormGroup.m */; };
@@ -261,6 +262,8 @@
 /* Begin PBXFileReference section */
 		28034B3719C25B4200DB0A1E /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		28058DF019E6E4440086DC06 /* CustomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayer.h; sourceTree = "<group>"; };
+		28058DF119E6E4440086DC06 /* CustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
 		280ECCAA19D611B3005FE3AF /* PDFDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDisplayViewController.h; sourceTree = "<group>"; };
 		280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDisplayViewController.m; sourceTree = "<group>"; };
 		280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AnesthesiaRecord.pdf; sourceTree = "<group>"; };
@@ -820,6 +823,8 @@
 				98AD9D6E19E5C011000A75F3 /* MeasurementTableAdapter.m */,
 				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
 				288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */,
+				28058DF019E6E4440086DC06 /* CustomLayer.h */,
+				28058DF119E6E4440086DC06 /* CustomLayer.m */,
 				28F6DF5719E2D6F6000BA316 /* GridConstants.h */,
 			);
 			name = IntraOp;
@@ -1419,6 +1424,7 @@
 				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				281270BB19C87200009A9644 /* MedicationsSupplementsViewController.m in Sources */,
 				281DF31419E600E400E3B4E8 /* Group3ViewController.m in Sources */,
+				28058DF219E6E4440086DC06 /* CustomLayer.m in Sources */,
 				281DF30519E5FF0400E3B4E8 /* PostOpTableViewController.m in Sources */,
 				281270D519C8808E009A9644 /* PhysicalExamViewController.m in Sources */,
 				988D166B19AE63A2009A887A /* BetaBlockerViewController.m in Sources */,

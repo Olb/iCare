@@ -21,6 +21,7 @@
 #import "BBUtil.h"
 #import "IntraOpBPView.h"
 #import "BloodPressure.h"
+#import "CustomLayer.h"
 
 @interface IntraOpViewController () 
 
@@ -47,6 +48,7 @@
 @property UIView *bpGridView;
 @property (weak, nonatomic) IBOutlet IntraOpGrid *bloodPressureDrawingView;
 @property NSDate* lastTouchTime;
+@property BOOL bpGridViewShowing;
 @end
 
 @implementation IntraOpViewController
@@ -55,10 +57,7 @@
     [super viewDidLoad];
 
     self.bpGridView =  [[[NSBundle mainBundle] loadNibNamed:@"IntraOpBPView" owner:self options:nil] objectAtIndex:0];
-
-    self.bpGridView.center = self.view.center;
-    
-    self.bpGridView.frame = CGRectMake(self.bpGridView.frame.origin.x, self.bpGridView.frame.origin.y + 65, self.fluidTableView.frame.size.width - FIRST_COLUMN_X_COORD, 226);
+    self.bpGridViewShowing = NO;
     
     [self.systolicSlider addTarget:self
                             action:@selector(sliderValueChanged:)
@@ -244,30 +243,22 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+    if (self.bpGridViewShowing) {
+        return;
+    }
     [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         UITouch *touch = obj;
         CGPoint touchPoint = [touch locationInView:self.view];
-        CGRect gridBounds = CGRectMake( FIRST_COLUMN_X_COORD, self.fluidTableView.frame.origin.y + self.fluidTableView.frame.size.height, self.fluidTableView.frame.size.width, self.vitalsTableView.frame.origin.y - self.fluidTableView.frame.origin.y +self.fluidTableView.frame.size.height);
-        CGFloat minimumX = CGRectGetMinX(gridBounds);
-        CGFloat maximumX = CGRectGetMaxX(gridBounds);
-        CGFloat minimumY = CGRectGetMinY(gridBounds);
-        CGFloat maximumY = CGRectGetMaxY(gridBounds);
        
-        if ((touchPoint.x > minimumX && touchPoint.x < maximumX) && (touchPoint.y > minimumY && touchPoint.y < maximumY) ) {
+        if ( CGRectContainsPoint(self.bloodPressureDrawingView.frame, touchPoint) ) {
             NSDate* now = [NSDate date];
-            
             NSCalendar *calendar = [NSCalendar currentCalendar];
             NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
             NSInteger minute = [components minute];
-            
-            minute -= minute%5;
-            [components setMinute:minute];
-            now = [calendar dateFromComponents:components];
-            if (minute%10 < 5) {
+            if (minute%5 < 3) {
                 minute -= minute%5;
             } else  {
-                minute += 5;
+                minute += 5 - minute%5;
                 [components setMinute:minute];
                 now = [calendar dateFromComponents:components];
             }
@@ -279,15 +270,17 @@
 
 -(void)showBPView
 {
+    self.bpGridView.center = self.view.center;
+    self.bpGridView.frame = CGRectMake(self.bpGridView.frame.origin.x, self.bpGridView.frame.origin.y + 65, self.fluidTableView.frame.size.width - FIRST_COLUMN_X_COORD, 226);
     CATransition *transition = [CATransition animation];
     transition.duration = 0.5;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromLeft;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    
     [self.bpGridView.layer addAnimation:transition forKey:nil];
     
     [self.view addSubview:self.bpGridView];
+    self.bpGridViewShowing = YES;
 }
 
 -(void)sliderValueChanged:(UISlider*)slider {
@@ -320,14 +313,14 @@
 -(void)removeBPSubView
 {
     CGRect temp = self.bpGridView.frame;
-    CGRect original = temp;
     temp.origin.x = -5000;
     [UIView animateWithDuration:1.0
                      animations:^{
                          self.bpGridView.frame = temp;
                      } completion:^(BOOL finished) {
                          [self.bpGridView removeFromSuperview];
-                         self.bpGridView.frame = original;
+                         [self.bpGridView.layer removeAllAnimations];
+                         self.bpGridViewShowing = NO;
                      }];
 }
 
@@ -344,7 +337,7 @@
 
 -(float)convertBPValueToGridY:(float)yPointRate {
     
-    return (self.bloodPressureDrawingView.bounds.size.height -((yPointRate/260.0)*self.bloodPressureDrawingView.bounds.size.height));
+    return (self.bloodPressureDrawingView.bounds.size.height -((yPointRate/220.0)*self.bloodPressureDrawingView.bounds.size.height));
 }
 
 -(void)populateBPGrid
@@ -356,25 +349,31 @@
         float yPointDiastolic = [p.diastolic floatValue];
         float yPointRate = [p.rate floatValue];
         /* Rate */
+        float XCoord = [self.timeScrollView dateToXCoord:p.time];
+        if ( (XCoord < 0) || (XCoord > self.fluidTableView.frame.size.width-FIRST_COLUMN_X_COORD) ) {
+            NSLog(@"Out of bounds");
+            return;
+        }
         UIView *rateView = [[UIView alloc] init];
         [rateView setBackgroundColor:[UIColor grayColor]];
         rateView.userInteractionEnabled = NO;
-        rateView.frame = CGRectMake([self.timeScrollView dateToXCoord:p.time]-10, [self convertBPValueToGridY:yPointRate], 20, 20);
+        rateView.frame = CGRectMake(XCoord-10, [self convertBPValueToGridY:yPointRate], 20, 20);
         rateView.layer.cornerRadius = 10;
         CGMutablePathRef path = CGPathCreateMutable();
         /* Systolic */
-        CGPathMoveToPoint(path,NULL,[self.timeScrollView dateToXCoord:p.time]-10,[self convertBPValueToGridY:yPointSystolic]-10);
-        CGPathAddLineToPoint(path, NULL, [self.timeScrollView dateToXCoord:p.time], [self convertBPValueToGridY:yPointSystolic]);
-        CGPathAddLineToPoint(path, NULL, [self.timeScrollView dateToXCoord:p.time]+10, [self convertBPValueToGridY:yPointSystolic]-10);
+        CGPathMoveToPoint(path,NULL, XCoord-10,[self convertBPValueToGridY:yPointSystolic]-10);
+        CGPathAddLineToPoint(path, NULL, XCoord, [self convertBPValueToGridY:yPointSystolic]);
+        CGPathAddLineToPoint(path, NULL, XCoord+10, [self convertBPValueToGridY:yPointSystolic]-10);
         /* Diastolic */
-        CGPathMoveToPoint(path,NULL,[self.timeScrollView dateToXCoord:p.time]-10,[self convertBPValueToGridY:yPointDiastolic]+10);
-        CGPathAddLineToPoint(path, NULL, [self.timeScrollView dateToXCoord:p.time], [self convertBPValueToGridY:yPointDiastolic]);
-        CGPathAddLineToPoint(path, NULL, [self.timeScrollView dateToXCoord:p.time]+10, [self convertBPValueToGridY:yPointDiastolic]+10);
+        CGPathMoveToPoint(path,NULL,XCoord-10,[self convertBPValueToGridY:yPointDiastolic]+10);
+        CGPathAddLineToPoint(path, NULL, XCoord, [self convertBPValueToGridY:yPointDiastolic]);
+        CGPathAddLineToPoint(path, NULL, XCoord+10, [self convertBPValueToGridY:yPointDiastolic]+10);
         
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+        CustomLayer *shapeLayer = [CustomLayer layer];
+        shapeLayer.p = p;
         [shapeLayer setPath:path];
         [shapeLayer setFillColor:[[UIColor clearColor] CGColor]];
-        [shapeLayer setStrokeColor:[[UIColor grayColor] CGColor]];
+        [shapeLayer setStrokeColor:[[UIColor darkGrayColor] CGColor]];
         [shapeLayer setBounds:CGRectMake(0.0f, 0.0f, 10.0f, 10)];
         [shapeLayer setAnchorPoint:CGPointMake(0.0f, 0.0f)];
         [shapeLayer setPosition:CGPointMake(0.0f, 0.0f)];
@@ -383,7 +382,5 @@
         [self.bloodPressureDrawingView addSubview:rateView];
     }
 }
-
-
 
 @end
