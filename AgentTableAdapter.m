@@ -66,6 +66,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Agent Cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
+        cell.bounds = CGRectMake(0, 0, cell.bounds.size.width, 22.0);
     }
     Agent *agent = (Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", agent.name, agent.unit];
@@ -76,7 +77,7 @@
     for (Agent *agent in [self.agentsArray objectAtIndex:indexPath.row]) {
         [cell.contentView addSubview:[self.controller doseViewForAgent:agent forCell:cell]];
     }
-    UIView* bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, FIRST_COLUMN_X_COORD, cell.frame.size.height)];
+    UIView* bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, FIRST_COLUMN_X_COORD, cell.bounds.size.height)];
     bg.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:bg];
     

@@ -18,6 +18,7 @@
 #import "AddMeasurementsViewController.h"
 #import "AddFluidViewController.h"
 #import "MeasurementTableAdapter.h"
+#import "BBUtil.h"
 
 @interface IntraOpViewController () 
 
@@ -85,7 +86,7 @@
     self.eblAdapter.intraOp = self.intraOp;
     self.eblTableView.dataSource = self.eblAdapter;
     self.eblTableView.delegate = self.eblAdapter;
-
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -178,7 +179,7 @@
         
     }
 
-    doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, cell.bounds.origin.y, width, cell.bounds.size.height );
+    doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, 0, width, cell.bounds.size.height );
     [doseView setNeedsUpdateConstraints];
 
     return doseView;
@@ -190,7 +191,8 @@
     label.text = measurement.value;
     label.textAlignment = NSTextAlignmentCenter;
     
-    label.frame = CGRectMake( [self.timeScrollView dateToXCoord:measurement.time] + FIRST_COLUMN_X_COORD, cell.bounds.origin.y, COLUMN_INTERVAL_WIDTH, cell.bounds.size.height );
+    label.frame = CGRectMake( [self.timeScrollView dateToXCoord:measurement.time] + FIRST_COLUMN_X_COORD, 0, COLUMN_INTERVAL_WIDTH, cell.bounds.size.height );
+    
     return label;
 }
 

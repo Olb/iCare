@@ -13,7 +13,7 @@
 #import "BBUtil.h"
 
 
-@interface AddMeasurementsViewController () <UIPickerViewDataSource>
+@interface AddMeasurementsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *mode;
 @property (weak, nonatomic) IBOutlet UITextField *rate;
 @property (weak, nonatomic) IBOutlet UITextField *peakPressure;
@@ -66,6 +66,15 @@
     [components setMinute:minute];
     now = [calendar dateFromComponents:components];
     
+   
+    for (Measurement *m in self.intraOp.measurements) {
+        if ([m.time compare:now]==0) {
+            minute += 15;
+            [components setMinute:minute];
+            now = [calendar dateFromComponents:components];
+        }
+    }
+    
     
     Measurement* m = (Measurement*)[BBUtil newCoreDataObjectForEntityName:@"Measurement"];
     m.name = @"Mode";
@@ -102,18 +111,6 @@
     m.value = self.temperature.text;
     m.type = @"Vent";
     [self.intraOp addMeasurementsObject:m];
-    /*
-     
-     @property (weak, nonatomic) IBOutlet UIPickerView *ekg;
-     @property (weak, nonatomic) IBOutlet UITextField *o2Inspired;
-     @property (weak, nonatomic) IBOutlet UITextField *endTitleCO2;
-     @property (weak, nonatomic) IBOutlet UITextField *tidalVolume;
-     @property (weak, nonatomic) IBOutlet UITextField *bis;
-     @property (weak, nonatomic) IBOutlet UITextField *o2Saturation;
-     
-     @property (weak, nonatomic) IBOutlet UITextField *ebl;
-     @property (weak, nonatomic) IBOutlet UITextField *urine;
-     */
     
     m = (Measurement*)[BBUtil newCoreDataObjectForEntityName:@"Measurement"];
     m.name = @"EKG";
@@ -158,17 +155,29 @@
     [self.intraOp addMeasurementsObject:m];
     
     
+    int previousValueSum = [self.ebl.text intValue];
+    for (Measurement *m in self.intraOp.measurements) {
+        if ([m.name isEqualToString:@"EBL"]) {
+            previousValueSum += [[m.value substringToIndex:[m.value rangeOfString:@"/"].location] intValue];
+        }
+    }
     m = (Measurement*)[BBUtil newCoreDataObjectForEntityName:@"Measurement"];
     m.name = @"EBL";
     m.time = now;
-    m.value = self.ebl.text;
+    m.value = [NSString stringWithFormat:@"%@/%d", self.ebl.text, previousValueSum] ;
     m.type = @"Ebl";
     [self.intraOp addMeasurementsObject:m];
     
+    previousValueSum = [self.urine.text intValue];
+    for (Measurement *m in self.intraOp.measurements) {
+        if ([m.name isEqualToString:@"Urine"]) {
+            previousValueSum += [[m.value substringToIndex:[m.value rangeOfString:@"/"].location] intValue];
+        }
+    }
     m = (Measurement*)[BBUtil newCoreDataObjectForEntityName:@"Measurement"];
     m.name = @"Urine";
     m.time = now;
-    m.value = self.urine.text;
+    m.value = [NSString stringWithFormat:@"%@/%d", self.urine.text, previousValueSum] ;
     m.type = @"Ebl";
     [self.intraOp addMeasurementsObject:m];
     
@@ -206,6 +215,16 @@
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
 }
 
 @end
