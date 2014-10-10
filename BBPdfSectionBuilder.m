@@ -5146,6 +5146,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Other" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"OtherKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:300];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;

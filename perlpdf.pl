@@ -186,6 +186,18 @@ sub printDrawSectionCodeForGroup{
                             print "\t previousElementSize.height += ".$marginT." + ".$marginB.";\n";
                             
                         }
+                        case "TextViewElement" {
+                            if ($child->getAttribute("label") ne "") {
+                                print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
+                                print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
+                                print "\t \n";
+                            }
+                            print "\t text = ((TextElement*)[section getElementForKey:\@\"".$child->getAttribute("name")."Key\"]).value; \n";
+                            print "\t previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:".$child->getAttribute("width")."];\n";
+                            print "\t cursor.x += previousElementSize.width + ".$marginR.";\n";
+                            print "\t previousElementSize.width = cursor.x - elemCursorStart.x;\n";
+                            print "\t previousElementSize.height += ".$marginT." + ".$marginB.";\n";
+                        }
                         case "StringListElement" {
                             print "\t previousElementSize = [BBPdfGenerator drawText:\@\"".$child->getAttribute("label")."\" atLocation:cursor];\n";
                             checkSizeAndMoveCursor("vertical", $groupName, $marginL, $marginR, $marginT, $marginB);

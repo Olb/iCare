@@ -5,6 +5,7 @@
         <Element type="BooleanFormElement" name="ObInfantDeath"/>
         <Element type="BooleanFormElement" name="Awareness"/>
         <Element type="BooleanFormElement" name="PatientComplaint"/>
+        <Element type="TextViewElement" name="Other"/>
     </Data>
     <Validation>
         
@@ -19,6 +20,7 @@
                 <Element name="Awareness" label="Awareness/Recall" />
                 <Element name="PatientComplaint" label="Patient/Family Complaint" />
             </Group>
+            <Element name="Other" label="Other" width="300" />
         </Group>
     </Graphics>
 </Section>

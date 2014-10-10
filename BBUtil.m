@@ -88,7 +88,7 @@
 +(void)drawRect:(CGRect)rectangle withRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 1.0);
     CGContextSetRGBStrokeColor(context, red, green, blue, 1.0);
     CGContextStrokeRect(context, rectangle);
     CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);

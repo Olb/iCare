@@ -100,9 +100,7 @@ const NSTimeInterval ONE_DAY_IN_MINUTES = 60*24;
                                                fromDate:date
                                                  toDate:self.date
                                                 options:NSWrapCalendarComponents];
-    
-
-    
+        
     NSInteger diffDays = [components day];
     
     result += ONE_DAY_IN_MINUTES * _pxPerMinute * diffDays;

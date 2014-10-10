@@ -18,4 +18,5 @@
 +(CGSize)drawText:(id)text atLocation:(CGPoint)location isUnderlined:(BOOL)underline;
 +(CGSize)drawUpArrow:(BOOL)checked atLocation:(CGPoint)location;
 +(CGSize)drawDownArrow:(BOOL)checked atLocation:(CGPoint)location;
++(CGSize)drawTextBox:(NSString*)text atLocation:(CGPoint)location width:(int)width;
 @end
