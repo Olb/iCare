@@ -55,7 +55,7 @@
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"OperationHeaderCell"];
     
     UILabel *nameLabel = (UILabel*)[cell.contentView viewWithTag:12];
-    nameLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:26.0];
+    nameLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:14.0];
     [nameLabel setText:@"Operation"];
     
     cell.backgroundColor = [UIColor colorWithRed:193.0/255.0 green:233.0/255.0 blue:199.0/255.0 alpha:1.0];
