@@ -171,4 +171,26 @@
     return [BBPdfGenerator drawText:text atLocation:location withFont:font withAttribs:attr];
 }
 
++(CGSize)drawTextBox:(NSString*)text atLocation:(CGPoint)location width:(int)width
+{
+    
+    UIFont *font = [UIFont systemFontOfSize:12.0f];
+    
+    CGRect frame = [text boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:@{NSFontAttributeName: font}
+                                     context:nil];
+    
+    NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys: font, NSFontAttributeName,
+                          nil];
+    frame.origin.x = location.x+4;
+    frame.origin.y = location.y+4;
+    
+    [text drawInRect:frame withAttributes:attr];
+    
+    frame = CGRectMake(frame.origin.x-4, frame.origin.y-4, frame.size.width + 8, frame.size.height + 8);
+    [BBUtil drawRect:frame];
+    return frame.size;
+}
+
 @end

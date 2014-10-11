@@ -798,9 +798,6 @@
 		288D1E1D19DDCCEA008EF1B7 /* IntraOp */ = {
 			isa = PBXGroup;
 			children = (
-				281DF33C19E6521600E3B4E8 /* IntraOpBPView.xib */,
-				281DF33919E6450700E3B4E8 /* IntraOpBPView.h */,
-				281DF33A19E6450700E3B4E8 /* IntraOpBPView.m */,
 				28E57B1D19E31FBD009DF942 /* View */,
 				28F6DF5819E2E2FD000BA316 /* BloodPressureViewController.h */,
 				28F6DF5919E2E2FD000BA316 /* BloodPressureViewController.m */,
@@ -844,6 +841,9 @@
 		28E57B1D19E31FBD009DF942 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				281DF33C19E6521600E3B4E8 /* IntraOpBPView.xib */,
+				281DF33919E6450700E3B4E8 /* IntraOpBPView.h */,
+				281DF33A19E6450700E3B4E8 /* IntraOpBPView.m */,
 				28E57B1519E31980009DF942 /* DoseView.xib */,
 				28E57B1719E31B12009DF942 /* DoseView.h */,
 				28E57B1819E31B12009DF942 /* DoseView.m */,

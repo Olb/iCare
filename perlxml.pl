@@ -35,6 +35,8 @@ sub getOutletTypeForElement{
     
     switch ($element->{type}){
         case "BooleanFormElement" { return "BBCheckBox"}
+        case "TextElement" { return "UITextField" }
+        case "TextViewElement" { return "UITextView" }
         case "StringListElement" {
             switch ($_[1]){
                 case "TEXT_FIELD" { return "TextField"}
@@ -86,7 +88,6 @@ sub getOutletTypeForElement{
                 else {die "Unknown ElementListFormElement outlet type: '$_[1]'";}
             }
         }
-        case "TextElement" { return "UITextField" }
         else { die "Unknown type: '$type'"}
     }
     
@@ -276,7 +277,7 @@ foreach $element (@elements) {
             print "\t\t\t\t [self.".getOutletNameForElement($element,"TABLE")." reloadData];\n";
             print "\t\t\t }\n";
         }
-        case "TextElement" {
+        case ["TextElement", "TextViewElement"]{
             print "\t\t\t if ([element.key isEqualToString:".getKeyConstantForElement($element)."]){\n";
             print "\t\t\t\t [self.".getOutletNameForElement($element)." setText:((TextElement*)element).value];\n";
             print "\t\t\t }\n";
@@ -322,7 +323,7 @@ sub getCodeForCondition {
                 }
             }
         }
-        case "TextElement" {
+        case ["TextElement", "TextViewElement"]{
             switch ($elem->{value}){
                 case "NotEmpty"{
                     return "![self.".getOutletNameForElement($elemData).".text isEqualToString:\@\"\"]";
@@ -364,7 +365,7 @@ sub getTextForCondition {
                 }
             }
         }
-        case "TextElement" {
+        case ["TextElement", "TextViewElement"] {
             switch ($elem->{value}){
                 case "NotEmpty"{
                     return $elem->{name}." ".$verb." not empty";
@@ -414,7 +415,6 @@ foreach $elem (@elements) {
 }
 foreach $rule (@rules) {
     if ( ! defined $rule ){
-        print STDERR "Warning: Skipping validation for section ".$section->{name}."\n";
         next;
     }
     my @elems;
@@ -539,6 +539,9 @@ print "\t \n";
 
 foreach $element (@elements){
     my $type = $element->{type};
+    if ($type eq "TextViewElement"){
+        $type = "TextElement";
+    }
     my $name = "\l$element->{name}";
     my $key = getKeyConstantForElement($element);
     print "\t $type *$name = ($type*)[_section getElementForKey:$key];\n";
@@ -585,7 +588,7 @@ foreach $element (@elements){
             print "\t [[$name mutableSetValueForKey:\@\"elements\"] removeAllObjects];\n";
             print "\t [$name addElements:$arrayName];\n";
         }
-        case "TextElement" {
+        case ["TextElement", "TextViewElement"]{
             print "\t $name.value = self.".getOutletNameForElement($element).".text;\n";
         }
         case "MedicationFormElement" {
@@ -688,7 +691,6 @@ foreach $button (@radioButtons) {
     print "\t BOOL selected = sender.selected;\n";
     foreach $elem (@elems) {
         if ( ! defined $elem ){
-            print STDERR "Undefind element in radiogroup\n";
             next;
         }
         my $dataElement = getDataElementForName($elem->{name});

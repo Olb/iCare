@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *obInfantDeathBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *awarenessBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *patientComplaintBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *otherUITextView;
 @end
 
 @implementation Group5ViewController
@@ -34,6 +35,7 @@ static NSString *const OB_LOW_APGAR_KEY = @"ObLowApgarKey";
 static NSString *const OB_INFANT_DEATH_KEY = @"ObInfantDeathKey";
 static NSString *const AWARENESS_KEY = @"AwarenessKey";
 static NSString *const PATIENT_COMPLAINT_KEY = @"PatientComplaintKey";
+static NSString *const OTHER_KEY = @"OtherKey";
 
 - (void)viewDidLoad
 {
@@ -55,6 +57,9 @@ static NSString *const PATIENT_COMPLAINT_KEY = @"PatientComplaintKey";
 			 if ([element.key isEqualToString:PATIENT_COMPLAINT_KEY]){
 				 [self.patientComplaintBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:OTHER_KEY]){
+				 [self.otherUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
 }
@@ -65,6 +70,7 @@ static NSString *const PATIENT_COMPLAINT_KEY = @"PatientComplaintKey";
 	 NSAssert([section getElementForKey:OB_INFANT_DEATH_KEY]!= nil, @"ObInfantDeath is nil");
 	 NSAssert([section getElementForKey:AWARENESS_KEY]!= nil, @"Awareness is nil");
 	 NSAssert([section getElementForKey:PATIENT_COMPLAINT_KEY]!= nil, @"PatientComplaint is nil");
+	 NSAssert([section getElementForKey:OTHER_KEY]!= nil, @"Other is nil");
 	 
 }
 
@@ -119,6 +125,15 @@ static NSString *const PATIENT_COMPLAINT_KEY = @"PatientComplaintKey";
 	 }
 
 	 patientComplaint.value = [NSNumber numberWithBool:self.patientComplaintBBCheckBox.isSelected];
+	 
+	 TextElement *other = (TextElement*)[_section getElementForKey:OTHER_KEY];
+	 if (!other) {
+		 other = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 other.key = OTHER_KEY;
+		 [_section addElementsObject:other];
+	 }
+
+	 other.value = self.otherUITextView.text;
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
