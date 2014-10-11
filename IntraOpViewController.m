@@ -22,13 +22,17 @@
 #import "IntraOpBPView.h"
 #import "BloodPressure.h"
 #import "CustomLayer.h"
-#import "BBAutoCompleteTextField.h"
 #import "BBData.h"
+#import "Operation.h"
+#import "Patient.h"
+#import "Form.h"
+#import "FormSection.h"
+#import "StringListElement.h"
+#import "Allergy.h"
+#import "IntraOpDetailsViewController.h"
 
-@interface IntraOpViewController () 
-@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *addAllergyTextField;
+@interface IntraOpViewController () <UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *allergyListTextView;
-
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
 @property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
 @property (weak, nonatomic) IBOutlet IntraOpGrid *gridView;
@@ -59,8 +63,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_addAllergyTextField setAutoCompleteData:[BBData allergies]];
-
+    [self loadAllergies];
     self.bpGridView =  [[[NSBundle mainBundle] loadNibNamed:@"IntraOpBPView" owner:self options:nil] objectAtIndex:0];
     self.bpGridViewShowing = NO;
     
@@ -307,10 +310,42 @@
     } else if (textField == self.pulseTextField) {
         self.pulseSlider.value = [self.pulseTextField.text integerValue];
     }
-    
     [textField resignFirstResponder];
     return YES;
 }
+
+-(void)loadAllergies
+{
+  
+    if (self.intraOp.allergies.count == 0) {
+        for (Form *f in self.intraOp.operation.forms) {
+            if ([f.title isEqualToString:@"Pre-Operative Anesthesia Evaluation"]) {
+                for (FormSection *s in f.sections) {
+                    if ([s.title isEqualToString:@"AllergiesReactionsSectionKey"]) {
+                        for (StringListElement *e in s.elements) {
+                            if ([e.key isEqualToString:@"AllergiesReactionsKey"]){
+                                NSArray *a = [[NSMutableArray alloc] initWithArray:((StringListElement*)e).value];
+                                for (NSString *s in a) {
+                                    Allergy *allergy = (Allergy*)[BBUtil newCoreDataObjectForEntityName:@"Allergy"];
+                                    allergy.name = s;
+                                    [self.intraOp addAllergiesObject:allergy];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    NSMutableString *allergiesString = [[NSMutableString alloc] init];
+    for (Allergy *a in self.intraOp.allergies) {
+        [allergiesString appendString:[NSString stringWithFormat:@"%@\n", a.name]];
+    }
+    self.allergyListTextView.text = allergiesString;
+}
+
+
 - (IBAction)cancelBPChange:(id)sender {
     [self removeBPSubView];
 }
@@ -388,4 +423,32 @@
     }
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    for (Allergy *allergy in self.intraOp.allergies) {
+        [BBUtil deleteManagedObject:allergy];
+    }
+    NSArray *allergyComponents = [self.allergyListTextView.text componentsSeparatedByString:@"\n"];
+    
+    for (NSString *allergyName in allergyComponents) {
+        if ([allergyName isEqualToString:@""] || [allergyName isEqualToString:@" "]) {
+            continue;
+        }
+        Allergy *a = (Allergy*)[BBUtil newCoreDataObjectForEntityName:@"Allergy"];
+        a.name = allergyName;
+        [self.intraOp addAllergiesObject:a];
+    }
+    
+    [BBUtil saveContext];
+    [self loadAllergies];
+}
+
+-(IBAction)showDetialViewController
+{
+    IntraOpDetailsViewController *vc = [[IntraOpDetailsViewController alloc] init];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    vc.intraOp = self.intraOp;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
 @end

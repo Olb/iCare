@@ -11,6 +11,10 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="intraop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="agent" inverseEntity="IntraOp" syncable="YES"/>
     </entity>
+    <entity name="Allergy" representedClassName="Allergy" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="intraop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IntraOp" inverseName="allergies" inverseEntity="IntraOp" syncable="YES"/>
+    </entity>
     <entity name="AntibioticFormElement" representedClassName="AntibioticFormElement" parentEntity="FormElement" syncable="YES">
         <attribute name="dose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doseUnit" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,7 +51,17 @@
         <relationship name="form" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Form" inverseName="sections" inverseEntity="Form" syncable="YES"/>
     </entity>
     <entity name="IntraOp" representedClassName="IntraOp" syncable="YES">
+        <attribute name="anesthesiaEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="anesthesiaStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="orLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="outOfRoom" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="preOpEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="preOpStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="procedureEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="procedureStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="provider" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="agent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Agent" inverseName="intraop" inverseEntity="Agent" syncable="YES"/>
+        <relationship name="allergies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Allergy" inverseName="intraop" inverseEntity="Allergy" syncable="YES"/>
         <relationship name="bloodPressures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BloodPressure" inverseName="intraOp" inverseEntity="BloodPressure" syncable="YES"/>
         <relationship name="measurements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Measurement" inverseName="intraOp" inverseEntity="Measurement" syncable="YES"/>
         <relationship name="operation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Operation" inverseName="intraOp" inverseEntity="Operation" syncable="YES"/>
@@ -109,7 +123,7 @@
         <element name="Form" positionX="-432" positionY="-306" width="128" height="90"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="105"/>
-        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="103"/>
+        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="253"/>
         <element name="Measurement" positionX="-387" positionY="-360" width="128" height="133"/>
         <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="165"/>
@@ -117,5 +131,6 @@
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
+        <element name="Allergy" positionX="-378" positionY="-351" width="128" height="73"/>
     </elements>
 </model>

@@ -342,7 +342,6 @@ typedef enum : NSUInteger {
     [self.view endEditing:YES];
 }
 
-//////
 - (IBAction)setBirthdateFromTextField:(id)sender {
     [self setupDatePopoverRect:sender];
 }
