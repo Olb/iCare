@@ -125,14 +125,13 @@
             }
             break;
         case 6:
-            return;
-//            vc = [[OccurrenceDetailsViewController alloc] init];
-//            ((OccurrenceDetailsViewController*)vc).delegate = self;
-//            for (FormSection* s in self.form.sections) {
-//                if ([s.title isEqualToString:[OccurrenceDetailsViewController sectionTitle]]) {
-//                    ((OccurrenceDetailsViewController*)vc).section = s;
-//                }
-//            }
+            vc = [[OccurrenceDetailsViewController alloc] init];
+            ((OccurrenceDetailsViewController*)vc).delegate = self;
+            for (FormSection* s in self.form.sections) {
+                if ([s.title isEqualToString:[OccurrenceDetailsViewController sectionTitle]]) {
+                    ((OccurrenceDetailsViewController*)vc).section = s;
+                }
+            }
             break;
         case 7:
             vc = [[FollowUpResultsViewController alloc] init];

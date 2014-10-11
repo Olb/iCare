@@ -19,10 +19,11 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-
+#import "BBAutoCompleteTextField.h"
+#import "BBData.h"
 
 @interface PastSurgicalProceduresViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *pastSurgicalProceduresTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *pastSurgicalProceduresTextField;
 @property (weak, nonatomic) IBOutlet UITableView *pastSurgicalProceduresTable;
 @property (strong, nonatomic) StringArrayTableAdapter *pastSurgicalProceduresTableAdapter;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsYesPatientBBCheckBox;
@@ -40,6 +41,8 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+    
+    [_pastSurgicalProceduresTextField setAutoCompleteData:[BBData procedures]];
 	 [self.hxAnesthesiaProblemsYesPatientBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 [self.hxAnesthesiaProblemsYesFamilyBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 [self.hxAnesthesiaProblemsNoBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];

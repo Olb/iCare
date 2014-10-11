@@ -1,8 +1,8 @@
 //
 //  FormSection.m
-//  iCare2
+//  iCare
 //
-//  Created by Billy Bray on 9/18/14.
+//  Created by Billy Bray on 10/11/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 @implementation FormSection
 
 @dynamic title;
-@dynamic form;
+@dynamic complete;
 @dynamic elements;
+@dynamic form;
 
 -(FormElement*)getElementForKey:(NSString *)key
 {

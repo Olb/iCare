@@ -7,6 +7,5 @@
 @interface PreOpActionsViewController : UIViewController
 @property id <BBFormSectionDelegate> delegate;
 @property FormSection * section;
-
 +(NSString*) sectionTitle;
 @end

@@ -1,8 +1,8 @@
 //
 //  FormSection.h
-//  iCare2
+//  iCare
 //
-//  Created by Billy Bray on 9/18/14.
+//  Created by Billy Bray on 10/11/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 @interface FormSection : NSManagedObject
 
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) Form *form;
+@property (nonatomic, retain) NSNumber * complete;
 @property (nonatomic, retain) NSOrderedSet *elements;
+@property (nonatomic, retain) Form *form;
 @end
 
 @interface FormSection (CoreDataGeneratedAccessors)
@@ -31,4 +32,5 @@
 - (void)addElements:(NSOrderedSet *)values;
 - (void)removeElements:(NSOrderedSet *)values;
 -(FormElement*)getElementForKey:(NSString *)key;
+
 @end

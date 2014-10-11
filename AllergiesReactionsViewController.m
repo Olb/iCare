@@ -19,11 +19,12 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-
+#import "BBAutoCompleteTextField.h"
+#import "BBData.h"
 
 @interface AllergiesReactionsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *noKnownAllergiesBBCheckBox;
-@property (weak, nonatomic) IBOutlet UITextField *allergiesReactionsTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *allergiesReactionsTextField;
 @property (weak, nonatomic) IBOutlet UITableView *allergiesReactionsTable;
 @property (strong, nonatomic) StringArrayTableAdapter *allergiesReactionsTableAdapter;
 @end
@@ -36,6 +37,7 @@ static NSString *const ALLERGIES_REACTIONS_KEY = @"AllergiesReactionsKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+    [_allergiesReactionsTextField setAutoCompleteData:[BBData allergies]];
 	 self.allergiesReactionsTableAdapter = [[StringArrayTableAdapter alloc] init];
 	 self.allergiesReactionsTable.dataSource = self.allergiesReactionsTableAdapter;
 	 self.allergiesReactionsTable.delegate = self.allergiesReactionsTableAdapter;

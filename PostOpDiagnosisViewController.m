@@ -22,6 +22,7 @@
 
 
 @interface PostOpDiagnosisViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextView *procedureNotesUITextView;
 @property (weak, nonatomic) IBOutlet UITextField *crystalloidUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *ffpUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *albuminUITextField;
@@ -36,6 +37,7 @@
 
 @implementation PostOpDiagnosisViewController
 NSString *const POST_OP_DIAGNOSIS_SECTION_TITLE = @"PostOpDiagnosisSectionKey";
+static NSString *const PROCEDURE_NOTES_KEY = @"ProcedureNotesKey";
 static NSString *const CRYSTALLOID_KEY = @"CrystalloidKey";
 static NSString *const FFP_KEY = @"FfpKey";
 static NSString *const ALBUMIN_KEY = @"AlbuminKey";
@@ -55,6 +57,9 @@ static NSString *const URINE_KEY = @"UrineKey";
 		 NSArray *elements = [_section.elements array];
 
 		 for (FormElement *element in elements) {
+			 if ([element.key isEqualToString:PROCEDURE_NOTES_KEY]){
+				 [self.procedureNotesUITextView setText:((TextElement*)element).value];
+			 }
 			 if ([element.key isEqualToString:CRYSTALLOID_KEY]){
 				 [self.crystalloidUITextField setText:((TextElement*)element).value];
 			 }
@@ -91,6 +96,7 @@ static NSString *const URINE_KEY = @"UrineKey";
 
 -(void)validateSection:(FormSection*)section
 {
+	 NSAssert([section getElementForKey:PROCEDURE_NOTES_KEY]!= nil, @"ProcedureNotes is nil");
 	 NSAssert([section getElementForKey:CRYSTALLOID_KEY]!= nil, @"Crystalloid is nil");
 	 NSAssert([section getElementForKey:FFP_KEY]!= nil, @"Ffp is nil");
 	 NSAssert([section getElementForKey:ALBUMIN_KEY]!= nil, @"Albumin is nil");
@@ -119,6 +125,15 @@ static NSString *const URINE_KEY = @"UrineKey";
 		 self.section = (FormSection*)[BBUtil newCoreDataObjectForEntityName:@"FormSection"];
 		 self.section.title = POST_OP_DIAGNOSIS_SECTION_TITLE;
 	 }
+	 
+	 TextElement *procedureNotes = (TextElement*)[_section getElementForKey:PROCEDURE_NOTES_KEY];
+	 if (!procedureNotes) {
+		 procedureNotes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 procedureNotes.key = PROCEDURE_NOTES_KEY;
+		 [_section addElementsObject:procedureNotes];
+	 }
+
+	 procedureNotes.value = self.procedureNotesUITextView.text;
 	 
 	 TextElement *crystalloid = (TextElement*)[_section getElementForKey:CRYSTALLOID_KEY];
 	 if (!crystalloid) {

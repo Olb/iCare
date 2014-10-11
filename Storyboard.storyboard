@@ -449,28 +449,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwL-QN-jVY">
-                                                    <rect key="frame" x="20" y="6" width="300" height="31"/>
+                                                    <rect key="frame" x="20" y="9" width="300" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="300" id="Fs6-B5-zQd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjl-YM-eLv">
-                                                    <rect key="frame" x="529" y="8" width="171" height="28"/>
+                                                    <rect key="frame" x="529" y="9.5" width="171" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="171" id="PMn-mA-6La"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PreOp Date:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4A-eB-P8Z">
-                                                    <rect key="frame" x="317" y="8" width="204" height="28"/>
+                                                    <rect key="frame" x="317" y="9" width="204" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="204" id="7bB-cl-CKz"/>
                                                         <constraint firstAttribute="width" constant="204" id="SgY-cd-6BI"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -515,8 +515,8 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="PreOperative Anes Eval" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5O-fI-N9u">
-                                                            <rect key="frame" x="20" y="6" width="541" height="31"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                            <rect key="frame" x="20" y="9" width="541" height="25"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUk-hh-lAR">
@@ -548,14 +548,14 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Intra-Op" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrY-nC-cgf">
-                                                            <rect key="frame" x="20" y="6" width="560" height="31"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                            <rect key="frame" x="20" y="9" width="541" height="25"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CY0-YW-oce">
-                                                            <rect key="frame" x="588" y="5" width="79" height="33"/>
+                                                            <rect key="frame" x="569" y="5" width="98" height="33"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                            <state key="normal" title="Not Started">
+                                                            <state key="normal" title="Not Complete">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
@@ -581,8 +581,8 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Anesthesia Record" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-zW-svB">
-                                                            <rect key="frame" x="20" y="6" width="541" height="31"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                            <rect key="frame" x="20" y="9" width="541" height="25"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-bY-nk1">
@@ -614,8 +614,8 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Post-Op" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLK-Za-GFS">
-                                                            <rect key="frame" x="20" y="6" width="541" height="31"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                            <rect key="frame" x="20" y="9" width="541" height="25"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dah-KH-3h1">
@@ -662,7 +662,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g76-fa-xXv">
-                                        <rect key="frame" x="493" y="51" width="66" height="28"/>
+                                        <rect key="frame" x="465" y="51" width="66" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27.5" id="PlE-PN-EMo"/>
                                             <constraint firstAttribute="width" constant="66" id="bRH-lw-sHB"/>
@@ -703,6 +703,7 @@
                                         </state>
                                         <connections>
                                             <action selector="preOpDate:" destination="Eez-TN-1bS" eventType="touchUpInside" id="uPO-pf-fsS"/>
+                                            <action selector="setBirthdateFromTextField:" destination="Eez-TN-1bS" eventType="touchUpInside" id="XZL-3V-zdy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQr-ia-BVa">
@@ -716,19 +717,6 @@
                                         </state>
                                         <connections>
                                             <action selector="weightUnit:" destination="Eez-TN-1bS" eventType="touchUpInside" id="yrR-Ca-cxR"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Blj-YO-mF1">
-                                        <rect key="frame" x="554" y="79" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="jMe-o8-05Y"/>
-                                            <constraint firstAttribute="height" constant="30" id="rNj-aA-z7I"/>
-                                        </constraints>
-                                        <state key="normal" title="cm">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="heightUnit:" destination="Eez-TN-1bS" eventType="touchUpInside" id="lpS-iH-KkT"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agC-hb-pxe">
@@ -762,21 +750,8 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjd-B7-OZM">
-                                        <rect key="frame" x="189" y="83" width="93" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="93" id="R0X-6j-ADU"/>
-                                            <constraint firstAttribute="height" constant="30" id="Yfh-X0-Rti"/>
-                                        </constraints>
-                                        <state key="normal" title="HH:MM">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="preOpTime:" destination="Eez-TN-1bS" eventType="touchUpInside" id="bNX-Qk-CdQ"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cf-Rm-44b">
-                                        <rect key="frame" x="488" y="79" width="64" height="30"/>
+                                        <rect key="frame" x="465" y="79" width="64" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2lQ-bO-Pw8"/>
                                             <constraint firstAttribute="width" constant="64" id="Y4d-Wg-ftb"/>
@@ -799,6 +774,18 @@
                                             <outlet property="delegate" destination="Eez-TN-1bS" id="jVr-Y4-uqV"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:mm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AsQ-TJ-2pd">
+                                        <rect key="frame" x="187" y="83" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="97" id="73w-ty-n4j"/>
+                                            <constraint firstAttribute="height" constant="30" id="SCR-U9-nFL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Eez-TN-1bS" id="Zx5-1r-hL2"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -811,29 +798,27 @@
                                     <constraint firstItem="CYe-SG-aVI" firstAttribute="trailing" secondItem="qQr-ia-BVa" secondAttribute="trailing" id="7gf-7z-W6i"/>
                                     <constraint firstItem="9Ud-Lc-Q1h" firstAttribute="top" secondItem="wKg-oF-TRI" secondAttribute="bottom" constant="7" id="BDq-0e-cSi"/>
                                     <constraint firstItem="tD7-zw-Hq0" firstAttribute="trailing" secondItem="agC-hb-pxe" secondAttribute="trailing" id="BEH-aV-udD"/>
+                                    <constraint firstItem="1cf-Rm-44b" firstAttribute="top" secondItem="g76-fa-xXv" secondAttribute="bottom" id="GoA-9S-71A"/>
                                     <constraint firstItem="wKg-oF-TRI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dkj-7v-pP2" secondAttribute="leading" constant="20" symbolic="YES" id="JXl-mp-hp3"/>
-                                    <constraint firstItem="Blj-YO-mF1" firstAttribute="leading" secondItem="1cf-Rm-44b" secondAttribute="trailing" constant="2" id="KXc-n6-jEy"/>
+                                    <constraint firstItem="tD7-zw-Hq0" firstAttribute="top" secondItem="AsQ-TJ-2pd" secondAttribute="bottom" constant="26" id="MYO-wO-oTp"/>
                                     <constraint firstItem="88v-JU-BZV" firstAttribute="centerY" secondItem="wKg-oF-TRI" secondAttribute="centerY" id="Oxn-dp-AI5"/>
-                                    <constraint firstItem="Blj-YO-mF1" firstAttribute="trailing" secondItem="g76-fa-xXv" secondAttribute="trailing" constant="25" id="QfP-M1-cQy"/>
                                     <constraint firstItem="wKg-oF-TRI" firstAttribute="top" secondItem="agC-hb-pxe" secondAttribute="bottom" constant="8" id="RLO-2q-GPy"/>
                                     <constraint firstItem="xcw-rU-3uh" firstAttribute="top" secondItem="88v-JU-BZV" secondAttribute="bottom" constant="8" id="Skr-Tm-6cq"/>
                                     <constraint firstItem="88v-JU-BZV" firstAttribute="centerY" secondItem="cW1-tc-AYx" secondAttribute="centerY" id="W9N-gS-nmt"/>
                                     <constraint firstItem="cW1-tc-AYx" firstAttribute="leading" secondItem="wKg-oF-TRI" secondAttribute="trailing" constant="40" id="XD3-iB-7xl"/>
                                     <constraint firstItem="9Ud-Lc-Q1h" firstAttribute="centerX" secondItem="wKg-oF-TRI" secondAttribute="centerX" constant="-13" id="Z3m-gt-FDb"/>
-                                    <constraint firstItem="wjd-B7-OZM" firstAttribute="top" secondItem="cW1-tc-AYx" secondAttribute="bottom" constant="7" id="aV9-nu-Twf"/>
+                                    <constraint firstItem="AsQ-TJ-2pd" firstAttribute="top" secondItem="cW1-tc-AYx" secondAttribute="bottom" constant="7" id="bRh-Wv-Ejw"/>
+                                    <constraint firstItem="1cf-Rm-44b" firstAttribute="leading" secondItem="g76-fa-xXv" secondAttribute="leading" id="cWr-fu-Ceh"/>
                                     <constraint firstItem="ENo-xy-ow1" firstAttribute="top" secondItem="agC-hb-pxe" secondAttribute="bottom" constant="32" id="d5M-BY-8cn"/>
                                     <constraint firstItem="tD7-zw-Hq0" firstAttribute="leading" secondItem="agC-hb-pxe" secondAttribute="leading" id="fEf-2v-0Of"/>
                                     <constraint firstAttribute="centerX" secondItem="88v-JU-BZV" secondAttribute="centerX" id="fds-BT-Vcg"/>
                                     <constraint firstItem="wKg-oF-TRI" firstAttribute="leading" secondItem="Dkj-7v-pP2" secondAttribute="leading" constant="20" id="fhF-Bc-4UW"/>
-                                    <constraint firstItem="Blj-YO-mF1" firstAttribute="top" secondItem="g76-fa-xXv" secondAttribute="bottom" constant="0.5" id="jgQ-hw-VeO"/>
                                     <constraint firstItem="agC-hb-pxe" firstAttribute="leading" secondItem="Dkj-7v-pP2" secondAttribute="leading" id="kHC-WD-FIQ"/>
                                     <constraint firstAttribute="trailing" secondItem="CYe-SG-aVI" secondAttribute="trailing" constant="20" symbolic="YES" id="lZZ-Gd-OQN"/>
                                     <constraint firstItem="CYe-SG-aVI" firstAttribute="trailing" secondItem="qQr-ia-BVa" secondAttribute="trailing" id="nVW-wi-GTf"/>
                                     <constraint firstAttribute="height" constant="330" id="os1-F0-qrq"/>
-                                    <constraint firstItem="cW1-tc-AYx" firstAttribute="centerX" secondItem="wjd-B7-OZM" secondAttribute="centerX" id="qo8-hY-nvA"/>
-                                    <constraint firstItem="1cf-Rm-44b" firstAttribute="top" secondItem="agC-hb-pxe" secondAttribute="bottom" constant="32" id="rVU-U4-TBS"/>
-                                    <constraint firstItem="CYe-SG-aVI" firstAttribute="leading" secondItem="g76-fa-xXv" secondAttribute="trailing" constant="42" id="u1L-8j-GQf"/>
-                                    <constraint firstItem="tD7-zw-Hq0" firstAttribute="top" secondItem="Blj-YO-mF1" secondAttribute="bottom" constant="30" id="xfo-2h-eMM"/>
+                                    <constraint firstItem="CYe-SG-aVI" firstAttribute="leading" secondItem="g76-fa-xXv" secondAttribute="trailing" constant="70" id="u1L-8j-GQf"/>
+                                    <constraint firstItem="cW1-tc-AYx" firstAttribute="leading" secondItem="AsQ-TJ-2pd" secondAttribute="leading" constant="-8" id="xpP-dK-OOk"/>
                                     <constraint firstItem="agC-hb-pxe" firstAttribute="top" secondItem="Dkj-7v-pP2" secondAttribute="top" id="z3J-fq-XEa"/>
                                     <constraint firstItem="9Ud-Lc-Q1h" firstAttribute="leading" secondItem="wKg-oF-TRI" secondAttribute="leading" id="zt5-Cz-MX2"/>
                                 </constraints>
@@ -858,18 +843,23 @@
                             <constraint firstItem="NfN-fG-jwW" firstAttribute="top" secondItem="Dkj-7v-pP2" secondAttribute="bottom" constant="60" id="z88-VZ-YjD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Patient Forms" id="e0o-vl-yBf"/>
+                    <navigationItem key="navigationItem" title="Patient Forms" id="e0o-vl-yBf">
+                        <barButtonItem key="rightBarButtonItem" title="Edit Patient" id="b1j-cg-TJi">
+                            <connections>
+                                <segue destination="eYB-Q2-Ji6" kind="modal" identifier="Edit Patient Segue" id="kDf-ht-iUb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ageLabel" destination="xcw-rU-3uh" id="V8p-JZ-0vb"/>
                         <outlet property="formsTableView" destination="tD7-zw-Hq0" id="SIa-ql-PCS"/>
                         <outlet property="heightTextField" destination="1cf-Rm-44b" id="hTL-17-2Ki"/>
-                        <outlet property="heightUnitButton" destination="Blj-YO-mF1" id="BNq-yV-hTZ"/>
                         <outlet property="operationBackgroundView" destination="Dkj-7v-pP2" id="sBC-tD-xFE"/>
                         <outlet property="operationTableView" destination="cVp-yZ-cAI" id="f7Z-8F-485"/>
                         <outlet property="operationTextField" destination="hiU-Dx-Dzt" id="5Hy-Yj-yDg"/>
                         <outlet property="operationTitleLabel" destination="Mfr-fv-Jd2" id="FPA-we-wNI"/>
                         <outlet property="preOpDateButton" destination="9Ud-Lc-Q1h" id="cTj-0r-QpF"/>
-                        <outlet property="preOpTimeLabel" destination="wjd-B7-OZM" id="zMW-PR-B3R"/>
+                        <outlet property="preOpTimeTextField" destination="AsQ-TJ-2pd" id="BXn-Su-kGL"/>
                         <outlet property="selectedOperationBackgroundView" destination="agC-hb-pxe" id="nPd-dC-Jbh"/>
                         <outlet property="weightTextField" destination="ENo-xy-ow1" id="4WY-up-pqm"/>
                         <outlet property="weightUnitButton" destination="qQr-ia-BVa" id="BHM-Yz-xhg"/>
@@ -1162,36 +1152,6 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Equipment Check" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="76" translatesAutoresizingMaskIntoConstraints="NO" id="8oX-7Y-JPI">
-                                        <rect key="frame" x="33" y="489" width="76" height="37"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC5-DE-5df" customClass="BBCheckBox">
-                                        <rect key="frame" x="108" y="492" width="33" height="32"/>
-                                        <state key="normal" image="9A677DC2-6FA9-4063-A159-FB4A466B4829">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audible Alarms On" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="76" translatesAutoresizingMaskIntoConstraints="NO" id="WHA-9x-QVa">
-                                        <rect key="frame" x="33" y="530" width="76" height="39"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAH-63-9gU" customClass="BBCheckBox">
-                                        <rect key="frame" x="108" y="534" width="33" height="32"/>
-                                        <state key="normal" image="9A677DC2-6FA9-4063-A159-FB4A466B4829">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedImageName" value="checkbox_selected.png"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anes Time Out" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="61" translatesAutoresizingMaskIntoConstraints="NO" id="WEq-0G-blF">
                                         <rect key="frame" x="40" y="573" width="61" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1267,6 +1227,20 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiL-GC-MDA">
+                                        <rect key="frame" x="31" y="475" width="111" height="101"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add allergy" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-pu-YEc" customClass="BBAutoCompleteTextField">
+                                        <rect key="frame" x="33" y="433" width="109" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="yCT-xH-iay" id="Bg7-Pz-mL4"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.95172787410000004" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1275,6 +1249,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="35f-L4-wCg"/>
                     <connections>
+                        <outlet property="addAllergyTextField" destination="Mzs-pu-YEc" id="Kqu-ft-RIX"/>
+                        <outlet property="allergyListTextView" destination="RiL-GC-MDA" id="66a-cj-bNz"/>
                         <outlet property="bloodPressureDrawingView" destination="VAC-uI-Rxd" id="vwF-Qa-luW"/>
                         <outlet property="eblTableView" destination="5Sa-BK-lpk" id="HMn-Hn-L4X"/>
                         <outlet property="fluidTableView" destination="B5m-i5-orG" id="CAL-eA-9eJ"/>
@@ -2068,7 +2044,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monitoring and Equpment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBm-3l-WIs">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monitoring and Equipment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBm-3l-WIs">
                                                     <rect key="frame" x="20" y="11" width="520" height="23"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2302,147 +2278,130 @@
             </objects>
             <point key="canvasLocation" x="3835" y="183"/>
         </scene>
+        <!--Edit Patient View Controller-->
+        <scene sceneID="CAH-jR-8og">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="formSheet" id="eYB-Q2-Ji6" customClass="EditPatientViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6QZ-Hf-A7K"/>
+                        <viewControllerLayoutGuide type="bottom" id="GDB-bk-d0V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TLM-eW-Geo">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jkl-tc-uLc">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthdate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="014-Xv-TbR">
+                                        <rect key="frame" x="29" y="230" width="106" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MRN" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3q0-mK-f1L">
+                                        <rect key="frame" x="72" y="287" width="63" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pb1-gb-8Jq">
+                                        <rect key="frame" x="143" y="103" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="eYB-Q2-Ji6" id="ioy-rW-Rpe"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-7y-vrc">
+                                        <rect key="frame" x="143" y="163" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="eYB-Q2-Ji6" id="8UY-h8-gla"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthdate" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6no-FI-1sx">
+                                        <rect key="frame" x="143" y="223" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="eYB-Q2-Ji6" id="71M-jw-zyh"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MRN" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKZ-f6-sYY">
+                                        <rect key="frame" x="143" y="283" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="eYB-Q2-Ji6" id="ta8-Xu-paD"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Case Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7bh-hQ-Fjf">
+                                        <rect key="frame" x="143" y="343" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="eYB-Q2-Ji6" id="q01-ge-dBa"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2u-ke-3Jf">
+                                        <rect key="frame" x="16" y="107" width="119" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImP-8n-xzu">
+                                        <rect key="frame" x="16" y="167" width="119" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Case Code" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tB4-KE-F2p">
+                                        <rect key="frame" x="18" y="347" width="117" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BFW-GT-V7j">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
+                                        <items>
+                                            <barButtonItem systemItem="cancel" id="QXs-Ef-fbe">
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="cancelEditUser:" destination="eYB-Q2-Ji6" id="3t0-cr-DpN"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="Ikc-nx-hWq"/>
+                                            <barButtonItem title="Edit Patient" id="Hiy-Du-C1K">
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="EgL-Le-RLT"/>
+                                            <barButtonItem title="Create" systemItem="save" id="qYy-bE-sdB">
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="saveEditUser:" destination="eYB-Q2-Ji6" id="uQe-wI-5hR"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DD8-Su-VLA"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="birthdate" destination="6no-FI-1sx" id="mci-ME-p0V"/>
+                        <outlet property="caseCode" destination="7bh-hQ-Fjf" id="kb3-xC-YdR"/>
+                        <outlet property="firstName" destination="pb1-gb-8Jq" id="hEv-My-mOc"/>
+                        <outlet property="lastName" destination="nhR-7y-vrc" id="H5O-oe-9Sq"/>
+                        <outlet property="mrn" destination="dKZ-f6-sYY" id="N8I-H6-yoh"/>
+                        <outlet property="view" destination="TLM-eW-Geo" id="zFL-6V-naI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WS8-BP-tta" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3000" y="-804"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="9A677DC2-6FA9-4063-A159-FB4A466B4829" width="32" height="32">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
-DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
-RkZSZXByZXNlbnRhdGlvboAGgAdPER0OTU0AKgAAEAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAKwAAAFsAAABzAAAAcwAAAHMAAABzAAAAcwAAAHMAAABzAAAAcwAAAHMAAABz
-AAAAcwAAAHMAAABzAAAAcwAAAHMAAABzAAAAcwAAAHMAAABzAAAAcwAAAFsAAAArAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAADlvb2+W0dHR4fDw8P/9/f3//v7+//7+/v//////////////////////
-///////////////////////////////////////////+/v7//v7+//39/f/x8fH/0dHR4W9vb5YAAAA5
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaNvb2/Lm5ub/+vr6//39/f/9/f3//v7+//7+/v/+/v7/
-/v7+//7+/v/+/v7//v7+//7+/v/+/v7//v7+//7+/v/+/v7//v7+//7+/v/9/f3//f39//v7+//m5ub/
-29vb8gAAAGgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz5ubm/+bm5v/5+fn/+/v7//z8/P/9/f3/
-/f39//39/f/9/f3//f39//39/f/9/f3//f39//39/f/9/f3//f39//39/f/9/f3//f39//z8/P/7+/v/
-+vr6/+fn5//m5ub/AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPm5ub/5ubm//b29v/4+Pj/
-+fn5//n5+f/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/5+fn/
-+fn5//j4+P/29vb/5+fn/+bm5v8AAABzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc+bm5v/m5ub/
-9fX1//X19f/19fX/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/9vb2//b29v/29vb/
-9vb2//b29v/19fX/9fX1//X19f/n5+f/5ubm/wAAAHMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz
-5ubm/+bm5v/z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/
-8/Pz//Pz8//z8/P/8/Pz//Pz8//z8/P/8/Pz/+fn5//m5ub/AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAHPm5ub/5ubm//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/
-8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/5+fn/+bm5v8AAABzAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAc+bm5v/m5ub/7+/v/+/v7//v7+//7+/v/+/v7//v7+//7+/v/+/v7//v7+//
-7+/v/+/v7//v7+//7+/v/+/v7//v7+//7+/v/+/v7//v7+//7+/v/+/v7//n5+f/5ubm/wAAAHMAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz5ubm/+bm5v/t7e3/7e3t/+3t7f/t7e3/7e3t/+3t7f/t7e3/
-7e3t/+3t7f/t7e3/7e3t/+3t7f/t7e3/7e3t/+3t7f/t7e3/7e3t/+3t7f/t7e3/7e3t/+bm5v/m5ub/
-AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPm5ub/5ubm/+vr6//r6+v/6+vr/+vr6//r6+v/
-6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/6+vr/+vr6//r6+v/
-5ubm/+bm5v8AAABzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc+bm5v/m5ub/6enp/+np6f/p6en/
-6enp/+np6f/p6en/6enp/+np6f/p6en/6enp/+np6f/p6en/6enp/+np6f/p6en/6enp/+np6f/p6en/
-6enp/+np6f/m5ub/5ubm/wAAAHMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz5ubm/+bm5v/m5ub/
-5ubm/+bm5v/m5ub/5ubm/+bm5v/m5ub/5ubm/+bm5v/m5ub/5ubm/+bm5v/m5ub/5ubm/+bm5v/m5ub/
-5ubm/+bm5v/m5ub/5ubm/+bm5v/m5ub/AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPk5OT/
-5OTk/+Tk5P/k5OT/5OTk/+Tk5P/k5OT/5OTk/+Tk5P/k5OT/5OTk/+Tk5P/k5OT/5OTk/+Tk5P/k5OT/
-5OTk/+Tk5P/k5OT/5OTk/+Tk5P/k5OT/5OTk/+Tk5P8AAABzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAc+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/wAAAHMAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAABz4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/AAAAcwAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAHPh4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f8AAABz
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/wAAAHMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHPh4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/4eHh/+Hh4f/h4eH/
-4eHh/+Hh4f/h4eH/4eHh/+Hh4f8AAABzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc+Hh4f/h4eH/
-4+Pj/+Tk5P/l5eX/5eXl/+Xl5f/l5eX/5eXl/+Xl5f/l5eX/5eXl/+Xl5f/l5eX/5eXl/+Xl5f/l5eX/
-5eXl/+Xl5f/l5eX/5OTk/+Pj4//h4eH/4eHh/wAAAHMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABz
-4uLi/+Xl5f/o6Oj/6urq/+zs7P/s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs7P/s7Oz/
-7Ozs/+zs7P/s7Oz/7Ozs/+zs7P/q6ur/6Ojo/+Xl5f/i4uL/AAAAcwAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAHPl5eX/6enp/+3t7f/v7+//8PDw//Hx8f/x8fH/8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/
-8fHx//Hx8f/x8fH/8fHx//Hx8f/x8fH/8PDw/+/v7//t7e3/6enp/+Xl5f8AAABzAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAZ97e3vDt7e3/8fHx//Ly8v/z8/P/9PT0//T09P/09PT/9PT0//T09P/09PT/
-9PT0//T09P/09PT/9PT0//T09P/09PT/9PT0//T09P/z8/P/8vLy//Hx8f/t7e3/3t7e8AAAAGcAAAAA
-AAAAAAAAAAAAAAAAAAAAAwAAAA0AAABHd3d3o+bm5vPz8/P/9fX1//X19f/19fX/9fX1//X19f/19fX/
-9fX1//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/19fX/9fX1//X19f/19fX/8/Pz/+bm5vN3d3ej
-AAAARwAAAAwAAAADAAAAAAAAAAAAAAAJAAAAIgAAADUAAABkAAAAiAAAAJEAAACRAAAAkQAAAJEAAACR
-AAAAkQAAAJEAAACRAAAAkQAAAJEAAACRAAAAkQAAAJEAAACRAAAAkQAAAJEAAACRAAAAkQAAAJEAAACR
-AAAAiAAAAGQAAAA1AAAAIQAAAAgAAAAAAAAAAAAAAAMAAAANAAAAFAAAABUAAAAVAAAAFQAAABUAAAAV
-AAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAV
-AAAAFQAAABUAAAAVAAAAFQAAABQAAAAMAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4BAAADAAAAAQAg
-AAABAQADAAAAAQAgAAABAgADAAAABAAAELYBAwADAAAAAQABAAABBgADAAAAAQACAAABEQAEAAAAAQAA
-AAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAgAAABFwAEAAAAAQAAEAABHAADAAAAAQAB
-AAABUgADAAAAAQACAAABUwADAAAABAAAEL6HcwAHAAAMSAAAEMYAAAAAAAgACAAIAAgAAQABAAEAAQAA
-DEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BNU0ZUAAAAAElFQyBzUkdCAAAAAAAA
-AAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQAAAHwAAAAFGJrcHQAAAIEAAAAFHJY
-WVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRtbmQAAAJUAAAAcGRtZGQAAALEAAAAiHZ1
-ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAAFG1lYXMAAAQMAAAAJHRlY2gAAAQwAAAADHJU
-UkMAAAQ8AAAIDGdUUkMAAAQ8AAAIDGJUUkMAAAQ8AAAIDHRleHQAAAAAQ29weXJpZ2h0IChjKSAxOTk4
-IEhld2xldHQtUGFja2FyZCBDb21wYW55AABkZXNjAAAAAAAAABJzUkdCIElFQzYxOTY2LTIuMQAAAAAA
-AAAAAAAAEnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAABYWVogAAAAAAAA81EAAQAAAAEWzFhZWiAAAAAAAAAAAAAAAAAAAAAAWFlaIAAA
-AAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeFAAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPZGVzYwAA
-AAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAAAAAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNo
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRlc2MAAAAAAAAALklF
-QyA2MTk2Ni0yLjEgRGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAALklFQyA2
-MTk2Ni0yLjEgRGVmYXVsdCBSR0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAAAAAAAAAAAAAA
-AABkZXNjAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25kaXRpb24gaW4gSUVDNjE5NjYtMi4xAAAA
-AAAAAAAAAAAsUmVmZXJlbmNlIFZpZXdpbmcgQ29uZGl0aW9uIGluIElFQzYxOTY2LTIuMQAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAdmlldwAAAAAAE6T+ABRfLgAQzxQAA+3MAAQTCwADXJ4AAAABWFlaIAAA
-AAAATAlWAFAAAABXH+dtZWFzAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACjwAAAAJzaWcgAAAAAENS
-VCBjdXJ2AAAAAAAABAAAAAAFAAoADwAUABkAHgAjACgALQAyADcAOwBAAEUASgBPAFQAWQBeAGMAaABt
-AHIAdwB8AIEAhgCLAJAAlQCaAJ8ApACpAK4AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA8AD2APsBAQEH
-AQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEBuQHBAckB0QHZ
-AeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqICrAK2AsECywLVAuAC6wL1
-AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPHA9MD4APsA/kEBgQTBCAELQQ7BEgEVQRj
-BHEEfgSMBJoEqAS2BMQE0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcFhgWWBaYFtQXFBdUF5QX2BgYGFgYn
-BjcGSAZZBmoGewaMBp0GrwbABtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZB6wHvwfSB+UH+AgLCB8IMghG
-CFoIbgiCCJYIqgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J5Qn7ChEKJwo9ClQKagqBCpgKrgrF
-CtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1DI4MpwzADNkM8w0NDSYNQA1aDXQNjg2p
-DcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9BD14Peg+WD7MPzw/sEAkQJhBDEGEQfhCbELkQ1xD1
-ERMRMRFPEW0RjBGqEckR6BIHEiYSRRJkEoQSoxLDEuMTAxMjE0MTYxODE6QTxRPlFAYUJxRJFGoUixSt
-FM4U8BUSFTQVVhV4FZsVvRXgFgMWJhZJFmwWjxayFtYW+hcdF0EXZReJF64X0hf3GBsYQBhlGIoYrxjV
-GPoZIBlFGWsZkRm3Gd0aBBoqGlEadxqeGsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMczBz1HR4dRx1w
-HZkdwx3sHhYeQB5qHpQevh7pHxMfPh9pH5Qfvx/qIBUgQSBsIJggxCDwIRwhSCF1IaEhziH7IiciVSKC
-Iq8i3SMKIzgjZiOUI8Ij8CQfJE0kfCSrJNolCSU4JWgllyXHJfcmJyZXJocmtyboJxgnSSd6J6sn3CgN
-KD8ocSiiKNQpBik4KWspnSnQKgIqNSpoKpsqzysCKzYraSudK9EsBSw5LG4soizXLQwtQS12Last4S4W
-Lkwugi63Lu4vJC9aL5Evxy/+MDUwbDCkMNsxEjFKMYIxujHyMioyYzKbMtQzDTNGM38zuDPxNCs0ZTSe
-NNg1EzVNNYc1wjX9Njc2cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6sjrvOy07azuq
-O+g8JzxlPKQ84z0iPWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5CMEJyQrVC90M6
-Q31DwEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjXSR1JY0mpSfBKN0p9SsRLDEtT
-S5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91QJ1BxULtRBlFQUZtR5lIxUnxSx1MTU19TqlP2
-VEJUj1TbVShVdVXCVg9WXFapVvdXRFeSV+BYL1h9WMtZGllpWbhaB1pWWqZa9VtFW5Vb5Vw1XIZc1l0n
-XXhdyV4aXmxevV8PX2Ffs2AFYFdgqmD8YU9homH1YklinGLwY0Njl2PrZEBklGTpZT1lkmXnZj1mkmbo
-Zz1nk2fpaD9olmjsaUNpmmnxakhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8eb3hv0XArcIZw4HE6
-cZVx8HJLcqZzAXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5iXnnekZ6pXsEe2N7wnwh
-fIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eDuoQdhICE44VHhauGDoZyhteHO4ef
-iASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaPnpAGkG6Q1pE/kaiSEZJ6kuOTTZO2
-lCCUipT0lV+VyZY0lp+XCpd1l+CYTJi4mSSZkJn8mmia1ZtCm6+cHJyJnPedZJ3SnkCerp8dn4uf+qBp
-oNihR6G2oiailqMGo3aj5qRWpMelOKWpphqmi6b9p26n4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24
-ri2uoa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSctRO1irYBtnm28Ldot+C4WbjRuUq5wro7urW7Lrun
-vCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePCX8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/IPci8yTrJuco4
-yrfLNsu2zDXMtc01zbXONs62zzfPuNA50LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV1tjXXNfg2GTY6Nls
-2fHadtr724DcBdyK3RDdlt4c3qLfKd+v4DbgveFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbnH+ep6DLovOlG
-6dDqW+rl63Dr++yG7RHtnO4o7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt9vv3ivgZ+Kj5OPnH
-+lf65/t3/Af8mP0p/br+S/7c/23//9IiIyQlWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcElt
-YWdlUmVwoyYnKF8QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIiIyorV05TQXJy
-YXmiKijSIiMtLl5OU011dGFibGVBcnJheaMtKijTMDEJMjM0V05TV2hpdGVcTlNDb2xvclNwYWNlRDAg
-MAAQA4AL0iIjNjdXTlNDb2xvcqI2KNIiIzk6V05TSW1hZ2WiOShfEA9OU0tleWVkQXJjaGl2ZXLRPT5U
-cm9vdIABAAgAEQAaACMALQAyADcARQBLAFQAWwBoAG8AdwB5AH4AgACCAIcAkgCUAJYAmACdAKAAogCk
-AKYAqACtAMQAxgDIHdod3x3qHfMeBh4KHh0eKB4xHjYePh5BHkYeVR5ZHmAeaB51HnoefB5+HoMeix6O
-HpMemx6eHrAesx64AAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAAHro
-</mutableData>
-        </image>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

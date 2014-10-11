@@ -19,9 +19,12 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
+#import "BBDatePickerViewController.h"
 
-
-@interface PreOpReviewViewController () <UITextFieldDelegate>
+@interface PreOpReviewViewController () <UITextFieldDelegate, BBDatePickerViewControllerDelegate> {
+    BBDatePickerViewController *dateContent;
+    UIPopoverController *datePopover;
+}
 @property (weak, nonatomic) IBOutlet BBCheckBox *noneChangesNotedBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *changesNotedUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *bPUITextField;
@@ -229,9 +232,6 @@ static NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)disablesAutomaticKeyboardDismissal {
-	 return NO;
-}
 
 - (IBAction)dismiss:(id)sender {
 	 [BBUtil refreshManagedObject:_section];
@@ -246,4 +246,51 @@ static NSString *const REVIEW_TIME_KEY = @"ReviewTimeKey";
 	 BOOL selected = sender.selected;
 	 sender.selected = selected;
 }
+
+- (IBAction)setBirthdateFromTextField:(id)sender {
+    [self setupDatePopoverRect:sender];
+    [self.reviewDateUITextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self setBirthdateFromTextField:textField];
+    return YES;
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
+-(void)didSaveDateValues:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    self.reviewDateUITextField.text = stringFromDate;
+    
+}
+
+-(void)setupDatePopoverRect:(id)sender {
+    CGRect location = CGRectMake(self.view.center.x, ((UITextField *)sender).frame.origin.y, 100, 100);
+    [self setupDatePickerPopover:location];
+}
+
+-(void)setupDatePickerPopover:(CGRect)rect {
+    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
+                                                               bundle:nil];
+    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
+    dateContent.date = [NSDate date];
+    dateContent.datePopoverController = datePopover;
+    dateContent.delegate = self;
+    [datePopover presentPopoverFromRect:rect
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
+}
+
 @end

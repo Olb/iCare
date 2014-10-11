@@ -19,7 +19,8 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-
+#import "BBAutoCompleteTextField.h"
+#import "BBData.h"
 
 @interface PremedsGivenViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *midazolamBBCheckBox;
@@ -28,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *ondansetronUITextField;
 @property (weak, nonatomic) IBOutlet UITableView *premedsGivenTable;
 @property (strong, nonatomic) FormElementTableAdapter *premedsGivenTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *premedsGivenNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *premedsGivenNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *premedsGivenDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *premedsGivenDoseUnitButton;
 @end
@@ -42,6 +43,7 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+    [_premedsGivenNameTextField setAutoCompleteData:[BBData medications]];
 	 self.premedsGivenTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.premedsGivenTable.dataSource = self.premedsGivenTableAdapter;
 	 self.premedsGivenTable.delegate = self.premedsGivenTableAdapter;

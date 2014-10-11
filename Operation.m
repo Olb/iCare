@@ -1,8 +1,8 @@
 //
 //  Operation.m
-//  iCare2
+//  iCare
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 10/11/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -18,8 +18,9 @@
 @dynamic name;
 @dynamic preOpDate;
 @dynamic weight;
-@dynamic patient;
-@dynamic intraOp;
+@dynamic preOpTime;
 @dynamic forms;
+@dynamic intraOp;
+@dynamic patient;
 
 @end

@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *submittedByDateUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *reviewedByUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *reviewedByDateUITextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation PostOpReviewViewController
@@ -34,6 +35,7 @@ static NSString *const SUBMITTED_BY_KEY = @"SubmittedByKey";
 static NSString *const SUBMITTED_BY_DATE_KEY = @"SubmittedByDateKey";
 static NSString *const REVIEWED_BY_KEY = @"ReviewedByKey";
 static NSString *const REVIEWED_BY_DATE_KEY = @"ReviewedByDateKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -55,6 +57,9 @@ static NSString *const REVIEWED_BY_DATE_KEY = @"ReviewedByDateKey";
 			 if ([element.key isEqualToString:REVIEWED_BY_DATE_KEY]){
 				 [self.reviewedByDateUITextField setText:((TextElement*)element).value];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
 }
@@ -65,6 +70,7 @@ static NSString *const REVIEWED_BY_DATE_KEY = @"ReviewedByDateKey";
 	 NSAssert([section getElementForKey:SUBMITTED_BY_DATE_KEY]!= nil, @"SubmittedByDate is nil");
 	 NSAssert([section getElementForKey:REVIEWED_BY_KEY]!= nil, @"ReviewedBy is nil");
 	 NSAssert([section getElementForKey:REVIEWED_BY_DATE_KEY]!= nil, @"ReviewedByDate is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -119,6 +125,15 @@ static NSString *const REVIEWED_BY_DATE_KEY = @"ReviewedByDateKey";
 	 }
 
 	 reviewedByDate.value = self.reviewedByDateUITextField.text;
+	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];

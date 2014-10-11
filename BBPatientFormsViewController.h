@@ -12,4 +12,5 @@
 @class Patient;
 @interface BBPatientFormsViewController : UIViewController <BBOperationSelectedDelegate>
 @property Patient *patient;
+-(void) updateOperationView;
 @end

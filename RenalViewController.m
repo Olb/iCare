@@ -19,9 +19,12 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
+#import "BBDatePickerViewController.h"
 
-
-@interface RenalViewController () <UITextFieldDelegate>
+@interface RenalViewController () <UITextFieldDelegate, BBDatePickerViewControllerDelegate> {
+    BBDatePickerViewController *dateContent;
+    UIPopoverController *datePopover;
+}
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalNegativeBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *cRIBBCheckBox;
@@ -159,9 +162,6 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)disablesAutomaticKeyboardDismissal {
-	 return NO;
-}
 
 - (IBAction)dismiss:(id)sender {
 	 [BBUtil refreshManagedObject:_section];
@@ -177,5 +177,51 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 	 self.renalBBCheckBox.selected = NO;
 	 self.renalNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
+}
+
+- (IBAction)setBirthdateFromTextField:(id)sender {
+    [self setupDatePopoverRect:sender];
+    [self.lastDialysisUITextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self setBirthdateFromTextField:textField];
+    return YES;
+}
+
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
+-(void)didSaveDateValues:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    self.lastDialysisUITextField.text = stringFromDate;
+
+}
+
+-(void)setupDatePopoverRect:(id)sender {
+    CGRect location = CGRectMake(self.view.center.x, ((UITextField *)sender).frame.origin.y, 100, 100);
+    [self setupDatePickerPopover:location];
+}
+
+-(void)setupDatePickerPopover:(CGRect)rect {
+    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
+                                                               bundle:nil];
+    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
+    dateContent.date = [NSDate date];
+    dateContent.datePopoverController = datePopover;
+    dateContent.delegate = self;
+    [datePopover presentPopoverFromRect:rect
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
 }
 @end

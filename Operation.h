@@ -1,8 +1,8 @@
 //
 //  Operation.h
-//  iCare2
+//  iCare
 //
-//  Created by Bogdan Marinescu on 9/12/14.
+//  Created by Billy Bray on 10/11/14.
 //  Copyright (c) 2014 Spartan Systems Inc. All rights reserved.
 //
 
@@ -17,9 +17,10 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * preOpDate;
 @property (nonatomic, retain) NSString * weight;
-@property (nonatomic, retain) Patient *patient;
-@property (nonatomic, retain) IntraOp *intraOp;
+@property (nonatomic, retain) NSString * preOpTime;
 @property (nonatomic, retain) NSSet *forms;
+@property (nonatomic, retain) IntraOp *intraOp;
+@property (nonatomic, retain) Patient *patient;
 @end
 
 @interface Operation (CoreDataGeneratedAccessors)

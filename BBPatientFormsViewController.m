@@ -23,6 +23,8 @@
 #import "IntraOpViewController.h"
 #import "PostOpTableViewController.h"
 #import "IntraOp.h"
+#import "BBDatePickerViewController.h"
+#import "EditPatientViewController.h"
 
 const float POUND_MULTIPLIER = 2.20462262f;
 
@@ -36,11 +38,14 @@ typedef enum : NSUInteger {
     ft,
 } HeightUnit;
 
-@interface BBPatientFormsViewController () <UITextFieldDelegate>
+@interface BBPatientFormsViewController () <UITextFieldDelegate, BBDatePickerViewControllerDelegate> {
+    BBDatePickerViewController *dateContent;
+    UIPopoverController *datePopover;
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *preOpDateButton;
+@property (weak, nonatomic) IBOutlet UITextField *preOpTimeTextField;
 @property (weak, nonatomic) IBOutlet UITableView *formsTableView;
-@property (weak, nonatomic) IBOutlet UIButton *preOpTimeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *weightTextField;
 @property (weak, nonatomic) IBOutlet UITextField *heightTextField;
 
@@ -220,6 +225,13 @@ typedef enum : NSUInteger {
             vc.form = f;
         }
     }
+    if ([[segue identifier] isEqualToString:@"Edit Patient Segue"]) {
+        EditPatientViewController *vc = [segue destinationViewController];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
+        vc.mainViewController = self;
+        vc.patient = self.patient;
+    }
 }
 
 #pragma mark - Delegate methods
@@ -239,11 +251,17 @@ typedef enum : NSUInteger {
 -(void) updateOperationView
 {
     [self.preOpDateButton setTitle:[BBUtil formatDate:_selectedOperation.preOpDate] forState:UIControlStateNormal];
-    [self.preOpTimeLabel setTitle:[BBUtil formatTime:_selectedOperation.preOpDate] forState:UIControlStateNormal];
+    self.preOpTimeTextField.text = _selectedOperation.preOpTime;
     
     NSDateComponents *components = [[NSCalendar currentCalendar] components: NSYearCalendarUnit
                                                  fromDate: _patient.birthdate toDate: _selectedOperation.preOpDate options: 0];
-    NSString *age = [NSString stringWithFormat:@"%d", (int)[components year]];
+    NSString *age;
+    if ((int)[components year] >= 0) {
+        age = [NSString stringWithFormat:@"%d", (int)[components year]];
+    } else {
+        age = @"0";
+    }
+    
     
     [self.ageLabel setText:age];
     
@@ -282,14 +300,7 @@ typedef enum : NSUInteger {
 
 -(NSString*)getHeight
 {
-    NSString *height;
-    if (self.useCM) {
-        height = _selectedOperation.height;
-    } else {
-        // convert to ft and inches
-        height = _selectedOperation.height;
-    }
-    return [NSString stringWithFormat:@"%.1f", [height floatValue]];
+    return _selectedOperation.height;
 }
 
 -(void)setWeight:(NSString*)weight
@@ -304,12 +315,8 @@ typedef enum : NSUInteger {
 
 -(void)setHeight:(NSString*)height
 {
-    if (self.useCM) {
-        _selectedOperation.height = self.heightTextField.text;
-    } else {
-        _selectedOperation.height = self.heightTextField.text;
-        //int cm = feet * 30.48 + inches * 2.54;
-    }
+    _selectedOperation.height = self.heightTextField.text;
+    [BBUtil saveContext];
     [self updateOperationView];
 }
 
@@ -317,15 +324,54 @@ typedef enum : NSUInteger {
 {
     if (textField == self.weightTextField) {
         [self saveWeight];
+        [textField resignFirstResponder];
     }
     if (textField == self.heightTextField) {
         [self saveHeight];
+        [textField resignFirstResponder];
+    }
+    if (textField == self.preOpTimeTextField) {
+        _selectedOperation.preOpTime = textField.text;
+        [BBUtil saveContext];
+        [textField resignFirstResponder];
     }
     return YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+//////
+- (IBAction)setBirthdateFromTextField:(id)sender {
+    [self setupDatePopoverRect:sender];
+}
+
+
+-(void)didSaveDateValues:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    NSString *stringFromDate = [formatter stringFromDate:date];
+    [self.preOpDateButton setTitle:stringFromDate forState:UIControlStateNormal];
+    
+}
+
+-(void)setupDatePopoverRect:(id)sender {
+    CGRect location = CGRectMake(self.operationBackgroundView.frame.origin.x + 25, self.operationBackgroundView.frame.origin.y + 50, 100, 100);
+    [self setupDatePickerPopover:location];
+}
+
+-(void)setupDatePickerPopover:(CGRect)rect {
+    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
+                                                               bundle:nil];
+    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
+    dateContent.date = [NSDate date];
+    dateContent.datePopoverController = datePopover;
+    dateContent.delegate = self;
+    [datePopover presentPopoverFromRect:rect
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
 }
 
 

@@ -41,6 +41,7 @@
         <relationship name="section" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FormSection" inverseName="elements" inverseEntity="FormSection" syncable="YES"/>
     </entity>
     <entity name="FormSection" representedClassName="FormSection" syncable="YES">
+        <attribute name="complete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="elements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FormElement" inverseName="section" inverseEntity="FormElement" syncable="YES"/>
         <relationship name="form" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Form" inverseName="sections" inverseEntity="Form" syncable="YES"/>
@@ -69,6 +70,7 @@
         <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="preOpDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="preOpTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="forms" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Form" inverseName="operation" inverseEntity="Form" syncable="YES"/>
         <relationship name="intraOp" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="IntraOp" inverseName="operation" inverseEntity="IntraOp" syncable="YES"/>
@@ -101,19 +103,19 @@
     <elements>
         <element name="Agent" positionX="-387" positionY="-369" width="128" height="180"/>
         <element name="AntibioticFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
+        <element name="BloodPressure" positionX="-378" positionY="-351" width="128" height="133"/>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
         <element name="ElementListFormElement" positionX="-378" positionY="-360" width="128" height="60"/>
         <element name="Form" positionX="-432" positionY="-306" width="128" height="90"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
-        <element name="FormSection" positionX="-279" positionY="-304" width="128" height="88"/>
+        <element name="FormSection" positionX="-279" positionY="-304" width="128" height="105"/>
         <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="103"/>
         <element name="Measurement" positionX="-387" positionY="-360" width="128" height="133"/>
         <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
-        <element name="Operation" positionX="-281" positionY="-504" width="128" height="150"/>
+        <element name="Operation" positionX="-281" positionY="-504" width="128" height="165"/>
         <element name="Patient" positionX="-459" positionY="-492" width="128" height="150"/>
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
-        <element name="BloodPressure" positionX="-378" positionY="-351" width="128" height="133"/>
     </elements>
 </model>

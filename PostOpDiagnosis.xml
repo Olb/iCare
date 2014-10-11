@@ -1,6 +1,7 @@
 <?xml version='1.0'?>
 <Section name="PostOpDiagnosis">
     <Data>
+        <Element type="TextViewElement" name="ProcedureNotes"/>
         <Element type="TextElement" name="Crystalloid"/>
         <Element type="TextElement" name="Ffp"/>
         <Element type="TextElement" name="Albumin"/>

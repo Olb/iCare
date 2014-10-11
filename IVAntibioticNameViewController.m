@@ -19,12 +19,13 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-
+#import "BBAutoCompleteTextField.h"
+#import "BBData.h"
 
 @interface IVAntibioticNameViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *ivAntibioticTable;
 @property (strong, nonatomic) FormElementTableAdapter *ivAntibioticTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *ivAntibioticNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *ivAntibioticNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *ivAntibioticDoseUnitButton;
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticStartTimeTextField;
@@ -41,6 +42,7 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+    [_ivAntibioticNameTextField setAutoCompleteData:[BBData medications]];
 	 self.ivAntibioticTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.ivAntibioticTable.dataSource = self.ivAntibioticTableAdapter;
 	 self.ivAntibioticTable.delegate = self.ivAntibioticTableAdapter;

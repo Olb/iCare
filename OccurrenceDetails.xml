@@ -1,16 +1,14 @@
 <?xml version='1.0'?>
-<Section name="PostOpReview">
+<Section name="OccurrenceDetails">
     <Data>
-        <Element type="TextElement" name="SubmittedBy"/>
-        <Element type="TextElement" name="SubmittedByDate"/>
-        <Element type="TextElement" name="ReviewedBy"/>
-        <Element type="TextElement" name="ReviewedByDate"/>
-        <Element type="TextViewElement" name="Notes"/>
+        <Element type="TextViewElement" name="Description"/>
+        <Element type="TextViewElement" name="Occurrence"/>
+        <Element type="TextViewElement" name="Treatment"/>
     </Data>
     <Validation>
         
     </Validation>
-    <Graphics>
+    <Graphicssss>
         <Group orientation="vertical" >
             <Group label="Submitted By (MD/DO/CRNA/AA)" orientation="vertical" >
                 <Group  orientation="horizontal">
@@ -25,5 +23,5 @@
                 </Group>
             </Group>
         </Group>
-    </Graphics>
+    </Graphicssss>
 </Section>

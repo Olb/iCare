@@ -46,6 +46,7 @@
 
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -242,7 +243,6 @@
         default:
             break;
     }
-    
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:nil];
@@ -288,9 +288,12 @@
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-// TODO
+
 -(void)setTableViewAccessoryForIndexPath:(NSIndexPath*)indexPath to:(BOOL)complete
 {
+    NSLog(@"Setting accessory");
+   
+
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if(complete)
     {

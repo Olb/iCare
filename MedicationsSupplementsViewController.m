@@ -17,15 +17,15 @@
 #import "FormElementTableCellFactory.h"
 
 #import "AntibioticFormElement.h"
-
+#import "BBAutoCompleteTextField.h"
 #import "MedicationFormElement.h"
-
+#import "BBData.h"
 
 @interface MedicationsSupplementsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockerBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITableView *medsSupplementsTable;
 @property (strong, nonatomic) FormElementTableAdapter *medsSupplementsTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *medsSupplementsNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *medsSupplementsNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *medsSupplementsDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *medsSupplementsDoseUnitButton;
 @end
@@ -41,6 +41,7 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 	 self.medsSupplementsTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.medsSupplementsTable.dataSource = self.medsSupplementsTableAdapter;
 	 self.medsSupplementsTable.delegate = self.medsSupplementsTableAdapter;
+        [_medsSupplementsNameTextField setAutoCompleteData:[BBData medications]];
 
 	 if (_section) {
 		 [self validateSection:_section];

@@ -22,8 +22,12 @@
 #import "IntraOpBPView.h"
 #import "BloodPressure.h"
 #import "CustomLayer.h"
+#import "BBAutoCompleteTextField.h"
+#import "BBData.h"
 
 @interface IntraOpViewController () 
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *addAllergyTextField;
+@property (weak, nonatomic) IBOutlet UITextView *allergyListTextView;
 
 @property (weak, nonatomic) IBOutlet UITableView *gasTableView;
 @property (weak, nonatomic) IBOutlet UITableView *vitalsTableView;
@@ -55,6 +59,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_addAllergyTextField setAutoCompleteData:[BBData allergies]];
 
     self.bpGridView =  [[[NSBundle mainBundle] loadNibNamed:@"IntraOpBPView" owner:self options:nil] objectAtIndex:0];
     self.bpGridViewShowing = NO;
