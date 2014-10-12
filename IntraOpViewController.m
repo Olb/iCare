@@ -33,6 +33,7 @@
 #import "AnesthesiaRecordController.h"
 #import "IntraOpPdfGenerator.h"
 #import "PDFDisplayViewController.h"
+#import "BBPdfGenerator.h"
 
 @interface IntraOpViewController () <UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *allergyListTextView;
@@ -338,7 +339,6 @@
                     }
                 }
             }
-            
         }
     }
     NSMutableString *allergiesString = [[NSMutableString alloc] init];
@@ -395,7 +395,7 @@
         float XCoord = [self.timeScrollView dateToXCoord:p.time];
         if ( (XCoord < 0) || (XCoord > self.fluidTableView.frame.size.width-FIRST_COLUMN_X_COORD) ) {
             NSLog(@"Out of bounds");
-            return;
+            continue;
         }
         UIView *rateView = [[UIView alloc] init];
         [rateView setBackgroundColor:[UIColor grayColor]];
@@ -471,12 +471,14 @@
 }
 
 - (IBAction)showPDF:(id)sender {
-    IntraOpPdfGenerator *pdfGen = [[IntraOpPdfGenerator alloc] initWithIntraOp:self.intraOp];
-    [pdfGen generateIntraOpPDF];
+
+    [IntraOpPdfGenerator generatePdfForForm:self.intraOp withView:self.view];
+//    [IntraOpPdfGenerator createPDFfromUIView:self.view saveToDocumentsWithFileName:[BBPdfGenerator getPDFFileNameForIntraOp:self.intraOp]];
+
     PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
     vc.intraOp = self.intraOp;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
