@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *gasPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *dosePickerView;
 @property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @property NumericPickerAdapter* dosePickerAdapter;
 @property (copy)void (^completionBlock)(void);
@@ -38,9 +39,20 @@
     [super viewDidLoad];
     self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
     if (self.agent) {
-        float dose = [self.agent.dose floatValue];
-        [self.dosePickerView setFloatValue:dose];
-        [self.dosePickerView setUnit:[self.agent.unit]];
+        [self.dosePickerAdapter setFloatValue:self.agent.dose];
+        [self.dosePickerAdapter setUnit:self.agent.unit];
+        if ([self.agent.continuous boolValue] && !self.agent.endTime){
+            self.stopButton.hidden = NO;
+        } else {
+            NSLog(@"continuous: %@ startTime:%@ endTime: %@",self.agent.continuous, self.agent.startTime, self.agent.endTime);
+        }
+        for (int i; i < [BBData gases].count; i++){
+            if ([[[BBData gases] objectAtIndex:i] isEqualToString:self.agent.name]){
+                [self.gasPickerView selectRow:i inComponent:0 animated:NO];
+                break;
+            }
+        }
+        self.isContinuous.selected = [self.agent.continuous boolValue];
     }
 }
 
@@ -60,15 +72,16 @@
     if (!self.agent) {
         self.agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
         [self.intraOp addAgentObject:self.agent];
+        self.agent.startTime = [NSDate date];
     }
     self.agent.name = gas;
     self.agent.dose = value;
     self.agent.unit = unit;
-    self.agent.startTime = [NSDate date];
     self.agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
+
     self.agent.type = @"Gas";
     for (Agent *a in self.intraOp.agent) {
-        if ([a.name isEqualToString:self.agent.name] && [a.unit isEqualToString:self.agent.unit] && !a.endTime && [a.continuous boolValue]) {
+        if (a!=self.agent && [a.name isEqualToString:self.agent.name] && [a.unit isEqualToString:self.agent.unit] && !a.endTime && [a.continuous boolValue]) {
             a.endTime = [NSDate date];
         }
     }
@@ -77,6 +90,10 @@
     self.completionBlock();
 }
 
+- (IBAction)stopContinuousGas:(id)sender {
+    self.agent.endTime = [NSDate date];
+    self.stopButton.hidden = YES;
+}
 
 -(void)turnSwitchOn {
     [self.isContinuous setSelected:TRUE];

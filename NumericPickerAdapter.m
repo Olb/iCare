@@ -156,9 +156,34 @@
     return value;
 }
 
--(void)sksdf:(NSArray*)a
-{
-    self.pickerView selectRow:<#(NSInteger)#> inComponent:<#(NSInteger)#> animated:<#(BOOL)#>
+
+-(void)setFloatValue:(NSString*)val{
+    int value = [[val stringByReplacingOccurrencesOfString:@"." withString:@""] intValue];
+    int divPow = (int)[self.format componentsSeparatedByString:@"d"].count - 2;
+    for (int i = 0; i < self.format.length; i++) {
+        if ([self.format characterAtIndex:i] == 'd'){
+            [self.pickerView selectRow:( value/ lroundf(pow(10, divPow)) )%10 inComponent:i animated:NO];
+            divPow--;
+        }
+    }
+    
+}
+
+-(void)setUnit:(NSString*)unit{
+    NSArray *units = [unit componentsSeparatedByString:@"/"];
+    int unitIndex = 0;
+    for (int i = 0; i < self.format.length; i++) {
+        if ([self.format characterAtIndex:i] == 'u'){
+            for (int j = 0; j < [[self.units objectAtIndex:unitIndex] count]; j++){
+                if ([[[self.units objectAtIndex:unitIndex] objectAtIndex:j]  isEqualToString:[units objectAtIndex:unitIndex]]){
+                    [self.pickerView selectRow:j inComponent:i animated:NO];
+                    unitIndex++;
+                    break;
+                }
+            }
+        }
+    }
+    
 }
 
 @end

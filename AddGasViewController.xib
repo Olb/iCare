@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -9,6 +10,7 @@
                 <outlet property="dosePickerView" destination="fcx-oj-O89" id="L5n-ZZ-ZBu"/>
                 <outlet property="gasPickerView" destination="qo2-Vn-A0D" id="LPO-4o-EdG"/>
                 <outlet property="isContinuous" destination="f5z-aU-YOV" id="aAN-it-25j"/>
+                <outlet property="stopButton" destination="m99-Sq-g3O" id="8fZ-dV-RJW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,6 +39,16 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
+                    <rect key="frame" x="41" y="61" width="200" height="216"/>
+                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                        <rect key="frame" x="81" y="61" width="370" height="216"/>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="C8k-KT-Xoy"/>
+                        <outlet property="delegate" destination="-1" id="72d-gx-L2G"/>
+                    </connections>
+                </pickerView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mas-ic-WsZ">
                     <rect key="frame" x="209" y="298" width="114" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -68,16 +80,18 @@
                         <rect key="frame" x="338" y="549" width="34" height="32"/>
                     </variation>
                 </button>
-                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-Vn-A0D">
-                    <rect key="frame" x="41" y="61" width="200" height="216"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m99-Sq-g3O">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <state key="normal" title="Stop continuous gas">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="81" y="61" width="370" height="216"/>
+                        <rect key="frame" x="195" y="591" width="142" height="30"/>
                     </variation>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="C8k-KT-Xoy"/>
-                        <outlet property="delegate" destination="-1" id="72d-gx-L2G"/>
+                        <action selector="stopContinuousGas:" destination="-1" eventType="touchUpInside" id="0Bw-A8-qKB"/>
                     </connections>
-                </pickerView>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -86,6 +100,16 @@
                 <constraint firstItem="Z1Y-Pr-g8v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sI1-R3-cXf"/>
             </constraints>
             <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="m99-Sq-g3O"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=regular">
+                <mask key="subviews">
+                    <include reference="m99-Sq-g3O"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

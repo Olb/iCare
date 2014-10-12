@@ -102,7 +102,11 @@ const NSTimeInterval ONE_DAY_IN_MINUTES = 60*24;
                                                 options:NSWrapCalendarComponents];
         
     NSInteger diffDays = [components day];
-    
+    if (self.contentOffset.x > (ONE_DAY_IN_MINUTES-75)*_pxPerMinute &&
+        [self getMinutesFromDate:date] < 75){
+        diffDays += 2;
+    }
+    if (self.contentOffset.x)
     result += ONE_DAY_IN_MINUTES * _pxPerMinute * diffDays;
     return result;
 }

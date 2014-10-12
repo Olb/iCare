@@ -13,5 +13,6 @@
 -(instancetype)initWithPickerView:(UIPickerView*)pickerView format:(NSString*)format, ...;
 -(NSString*) getValue;
 -(NSString*) getUnit;
-
+-(void)setFloatValue:(NSString*)value;
+-(void)setUnit:(NSString*)unit;
 @end

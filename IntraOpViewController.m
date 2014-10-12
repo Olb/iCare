@@ -194,24 +194,26 @@
 {
     Agent *agent = ((DoseView*)gesture.view).agent;
     NSLog(@"Dose view is awesome: %@", agent);
-    if ([agent.name isEqualToString:@"Gas"]) {
+    if ([agent.type isEqualToString:@"Gas"]) {
         AddGasViewController *vc = [[AddGasViewController alloc] initWithIntraOp:self.intraOp completion:^{
             [self reloadTables];
         }];
         vc.agent = agent;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
-    } else if ([agent.name isEqualToString:@"Medication"]) {
+    } else if ([agent.type isEqualToString:@"Medication"]) {
         AddMedicationViewController *vc = [[AddMedicationViewController alloc] initWithIntraOp:self.intraOp completion:^{
             [self reloadTables];
         }];
         vc.agent = agent;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
-    } else if ([agent.name isEqualToString:@"Fluid"]) {
+    } else if ([agent.type isEqualToString:@"Fluid"]) {
         AddFluidViewController *vc = [[AddFluidViewController alloc] initWithIntraOp:self.intraOp completion:^{
             [self reloadTables];
         }];
         vc.agent = agent;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
+    } else {
+        [NSException raise:@"UnknownAgentType" format:@"type = %@",agent.type];
     }
 }
 
@@ -249,7 +251,6 @@
         width = doseTextWidth + 10;
         
     }
-
     doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, 0, width, cell.bounds.size.height );
     [doseView setNeedsUpdateConstraints];
 
