@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yUI-DS-eDw">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1150,7 +1149,7 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="zWf-Mk-6Bf"/>
-                                            <barButtonItem title="IntraOp Details" id="xBy-BM-wAN">
+                                            <barButtonItem title="IntraOp Times" id="xBy-BM-wAN">
                                                 <connections>
                                                     <action selector="showDetialViewController" destination="yCT-xH-iay" id="w7R-e7-bs1"/>
                                                 </connections>

@@ -10,12 +10,16 @@
 #import "IntraOp.h"
 #import "Measurement.h"
 
+@class TimeScrollView;
 @class Agent;
 @class DoseView;
+
 @interface IntraOpViewController : UIViewController
 @property (nonatomic) IntraOp *intraOp;
+@property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
 
 -(DoseView*)doseViewForAgent:(Agent*)agent forCell:(UITableViewCell*)cell;
 -(UILabel*)viewForMeasurement:(Measurement*)measurement forCell:(UITableViewCell*)cell;
-
+-(void)scrollToBeginning;
+-(void)pageForTime:(NSDate*)timeToScroll;
 @end

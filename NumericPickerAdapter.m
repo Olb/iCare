@@ -156,4 +156,9 @@
     return value;
 }
 
+-(void)sksdf:(NSArray*)a
+{
+    self.pickerView selectRow:<#(NSInteger)#> inComponent:<#(NSInteger)#> animated:<#(BOOL)#>
+}
+
 @end

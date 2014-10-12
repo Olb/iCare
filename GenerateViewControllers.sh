@@ -26,7 +26,7 @@ else
     do
         name=${xmlFile%.xml}
         #Do not regenerate#perl perlxml.pl $xmlFile >$name"ViewController.m";
-        perl perlheader.pl $name > $name"ViewController.h";
+        #perl perlheader.pl $name > $name"ViewController.h";
     done
 fi
 

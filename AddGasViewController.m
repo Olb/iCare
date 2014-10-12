@@ -37,6 +37,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
+    if (self.agent) {
+        float dose = [self.agent.dose floatValue];
+        [self.dosePickerView setFloatValue:dose];
+        [self.dosePickerView setUnit:[self.agent.unit]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,19 +57,21 @@
     NSString *unit = [self.dosePickerAdapter getUnit];
     NSString *gas = [self pickerView:self.gasPickerView titleForRow:[self.gasPickerView selectedRowInComponent:0] forComponent:0];
     
-    Agent *agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
-    agent.name = gas;
-    agent.dose = value;
-    agent.unit = unit;
-    agent.startTime = [NSDate date];
-    agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
-    agent.type = @"Gas";
+    if (!self.agent) {
+        self.agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
+        [self.intraOp addAgentObject:self.agent];
+    }
+    self.agent.name = gas;
+    self.agent.dose = value;
+    self.agent.unit = unit;
+    self.agent.startTime = [NSDate date];
+    self.agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
+    self.agent.type = @"Gas";
     for (Agent *a in self.intraOp.agent) {
-        if ([a.name isEqualToString:agent.name] && [a.unit isEqualToString:agent.unit] && !a.endTime && [a.continuous boolValue]) {
+        if ([a.name isEqualToString:self.agent.name] && [a.unit isEqualToString:self.agent.unit] && !a.endTime && [a.continuous boolValue]) {
             a.endTime = [NSDate date];
         }
     }
-    [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];
     [self dismissViewControllerAnimated:YES completion:nil];
     self.completionBlock();

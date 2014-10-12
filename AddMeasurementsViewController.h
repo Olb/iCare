@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class IntraOp;
 
 @interface AddMeasurementsViewController : UIViewController
-
 - (instancetype)initWithIntraOp:(IntraOp*)intraOp completion:(void (^)(void))completionBlock;
 @end

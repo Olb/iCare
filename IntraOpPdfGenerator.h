@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "IntraOp.h"
+#import "IntraOpViewController.h"
+
 @interface IntraOpPdfGenerator : NSObject
 +(void)createPDFfromUIView:(UIView*)aView ;
-+ (bool) generatePdfForForm:(IntraOp*)intraOp withView:(UIView*)view;
++ (bool) generatePdfForForm:(IntraOp*)intraOp withView:(UIView*)view forIntraOp:(IntraOpViewController*)controller;
 @end

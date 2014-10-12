@@ -44,7 +44,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *fluidTableView;
 @property (weak, nonatomic) IBOutlet UITableView *ventsTableView;
 @property (weak, nonatomic) IBOutlet UITableView *eblTableView;
-@property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
 @property AgentTableAdapter *gasAdapter;
 @property AgentTableAdapter *medicationAdapter;
 @property AgentTableAdapter *fluidAdapter;
@@ -88,7 +87,9 @@
     }
     
     self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
-    [self.timeScrollView setStartTime:[NSDate date]];
+    self.intraOp.anesthesiaStart = [NSDate date];
+    self.intraOp.anesthesiaEnd = [self.intraOp.anesthesiaStart dateByAddingTimeInterval:(60*60*2)];
+    [self.timeScrollView setStartTime:self.intraOp.anesthesiaStart];
     self.timeScrollView.onScroll = ^{
         [self reloadTables];
     };
@@ -189,10 +190,37 @@
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
+-(void)editDoseView:(UITapGestureRecognizer*)gesture
+{
+    Agent *agent = ((DoseView*)gesture.view).agent;
+    NSLog(@"Dose view is awesome: %@", agent);
+    if ([agent.name isEqualToString:@"Gas"]) {
+        AddGasViewController *vc = [[AddGasViewController alloc] initWithIntraOp:self.intraOp completion:^{
+            [self reloadTables];
+        }];
+        vc.agent = agent;
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    } else if ([agent.name isEqualToString:@"Medication"]) {
+        AddMedicationViewController *vc = [[AddMedicationViewController alloc] initWithIntraOp:self.intraOp completion:^{
+            [self reloadTables];
+        }];
+        vc.agent = agent;
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    } else if ([agent.name isEqualToString:@"Fluid"]) {
+        AddFluidViewController *vc = [[AddFluidViewController alloc] initWithIntraOp:self.intraOp completion:^{
+            [self reloadTables];
+        }];
+        vc.agent = agent;
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    }
+}
+
 -(DoseView*)doseViewForAgent:(Agent*)agent forCell:(UITableViewCell*)cell
 {
     DoseView *doseView = [[[NSBundle mainBundle] loadNibNamed:@"DoseView" owner:self options:nil] objectAtIndex:0];
+    [doseView.tapGesture addTarget:self action:@selector(editDoseView:)];
     doseView.dose.text = agent.dose;
+    doseView.agent = agent;
     doseView.dose.font = [UIFont systemFontOfSize:14.0f];
     int doseTextWidth = ((CGSize)[agent.dose sizeWithAttributes:
                                     @{NSFontAttributeName:
@@ -265,15 +293,16 @@
         if ( CGRectContainsPoint(self.bloodPressureDrawingView.frame, touchPoint) ) {
             NSDate* now = [NSDate date];
             NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
+            NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:now];
             NSInteger minute = [components minute];
             if (minute%5 < 3) {
                 minute -= minute%5;
             } else  {
                 minute += 5 - minute%5;
-                [components setMinute:minute];
-                now = [calendar dateFromComponents:components];
             }
+            [components setMinute:minute];
+            now = [calendar dateFromComponents:components];
+
             self.lastTouchTime = now;
             [self showBPView];
         }
@@ -376,6 +405,7 @@
     [self.intraOp addBloodPressuresObject:bp];
     [self removeBPSubView];
     [self populateBPGrid];
+    [BBUtil saveContext];
 }
 
 -(float)convertBPValueToGridY:(float)yPointRate {
@@ -394,7 +424,8 @@
         /* Rate */
         float XCoord = [self.timeScrollView dateToXCoord:p.time];
         if ( (XCoord < 0) || (XCoord > self.fluidTableView.frame.size.width-FIRST_COLUMN_X_COORD) ) {
-            NSLog(@"Out of bounds");
+            NSLog(@"Out of bounds xCoord: %f", XCoord);
+            NSLog(@"p.time: %@", p.time);
             continue;
         }
         UIView *rateView = [[UIView alloc] init];
@@ -472,7 +503,7 @@
 
 - (IBAction)showPDF:(id)sender {
 
-    [IntraOpPdfGenerator generatePdfForForm:self.intraOp withView:self.view];
+    [IntraOpPdfGenerator generatePdfForForm:self.intraOp withView:self.view forIntraOp:self];
 //    [IntraOpPdfGenerator createPDFfromUIView:self.view saveToDocumentsWithFileName:[BBPdfGenerator getPDFFileNameForIntraOp:self.intraOp]];
 
     PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
@@ -480,6 +511,16 @@
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+-(void)scrollToBeginning
+{
+    [self.timeScrollView setStartTime:self.intraOp.anesthesiaStart];
+}
+
+-(void)pageForTime:(NSDate*)timeToScroll
+{
+    [self.timeScrollView setStartTime:timeToScroll];
 }
 
 

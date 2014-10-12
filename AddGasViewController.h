@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IntraOp.h"
+#import "Agent.h"
 
 @interface AddGasViewController : UIViewController 
 @property IntraOp *intraOp;
-
+@property Agent *agent;
 - (instancetype)initWithIntraOp:(IntraOp*)intrraOp completion:(void (^)(void))completionBlock;
 @end

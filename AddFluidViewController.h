@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Agent.h"
 @class  IntraOp;
 @interface AddFluidViewController : UIViewController
+@property Agent *agent;
 
 - (instancetype)initWithIntraOp:(IntraOp*)intrraOp completion:(void (^)(void))completionBlock;
 @end

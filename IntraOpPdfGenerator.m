@@ -13,6 +13,7 @@
 #import "BBPdfGenerator.h"
 #import "GridConstants.h"
 #import "IntraOpGrid.h"
+#import "TimeScrollView.h"
 
 #define PAGE_WIDTH 612
 #define PAGE_HEIGHT 792
@@ -24,7 +25,7 @@
 @implementation IntraOpPdfGenerator
 
 
-+ (bool) generatePdfForForm:(IntraOp*)intraOp withView:(UIView*)view
++ (bool) generatePdfForForm:(IntraOp*)intraOp withView:(UIView*)view forIntraOp:(IntraOpViewController*)controller
 {
     NSMutableData *pdfData = [NSMutableData data];
     CGRect r = CGRectMake(0, -50, view.bounds.size.width, view.bounds.size.height-90);
@@ -77,33 +78,24 @@
     [BBPdfGenerator drawText:surgicalTimeOut atLocation:CGPointMake(150.0, 15*16) isBold:YES];
 
     UIGraphicsBeginPDFPage();
+    CGPoint timeScrollViewCurrentLocation = controller.timeScrollView.contentOffset;
+    [controller scrollToBeginning];
+    [IntraOpPdfGenerator createPDFfromUIView:view];
 
-    [IntraOpPdfGenerator createPDFfromUIView:view];
-    UIGraphicsBeginPDFPage();
-    
-    [IntraOpPdfGenerator createPDFfromUIView:view];
-    UIGraphicsBeginPDFPage();
-    
-    [IntraOpPdfGenerator createPDFfromUIView:view];
-    // Get number of pages
-    NSTimeInterval totalIntraOpTime = [intraOp.anesthesiaStart timeIntervalSinceDate:intraOp.anesthesiaEnd]/(long)(60*60+15);
-    totalIntraOpTime += 1;
-    
-    // For each page
-    //    For all gases/meds/fluids
-    //      Go through each measurements and add names of substances
-    //          Draw any values for the measurements in that time interval
-    //    DrawBP Grid
-    //    For all monitors
-    //      Go through each monitor and add names of monitors
-    //          Draw any values for the monitors in that time interval
-    // End foreach
-    
+    NSTimeInterval totalIntraOpPages = [intraOp.anesthesiaEnd timeIntervalSinceDate:intraOp.anesthesiaStart]/(long)(75*60);
+    totalIntraOpPages += 1;
+    NSDate *nextPageDate = intraOp.anesthesiaStart;
+    for(int i = 1; i < totalIntraOpPages; i++) {
+        UIGraphicsBeginPDFPage();
+        nextPageDate = [nextPageDate dateByAddingTimeInterval:(75*60)];
+        [controller pageForTime:nextPageDate];
+        [IntraOpPdfGenerator createPDFfromUIView:view];
+    }
     
     UIGraphicsEndPDFContext();
     
     [pdfData writeToFile:[BBPdfGenerator getPDFFileNameForIntraOp:intraOp] atomically:YES];
-    
+    [controller.timeScrollView setContentOffset:timeScrollViewCurrentLocation animated:NO];
     return true;
 }
 
@@ -111,7 +103,6 @@
 {
     CGContextRef pdfContext = UIGraphicsGetCurrentContext();
     [aView.layer renderInContext:pdfContext];
-    //UIGraphicsEndPDFContext();
 }
 
 

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Agent.h"
 
 @interface DoseView : UIView
-
+@property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+@property Agent *agent;
 @property (weak, nonatomic) IBOutlet UILabel *dose;
 @end
