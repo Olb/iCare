@@ -49,13 +49,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minValue="0.0" maxValue="220" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-j7-sEO">
+                <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minValue="0.0" maxValue="240" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-j7-sEO">
                     <rect key="frame" x="159" y="24" width="423" height="31"/>
                 </slider>
-                <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="9I8-h0-xcb">
+                <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="240" translatesAutoresizingMaskIntoConstraints="NO" id="9I8-h0-xcb">
                     <rect key="frame" x="159" y="62" width="423" height="31"/>
                 </slider>
-                <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="260" translatesAutoresizingMaskIntoConstraints="NO" id="nWN-sQ-kqC">
+                <slider opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="0.0" maxValue="240" translatesAutoresizingMaskIntoConstraints="NO" id="nWN-sQ-kqC">
                     <rect key="frame" x="159" y="100" width="423" height="31"/>
                 </slider>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LdV-gY-FmU">

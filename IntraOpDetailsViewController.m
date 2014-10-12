@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *procedureStart;
 @property (weak, nonatomic) IBOutlet UIButton *procedureEnd;
 @property (weak, nonatomic) IBOutlet UIButton *outOfRoom;
+@property (weak, nonatomic) IBOutlet UIButton *anesthesiaTimeOut;
+@property (weak, nonatomic) IBOutlet UIButton *surgicalTimeOut;
 
 @end
 
@@ -44,6 +46,10 @@
             [self.procedureEnd setTitle:[self stringFromDate:self.intraOp.procedureEnd] forState:UIControlStateNormal];
         if (self.intraOp.outOfRoom)
             [self.outOfRoom setTitle:[self stringFromDate:self.intraOp.outOfRoom] forState:UIControlStateNormal];
+        if (self.intraOp.anesthesiaTimeOut)
+            [self.anesthesiaTimeOut setTitle:[self stringFromDate:self.intraOp.anesthesiaTimeOut] forState:UIControlStateNormal];
+        if (self.intraOp.surgicalTimeOut)
+            [self.surgicalTimeOut setTitle:[self stringFromDate:self.intraOp.surgicalTimeOut] forState:UIControlStateNormal];
     }
 }
 - (IBAction)startPreOp:(id)sender {
@@ -71,6 +77,12 @@
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)anesthesiaTimeOut:(id)sender {
+    [self.anesthesiaTimeOut setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+}
+- (IBAction)surgicalTimeOut:(id)sender {
+    [self.surgicalTimeOut setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+}
 - (IBAction)save:(id)sender {
     self.intraOp.preOpStart = [self getDateFromString:self.preOpStart.titleLabel.text];
     NSLog(@"PreOpStart: %@", self.intraOp.preOpStart);
@@ -80,6 +92,8 @@
     self.intraOp.procedureStart = [self getDateFromString:self.procedureStart.titleLabel.text];
     self.intraOp.procedureEnd = [self getDateFromString:self.procedureEnd.titleLabel.text];
     self.intraOp.outOfRoom = [self getDateFromString:self.outOfRoom.titleLabel.text];
+    self.intraOp.anesthesiaTimeOut = [self getDateFromString:self.anesthesiaTimeOut.titleLabel.text];
+    self.intraOp.surgicalTimeOut = [self getDateFromString:self.surgicalTimeOut.titleLabel.text];
     self.intraOp.orLocation = self.location.text;
     self.intraOp.provider = self.provider.text;
     [BBUtil saveContext];

@@ -28,9 +28,15 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    NSURL *url;
     [super viewDidAppear:animated];
-    self.navigationItem.title = self.form.title;
-    NSURL *url = [NSURL fileURLWithPath:[BBPdfGenerator getPDFFileNameForForm:self.form] isDirectory:NO];
+    if (self.form) {
+        self.navigationItem.title = self.form.title;
+         url = [NSURL fileURLWithPath:[BBPdfGenerator getPDFFileNameForForm:self.form] isDirectory:NO];
+    } else if (self.intraOp) {
+        url = [NSURL fileURLWithPath:[BBPdfGenerator getPDFFileNameForIntraOp:self.intraOp] isDirectory:NO];
+    }
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
 }

@@ -30,6 +30,9 @@
 #import "StringListElement.h"
 #import "Allergy.h"
 #import "IntraOpDetailsViewController.h"
+#import "AnesthesiaRecordController.h"
+#import "IntraOpPdfGenerator.h"
+#import "PDFDisplayViewController.h"
 
 @interface IntraOpViewController () <UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *allergyListTextView;
@@ -377,7 +380,7 @@
 
 -(float)convertBPValueToGridY:(float)yPointRate {
     
-    return (self.bloodPressureDrawingView.bounds.size.height -((yPointRate/220.0)*self.bloodPressureDrawingView.bounds.size.height));
+    return (self.bloodPressureDrawingView.bounds.size.height -((yPointRate/240.0)*self.bloodPressureDrawingView.bounds.size.height));
 }
 
 -(void)populateBPGrid
@@ -397,7 +400,7 @@
         UIView *rateView = [[UIView alloc] init];
         [rateView setBackgroundColor:[UIColor grayColor]];
         rateView.userInteractionEnabled = NO;
-        rateView.frame = CGRectMake(XCoord-10, [self convertBPValueToGridY:yPointRate], 20, 20);
+        rateView.frame = CGRectMake(XCoord-10, [self convertBPValueToGridY:yPointRate]-10, 20, 20);
         rateView.layer.cornerRadius = 10;
         CGMutablePathRef path = CGPathCreateMutable();
         /* Systolic */
@@ -451,4 +454,31 @@
     vc.intraOp = self.intraOp;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
+- (IBAction)showAnesthesiaRecord:(id)sender {
+    AnesthesiaRecordController *vc = [[AnesthesiaRecordController alloc] init];;
+    for (Form *f in self.intraOp.operation.forms) {
+        if ([f.title isEqualToString:@"Anesthesia Record"]) {
+            vc.form = f;
+        }
+    }
+    if (!vc.form) {
+        Form *f = (Form*)[BBUtil newCoreDataObjectForEntityName:@"Form"];
+        f.title = @"Anesthesia Record";
+        [self.intraOp.operation addFormsObject:f];
+        vc.form = f;
+    }
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
+
+- (IBAction)showPDF:(id)sender {
+    IntraOpPdfGenerator *pdfGen = [[IntraOpPdfGenerator alloc] initWithIntraOp:self.intraOp];
+    [pdfGen generateIntraOpPDF];
+    PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
+    vc.intraOp = self.intraOp;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+
 @end

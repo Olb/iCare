@@ -53,6 +53,7 @@
     <entity name="IntraOp" representedClassName="IntraOp" syncable="YES">
         <attribute name="anesthesiaEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="anesthesiaStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="anesthesiaTimeOut" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="orLocation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="outOfRoom" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="preOpEnd" optional="YES" attributeType="Date" syncable="YES"/>
@@ -60,6 +61,7 @@
         <attribute name="procedureEnd" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="procedureStart" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="provider" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surgicalTimeOut" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="agent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Agent" inverseName="intraop" inverseEntity="Agent" syncable="YES"/>
         <relationship name="allergies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Allergy" inverseName="intraop" inverseEntity="Allergy" syncable="YES"/>
         <relationship name="bloodPressures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BloodPressure" inverseName="intraOp" inverseEntity="BloodPressure" syncable="YES"/>
@@ -116,6 +118,7 @@
     </entity>
     <elements>
         <element name="Agent" positionX="-387" positionY="-369" width="128" height="180"/>
+        <element name="Allergy" positionX="-378" positionY="-351" width="128" height="73"/>
         <element name="AntibioticFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="BloodPressure" positionX="-378" positionY="-351" width="128" height="133"/>
         <element name="BooleanFormElement" positionX="214" positionY="-247" width="128" height="58"/>
@@ -123,7 +126,7 @@
         <element name="Form" positionX="-432" positionY="-306" width="128" height="90"/>
         <element name="FormElement" positionX="43" positionY="-306" width="128" height="73"/>
         <element name="FormSection" positionX="-279" positionY="-304" width="128" height="105"/>
-        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="253"/>
+        <element name="IntraOp" positionX="-171" positionY="-495" width="128" height="285"/>
         <element name="Measurement" positionX="-387" positionY="-360" width="128" height="133"/>
         <element name="MedicationFormElement" positionX="-387" positionY="-369" width="128" height="103"/>
         <element name="Operation" positionX="-281" positionY="-504" width="128" height="165"/>
@@ -131,6 +134,5 @@
         <element name="Practitioner" positionX="-594" positionY="-492" width="128" height="150"/>
         <element name="StringListElement" positionX="216" positionY="-328" width="128" height="58"/>
         <element name="TextElement" positionX="-387" positionY="-369" width="128" height="58"/>
-        <element name="Allergy" positionX="-378" positionY="-351" width="128" height="73"/>
     </elements>
 </model>

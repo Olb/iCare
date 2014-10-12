@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Form.h"
+#import "IntraOp.h"
 @interface PDFDisplayViewController : UIViewController
 @property (strong, nonatomic) Form *form;
+@property (strong, nonatomic) IntraOp *intraOp;
 @end

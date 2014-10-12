@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28034B3919C25B4200DB0A1E /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 28034B3819C25B4200DB0A1E /* Patient.m */; };
 		28058DF219E6E4440086DC06 /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28058DF119E6E4440086DC06 /* CustomLayer.m */; };
+		280D6E0119EA0618000ABFC6 /* IntraOpPdfGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 280D6E0019EA0618000ABFC6 /* IntraOpPdfGenerator.m */; };
 		280ECCAD19D611B3005FE3AF /* PDFDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */; };
 		280ECCB219D61941005FE3AF /* AnesthesiaRecord.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */; };
 		2812704219C76081009A9644 /* FormGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812704119C76081009A9644 /* FormGroup.m */; };
@@ -98,6 +99,7 @@
 		289BDC8F19CBBEC000C683E7 /* PostOpDiagnosis.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC8E19CBBEC000C683E7 /* PostOpDiagnosis.xml */; };
 		289BDC9119CBD96A00C683E7 /* PostProcedureGeneral.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC9019CBD96A00C683E7 /* PostProcedureGeneral.xml */; };
 		289BDC9319CBDAAB00C683E7 /* SpinalAnesthesia.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289BDC9219CBDAAB00C683E7 /* SpinalAnesthesia.xml */; };
+		28A0604519E9F845003F5051 /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A0604419E9F845003F5051 /* IntraOp.m */; };
 		28A1345719E9835000F5B52D /* FormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1345619E9835000F5B52D /* FormSection.m */; };
 		28A1345B19E98F1B00F5B52D /* OccurrenceDetails.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28A1345A19E98F1B00F5B52D /* OccurrenceDetails.xml */; };
 		28A1345E19E99E7400F5B52D /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1345D19E99E7400F5B52D /* Operation.m */; };
@@ -107,7 +109,6 @@
 		28A1347219E9D7A800F5B52D /* Allergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1347119E9D7A800F5B52D /* Allergy.m */; };
 		28A1347619E9DDF700F5B52D /* IntraOpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1347419E9DDF700F5B52D /* IntraOpDetailsViewController.m */; };
 		28A1347719E9DDF700F5B52D /* IntraOpDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A1347519E9DDF700F5B52D /* IntraOpDetailsViewController.xib */; };
-		28A1347D19E9E5BD00F5B52D /* IntraOp.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1347C19E9E5BD00F5B52D /* IntraOp.m */; };
 		28AA355319C5D64A001453CE /* BBHeightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AA355219C5D64A001453CE /* BBHeightAdapter.m */; };
 		28AA355919C60539001453CE /* perlxml.pl in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355719C60539001453CE /* perlxml.pl */; };
 		28AA355A19C60539001453CE /* PreOpActions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28AA355819C60539001453CE /* PreOpActions.xml */; };
@@ -271,6 +272,8 @@
 		28034B3819C25B4200DB0A1E /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
 		28058DF019E6E4440086DC06 /* CustomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayer.h; sourceTree = "<group>"; };
 		28058DF119E6E4440086DC06 /* CustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
+		280D6DFF19EA0618000ABFC6 /* IntraOpPdfGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpPdfGenerator.h; sourceTree = "<group>"; };
+		280D6E0019EA0618000ABFC6 /* IntraOpPdfGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOpPdfGenerator.m; sourceTree = "<group>"; };
 		280ECCAA19D611B3005FE3AF /* PDFDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDisplayViewController.h; sourceTree = "<group>"; };
 		280ECCAB19D611B3005FE3AF /* PDFDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDisplayViewController.m; sourceTree = "<group>"; };
 		280ECCB119D61941005FE3AF /* AnesthesiaRecord.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = AnesthesiaRecord.pdf; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 		289BDC8E19CBBEC000C683E7 /* PostOpDiagnosis.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PostOpDiagnosis.xml; sourceTree = "<group>"; };
 		289BDC9019CBD96A00C683E7 /* PostProcedureGeneral.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PostProcedureGeneral.xml; sourceTree = "<group>"; };
 		289BDC9219CBDAAB00C683E7 /* SpinalAnesthesia.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SpinalAnesthesia.xml; sourceTree = "<group>"; };
+		28A0604319E9F845003F5051 /* IntraOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOp.h; sourceTree = "<group>"; };
+		28A0604419E9F845003F5051 /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
 		28A1345519E9835000F5B52D /* FormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormSection.h; sourceTree = "<group>"; };
 		28A1345619E9835000F5B52D /* FormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormSection.m; sourceTree = "<group>"; };
 		28A1345A19E98F1B00F5B52D /* OccurrenceDetails.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OccurrenceDetails.xml; sourceTree = "<group>"; };
@@ -405,8 +410,6 @@
 		28A1347319E9DDF700F5B52D /* IntraOpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpDetailsViewController.h; sourceTree = "<group>"; };
 		28A1347419E9DDF700F5B52D /* IntraOpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOpDetailsViewController.m; sourceTree = "<group>"; };
 		28A1347519E9DDF700F5B52D /* IntraOpDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntraOpDetailsViewController.xib; sourceTree = "<group>"; };
-		28A1347B19E9E5BD00F5B52D /* IntraOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOp.h; sourceTree = "<group>"; };
-		28A1347C19E9E5BD00F5B52D /* IntraOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOp.m; sourceTree = "<group>"; };
 		28AA355119C5D64A001453CE /* BBHeightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHeightAdapter.h; sourceTree = "<group>"; };
 		28AA355219C5D64A001453CE /* BBHeightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHeightAdapter.m; sourceTree = "<group>"; };
 		28AA355719C60539001453CE /* perlxml.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = perlxml.pl; sourceTree = "<group>"; };
@@ -727,8 +730,8 @@
 		281270B319C7E496009A9644 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				28A1347B19E9E5BD00F5B52D /* IntraOp.h */,
-				28A1347C19E9E5BD00F5B52D /* IntraOp.m */,
+				28A0604319E9F845003F5051 /* IntraOp.h */,
+				28A0604419E9F845003F5051 /* IntraOp.m */,
 				28A1347019E9D7A800F5B52D /* Allergy.h */,
 				28A1347119E9D7A800F5B52D /* Allergy.m */,
 				281DF33E19E65C7B00E3B4E8 /* BloodPressure.h */,
@@ -1173,6 +1176,8 @@
 				98DA485219C897DA00E4727B /* BBPdfGenerator.m */,
 				98DA485819C9031200E4727B /* BBPdfSectionBuilder.h */,
 				98DA485919C9031200E4727B /* BBPdfSectionBuilder.m */,
+				280D6DFF19EA0618000ABFC6 /* IntraOpPdfGenerator.h */,
+				280D6E0019EA0618000ABFC6 /* IntraOpPdfGenerator.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1457,7 +1462,7 @@
 				F4AFB95F19ABC11900CA013B /* BBNewPatientViewController.m in Sources */,
 				281270BB19C87200009A9644 /* MedicationsSupplementsViewController.m in Sources */,
 				281DF31419E600E400E3B4E8 /* Group3ViewController.m in Sources */,
-				28A1347D19E9E5BD00F5B52D /* IntraOp.m in Sources */,
+				28A0604519E9F845003F5051 /* IntraOp.m in Sources */,
 				28058DF219E6E4440086DC06 /* CustomLayer.m in Sources */,
 				281DF30519E5FF0400E3B4E8 /* PostOpTableViewController.m in Sources */,
 				281270D519C8808E009A9644 /* PhysicalExamViewController.m in Sources */,
@@ -1466,6 +1471,7 @@
 				988D167F19AE63A2009A887A /* IntubationViewController.m in Sources */,
 				28CCCB3219C3A00200B2A0C6 /* BPBPatientBioViewController.m in Sources */,
 				F417DB6F19AE8F9400F13178 /* DataModel.xcdatamodeld in Sources */,
+				280D6E0119EA0618000ABFC6 /* IntraOpPdfGenerator.m in Sources */,
 				988D167119AE63A2009A887A /* EndotrachealTubeViewController.m in Sources */,
 				F48AAEDC19BE1C2D0051A168 /* OperationsTableAdapter.m in Sources */,
 				F4AFB92F19ABAF2000CA013B /* CardioViewController.m in Sources */,

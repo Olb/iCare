@@ -18,6 +18,7 @@
 #import "StringListElement.h"
 #import "BBPdfSectionBuilder.h"
 #import "BBUtil.h"
+#import "IntraOp.h"
 
 #define PAGE_WIDTH 612
 #define PAGE_HEIGHT 792
@@ -44,6 +45,26 @@
     NSLog(@"NAME:%@", pdfFileName);
     return pdfFileName;
     
+}
+
++(NSString*)getPDFFileNameForIntraOp:(IntraOp*)form
+{
+    NSString* fileNameToPassToPDFRenderer = [NSString stringWithFormat:@"%@%@%@%@.pdf",
+                                             @"IntraOp",
+                                             form.operation.patient.lastName,
+                                             form.operation.name,
+                                             form.anesthesiaStart];
+    
+    NSArray *arrayPaths =
+    NSSearchPathForDirectoriesInDomains(
+                                        NSDocumentDirectory,
+                                        NSUserDomainMask,
+                                        YES);
+    NSString *path = [arrayPaths objectAtIndex:0];
+    NSString* pdfFileName = [path stringByAppendingPathComponent:fileNameToPassToPDFRenderer];
+    
+    NSLog(@"NAME:%@", pdfFileName);
+    return pdfFileName;
 }
 
 + (bool) generatePdfForForm:(Form*)form

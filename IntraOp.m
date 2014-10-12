@@ -16,19 +16,21 @@
 
 @implementation IntraOp
 
-@dynamic preOpStart;
-@dynamic preOpEnd;
-@dynamic anesthesiaStart;
 @dynamic anesthesiaEnd;
+@dynamic anesthesiaStart;
 @dynamic orLocation;
-@dynamic provider;
-@dynamic procedureStart;
-@dynamic procedureEnd;
 @dynamic outOfRoom;
+@dynamic preOpEnd;
+@dynamic preOpStart;
+@dynamic procedureEnd;
+@dynamic procedureStart;
+@dynamic provider;
+@dynamic anesthesiaTimeOut;
+@dynamic surgicalTimeOut;
 @dynamic agent;
+@dynamic allergies;
 @dynamic bloodPressures;
 @dynamic measurements;
 @dynamic operation;
-@dynamic allergies;
 
 @end
