@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -10,6 +9,7 @@
                 <outlet property="dosePickerView" destination="uJ7-mn-0Qy" id="Fa9-pG-2Se"/>
                 <outlet property="isContinuous" destination="uGw-pO-ohU" id="FN1-Da-Un9"/>
                 <outlet property="medicationPickerView" destination="DMj-cf-BNZ" id="xuP-jY-kBj"/>
+                <outlet property="stopButton" destination="omt-SZ-UR0" id="0ur-sh-5bD"/>
                 <outlet property="view" destination="BHy-Rm-dNS" id="noS-P7-psg"/>
             </connections>
         </placeholder>
@@ -39,22 +39,29 @@
                     </items>
                 </navigationBar>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTr-2u-0x1">
-                    <rect key="frame" x="209" y="298" width="114" height="37"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBD-hK-h9e">
-                    <rect key="frame" x="160" y="546" width="170" height="37"/>
+                    <rect key="frame" x="233" y="281" width="114" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJ7-mn-0Qy">
-                    <rect key="frame" x="81" y="322" width="370" height="216"/>
+                    <rect key="frame" x="23" y="322" width="550" height="216"/>
                 </pickerView>
+                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-cf-BNZ">
+                    <rect key="frame" x="23" y="57" width="251" height="216"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="6TE-aF-GkE"/>
+                        <outlet property="delegate" destination="-1" id="45I-ft-aKw"/>
+                    </connections>
+                </pickerView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBD-hK-h9e">
+                    <rect key="frame" x="325" y="120" width="170" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGw-pO-ohU" customClass="BBCheckBox">
-                    <rect key="frame" x="338" y="549" width="34" height="32"/>
+                    <rect key="frame" x="503" y="123" width="34" height="32"/>
                     <state key="normal" image="checkbox_unselected.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -63,13 +70,15 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="notSelectedImageName" value="checkbox_unselected.png"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-cf-BNZ">
-                    <rect key="frame" x="81" y="63" width="370" height="216"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omt-SZ-UR0">
+                    <rect key="frame" x="325" y="199" width="206" height="30"/>
+                    <state key="normal" title="Stop continuous medication">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="6TE-aF-GkE"/>
-                        <outlet property="delegate" destination="-1" id="45I-ft-aKw"/>
+                        <action selector="stopContinuousMedication:" destination="-1" eventType="touchUpInside" id="ytL-wv-5yy"/>
                     </connections>
-                </pickerView>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

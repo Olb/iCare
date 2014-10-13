@@ -39,14 +39,13 @@
     [super viewDidLoad];
     self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
     if (self.agent) {
+        NSLog(@"Agent: %@",self.agent );
         [self.dosePickerAdapter setFloatValue:self.agent.dose];
         [self.dosePickerAdapter setUnit:self.agent.unit];
         if ([self.agent.continuous boolValue] && !self.agent.endTime){
             self.stopButton.hidden = NO;
-        } else {
-            NSLog(@"continuous: %@ startTime:%@ endTime: %@",self.agent.continuous, self.agent.startTime, self.agent.endTime);
         }
-        for (int i; i < [BBData gases].count; i++){
+        for (int i = 0; i < [BBData gases].count; i++){
             if ([[[BBData gases] objectAtIndex:i] isEqualToString:self.agent.name]){
                 [self.gasPickerView selectRow:i inComponent:0 animated:NO];
                 break;

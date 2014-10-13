@@ -75,6 +75,7 @@
 		2838DE3119CB36880025F7DE /* InvasiveLines.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2838DE3019CB36880025F7DE /* InvasiveLines.xml */; };
 		284819E619D9AF2A00E0ED21 /* PDFDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */; };
 		284819E819D9B9CF00E0ED21 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284819E719D9B9CF00E0ED21 /* MessageUI.framework */; };
+		284AFD8219EB4A8B0015D330 /* MeasurementLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 284AFD8119EB4A8B0015D330 /* MeasurementLabel.m */; };
 		28566D5119D1AF45000124CB /* FirstTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5019D1AF45000124CB /* FirstTest.m */; };
 		28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5619D1D873000124CB /* MedicationFormElement.m */; };
 		288D1E2019DDCD55008EF1B7 /* IntraOpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */; };
@@ -104,8 +105,6 @@
 		28A1345B19E98F1B00F5B52D /* OccurrenceDetails.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28A1345A19E98F1B00F5B52D /* OccurrenceDetails.xml */; };
 		28A1345E19E99E7400F5B52D /* Operation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1345D19E99E7400F5B52D /* Operation.m */; };
 		28A1346119E9A5F700F5B52D /* EditPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1346019E9A5F700F5B52D /* EditPatientViewController.m */; };
-		28A1346519E9D2BB00F5B52D /* EditSubstanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1346319E9D2BB00F5B52D /* EditSubstanceViewController.m */; };
-		28A1346619E9D2BB00F5B52D /* EditSubstanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A1346419E9D2BB00F5B52D /* EditSubstanceViewController.xib */; };
 		28A1347219E9D7A800F5B52D /* Allergy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1347119E9D7A800F5B52D /* Allergy.m */; };
 		28A1347619E9DDF700F5B52D /* IntraOpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A1347419E9DDF700F5B52D /* IntraOpDetailsViewController.m */; };
 		28A1347719E9DDF700F5B52D /* IntraOpDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A1347519E9DDF700F5B52D /* IntraOpDetailsViewController.xib */; };
@@ -362,6 +361,8 @@
 		2838DE3019CB36880025F7DE /* InvasiveLines.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = InvasiveLines.xml; sourceTree = "<group>"; };
 		284819E519D9AF2A00E0ED21 /* PDFDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFDisplayViewController.xib; sourceTree = "<group>"; };
 		284819E719D9B9CF00E0ED21 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		284AFD8019EB4A8B0015D330 /* MeasurementLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurementLabel.h; sourceTree = "<group>"; };
+		284AFD8119EB4A8B0015D330 /* MeasurementLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurementLabel.m; sourceTree = "<group>"; };
 		28566D5019D1AF45000124CB /* FirstTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTest.m; sourceTree = "<group>"; };
 		28566D5519D1D873000124CB /* MedicationFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationFormElement.h; sourceTree = "<group>"; };
 		28566D5619D1D873000124CB /* MedicationFormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationFormElement.m; sourceTree = "<group>"; };
@@ -402,9 +403,6 @@
 		28A1345D19E99E7400F5B52D /* Operation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Operation.m; sourceTree = "<group>"; };
 		28A1345F19E9A5F700F5B52D /* EditPatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditPatientViewController.h; path = ../EditPatientViewController.h; sourceTree = "<group>"; };
 		28A1346019E9A5F700F5B52D /* EditPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditPatientViewController.m; path = ../EditPatientViewController.m; sourceTree = "<group>"; };
-		28A1346219E9D2BB00F5B52D /* EditSubstanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditSubstanceViewController.h; sourceTree = "<group>"; };
-		28A1346319E9D2BB00F5B52D /* EditSubstanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditSubstanceViewController.m; sourceTree = "<group>"; };
-		28A1346419E9D2BB00F5B52D /* EditSubstanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditSubstanceViewController.xib; sourceTree = "<group>"; };
 		28A1347019E9D7A800F5B52D /* Allergy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Allergy.h; sourceTree = "<group>"; };
 		28A1347119E9D7A800F5B52D /* Allergy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Allergy.m; sourceTree = "<group>"; };
 		28A1347319E9DDF700F5B52D /* IntraOpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpDetailsViewController.h; sourceTree = "<group>"; };
@@ -831,9 +829,6 @@
 				28C0E93719E1AF8F00F89AB3 /* AddGasViewController.h */,
 				28C0E93819E1AF8F00F89AB3 /* AddGasViewController.m */,
 				28C0E93919E1AF8F00F89AB3 /* AddGasViewController.xib */,
-				28A1346219E9D2BB00F5B52D /* EditSubstanceViewController.h */,
-				28A1346319E9D2BB00F5B52D /* EditSubstanceViewController.m */,
-				28A1346419E9D2BB00F5B52D /* EditSubstanceViewController.xib */,
 				98734D5819E4C1C7002675E0 /* AddMedicationViewController.h */,
 				98734D5919E4C1C7002675E0 /* AddMedicationViewController.m */,
 				98734D5A19E4C1C7002675E0 /* AddMedicationViewController.xib */,
@@ -849,6 +844,8 @@
 				98AD9D6E19E5C011000A75F3 /* MeasurementTableAdapter.m */,
 				288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */,
 				288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */,
+				284AFD8019EB4A8B0015D330 /* MeasurementLabel.h */,
+				284AFD8119EB4A8B0015D330 /* MeasurementLabel.m */,
 				28058DF019E6E4440086DC06 /* CustomLayer.h */,
 				28058DF119E6E4440086DC06 /* CustomLayer.m */,
 				28F6DF5719E2D6F6000BA316 /* GridConstants.h */,
@@ -1365,7 +1362,6 @@
 				281270A019C7DB1C009A9644 /* Hepato.xml in Resources */,
 				98AD9D7F19E6132F000A75F3 /* Group2.xml in Resources */,
 				F4AFB93F19ABB65000CA013B /* EndocrineViewController.xib in Resources */,
-				28A1346619E9D2BB00F5B52D /* EditSubstanceViewController.xib in Resources */,
 				289A97CC19DB061600300091 /* up_arrow_unselected.png in Resources */,
 				281270B019C7E371009A9644 /* PreOpReview.xml in Resources */,
 				281270B519C7E4C1009A9644 /* Respiratory.xml in Resources */,
@@ -1448,6 +1444,7 @@
 				28C0E93E19E1B5CB00F89AB3 /* NumericPickerAdapter.m in Sources */,
 				281270C519C87366009A9644 /* AllergiesReactionsViewController.m in Sources */,
 				985B835B19C1FBA9007DF484 /* StringArrayTableAdapter.m in Sources */,
+				284AFD8219EB4A8B0015D330 /* MeasurementLabel.m in Sources */,
 				28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */,
 				28CCCB4D19C3A8B800B2A0C6 /* BBWeightPickerView.m in Sources */,
 				F4AFB95C19ABBF9900CA013B /* BBPatientFormsViewController.m in Sources */,
@@ -1512,7 +1509,6 @@
 				281270DF19C894A8009A9644 /* PreOpActionsViewController.m in Sources */,
 				98FF061019BE01F40003129C /* BBAutoCompleteTextField.m in Sources */,
 				98AD9D6119E4CC93000A75F3 /* Agent.m in Sources */,
-				28A1346519E9D2BB00F5B52D /* EditSubstanceViewController.m in Sources */,
 				28A1347619E9DDF700F5B52D /* IntraOpDetailsViewController.m in Sources */,
 				988D168319AE63A2009A887A /* IVAntibioticNameViewController.m in Sources */,
 				F4B5D57319ACCE1800174F61 /* DiagnosticStudiesViewController.m in Sources */,

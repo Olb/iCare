@@ -69,7 +69,17 @@
         cell.bounds = CGRectMake(0, 0, cell.bounds.size.width, 22.0);
     }
     Agent *agent = (Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", agent.name, agent.unit];
+    NSString *agentUnit;
+    if ([agent.unit characterAtIndex:0] == '/') {
+        NSRange range = {1, agent.unit.length-1};
+        agentUnit = [agent.unit substringWithRange:range];
+    }else if ([agent.unit characterAtIndex:[agent.unit length] - 1 ] == '/') {
+        NSRange range = {0, agent.unit.length-2};
+        agentUnit = [agent.unit substringWithRange:range];
+    } else {
+        agentUnit = agent.unit;
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", agent.name, agentUnit];
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
 
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];

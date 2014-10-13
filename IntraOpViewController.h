@@ -22,4 +22,6 @@
 -(UILabel*)viewForMeasurement:(Measurement*)measurement forCell:(UITableViewCell*)cell;
 -(void)scrollToBeginning;
 -(void)pageForTime:(NSDate*)timeToScroll;
+-(void)setUserInteraction:(BOOL)enable;
+-(void)startAnesthesia;
 @end

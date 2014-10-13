@@ -34,6 +34,7 @@
 #import "IntraOpPdfGenerator.h"
 #import "PDFDisplayViewController.h"
 #import "BBPdfGenerator.h"
+#import "MeasurementLabel.h"
 
 @interface IntraOpViewController () <UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *allergyListTextView;
@@ -60,13 +61,26 @@
 @property (weak, nonatomic) IBOutlet IntraOpGrid *bloodPressureDrawingView;
 @property NSDate* lastTouchTime;
 @property BOOL bpGridViewShowing;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *gasButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *medicationButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *fluidButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *monitorsButton;
+@property (weak, nonatomic) IBOutlet UIView *disabledView;
+
+
 @end
 
 @implementation IntraOpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setUserInteraction:NO];
+    
     [self loadAllergies];
+    UITapGestureRecognizer *disabledViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDisabledAlert:)];
+    [self.disabledView addGestureRecognizer:disabledViewGesture];
+    [self.disabledView setUserInteractionEnabled:YES];
     self.bpGridView =  [[[NSBundle mainBundle] loadNibNamed:@"IntraOpBPView" owner:self options:nil] objectAtIndex:0];
     self.bpGridViewShowing = NO;
     
@@ -87,9 +101,11 @@
     }
     
     self.timeScrollView.pxPerMinute = COLUMN_INTERVAL_WIDTH/15.0;
-    self.intraOp.anesthesiaStart = [NSDate date];
-    self.intraOp.anesthesiaEnd = [self.intraOp.anesthesiaStart dateByAddingTimeInterval:(60*60*2)];
-    [self.timeScrollView setStartTime:self.intraOp.anesthesiaStart];
+    if (self.intraOp.anesthesiaStart) {
+        [self.timeScrollView setStartTime:self.intraOp.anesthesiaStart];
+    } else {
+        [self.timeScrollView setStartTime:[NSDate date]];
+    }
     self.timeScrollView.onScroll = ^{
         [self reloadTables];
     };
@@ -132,10 +148,23 @@
     
 }
 
+-(void)startAnesthesia
+{
+    [self.timeScrollView setStartTime:self.intraOp.anesthesiaStart];
+    self.timeScrollView.onScroll = ^{
+        [self reloadTables];
+    };
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self reloadTables];
+    if (self.intraOp.anesthesiaStart && !self.intraOp.anesthesiaEnd) {
+        [self setUserInteraction:YES];
+    } else {
+        [self setUserInteraction:NO];
+    }
 }
 
 -(void)viewDidLayoutSubviews
@@ -156,6 +185,34 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)showDisabledAlert:(UITapGestureRecognizer*)gesture
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"PreOp Disabled" message:@"PreOp interaction disabled until Anesthesia Start Time is set" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+}
+
+-(void)setUserInteraction:(BOOL)enable
+{
+    if (enable) {
+        self.gasButton.enabled = YES;
+        self.medicationButton.enabled = YES;
+        self.fluidButton.enabled = YES;
+        self.monitorsButton.enabled = YES;
+        self.disabledView.hidden = YES;
+        self.gridView.userInteractionEnabled = YES;
+        [self.disabledView setUserInteractionEnabled:NO];
+
+    } else {
+        self.gasButton.enabled = NO;
+        self.medicationButton.enabled = NO;
+        self.fluidButton.enabled = NO;
+        self.monitorsButton.enabled = NO;
+        self.disabledView.hidden = NO;
+        self.gridView.userInteractionEnabled = NO;
+        [self.disabledView setUserInteractionEnabled:YES];
+    }
 }
 
 - (IBAction)addGass:(id)sender {
@@ -199,18 +256,21 @@
             [self reloadTables];
         }];
         vc.agent = agent;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     } else if ([agent.type isEqualToString:@"Medication"]) {
         AddMedicationViewController *vc = [[AddMedicationViewController alloc] initWithIntraOp:self.intraOp completion:^{
             [self reloadTables];
         }];
         vc.agent = agent;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     } else if ([agent.type isEqualToString:@"Fluid"]) {
         AddFluidViewController *vc = [[AddFluidViewController alloc] initWithIntraOp:self.intraOp completion:^{
             [self reloadTables];
         }];
         vc.agent = agent;
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
         [self.navigationController presentViewController:vc animated:YES completion:nil];
     } else {
         [NSException raise:@"UnknownAgentType" format:@"type = %@",agent.type];
@@ -257,12 +317,25 @@
     return doseView;
 }
 
-
+-(void)editMeasurement:(UITapGestureRecognizer*)gesture
+{
+    AddMeasurementsViewController *vc = [[AddMeasurementsViewController alloc] initWithIntraOp:self.intraOp completion:^{
+        [self reloadTables];
+    }];
+    vc.measurement = ((MeasurementLabel*)gesture.view).measurement;
+    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+}
 -(UILabel*)viewForMeasurement:(Measurement*)measurement forCell:(UITableViewCell*)cell{
-    UILabel *label = [[UILabel alloc] init];
+    MeasurementLabel *label = [[MeasurementLabel alloc] init];
+    label.measurement = measurement;
     label.text = measurement.value;
     label.textAlignment = NSTextAlignmentCenter;
+    UITapGestureRecognizer *g = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editMeasurement:)];
+    [label setUserInteractionEnabled:YES];
+    [label addGestureRecognizer:g];
     
+    NSLog(@"Measurement Start Time: %@, \nxCoord:%d",measurement.time, [self.timeScrollView dateToXCoord:measurement.time]);
     label.frame = CGRectMake( [self.timeScrollView dateToXCoord:measurement.time] + FIRST_COLUMN_X_COORD, 0, COLUMN_INTERVAL_WIDTH, cell.bounds.size.height );
     
     return label;
@@ -284,6 +357,9 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (!self.gridView.userInteractionEnabled) {
+        return;
+    }
     if (self.bpGridViewShowing) {
         return;
     }
@@ -484,6 +560,7 @@
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     vc.modalPresentationStyle = UIModalPresentationFormSheet;
     vc.intraOp = self.intraOp;
+    vc.intraOpViewController = self;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)showAnesthesiaRecord:(id)sender {

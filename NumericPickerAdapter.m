@@ -142,9 +142,6 @@
     for (int i = 0; i < self.format.length; i++) {
         if ([self.format characterAtIndex:i] == 'u') {
             NSString *unit = [self pickerView:self.pickerView titleForRow:[self.pickerView selectedRowInComponent:i] forComponent:i];
-            if (unit.length == 0){
-                continue;
-            }
             if (!firstUnit){
                 [value appendString:@"/"];
             }

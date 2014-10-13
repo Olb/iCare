@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -11,6 +10,7 @@
                 <outlet property="fluidPickerView" destination="mve-2v-HGT" id="jw4-So-whJ"/>
                 <outlet property="intervalPickerView" destination="ajC-OQ-SHc" id="Bhs-hI-Cwk"/>
                 <outlet property="isContinuous" destination="sWC-f9-3XB" id="ciL-gB-mgV"/>
+                <outlet property="stopButton" destination="Syj-jL-BCT" id="7Zp-Ce-ssN"/>
                 <outlet property="view" destination="gBM-bw-PzZ" id="0Jx-qE-FZb"/>
             </connections>
         </placeholder>
@@ -60,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continuous?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3v-fq-r9g">
-                    <rect key="frame" x="160" y="546" width="170" height="37"/>
+                    <rect key="frame" x="80" y="546" width="170" height="37"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                     <rect key="frame" x="49" y="322" width="435" height="216"/>
                 </pickerView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWC-f9-3XB" customClass="BBCheckBox">
-                    <rect key="frame" x="338" y="549" width="34" height="32"/>
+                    <rect key="frame" x="258" y="549" width="34" height="32"/>
                     <state key="normal" image="checkbox_unselected.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -84,6 +84,15 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syj-jL-BCT">
+                    <rect key="frame" x="363" y="549" width="123" height="30"/>
+                    <state key="normal" title="Stop fluid button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="stopContinous:" destination="-1" eventType="touchUpInside" id="8Ey-Ju-Ib7"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

@@ -1123,7 +1123,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOO-8m-e1J">
-                                        <rect key="frame" x="0.0" y="938" width="768" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="938" width="768" height="44"/>
                                         <items>
                                             <barButtonItem title="Gas" id="EYV-eS-w95">
                                                 <connections>
@@ -1156,6 +1156,10 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fq4-7u-FBD">
+                                        <rect key="frame" x="20" y="30" width="729" height="903"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.95172787410000004" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1172,11 +1176,16 @@
                     <connections>
                         <outlet property="allergyListTextView" destination="RiL-GC-MDA" id="66a-cj-bNz"/>
                         <outlet property="bloodPressureDrawingView" destination="VAC-uI-Rxd" id="vwF-Qa-luW"/>
+                        <outlet property="disabledView" destination="fq4-7u-FBD" id="hxU-Ny-H0d"/>
                         <outlet property="eblTableView" destination="5Sa-BK-lpk" id="HMn-Hn-L4X"/>
+                        <outlet property="fluidButton" destination="tCT-hp-DAS" id="a0m-XZ-ZRN"/>
                         <outlet property="fluidTableView" destination="B5m-i5-orG" id="CAL-eA-9eJ"/>
+                        <outlet property="gasButton" destination="EYV-eS-w95" id="TfG-CZ-hnh"/>
                         <outlet property="gasTableView" destination="Nzu-Wo-ibv" id="e6a-h0-W7o"/>
                         <outlet property="gridView" destination="23A-ZK-RSs" id="jxs-nx-CTT"/>
+                        <outlet property="medicationButton" destination="1dn-hS-gdk" id="9fX-14-uRG"/>
                         <outlet property="medicationTableView" destination="6sq-bH-MKE" id="uJH-fj-HMn"/>
+                        <outlet property="monitorsButton" destination="4gY-dw-Mr0" id="g5S-2e-jwn"/>
                         <outlet property="timeScrollView" destination="Uew-mb-ySV" id="IqC-go-rwi"/>
                         <outlet property="ventsTableView" destination="t8l-og-gUN" id="Yej-ML-seS"/>
                         <outlet property="vitalsTableView" destination="mCY-m1-Mle" id="rjC-LR-2fc"/>

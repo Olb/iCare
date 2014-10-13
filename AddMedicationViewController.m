@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *medicationPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *dosePickerView;
 @property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @property IntraOp *intraOp;
 @property NumericPickerAdapter* dosePickerAdapter;
@@ -39,6 +40,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u/u", @[@"mcg"],@[@"kg",@""],@[@"",@"min",@"hr"], nil];
+    
+    if (self.agent) {
+        NSLog(@"Agent: %@",self.agent );
+        [self.dosePickerAdapter setFloatValue:self.agent.dose];
+        [self.dosePickerAdapter setUnit:self.agent.unit];
+        if ([self.agent.continuous boolValue] && !self.agent.endTime){
+            self.stopButton.hidden = NO;
+        }
+        for (int i = 0; i < [BBData intraOpMedications].count; i++){
+            if ([[[BBData intraOpMedications] objectAtIndex:i] isEqualToString:self.agent.name]){
+                [self.medicationPickerView selectRow:i inComponent:0 animated:NO];
+                break;
+            }
+        }
+        self.isContinuous.selected = [self.agent.continuous boolValue];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,24 +71,31 @@
     NSString *unit = [self.dosePickerAdapter getUnit];
     NSString *name = [self pickerView:self.medicationPickerView titleForRow:[self.medicationPickerView selectedRowInComponent:0] forComponent:0];
     
-    Agent *agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
-    agent.name = name;
-    agent.dose = value;
-    agent.unit = unit;
-    agent.startTime = [NSDate date];
-    agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
-    agent.type = @"Medication";
+    if (!self.agent) {
+        self.agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
+        [self.intraOp addAgentObject:self.agent];
+        self.agent.startTime = [NSDate date];
+    }
+    self.agent.name = name;
+    self.agent.dose = value;
+    self.agent.unit = unit;
+    self.agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
+    
+    self.agent.type = @"Medication";
     for (Agent *a in self.intraOp.agent) {
-        if ([a.name isEqualToString:agent.name] && [a.unit isEqualToString:agent.unit] && !a.endTime && [a.continuous boolValue]) {
+        if (a!=self.agent && [a.name isEqualToString:self.agent.name] && [a.unit isEqualToString:self.agent.unit] && !a.endTime && [a.continuous boolValue]) {
             a.endTime = [NSDate date];
         }
     }
-    [self.intraOp addAgentObject:agent];
     [BBUtil saveContext];
     [self dismissViewControllerAnimated:YES completion:nil];
     self.completionBlock();
 }
 
+- (IBAction)stopContinuousMedication:(id)sender {
+    self.agent.endTime = [NSDate date];
+    self.stopButton.hidden = YES;
+}
 
 -(void)turnSwitchOn {
     [self.isContinuous setSelected:TRUE];
@@ -84,7 +108,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [BBData medications].count;
+    return [BBData intraOpMedications].count;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

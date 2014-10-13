@@ -10,7 +10,7 @@
                 <outlet property="dosePickerView" destination="fcx-oj-O89" id="L5n-ZZ-ZBu"/>
                 <outlet property="gasPickerView" destination="qo2-Vn-A0D" id="LPO-4o-EdG"/>
                 <outlet property="isContinuous" destination="f5z-aU-YOV" id="aAN-it-25j"/>
-                <outlet property="stopButton" destination="m99-Sq-g3O" id="8fZ-dV-RJW"/>
+                <outlet property="stopButton" destination="Su3-7M-fUQ" id="iof-nh-q55"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -80,16 +80,13 @@
                         <rect key="frame" x="338" y="549" width="34" height="32"/>
                     </variation>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m99-Sq-g3O">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Su3-7M-fUQ">
+                    <rect key="frame" x="280" y="219" width="161" height="30"/>
                     <state key="normal" title="Stop continuous gas">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="195" y="591" width="142" height="30"/>
-                    </variation>
                     <connections>
-                        <action selector="stopContinuousGas:" destination="-1" eventType="touchUpInside" id="0Bw-A8-qKB"/>
+                        <action selector="stopContinuousGas:" destination="-1" eventType="touchUpInside" id="rB3-mP-72r"/>
                     </connections>
                 </button>
             </subviews>
@@ -100,16 +97,6 @@
                 <constraint firstItem="Z1Y-Pr-g8v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sI1-R3-cXf"/>
             </constraints>
             <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="m99-Sq-g3O"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=regular">
-                <mask key="subviews">
-                    <include reference="m99-Sq-g3O"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>

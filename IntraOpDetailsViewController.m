@@ -10,7 +10,7 @@
 #import "BBUtil.h"
 #import "Operation.h"
 
-@interface IntraOpDetailsViewController ()
+@interface IntraOpDetailsViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *provider;
 @property (weak, nonatomic) IBOutlet UITextField *location;
 @property (weak, nonatomic) IBOutlet UIButton *preOpStart;
@@ -60,11 +60,38 @@
     [self.preOpEndButton setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
 }
 - (IBAction)startAnesthesia:(id)sender {
+    if (self.intraOp.anesthesiaEnd) {
+        return;
+    }
+    [self.intraOpViewController startAnesthesia];
     [self.anesthesiaStart setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+    [self.intraOpViewController setUserInteraction:YES];
 }
 - (IBAction)endAnesthesia:(id)sender {
-    [self.anesthesiaEnd setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+    if (self.intraOp.anesthesiaEnd) {
+        return;
+    }
+    [self confirmEndOperation];
+    
 }
+
+-(void)confirmEndOperation
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"End PreOp"
+                                                    message:@"Are you sure you want to end the PreOp? This action cannot be undone." delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"No",@"Yes", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self.anesthesiaEnd setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
+        [self.intraOpViewController setUserInteraction:NO];
+    }
+}
+
 - (IBAction)startProcedure:(id)sender {
     [self.procedureStart setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
 }

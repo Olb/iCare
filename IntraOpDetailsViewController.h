@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "IntraOp.h"
+#import "IntraOpViewController.h"
 
 @interface IntraOpDetailsViewController : UIViewController
 @property (weak) IntraOp *intraOp;
+@property (weak) IntraOpViewController *intraOpViewController;
 @end
