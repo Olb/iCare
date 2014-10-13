@@ -12,6 +12,7 @@
 #import "NumericPickerAdapter.h"
 #import "Agent.h"
 #import "BBUtil.h"
+#import "TimeScrollView.h"
 
 @interface AddGasViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *gasPickerView;
@@ -85,7 +86,9 @@
         }
     }
     [BBUtil saveContext];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.vc reloadTables];
+    }];
     self.completionBlock();
 }
 

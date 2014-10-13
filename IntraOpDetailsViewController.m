@@ -65,7 +65,7 @@
     }
     [self.intraOpViewController startAnesthesia];
     [self.anesthesiaStart setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
-    [self.intraOpViewController setUserInteraction:YES];
+    [self.intraOpViewController allowInteraction:YES];
 }
 - (IBAction)endAnesthesia:(id)sender {
     if (self.intraOp.anesthesiaEnd) {
@@ -88,7 +88,7 @@
 {
     if (buttonIndex == 1) {
         [self.anesthesiaEnd setTitle:[self stringFromDate:[NSDate date]] forState:UIControlStateNormal];
-        [self.intraOpViewController setUserInteraction:NO];
+        [self.intraOpViewController allowInteraction:NO];
     }
 }
 
@@ -124,7 +124,9 @@
     self.intraOp.orLocation = self.location.text;
     self.intraOp.provider = self.provider.text;
     [BBUtil saveContext];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.intraOpViewController scrollToBeginning];
+    }];
 }
 
 -(NSString *)stringFromDate:(NSDate*)date

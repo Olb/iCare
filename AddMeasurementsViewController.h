@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IntraOpViewController.h"
 @class IntraOp;
 @class Measurement;
 
 @interface AddMeasurementsViewController : UIViewController
 @property Measurement *measurement;
+@property (weak) IntraOpViewController *vc;
+
 - (instancetype)initWithIntraOp:(IntraOp*)intraOp completion:(void (^)(void))completionBlock;
 @end

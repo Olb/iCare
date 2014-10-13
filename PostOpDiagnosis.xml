@@ -61,6 +61,7 @@
                     </Group>
                 </Group>
             </Group>
+            <Element name="ProcedureNotes" label="Procedure Notes" width="400" marginT="16" />
         </Group>
     </Graphics>
 </Section>

@@ -8,20 +8,11 @@
     <Validation>
         
     </Validation>
-    <Graphicssss>
+    <Graphics>
         <Group orientation="vertical" >
-            <Group label="Submitted By (MD/DO/CRNA/AA)" orientation="vertical" >
-                <Group  orientation="horizontal">
-                    <Element name="SubmittedBy" />
-                    <Element name="SubmittedByDate" label="Date:"/>
-                </Group>
-            </Group>
-            <Group label="Reviewed By (MD/DO/CRNA/AA)" orientation="vertical" >
-                <Group  orientation="horizontal">
-                    <Element name="ReviewedBy" />
-                    <Element name="ReviewedByDate" label="Date:"/>
-                </Group>
-            </Group>
+            <Element name="Description" label="Description of Surgical Procedure" width="300" />
+            <Element name="Occurrence" label="Occurrence(factual account of the event"  width="300" marginT="16"/>
+            <Element name="Treatment" label="Treatment &amp; Follow Up"   width="400" marginT="16"/>
         </Group>
-    </Graphicssss>
+    </Graphics>
 </Section>

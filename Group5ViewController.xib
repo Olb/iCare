@@ -112,9 +112,12 @@
                     <color key="textColor" white="0.37913435220000002" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qz-sJ-aWx">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qz-sJ-aWx">
                     <rect key="frame" x="40" y="280" width="520" height="300"/>
                     <color key="backgroundColor" white="0.85327326640000001" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="wQU-hy-E4M"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -128,7 +131,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="nZb-TJ-xJl" secondAttribute="trailing" id="65A-9G-fTH"/>
+                <constraint firstAttribute="bottom" secondItem="1qz-sJ-aWx" secondAttribute="bottom" constant="20" id="O1A-aL-xCX"/>
                 <constraint firstItem="nZb-TJ-xJl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rx5-Gn-ln2"/>
+                <constraint firstAttribute="trailing" secondItem="1qz-sJ-aWx" secondAttribute="trailing" constant="40" id="YjK-6C-cDX"/>
+                <constraint firstItem="1qz-sJ-aWx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="l2z-tD-WYF"/>
                 <constraint firstItem="nZb-TJ-xJl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rwm-Oq-vUm"/>
             </constraints>
         </view>

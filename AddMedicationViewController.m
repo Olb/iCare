@@ -13,7 +13,7 @@
 #import "Agent.h"
 #import "IntraOp.h"
 #import "BBUtil.h"
-
+#import "TimeScrollView.h"
 @interface AddMedicationViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *medicationPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *dosePickerView;
@@ -88,8 +88,11 @@
         }
     }
     [BBUtil saveContext];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    self.completionBlock();
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.vc.timeScrollView setStartTime:[NSDate date]];
+    }];    self.completionBlock();
+    [self.vc reloadTables];
+
 }
 
 - (IBAction)stopContinuousMedication:(id)sender {

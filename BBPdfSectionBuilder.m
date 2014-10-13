@@ -78,6 +78,8 @@ NSDateFormatter* dateFormatter;
 		 return [BBPdfSectionBuilder drawMonitorinAndEquipmentSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"NeuroligcSectionKey"]){
 		 return [BBPdfSectionBuilder drawNeuroligcSection:section atLocation:sectionOrigin];
+	 } else if ([section.title isEqualToString:@"OccurrenceDetailsSectionKey"]){
+		 return [BBPdfSectionBuilder drawOccurrenceDetailsSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PastSurgicalProceduresSectionKey"]){
 		 return [BBPdfSectionBuilder drawPastSurgicalProceduresSection:section atLocation:sectionOrigin];
 	 } else if ([section.title isEqualToString:@"PersonnelSectionKey"]){
@@ -5148,15 +5150,15 @@ NSDateFormatter* dateFormatter;
 
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
-	 cursor.y += 0;
+	 cursor.y += 16;
 	 previousElementSize = [BBPdfGenerator drawText:@"Other" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
 	 text = ((TextElement*)[section getElementForKey:@"OtherKey"]).value; 
-	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:300];
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
-	 previousElementSize.height += 0 + 0;
+	 previousElementSize.height += 16 + 0;
 	 cursor = elemCursorStart;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
@@ -7708,6 +7710,81 @@ NSDateFormatter* dateFormatter;
 
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
+	 cursor = group1CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 return previousElementSize;
+}
+
++(CGSize) drawOccurrenceDetailsSection:(FormSection*)section atLocation:(CGPoint)sectionOrigin
+{
+	 CGSize previousElementSize;
+	 CGPoint cursor = sectionOrigin;
+	 CGPoint elemCursorStart = sectionOrigin;
+	 NSString *text;
+	 //start of draw group1
+	 int group1MaxWidth = 0;
+	 CGPoint group1CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group1Indentation = 0;
+	 group1Indentation = 0;
+	 cursor.x += group1Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Description of Surgical Procedure" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"DescriptionKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:300];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 16;
+	 previousElementSize = [BBPdfGenerator drawText:@"Occurrence(factual account of the event" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"OccurrenceKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:300];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 16 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 16;
+	 previousElementSize = [BBPdfGenerator drawText:@"Treatment & Follow Up" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"TreatmentKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 16 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 //end of draw group1
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
 	 previousElementSize.width += 0;
@@ -10719,6 +10796,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 16;
+	 previousElementSize = [BBPdfGenerator drawText:@"Procedure Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"ProcedureNotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 16 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1

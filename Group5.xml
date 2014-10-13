@@ -20,7 +20,7 @@
                 <Element name="Awareness" label="Awareness/Recall" />
                 <Element name="PatientComplaint" label="Patient/Family Complaint" />
             </Group>
-            <Element name="Other" label="Other" width="300" />
+            <Element name="Other" label="Other" width="400" marginT="16"/>
         </Group>
     </Graphics>
 </Section>

@@ -11,7 +11,7 @@
 #import "IntraOp.h"
 #import "Measurement.h"
 #import "BBUtil.h"
-
+#import "TimeScrollView.h"
 
 @interface AddMeasurementsViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *mode;
@@ -279,8 +279,12 @@
     m.type = @"Ebl";
     
     [BBUtil saveContext];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.vc.timeScrollView setStartTime:[NSDate date]];
+    }];
     self.completionBlock();
+    
+
     
 }
 

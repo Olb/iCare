@@ -66,7 +66,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fluidButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *monitorsButton;
 @property (weak, nonatomic) IBOutlet UIView *disabledView;
-
+@property CGRect disabledViewFrameOrigin;
 
 @end
 
@@ -75,12 +75,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setUserInteraction:NO];
+    if (!self.intraOp.anesthesiaStart || self.intraOp.anesthesiaEnd) {
+        [self allowInteraction:NO];
+    } else {
+        [self allowInteraction:YES];
+    }
     
     [self loadAllergies];
     UITapGestureRecognizer *disabledViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDisabledAlert:)];
     [self.disabledView addGestureRecognizer:disabledViewGesture];
-    [self.disabledView setUserInteractionEnabled:YES];
+    if (self.intraOp.anesthesiaStart && !self.intraOp.anesthesiaEnd) {
+        [self allowInteraction:YES];
+    } else {
+        [self allowInteraction:NO];
+    }
     self.bpGridView =  [[[NSBundle mainBundle] loadNibNamed:@"IntraOpBPView" owner:self options:nil] objectAtIndex:0];
     self.bpGridViewShowing = NO;
     
@@ -154,16 +162,18 @@
     self.timeScrollView.onScroll = ^{
         [self reloadTables];
     };
+    [self allowInteraction:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self reloadTables];
+    self.disabledViewFrameOrigin = self.disabledView.frame;
     if (self.intraOp.anesthesiaStart && !self.intraOp.anesthesiaEnd) {
-        [self setUserInteraction:YES];
+        [self allowInteraction:YES];
     } else {
-        [self setUserInteraction:NO];
+        [self allowInteraction:NO];
     }
 }
 
@@ -193,24 +203,22 @@
     [alert show];
 }
 
--(void)setUserInteraction:(BOOL)enable
+-(void)allowInteraction:(BOOL)enable
 {
+    //[self.disabledView setUserInteractionEnabled:NO];
+
     if (enable) {
         self.gasButton.enabled = YES;
         self.medicationButton.enabled = YES;
         self.fluidButton.enabled = YES;
         self.monitorsButton.enabled = YES;
-        self.disabledView.hidden = YES;
-        self.gridView.userInteractionEnabled = YES;
         [self.disabledView setUserInteractionEnabled:NO];
 
-    } else {
+    } else if (!enable) {
         self.gasButton.enabled = NO;
         self.medicationButton.enabled = NO;
         self.fluidButton.enabled = NO;
         self.monitorsButton.enabled = NO;
-        self.disabledView.hidden = NO;
-        self.gridView.userInteractionEnabled = NO;
         [self.disabledView setUserInteractionEnabled:YES];
     }
 }
@@ -281,6 +289,7 @@
 {
     DoseView *doseView = [[[NSBundle mainBundle] loadNibNamed:@"DoseView" owner:self options:nil] objectAtIndex:0];
     [doseView.tapGesture addTarget:self action:@selector(editDoseView:)];
+    [doseView setUserInteractionEnabled:YES];
     doseView.dose.text = agent.dose;
     doseView.agent = agent;
     doseView.dose.font = [UIFont systemFontOfSize:14.0f];
@@ -346,7 +355,8 @@
     return CGRectZero;
 }
 
--(void) reloadTables{
+-(void) reloadTables
+{
     [self.gasTableView reloadData];
     [self.medicationTableView reloadData];
     [self.fluidTableView reloadData];
@@ -357,7 +367,7 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (!self.gridView.userInteractionEnabled) {
+    if (self.disabledView.userInteractionEnabled) {
         return;
     }
     if (self.bpGridViewShowing) {

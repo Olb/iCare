@@ -66,7 +66,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Agent Cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Agent Cell"];
-        cell.bounds = CGRectMake(0, 0, cell.bounds.size.width, 22.0);
+        //cell.bounds = CGRectMake(0, 0, cell.bounds.size.width, 22.0);
     }
     Agent *agent = (Agent*)[(NSSet*)[self.agentsArray objectAtIndex:indexPath.row] anyObject];
     NSString *agentUnit;
