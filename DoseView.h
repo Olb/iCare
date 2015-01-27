@@ -10,6 +10,10 @@
 #import "Agent.h"
 
 @interface DoseView : UIView
+
+@property (weak, nonatomic) IBOutlet UIView *lineView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineWidthContraint;
+
 @property (weak, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
 @property Agent *agent;
 @property (weak, nonatomic) IBOutlet UILabel *dose;

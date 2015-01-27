@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DoseView">
-            <rect key="frame" x="0.0" y="0.0" width="518" height="166"/>
+            <rect key="frame" x="0.0" y="0.0" width="326" height="156"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAd-am-ZWW">
-                    <rect key="frame" x="51.5" y="82.5" width="466.5" height="1"/>
+                    <rect key="frame" x="51" y="77" width="274.5" height="1"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="274.5" id="2dv-E2-v2J"/>
                         <constraint firstAttribute="height" constant="1" id="eP1-y0-kPd"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUt-2D-Ufe">
-                    <rect key="frame" x="5" y="73" width="41.5" height="20"/>
+                    <rect key="frame" x="5" y="68" width="41.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="fYZ-Gj-VTa"/>
                     </constraints>
@@ -30,7 +32,6 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="gUt-2D-Ufe" secondAttribute="centerY" id="JZY-Ip-BDw"/>
-                <constraint firstAttribute="trailing" secondItem="cAd-am-ZWW" secondAttribute="trailing" id="MHh-Qi-jDV"/>
                 <constraint firstItem="cAd-am-ZWW" firstAttribute="leading" secondItem="gUt-2D-Ufe" secondAttribute="trailing" constant="5" id="Z3d-PV-b9P"/>
                 <constraint firstItem="gUt-2D-Ufe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="oNU-4F-0p9"/>
                 <constraint firstItem="cAd-am-ZWW" firstAttribute="centerY" secondItem="gUt-2D-Ufe" secondAttribute="centerY" id="tKi-KO-qib"/>
@@ -38,10 +39,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="dose" destination="gUt-2D-Ufe" id="uOU-8T-0on"/>
+                <outlet property="lineView" destination="cAd-am-ZWW" id="iW7-uD-DEV"/>
+                <outlet property="lineWidthContraint" destination="2dv-E2-v2J" id="1cY-Hc-vbY"/>
                 <outlet property="tapGesture" destination="keS-a5-PFf" id="aq4-R6-bf2"/>
                 <outletCollection property="gestureRecognizers" destination="keS-a5-PFf" appends="YES" id="jvc-Ri-8Y2"/>
             </connections>
-            <point key="canvasLocation" x="240" y="49"/>
+            <point key="canvasLocation" x="274" y="44"/>
         </view>
         <tapGestureRecognizer id="keS-a5-PFf"/>
     </objects>

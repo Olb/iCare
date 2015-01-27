@@ -83,10 +83,15 @@
     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
 
     [cell.contentView.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
-
+    
     for (Agent *agent in [self.agentsArray objectAtIndex:indexPath.row]) {
-        [cell.contentView addSubview:[self.controller doseViewForAgent:agent forCell:cell]];
+        DoseView *v = [self.controller doseViewForAgent:agent forCell:cell];
+        NSLog(@"Line: %f", v.lineView.frame.size.width);
+        [cell.contentView addSubview:v];
+        NSLog(@"Line: %f", v.lineView.frame.size.width);
+
     }
+ 
     UIView* bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, FIRST_COLUMN_X_COORD, cell.bounds.size.height)];
     bg.backgroundColor = [UIColor whiteColor];
     [cell.contentView addSubview:bg];

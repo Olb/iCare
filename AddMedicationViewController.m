@@ -89,9 +89,9 @@
     }
     [BBUtil saveContext];
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.vc.timeScrollView setStartTime:[NSDate date]];
-    }];    self.completionBlock();
-    [self.vc reloadTables];
+        [self.vc reloadTables];
+    }];
+    self.completionBlock();
 
 }
 

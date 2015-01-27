@@ -321,7 +321,7 @@
         
     }
     doseView.frame = CGRectMake( [self.timeScrollView dateToXCoord:agent.startTime] + FIRST_COLUMN_X_COORD, 0, width, cell.bounds.size.height );
-    [doseView setNeedsUpdateConstraints];
+    doseView.lineWidthContraint.constant = MAX(width - doseTextWidth - 10,0);
 
     return doseView;
 }
@@ -364,6 +364,7 @@
     [self.ventsTableView reloadData];
     [self.eblTableView reloadData];
     [self populateBPGrid];
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yUI-DS-eDw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="yUI-DS-eDw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -411,7 +412,7 @@
                                     <action selector="addSelectedOperation:" destination="Eez-TN-1bS" eventType="touchUpInside" id="1rR-O9-OiV"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cVp-yZ-cAI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cVp-yZ-cAI">
                                 <rect key="frame" x="24" y="189" width="720" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -500,7 +501,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkj-7v-pP2">
                                 <rect key="frame" x="24" y="634" width="720" height="330"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-zw-Hq0">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-zw-Hq0">
                                         <rect key="frame" x="0.0" y="139" width="720" height="197"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -519,21 +520,11 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUk-hh-lAR">
-                                                            <rect key="frame" x="569" y="5" width="98" height="33"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                            <state key="normal" title="Not Complete">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="dUk-hh-lAR" firstAttribute="leading" secondItem="Y5O-fI-N9u" secondAttribute="trailing" constant="8" symbolic="YES" id="5dd-W4-zk5"/>
                                                         <constraint firstAttribute="centerY" secondItem="Y5O-fI-N9u" secondAttribute="centerY" id="7xp-NC-6OD"/>
-                                                        <constraint firstAttribute="centerY" secondItem="dUk-hh-lAR" secondAttribute="centerY" id="Lcw-ma-yla"/>
-                                                        <constraint firstAttribute="trailing" secondItem="dUk-hh-lAR" secondAttribute="trailing" constant="20" symbolic="YES" id="Xkz-zE-Ea0"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Y5O-fI-N9u" secondAttribute="trailing" constant="118" id="PTY-lI-zZb"/>
                                                         <constraint firstItem="Y5O-fI-N9u" firstAttribute="leading" secondItem="MQH-Vc-fX3" secondAttribute="leading" constant="20" symbolic="YES" id="kHd-tc-MUe"/>
-                                                        <constraint firstItem="dUk-hh-lAR" firstAttribute="leading" secondItem="Y5O-fI-N9u" secondAttribute="trailing" constant="8" symbolic="YES" id="sZT-Cc-a81"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -552,21 +543,11 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CY0-YW-oce">
-                                                            <rect key="frame" x="569" y="5" width="98" height="33"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                            <state key="normal" title="Not Complete">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="centerY" secondItem="YrY-nC-cgf" secondAttribute="centerY" id="7JG-in-X9z"/>
-                                                        <constraint firstItem="CY0-YW-oce" firstAttribute="leading" secondItem="YrY-nC-cgf" secondAttribute="trailing" constant="8" symbolic="YES" id="CFk-Ky-0Z4"/>
-                                                        <constraint firstAttribute="centerY" secondItem="CY0-YW-oce" secondAttribute="centerY" id="Trf-4F-r9V"/>
                                                         <constraint firstItem="YrY-nC-cgf" firstAttribute="leading" secondItem="qFo-I3-cml" secondAttribute="leading" constant="20" symbolic="YES" id="eoW-HO-u8y"/>
-                                                        <constraint firstAttribute="trailing" secondItem="CY0-YW-oce" secondAttribute="trailing" constant="20" symbolic="YES" id="l5B-es-Jfa"/>
-                                                        <constraint firstItem="CY0-YW-oce" firstAttribute="leading" secondItem="YrY-nC-cgf" secondAttribute="trailing" constant="8" symbolic="YES" id="yVQ-Lr-cSg"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="YrY-nC-cgf" secondAttribute="trailing" constant="118" id="mdO-dN-Fxw"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -585,21 +566,11 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-bY-nk1">
-                                                            <rect key="frame" x="569" y="5" width="98" height="33"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                            <state key="normal" title="Not Complete">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="9ub-bY-nk1" secondAttribute="trailing" constant="20" symbolic="YES" id="Glu-6X-Nou"/>
-                                                        <constraint firstAttribute="centerY" secondItem="9ub-bY-nk1" secondAttribute="centerY" id="H5N-RJ-LJc"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="l1i-zW-svB" secondAttribute="trailing" constant="118" id="XKX-ga-doB"/>
                                                         <constraint firstItem="l1i-zW-svB" firstAttribute="leading" secondItem="aWT-Kh-vIs" secondAttribute="leading" constant="20" symbolic="YES" id="l69-QL-sJ8"/>
                                                         <constraint firstAttribute="centerY" secondItem="l1i-zW-svB" secondAttribute="centerY" id="lQt-B5-jtd"/>
-                                                        <constraint firstItem="9ub-bY-nk1" firstAttribute="leading" secondItem="l1i-zW-svB" secondAttribute="trailing" constant="8" symbolic="YES" id="msI-iR-DS2"/>
-                                                        <constraint firstItem="9ub-bY-nk1" firstAttribute="leading" secondItem="l1i-zW-svB" secondAttribute="trailing" constant="8" symbolic="YES" id="yS5-8b-S1n"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -618,20 +589,10 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dah-KH-3h1">
-                                                            <rect key="frame" x="569" y="5" width="98" height="33"/>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                            <state key="normal" title="Not Complete">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="dah-KH-3h1" firstAttribute="leading" secondItem="TLK-Za-GFS" secondAttribute="trailing" constant="8" symbolic="YES" id="IRn-oA-CVZ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="dah-KH-3h1" secondAttribute="trailing" constant="20" symbolic="YES" id="JeV-Qs-cTT"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="TLK-Za-GFS" secondAttribute="trailing" constant="118" id="fUS-5I-v8i"/>
                                                         <constraint firstAttribute="centerY" secondItem="TLK-Za-GFS" secondAttribute="centerY" id="lkG-8P-nPQ"/>
-                                                        <constraint firstAttribute="centerY" secondItem="dah-KH-3h1" secondAttribute="centerY" id="oSp-yn-K99"/>
-                                                        <constraint firstItem="dah-KH-3h1" firstAttribute="leading" secondItem="TLK-Za-GFS" secondAttribute="trailing" constant="8" symbolic="YES" id="x44-xh-glz"/>
                                                         <constraint firstItem="TLK-Za-GFS" firstAttribute="leading" secondItem="BI0-Sx-Ash" secondAttribute="leading" constant="20" symbolic="YES" id="y83-6p-5IK"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -2066,7 +2027,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Airway" id="CyI-Rr-ujU">
                                 <cells>
-                                    <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uha-mW-lE1">
+                                    <tableViewCell tag="10" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uha-mW-lE1">
                                         <rect key="frame" x="0.0" y="607" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uha-mW-lE1" id="cSm-jk-Yeu">
@@ -2082,7 +2043,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="11" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2TW-u5-KHa">
+                                    <tableViewCell tag="11" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2TW-u5-KHa">
                                         <rect key="frame" x="0.0" y="651" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2TW-u5-KHa" id="uld-9T-aZP">
@@ -2098,7 +2059,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="12" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lin-Sn-enU">
+                                    <tableViewCell tag="12" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lin-Sn-enU">
                                         <rect key="frame" x="0.0" y="695" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lin-Sn-enU" id="QOM-Ma-zMf">
@@ -2118,7 +2079,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Post Procedure" id="Fnh-ss-YKq">
                                 <cells>
-                                    <tableViewCell tag="13" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ffv-jZ-Qwq">
+                                    <tableViewCell tag="13" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ffv-jZ-Qwq">
                                         <rect key="frame" x="0.0" y="787" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ffv-jZ-Qwq" id="1AM-ug-T3y">
@@ -2134,7 +2095,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="14" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZzD-Rp-RYM">
+                                    <tableViewCell tag="14" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ZzD-Rp-RYM">
                                         <rect key="frame" x="0.0" y="831" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZzD-Rp-RYM" id="azm-T0-njy">
@@ -2150,7 +2111,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell tag="15" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pGP-s4-O2O">
+                                    <tableViewCell tag="15" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pGP-s4-O2O">
                                         <rect key="frame" x="0.0" y="875" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pGP-s4-O2O" id="bQ0-XK-IH3">
@@ -2170,7 +2131,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Personnel" id="EE5-td-Wvh">
                                 <cells>
-                                    <tableViewCell tag="16" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="68g-8p-opo">
+                                    <tableViewCell tag="16" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="68g-8p-opo">
                                         <rect key="frame" x="0.0" y="967" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68g-8p-opo" id="hhh-oj-9T9">
