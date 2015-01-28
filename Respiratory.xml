@@ -13,6 +13,7 @@
         <Element type="TextElement" name="PPD"/>
         <Element type="TextElement" name="YRS"/>
         <Element type="TextElement" name="QuitAmountAgo"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -91,6 +92,7 @@
                 <Element name="QuitAmountAgo" label="Quit" />
                 <Element label="years ago" />
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

@@ -10,6 +10,7 @@
 		<Element type="BooleanFormElement" name="Cancer"/>
 		<Element type="BooleanFormElement" name="Chemo"/>
 		<Element type="BooleanFormElement" name="Radiation"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -66,6 +67,7 @@
                     <Element name="Radiation" label="Radiation" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

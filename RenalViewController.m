@@ -19,17 +19,15 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-#import "BBDatePickerViewController.h"
 
-@interface RenalViewController () <UITextFieldDelegate, BBDatePickerViewControllerDelegate> {
-    BBDatePickerViewController *dateContent;
-    UIPopoverController *datePopover;
-}
+
+@interface RenalViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalNegativeBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *cRIBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalFailureBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *lastDialysisUITextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation RenalViewController
@@ -39,10 +37,13 @@ static NSString *const RENAL_NEGATIVE_KEY = @"RenalNegativeKey";
 static NSString *const CRI_KEY = @"CRIKey";
 static NSString *const RENAL_FAILURE_KEY = @"RenalFailureKey";
 static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+
+	 [self addDatePicker: self.lastDialysisUITextField withSelector: @selector(updatelastDialysisUITextField)];
 	 [self.renalBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 [self.renalNegativeBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
@@ -65,8 +66,30 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 			 if ([element.key isEqualToString:LAST_DIALYSIS_KEY]){
 				 [self.lastDialysisUITextField setText:((TextElement*)element).value];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
+}
+
+-(void)updatelastDialysisUITextField{
+	 UIDatePicker *picker = (UIDatePicker*)self.lastDialysisUITextField.inputView;
+	 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+	 self.lastDialysisUITextField.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:picker.date]];
+	 [self.lastDialysisUITextField resignFirstResponder];
 }
 
 -(void)validateSection:(FormSection*)section
@@ -76,6 +99,7 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 	 NSAssert([section getElementForKey:CRI_KEY]!= nil, @"CRI is nil");
 	 NSAssert([section getElementForKey:RENAL_FAILURE_KEY]!= nil, @"RenalFailure is nil");
 	 NSAssert([section getElementForKey:LAST_DIALYSIS_KEY]!= nil, @"LastDialysis is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -158,10 +182,34 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 
 	 lastDialysis.value = self.lastDialysisUITextField.text;
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
+}
+
+- (BOOL)disablesAutomaticKeyboardDismissal {
+	 return NO;
+}
 
 - (IBAction)dismiss:(id)sender {
 	 [BBUtil refreshManagedObject:_section];
@@ -177,51 +225,5 @@ static NSString *const LAST_DIALYSIS_KEY = @"LastDialysisKey";
 	 self.renalBBCheckBox.selected = NO;
 	 self.renalNegativeBBCheckBox.selected = NO;
 	 sender.selected = selected;
-}
-
-- (IBAction)setBirthdateFromTextField:(id)sender {
-    [self setupDatePopoverRect:sender];
-    [self.lastDialysisUITextField resignFirstResponder];
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    [self setBirthdateFromTextField:textField];
-    return YES;
-}
-
--(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (BOOL)disablesAutomaticKeyboardDismissal {
-    return NO;
-}
-
--(void)didSaveDateValues:(NSDate *)date {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd/yyyy"];
-    NSString *stringFromDate = [formatter stringFromDate:date];
-    self.lastDialysisUITextField.text = stringFromDate;
-
-}
-
--(void)setupDatePopoverRect:(id)sender {
-    CGRect location = CGRectMake(self.view.center.x, ((UITextField *)sender).frame.origin.y, 100, 100);
-    [self setupDatePickerPopover:location];
-}
-
--(void)setupDatePickerPopover:(CGRect)rect {
-    dateContent = [[BBDatePickerViewController alloc] initWithNibName:nil
-                                                               bundle:nil];
-    datePopover = [[UIPopoverController alloc] initWithContentViewController:dateContent];
-    dateContent.date = [NSDate date];
-    dateContent.datePopoverController = datePopover;
-    dateContent.delegate = self;
-    [datePopover presentPopoverFromRect:rect
-                                 inView:self.view
-               permittedArrowDirections:UIPopoverArrowDirectionAny
-                               animated:YES];
 }
 @end

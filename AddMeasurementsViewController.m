@@ -47,7 +47,7 @@
         self.intraOp = intraOp;
         self.completionBlock = completionBlock;
         _ekgArray = @[@"A-Fib",@"Asystole",@"NSR",@"V-Tach",@"V-Fib"];
-        _modeArray = @[@"Spontaneous",@"Assisted",@"Controller"];
+        _modeArray = @[@"Spontaneous",@"Assisted",@"Controlled"];
     }
     return self;
 }

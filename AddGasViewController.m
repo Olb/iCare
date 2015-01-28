@@ -17,7 +17,6 @@
 @interface AddGasViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *gasPickerView;
 @property (weak, nonatomic) IBOutlet UIPickerView *dosePickerView;
-@property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @property NumericPickerAdapter* dosePickerAdapter;
@@ -38,9 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u", @[@"mg",@"mcg",@"ml", @""],@[@"mg",@"mcg",@"ml"], nil];
+    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu", @[@"L/min", @"%", @""], nil];
     if (self.agent) {
-        NSLog(@"Agent: %@",self.agent );
         [self.dosePickerAdapter setFloatValue:self.agent.dose];
         [self.dosePickerAdapter setUnit:self.agent.unit];
         if ([self.agent.continuous boolValue] && !self.agent.endTime){
@@ -52,7 +50,6 @@
                 break;
             }
         }
-        self.isContinuous.selected = [self.agent.continuous boolValue];
     }
 }
 
@@ -77,7 +74,7 @@
     self.agent.name = gas;
     self.agent.dose = value;
     self.agent.unit = unit;
-    self.agent.continuous = [NSNumber numberWithBool:self.isContinuous.selected];
+    self.agent.continuous = [NSNumber numberWithBool:TRUE];
 
     self.agent.type = @"Gas";
     for (Agent *a in self.intraOp.agent) {
@@ -96,15 +93,6 @@
     self.agent.endTime = [NSDate date];
     self.stopButton.hidden = YES;
 }
-
--(void)turnSwitchOn {
-    [self.isContinuous setSelected:TRUE];
-}
-
--(void)turnSwitchOff {
-    [self.isContinuous setSelected:FALSE];
-}
-
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {

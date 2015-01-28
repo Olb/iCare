@@ -58,6 +58,11 @@ static NSString *const EPIDURAL_KEY = @"EpiduralKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [self.asa1BBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.asa2BBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.asa3BBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.asa4BBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
+	 [self.asa5BBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 if (_section) {
 		 [self validateSection:_section];
 		 NSArray *elements = [_section.elements array];
@@ -107,6 +112,17 @@ static NSString *const EPIDURAL_KEY = @"EpiduralKey";
 			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -274,6 +290,18 @@ static NSString *const EPIDURAL_KEY = @"EpiduralKey";
 	 [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
+}
+
 - (BOOL)disablesAutomaticKeyboardDismissal {
 	 return NO;
 }
@@ -289,6 +317,11 @@ static NSString *const EPIDURAL_KEY = @"EpiduralKey";
 }
 -(void)radioGroup1:(BBCheckBox*)sender {
 	 BOOL selected = sender.selected;
+	 self.asa1BBCheckBox.selected = NO;
+	 self.asa2BBCheckBox.selected = NO;
+	 self.asa3BBCheckBox.selected = NO;
+	 self.asa4BBCheckBox.selected = NO;
+	 self.asa5BBCheckBox.selected = NO;
 	 sender.selected = selected;
 }
 @end

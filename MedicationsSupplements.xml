@@ -2,13 +2,28 @@
 <Section name="MedicationsSupplements">
 	<Data>
 		<Element type="BooleanFormElement" name="BetaBlocker"/>
+        <Element type="BooleanFormElement" name="TakenDayOf"/>
 		<Element type="ElementListFormElement" name="MedsSupplements" listOf="MedicationFormElement"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
-    
+    <Validation>
+        <Rule>
+            <Condition >
+                <Element name="TakenDayOf" value="true" />
+            </Condition>
+            <Action type="check">
+                <Element name="BetaBlocker" value="true" />
+            </Action>
+        </Rule>
+    </Validation>
     <Graphics>
         <Group orientation="vertical" label="Meds/Supplements(*If taken the day of proc.)" >
-            <Element name="BetaBlocker" label="Beta-Blocker" />
+            <Group orientation="horizontal">
+                <Element name="BetaBlocker" label="Beta-Blocker" />
+                <Element name="TakenDayOf" label="Taken day of procedure"/>
+            </Group>
             <Element name="MedsSupplements" label="Medications" />
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

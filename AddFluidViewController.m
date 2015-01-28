@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddddu", @[@"cc"], nil];
+    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddddu", @[@"cc", @"cc/hr"], nil];
     
     if (self.agent) {
         NSLog(@"Agent: %@",self.agent );

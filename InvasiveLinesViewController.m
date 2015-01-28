@@ -76,6 +76,17 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 	 }
 }
 
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
+}
+
 -(void)validateSection:(FormSection*)section
 {
 	 NSAssert([section getElementForKey:ALine_KEY]!= nil, @"ALine is nil");
@@ -164,6 +175,18 @@ static NSString *const IVS_SIZE_AND_SITE_KEY = @"IvsSizeAndSiteKey";
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (IBAction)addIvsSizeAndSite:(id)sender {

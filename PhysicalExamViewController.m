@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *lungsClearBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *lungsOtherBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *lungsOtherReasonUITextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation PhysicalExamViewController
@@ -38,6 +39,7 @@ static NSString *const HEART_OTHER_REASON_KEY = @"HeartOtherReasonKey";
 static NSString *const LUNGS_CLEAR_KEY = @"LungsClearKey";
 static NSString *const LUNGS_OTHER_KEY = @"LungsOtherKey";
 static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -69,8 +71,22 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 			 if ([element.key isEqualToString:LUNGS_OTHER_REASON_KEY]){
 				 [self.lungsOtherReasonUITextField setText:((TextElement*)element).value];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -81,6 +97,7 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 	 NSAssert([section getElementForKey:LUNGS_CLEAR_KEY]!= nil, @"LungsClear is nil");
 	 NSAssert([section getElementForKey:LUNGS_OTHER_KEY]!= nil, @"LungsOther is nil");
 	 NSAssert([section getElementForKey:LUNGS_OTHER_REASON_KEY]!= nil, @"LungsOtherReason is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -166,8 +183,29 @@ static NSString *const LUNGS_OTHER_REASON_KEY = @"LungsOtherReasonKey";
 
 	 lungsOtherReason.value = self.lungsOtherReasonUITextField.text;
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

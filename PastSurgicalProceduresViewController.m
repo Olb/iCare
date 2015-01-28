@@ -19,16 +19,16 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-#import "BBAutoCompleteTextField.h"
-#import "BBData.h"
+
 
 @interface PastSurgicalProceduresViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *pastSurgicalProceduresTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pastSurgicalProceduresTextField;
 @property (weak, nonatomic) IBOutlet UITableView *pastSurgicalProceduresTable;
 @property (strong, nonatomic) StringArrayTableAdapter *pastSurgicalProceduresTableAdapter;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsYesPatientBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsYesFamilyBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hxAnesthesiaProblemsNoBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation PastSurgicalProceduresViewController
@@ -37,12 +37,11 @@ static NSString *const PAST_SURGICAL_PROCEDURES_KEY = @"PastSurgicalProceduresKe
 static NSString *const HX_ANESTHESIA_PROBLEMS_YES_PATIENT_KEY = @"HxAnesthesiaProblemsYesPatientKey";
 static NSString *const HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY = @"HxAnesthesiaProblemsYesFamilyKey";
 static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-    
-    [_pastSurgicalProceduresTextField setAutoCompleteData:[BBData procedures]];
 	 [self.hxAnesthesiaProblemsYesPatientBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 [self.hxAnesthesiaProblemsYesFamilyBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
 	 [self.hxAnesthesiaProblemsNoBBCheckBox addTarget:self action:@selector(radioGroup1:) forControlEvents:UIControlEventTouchUpInside];
@@ -68,8 +67,22 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 			 if ([element.key isEqualToString:HX_ANESTHESIA_PROBLEMS_NO_KEY]){
 				 [self.hxAnesthesiaProblemsNoBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -78,6 +91,7 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_YES_PATIENT_KEY]!= nil, @"HxAnesthesiaProblemsYesPatient is nil");
 	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_YES_FAMILY_KEY]!= nil, @"HxAnesthesiaProblemsYesFamily is nil");
 	 NSAssert([section getElementForKey:HX_ANESTHESIA_PROBLEMS_NO_KEY]!= nil, @"HxAnesthesiaProblemsNo is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -138,8 +152,29 @@ static NSString *const HX_ANESTHESIA_PROBLEMS_NO_KEY = @"HxAnesthesiaProblemsNoK
 
 	 hxAnesthesiaProblemsNo.value = [NSNumber numberWithBool:self.hxAnesthesiaProblemsNoBBCheckBox.isSelected];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (IBAction)addPastSurgicalProcedures:(id)sender {

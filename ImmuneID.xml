@@ -7,6 +7,7 @@
 		<Element type="BooleanFormElement" name="HIV"/>
 		<Element type="BooleanFormElement" name="AutoImmuneDisease"/>
         <Element type="BooleanFormElement" name="OngoingInfection"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -54,6 +55,7 @@
                     <Element name="OngoingInfection" label="Ongoing Infection" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

@@ -17,7 +17,13 @@
         <Element type="BooleanFormElement" name="Epidural"/>
     </Data>
     <Validation>
-        
+        <RadioButtons>
+            <Element name="Asa1"/>
+            <Element name="Asa2"/>
+            <Element name="Asa3"/>
+            <Element name="Asa4"/>
+            <Element name="Asa5"/>
+        </RadioButtons>
     </Validation>
     <Graphics>
         <Group orientation="vertical" label=" ">

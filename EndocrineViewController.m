@@ -25,8 +25,10 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *endocrineBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *endocrineNegativeBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *diabetesBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *diabetesTwoBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hyperThyroidBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hypoThyroidBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation EndocrineViewController
@@ -34,8 +36,10 @@ NSString *const ENDOCRINE_SECTION_TITLE = @"EndocrineSectionKey";
 static NSString *const ENDOCRINE_KEY = @"EndocrineKey";
 static NSString *const ENDOCRINE_NEGATIVE_KEY = @"EndocrineNegativeKey";
 static NSString *const DIABETES_KEY = @"DiabetesKey";
+static NSString *const DIABETES_TWO_KEY = @"DiabetesTwoKey";
 static NSString *const HYPER_THYROID_KEY = @"HyperThyroidKey";
 static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -56,14 +60,31 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 			 if ([element.key isEqualToString:DIABETES_KEY]){
 				 [self.diabetesBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:DIABETES_TWO_KEY]){
+				 [self.diabetesTwoBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
 			 if ([element.key isEqualToString:HYPER_THYROID_KEY]){
 				 [self.hyperThyroidBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
 			 if ([element.key isEqualToString:HYPO_THYROID_KEY]){
 				 [self.hypoThyroidBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -71,22 +92,24 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 	 NSAssert([section getElementForKey:ENDOCRINE_KEY]!= nil, @"Endocrine is nil");
 	 NSAssert([section getElementForKey:ENDOCRINE_NEGATIVE_KEY]!= nil, @"EndocrineNegative is nil");
 	 NSAssert([section getElementForKey:DIABETES_KEY]!= nil, @"Diabetes is nil");
+	 NSAssert([section getElementForKey:DIABETES_TWO_KEY]!= nil, @"DiabetesTwo is nil");
 	 NSAssert([section getElementForKey:HYPER_THYROID_KEY]!= nil, @"HyperThyroid is nil");
 	 NSAssert([section getElementForKey:HYPO_THYROID_KEY]!= nil, @"HypoThyroid is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
 -(BOOL)validateData:(NSString**)errMsg
 {
 	 if( self.endocrineNegativeBBCheckBox.selected ){ 
-		 if( !((!self.diabetesBBCheckBox.selected) && (!self.hyperThyroidBBCheckBox.selected) && (!self.hypoThyroidBBCheckBox.selected)) ){ 
-			 *errMsg = @"Diabetes must be unselected and HyperThyroid must be unselected and HypoThyroid must be unselected when EndocrineNegative is selected"; 
+		 if( !((!self.diabetesBBCheckBox.selected) && (!self.diabetesTwoBBCheckBox.selected) && (!self.hyperThyroidBBCheckBox.selected) && (!self.hypoThyroidBBCheckBox.selected)) ){ 
+			 *errMsg = @"Diabetes must be unselected and DiabetesTwo must be unselected and HyperThyroid must be unselected and HypoThyroid must be unselected when EndocrineNegative is selected"; 
 			 return false; 
 		 }
 	 }
 	 if( self.endocrineBBCheckBox.selected ){ 
-		 if( !(self.diabetesBBCheckBox.selected || self.hyperThyroidBBCheckBox.selected || self.hypoThyroidBBCheckBox.selected) ){ 
-			 *errMsg = @"Diabetes must be selected or HyperThyroid must be selected or HypoThyroid must be selected when Endocrine is selected"; 
+		 if( !(self.diabetesBBCheckBox.selected || self.diabetesTwoBBCheckBox.selected || self.hyperThyroidBBCheckBox.selected || self.hypoThyroidBBCheckBox.selected) ){ 
+			 *errMsg = @"Diabetes must be selected or DiabetesTwo must be selected or HyperThyroid must be selected or HypoThyroid must be selected when Endocrine is selected"; 
 			 return false; 
 		 }
 	 }
@@ -131,6 +154,15 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 
 	 diabetes.value = [NSNumber numberWithBool:self.diabetesBBCheckBox.isSelected];
 	 
+	 BooleanFormElement *diabetesTwo = (BooleanFormElement*)[_section getElementForKey:DIABETES_TWO_KEY];
+	 if (!diabetesTwo) {
+		 diabetesTwo = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 diabetesTwo.key = DIABETES_TWO_KEY;
+		 [_section addElementsObject:diabetesTwo];
+	 }
+
+	 diabetesTwo.value = [NSNumber numberWithBool:self.diabetesTwoBBCheckBox.isSelected];
+	 
 	 BooleanFormElement *hyperThyroid = (BooleanFormElement*)[_section getElementForKey:HYPER_THYROID_KEY];
 	 if (!hyperThyroid) {
 		 hyperThyroid = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
@@ -149,8 +181,29 @@ static NSString *const HYPO_THYROID_KEY = @"HypoThyroidKey";
 
 	 hypoThyroid.value = [NSNumber numberWithBool:self.hypoThyroidBBCheckBox.isSelected];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

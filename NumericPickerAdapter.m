@@ -106,7 +106,7 @@
             result = 30.0;
             break;
         case 'u':{
-            result = 60.0;
+            result = 80.0;
             break;
         }
         default:

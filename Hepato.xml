@@ -7,6 +7,7 @@
 		<Element type="BooleanFormElement" name="Cirrhosis"/>
 		<Element type="BooleanFormElement" name="Hepatitis"/>
 		<Element type="BooleanFormElement" name="Obstruction"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -54,6 +55,7 @@
                     <Element name="Obstruction" label="Obstruction" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

@@ -243,7 +243,7 @@
     AddMeasurementsViewController* vc = [[AddMeasurementsViewController alloc] initWithIntraOp:self.intraOp completion:^{
         [self reloadTables];
     }];
-    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 

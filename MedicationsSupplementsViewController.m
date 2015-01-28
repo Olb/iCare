@@ -17,23 +17,27 @@
 #import "FormElementTableCellFactory.h"
 
 #import "AntibioticFormElement.h"
-#import "BBAutoCompleteTextField.h"
+
 #import "MedicationFormElement.h"
-#import "BBData.h"
+
 
 @interface MedicationsSupplementsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockerBBCheckBox;
+@property (weak, nonatomic) IBOutlet BBCheckBox *takenDayOfBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITableView *medsSupplementsTable;
 @property (strong, nonatomic) FormElementTableAdapter *medsSupplementsTableAdapter;
-@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *medsSupplementsNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *medsSupplementsNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *medsSupplementsDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *medsSupplementsDoseUnitButton;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation MedicationsSupplementsViewController
 NSString *const MEDICATIONS_SUPPLEMENTS_SECTION_TITLE = @"MedicationsSupplementsSectionKey";
 static NSString *const BETA_BLOCKER_KEY = @"BetaBlockerKey";
+static NSString *const TAKEN_DAY_OF_KEY = @"TakenDayOfKey";
 static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -41,7 +45,6 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 	 self.medsSupplementsTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.medsSupplementsTable.dataSource = self.medsSupplementsTableAdapter;
 	 self.medsSupplementsTable.delegate = self.medsSupplementsTableAdapter;
-        [_medsSupplementsNameTextField setAutoCompleteData:[BBData medications]];
 
 	 if (_section) {
 		 [self validateSection:_section];
@@ -51,23 +54,48 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 			 if ([element.key isEqualToString:BETA_BLOCKER_KEY]){
 				 [self.betaBlockerBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:TAKEN_DAY_OF_KEY]){
+				 [self.takenDayOfBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
+			 }
 			 if ([element.key isEqualToString:MEDS_SUPPLEMENTS_KEY]){
 				 self.medsSupplementsTableAdapter.items = [[((ElementListFormElement*)element).elements allObjects] mutableCopy];
 				 [self.medsSupplementsTable reloadData];
+			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
 			 }
 		 }
 	 }
 }
 
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
+}
+
 -(void)validateSection:(FormSection*)section
 {
 	 NSAssert([section getElementForKey:BETA_BLOCKER_KEY]!= nil, @"BetaBlocker is nil");
+	 NSAssert([section getElementForKey:TAKEN_DAY_OF_KEY]!= nil, @"TakenDayOf is nil");
 	 NSAssert([section getElementForKey:MEDS_SUPPLEMENTS_KEY]!= nil, @"MedsSupplements is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
 -(BOOL)validateData:(NSString**)errMsg
 {
+	 if( self.takenDayOfBBCheckBox.selected ){ 
+		 if( !(self.betaBlockerBBCheckBox.selected) ){ 
+			 *errMsg = @"BetaBlocker must be selected when TakenDayOf is selected"; 
+			 return false; 
+		 }
+	 }
 	 return true; 
 }
 
@@ -91,6 +119,15 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 
 	 betaBlocker.value = [NSNumber numberWithBool:self.betaBlockerBBCheckBox.isSelected];
 	 
+	 BooleanFormElement *takenDayOf = (BooleanFormElement*)[_section getElementForKey:TAKEN_DAY_OF_KEY];
+	 if (!takenDayOf) {
+		 takenDayOf = (BooleanFormElement*)[BBUtil newCoreDataObjectForEntityName:@"BooleanFormElement"];
+		 takenDayOf.key = TAKEN_DAY_OF_KEY;
+		 [_section addElementsObject:takenDayOf];
+	 }
+
+	 takenDayOf.value = [NSNumber numberWithBool:self.takenDayOfBBCheckBox.isSelected];
+	 
 	 ElementListFormElement *medsSupplements = (ElementListFormElement*)[_section getElementForKey:MEDS_SUPPLEMENTS_KEY];
 	 if (!medsSupplements) {
 		 medsSupplements = (ElementListFormElement*)[BBUtil newCoreDataObjectForEntityName:@"ElementListFormElement"];
@@ -109,8 +146,29 @@ static NSString *const MEDS_SUPPLEMENTS_KEY = @"MedsSupplementsKey";
 	 [[medsSupplements mutableSetValueForKey:@"elements"] removeAllObjects];
 	 [medsSupplements addElements:medsSupplementsElementListArray];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (IBAction)addMedsSupplements:(id)sender {

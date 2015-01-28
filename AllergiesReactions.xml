@@ -3,12 +3,14 @@
 	<Data>
         <Element type="BooleanFormElement" name="NoKnownAllergies" />
 		<Element type="StringListElement" name="AllergiesReactions"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Graphics>
         <Group orientation="vertical" label="Allergies &amp; Reactions" >
             <Element name="NoKnownAllergies" label="No Known Allergies" />
             <Element name="AllergiesReactions" label="Allergies" />
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

@@ -46,7 +46,6 @@
             <Element name="ASA4"/>
             <Element name="ASA5"/>
             <Element name="ASA6"/>
-            <Element name="ASAE"/>
         </RadioButtons>
         
         <Rule>

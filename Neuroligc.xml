@@ -11,6 +11,7 @@
 		<Element type="BooleanFormElement" name="TIA"/>
 		<Element type="BooleanFormElement" name="AlteredMentalStatus"/>
 		<Element type="BooleanFormElement" name="Seizures"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -70,6 +71,7 @@
                     <Element name="Seizures" label="Seizures" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

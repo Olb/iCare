@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImmuneIDViewController">
@@ -10,6 +11,7 @@
                 <outlet property="hIVBBCheckBox" destination="piR-3p-YCA" id="X0A-95-aQh"/>
                 <outlet property="immuneIDBBCheckBox" destination="4Ag-YR-jsx" id="Sh9-uV-WzC"/>
                 <outlet property="immuneIDNegativeBBCheckBox" destination="UpG-u6-Dxk" id="wQZ-qE-a2W"/>
+                <outlet property="notesUITextView" destination="20f-y8-XMd" id="hmC-y7-oGx"/>
                 <outlet property="ongoingInfectionBBCheckBox" destination="Uv8-oD-19g" id="tjn-BJ-vmM"/>
                 <outlet property="rheumArtBBCheckBox" destination="tmN-VC-sxX" id="r1M-Wd-r0y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -163,6 +165,19 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Immune/ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRg-2h-R2l">
                     <rect key="frame" x="61" y="74" width="96" height="21"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20f-y8-XMd">
+                    <rect key="frame" x="20" y="283" width="500" height="128"/>
+                    <color key="backgroundColor" red="0.93333187849999999" green="0.93333187849999999" blue="0.93333187849999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y11-9u-jNh">
+                    <rect key="frame" x="20" y="254" width="46" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>

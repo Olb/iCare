@@ -12,6 +12,7 @@
         <Element type="BooleanFormElement" name="DifficultIVAccess"/>
         <Element type="BooleanFormElement" name="EGA"/>
         <Element type="TextElement" name="EGAWeeks"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -83,7 +84,7 @@
                     </Group>
                 </Group>
             </Group>
-            
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

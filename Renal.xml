@@ -5,7 +5,8 @@
  		<Element type="BooleanFormElement" name="RenalNegative"/>
 		<Element type="BooleanFormElement" name="CRI"/>
 		<Element type="BooleanFormElement" name="RenalFailure"/>
-        <Element type="TextElement" name="LastDialysis"/>
+        <Element type="TextElement" name="LastDialysis" datePicker="true"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -56,6 +57,7 @@
                     <Element name="CRI" label="CRI" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

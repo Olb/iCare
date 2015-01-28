@@ -19,8 +19,7 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-#import "BBAutoCompleteTextField.h"
-#import "BBData.h"
+
 
 @interface PremedsGivenViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *midazolamBBCheckBox;
@@ -29,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *ondansetronUITextField;
 @property (weak, nonatomic) IBOutlet UITableView *premedsGivenTable;
 @property (strong, nonatomic) FormElementTableAdapter *premedsGivenTableAdapter;
-@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *premedsGivenNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *premedsGivenNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *premedsGivenDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *premedsGivenDoseUnitButton;
 @end
@@ -43,7 +42,6 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-    [_premedsGivenNameTextField setAutoCompleteData:[BBData medications]];
 	 self.premedsGivenTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.premedsGivenTable.dataSource = self.premedsGivenTableAdapter;
 	 self.premedsGivenTable.delegate = self.premedsGivenTableAdapter;
@@ -67,6 +65,17 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -145,6 +154,18 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (IBAction)addPremedsGiven:(id)sender {

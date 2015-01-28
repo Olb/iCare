@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *tIABBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *alteredMentalStatusBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *seizuresBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation NeuroligcViewController
@@ -46,6 +47,7 @@ static NSString *const CVA_KEY = @"CVAKey";
 static NSString *const TIA_KEY = @"TIAKey";
 static NSString *const ALTERED_MENTAL_STATUS_KEY = @"AlteredMentalStatusKey";
 static NSString *const SEIZURES_KEY = @"SeizuresKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -87,8 +89,22 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 			 if ([element.key isEqualToString:SEIZURES_KEY]){
 				 [self.seizuresBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -103,6 +119,7 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 	 NSAssert([section getElementForKey:TIA_KEY]!= nil, @"TIA is nil");
 	 NSAssert([section getElementForKey:ALTERED_MENTAL_STATUS_KEY]!= nil, @"AlteredMentalStatus is nil");
 	 NSAssert([section getElementForKey:SEIZURES_KEY]!= nil, @"Seizures is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -224,8 +241,29 @@ static NSString *const SEIZURES_KEY = @"SeizuresKey";
 
 	 seizures.value = [NSNumber numberWithBool:self.seizuresBBCheckBox.isSelected];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

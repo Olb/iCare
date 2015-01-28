@@ -25,8 +25,8 @@ else
     for xmlFile in `ls | grep '.*\.xml'`;
     do
         name=${xmlFile%.xml}
-        #Do not regenerate#perl perlxml.pl $xmlFile >$name"ViewController.m";
-        #perl perlheader.pl $name > $name"ViewController.h";
+        perl perlxml.pl $xmlFile >$name"ViewController.m";
+        perl perlheader.pl $name > $name"ViewController.h";
     done
 fi
 

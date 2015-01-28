@@ -14,11 +14,13 @@
 #import "IntraOp.h"
 #import "BBUtil.h"
 #import "TimeScrollView.h"
-@interface AddMedicationViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak, nonatomic) IBOutlet UIPickerView *medicationPickerView;
+#import "BBAutoCompleteTextField.h"
+
+@interface AddMedicationViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *dosePickerView;
 @property (weak, nonatomic) IBOutlet BBCheckBox *isContinuous;
 @property (weak, nonatomic) IBOutlet UIButton *stopButton;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *medicationTextField;
 
 @property IntraOp *intraOp;
 @property NumericPickerAdapter* dosePickerAdapter;
@@ -39,8 +41,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u/u", @[@"mcg"],@[@"kg",@""],@[@"",@"min",@"hr"], nil];
+    self.dosePickerAdapter = [[NumericPickerAdapter alloc] initWithPickerView:self.dosePickerView format:@"ddd.ddu/u/u", @[@"mcg",@"mg",@"cc"],@[@"kg",@""],@[@"",@"min",@"hr"], nil];
     
+    [_medicationTextField setAutoCompleteData:[BBData intraOpMedications]];
+
     if (self.agent) {
         NSLog(@"Agent: %@",self.agent );
         [self.dosePickerAdapter setFloatValue:self.agent.dose];
@@ -48,20 +52,11 @@
         if ([self.agent.continuous boolValue] && !self.agent.endTime){
             self.stopButton.hidden = NO;
         }
-        for (int i = 0; i < [BBData intraOpMedications].count; i++){
-            if ([[[BBData intraOpMedications] objectAtIndex:i] isEqualToString:self.agent.name]){
-                [self.medicationPickerView selectRow:i inComponent:0 animated:NO];
-                break;
-            }
-        }
+       
         self.isContinuous.selected = [self.agent.continuous boolValue];
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -69,7 +64,7 @@
 - (IBAction)save:(id)sender {
     NSString *value = [self.dosePickerAdapter getValue];
     NSString *unit = [self.dosePickerAdapter getUnit];
-    NSString *name = [self pickerView:self.medicationPickerView titleForRow:[self.medicationPickerView selectedRowInComponent:0] forComponent:0];
+    NSString *name = _medicationTextField.text;
     
     if (!self.agent) {
         self.agent = (Agent*)[BBUtil newCoreDataObjectForEntityName:@"Agent"];
@@ -122,6 +117,13 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return [[BBData intraOpMedications] objectAtIndex:row];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+
+    return YES;
 }
 
 @end

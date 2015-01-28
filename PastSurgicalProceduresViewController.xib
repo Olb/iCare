@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PastSurgicalProceduresViewController">
@@ -10,6 +10,7 @@
                 <outlet property="hxAnesthesiaProblemsNoBBCheckBox" destination="pp3-qF-QTS" id="C0F-Jh-Tfk"/>
                 <outlet property="hxAnesthesiaProblemsYesFamilyBBCheckBox" destination="HTa-qQ-yuV" id="PA4-UW-yaF"/>
                 <outlet property="hxAnesthesiaProblemsYesPatientBBCheckBox" destination="oWN-ql-1dZ" id="jHk-Dk-5d4"/>
+                <outlet property="notesUITextView" destination="9py-2g-TCT" id="qjV-02-s57"/>
                 <outlet property="pastSurgicalProceduresTable" destination="L3m-F2-xhG" id="36v-2u-Iea"/>
                 <outlet property="pastSurgicalProceduresTextField" destination="UDZ-yd-IEc" id="Us1-Fl-Hh9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L3m-F2-xhG">
-                    <rect key="frame" x="20" y="136" width="500" height="264"/>
+                    <rect key="frame" x="20" y="136" width="500" height="136"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Past Surgical Procedures" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzC-D4-FOu">
@@ -48,31 +49,31 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hx Anesth. Problems:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REU-Fq-vJ8">
-                    <rect key="frame" x="20" y="413" width="170" height="21"/>
+                    <rect key="frame" x="20" y="292" width="170" height="21"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBC-au-LYa">
-                    <rect key="frame" x="230" y="413" width="45" height="21"/>
+                    <rect key="frame" x="230" y="292" width="45" height="21"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yes-Patient" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0P-Ig-zSu">
-                    <rect key="frame" x="231" y="453" width="88" height="21"/>
+                    <rect key="frame" x="231" y="332" width="88" height="21"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yes-Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chb-mY-aGx">
-                    <rect key="frame" x="230" y="493" width="92" height="21"/>
+                    <rect key="frame" x="230" y="372" width="92" height="21"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pp3-qF-QTS" customClass="BBCheckBox">
-                    <rect key="frame" x="192" y="408" width="33" height="32"/>
+                    <rect key="frame" x="192" y="287" width="33" height="32"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -87,7 +88,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWN-ql-1dZ" customClass="BBCheckBox">
-                    <rect key="frame" x="192" y="448" width="33" height="32"/>
+                    <rect key="frame" x="192" y="327" width="33" height="32"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -102,7 +103,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-qQ-yuV" customClass="BBCheckBox">
-                    <rect key="frame" x="192" y="488" width="33" height="32"/>
+                    <rect key="frame" x="192" y="367" width="33" height="32"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -136,9 +137,23 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9py-2g-TCT">
+                    <rect key="frame" x="20" y="430" width="500" height="128"/>
+                    <color key="backgroundColor" red="0.93333187849999999" green="0.93333187849999999" blue="0.93333187849999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSJ-lE-m3e">
+                    <rect key="frame" x="20" y="401" width="46" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="166" y="250"/>
         </view>
     </objects>
     <resources>

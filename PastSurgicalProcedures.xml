@@ -5,6 +5,7 @@
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesPatient"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesFamily"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsNo" />
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     <Validation>
         <RadioButtons>
@@ -14,15 +15,18 @@
         </RadioButtons>
     </Validation>
     <Graphics>
-        <Group orientation="horizontal" >
-            <Group orientation="vertical" label="Past Surgical Procedures">
-                <Element name="PastSurgicalProcedures"  />
+        <Group orientation="vertical" >
+            <Group orientation="horizontal" >
+                <Group orientation="vertical" label="Past Surgical Procedures">
+                    <Element name="PastSurgicalProcedures"  />
+                </Group>
+                <Group orientation="vertical" label="Hx Anesthesia Problems:">
+                    <Element name="HxAnesthesiaProblemsNo" label="None" />
+                    <Element name="HxAnesthesiaProblemsYesPatient" label="Yes-Patient" />
+                    <Element name="HxAnesthesiaProblemsYesFamily" label="Yes-Family" />
+                </Group>
             </Group>
-            <Group orientation="vertical" label="Hx Anesthesia Problems:">
-                <Element name="HxAnesthesiaProblemsNo" label="None" />
-                <Element name="HxAnesthesiaProblemsYesPatient" label="Yes-Patient" />
-                <Element name="HxAnesthesiaProblemsYesFamily" label="Yes-Family" />
-            </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 </Section>

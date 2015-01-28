@@ -78,6 +78,8 @@
 		284AFD8219EB4A8B0015D330 /* MeasurementLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 284AFD8119EB4A8B0015D330 /* MeasurementLabel.m */; };
 		28566D5119D1AF45000124CB /* FirstTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5019D1AF45000124CB /* FirstTest.m */; };
 		28566D5719D1D873000124CB /* MedicationFormElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 28566D5619D1D873000124CB /* MedicationFormElement.m */; };
+		288AB5761A78948500EC245D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288AB5741A78948500EC245D /* Crashlytics.framework */; };
+		288AB5771A78948500EC245D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288AB5751A78948500EC245D /* Fabric.framework */; };
 		288D1E2019DDCD55008EF1B7 /* IntraOpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */; };
 		288D1E5B19DDF73E008EF1B7 /* IntraOpGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 288D1E5A19DDF73E008EF1B7 /* IntraOpGrid.m */; };
 		2893CCAF19E47DF500167D0B /* AgentTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2893CCAE19E47DF500167D0B /* AgentTableAdapter.m */; };
@@ -367,6 +369,8 @@
 		28566D5519D1D873000124CB /* MedicationFormElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicationFormElement.h; sourceTree = "<group>"; };
 		28566D5619D1D873000124CB /* MedicationFormElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicationFormElement.m; sourceTree = "<group>"; };
 		285A969419CFAC2F0034B769 /* Icare Screen With Additions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Icare Screen With Additions.pdf"; sourceTree = "<group>"; };
+		288AB5741A78948500EC245D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		288AB5751A78948500EC245D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		288D1E1E19DDCD55008EF1B7 /* IntraOpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpViewController.h; sourceTree = "<group>"; };
 		288D1E1F19DDCD55008EF1B7 /* IntraOpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntraOpViewController.m; sourceTree = "<group>"; };
 		288D1E5919DDF73E008EF1B7 /* IntraOpGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntraOpGrid.h; sourceTree = "<group>"; };
@@ -643,9 +647,11 @@
 				284819E819D9B9CF00E0ED21 /* MessageUI.framework in Frameworks */,
 				98DA485519C8A0E800E4727B /* CoreText.framework in Frameworks */,
 				F4615D4F192F908E0031470B /* CoreGraphics.framework in Frameworks */,
+				288AB5771A78948500EC245D /* Fabric.framework in Frameworks */,
 				F4615D53192F908E0031470B /* CoreData.framework in Frameworks */,
 				F4615D51192F908E0031470B /* UIKit.framework in Frameworks */,
 				F4615D4D192F908E0031470B /* Foundation.framework in Frameworks */,
+				288AB5761A78948500EC245D /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1088,8 @@
 		F4615D4B192F908E0031470B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				288AB5741A78948500EC245D /* Crashlytics.framework */,
+				288AB5751A78948500EC245D /* Fabric.framework */,
 				284819E719D9B9CF00E0ED21 /* MessageUI.framework */,
 				98DA485419C8A0E800E4727B /* CoreText.framework */,
 				F4615D4C192F908E0031470B /* Foundation.framework */,
@@ -1214,6 +1222,7 @@
 				F4615D45192F908E0031470B /* Sources */,
 				F4615D46192F908E0031470B /* Frameworks */,
 				F4615D47192F908E0031470B /* Resources */,
+				288AB5731A78945000EC245D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1417,6 +1426,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		288AB5731A78945000EC245D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 52617263eb41e9317e71a30eef8714a012704096 1cf426edc8a9688a0c4ad5ccd7e8b46cc386433c200d609a8bf7ad01ac48a35a";
+		};
 		98A568FA19D8A2BC00F31635 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1663,15 +1685,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCare2/iCare2-Prefix.pch";
 				INFOPLIST_FILE = "iCare2/iCare2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a046b653-40d4-4cd5-908d-1101b3a6bc64";
 				SWIFT_OBJC_BRIDGING_HEADER = "iCare2/iCare2-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1685,15 +1711,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCare2/iCare2-Prefix.pch";
 				INFOPLIST_FILE = "iCare2/iCare2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a046b653-40d4-4cd5-908d-1101b3a6bc64";
 				SWIFT_OBJC_BRIDGING_HEADER = "iCare2/iCare2-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

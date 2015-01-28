@@ -19,25 +19,25 @@
 #import "AntibioticFormElement.h"
 
 #import "MedicationFormElement.h"
-#import "BBAutoCompleteTextField.h"
-#import "BBData.h"
+
 
 @interface AllergiesReactionsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *noKnownAllergiesBBCheckBox;
-@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *allergiesReactionsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *allergiesReactionsTextField;
 @property (weak, nonatomic) IBOutlet UITableView *allergiesReactionsTable;
 @property (strong, nonatomic) StringArrayTableAdapter *allergiesReactionsTableAdapter;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation AllergiesReactionsViewController
 NSString *const ALLERGIES_REACTIONS_SECTION_TITLE = @"AllergiesReactionsSectionKey";
 static NSString *const NO_KNOWN_ALLERGIES_KEY = @"NoKnownAllergiesKey";
 static NSString *const ALLERGIES_REACTIONS_KEY = @"AllergiesReactionsKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
-    [_allergiesReactionsTextField setAutoCompleteData:[BBData allergies]];
 	 self.allergiesReactionsTableAdapter = [[StringArrayTableAdapter alloc] init];
 	 self.allergiesReactionsTable.dataSource = self.allergiesReactionsTableAdapter;
 	 self.allergiesReactionsTable.delegate = self.allergiesReactionsTableAdapter;
@@ -54,14 +54,29 @@ static NSString *const ALLERGIES_REACTIONS_KEY = @"AllergiesReactionsKey";
 				 self.allergiesReactionsTableAdapter.items = [[NSMutableArray alloc] initWithArray:((StringListElement*)element).value];
 				 [self.allergiesReactionsTable reloadData];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
 {
 	 NSAssert([section getElementForKey:NO_KNOWN_ALLERGIES_KEY]!= nil, @"NoKnownAllergies is nil");
 	 NSAssert([section getElementForKey:ALLERGIES_REACTIONS_KEY]!= nil, @"AllergiesReactions is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -104,8 +119,29 @@ static NSString *const ALLERGIES_REACTIONS_KEY = @"AllergiesReactionsKey";
 	 }
 	 allergiesReactions.value = allergiesReactionsStringArray;
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (IBAction)addAllergiesReactions:(id)sender {

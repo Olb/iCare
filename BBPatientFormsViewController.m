@@ -106,22 +106,6 @@ typedef enum : NSUInteger {
 
 - (IBAction)addSelectedOperation:(id)sender {
     
-    NSString *operationNameToSave;
-    for (NSString *s in [BBData procedures]) {
-        if ([self.operationTextField.text caseInsensitiveCompare:s] == NSOrderedSame) {
-            operationNameToSave = s;
-            break;
-        }
-    }
-    if (!operationNameToSave) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Invalid Operation"
-                                                            message:@"The operation entered is not a valid operation"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-        return;
-    }
     
     BPBAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
@@ -138,7 +122,7 @@ typedef enum : NSUInteger {
         NSLog(@"ERROR on context save: %@",[error description]);
         [NSException raise:@"Error on context save" format:@"Message: %@",[error description]];
     }
-    
+    [self.operationTextField resignFirstResponder];
     self.operationTextField.text = @"";
     [self.operationTableView reloadData];
    

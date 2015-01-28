@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *cirrhosisBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *hepatitisBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *obstructionBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation HepatoViewController
@@ -38,6 +39,7 @@ static NSString *const GERD_KEY = @"GERDKey";
 static NSString *const CIRRHOSIS_KEY = @"CirrhosisKey";
 static NSString *const HEPATITIS_KEY = @"HepatitisKey";
 static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -67,8 +69,22 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 			 if ([element.key isEqualToString:OBSTRUCTION_KEY]){
 				 [self.obstructionBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -79,6 +95,7 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 	 NSAssert([section getElementForKey:CIRRHOSIS_KEY]!= nil, @"Cirrhosis is nil");
 	 NSAssert([section getElementForKey:HEPATITIS_KEY]!= nil, @"Hepatitis is nil");
 	 NSAssert([section getElementForKey:OBSTRUCTION_KEY]!= nil, @"Obstruction is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -164,8 +181,29 @@ static NSString *const OBSTRUCTION_KEY = @"ObstructionKey";
 
 	 obstruction.value = [NSNumber numberWithBool:self.obstructionBBCheckBox.isSelected];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

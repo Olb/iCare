@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *difficultIVAccessBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *eGABBCheckBox;
 @property (weak, nonatomic) IBOutlet UITextField *eGAWeeksUITextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation EvalOtherViewController
@@ -48,6 +49,7 @@ static NSString *const DRUG_ABUSE_KEY = @"DrugAbuseKey";
 static NSString *const DIFFICULTIVAccess_KEY = @"DifficultIVAccessKey";
 static NSString *const EGA_KEY = @"EGAKey";
 static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -92,8 +94,22 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 			 if ([element.key isEqualToString:EGAWeeks_KEY]){
 				 [self.eGAWeeksUITextField setText:((TextElement*)element).value];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -109,6 +125,7 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 	 NSAssert([section getElementForKey:DIFFICULTIVAccess_KEY]!= nil, @"DifficultIVAccess is nil");
 	 NSAssert([section getElementForKey:EGA_KEY]!= nil, @"EGA is nil");
 	 NSAssert([section getElementForKey:EGAWeeks_KEY]!= nil, @"EGAWeeks is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -245,8 +262,29 @@ static NSString *const EGAWeeks_KEY = @"EGAWeeksKey";
 
 	 eGAWeeks.value = self.eGAWeeksUITextField.text;
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

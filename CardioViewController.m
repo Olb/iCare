@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet BBCheckBox *pTCABBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *coronaryStentsBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *dysrhythmiaBBCheckBox;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation CardioViewController
@@ -52,6 +53,7 @@ static NSString *const MI_KEY = @"MIKey";
 static NSString *const PTCA_KEY = @"PTCAKey";
 static NSString *const CORONARY_STENTS_KEY = @"CoronaryStentsKey";
 static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -102,8 +104,22 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 			 if ([element.key isEqualToString:DYSRHYTHMIA_KEY]){
 				 [self.dysrhythmiaBBCheckBox setSelected:[((BooleanFormElement*)element).value boolValue]];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -121,6 +137,7 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 	 NSAssert([section getElementForKey:PTCA_KEY]!= nil, @"PTCA is nil");
 	 NSAssert([section getElementForKey:CORONARY_STENTS_KEY]!= nil, @"CoronaryStents is nil");
 	 NSAssert([section getElementForKey:DYSRHYTHMIA_KEY]!= nil, @"Dysrhythmia is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -269,8 +286,29 @@ static NSString *const DYSRHYTHMIA_KEY = @"DysrhythmiaKey";
 
 	 dysrhythmia.value = [NSNumber numberWithBool:self.dysrhythmiaBBCheckBox.isSelected];
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

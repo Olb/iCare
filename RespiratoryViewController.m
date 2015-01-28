@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *pPDUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *yRSUITextField;
 @property (weak, nonatomic) IBOutlet UITextField *quitAmountAgoUITextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
 @end
 
 @implementation RespiratoryViewController
@@ -50,6 +51,7 @@ static NSString *const SMOKING_KEY = @"SmokingKey";
 static NSString *const PPD_KEY = @"PPDKey";
 static NSString *const YRS_KEY = @"YRSKey";
 static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
+static NSString *const NOTES_KEY = @"NotesKey";
 
 - (void)viewDidLoad
 {
@@ -97,8 +99,22 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 			 if ([element.key isEqualToString:QUIT_AMOUNT_AGO_KEY]){
 				 [self.quitAmountAgoUITextField setText:((TextElement*)element).value];
 			 }
+			 if ([element.key isEqualToString:NOTES_KEY]){
+				 [self.notesUITextView setText:((TextElement*)element).value];
+			 }
 		 }
 	 }
+}
+
+
+-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {
+	 UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+	 datePicker.datePickerMode = UIDatePickerModeDate;
+	 [textField setInputView:datePicker];
+	 UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];
+	 UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];
+	 [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];
+	 textField.inputAccessoryView = myToolbar;
 }
 
 -(void)validateSection:(FormSection*)section
@@ -115,6 +131,7 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 	 NSAssert([section getElementForKey:PPD_KEY]!= nil, @"PPD is nil");
 	 NSAssert([section getElementForKey:YRS_KEY]!= nil, @"YRS is nil");
 	 NSAssert([section getElementForKey:QUIT_AMOUNT_AGO_KEY]!= nil, @"QuitAmountAgo is nil");
+	 NSAssert([section getElementForKey:NOTES_KEY]!= nil, @"Notes is nil");
 	 
 }
 
@@ -268,8 +285,29 @@ static NSString *const QUIT_AMOUNT_AGO_KEY = @"QuitAmountAgoKey";
 
 	 quitAmountAgo.value = self.quitAmountAgoUITextField.text;
 	 
+	 TextElement *notes = (TextElement*)[_section getElementForKey:NOTES_KEY];
+	 if (!notes) {
+		 notes = (TextElement*)[BBUtil newCoreDataObjectForEntityName:@"TextElement"];
+		 notes.key = NOTES_KEY;
+		 [_section addElementsObject:notes];
+	 }
+
+	 notes.value = self.notesUITextView.text;
+	 
 	 [self.delegate sectionCreated:self.section];
 	 [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)changeMedUnit:(UIButton*)sender {
+	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
+		 sender.titleLabel.text = @"mcg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
+		 sender.titleLabel.text = @"mg";
+	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
+		 sender.titleLabel.text = @"g";
+	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
+		 sender.titleLabel.text = @"cc";
+	 } 
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

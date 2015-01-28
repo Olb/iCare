@@ -10,7 +10,7 @@
         <Element type="TextElement" name="Temp"/>
         <Element type="TextElement" name="NPOTime"/>
         <Element type="TextElement" name="NameMD"/>
-        <Element type="TextElement" name="ReviewDate"/>
+        <Element type="TextElement" name="ReviewDate" datePicker="true"/>
         <Element type="TextElement" name="ReviewTime"/>
 	</Data>
     

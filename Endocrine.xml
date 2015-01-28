@@ -4,8 +4,10 @@
 		<Element type="BooleanFormElement" name="Endocrine"/>
  		<Element type="BooleanFormElement" name="EndocrineNegative"/>
 		<Element type="BooleanFormElement" name="Diabetes"/>
+        <Element type="BooleanFormElement" name="DiabetesTwo"/>
 		<Element type="BooleanFormElement" name="HyperThyroid"/>
 		<Element type="BooleanFormElement" name="HypoThyroid"/>
+        <Element type="TextViewElement" name="Notes"/>
 	</Data>
     
     <Validation>
@@ -19,6 +21,7 @@
             </Condition>
             <Action type="check" operator="and">
                 <Element name="Diabetes" value="false" />
+                <Element name="DiabetesTwo" value="false" />
                 <Element name="HyperThyroid" value="false" />
                 <Element name="HypoThyroid" value="false" />
             </Action>
@@ -29,6 +32,7 @@
             </Condition>
             <Action type="check" operator="or">
                 <Element name="Diabetes" value="true" />
+                <Element name="DiabetesTwo" value="true" />
                 <Element name="HyperThyroid" value="true" />
                 <Element name="HypoThyroid" value="true" />
             </Action>
@@ -51,9 +55,11 @@
                     </Group>
                 </Group>
                 <Group orientation="vertical"  >
-                    <Element name="Diabetes" label="Diabetes" />
+                    <Element name="Diabetes" label="Diabetes Type 1" />
+                    <Element name="DiabetesTwo" label="Diabetes Type 2" />
                 </Group>
             </Group>
+            <Element name="Notes" label="Notes" width="400" />
         </Group>
     </Graphics>
 

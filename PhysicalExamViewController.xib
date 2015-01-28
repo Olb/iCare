@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhysicalExamViewController">
@@ -12,6 +13,7 @@
                 <outlet property="lungsClearBBCheckBox" destination="YH8-9S-6Uv" id="b8u-Z4-Qy3"/>
                 <outlet property="lungsOtherBBCheckBox" destination="CfK-Uv-MaV" id="iwU-h2-hXz"/>
                 <outlet property="lungsOtherReasonUITextField" destination="wqy-VG-8Yh" id="3lJ-Cd-dQ4"/>
+                <outlet property="notesUITextView" destination="HPe-gA-hiy" id="5b7-Cj-MyO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -152,6 +154,19 @@
                         <outlet property="delegate" destination="-1" id="KNV-ET-GQg"/>
                     </connections>
                 </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPe-gA-hiy">
+                    <rect key="frame" x="20" y="343" width="500" height="128"/>
+                    <color key="backgroundColor" red="0.93333187849999999" green="0.93333187849999999" blue="0.93333187849999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-mG-PEV">
+                    <rect key="frame" x="20" y="314" width="46" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

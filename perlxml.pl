@@ -229,6 +229,12 @@ print "- (void)viewDidLoad\n";
 print "{\n";
 print "\t [super viewDidLoad];\n";
 
+foreach $element (@elements) {
+    if ($element->{datePicker} eq "true") {
+        print "\n\t [self addDatePicker: self.".getOutletNameForElement($element)." withSelector: \@selector(update".getOutletNameForElement($element).")];\n";
+    }
+}
+
 $radioGroup = 0;
 foreach $button (@radioButtons) {
     my @elems;
@@ -384,7 +390,29 @@ sub getTextForCondition {
     }
 }
 
+# setupDatePickers
 
+print "\n-(void)addDatePicker: (UITextField*)textField withSelector: (SEL)selector {\n";
+print "\t UIDatePicker *datePicker = [[UIDatePicker alloc] init];\n";
+print "\t datePicker.datePickerMode = UIDatePickerModeDate;\n";
+print "\t [textField setInputView:datePicker];\n";
+print "\t UIToolbar *myToolbar = [[UIToolbar alloc] initWithFrame: CGRectMake(0,0,340,44)];\n";
+print "\t UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:selector];\n";
+print "\t [myToolbar setItems:[NSArray arrayWithObject: doneButton] animated:NO];\n";
+print "\t textField.inputAccessoryView = myToolbar;\n";
+print "}\n\n";
+
+foreach $element (@elements) {
+    if ($element->{datePicker} eq "true") {
+        print "-(void)update".getOutletNameForElement($element)."{\n";
+        print "\t UIDatePicker *picker = (UIDatePicker*)self.".getOutletNameForElement($element).".inputView;\n";
+        print "\t NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];\n";
+        print "\t [dateFormatter setDateFormat:\@\"dd/MM/yyyy\"];\n";
+        print "\t self.".getOutletNameForElement($element).".text = [NSString stringWithFormat:\@\"%\@\",[dateFormatter stringFromDate:picker.date]];\n";
+        print "\t [self.".getOutletNameForElement($element)." resignFirstResponder];\n";
+        print "}\n\n";
+    }
+}
 
 # validateSection
 
@@ -611,6 +639,16 @@ print "}\n\n";
 
 
 # table add button handlers
+print "- (IBAction)changeMedUnit:(UIButton*)sender {\n";
+print "\t if ([sender.titleLabel.text isEqualToString: \@\"cc\"]) { \n";
+print "\t\t sender.titleLabel.text = \@\"mcg\";\n";
+print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"mcg\"]) {\n";
+print "\t\t sender.titleLabel.text = \@\"mg\";\n";
+print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"mg\"]) {\n";
+print "\t\t sender.titleLabel.text = \@\"g\";\n";
+print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"g\"]) {\n";
+print "\t\t sender.titleLabel.text = \@\"cc\";\n";
+print "\t } \n}\n\n";
 
 foreach $element (@elements){
     if ($element->{type} eq "StringListElement"){

@@ -946,6 +946,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
@@ -2016,6 +2033,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
@@ -2810,7 +2844,23 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DiabetesKey"]).value boolValue] atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 
-	 previousElementSize = [BBPdfGenerator drawText:@"Diabetes" atLocation:cursor];
+	 previousElementSize = [BBPdfGenerator drawText:@"Diabetes Type 1" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group6Indentation + 8 > group6MaxWidth){
+		 group6MaxWidth = previousElementSize.width + group6Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"DiabetesTwoKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Diabetes Type 2" atLocation:cursor];
 	 cursor.x += previousElementSize.width + 8;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
@@ -2840,6 +2890,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
@@ -3602,6 +3669,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
@@ -5421,6 +5505,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
@@ -5627,6 +5728,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
@@ -5937,6 +6055,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
@@ -6839,6 +6974,16 @@ NSDateFormatter* dateFormatter;
 
 	 group1Indentation = 15;
 	 cursor.x += group1Indentation;
+	 //start of draw group2
+	 int group2MaxHeight = 0;
+
+	 CGPoint group2CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group2Indentation = 0;
+	 group2Indentation = 0;
+	 cursor.x += group2Indentation;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
@@ -6850,9 +6995,36 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize.width = cursor.x - elemCursorStart.x;
 	 previousElementSize.height += 0 + 0;
 	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawCheckBoxChecked:[((BooleanFormElement*)[section getElementForKey:@"TakenDayOfKey"]).value boolValue] atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 previousElementSize = [BBPdfGenerator drawText:@"Taken day of procedure" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.x += previousElementSize.width + 8;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
 	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
-		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
 	 elemCursorStart = cursor;
@@ -6885,6 +7057,23 @@ NSDateFormatter* dateFormatter;
 
 	 previousElementSize.width = group1MaxWidth;
 	 previousElementSize.height = cursor.y - elemCursorStart.y;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
 	 cursor = elemCursorStart;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
@@ -7708,6 +7897,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
@@ -7799,8 +8005,7 @@ NSDateFormatter* dateFormatter;
 	 CGPoint elemCursorStart = sectionOrigin;
 	 NSString *text;
 	 //start of draw group1
-	 int group1MaxHeight = 0;
-
+	 int group1MaxWidth = 0;
 	 CGPoint group1CursorStart = cursor;
 
 	 cursor.x += 0;//margin left
@@ -7809,58 +8014,15 @@ NSDateFormatter* dateFormatter;
 	 group1Indentation = 0;
 	 cursor.x += group1Indentation;
 	 //start of draw group2
-	 int group2MaxWidth = 0;
+	 int group2MaxHeight = 0;
+
 	 CGPoint group2CursorStart = cursor;
 
 	 cursor.x += 0;//margin left
 	 cursor.y += 0;//margin top
 	 int group2Indentation = 0;
-	 previousElementSize = [BBPdfGenerator drawText:@"Past Surgical Procedures" atLocation:cursor isBold:YES];
-	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group2Indentation + 0 > group2MaxWidth){
-		 group2MaxWidth = previousElementSize.width + group2Indentation + 0;
-	 }
-
-	 group2Indentation = 15;
+	 group2Indentation = 0;
 	 cursor.x += group2Indentation;
-	 elemCursorStart = cursor;
-	 cursor.x += 0;
-	 cursor.y += 0;
-	 previousElementSize = [BBPdfGenerator drawText:@"" atLocation:cursor];
-	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
-		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
-	 }
-
-	 cursor.x += 10;
-	 for (NSString *text in ((StringListElement*)[section getElementForKey:@"PastSurgicalProceduresKey"]).value) {
-		 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];
-	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
-		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
-	 }
-
-	 }
-
-	 previousElementSize.width = group2MaxWidth;
-	 previousElementSize.height = cursor.y - elemCursorStart.y;
-	 cursor = elemCursorStart;
-	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group2Indentation + 8 > group2MaxWidth){
-		 group2MaxWidth = previousElementSize.width + group2Indentation + 8;
-	 }
-
-	 //end of draw group2
-	 previousElementSize = CGSizeMake(group2MaxWidth + 15, cursor.y -group2CursorStart.y);
-	 cursor = group2CursorStart;
-
-	 previousElementSize.width += 0;
-	 previousElementSize.height += 0;
-	 cursor.x += previousElementSize.width + 0;
-	 if ( previousElementSize.height + 0 > group1MaxHeight){
-		 group1MaxHeight = previousElementSize.height + 0;
-	 }
-
 	 //start of draw group3
 	 int group3MaxWidth = 0;
 	 CGPoint group3CursorStart = cursor;
@@ -7868,7 +8030,7 @@ NSDateFormatter* dateFormatter;
 	 cursor.x += 0;//margin left
 	 cursor.y += 0;//margin top
 	 int group3Indentation = 0;
-	 previousElementSize = [BBPdfGenerator drawText:@"Hx Anesthesia Problems:" atLocation:cursor isBold:YES];
+	 previousElementSize = [BBPdfGenerator drawText:@"Past Surgical Procedures" atLocation:cursor isBold:YES];
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group3Indentation + 0 > group3MaxWidth){
 		 group3MaxWidth = previousElementSize.width + group3Indentation + 0;
@@ -7876,6 +8038,59 @@ NSDateFormatter* dateFormatter;
 
 	 group3Indentation = 15;
 	 cursor.x += group3Indentation;
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"" atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 cursor.x += 10;
+	 for (NSString *text in ((StringListElement*)[section getElementForKey:@"PastSurgicalProceduresKey"]).value) {
+		 previousElementSize = [BBPdfGenerator drawText:text atLocation:cursor];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 }
+
+	 previousElementSize.width = group3MaxWidth;
+	 previousElementSize.height = cursor.y - elemCursorStart.y;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
+		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 }
+
+	 //end of draw group3
+	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
+	 cursor = group3CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.x += previousElementSize.width + 0;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //start of draw group4
+	 int group4MaxWidth = 0;
+	 CGPoint group4CursorStart = cursor;
+
+	 cursor.x += 0;//margin left
+	 cursor.y += 0;//margin top
+	 int group4Indentation = 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Hx Anesthesia Problems:" atLocation:cursor isBold:YES];
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group4Indentation + 0 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 0;
+	 }
+
+	 group4Indentation = 15;
+	 cursor.x += group4Indentation;
 	 elemCursorStart = cursor;
 	 cursor.x += 0;
 	 cursor.y += 0;
@@ -7888,8 +8103,8 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize.height += 0 + 0;
 	 cursor = elemCursorStart;
 	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
-		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
 	 }
 
 	 elemCursorStart = cursor;
@@ -7904,8 +8119,8 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize.height += 0 + 0;
 	 cursor = elemCursorStart;
 	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
-		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
 	 }
 
 	 elemCursorStart = cursor;
@@ -7920,23 +8135,51 @@ NSDateFormatter* dateFormatter;
 	 previousElementSize.height += 0 + 0;
 	 cursor = elemCursorStart;
 	 cursor.y += previousElementSize.height + 0;
-	 if ( previousElementSize.width + group3Indentation + 8 > group3MaxWidth){
-		 group3MaxWidth = previousElementSize.width + group3Indentation + 8;
+	 if ( previousElementSize.width + group4Indentation + 8 > group4MaxWidth){
+		 group4MaxWidth = previousElementSize.width + group4Indentation + 8;
 	 }
 
-	 //end of draw group3
-	 previousElementSize = CGSizeMake(group3MaxWidth + 15, cursor.y -group3CursorStart.y);
-	 cursor = group3CursorStart;
+	 //end of draw group4
+	 previousElementSize = CGSizeMake(group4MaxWidth + 15, cursor.y -group4CursorStart.y);
+	 cursor = group4CursorStart;
 
 	 previousElementSize.width += 0;
 	 previousElementSize.height += 0;
 	 cursor.x += previousElementSize.width + 0;
-	 if ( previousElementSize.height + 0 > group1MaxHeight){
-		 group1MaxHeight = previousElementSize.height + 0;
+	 if ( previousElementSize.height + 0 > group2MaxHeight){
+		 group2MaxHeight = previousElementSize.height + 0;
+	 }
+
+	 //end of draw group2
+	 previousElementSize = CGSizeMake(cursor.x - group2CursorStart.x, group2MaxHeight);
+	 cursor = group2CursorStart;
+
+	 previousElementSize.width += 0;
+	 previousElementSize.height += 0;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
-	 previousElementSize = CGSizeMake(cursor.x - group1CursorStart.x, group1MaxHeight);
+	 previousElementSize = CGSizeMake(group1MaxWidth + 0, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
 
 	 previousElementSize.width += 0;
@@ -8394,6 +8637,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
@@ -12371,6 +12631,23 @@ NSDateFormatter* dateFormatter;
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
 	 }
 
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
+	 }
+
 	 //end of draw group1
 	 previousElementSize = CGSizeMake(group1MaxWidth + 15, cursor.y -group1CursorStart.y);
 	 cursor = group1CursorStart;
@@ -12742,6 +13019,23 @@ NSDateFormatter* dateFormatter;
 	 cursor.y += previousElementSize.height + 0;
 	 if ( previousElementSize.width + group1Indentation + 0 > group1MaxWidth){
 		 group1MaxWidth = previousElementSize.width + group1Indentation + 0;
+	 }
+
+	 elemCursorStart = cursor;
+	 cursor.x += 0;
+	 cursor.y += 0;
+	 previousElementSize = [BBPdfGenerator drawText:@"Notes" atLocation:cursor];
+	 cursor.x += previousElementSize.width + 8;
+	 
+	 text = ((TextElement*)[section getElementForKey:@"NotesKey"]).value; 
+	 previousElementSize = [BBPdfGenerator drawTextBox:text atLocation:cursor width:400];
+	 cursor.x += previousElementSize.width + 8;
+	 previousElementSize.width = cursor.x - elemCursorStart.x;
+	 previousElementSize.height += 0 + 0;
+	 cursor = elemCursorStart;
+	 cursor.y += previousElementSize.height + 0;
+	 if ( previousElementSize.width + group1Indentation + 8 > group1MaxWidth){
+		 group1MaxWidth = previousElementSize.width + group1Indentation + 8;
 	 }
 
 	 //end of draw group1
