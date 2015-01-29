@@ -20,6 +20,10 @@
 
 #import "MedicationFormElement.h"
 
+#import "BBData.h"
+
+#import "BBAutoCompleteTextField.h"
+
 
 @interface PremedsGivenViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *midazolamBBCheckBox;
@@ -28,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *ondansetronUITextField;
 @property (weak, nonatomic) IBOutlet UITableView *premedsGivenTable;
 @property (strong, nonatomic) FormElementTableAdapter *premedsGivenTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *premedsGivenNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *premedsGivenNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *premedsGivenDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *premedsGivenDoseUnitButton;
 @end
@@ -42,6 +46,7 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [_premedsGivenNameTextField setAutoCompleteData:[BBData medications]];
 	 self.premedsGivenTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.premedsGivenTable.dataSource = self.premedsGivenTableAdapter;
 	 self.premedsGivenTable.delegate = self.premedsGivenTableAdapter;
@@ -158,13 +163,15 @@ static NSString *const PREMEDS_GIVEN_KEY = @"PremedsGivenKey";
 
 - (IBAction)changeMedUnit:(UIButton*)sender {
 	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
-		 sender.titleLabel.text = @"mcg";
+		 [sender setTitle:@"mcg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
-		 sender.titleLabel.text = @"mg";
+		 [sender setTitle:@"mg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
-		 sender.titleLabel.text = @"g";
-	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
-		 sender.titleLabel.text = @"cc";
+		 [sender setTitle:@"G" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"G"]) {
+		 [sender setTitle:@"none" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"none"]) {
+		 [sender setTitle:@"cc" forState:UIControlStateNormal];
 	 } 
 }
 

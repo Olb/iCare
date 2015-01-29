@@ -97,9 +97,18 @@ sub printPropertiesForElement{
     local $element;
     $element = $_[0];
     
+    local $textField;
+    if ($element->{autocompleteProc} eq "true") {
+        $textField = "BBAutoCompleteTextField";
+    } elsif ($element->{autocompleteAllergy} eq "true") {
+        $textField = "BBAutoCompleteTextField";
+    } else {
+        $textField = "UITextField";
+    }
+    
     switch($element->{type}){
         case "StringListElement" {
-            print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"TEXT_FIELD").";\n";
+            print "\@property (weak, nonatomic) IBOutlet ".$textField." *".getOutletNameForElement($element,"TEXT_FIELD").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITableView *".getOutletNameForElement($element,"TABLE").";\n";
             print "\@property (strong, nonatomic) StringArrayTableAdapter *".getOutletNameForElement($element,"ADAPTER").";\n";
         }
@@ -108,20 +117,20 @@ sub printPropertiesForElement{
             print "\@property (strong, nonatomic) FormElementTableAdapter *".getOutletNameForElement($element,"ADAPTER").";\n";
             switch ( $element->{listOf} ){
                 case "AntibioticFormElement" {
-                    print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"NAME").";\n";
+                    print "\@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *".getOutletNameForElement($element,"NAME").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UIButton *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"START_TIME").";\n";
                 }
                 case "MedicationFormElement" {
-                    print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"NAME").";\n";
+                    print "\@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *".getOutletNameForElement($element,"NAME").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE").";\n";
                     print "\@property (weak, nonatomic) IBOutlet UIButton *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
                 }
             }
         }
         case "AntibioticFormElement" {
-            print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"NAME").";\n";
+            print "\@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *".getOutletNameForElement($element,"NAME").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"DOSE").";\n";
             print "\@property (weak, nonatomic) IBOutlet UIButton *".getOutletNameForElement($element,"DOSE_UNIT").";\n";
             print "\@property (weak, nonatomic) IBOutlet UITextField *".getOutletNameForElement($element,"START_TIME").";\n";
@@ -199,6 +208,9 @@ print "#import \"FormElementTableAdapter.h\"\n\n";
 print "#import \"FormElementTableCellFactory.h\"\n\n";
 print "#import \"AntibioticFormElement.h\"\n\n";
 print "#import \"MedicationFormElement.h\"\n\n";
+print "#import \"BBData.h\"\n\n";
+print "#import \"BBAutoCompleteTextField.h\"\n\n";
+
 print "\n";
 
 # interface section
@@ -233,7 +245,33 @@ foreach $element (@elements) {
     if ($element->{datePicker} eq "true") {
         print "\n\t [self addDatePicker: self.".getOutletNameForElement($element)." withSelector: \@selector(update".getOutletNameForElement($element).")];\n";
     }
+    
+    switch ( $element->{type} ){
+        case "StringListElement" {
+            if ($element->{autocompleteProc} eq "true") {
+                print "\t [_".getOutletNameForElement($element,"TEXT_FIELD")." setAutoCompleteData:[BBData procedures]];\n";
+            } elsif ($element->{autocompleteAllergy} eq "true") {
+                print "\t [_".getOutletNameForElement($element,"TEXT_FIELD")." setAutoCompleteData:[BBData allergies]];\n";
+            }
+        }
+        case "ElementListFormElement" {
+            switch ( $element->{listOf} ){
+                case "AntibioticFormElement" {
+                    print "\t [_".getOutletNameForElement($element,"NAME")." setAutoCompleteData:[BBData medications]];\n";
+                }
+                case "MedicationFormElement" {
+                    print "\t [_".getOutletNameForElement($element,"NAME")." setAutoCompleteData:[BBData medications]];\n";
+                }
+            }
+        }
+        case "AntibioticFormElement" {
+            print "\t [_".getOutletNameForElement($element,"NAME")." setAutoCompleteData:[BBData medications]];\n";
+            
+        }
+    }
 }
+
+
 
 $radioGroup = 0;
 foreach $button (@radioButtons) {
@@ -407,7 +445,7 @@ foreach $element (@elements) {
         print "-(void)update".getOutletNameForElement($element)."{\n";
         print "\t UIDatePicker *picker = (UIDatePicker*)self.".getOutletNameForElement($element).".inputView;\n";
         print "\t NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];\n";
-        print "\t [dateFormatter setDateFormat:\@\"dd/MM/yyyy\"];\n";
+        print "\t [dateFormatter setDateFormat:\@\"MM/dd/yyyy\"];\n";
         print "\t self.".getOutletNameForElement($element).".text = [NSString stringWithFormat:\@\"%\@\",[dateFormatter stringFromDate:picker.date]];\n";
         print "\t [self.".getOutletNameForElement($element)." resignFirstResponder];\n";
         print "}\n\n";
@@ -641,13 +679,15 @@ print "}\n\n";
 # table add button handlers
 print "- (IBAction)changeMedUnit:(UIButton*)sender {\n";
 print "\t if ([sender.titleLabel.text isEqualToString: \@\"cc\"]) { \n";
-print "\t\t sender.titleLabel.text = \@\"mcg\";\n";
+print "\t\t [sender setTitle:\@\"mcg\" forState:UIControlStateNormal];\n";
 print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"mcg\"]) {\n";
-print "\t\t sender.titleLabel.text = \@\"mg\";\n";
+print "\t\t [sender setTitle:\@\"mg\" forState:UIControlStateNormal];\n";
 print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"mg\"]) {\n";
-print "\t\t sender.titleLabel.text = \@\"g\";\n";
-print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"g\"]) {\n";
-print "\t\t sender.titleLabel.text = \@\"cc\";\n";
+print "\t\t [sender setTitle:\@\"G\" forState:UIControlStateNormal];\n";
+print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"G\"]) {\n";
+print "\t\t [sender setTitle:\@\"none\" forState:UIControlStateNormal];\n";
+print "\t } else if ([sender.titleLabel.text isEqualToString: \@\"none\"]) {\n";
+print "\t\t [sender setTitle:\@\"cc\" forState:UIControlStateNormal];\n";
 print "\t } \n}\n\n";
 
 foreach $element (@elements){

@@ -20,6 +20,10 @@
 
 #import "MedicationFormElement.h"
 
+#import "BBData.h"
+
+#import "BBAutoCompleteTextField.h"
+
 
 @interface RenalViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *renalBBCheckBox;
@@ -87,7 +91,7 @@ static NSString *const NOTES_KEY = @"NotesKey";
 -(void)updatelastDialysisUITextField{
 	 UIDatePicker *picker = (UIDatePicker*)self.lastDialysisUITextField.inputView;
 	 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	 [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+	 [dateFormatter setDateFormat:@"MM/dd/yyyy"];
 	 self.lastDialysisUITextField.text = [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:picker.date]];
 	 [self.lastDialysisUITextField resignFirstResponder];
 }
@@ -197,13 +201,15 @@ static NSString *const NOTES_KEY = @"NotesKey";
 
 - (IBAction)changeMedUnit:(UIButton*)sender {
 	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
-		 sender.titleLabel.text = @"mcg";
+		 [sender setTitle:@"mcg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
-		 sender.titleLabel.text = @"mg";
+		 [sender setTitle:@"mg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
-		 sender.titleLabel.text = @"g";
-	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
-		 sender.titleLabel.text = @"cc";
+		 [sender setTitle:@"G" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"G"]) {
+		 [sender setTitle:@"none" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"none"]) {
+		 [sender setTitle:@"cc" forState:UIControlStateNormal];
 	 } 
 }
 

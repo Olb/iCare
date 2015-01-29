@@ -78,7 +78,7 @@
             <Condition >
                 <Element name="Dentures" value="true" />
             </Condition>
-            <Action type="check" >
+            <Action type="check" operator="or">
                 <Element name="DenturesFull" value="true" />
                 <Element name="DenturesPartial" value="true" />
             </Action>

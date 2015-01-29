@@ -2,7 +2,7 @@
 <Section name="AllergiesReactions">
 	<Data>
         <Element type="BooleanFormElement" name="NoKnownAllergies" />
-		<Element type="StringListElement" name="AllergiesReactions"/>
+		<Element type="StringListElement" name="AllergiesReactions" autocompleteAllergy="true"/>
         <Element type="TextViewElement" name="Notes"/>
 	</Data>
     

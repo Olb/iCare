@@ -54,9 +54,6 @@
                 <Element name="Smoking" value="true" />
             </Condition>
             <Action type="check">
-                <Element name="QuitAmountAgo" value="NotEmpty" />
-            </Action>
-            <Action type="check">
                 <Element name="PPD" value="NotEmpty" />
             </Action>
             <Action type="check">

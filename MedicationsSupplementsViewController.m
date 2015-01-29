@@ -20,13 +20,17 @@
 
 #import "MedicationFormElement.h"
 
+#import "BBData.h"
+
+#import "BBAutoCompleteTextField.h"
+
 
 @interface MedicationsSupplementsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *betaBlockerBBCheckBox;
 @property (weak, nonatomic) IBOutlet BBCheckBox *takenDayOfBBCheckBox;
 @property (weak, nonatomic) IBOutlet UITableView *medsSupplementsTable;
 @property (strong, nonatomic) FormElementTableAdapter *medsSupplementsTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *medsSupplementsNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *medsSupplementsNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *medsSupplementsDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *medsSupplementsDoseUnitButton;
 @property (weak, nonatomic) IBOutlet UITextView *notesUITextView;
@@ -42,6 +46,7 @@ static NSString *const NOTES_KEY = @"NotesKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [_medsSupplementsNameTextField setAutoCompleteData:[BBData medications]];
 	 self.medsSupplementsTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.medsSupplementsTable.dataSource = self.medsSupplementsTableAdapter;
 	 self.medsSupplementsTable.delegate = self.medsSupplementsTableAdapter;
@@ -161,13 +166,15 @@ static NSString *const NOTES_KEY = @"NotesKey";
 
 - (IBAction)changeMedUnit:(UIButton*)sender {
 	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
-		 sender.titleLabel.text = @"mcg";
+		 [sender setTitle:@"mcg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
-		 sender.titleLabel.text = @"mg";
+		 [sender setTitle:@"mg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
-		 sender.titleLabel.text = @"g";
-	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
-		 sender.titleLabel.text = @"cc";
+		 [sender setTitle:@"G" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"G"]) {
+		 [sender setTitle:@"none" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"none"]) {
+		 [sender setTitle:@"cc" forState:UIControlStateNormal];
 	 } 
 }
 

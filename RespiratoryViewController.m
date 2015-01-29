@@ -20,6 +20,10 @@
 
 #import "MedicationFormElement.h"
 
+#import "BBData.h"
+
+#import "BBAutoCompleteTextField.h"
+
 
 @interface RespiratoryViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet BBCheckBox *respiratoryBBCheckBox;
@@ -150,10 +154,6 @@ static NSString *const NOTES_KEY = @"NotesKey";
 		 }
 	 }
 	 if( self.smokingBBCheckBox.selected ){ 
-		 if( !(![self.quitAmountAgoUITextField.text isEqualToString:@""]) ){ 
-			 *errMsg = @"QuitAmountAgo must be not empty when Smoking is selected"; 
-			 return false; 
-		 }
 		 if( !(![self.pPDUITextField.text isEqualToString:@""]) ){ 
 			 *errMsg = @"PPD must be not empty when Smoking is selected"; 
 			 return false; 
@@ -300,13 +300,15 @@ static NSString *const NOTES_KEY = @"NotesKey";
 
 - (IBAction)changeMedUnit:(UIButton*)sender {
 	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
-		 sender.titleLabel.text = @"mcg";
+		 [sender setTitle:@"mcg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
-		 sender.titleLabel.text = @"mg";
+		 [sender setTitle:@"mg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
-		 sender.titleLabel.text = @"g";
-	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
-		 sender.titleLabel.text = @"cc";
+		 [sender setTitle:@"G" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"G"]) {
+		 [sender setTitle:@"none" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"none"]) {
+		 [sender setTitle:@"cc" forState:UIControlStateNormal];
 	 } 
 }
 

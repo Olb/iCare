@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <Section name="PastSurgicalProcedures">
 	<Data>
-		<Element type="StringListElement" name="PastSurgicalProcedures"/>
+		<Element type="StringListElement" name="PastSurgicalProcedures" autocompleteProc="true"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesPatient"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsYesFamily"/>
         <Element type="BooleanFormElement" name="HxAnesthesiaProblemsNo" />

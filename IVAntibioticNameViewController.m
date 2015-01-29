@@ -20,11 +20,15 @@
 
 #import "MedicationFormElement.h"
 
+#import "BBData.h"
+
+#import "BBAutoCompleteTextField.h"
+
 
 @interface IVAntibioticNameViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *ivAntibioticTable;
 @property (strong, nonatomic) FormElementTableAdapter *ivAntibioticTableAdapter;
-@property (weak, nonatomic) IBOutlet UITextField *ivAntibioticNameTextField;
+@property (weak, nonatomic) IBOutlet BBAutoCompleteTextField *ivAntibioticNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticDoseTextField;
 @property (weak, nonatomic) IBOutlet UIButton *ivAntibioticDoseUnitButton;
 @property (weak, nonatomic) IBOutlet UITextField *ivAntibioticStartTimeTextField;
@@ -41,6 +45,7 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 - (void)viewDidLoad
 {
 	 [super viewDidLoad];
+	 [_ivAntibioticNameTextField setAutoCompleteData:[BBData medications]];
 	 self.ivAntibioticTableAdapter = [[FormElementTableAdapter alloc] init];
 	 self.ivAntibioticTable.dataSource = self.ivAntibioticTableAdapter;
 	 self.ivAntibioticTable.delegate = self.ivAntibioticTableAdapter;
@@ -141,13 +146,15 @@ static NSString *const NOT_INDICATED_KEY = @"NotIndicatedKey";
 
 - (IBAction)changeMedUnit:(UIButton*)sender {
 	 if ([sender.titleLabel.text isEqualToString: @"cc"]) { 
-		 sender.titleLabel.text = @"mcg";
+		 [sender setTitle:@"mcg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mcg"]) {
-		 sender.titleLabel.text = @"mg";
+		 [sender setTitle:@"mg" forState:UIControlStateNormal];
 	 } else if ([sender.titleLabel.text isEqualToString: @"mg"]) {
-		 sender.titleLabel.text = @"g";
-	 } else if ([sender.titleLabel.text isEqualToString: @"g"]) {
-		 sender.titleLabel.text = @"cc";
+		 [sender setTitle:@"G" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"G"]) {
+		 [sender setTitle:@"none" forState:UIControlStateNormal];
+	 } else if ([sender.titleLabel.text isEqualToString: @"none"]) {
+		 [sender setTitle:@"cc" forState:UIControlStateNormal];
 	 } 
 }
 
