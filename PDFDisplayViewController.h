@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Form.h"
 #import "IntraOp.h"
+#import "IntraOpDetailsViewController.h"
 @interface PDFDisplayViewController : UIViewController
 @property (strong, nonatomic) Form *form;
 @property (strong, nonatomic) IntraOp *intraOp;
+@property (weak, nonatomic) IntraOpViewController *intraOpVC;
 @end

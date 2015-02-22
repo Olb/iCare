@@ -12,6 +12,7 @@
 #import <MessageUI/MessageUI.h>
 #import "Patient.h"
 #import "Operation.h"
+#import "BBUtil.h"
 
 @interface PDFDisplayViewController () <UIWebViewDelegate, MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -88,22 +89,36 @@
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     
-    [picker setSubject:self.form.title];
+    if (self.intraOp != nil) {
+        
+        [picker setSubject:self.intraOp.operation.name];
+        // Set up recipients
+        NSArray *toRecipients = [NSArray arrayWithObject:self.intraOp.operation.patient.practitioner.email];
+        [picker setToRecipients:toRecipients];
+        
+        // Attach an image to the email
+        NSData *myData = [NSData dataWithContentsOfFile:[BBPdfGenerator getPDFFileNameForIntraOp:self.intraOp]];
+        [picker addAttachmentData:myData mimeType:@"application/pdf" fileName:self.form.title];
+    } else {
+        [picker setSubject:self.form.title];
+        // Set up recipients
+        NSArray *toRecipients = [NSArray arrayWithObject:self.form.operation.patient.practitioner.email];
+        [picker setToRecipients:toRecipients];
+        
+        // Attach an image to the email
+        NSData *myData = [NSData dataWithContentsOfFile:[BBPdfGenerator getPDFFileNameForForm:self.form]];
+        [picker addAttachmentData:myData mimeType:@"application/pdf" fileName:self.form.title];
+    }
     
-    // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:self.form.operation.patient.practitioner.email];
-    [picker setToRecipients:toRecipients];
     
-    // Attach an image to the email
-    NSData *myData = [NSData dataWithContentsOfFile:[BBPdfGenerator getPDFFileNameForForm:self.form]];
-    [picker addAttachmentData:myData mimeType:@"application/pdf" fileName:self.form.title];
     
     // Fill out the email body text
     NSString *emailBody = @"";
     [picker setMessageBody:emailBody isHTML:NO];
     
     picker.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentViewController:picker animated:YES completion:NULL];
+    [self presentViewController:picker animated:YES completion:nil];
+
 }
 
 

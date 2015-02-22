@@ -67,7 +67,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *monitorsButton;
 @property (weak, nonatomic) IBOutlet UIView *disabledView;
 @property CGRect disabledViewFrameOrigin;
-
+@property Form *pdfForm;
 @end
 
 @implementation IntraOpViewController
@@ -574,6 +574,7 @@
     vc.intraOpViewController = self;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
+
 - (IBAction)showAnesthesiaRecord:(id)sender {
     AnesthesiaRecordController *vc = [[AnesthesiaRecordController alloc] init];;
     for (Form *f in self.intraOp.operation.forms) {
@@ -597,8 +598,9 @@
 
     PDFDisplayViewController *vc = [[PDFDisplayViewController alloc] init];
     vc.intraOp = self.intraOp;
+    vc.intraOpVC = self;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    //vc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
